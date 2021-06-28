@@ -34,7 +34,8 @@ Born/died before an event? Can we do this relative to an event - ie better than 
 
 Who is related to Anakin Skywalker? Should include Ben Solo. Also includes Han Solo (as Ben&apos;s Father) - as related is transitive. Should it? Rex is related to Jango Fett
 
-Someone who was killed during an event died on the date of that event - need to infer &quot;died&quot; from event - eg Plo Koon died in Order 66 on 19BBY - doesn&apos;t look like you can use property chains for datatype properties</rdfs:comment>
+Someone who was killed during an event died on the date of that event - need to infer &quot;died&quot; from event - eg Plo Koon died in Order 66 on 19BBY - doesn&apos;t look like you can use property chains for datatype properties
+killedDuring some (Fight and on value Death_Star_1)</rdfs:comment>
         <rdfs:comment>Star Wars ontology - this would be a great test of partitioning by episode as the open world allows additional information to be associated at the correct times.</rdfs:comment>
         <rdfs:comment>Warnings:
 Cannot add min card 14000 to the battle of Exegol - it breaks the reasoner</rdfs:comment>
@@ -109,15 +110,38 @@ Cannot add min card 14000 to the battle of Exegol - it breaks the reasoner</rdfs
     
 
 
+    <!-- http://null.com/star-wars#deathOf -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#deathOf">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#participant"/>
+        <owl:inverseOf rdf:resource="http://null.com/star-wars#diedIn"/>
+        <owl:propertyDisjointWith rdf:resource="http://null.com/star-wars#survivedBy"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://null.com/star-wars#destroyedBy -->
 
     <owl:ObjectProperty rdf:about="http://null.com/star-wars#destroyedBy"/>
     
 
 
+    <!-- http://null.com/star-wars#diedIn -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#diedIn">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#participatedIn"/>
+        <owl:propertyDisjointWith rdf:resource="http://null.com/star-wars#survivorOf"/>
+        <todo>Do we need this as its not used directly</todo>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://null.com/star-wars#during -->
 
     <owl:ObjectProperty rdf:about="http://null.com/star-wars#during">
+        <owl:inverseOf rdf:resource="http://null.com/star-wars#included"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://null.com/star-wars#Event"/>
         <rdfs:range rdf:resource="http://null.com/star-wars#Event"/>
     </owl:ObjectProperty>
     
@@ -228,19 +252,46 @@ Cannot add min card 14000 to the battle of Exegol - it breaks the reasoner</rdfs
     
 
 
-    <!-- http://null.com/star-wars#killed -->
+    <!-- http://null.com/star-wars#included -->
 
-    <owl:ObjectProperty rdf:about="http://null.com/star-wars#killed">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <owl:inverseOf rdf:resource="http://null.com/star-wars#killedBy"/>
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#included">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://null.com/star-wars#Event"/>
+        <rdfs:range rdf:resource="http://null.com/star-wars#Event"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://null.com/star-wars#killedBy -->
+    <!-- http://null.com/star-wars#injuredIn -->
 
-    <owl:ObjectProperty rdf:about="http://null.com/star-wars#killedBy">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#injuredIn">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#survivorOf"/>
+        <owl:inverseOf rdf:resource="http://null.com/star-wars#injuryOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://null.com/star-wars#injuryOf -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#injuryOf">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#survivedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://null.com/star-wars#killedIn -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#killedIn">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#diedIn"/>
+        <owl:inverseOf rdf:resource="http://null.com/star-wars#killingOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://null.com/star-wars#killingOf -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#killingOf">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#deathOf"/>
     </owl:ObjectProperty>
     
 
@@ -307,6 +358,23 @@ Cannot add min card 14000 to the battle of Exegol - it breaks the reasoner</rdfs
     
 
 
+    <!-- http://null.com/star-wars#murderOf -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#murderOf">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#killingOf"/>
+        <owl:inverseOf rdf:resource="http://null.com/star-wars#murderedIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://null.com/star-wars#murderedIn -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#murderedIn">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#killedIn"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://null.com/star-wars#ofShip -->
 
     <owl:ObjectProperty rdf:about="http://null.com/star-wars#ofShip">
@@ -342,6 +410,7 @@ Cannot add min card 14000 to the battle of Exegol - it breaks the reasoner</rdfs
 
     <owl:ObjectProperty rdf:about="http://null.com/star-wars#participant">
         <owl:inverseOf rdf:resource="http://null.com/star-wars#participatedIn"/>
+        <rdfs:domain rdf:resource="http://null.com/star-wars#Event"/>
     </owl:ObjectProperty>
     
 
@@ -411,6 +480,23 @@ Cannot add min card 14000 to the battle of Exegol - it breaks the reasoner</rdfs
     
 
 
+    <!-- http://null.com/star-wars#survivedBy -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#survivedBy">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#participant"/>
+        <owl:inverseOf rdf:resource="http://null.com/star-wars#survivorOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://null.com/star-wars#survivorOf -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#survivorOf">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#participatedIn"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://null.com/star-wars#trained -->
 
     <owl:ObjectProperty rdf:about="http://null.com/star-wars#trained">
@@ -424,6 +510,22 @@ Cannot add min card 14000 to the battle of Exegol - it breaks the reasoner</rdfs
 
     <owl:ObjectProperty rdf:about="http://null.com/star-wars#trainedBy">
         <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#knew"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://null.com/star-wars#victoryOf -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#victoryOf">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#survivedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://null.com/star-wars#witnessedBy -->
+
+    <owl:ObjectProperty rdf:about="http://null.com/star-wars#witnessedBy">
+        <rdfs:subPropertyOf rdf:resource="http://null.com/star-wars#participant"/>
     </owl:ObjectProperty>
     
 
@@ -457,9 +559,9 @@ or minus is BBY</rdfs:comment>
     
 
 
-    <!-- http://null.com/star-wars#died -->
+    <!-- http://null.com/star-wars#diedInYear -->
 
-    <owl:DatatypeProperty rdf:about="http://null.com/star-wars#died">
+    <owl:DatatypeProperty rdf:about="http://null.com/star-wars#diedInYear">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
     </owl:DatatypeProperty>
     
@@ -538,6 +640,14 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Attack -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Attack">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Event"/>
+    </owl:Class>
+    
+
+
     <!-- http://null.com/star-wars#B-Wing -->
 
     <owl:Class rdf:about="http://null.com/star-wars#B-Wing">
@@ -576,7 +686,7 @@ or minus is BBY</rdfs:comment>
     <!-- http://null.com/star-wars#Battle -->
 
     <owl:Class rdf:about="http://null.com/star-wars#Battle">
-        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Event"/>
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Fight"/>
     </owl:Class>
     
 
@@ -638,6 +748,14 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Confrontation -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Confrontation">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Event"/>
+    </owl:Class>
+    
+
+
     <!-- http://null.com/star-wars#Council_of_Neutral_Systems -->
 
     <owl:Class rdf:about="http://null.com/star-wars#Council_of_Neutral_Systems">
@@ -649,7 +767,9 @@ or minus is BBY</rdfs:comment>
 
     <!-- http://null.com/star-wars#Creature -->
 
-    <owl:Class rdf:about="http://null.com/star-wars#Creature"/>
+    <owl:Class rdf:about="http://null.com/star-wars#Creature">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Living_thing"/>
+    </owl:Class>
     
 
 
@@ -742,6 +862,14 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Duel -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Duel">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Fight"/>
+    </owl:Class>
+    
+
+
     <!-- http://null.com/star-wars#Duros -->
 
     <owl:Class rdf:about="http://null.com/star-wars#Duros">
@@ -761,7 +889,20 @@ or minus is BBY</rdfs:comment>
 
     <!-- http://null.com/star-wars#Event -->
 
-    <owl:Class rdf:about="http://null.com/star-wars#Event"/>
+    <owl:Class rdf:about="http://null.com/star-wars#Event">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#location"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Place"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#date"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
@@ -774,12 +915,35 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Execution -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Execution">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Murder"/>
+    </owl:Class>
+    
+
+
     <!-- http://null.com/star-wars#Exogorth -->
 
     <owl:Class rdf:about="http://null.com/star-wars#Exogorth">
         <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Creature"/>
         <rdfs:label>Space slug</rdfs:label>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Exogorth</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://null.com/star-wars#Fight -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Fight">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#participant"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://null.com/star-wars#Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -890,6 +1054,15 @@ or minus is BBY</rdfs:comment>
     <owl:Class rdf:about="http://null.com/star-wars#Grindalid">
         <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Person"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Grindalid</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://null.com/star-wars#Guardians_of_the_Whills -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Guardians_of_the_Whills">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Organisation"/>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Guardians_of_the_Whills</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -1067,6 +1240,12 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Living_thing -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Living_thing"/>
+    
+
+
     <!-- http://null.com/star-wars#Mandalorian -->
 
     <owl:Class rdf:about="http://null.com/star-wars#Mandalorian">
@@ -1128,6 +1307,14 @@ or minus is BBY</rdfs:comment>
 
     <owl:Class rdf:about="http://null.com/star-wars#Mouse_Droid">
         <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Droid"/>
+    </owl:Class>
+    
+
+
+    <!-- http://null.com/star-wars#Murder -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Murder">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Event"/>
     </owl:Class>
     
 
@@ -1304,6 +1491,14 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Rocky -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Rocky">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Habitat"/>
+    </owl:Class>
+    
+
+
     <!-- http://null.com/star-wars#Rodian -->
 
     <owl:Class rdf:about="http://null.com/star-wars#Rodian">
@@ -1388,7 +1583,9 @@ or minus is BBY</rdfs:comment>
 
     <!-- http://null.com/star-wars#Sentient -->
 
-    <owl:Class rdf:about="http://null.com/star-wars#Sentient"/>
+    <owl:Class rdf:about="http://null.com/star-wars#Sentient">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Living_thing"/>
+    </owl:Class>
     
 
 
@@ -1529,6 +1726,14 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Supreme_Leader -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Supreme_Leader">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Leader"/>
+    </owl:Class>
+    
+
+
     <!-- http://null.com/star-wars#Swamp -->
 
     <owl:Class rdf:about="http://null.com/star-wars#Swamp">
@@ -1548,6 +1753,14 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Tauntaun</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://null.com/star-wars#Temple -->
+
+    <owl:Class rdf:about="http://null.com/star-wars#Temple">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Place"/>
     </owl:Class>
     
 
@@ -1627,7 +1840,9 @@ or minus is BBY</rdfs:comment>
 
     <!-- http://null.com/star-wars#Vehicle -->
 
-    <owl:Class rdf:about="http://null.com/star-wars#Vehicle"/>
+    <owl:Class rdf:about="http://null.com/star-wars#Vehicle">
+        <rdfs:subClassOf rdf:resource="http://null.com/star-wars#Place"/>
+    </owl:Class>
     
 
 
@@ -1769,6 +1984,29 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/Chirrut_Îmwe -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/Chirrut_Îmwe">
+        <rdf:type rdf:resource="http://null.com/star-wars#Human"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#memberOf"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Guardians_of_the_Whills"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#memberOf"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Rogue_One"/>
+            </owl:Restriction>
+        </rdf:type>
+        <from rdf:resource="http://null.com/star-wars#Jedha"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-52</date>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Chirrut_%C3%8Emwe</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/Qi&apos;ra -->
 
     <owl:NamedIndividual rdf:about="http://null.com/Qi&apos;ra">
@@ -1815,8 +2053,6 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <from rdf:resource="http://null.com/star-wars#Ryloth"/>
         <hadJediMaster rdf:resource="http://null.com/star-wars#Quinlan_Vos"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Order_66"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Aayla_Secura</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -1842,28 +2078,7 @@ or minus is BBY</rdfs:comment>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdf:type>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://null.com/star-wars#killedBy"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://null.com/star-wars#Pilot"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://null.com/star-wars#inOrganisation"/>
-                                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#First_Order"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://null.com/star-wars#ofShip"/>
-                                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Tie_Fighter"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdf:type>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-52</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Gial_Ackbar</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -1894,8 +2109,20 @@ or minus is BBY</rdfs:comment>
         <hadJediMaster rdf:resource="http://null.com/star-wars#Anakin_Skywalker"/>
         <livedIn rdf:resource="http://null.com/star-wars#Coruscant"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-36</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-20</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-20</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Ahsoka_Tano</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Ahsoka_vs_Vader -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Ahsoka_vs_Vader">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <during rdf:resource="http://null.com/star-wars#Twighlight_of_the_Apprentice"/>
+        <injuryOf rdf:resource="http://null.com/star-wars#Ahsoka_Tano"/>
+        <injuryOf rdf:resource="http://null.com/star-wars#Darth_Vader"/>
+        <witnessedBy rdf:resource="http://null.com/star-wars#Ezra_Bridger"/>
     </owl:NamedIndividual>
     
 
@@ -1940,8 +2167,20 @@ or minus is BBY</rdfs:comment>
         <married rdf:resource="http://null.com/star-wars#Padme_Amidala"/>
         <son rdf:resource="http://null.com/star-wars#Luke_Skywalker"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-41</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Anakin_Skywalker</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Anakin_vs_Dooku -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Anakin_vs_Dooku">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Count_Dooku"/>
+        <on rdf:resource="http://null.com/star-wars#Invisible_Hand"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Anakin_Skywalker"/>
+        <witnessedBy rdf:resource="http://null.com/star-wars#Sheev_Palpatine"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</date>
     </owl:NamedIndividual>
     
 
@@ -1982,14 +2221,7 @@ or minus is BBY</rdfs:comment>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdf:type>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://null.com/star-wars#killedBy"/>
-                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#First_Order"/>
-            </owl:Restriction>
-        </rdf:type>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Armitage_Hux</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2029,8 +2261,64 @@ or minus is BBY</rdfs:comment>
         <from rdf:resource="http://null.com/star-wars#Dathomir"/>
         <trainedBy rdf:resource="http://null.com/star-wars#Count_Dooku"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-50</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Asajj_Ventress</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Attack_on_Lars_Homestead -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Attack_on_Lars_Homestead">
+        <rdf:type rdf:resource="http://null.com/star-wars#Murder"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#killingOf"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Jawa"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#participant"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#StormTrooper"/>
+            </owl:Restriction>
+        </rdf:type>
+        <killingOf rdf:resource="http://null.com/star-wars#Beru_Whitesun_Lars"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Owen_Lars"/>
+        <on rdf:resource="http://null.com/star-wars#Tatooine"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</date>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Attack_on_the_Raddus -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Attack_on_the_Raddus">
+        <rdf:type rdf:resource="http://null.com/star-wars#Fight"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#victoryOf"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://null.com/star-wars#Pilot"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://null.com/star-wars#inOrganisation"/>
+                                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#First_Order"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://null.com/star-wars#ofShip"/>
+                                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Tie_Fighter"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdf:type>
+        <injuryOf rdf:resource="http://null.com/star-wars#Leia_Organa"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Ackbar"/>
+        <location rdf:resource="http://null.com/star-wars#Raddus"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</date>
     </owl:NamedIndividual>
     
 
@@ -2151,9 +2439,23 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Rebel_Alliance"/>
             </owl:Restriction>
         </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#participant"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Rogue_One"/>
+            </owl:Restriction>
+        </rdf:type>
+        <killingOf rdf:resource="http://null.com/Chirrut_Îmwe"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Baze_Malbus"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Bodhi_Rook"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Cassian_Andor"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Jyn_Erso"/>
+        <killingOf rdf:resource="http://null.com/star-wars#K-2SO"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Orson_Krennic"/>
         <location rdf:resource="http://null.com/star-wars#Scarif"/>
         <participant rdf:resource="http://null.com/star-wars#Death_Star_1"/>
         <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</date>
+        <todo rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">must be some way to say &quot;killed all members of rogue one&quot;</todo>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Battle_of_Scarif</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2183,6 +2485,30 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Baze_Malbus -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Baze_Malbus">
+        <rdf:type rdf:resource="http://null.com/star-wars#Human"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#memberOf"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Guardians_of_the_Whills"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#memberOf"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Rogue_One"/>
+            </owl:Restriction>
+        </rdf:type>
+        <friendsWith rdf:resource="http://null.com/Chirrut_Îmwe"/>
+        <from rdf:resource="http://null.com/star-wars#Jedha"/>
+        <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-53</born>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Baze_Malbus</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Ben_Solo -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Ben_Solo">
@@ -2199,7 +2525,7 @@ or minus is BBY</rdfs:comment>
         <loved rdf:resource="http://null.com/star-wars#Rey"/>
         <mother rdf:resource="http://null.com/star-wars#Leia_Organa"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Ben_Solo</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2209,25 +2535,8 @@ or minus is BBY</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Beru_Whitesun_Lars">
         <rdf:type rdf:resource="http://null.com/star-wars#Human"/>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://null.com/star-wars#killedBy"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://null.com/star-wars#StormTrooper"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://null.com/star-wars#inOrganisation"/>
-                                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Galactic_Empire"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdf:type>
         <from rdf:resource="http://null.com/star-wars#Tatooine"/>
         <married rdf:resource="http://null.com/star-wars#Owen_Lars"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
         <rdfs:seeAlso>https://starwars.fandom.com/wiki/Beru_Whitesun_Lars</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2265,9 +2574,7 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <from rdf:resource="http://null.com/star-wars#Ryloth"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Boba_Fett"/>
         <livedIn rdf:resource="http://null.com/star-wars#Jabba&apos;s_Palace"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Bib_Fortuna</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2324,6 +2631,52 @@ or minus is BBY</rdfs:comment>
         <from rdf:resource="http://null.com/star-wars#Kamino"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-32</born>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Boba_Fett</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Boba_vs_Bib -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Boba_vs_Bib">
+        <rdf:type rdf:resource="http://null.com/star-wars#Murder"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Bib_Fortuna"/>
+        <location rdf:resource="http://null.com/star-wars#Jabba&apos;s_Palace"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Boba_Fett"/>
+        <witnessedBy rdf:resource="http://null.com/star-wars#Fennec_Shand"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</date>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Bodhi_Rook -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Bodhi_Rook">
+        <rdf:type rdf:resource="http://null.com/star-wars#Human"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#hadRole"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://null.com/star-wars#Pilot"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://null.com/star-wars#inOrganisation"/>
+                                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Galactic_Empire"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#memberOf"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Rogue_One"/>
+            </owl:Restriction>
+        </rdf:type>
+        <from rdf:resource="http://null.com/star-wars#Jedha"/>
+        <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-25</born>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Bodhi_Rook</rdfs:seeAlso>
     </owl:NamedIndividual>
     
 
@@ -2389,6 +2742,16 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Cantina -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Cantina">
+        <rdf:type rdf:resource="http://null.com/star-wars#Place"/>
+        <location rdf:resource="http://null.com/star-wars#Mos_Eisley"/>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Chalmun%27s_Spaceport_Cantina</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Cassian_Andor -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Cassian_Andor">
@@ -2415,9 +2778,7 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Rogue_One"/>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/star-wars#Death_Star_1"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-26</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Cassian_Jeron_Andor</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2559,9 +2920,7 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <owl:sameAs rdf:resource="http://null.com/star-wars#Darth_Tyranus"/>
         <hadJediMaster rdf:resource="http://null.com/star-wars#Yoda"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Anakin_Skywalker"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-102</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Dooku</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2592,6 +2951,12 @@ or minus is BBY</rdfs:comment>
     <!-- http://null.com/star-wars#Darth_Sidious -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Darth_Sidious">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#hadRole"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Dark_Lord"/>
+            </owl:Restriction>
+        </rdf:type>
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://null.com/star-wars#hadRole"/>
@@ -2630,8 +2995,7 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#The_Force"/>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/star-wars#Darth_Vader"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Rey"/>
+        <owl:sameAs rdf:resource="http://null.com/star-wars#Sheev_Palpatine"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Darth_Sidious</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2662,7 +3026,6 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <hadSithMaster rdf:resource="http://null.com/star-wars#Darth_Sidious"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Darth_Sidious"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Anakin_Skywalker</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2711,6 +3074,32 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Death_of_Satine -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Death_of_Satine">
+        <rdf:type rdf:resource="http://null.com/star-wars#Murder"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Satine_Kryze"/>
+        <location rdf:resource="http://null.com/star-wars#Mandalore"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Maul"/>
+        <witnessedBy rdf:resource="http://null.com/star-wars#Obi-Wan_Kenobi"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</date>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Death_of_the_Supreme_Leader -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Death_of_the_Supreme_Leader">
+        <rdf:type rdf:resource="http://null.com/star-wars#Confrontation"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Snoke"/>
+        <location rdf:resource="http://null.com/star-wars#Supremacy"/>
+        <survivedBy rdf:resource="http://null.com/star-wars#Rey"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Kylo_Ren"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</date>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Dryden_Vos -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Dryden_Vos">
@@ -2731,8 +3120,6 @@ or minus is BBY</rdfs:comment>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/Qi&apos;ra"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-10</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Dryden_Vos</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2766,6 +3153,36 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <on rdf:resource="http://null.com/star-wars#Hoth"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Echo_Base</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Eighth_Brother -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Eighth_Brother">
+        <rdf:type rdf:resource="http://null.com/star-wars#Person"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#hadRole"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Inquisitor"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Eighth_Brother</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#End_of_Sith_Eternal -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#End_of_Sith_Eternal">
+        <rdf:type rdf:resource="http://null.com/star-wars#Confrontation"/>
+        <during rdf:resource="http://null.com/star-wars#Battle_of_Exegol"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Darth_Sidious"/>
+        <location rdf:resource="http://null.com/star-wars#Exegol"/>
+        <participant rdf:resource="http://null.com/star-wars#Ben_Solo"/>
+        <participant rdf:resource="http://null.com/star-wars#Rey"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</date>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Darth_Sidious#End_of_the_Sith_Eternal</rdfs:seeAlso>
     </owl:NamedIndividual>
     
 
@@ -2853,8 +3270,6 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Inquisitor"/>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/star-wars#Maul"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Fifth_Brother</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -2930,6 +3345,15 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#First_Light -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#First_Light">
+        <rdf:type rdf:resource="http://null.com/star-wars#Ship"/>
+        <ownedBy rdf:resource="http://null.com/star-wars#Dryden_Vos"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Galen_Erso -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Galen_Erso">
@@ -2951,7 +3375,7 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-56</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Galen_Walton_Erso</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3017,9 +3441,7 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <faught rdf:resource="http://null.com/star-wars#Anakin_Skywalker"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Han_Solo"/>
         <livedIn rdf:resource="http://null.com/star-wars#Mos_Espa"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Greedo</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3045,8 +3467,6 @@ or minus is BBY</rdfs:comment>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/star-wars#Obi-Wan_Kenobi"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Grievous</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3095,10 +3515,20 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <from rdf:resource="http://null.com/star-wars#Corellia"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Kylo_Ren"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-32</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Han_Solo</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Han_vs_Greedo -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Han_vs_Greedo">
+        <rdf:type rdf:resource="http://null.com/star-wars#Confrontation"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Greedo"/>
+        <location rdf:resource="http://null.com/star-wars#Cantina"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Han_Solo"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</date>
     </owl:NamedIndividual>
     
 
@@ -3174,8 +3604,20 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <friendsWith rdf:resource="http://null.com/star-wars#Leia_Organa"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Amilyn_Holdo</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Holy_City_Destruction -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Holy_City_Destruction">
+        <rdf:type rdf:resource="http://null.com/star-wars#Attack"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Saw_Gerrera"/>
+        <location rdf:resource="http://null.com/star-wars#Jedha"/>
+        <participant rdf:resource="http://null.com/star-wars#Death_Star_1"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</date>
     </owl:NamedIndividual>
     
 
@@ -3232,6 +3674,24 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <location rdf:resource="http://null.com/star-wars#Outer_Rim"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Hoth</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Hux_Execution -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Hux_Execution">
+        <rdf:type rdf:resource="http://null.com/star-wars#Execution"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#participant"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#First_Order"/>
+            </owl:Restriction>
+        </rdf:type>
+        <killingOf rdf:resource="http://null.com/star-wars#Armitage_Hux"/>
+        <location rdf:resource="http://null.com/star-wars#Steadfast"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</date>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Armitage_Hux#Death</rdfs:seeAlso>
     </owl:NamedIndividual>
     
 
@@ -3303,14 +3763,27 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Invisible_Hand -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Invisible_Hand">
+        <rdf:type rdf:resource="http://null.com/star-wars#Capital_Ship"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#ownedBy"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Seperatist_Alliance"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Invisible_Hand</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Jabba -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Jabba">
         <rdf:type rdf:resource="http://null.com/star-wars#Hutt"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Leia_Organa"/>
         <livedIn rdf:resource="http://null.com/star-wars#Tatooine"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-600</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Jabba_Desilijic_Tiure</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3348,8 +3821,6 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Mandalorian"/>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/star-wars#Mace_Windu"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-22</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Jango_Fett</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3381,6 +3852,22 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Jedha -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Jedha">
+        <rdf:type rdf:resource="http://null.com/star-wars#Moon"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#hasTerrain"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Desert"/>
+            </owl:Restriction>
+        </rdf:type>
+        <location rdf:resource="http://null.com/star-wars#Mid_Rim"/>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Jedha</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Jyn_Erso -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Jyn_Erso">
@@ -3402,10 +3889,8 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <father rdf:resource="http://null.com/star-wars#Galen_Erso"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Death_Star_1"/>
         <raisedBy rdf:resource="http://null.com/star-wars#Saw_Gerrera"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-21</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Jyn_Erso</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3423,7 +3908,6 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <employedBy rdf:resource="http://null.com/star-wars#Cassian_Andor"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/K-2SO</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3464,15 +3948,9 @@ or minus is BBY</rdfs:comment>
         <from rdf:resource="http://null.com/star-wars#Coruscant"/>
         <loved rdf:resource="http://null.com/star-wars#Hera_Syndulla"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-33</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Kanan_Jarrus</rdfs:seeAlso>
     </owl:NamedIndividual>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
-        <owl:sourceIndividual rdf:resource="http://null.com/star-wars#Kanan_Jarrus"/>
-        <owl:assertionProperty rdf:resource="http://null.com/star-wars#killedBy"/>
-        <owl:targetIndividual rdf:resource="http://null.com/star-wars#Order_66"/>
-    </rdf:Description>
     
 
 
@@ -3565,7 +4043,7 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://null.com/star-wars#Leader"/>
+                            <rdf:Description rdf:about="http://null.com/star-wars#Supreme_Leader"/>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="http://null.com/star-wars#inOrganisation"/>
                                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#First_Order"/>
@@ -3593,7 +4071,7 @@ or minus is BBY</rdfs:comment>
         <builtBy rdf:resource="http://null.com/star-wars#L3-37"/>
         <friendsWith rdf:resource="http://null.com/star-wars#Lando_Calrissian"/>
         <location rdf:resource="http://null.com/star-wars#Millenium_Falcon"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-10</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-10</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/L3-37</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3698,8 +4176,20 @@ or minus is BBY</rdfs:comment>
         <from rdf:resource="http://null.com/star-wars#Alderaan"/>
         <loved rdf:resource="http://null.com/star-wars#Han_Solo"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Leia_Organa_Solo</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Leia_vs_Jabba -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Leia_vs_Jabba">
+        <rdf:type rdf:resource="http://null.com/star-wars#Confrontation"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Jabba"/>
+        <on rdf:resource="http://null.com/star-wars#Jabba&apos;s_Sail_barge"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Leia_Organa"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</date>
     </owl:NamedIndividual>
     
 
@@ -3748,22 +4238,6 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <rdf:type>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://null.com/star-wars#killed"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://null.com/star-wars#Rancor"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://null.com/star-wars#ownedBy"/>
-                                <owl:hasValue rdf:resource="http://null.com/star-wars#Jabba"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdf:type>
-        <rdf:type>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://null.com/star-wars#memberOf"/>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Rebel_Alliance"/>
             </owl:Restriction>
@@ -3781,7 +4255,10 @@ or minus is BBY</rdfs:comment>
         <raisedBy rdf:resource="http://null.com/star-wars#Owen_Lars"/>
         <trainedBy rdf:resource="http://null.com/star-wars#Obi-Wan_Kenobi"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</diedInYear>
+        <todo>add
+killed some 
+(Rancor and (ownedBy value Jabba))</todo>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Luke_Skywalker</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3797,7 +4274,7 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Jedi_Master"/>
             </owl:Restriction>
         </rdf:type>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-18</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-18</diedInYear>
         <rdfs:seeAlso>https://starwars.fandom.com/wiki/Luminara_Unduli</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -3819,11 +4296,54 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#The_Force"/>
             </owl:Restriction>
         </rdf:type>
-        <faught rdf:resource="http://null.com/star-wars#Darth_Sidious"/>
         <hadJediMaster rdf:resource="http://null.com/star-wars#Yoda"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Darth_Sidious"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Mace_Windu</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Mace_vs_Emperor -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Mace_vs_Emperor">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <injuryOf rdf:resource="http://null.com/star-wars#Darth_Sidious"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Mace_Windu"/>
+        <location rdf:resource="http://null.com/star-wars#Coruscant"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</date>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Mace_vs_Jango -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Mace_vs_Jango">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <during rdf:resource="http://null.com/star-wars#First_Battle_of_Geonosis"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Jango_Fett"/>
+        <location rdf:resource="http://null.com/star-wars#Geonosis"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Mace_Windu"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-22</date>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Jango_Fett#Death_on_Geonosis</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Malachor -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Malachor">
+        <rdf:type rdf:resource="http://null.com/star-wars#Planet"/>
+        <location rdf:resource="http://null.com/star-wars#Outer_Rim"/>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Malachor</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Malachor_Sith_Temple -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Malachor_Sith_Temple">
+        <rdf:type rdf:resource="http://null.com/star-wars#Temple"/>
+        <location rdf:resource="http://null.com/star-wars#Malachor"/>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Malachor_Sith_Temple</rdfs:seeAlso>
     </owl:NamedIndividual>
     
 
@@ -3882,9 +4402,47 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <from rdf:resource="http://null.com/star-wars#Dathomir"/>
         <hadSithMaster rdf:resource="http://null.com/star-wars#Darth_Sidious"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Obi-Wan_Kenobi"/>
         <mother rdf:resource="http://null.com/star-wars#Talzin"/>
+        <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-54</born>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Maul</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Maul_vs_Inquisitors -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Maul_vs_Inquisitors">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <deathOf rdf:resource="http://null.com/star-wars#Eighth_Brother"/>
+        <during rdf:resource="http://null.com/star-wars#Twighlight_of_the_Apprentice"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Fifth_Brother"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Seventh_Sister"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Maul"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Maul_vs_OB1_final -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Maul_vs_OB1_final">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Maul"/>
+        <location rdf:resource="http://null.com/star-wars#Tatooine"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Obi-Wan_Kenobi"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-2</date>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Maul_vs_Vizsla -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Maul_vs_Vizsla">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Pre_Vizla"/>
+        <location rdf:resource="http://null.com/star-wars#Mandalore"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Maul"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</date>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Pre_Vizsla#Shadow_Collective_and_death</rdfs:seeAlso>
     </owl:NamedIndividual>
     
 
@@ -3921,6 +4479,7 @@ or minus is BBY</rdfs:comment>
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Millenium_Falcon">
         <rdf:type rdf:resource="http://null.com/star-wars#YT-1300f_Light_Freighter"/>
         <from rdf:resource="http://null.com/star-wars#Corellia"/>
+        <ownedBy rdf:resource="http://null.com/star-wars#Han_Solo"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Millennium_Falcon</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4048,6 +4607,30 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#OB1_vs_Grievous -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#OB1_vs_Grievous">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Grievous"/>
+        <location rdf:resource="http://null.com/star-wars#Utapau"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Obi-Wan_Kenobi"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</date>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#OB1_vs_Vader_DeathStar -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#OB1_vs_Vader_DeathStar">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Obi-Wan_Kenobi"/>
+        <on rdf:resource="http://null.com/star-wars#Death_Star_1"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Darth_Vader"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</date>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Obi-Wan_Kenobi -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Obi-Wan_Kenobi">
@@ -4059,10 +4642,8 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <hadJediMaster rdf:resource="http://null.com/star-wars#Qui-Gon_Jinn"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Darth_Vader"/>
         <loved rdf:resource="http://null.com/star-wars#Satine_Kryze"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-57</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Obi-Wan_Kenobi</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4088,6 +4669,24 @@ or minus is BBY</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Order_66">
         <rdf:type rdf:resource="http://null.com/star-wars#Event"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#participant"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Jedi"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#participant"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Trooper"/>
+            </owl:Restriction>
+        </rdf:type>
+        <killingOf rdf:resource="http://null.com/star-wars#Aayla_Secura"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Plo_Koon"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Shaak_Ti"/>
+        <survivedBy rdf:resource="http://null.com/star-wars#Ahsoka_Tano"/>
+        <survivedBy rdf:resource="http://null.com/star-wars#Kanan_Jarrus"/>
+        <survivedBy rdf:resource="http://null.com/star-wars#Yoda"/>
         <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</date>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Order_66</rdfs:seeAlso>
     </owl:NamedIndividual>
@@ -4114,10 +4713,7 @@ or minus is BBY</rdfs:comment>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdf:type>
-        <faught rdf:resource="http://null.com/star-wars#Cassian_Andor"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Death_Star_1"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-51</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Orson_Callan_Krennic</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4137,7 +4733,7 @@ or minus is BBY</rdfs:comment>
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Owen_Lars">
         <rdf:type rdf:resource="http://null.com/star-wars#Human"/>
         <from rdf:resource="http://null.com/star-wars#Tatooine"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
+        <raisedBy rdf:resource="http://null.com/star-wars#Shmi_Skywalker"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Owen_Lars</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4174,7 +4770,7 @@ or minus is BBY</rdfs:comment>
         <knew rdf:resource="http://null.com/star-wars#Sheev_Palpatine"/>
         <son rdf:resource="http://null.com/star-wars#Luke_Skywalker"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">46</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Padm%C3%A9_Amidala</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4190,24 +4786,7 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Jedi_Master"/>
             </owl:Restriction>
         </rdf:type>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://null.com/star-wars#killedBy"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://null.com/star-wars#Trooper"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://null.com/star-wars#participatedIn"/>
-                                <owl:hasValue rdf:resource="http://null.com/star-wars#Order_66"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdf:type>
         <friendsWith rdf:resource="http://null.com/star-wars#Ahsoka_Tano"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Plo_Koon</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4272,10 +4851,7 @@ or minus is BBY</rdfs:comment>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdf:type>
-        <faught rdf:resource="http://null.com/star-wars#Maul"/>
         <from rdf:resource="http://null.com/star-wars#Mandalore"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Maul"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Pre_Vizsla</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4307,6 +4883,18 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Qira_vs_Dryden -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Qira_vs_Dryden">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Dryden_Vos"/>
+        <location rdf:resource="http://null.com/star-wars#First_Light"/>
+        <victoryOf rdf:resource="http://null.com/Qi&apos;ra"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-10</date>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Qui-Gon_Jinn -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Qui-Gon_Jinn">
@@ -4324,10 +4912,20 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <from rdf:resource="http://null.com/star-wars#Coruscant"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Maul"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-80</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-32</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Qui-Gon_Jinn</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Qui_Gon_vs_Maul -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Qui_Gon_vs_Maul">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <injuryOf rdf:resource="http://null.com/star-wars#Maul"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Qui-Gon_Jinn"/>
+        <participant rdf:resource="http://null.com/star-wars#Obi-Wan_Kenobi"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-32</date>
     </owl:NamedIndividual>
     
 
@@ -4382,6 +4980,12 @@ or minus is BBY</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Raddus">
         <rdf:type rdf:resource="http://null.com/star-wars#Star_Cruiser"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#ownedBy"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Resistance"/>
+            </owl:Restriction>
+        </rdf:type>
         <destroyedBy rdf:resource="http://null.com/star-wars#Holdo"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Raddus_(MC85_Star_Cruiser)</rdfs:seeAlso>
     </owl:NamedIndividual>
@@ -4474,9 +5078,10 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <friendsWith rdf:resource="http://null.com/star-wars#Finn"/>
         <from rdf:resource="http://null.com/star-wars#Jakku"/>
+        <trainedBy rdf:resource="http://null.com/star-wars#Leia_Organa"/>
         <trainedBy rdf:resource="http://null.com/star-wars#Luke_Skywalker"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Rey_Skywalker</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4521,15 +5126,6 @@ or minus is BBY</rdfs:comment>
     
 
 
-    <!-- http://null.com/star-wars#Sail_barge -->
-
-    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Sail_barge">
-        <rdf:type rdf:resource="http://null.com/star-wars#Vehicle"/>
-        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Sail_barge</rdfs:seeAlso>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://null.com/star-wars#Satine_Kryze -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Satine_Kryze">
@@ -4563,12 +5159,32 @@ or minus is BBY</rdfs:comment>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/star-wars#Maul"/>
         <livedIn rdf:resource="http://null.com/star-wars#Mandalore"/>
         <loved rdf:resource="http://null.com/star-wars#Obi-Wan_Kenobi"/>
         <sister rdf:resource="http://null.com/star-wars#Bo-Katan_Kryze"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Satine_Kryze</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Savareen -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Savareen">
+        <rdf:type rdf:resource="http://null.com/star-wars#Planet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#hasTerrain"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Desert"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#hasTerrain"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Water"/>
+            </owl:Restriction>
+        </rdf:type>
+        <location rdf:resource="http://null.com/star-wars#Outer_Rim"/>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Savareen</rdfs:seeAlso>
     </owl:NamedIndividual>
     
 
@@ -4594,10 +5210,8 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <from rdf:resource="http://null.com/star-wars#Onderon"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Death_Star_1"/>
         <trainedBy rdf:resource="http://null.com/star-wars#Ahsoka_Tano"/>
         <trainedBy rdf:resource="http://null.com/star-wars#Rex"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Saw_Gerrera</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4651,9 +5265,22 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Inquisitor"/>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/star-wars#Maul"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-3</died>
         <rdfs:comment>https://starwars.fandom.com/wiki/Seventh_Sister</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Shaak_Ti -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Shaak_Ti">
+        <rdf:type rdf:resource="http://null.com/star-wars#Togruta"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#hadRole"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Jedi_Master"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Shaak_Ti</rdfs:seeAlso>
     </owl:NamedIndividual>
     
 
@@ -4680,8 +5307,7 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <from rdf:resource="http://null.com/star-wars#Naboo"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-84</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</died>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Darth_Sidious</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4691,14 +5317,7 @@ or minus is BBY</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Shmi_Skywalker">
         <rdf:type rdf:resource="http://null.com/star-wars#Human"/>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://null.com/star-wars#killedBy"/>
-                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Tusken_Raider"/>
-            </owl:Restriction>
-        </rdf:type>
         <son rdf:resource="http://null.com/star-wars#Anakin_Skywalker"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-22</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4732,7 +5351,7 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://null.com/star-wars#Leader"/>
+                            <rdf:Description rdf:about="http://null.com/star-wars#Supreme_Leader"/>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="http://null.com/star-wars#inOrganisation"/>
                                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#First_Order"/>
@@ -4750,10 +5369,32 @@ or minus is BBY</rdfs:comment>
         </rdf:type>
         <from rdf:resource="http://null.com/star-wars#Exegol"/>
         <hadApprentice rdf:resource="http://null.com/star-wars#Kylo_Ren"/>
-        <killedBy rdf:resource="http://null.com/star-wars#Kylo_Ren"/>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Snoke</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Solo_vs_Beckett -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Solo_vs_Beckett">
+        <rdf:type rdf:resource="http://null.com/star-wars#Confrontation"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Tobias_Beckett"/>
+        <location rdf:resource="http://null.com/star-wars#Savareen"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Han_Solo"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-10</date>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Solo_vs_Solo -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Solo_vs_Solo">
+        <rdf:type rdf:resource="http://null.com/star-wars#Confrontation"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Han_Solo"/>
+        <on rdf:resource="http://null.com/star-wars#Starkiller_Base"/>
+        <victoryOf rdf:resource="http://null.com/star-wars#Kylo_Ren"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</date>
     </owl:NamedIndividual>
     
 
@@ -4780,10 +5421,31 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Steadfast -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Steadfast">
+        <rdf:type rdf:resource="http://null.com/star-wars#Star_Destroyer"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#ownedBy"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#First_Order"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Steadfast_(Resurgent-class)</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Supremacy -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Supremacy">
         <rdf:type rdf:resource="http://null.com/star-wars#Star_Destroyer"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#ownedBy"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#First_Order"/>
+            </owl:Restriction>
+        </rdf:type>
         <destroyedBy rdf:resource="http://null.com/star-wars#Holdo"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Supremacy</rdfs:seeAlso>
     </owl:NamedIndividual>
@@ -4842,8 +5504,6 @@ or minus is BBY</rdfs:comment>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/star-wars#Grievous"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-19</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Talzin</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4916,6 +5576,7 @@ or minus is BBY</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#The_Ghost">
         <rdf:type rdf:resource="http://null.com/star-wars#Freighter"/>
+        <ownedBy rdf:resource="http://null.com/star-wars#Hera_Syndulla"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Ghost</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4963,8 +5624,6 @@ or minus is BBY</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Crimson_Dawn"/>
             </owl:Restriction>
         </rdf:type>
-        <killedBy rdf:resource="http://null.com/star-wars#Han_Solo"/>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-10</died>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Tobias_Beckett</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -4989,11 +5648,94 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Torture_of_Shmi -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Torture_of_Shmi">
+        <rdf:type rdf:resource="http://null.com/star-wars#Fight"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://null.com/star-wars#survivorOf"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://null.com/star-wars#Tusken_Raider"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://null.com/star-wars#location"/>
+                                        <owl:hasValue rdf:resource="http://null.com/star-wars#Tusken_Raider_camp"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdf:type>
+        <deathOf rdf:resource="http://null.com/star-wars#Shmi_Skywalker"/>
+        <location rdf:resource="http://null.com/star-wars#Tusken_Raider_camp"/>
+        <participant rdf:resource="http://null.com/star-wars#Anakin_Skywalker"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-22</date>
+        <todo>No survivors</todo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Tusken_Raider_camp -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Tusken_Raider_camp">
+        <rdf:type rdf:resource="http://null.com/star-wars#Village"/>
+        <location rdf:resource="http://null.com/star-wars#Tatooine"/>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Tusken_Raider_camp</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Twighlight_of_the_Apprentice -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Twighlight_of_the_Apprentice">
+        <rdf:type rdf:resource="http://null.com/star-wars#Fight"/>
+        <injuryOf rdf:resource="http://null.com/star-wars#Kanan_Jarrus"/>
+        <location rdf:resource="http://null.com/star-wars#Malachor_Sith_Temple"/>
+        <participant rdf:resource="http://null.com/star-wars#C1-10P"/>
+        <participant rdf:resource="http://null.com/star-wars#Ezra_Bridger"/>
+        <survivedBy rdf:resource="http://null.com/star-wars#Maul"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-3</date>
+        <rdfs:comment>Inquisitors killed by Maul
+LOts of different people fight
+Kanan blinded
+Ahsoka and Vader injured</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Unknown_Regions -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Unknown_Regions">
         <rdf:type rdf:resource="http://null.com/star-wars#Region"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Unknown_Regions</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Utapau -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Utapau">
+        <rdf:type rdf:resource="http://null.com/star-wars#Planet"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#hasTerrain"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Desert"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://null.com/star-wars#hasTerrain"/>
+                <owl:someValuesFrom rdf:resource="http://null.com/star-wars#Rocky"/>
+            </owl:Restriction>
+        </rdf:type>
+        <location rdf:resource="http://null.com/star-wars#Outer_Rim"/>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Utapau</rdfs:seeAlso>
     </owl:NamedIndividual>
     
 
@@ -5087,7 +5829,7 @@ or minus is BBY</rdfs:comment>
             </owl:Restriction>
         </rdf:type>
         <born rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-64</born>
-        <died rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</died>
+        <diedInYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</diedInYear>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Wilhuff_Tarkin</rdfs:seeAlso>
     </owl:NamedIndividual>
     
@@ -5136,12 +5878,34 @@ or minus is BBY</rdfs:comment>
     
 
 
+    <!-- http://null.com/star-wars#Emperor&apos;s_Throne_Room -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Emperor&apos;s_Throne_Room">
+        <rdf:type rdf:resource="http://null.com/star-wars#Duel"/>
+        <deathOf rdf:resource="http://null.com/star-wars#Darth_Vader"/>
+        <killingOf rdf:resource="http://null.com/star-wars#Darth_Sidious"/>
+        <location rdf:resource="http://null.com/star-wars#Death_Star_2"/>
+        <participant rdf:resource="http://null.com/star-wars#Luke_Skywalker"/>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</date>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://null.com/star-wars#Jabba&apos;s_Palace -->
 
     <owl:NamedIndividual rdf:about="http://null.com/star-wars#Jabba&apos;s_Palace">
         <rdf:type rdf:resource="http://null.com/star-wars#Place"/>
         <location rdf:resource="http://null.com/star-wars#Dune_Sea"/>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Jabba%27s_Palace</rdfs:seeAlso>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://null.com/star-wars#Jabba&apos;s_Sail_barge -->
+
+    <owl:NamedIndividual rdf:about="http://null.com/star-wars#Jabba&apos;s_Sail_barge">
+        <rdf:type rdf:resource="http://null.com/star-wars#Vehicle"/>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://starwars.fandom.com/wiki/Sail_barge</rdfs:seeAlso>
     </owl:NamedIndividual>
     
 

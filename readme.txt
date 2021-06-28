@@ -1,6 +1,8 @@
 Todo
 
+* Remove all instances of killedByOLD (see refactor events below)
 * Can we have ABY/BBY instead of int as custom datatype
+* Need to make organisations into instances
 
 
 * Refactor events to have a date, location, participants etc - more flexible use for battles, deaths, trades, abductions, anything?
@@ -41,6 +43,8 @@ This is what we're already doing for Battles though, so that's good
 Nice other queries:
 diedDuring some Duel
 diedDuring some (Event and location value Death_Star_1)
+diedDuring some (date value 0)
+killedDuring some (Fight and victor value Maul)
 
 How do we deal with skirmishes with multiple sub-fights? Eg Twilight of the Apprentice. We still want to capture Ahsoka vs Vader.
 added including/during to have sub fights but then asking location or date gets messy:
@@ -51,7 +55,20 @@ killedDuring some (Fight and location value Malachor_Sith_Temple)
 
 All possible properties (injured, survived etc) would need property chains - a bit heavy and not available for datatypes
 
-injuredDuring some (Fight and location value Raddus)
+Do we have to put a date on all sub-fights?
 
+No survivors:
+Rather than enumerating all individual deaths, can we do -
 
-* Remove all instances of killedByOLD
+Bodhi_Rook -> memberOf some (Rogue_One)
+survivor disjointWith died
+
+Battle_of_Scarif -> not (survivor some (memberOf some Rogue_One))
+
+DL query: diedDuring value Battle_of_Scarif = Orson_Krennic
+
+Should include the Rogue_One members? Why not??? Because Rogue_One is a class?
+
+survivor only (not (memberOf value Rogue_One))
+
+No, that didn't work

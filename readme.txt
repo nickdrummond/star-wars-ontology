@@ -1,8 +1,7 @@
 Todo
 
-* Remove all instances of killedByOLD (see refactor events below)
+
 * Can we have ABY/BBY instead of int as custom datatype
-* Need to make organisations into instances
 
 
 * Refactor events to have a date, location, participants etc - more flexible use for battles, deaths, trades, abductions, anything?

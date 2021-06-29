@@ -84,6 +84,11 @@ star-wars:deathOf rdf:type owl:ObjectProperty ;
                   owl:propertyDisjointWith star-wars:survivedBy .
 
 
+###  http://null.com/star-wars#destroyed
+star-wars:destroyed rdf:type owl:ObjectProperty ;
+                    owl:inverseOf star-wars:destroyedBy .
+
+
 ###  http://null.com/star-wars#destroyedBy
 star-wars:destroyedBy rdf:type owl:ObjectProperty .
 
@@ -113,14 +118,15 @@ star-wars:father rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf star-wars:parent .
 
 
-###  http://null.com/star-wars#faught
-star-wars:faught rdf:type owl:ObjectProperty ;
+###  http://null.com/star-wars#fought
+star-wars:fought rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf star-wars:knew .
 
 
 ###  http://null.com/star-wars#friendsWith
 star-wars:friendsWith rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf star-wars:knew .
+                      rdfs:subPropertyOf star-wars:knew ;
+                      rdf:type owl:SymmetricProperty .
 
 
 ###  http://null.com/star-wars#from
@@ -460,15 +466,30 @@ star-wars:Battle_Droid rdf:type owl:Class ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_droid"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Blockade_Runner
+star-wars:Blockade_Runner rdf:type owl:Class ;
+                          rdfs:subClassOf star-wars:Ship .
+
+
 ###  http://null.com/star-wars#Bounty_Hunter
 star-wars:Bounty_Hunter rdf:type owl:Class ;
                         rdfs:subClassOf star-wars:Role .
+
+
+###  http://null.com/star-wars#CR90_Corvette
+star-wars:CR90_Corvette rdf:type owl:Class ;
+                        rdfs:subClassOf star-wars:Blockade_Runner .
 
 
 ###  http://null.com/star-wars#Capital_Ship
 star-wars:Capital_Ship rdf:type owl:Class ;
                        rdfs:subClassOf star-wars:Ship ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Capital_ship"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Captain
+star-wars:Captain rdf:type owl:Class ;
+                  rdfs:subClassOf star-wars:Rank .
 
 
 ###  http://null.com/star-wars#Cell
@@ -485,6 +506,19 @@ star-wars:Chiss rdf:type owl:Class ;
 ###  http://null.com/star-wars#City
 star-wars:City rdf:type owl:Class ;
                rdfs:subClassOf star-wars:Place .
+
+
+###  http://null.com/star-wars#Clone
+star-wars:Clone rdf:type owl:Class ;
+                rdfs:subClassOf star-wars:Human ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:cloneOf ;
+                                  owl:hasValue star-wars:Jango_Fett
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:from ;
+                                  owl:hasValue star-wars:Kamino
+                                ] .
 
 
 ###  http://null.com/star-wars#Confrontation
@@ -605,6 +639,16 @@ star-wars:Freighter rdf:type owl:Class ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Freighter"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Fulcrum
+star-wars:Fulcrum rdf:type owl:Class ;
+                  rdfs:subClassOf star-wars:Spy ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:inOrganisation ;
+                                    owl:hasValue star-wars:Rebel_Alliance
+                                  ] ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Fulcrum"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#GNK_Droid
 star-wars:GNK_Droid rdf:type owl:Class ;
                     rdfs:subClassOf star-wars:Droid .
@@ -619,6 +663,16 @@ star-wars:Gas rdf:type owl:Class ;
 star-wars:Grand_Admiral rdf:type owl:Class ;
                         rdfs:subClassOf star-wars:Rank ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Grand_Admiral"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Grand_Moff
+star-wars:Grand_Moff rdf:type owl:Class ;
+                     rdfs:subClassOf star-wars:Rank ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:inOrganisation ;
+                                       owl:hasValue star-wars:Galactic_Empire
+                                     ] ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Grand_Moff"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Grindalid
@@ -712,6 +766,12 @@ star-wars:Kel_Dor rdf:type owl:Class ;
 star-wars:Kiffar rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Near_Human ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Kiffar"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#LAAT_Gunship
+star-wars:LAAT_Gunship rdf:type owl:Class ;
+                       rdfs:subClassOf star-wars:Ship ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Low_Altitude_Assault_Transport"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Land_Vehicle
@@ -974,7 +1034,7 @@ star-wars:Speeder_Bike rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Spy
 star-wars:Spy rdf:type owl:Class ;
-              rdfs:subClassOf star-wars:Criminal .
+              rdfs:subClassOf star-wars:Role .
 
 
 ###  http://null.com/star-wars#StarFighter
@@ -1226,8 +1286,19 @@ star-wars:Ahch-To rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Ahsoka_Tano
 star-wars:Ahsoka_Tano rdf:type owl:NamedIndividual ,
-                               star-wars:Togruta ;
-                      star-wars:faught star-wars:Darth_Vader ;
+                               star-wars:Togruta ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom star-wars:Fulcrum
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom star-wars:Padawan
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:sensitiveTo ;
+                                 owl:someValuesFrom star-wars:The_Force
+                               ] ;
                       star-wars:friendsWith star-wars:Rex ;
                       star-wars:hadJediMaster star-wars:Anakin_Skywalker ;
                       star-wars:livedIn star-wars:Coruscant ;
@@ -1328,7 +1399,7 @@ star-wars:Asajj_Ventress rdf:type owl:NamedIndividual ,
                                     owl:onProperty star-wars:hadRole ;
                                     owl:someValuesFrom star-wars:Jedi_Knight
                                   ] ;
-                         star-wars:faught star-wars:Anakin_Skywalker ,
+                         star-wars:fought star-wars:Anakin_Skywalker ,
                                           star-wars:Count_Dooku ,
                                           star-wars:Obi-Wan_Kenobi ;
                          star-wars:from star-wars:Dathomir ;
@@ -1390,6 +1461,35 @@ star-wars:BB-8 rdf:type owl:NamedIndividual ,
                rdfs:seeAlso "https://starwars.fandom.com/wiki/BB-8"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Bail_Organa
+star-wars:Bail_Organa rdf:type owl:NamedIndividual ,
+                               star-wars:Human ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:inOrganisation ;
+                                                                             owl:hasValue star-wars:Rebel_Alliance
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( star-wars:Senator
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:inOrganisation ;
+                                                                             owl:hasValue star-wars:Galactic_Republic
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      star-wars:from star-wars:Alderaan ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Bail_Prestor_Organa"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Barriss_Offee
 star-wars:Barriss_Offee rdf:type owl:NamedIndividual ,
                                  star-wars:Mirialan ;
@@ -1419,14 +1519,22 @@ star-wars:Battle_of_Endor rdf:type owl:NamedIndividual ,
 star-wars:Battle_of_Exegol rdf:type owl:NamedIndividual ,
                                     star-wars:Battle ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:participant ;
-                                      owl:hasValue star-wars:Final_Order
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:participant ;
-                                      owl:hasValue star-wars:Resistance
+                                      owl:onProperty star-wars:destroyed ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Star_Destroyer
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:inOrganisation ;
+                                                                                  owl:hasValue star-wars:Final_Order
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
                                     ] ;
+                           star-wars:destroyed star-wars:Final_Order ,
+                                               star-wars:Steadfast ,
+                                               star-wars:Tantive_IV ;
                            star-wars:location star-wars:Exegol ;
+                           star-wars:participant star-wars:Resistance ;
+                           star-wars:victoryOf <http://null.com/star-wars#Citizen's_Fleet> ;
                            star-wars:date 35 ;
                            rdfs:comment """\"Where did they get all these fighter craft? They have no navy.\"
 \"It's not a navy, sir, it's just… people.\"""" ;
@@ -1452,6 +1560,15 @@ star-wars:Battle_of_Hoth rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Battle_of_Scarif
 star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
                                     star-wars:Battle ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:survivedBy ;
+                                      owl:allValuesFrom [ rdf:type owl:Class ;
+                                                          owl:complementOf [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:memberOf ;
+                                                                             owl:hasValue star-wars:Rogue_One
+                                                                           ]
+                                                        ]
+                                    ] ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty star-wars:participant ;
                                       owl:hasValue star-wars:Galactic_Empire
@@ -1723,6 +1840,26 @@ star-wars:Cloud_City rdf:type owl:NamedIndividual ,
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Cloud_City"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Cody
+star-wars:Cody rdf:type owl:NamedIndividual ,
+                        star-wars:Clone ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty star-wars:inOrganisation ;
+                                                                      owl:hasValue <http://null.com/star-wars#7th_Sky_Corps>
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               star-wars:friendsWith star-wars:Obi-Wan_Kenobi ,
+                                     star-wars:Rex ;
+               star-wars:born -32 ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/CC-2224"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Colossus
 star-wars:Colossus rdf:type owl:NamedIndividual ,
                             star-wars:Refueling_Station ;
@@ -1794,6 +1931,31 @@ star-wars:Count_Dooku rdf:type owl:NamedIndividual ,
 star-wars:Crimson_Dawn rdf:type owl:NamedIndividual ,
                                 star-wars:Crime_Syndicate ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Crimson_Dawn"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Crosshair
+star-wars:Crosshair rdf:type owl:NamedIndividual ,
+                             star-wars:Clone ;
+                    star-wars:memberOf star-wars:The_Bad_Batch ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-9904"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Cut
+star-wars:Cut rdf:type owl:NamedIndividual ,
+                       star-wars:Clone ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty star-wars:hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Trooper
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty star-wars:inOrganisation ;
+                                                                     owl:hasValue star-wars:Grand_Army_of_the_Republic
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              star-wars:livedIn star-wars:Saleucami ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Cut_Lawquane"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Dagobah
@@ -1952,6 +2114,24 @@ star-wars:Dune_Sea rdf:type owl:NamedIndividual ,
                             star-wars:Place ;
                    star-wars:on star-wars:Tatooine ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Dune_Sea"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Echo
+star-wars:Echo rdf:type owl:NamedIndividual ,
+                        star-wars:Clone ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( star-wars:Trooper
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty star-wars:inOrganisation ;
+                                                                      owl:hasValue <http://null.com/star-wars#501st>
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               star-wars:memberOf star-wars:The_Bad_Batch ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-1409"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Echo_Base
@@ -2114,6 +2294,41 @@ star-wars:First_Order rdf:type owl:NamedIndividual ,
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/First_Order"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Fives
+star-wars:Fives rdf:type owl:NamedIndividual ,
+                         star-wars:Clone ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( star-wars:Trooper
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty star-wars:inOrganisation ;
+                                                                       owl:hasValue <http://null.com/star-wars#501st>
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-5555"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Fives_Biochip
+star-wars:Fives_Biochip rdf:type owl:NamedIndividual ,
+                                 star-wars:Confrontation ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:participant ;
+                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                        owl:onProperty star-wars:hadRole ;
+                                                        owl:someValuesFrom star-wars:Trooper
+                                                      ]
+                                 ] ;
+                        star-wars:killingOf star-wars:Fives ;
+                        star-wars:location star-wars:Coruscant ;
+                        star-wars:witnessedBy star-wars:Anakin_Skywalker ,
+                                              star-wars:Rex ;
+                        star-wars:date -19 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-5555#The_biochip_conspiracy"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Galactic_Empire
 star-wars:Galactic_Empire rdf:type owl:NamedIndividual ,
                                    star-wars:Organisation ;
@@ -2190,9 +2405,40 @@ star-wars:Greedo rdf:type owl:NamedIndividual ,
                                                  rdf:type owl:Class
                                                ]
                           ] ;
-                 star-wars:faught star-wars:Anakin_Skywalker ;
+                 star-wars:fought star-wars:Anakin_Skywalker ;
                  star-wars:livedIn star-wars:Mos_Espa ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Greedo"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Gregor
+star-wars:Gregor rdf:type owl:NamedIndividual ,
+                          star-wars:Clone ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hadRole ;
+                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Captain
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:inOrganisation ;
+                                                                        owl:hasValue star-wars:Grand_Army_of_the_Republic
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:livedIn ;
+                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:AT-TE
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:location ;
+                                                                        owl:hasValue star-wars:Seelos
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
+                 star-wars:friendsWith star-wars:Rex ,
+                                       star-wars:Wolffe ;
+                 star-wars:born -32 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Gregor"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Grievous
@@ -2315,6 +2561,7 @@ star-wars:Holdo rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Holy_City_Destruction
 star-wars:Holy_City_Destruction rdf:type owl:NamedIndividual ,
                                          star-wars:Attack ;
+                                star-wars:destroyed star-wars:Jedha_City ;
                                 star-wars:killingOf star-wars:Saw_Gerrera ;
                                 star-wars:location star-wars:Jedha ;
                                 star-wars:participant star-wars:Death_Star_1 ;
@@ -2357,6 +2604,13 @@ star-wars:Hoth rdf:type owl:NamedIndividual ,
                         ] ;
                star-wars:location star-wars:Outer_Rim ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Hoth"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hunter
+star-wars:Hunter rdf:type owl:NamedIndividual ,
+                          star-wars:Clone ;
+                 star-wars:memberOf star-wars:The_Bad_Batch ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Hunter"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Hux_Execution
@@ -2490,10 +2744,34 @@ star-wars:Jedha rdf:type owl:NamedIndividual ,
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedha"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Jedha_City
+star-wars:Jedha_City rdf:type owl:NamedIndividual ,
+                              star-wars:City ;
+                     star-wars:on star-wars:Jedha ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedha_City"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Jedi_Order
 star-wars:Jedi_Order rdf:type owl:NamedIndividual ,
                               star-wars:Organisation ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi_Order"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Jesse
+star-wars:Jesse rdf:type owl:NamedIndividual ,
+                         star-wars:Clone ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( star-wars:Trooper
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty star-wars:inOrganisation ;
+                                                                       owl:hasValue <http://null.com/star-wars#501st>
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-5597"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Jyn_Erso
@@ -2523,6 +2801,17 @@ star-wars:K-2SO rdf:type owl:NamedIndividual ,
                 star-wars:memberOf star-wars:Rogue_One ;
                 star-wars:born 12 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/K-2SO"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Kallus
+star-wars:Kallus rdf:type owl:NamedIndividual ,
+                          star-wars:Human ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hadRole ;
+                            owl:someValuesFrom star-wars:Fulcrum
+                          ] ;
+                 star-wars:friendsWith star-wars:Garazeb_Orrelios ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Alexsandr_Kallus"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Kamino
@@ -2706,6 +2995,7 @@ star-wars:Leia_Organa rdf:type owl:NamedIndividual ,
                       star-wars:brother star-wars:Luke_Skywalker ;
                       star-wars:from star-wars:Alderaan ;
                       star-wars:loved star-wars:Han_Solo ;
+                      star-wars:raisedBy star-wars:Bail_Organa ;
                       star-wars:born -19 ;
                       star-wars:diedInYear 35 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Leia_Organa_Solo"^^xsd:anyURI .
@@ -3308,10 +3598,10 @@ star-wars:Resistance rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Rex
 star-wars:Rex rdf:type owl:NamedIndividual ,
-                       star-wars:Human ,
+                       star-wars:Clone ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty star-wars:hadRole ;
-                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Captain
                                                                    star-wars:Trooper
                                                                    [ rdf:type owl:Restriction ;
                                                                      owl:onProperty star-wars:inOrganisation ;
@@ -3332,9 +3622,9 @@ star-wars:Rex rdf:type owl:NamedIndividual ,
                                               rdf:type owl:Class
                                             ]
                        ] ;
-              star-wars:cloneOf star-wars:Jango_Fett ;
-              star-wars:friendsWith star-wars:Anakin_Skywalker ;
-              star-wars:from star-wars:Kamino ;
+              star-wars:friendsWith star-wars:Anakin_Skywalker ,
+                                    star-wars:Gregor ,
+                                    star-wars:Wolffe ;
               star-wars:born -32 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Rex"^^xsd:anyURI .
 
@@ -3403,6 +3693,25 @@ star-wars:Sabine_Wren rdf:type owl:NamedIndividual ,
                       star-wars:memberOf star-wars:Spectres ;
                       star-wars:born -21 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Sabine_Wren"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Saleucami
+star-wars:Saleucami rdf:type owl:NamedIndividual ,
+                             star-wars:Planet ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hasTerrain ;
+                               owl:someValuesFrom star-wars:Desert
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hasTerrain ;
+                               owl:someValuesFrom star-wars:Mountains
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hasTerrain ;
+                               owl:someValuesFrom star-wars:Swamp
+                             ] ;
+                    star-wars:location star-wars:Outer_Rim ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Saleucami"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Satine_Kryze
@@ -3718,6 +4027,13 @@ star-wars:Tamara_Ryvora rdf:type owl:NamedIndividual ,
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Tamara_Ryvora"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Tantive_IV
+star-wars:Tantive_IV rdf:type owl:NamedIndividual ,
+                              star-wars:CR90_Corvette ;
+                     star-wars:ownedBy star-wars:Leia_Organa ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Tantive_IV"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Tatooine
 star-wars:Tatooine rdf:type owl:NamedIndividual ,
                             star-wars:Planet ,
@@ -3729,10 +4045,36 @@ star-wars:Tatooine rdf:type owl:NamedIndividual ,
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Tatooine"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Tech
+star-wars:Tech rdf:type owl:NamedIndividual ,
+                        star-wars:Clone ;
+               star-wars:memberOf star-wars:The_Bad_Batch ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Tech"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#The_Bad_Batch
+star-wars:The_Bad_Batch rdf:type owl:NamedIndividual ,
+                                 star-wars:Organisation ;
+                        star-wars:memberOf star-wars:Grand_Army_of_the_Republic ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Clone_Force_99"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#The_Clone_Wars
 star-wars:The_Clone_Wars rdf:type owl:NamedIndividual ,
                                   star-wars:Event ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Clone_Wars"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#The_Disaster
+star-wars:The_Disaster rdf:type owl:NamedIndividual ,
+                                star-wars:Attack ;
+                       star-wars:deathOf star-wars:Bail_Organa ;
+                       star-wars:destroyed star-wars:Alderaan ;
+                       star-wars:location star-wars:Alderaan ;
+                       star-wars:participant star-wars:Death_Star_1 ;
+                       star-wars:witnessedBy star-wars:Leia_Organa ;
+                       star-wars:date 0 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Disaster"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#The_Ghost
@@ -3756,7 +4098,7 @@ star-wars:Thrawn rdf:type owl:NamedIndividual ,
                                                  rdf:type owl:Class
                                                ]
                           ] ;
-                 star-wars:faught star-wars:Ezra_Bridger ;
+                 star-wars:fought star-wars:Ezra_Bridger ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Mitth%27raw%27nuruodo"^^xsd:anyURI .
 
 
@@ -3911,18 +4253,50 @@ star-wars:Wilhuff_Tarkin rdf:type owl:NamedIndividual ,
                                   star-wars:Human ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty star-wars:hadRole ;
-                                    owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty star-wars:inOrganisation ;
-                                                                                owl:hasValue star-wars:Galactic_Empire
-                                                                              ]
-                                                                            ) ;
-                                                         rdf:type owl:Class
-                                                       ]
+                                    owl:someValuesFrom star-wars:Grand_Moff
                                   ] ;
                          star-wars:born -64 ;
                          star-wars:diedInYear 0 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Wilhuff_Tarkin"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Wolffe
+star-wars:Wolffe rdf:type owl:NamedIndividual ,
+                          star-wars:Clone ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hadRole ;
+                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Captain
+                                                                      star-wars:Leader
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:inOrganisation ;
+                                                                        owl:hasValue star-wars:Grand_Army_of_the_Republic
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:livedIn ;
+                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:AT-TE
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:location ;
+                                                                        owl:hasValue star-wars:Seelos
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
+                 star-wars:friendsWith star-wars:Gregor ,
+                                       star-wars:Rex ;
+                 star-wars:born -32 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Wolffe"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Wrecker
+star-wars:Wrecker rdf:type owl:NamedIndividual ,
+                           star-wars:Clone ;
+                  star-wars:memberOf star-wars:The_Bad_Batch ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Wrecker"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Yavin_4
@@ -3960,6 +4334,19 @@ star-wars:Yoda rdf:type owl:NamedIndividual ,
                                            star-wars:Organisation ;
                                   star-wars:memberOf star-wars:Grand_Army_of_the_Republic ;
                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/501st_Legion"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#7th_Sky_Corps
+<http://null.com/star-wars#7th_Sky_Corps> rdf:type owl:NamedIndividual ,
+                                                   star-wars:Organisation ;
+                                          star-wars:memberOf star-wars:Grand_Army_of_the_Republic ;
+                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/7th_Sky_Corps"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Citizen's_Fleet
+<http://null.com/star-wars#Citizen's_Fleet> rdf:type owl:NamedIndividual ,
+                                                     star-wars:Organisation ;
+                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Citizens%27_fleet"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Emperor's_Throne_Room

@@ -271,7 +271,7 @@ star-wars:murderedIn rdf:type owl:ObjectProperty ;
 
 ###  http://null.com/star-wars#ofShip
 star-wars:ofShip rdf:type owl:ObjectProperty ;
-                 rdfs:domain star-wars:Pilot ;
+                 rdfs:domain star-wars:Role ;
                  rdfs:range star-wars:Ship .
 
 
@@ -1834,7 +1834,7 @@ star-wars:Battle_of_Exegol rdf:type owl:NamedIndividual ,
                                       owl:onProperty star-wars:destroyed ;
                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Star_Destroyer
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty star-wars:inOrganisation ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
                                                                                   owl:hasValue star-wars:Final_Order
                                                                                 ]
                                                                               ) ;
@@ -2050,7 +2050,7 @@ star-wars:Bodhi_Rook rdf:type owl:NamedIndividual ,
 star-wars:Boonta_Eve_Classic rdf:type owl:NamedIndividual ,
                                       star-wars:Race ,
                                       [ rdf:type owl:Restriction ;
-                                        owl:onProperty star-wars:ofShip ;
+                                        owl:onProperty star-wars:participant ;
                                         owl:someValuesFrom star-wars:Podracer
                                       ] ;
                              star-wars:location star-wars:Mos_Espa ;
@@ -2204,6 +2204,11 @@ star-wars:Cloud_City rdf:type owl:NamedIndividual ,
                               star-wars:City ;
                      star-wars:on star-wars:Bespin ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Cloud_City"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Cloud_City_Administrators
+star-wars:Cloud_City_Administrators rdf:type owl:NamedIndividual ,
+                                             star-wars:Organisation .
 
 
 ###  http://null.com/star-wars#Cody
@@ -3499,7 +3504,7 @@ star-wars:Lando_Calrissian rdf:type owl:NamedIndividual ,
                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty star-wars:inOrganisation ;
-                                                                                  owl:hasValue star-wars:Cloud_City
+                                                                                  owl:hasValue star-wars:Cloud_City_Administrators
                                                                                 ]
                                                                               ) ;
                                                            rdf:type owl:Class
@@ -5198,6 +5203,18 @@ star-wars:Skiff rdfs:seeAlso "https://starwars.fandom.com/wiki/Skiff"^^xsd:anyUR
                     owl:onProperty star-wars:sensitiveTo ;
                     owl:someValuesFrom star-wars:The_Force
                   ]
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Event
+                star-wars:Living_thing
+                star-wars:Organisation
+                star-wars:Place
+                star-wars:Role
+                star-wars:The_Force
+                star-wars:Weapon
+              )
 ] .
 
 

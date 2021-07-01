@@ -15,11 +15,14 @@ Easy transitivity
 Containment very useful for locations - Han killed Greedo in the Outer Rim - Cantina in Mos Eisely on Tatooine in Outer Rim
 Shmi is related to Kylo Ren.
 
+Specificity
+People born before a date
+Roles and other hierarchies allow low-specificity
+No need to name everything (parents etc)
+
 Modularity
 We could modularise our ontology into each episode/series - only exposing the facts as they are exposed
 Nice to make assertions about Anakin and Darth Vader separately, but allow the inference to match
-
-
 
 
 Todo
@@ -33,32 +36,6 @@ eg from Star Wars databank https://lumiere-a.akamaihd.net/v1/images/databank_zyg
 
 * Can we have ABY/BBY instead of int as custom datatype?
 
+* Beat/ beatBy eg LS beat Vader but not killed
 
-* Sub fights
-How do we deal with skirmishes with multiple sub-fights? Eg Twilight of the Apprentice. We still want to capture Ahsoka vs Vader.
-added including/during to have sub fights but then asking location or date gets messy:
-killedDuring some (Fight and (during some (location value Malachor_Sith_Temple)))
-
-We want:
-killedDuring some (Fight and location value Malachor_Sith_Temple)
-
-All possible properties (injured, survived etc) would need property chains - a bit heavy and not available for datatypes
-
-Do we have to put a date on all sub-fights?
-
-
-
-* No survivors
-Rather than enumerating all individual deaths, can we do -
-Bodhi_Rook -> memberOf some (Rogue_One)
-survivor disjointWith died
-
-Battle_of_Scarif -> not (survivor some (memberOf some Rogue_One))
-
-DL query: diedDuring value Battle_of_Scarif = Orson_Krennic
-
-Should include the Rogue_One members? Why not??? Because Rogue_One is a class?
-
-survivor only (not (memberOf value Rogue_One))
-
-No, that didn't work
+* More clarity of groups in fights

@@ -24,6 +24,13 @@ Nice to make assertions about Anakin and Darth Vader separately, but allow the i
 
 Todo
 
+* Male and female? Not that important but would help with brother/sister/mother/father
+
+* Referencing wookipedia, but should we refer to Star Wars databank as well/instead
+
+* We can add images in seeAlso - jpg extension on anyURI. But, cannot manage copyright and hot loading
+eg from Star Wars databank https://lumiere-a.akamaihd.net/v1/images/databank_zygerria_01_169_5cdad909.jpeg
+
 * Can we have ABY/BBY instead of int as custom datatype?
 
 

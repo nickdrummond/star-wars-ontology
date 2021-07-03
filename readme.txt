@@ -25,7 +25,23 @@ We could modularise our ontology into each episode/series - only exposing the fa
 Nice to make assertions about Anakin and Darth Vader separately, but allow the inference to match
 
 
+
 Todo
+
+* First round of events for each film
+    * Ep 1 done
+    * Ep 2 done
+    * Ep 3 done
+    * Ep 4 partial - break down Battle of Yavin?
+    * Ep 5
+    * Ep 6
+    * Ep 7
+    * Ep 8
+    * Ep 9
+    * Rebel One
+    * Solo
+
+* Homeworld for each species
 
 * Male and female? Not that important but would help with brother/sister/mother/father
 

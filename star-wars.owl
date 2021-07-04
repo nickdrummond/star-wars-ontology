@@ -744,7 +744,7 @@ star-wars:Crolute rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Dark_Lord
 star-wars:Dark_Lord rdf:type owl:Class ;
-                    rdfs:subClassOf star-wars:Role ,
+                    rdfs:subClassOf star-wars:Sith ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty star-wars:inOrganisation ;
                                       owl:hasValue star-wars:Sith_Order
@@ -853,7 +853,7 @@ star-wars:Execution rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Exogorth
 star-wars:Exogorth rdf:type owl:Class ;
-                   rdfs:subClassOf star-wars:Creature ;
+                   rdfs:subClassOf star-wars:Sentient ;
                    rdfs:label "Space slug" ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Exogorth"^^xsd:anyURI .
 
@@ -1034,7 +1034,7 @@ star-wars:Informant rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Inquisitor
 star-wars:Inquisitor rdf:type owl:Class ;
-                     rdfs:subClassOf star-wars:Role ,
+                     rdfs:subClassOf star-wars:Sith ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty star-wars:inOrganisation ;
                                        owl:hasValue star-wars:Galactic_Empire
@@ -1106,7 +1106,7 @@ star-wars:Kiffar rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Kowakian_monkey-lizard
 star-wars:Kowakian_monkey-lizard rdf:type owl:Class ;
-                                 rdfs:subClassOf star-wars:Creature ;
+                                 rdfs:subClassOf star-wars:Semi-sentient ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Kowakian_monkey-lizard"^^xsd:anyURI .
 
 
@@ -1274,6 +1274,12 @@ star-wars:Muun rdf:type owl:Class ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Muun"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Mynock
+star-wars:Mynock rdf:type owl:Class ;
+                 rdfs:subClassOf star-wars:Creature ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Mynock"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Nautolan
 star-wars:Nautolan rdf:type owl:Class ;
                    rdfs:subClassOf star-wars:Humanoid ;
@@ -1377,7 +1383,7 @@ star-wars:Protocol_Droid rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Purrgil
 star-wars:Purrgil rdf:type owl:Class ;
-                  rdfs:subClassOf star-wars:Creature ;
+                  rdfs:subClassOf star-wars:Semi-sentient ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Purrgil"^^xsd:anyURI .
 
 
@@ -1399,7 +1405,7 @@ star-wars:Race rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Rancor
 star-wars:Rancor rdf:type owl:Class ;
-                 rdfs:subClassOf star-wars:Reptile ;
+                 rdfs:subClassOf star-wars:Semi-sentient ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Rancor"^^xsd:anyURI .
 
 
@@ -1485,6 +1491,11 @@ star-wars:Sector rdf:type owl:Class ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Sector"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Semi-sentient
+star-wars:Semi-sentient rdf:type owl:Class ;
+                        rdfs:subClassOf star-wars:Living_thing .
+
+
 ###  http://null.com/star-wars#Senator
 star-wars:Senator rdf:type owl:Class ;
                   rdfs:subClassOf star-wars:Politician .
@@ -1508,6 +1519,11 @@ star-wars:Ship rdf:type owl:Class ;
 ###  http://null.com/star-wars#Singer
 star-wars:Singer rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Vocation .
+
+
+###  http://null.com/star-wars#Sith
+star-wars:Sith rdf:type owl:Class ;
+               rdfs:subClassOf star-wars:Role .
 
 
 ###  http://null.com/star-wars#Skakoan
@@ -1733,7 +1749,7 @@ star-wars:Walker rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Wampa
 star-wars:Wampa rdf:type owl:Class ;
-                rdfs:subClassOf star-wars:Mammal ,
+                rdfs:subClassOf star-wars:Semi-sentient ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty star-wars:from ;
                                   owl:hasValue star-wars:Hoth
@@ -1898,7 +1914,26 @@ star-wars:Ackbar rdf:type owl:NamedIndividual ,
                             owl:someValuesFrom [ owl:intersectionOf ( star-wars:Admiral
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty star-wars:inOrganisation ;
+                                                                        owl:hasValue star-wars:Resistance
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:ofShip ;
+                                                                        owl:hasValue star-wars:MC85_Raddus
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hadRole ;
+                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Commander
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:inOrganisation ;
                                                                         owl:hasValue star-wars:Rebel_Alliance
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:ofShip ;
+                                                                        owl:hasValue star-wars:MC80A_Home_One
                                                                       ]
                                                                     ) ;
                                                  rdf:type owl:Class
@@ -2116,7 +2151,7 @@ star-wars:Attack_on_the_Raddus rdf:type owl:NamedIndividual ,
                                         ] ;
                                star-wars:injuryOf star-wars:Leia_Organa ;
                                star-wars:killingOf star-wars:Ackbar ;
-                               star-wars:location star-wars:Raddus ;
+                               star-wars:location star-wars:MC85_Raddus ;
                                star-wars:year 34 .
 
 
@@ -2251,11 +2286,11 @@ star-wars:Battle_of_Endor rdf:type owl:NamedIndividual ,
                                    ] ;
                           star-wars:destroyed star-wars:Death_Star_2 ,
                                               star-wars:Executor ,
-                                              star-wars:Liberty ,
-                                              star-wars:Nautilian ;
+                                              star-wars:MC80A_Nautilian ,
+                                              star-wars:MC80_Liberty ;
                           star-wars:location star-wars:Endor ;
                           star-wars:participant star-wars:Millenium_Falcon ;
-                          star-wars:survivedBy star-wars:Home_One ;
+                          star-wars:survivedBy star-wars:MC80A_Home_One ;
                           star-wars:year 4 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor"^^xsd:anyURI .
 
@@ -2364,6 +2399,8 @@ star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
                                       owl:onProperty star-wars:participant ;
                                       owl:hasValue star-wars:Rogue_One
                                     ] ;
+                           star-wars:deathOf star-wars:Raddus ;
+                           star-wars:destroyed star-wars:MC75_Profundity ;
                            star-wars:killingOf <http://null.com/Chirrut_Îmwe> ,
                                                star-wars:Baze_Malbus ,
                                                star-wars:Bodhi_Rook ,
@@ -2648,6 +2685,15 @@ star-wars:C1-10P rdf:type owl:NamedIndividual ,
                  star-wars:memberOf star-wars:Spectres ;
                  rdfs:label "Chopper" ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/C1-10P" .
+
+
+###  http://null.com/star-wars#CB-23
+star-wars:CB-23 rdf:type owl:NamedIndividual ,
+                         star-wars:Astromech ;
+                star-wars:employedBy star-wars:Kazuda_Xiono ,
+                                     star-wars:Poe_Dameron ;
+                star-wars:memberOf star-wars:Resistance ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/CB-23"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Cad_Bane
@@ -4003,13 +4049,6 @@ star-wars:Holy_City_Destruction rdf:type owl:NamedIndividual ,
                                 star-wars:year 0 .
 
 
-###  http://null.com/star-wars#Home_One
-star-wars:Home_One rdf:type owl:NamedIndividual ,
-                            star-wars:Star_Cruiser ;
-                   star-wars:ownedBy star-wars:Rebel_Alliance ;
-                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Home_One"^^xsd:anyURI .
-
-
 ###  http://null.com/star-wars#Hondo_Ohnaka
 star-wars:Hondo_Ohnaka rdf:type owl:NamedIndividual ,
                                 star-wars:Weequay ,
@@ -4649,13 +4688,6 @@ star-wars:Leia_vs_Jabba rdf:type owl:NamedIndividual ,
                         star-wars:year 4 .
 
 
-###  http://null.com/star-wars#Liberty
-star-wars:Liberty rdf:type owl:NamedIndividual ,
-                           star-wars:Star_Cruiser ;
-                  star-wars:ownedBy star-wars:Rebel_Alliance ;
-                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberty"^^xsd:anyURI .
-
-
 ###  http://null.com/star-wars#Lothal
 star-wars:Lothal rdf:type owl:NamedIndividual ,
                           star-wars:Planet ,
@@ -4724,6 +4756,41 @@ star-wars:Luminara_Unduli rdf:type owl:NamedIndividual ,
                                    ] ;
                           star-wars:diedInYear -18 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Luminara_Unduli" .
+
+
+###  http://null.com/star-wars#MC75_Profundity
+star-wars:MC75_Profundity rdf:type owl:NamedIndividual ,
+                                   star-wars:Star_Cruiser ;
+                          star-wars:ownedBy star-wars:Rebel_Alliance ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Profundity"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#MC80A_Home_One
+star-wars:MC80A_Home_One rdf:type owl:NamedIndividual ,
+                                  star-wars:Star_Cruiser ;
+                         star-wars:ownedBy star-wars:Rebel_Alliance ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Home_One"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#MC80A_Nautilian
+star-wars:MC80A_Nautilian rdf:type owl:NamedIndividual ,
+                                   star-wars:Star_Cruiser ;
+                          star-wars:ownedBy star-wars:Rebel_Alliance ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Nautilian"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#MC80_Liberty
+star-wars:MC80_Liberty rdf:type owl:NamedIndividual ,
+                                star-wars:Star_Cruiser ;
+                       star-wars:ownedBy star-wars:Rebel_Alliance ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberty"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#MC85_Raddus
+star-wars:MC85_Raddus rdf:type owl:NamedIndividual ,
+                               star-wars:Star_Cruiser ;
+                      star-wars:ownedBy star-wars:Rebel_Alliance ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Raddus_(MC85_Star_Cruiser)"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Mace_Windu
@@ -5010,13 +5077,6 @@ star-wars:Nala_Se rdf:type owl:NamedIndividual ,
                                                   rdf:type owl:Class
                                                 ]
                            ] .
-
-
-###  http://null.com/star-wars#Nautilian
-star-wars:Nautilian rdf:type owl:NamedIndividual ,
-                             star-wars:Star_Cruiser ;
-                    star-wars:ownedBy star-wars:Rebel_Alliance ;
-                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Nautilian"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Navarro
@@ -5566,15 +5626,31 @@ star-wars:R2-D2 rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#R4-P17
 star-wars:R4-P17 rdf:type owl:NamedIndividual ,
-                          star-wars:Astromech .
+                          star-wars:Astromech ;
+                 star-wars:employedBy star-wars:Obi-Wan_Kenobi .
 
 
 ###  http://null.com/star-wars#Raddus
 star-wars:Raddus rdf:type owl:NamedIndividual ,
-                          star-wars:Star_Cruiser ;
-                 star-wars:destroyedBy star-wars:Holdo ;
-                 star-wars:ownedBy star-wars:Resistance ;
-                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Raddus_(MC85_Star_Cruiser)"^^xsd:anyURI .
+                          star-wars:Mon_Calimari ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hadRole ;
+                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Admiral
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:inOrganisation ;
+                                                                        owl:hasValue star-wars:Rebel_Alliance
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:ofShip ;
+                                                                        owl:hasValue star-wars:MC75_Profundity
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
+                 star-wars:from star-wars:Mon_Cala ;
+                 star-wars:born -65 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Raddus"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rafa_Martez
@@ -6428,7 +6504,8 @@ star-wars:Twilight_of_the_Apprentice rdf:type owl:NamedIndividual ,
                                      star-wars:year -3 ;
                                      rdfs:comment """Inquisitors killed by Maul
 LOts of different people fight
-Kanan blinded by Maul - not modelled
+Kanan blinded
+ by Maul - not modelled
 Ahsoka and Vader injured""" .
 
 
@@ -6789,9 +6866,8 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty star-wars:hadRole ;
                          owl:someValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( star-wars:Dark_Lord
-                                                            star-wars:Inquisitor
-                                                            star-wars:Jedi
+                                              owl:unionOf ( star-wars:Jedi
+                                                            star-wars:Sith
                                                           )
                                             ]
                        ]

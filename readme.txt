@@ -34,12 +34,20 @@ Todo
     * Ep 3 done
     * Ep 4 partial - break down Battle of Yavin?
     * Ep 5
-    * Ep 6
+    * Ep 6 partial - need speeder bike event? Capture by ewoks?
     * Ep 7
     * Ep 8
     * Ep 9
     * Rebel One
     * Solo
+
+* All members of Rogue One were killed at Scariff
+
+BoS killingOf Rogue_One (can be interpreted as killing of all members of the group)
+memberOf o diedIn -> diedIn (really slows reasoner down??)
+This works, but why is Jyn missed out? Its fine if we assert she is a member of Rogue One, but not if we infer it from:
+hadRole some (Fighter and (inOrganisation value Rogue_One)) which does correctly infer the memberOf
+
 
 * Homeworld for each species
 

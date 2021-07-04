@@ -103,8 +103,7 @@ star-wars:daughter rdf:type owl:ObjectProperty ;
 ###  http://null.com/star-wars#deathOf
 star-wars:deathOf rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf star-wars:participant ;
-                  owl:inverseOf star-wars:diedIn ;
-                  owl:propertyDisjointWith star-wars:survivedBy .
+                  owl:inverseOf star-wars:diedIn .
 
 
 ###  http://null.com/star-wars#destroyed
@@ -119,7 +118,9 @@ star-wars:destroyedBy rdf:type owl:ObjectProperty .
 ###  http://null.com/star-wars#diedIn
 star-wars:diedIn rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf star-wars:participatedIn ;
-                 owl:propertyDisjointWith star-wars:survivorOf ;
+                 owl:propertyChainAxiom ( star-wars:memberOf
+                                          star-wars:diedIn
+                                        ) ;
                  star-wars:todo "Do we need this as its not used directly" .
 
 
@@ -870,12 +871,7 @@ star-wars:Farmer rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Fight
 star-wars:Fight rdf:type owl:Class ;
-                rdfs:subClassOf star-wars:Event ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty star-wars:participant ;
-                                  owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                  owl:onClass star-wars:Living_thing
-                                ] .
+                rdfs:subClassOf star-wars:Event .
 
 
 ###  http://null.com/star-wars#Fighter
@@ -2379,15 +2375,6 @@ star-wars:Battle_of_Naboo rdf:type owl:NamedIndividual ,
 star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
                                     star-wars:Battle ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:survivedBy ;
-                                      owl:allValuesFrom [ rdf:type owl:Class ;
-                                                          owl:complementOf [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty star-wars:memberOf ;
-                                                                             owl:hasValue star-wars:Rogue_One
-                                                                           ]
-                                                        ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
                                       owl:onProperty star-wars:participant ;
                                       owl:hasValue star-wars:Galactic_Empire
                                     ] ,
@@ -2401,13 +2388,8 @@ star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
                                     ] ;
                            star-wars:deathOf star-wars:Raddus ;
                            star-wars:destroyed star-wars:MC75_Profundity ;
-                           star-wars:killingOf <http://null.com/Chirrut_Îmwe> ,
-                                               star-wars:Baze_Malbus ,
-                                               star-wars:Bodhi_Rook ,
-                                               star-wars:Cassian_Andor ,
-                                               star-wars:Jyn_Erso ,
-                                               star-wars:K-2SO ,
-                                               star-wars:Orson_Krennic ;
+                           star-wars:killingOf star-wars:Orson_Krennic ,
+                                               star-wars:Rogue_One ;
                            star-wars:location star-wars:Scarif ;
                            star-wars:participant star-wars:Death_Star_1 ;
                            star-wars:year 0 ;
@@ -3455,6 +3437,20 @@ star-wars:Ezra_Bridger rdf:type owl:NamedIndividual ,
                                   owl:someValuesFrom star-wars:Padawan
                                 ] ,
                                 [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:parent ;
+                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                       owl:onProperty star-wars:killedIn ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Escape
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty star-wars:participant ;
+                                                                                                   owl:hasValue star-wars:Galactic_Empire
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
                                   owl:onProperty star-wars:participatedIn ;
                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:Birth
                                                                             [ rdf:type owl:Restriction ;
@@ -3464,21 +3460,6 @@ star-wars:Ezra_Bridger rdf:type owl:NamedIndividual ,
                                                                           ) ;
                                                        rdf:type owl:Class
                                                      ]
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty star-wars:parent ;
-                                  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                  owl:onClass [ rdf:type owl:Restriction ;
-                                                owl:onProperty star-wars:killedIn ;
-                                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Escape
-                                                                                          [ rdf:type owl:Restriction ;
-                                                                                            owl:onProperty star-wars:participant ;
-                                                                                            owl:hasValue star-wars:Galactic_Empire
-                                                                                          ]
-                                                                                        ) ;
-                                                                     rdf:type owl:Class
-                                                                   ]
-                                              ]
                                 ] ;
                        star-wars:alliedWith star-wars:Maul ;
                        star-wars:fought star-wars:Thrawn ;
@@ -4377,9 +4358,17 @@ star-wars:Jyn_Erso rdf:type owl:NamedIndividual ,
                                                  ]
                             ] ;
                    star-wars:father star-wars:Galen_Erso ;
+                   star-wars:memberOf star-wars:Rogue_One ;
                    star-wars:raisedBy star-wars:Saw_Gerrera ;
                    star-wars:born -21 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso"^^xsd:anyURI .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource star-wars:Jyn_Erso ;
+   owl:annotatedProperty star-wars:memberOf ;
+   owl:annotatedTarget star-wars:Rogue_One ;
+   rdfs:comment "This will be inferred but for some reason Jyn is left out of the results for \"diedIn value Battle_of_Scariff\" unless we assert it - reasoner bug?"
+ ] .
 
 
 ###  http://null.com/star-wars#K-2SO

@@ -1495,6 +1495,11 @@ star-wars:Sentient rdf:type owl:Class ;
                    rdfs:subClassOf star-wars:Living_thing .
 
 
+###  http://null.com/star-wars#Shiled_Generator
+star-wars:Shiled_Generator rdf:type owl:Class ;
+                           rdfs:subClassOf star-wars:Facility .
+
+
 ###  http://null.com/star-wars#Ship
 star-wars:Ship rdf:type owl:Class ;
                rdfs:subClassOf star-wars:Vehicle .
@@ -1582,6 +1587,12 @@ star-wars:Star_Destroyer rdf:type owl:Class ;
 star-wars:StormTrooper rdf:type owl:Class ;
                        rdfs:subClassOf star-wars:Trooper ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Stormtrooper"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Sullustan
+star-wars:Sullustan rdf:type owl:Class ;
+                    rdfs:subClassOf star-wars:Humanoid ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Sullustan"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Supreme_Leader
@@ -2239,8 +2250,12 @@ star-wars:Battle_of_Endor rdf:type owl:NamedIndividual ,
                                      owl:hasValue star-wars:Rebel_Alliance
                                    ] ;
                           star-wars:destroyed star-wars:Death_Star_2 ,
-                                              star-wars:Executor ;
+                                              star-wars:Executor ,
+                                              star-wars:Liberty ,
+                                              star-wars:Nautilian ;
                           star-wars:location star-wars:Endor ;
+                          star-wars:participant star-wars:Millenium_Falcon ;
+                          star-wars:survivedBy star-wars:Home_One ;
                           star-wars:year 4 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor"^^xsd:anyURI .
 
@@ -2259,6 +2274,7 @@ star-wars:Battle_of_Exegol rdf:type owl:NamedIndividual ,
                                                            rdf:type owl:Class
                                                          ]
                                     ] ;
+                           star-wars:deathOf star-wars:Nien_Nunb ;
                            star-wars:destroyed star-wars:Final_Order ,
                                                star-wars:Steadfast ,
                                                star-wars:Tantive_IV ;
@@ -3020,6 +3036,53 @@ star-wars:Dathomir rdf:type owl:NamedIndividual ,
                             ] ;
                    star-wars:location star-wars:Outer_Rim ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Dathomir"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Deactivating_the_Shield_Generator_on_Endor
+star-wars:Deactivating_the_Shield_Generator_on_Endor rdf:type owl:NamedIndividual ,
+                                                              star-wars:Battle ,
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty star-wars:destroyed ;
+                                                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Shiled_Generator
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty star-wars:of ;
+                                                                                                            owl:hasValue star-wars:Death_Star_2
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ]
+                                                              ] ,
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty star-wars:participant ;
+                                                                owl:someValuesFrom star-wars:AT-ST
+                                                              ] ,
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty star-wars:participant ;
+                                                                owl:someValuesFrom star-wars:StormTrooper
+                                                              ] ,
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty star-wars:participant ;
+                                                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:StormTrooper
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty star-wars:ofShip ;
+                                                                                                            owl:someValuesFrom star-wars:Speeder_Bike
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ]
+                                                              ] ,
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty star-wars:victoryOf ;
+                                                                owl:someValuesFrom star-wars:Ewok
+                                                              ] ;
+                                                     star-wars:during star-wars:Battle_of_Endor ;
+                                                     star-wars:participant star-wars:C-3PO ,
+                                                                           star-wars:Chewbacca ,
+                                                                           star-wars:Han_Solo ,
+                                                                           star-wars:Leia_Organa ,
+                                                                           star-wars:Luke_Skywalker ,
+                                                                           star-wars:R2-D2 ,
+                                                                           star-wars:Wicket .
 
 
 ###  http://null.com/star-wars#Death_Star_1
@@ -3940,6 +4003,13 @@ star-wars:Holy_City_Destruction rdf:type owl:NamedIndividual ,
                                 star-wars:year 0 .
 
 
+###  http://null.com/star-wars#Home_One
+star-wars:Home_One rdf:type owl:NamedIndividual ,
+                            star-wars:Star_Cruiser ;
+                   star-wars:ownedBy star-wars:Rebel_Alliance ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Home_One"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Hondo_Ohnaka
 star-wars:Hondo_Ohnaka rdf:type owl:NamedIndividual ,
                                 star-wars:Weequay ,
@@ -4579,6 +4649,13 @@ star-wars:Leia_vs_Jabba rdf:type owl:NamedIndividual ,
                         star-wars:year 4 .
 
 
+###  http://null.com/star-wars#Liberty
+star-wars:Liberty rdf:type owl:NamedIndividual ,
+                           star-wars:Star_Cruiser ;
+                  star-wars:ownedBy star-wars:Rebel_Alliance ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberty"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Lothal
 star-wars:Lothal rdf:type owl:NamedIndividual ,
                           star-wars:Planet ,
@@ -4935,6 +5012,13 @@ star-wars:Nala_Se rdf:type owl:NamedIndividual ,
                            ] .
 
 
+###  http://null.com/star-wars#Nautilian
+star-wars:Nautilian rdf:type owl:NamedIndividual ,
+                             star-wars:Star_Cruiser ;
+                    star-wars:ownedBy star-wars:Rebel_Alliance ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Nautilian"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Navarro
 star-wars:Navarro rdf:type owl:NamedIndividual ,
                            star-wars:Planet ,
@@ -4960,6 +5044,42 @@ star-wars:Neeku_Vozo rdf:type owl:NamedIndividual ,
                                            star-wars:Tamara_Ryvora ;
                      star-wars:livedIn star-wars:Colossus ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Neeku_Vozo"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Nien_Nunb
+star-wars:Nien_Nunb rdf:type owl:NamedIndividual ,
+                             star-wars:Sullustan ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty star-wars:killedIn ;
+                                                                           owl:hasValue star-wars:Battle_of_Exegol
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty star-wars:ofShip ;
+                                                                           owl:hasValue star-wars:Tantive_IV
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty star-wars:ofShip ;
+                                                                           owl:hasValue star-wars:Millenium_Falcon
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty star-wars:participatedIn ;
+                                                                           owl:hasValue star-wars:Battle_of_Endor
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Nien_Nunb"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Night_Sisters
@@ -5451,12 +5571,9 @@ star-wars:R4-P17 rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Raddus
 star-wars:Raddus rdf:type owl:NamedIndividual ,
-                          star-wars:Star_Cruiser ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty star-wars:ownedBy ;
-                            owl:hasValue star-wars:Resistance
-                          ] ;
+                          star-wars:Star_Cruiser ;
                  star-wars:destroyedBy star-wars:Holdo ;
+                 star-wars:ownedBy star-wars:Resistance ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Raddus_(MC85_Star_Cruiser)"^^xsd:anyURI .
 
 
@@ -6627,6 +6744,7 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
 <http://null.com/star-wars#Emperor's_Throne_Room> rdf:type owl:NamedIndividual ,
                                                            star-wars:Duel ;
                                                   star-wars:deathOf star-wars:Darth_Vader ;
+                                                  star-wars:during star-wars:Battle_of_Endor ;
                                                   star-wars:killingOf star-wars:Darth_Sidious ;
                                                   star-wars:location star-wars:Death_Star_2 ;
                                                   star-wars:participant star-wars:Luke_Skywalker ;

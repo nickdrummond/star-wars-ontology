@@ -36,7 +36,7 @@ Todo
     * Ep 5
     * Ep 6 partial - need speeder bike event? Capture by ewoks?
     * Ep 7
-    * Ep 8
+    * Ep 8 done - maybe add mutiny on the Raddus?
     * Ep 9
     * Rebel One
     * Solo
@@ -44,10 +44,13 @@ Todo
 * All members of Rogue One were killed at Scariff
 
 BoS killingOf Rogue_One (can be interpreted as killing of all members of the group)
-memberOf o diedIn -> diedIn (really slows reasoner down??)
+memberOf o diedIn -> diedIn (really slows reasoner down AND must remove "diedIn disjoint survived")
 This works, but why is Jyn missed out? Its fine if we assert she is a member of Rogue One, but not if we infer it from:
 hadRole some (Fighter and (inOrganisation value Rogue_One)) which does correctly infer the memberOf
+Is it worth it or just enumerate the members?
 
+* If we add an allDifferent (and remove Darths/Rens) what else can we assert / query?
+For a start, it grinds the reasoner to a halt
 
 * Homeworld for each species
 

@@ -12,7 +12,8 @@ eg "knew value Anakin_Skywalker"
 "knew some (knew value Anakin_Skywalker)"
 
 Easy transitivity
-Containment very useful for locations - Han killed Greedo in the Outer Rim - Cantina in Mos Eisely on Tatooine in Outer Rim
+Containment very useful for locations
+eg - Han killed Greedo in the Outer Rim - Cantina in Mos Eisely on Tatooine in Outer Rim
 Shmi is related to Kylo Ren.
 
 Specificity
@@ -25,8 +26,37 @@ We could modularise our ontology into each episode/series - only exposing the fa
 Nice to make assertions about Anakin and Darth Vader separately, but allow the inference to match
 
 
+Some test questions:
+
+Is Anakin from Tatooine? (asserted he's from Mos Espa) - yes due to prop chain on from
+But is Anakin from the Outer Rim? SHOULD BE YES
+
+Is Ahsoka a Padawan? GCI needed for this as Padawan is a role not a type.
+
+Members of Rebels/Resistance etc? Mixture of membership and roles
+
+Places - City and location value Outer_Rim = Cloud City etc
+
+Born/died before an event? Can we do this relative to an event - ie better than "died some xsd:int[>0]"
+
+Who is related to Anakin Skywalker? Should include Ben Solo. Also includes Han Solo (as Ben's Father) - as related is transitive. Should it? Rex is related to Jango Fett
+
+Someone who was killed during an event died on the date of that event - need to infer "died" from event - eg Plo Koon died in Order 66 on 19BBY - doesn't look like you can use property chains for datatype properties
+
+killedDuring some (Fight and on value Death_Star_1)
+
 
 Todo
+
+* Need a test framework
+- consistency check
+- classification time
+- DL query time
+- DL queries for expected results
+- Quality checks - eg seeALso annotations
+
+* Queries going v slow all of a sudden (participatedIn some Murder = 20s)
+Not Ochi
 
 * First round of events for each film
     * Ep 1 done

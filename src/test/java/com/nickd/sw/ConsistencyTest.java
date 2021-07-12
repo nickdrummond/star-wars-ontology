@@ -7,16 +7,14 @@ import junit.framework.TestSuite;
 import org.semanticweb.HermiT.Configuration;
 import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 
 import java.io.File;
 
 public class ConsistencyTest extends TestCase {
 
+    private String BASE = "http://null.com/star-wars#";
     private static Reasoner r;
     private static long t;
 
@@ -49,9 +47,16 @@ public class ConsistencyTest extends TestCase {
         assertTrue(t < 2000);
     }
 
-    public void testInference() {
-        OWLClass fight = r.getDataFactory().getOWLClass("http://null.com/star-wars#Fight");
-        NodeSet<OWLNamedIndividual> results = r.getInstances(fight);
-        assertEquals(39, results.getFlattened().size());
+    public void testMurderedSpeed() {
+        OWLClass murder = r.getDataFactory().getOWLClass(BASE+"Murder");
+        OWLObjectProperty killedIn = r.getDataFactory().getOWLObjectProperty(BASE+"killedIn");
+
+        OWLClassExpression murdered = r.getDataFactory().getOWLObjectSomeValuesFrom(killedIn, murder);
+        long start = System.currentTimeMillis();
+        NodeSet<OWLNamedIndividual> results = r.getInstances(murdered);
+        long d = System.currentTimeMillis() - start;
+
+        assertTrue(results.getFlattened().size() > 0);
+        assertTrue("Murder inference too slow: " + d + "ms", d < 10000); // 10s
     }
 }

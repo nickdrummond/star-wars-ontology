@@ -135,11 +135,6 @@ star-wars:father rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf star-wars:parent .
 
 
-###  http://null.com/star-wars#fought
-star-wars:fought rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf star-wars:knew .
-
-
 ###  http://null.com/star-wars#friendsWith
 star-wars:friendsWith rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf star-wars:knew ;
@@ -190,7 +185,11 @@ star-wars:hadSithMaster rdf:type owl:ObjectProperty ;
 
 ###  http://null.com/star-wars#hasTerrain
 star-wars:hasTerrain rdf:type owl:ObjectProperty ;
-                     rdfs:domain star-wars:Planet ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( star-wars:Moon
+                                                 star-wars:Planet
+                                               )
+                                 ] ;
                      rdfs:range star-wars:Habitat .
 
 
@@ -353,10 +352,6 @@ star-wars:relatedTo rdf:type owl:ObjectProperty ,
 ###  http://null.com/star-wars#saved
 star-wars:saved rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf star-wars:knew .
-
-
-###  http://null.com/star-wars#sensitiveTo
-star-wars:sensitiveTo rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#sibling
@@ -1177,7 +1172,7 @@ star-wars:Living_thing rdf:type owl:Class .
 star-wars:Loth-wolf rdf:type owl:Class ;
                     rdfs:subClassOf star-wars:Sentient ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:sensitiveTo ;
+                                      owl:onProperty star-wars:connectedTo ;
                                       owl:someValuesFrom star-wars:The_Force
                                     ] ,
                                     [ rdf:type owl:Restriction ;
@@ -2017,16 +2012,16 @@ star-wars:Ahch-To rdf:type owl:NamedIndividual ,
 star-wars:Ahsoka_Tano rdf:type owl:NamedIndividual ,
                                star-wars:Togruta ,
                                [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:connectedTo ;
+                                 owl:someValuesFrom star-wars:The_Force
+                               ] ,
+                               [ rdf:type owl:Restriction ;
                                  owl:onProperty star-wars:hadRole ;
                                  owl:someValuesFrom star-wars:Fulcrum
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty star-wars:hadRole ;
                                  owl:someValuesFrom star-wars:Padawan
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty star-wars:sensitiveTo ;
-                                 owl:someValuesFrom star-wars:The_Force
                                ] ;
                       star-wars:friendsWith star-wars:Rex ;
                       star-wars:hadJediMaster star-wars:Anakin_Skywalker ;
@@ -2062,6 +2057,10 @@ star-wars:Alderaan rdf:type owl:NamedIndividual ,
 star-wars:Anakin_Skywalker rdf:type owl:NamedIndividual ,
                                     star-wars:Human ,
                                     [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:connectedTo ;
+                                      owl:someValuesFrom star-wars:The_Force
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
                                       owl:onProperty star-wars:hadRole ;
                                       owl:someValuesFrom star-wars:Jedi_Knight
                                     ] ,
@@ -2075,10 +2074,6 @@ star-wars:Anakin_Skywalker rdf:type owl:NamedIndividual ,
                                                                               ) ;
                                                            rdf:type owl:Class
                                                          ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:sensitiveTo ;
-                                      owl:someValuesFrom star-wars:The_Force
                                     ] ;
                            owl:sameAs star-wars:Darth_Vader ;
                            star-wars:daughter star-wars:Leia_Organa ;
@@ -2167,9 +2162,6 @@ star-wars:Asajj_Ventress rdf:type owl:NamedIndividual ,
                                     owl:onProperty star-wars:hadRole ;
                                     owl:someValuesFrom star-wars:Jedi_Knight
                                   ] ;
-                         star-wars:fought star-wars:Anakin_Skywalker ,
-                                          star-wars:Count_Dooku ,
-                                          star-wars:Obi-Wan_Kenobi ;
                          star-wars:from star-wars:Dathomir ;
                          star-wars:memberOf star-wars:Night_Sisters ,
                                             star-wars:Sith_Order ;
@@ -2547,7 +2539,6 @@ star-wars:Battle_of_Naboo rdf:type owl:NamedIndividual ,
                                                           rdf:type owl:Class
                                                         ]
                                    ] ;
-                          star-wars:included star-wars:Qui_Gon_vs_Maul ;
                           star-wars:participant star-wars:Anakin_Skywalker ,
                                                 star-wars:Trade_Federation ;
                           star-wars:year -32 ;
@@ -2675,7 +2666,7 @@ star-wars:Baze_Malbus rdf:type owl:NamedIndividual ,
 star-wars:Ben_Solo rdf:type owl:NamedIndividual ,
                             star-wars:Human ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty star-wars:sensitiveTo ;
+                              owl:onProperty star-wars:connectedTo ;
                               owl:someValuesFrom star-wars:The_Force
                             ] ;
                    owl:sameAs star-wars:Kylo_Ren ;
@@ -3191,6 +3182,10 @@ star-wars:Council_of_Neutral_Systems rdf:type owl:NamedIndividual ,
 star-wars:Count_Dooku rdf:type owl:NamedIndividual ,
                                star-wars:Human ,
                                [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:connectedTo ;
+                                 owl:someValuesFrom star-wars:The_Force
+                               ] ,
+                               [ rdf:type owl:Restriction ;
                                  owl:onProperty star-wars:hadRole ;
                                  owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
                                                                            [ rdf:type owl:Restriction ;
@@ -3200,10 +3195,6 @@ star-wars:Count_Dooku rdf:type owl:NamedIndividual ,
                                                                          ) ;
                                                       rdf:type owl:Class
                                                     ]
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty star-wars:sensitiveTo ;
-                                 owl:someValuesFrom star-wars:The_Force
                                ] ;
                       owl:sameAs star-wars:Darth_Tyranus ;
                       star-wars:hadJediMaster star-wars:Yoda ;
@@ -3314,6 +3305,10 @@ star-wars:Darksaber rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Darth_Sidious
 star-wars:Darth_Sidious rdf:type owl:NamedIndividual ,
                                  [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:connectedTo ;
+                                   owl:someValuesFrom star-wars:The_Force
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
                                    owl:onProperty star-wars:hadRole ;
                                    owl:someValuesFrom star-wars:Dark_Lord
                                  ] ,
@@ -3338,10 +3333,6 @@ star-wars:Darth_Sidious rdf:type owl:NamedIndividual ,
                                                                            ) ;
                                                         rdf:type owl:Class
                                                       ]
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty star-wars:sensitiveTo ;
-                                   owl:someValuesFrom star-wars:The_Force
                                  ] ;
                         owl:sameAs star-wars:Sheev_Palpatine ;
                         star-wars:ordered star-wars:Order_66 ;
@@ -3700,12 +3691,12 @@ star-wars:Echo_Base rdf:type owl:NamedIndividual ,
 star-wars:Eighth_Brother rdf:type owl:NamedIndividual ,
                                   star-wars:Humanoid ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty star-wars:hadRole ;
-                                    owl:someValuesFrom star-wars:Inquisitor
+                                    owl:onProperty star-wars:connectedTo ;
+                                    owl:someValuesFrom star-wars:The_Force
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty star-wars:sensitiveTo ;
-                                    owl:someValuesFrom star-wars:The_Force
+                                    owl:onProperty star-wars:hadRole ;
+                                    owl:someValuesFrom star-wars:Inquisitor
                                   ] ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Eighth_Brother"^^xsd:anyURI .
 
@@ -3902,7 +3893,6 @@ star-wars:Ezra_Bridger rdf:type owl:NamedIndividual ,
                                                      ]
                                 ] ;
                        star-wars:alliedWith star-wars:Maul ;
-                       star-wars:fought star-wars:Thrawn ;
                        star-wars:from star-wars:Lothal ;
                        star-wars:hadJediMaster star-wars:Kanan_Jarrus ;
                        star-wars:memberOf star-wars:Spectres ;
@@ -3910,6 +3900,19 @@ star-wars:Ezra_Bridger rdf:type owl:NamedIndividual ,
                                          star-wars:World_Between_Worlds ;
                        star-wars:born -19 ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Ezra_Bridger"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Ezra_vs_Thrawn
+star-wars:Ezra_vs_Thrawn rdf:type owl:NamedIndividual ,
+                                  star-wars:Fight ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:participant ;
+                                    owl:someValuesFrom star-wars:Purrgil
+                                  ] ;
+                         star-wars:during star-wars:Liberation_of_Lothal ;
+                         star-wars:participant star-wars:Ezra_Bridger ,
+                                               star-wars:Thrawn ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal#Back-up_plans"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#FN-2187
@@ -4277,7 +4280,6 @@ star-wars:Greedo rdf:type owl:NamedIndividual ,
                                                  rdf:type owl:Class
                                                ]
                           ] ;
-                 star-wars:fought star-wars:Anakin_Skywalker ;
                  star-wars:livedIn star-wars:Mos_Espa ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Greedo"^^xsd:anyURI .
 
@@ -4351,6 +4353,10 @@ star-wars:Griff_Halloran rdf:type owl:NamedIndividual ,
 star-wars:Grogu rdf:type owl:NamedIndividual ,
                          <http://null.com/star-wars#Yoda's_Species> ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:connectedTo ;
+                           owl:someValuesFrom star-wars:The_Force
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty star-wars:hadRole ;
                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Captive
                                                                      [ rdf:type owl:Restriction ;
@@ -4364,10 +4370,6 @@ star-wars:Grogu rdf:type owl:NamedIndividual ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty star-wars:raisedBy ;
                            owl:someValuesFrom star-wars:Jedi
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty star-wars:sensitiveTo ;
-                           owl:someValuesFrom star-wars:The_Force
                          ] ;
                 star-wars:friendsWith star-wars:Din_Djarin ;
                 star-wars:livedIn star-wars:Coruscant ;
@@ -5179,6 +5181,10 @@ star-wars:Lasan rdf:type owl:NamedIndividual ,
 star-wars:Leia_Organa rdf:type owl:NamedIndividual ,
                                star-wars:Human ,
                                [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:connectedTo ;
+                                 owl:someValuesFrom star-wars:The_Force
+                               ] ,
+                               [ rdf:type owl:Restriction ;
                                  owl:onProperty star-wars:hadRole ;
                                  owl:someValuesFrom star-wars:Senator
                                ] ,
@@ -5203,10 +5209,6 @@ star-wars:Leia_Organa rdf:type owl:NamedIndividual ,
                                                                          ) ;
                                                       rdf:type owl:Class
                                                     ]
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty star-wars:sensitiveTo ;
-                                 owl:someValuesFrom star-wars:The_Force
                                ] ;
                       star-wars:brother star-wars:Luke_Skywalker ;
                       star-wars:from star-wars:Alderaan ;
@@ -5226,6 +5228,13 @@ star-wars:Leia_vs_Jabba rdf:type owl:NamedIndividual ,
                         star-wars:victoryOf star-wars:Leia_Organa ;
                         star-wars:year 4 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Jabba_Desilijic_Tiure#Slaying_of_the_Hutt"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Liberation_of_Lothal
+star-wars:Liberation_of_Lothal rdf:type owl:NamedIndividual ,
+                                        star-wars:Battle ;
+                               star-wars:location star-wars:Lothal ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Lor_San_Tekka
@@ -5258,6 +5267,10 @@ star-wars:Lothal_Jedi_Temple rdf:type owl:NamedIndividual ,
 star-wars:Luke_Skywalker rdf:type owl:NamedIndividual ,
                                   star-wars:Human ,
                                   [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:connectedTo ;
+                                    owl:someValuesFrom star-wars:The_Force
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty star-wars:hadRole ;
                                     owl:someValuesFrom star-wars:Jedi_Master
                                   ] ,
@@ -5271,10 +5284,6 @@ star-wars:Luke_Skywalker rdf:type owl:NamedIndividual ,
                                                                             ) ;
                                                          rdf:type owl:Class
                                                        ]
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty star-wars:sensitiveTo ;
-                                    owl:someValuesFrom star-wars:The_Force
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty star-wars:memberOf ;
@@ -5344,12 +5353,12 @@ star-wars:MC85_Raddus rdf:type owl:NamedIndividual ,
 star-wars:Mace_Windu rdf:type owl:NamedIndividual ,
                               star-wars:Human ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty star-wars:hadRole ;
-                                owl:someValuesFrom star-wars:Jedi_Master
+                                owl:onProperty star-wars:connectedTo ;
+                                owl:someValuesFrom star-wars:The_Force
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty star-wars:sensitiveTo ;
-                                owl:someValuesFrom star-wars:The_Force
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom star-wars:Jedi_Master
                               ] ;
                      star-wars:hadJediMaster star-wars:Yoda ;
                      star-wars:memberOf star-wars:Jedi_High_Council ;
@@ -5488,7 +5497,7 @@ star-wars:Max_Rebo_Band rdf:type owl:NamedIndividual ,
 star-wars:Maz_Kanata rdf:type owl:NamedIndividual ,
                               star-wars:Humanoid ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty star-wars:sensitiveTo ;
+                                owl:onProperty star-wars:connectedTo ;
                                 owl:someValuesFrom star-wars:The_Force
                               ] ;
                      star-wars:from star-wars:Takodana_Castle ;
@@ -6133,12 +6142,12 @@ star-wars:Poggle_the_Lesser rdf:type owl:NamedIndividual ,
 star-wars:Pong_Krell rdf:type owl:NamedIndividual ,
                               star-wars:Besalisk ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty star-wars:hadRole ;
-                                owl:someValuesFrom star-wars:Jedi_Master
+                                owl:onProperty star-wars:connectedTo ;
+                                owl:someValuesFrom star-wars:Dark_Side
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty star-wars:sensitiveTo ;
-                                owl:someValuesFrom star-wars:Dark_Side
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom star-wars:Jedi_Master
                               ] ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Pong_Krell"^^xsd:anyURI .
 
@@ -6218,12 +6227,12 @@ star-wars:Qira_vs_Dryden rdf:type owl:NamedIndividual ,
 star-wars:Qui-Gon_Jinn rdf:type owl:NamedIndividual ,
                                 star-wars:Human ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty star-wars:hadRole ;
-                                  owl:someValuesFrom star-wars:Jedi_Master
+                                  owl:onProperty star-wars:connectedTo ;
+                                  owl:someValuesFrom star-wars:The_Force
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty star-wars:sensitiveTo ;
-                                  owl:someValuesFrom star-wars:The_Force
+                                  owl:onProperty star-wars:hadRole ;
+                                  owl:someValuesFrom star-wars:Jedi_Master
                                 ] ;
                        star-wars:from star-wars:Coruscant ;
                        star-wars:born -80 ;
@@ -6233,6 +6242,7 @@ star-wars:Qui-Gon_Jinn rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Qui_Gon_vs_Maul
 star-wars:Qui_Gon_vs_Maul rdf:type owl:NamedIndividual ,
                                    star-wars:Duel ;
+                          star-wars:during star-wars:Battle_of_Naboo ;
                           star-wars:injuryOf star-wars:Maul ;
                           star-wars:killingOf star-wars:Qui-Gon_Jinn ;
                           star-wars:participant star-wars:Obi-Wan_Kenobi ;
@@ -6637,6 +6647,27 @@ star-wars:Satine_Kryze rdf:type owl:NamedIndividual ,
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Satine_Kryze"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Savage_Opress
+star-wars:Savage_Opress rdf:type owl:NamedIndividual ,
+                                 star-wars:Zabrak ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:hadRole ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:Fighter
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:inOrganisation ;
+                                                                               owl:hasValue star-wars:Night_Sisters
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        star-wars:alliedWith star-wars:Asajj_Ventress ;
+                        star-wars:brother star-wars:Maul ;
+                        star-wars:from star-wars:Dathomir ;
+                        star-wars:hadSithMaster star-wars:Count_Dooku ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Savage_Opress"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Savareen
 star-wars:Savareen rdf:type owl:NamedIndividual ,
                             star-wars:Planet ,
@@ -6782,6 +6813,19 @@ star-wars:Shmi_Skywalker rdf:type owl:NamedIndividual ,
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Showdown_at_Toydaria
+star-wars:Showdown_at_Toydaria rdf:type owl:NamedIndividual ,
+                                        star-wars:Fight ;
+                               star-wars:location star-wars:Toydaria ;
+                               star-wars:participant star-wars:Anakin_Skywalker ,
+                                                     star-wars:Asajj_Ventress ,
+                                                     star-wars:Count_Dooku ,
+                                                     star-wars:Obi-Wan_Kenobi ,
+                                                     star-wars:Savage_Opress ;
+                               star-wars:year -20 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Showdown_at_Toydaria"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Siege_of_Mandalore
 star-wars:Siege_of_Mandalore rdf:type owl:NamedIndividual ,
                                       star-wars:Event ;
@@ -6868,6 +6912,10 @@ star-wars:Slave_I rdf:type owl:NamedIndividual ,
 star-wars:Snoke rdf:type owl:NamedIndividual ,
                          star-wars:Humanoid ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:connectedTo ;
+                           owl:someValuesFrom star-wars:The_Force
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty star-wars:hadRole ;
                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Supreme_Leader
                                                                      [ rdf:type owl:Restriction ;
@@ -6877,10 +6925,6 @@ star-wars:Snoke rdf:type owl:NamedIndividual ,
                                                                    ) ;
                                                 rdf:type owl:Class
                                               ]
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty star-wars:sensitiveTo ;
-                           owl:someValuesFrom star-wars:The_Force
                          ] ;
                 star-wars:from star-wars:Exegol ;
                 star-wars:hadApprentice star-wars:Kylo_Ren ;
@@ -7084,7 +7128,7 @@ star-wars:The_Clone_Wars rdf:type owl:NamedIndividual ,
 star-wars:The_Daughter rdf:type owl:NamedIndividual ,
                                 star-wars:Sentient ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty star-wars:sensitiveTo ;
+                                  owl:onProperty star-wars:connectedTo ;
                                   owl:someValuesFrom star-wars:Light_Side
                                 ] ;
                        star-wars:father star-wars:The_Father ;
@@ -7109,7 +7153,7 @@ star-wars:The_Disaster rdf:type owl:NamedIndividual ,
 star-wars:The_Father rdf:type owl:NamedIndividual ,
                               star-wars:Sentient ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty star-wars:sensitiveTo ;
+                                owl:onProperty star-wars:connectedTo ;
                                 owl:someValuesFrom star-wars:The_Force
                               ] ;
                      star-wars:livedIn star-wars:Mortis ;
@@ -7128,12 +7172,12 @@ star-wars:The_Ghost rdf:type owl:NamedIndividual ,
 star-wars:The_Grand_Inquisitor rdf:type owl:NamedIndividual ,
                                         <http://null.com/star-wars#Pau'an> ,
                                         [ rdf:type owl:Restriction ;
-                                          owl:onProperty star-wars:hadRole ;
-                                          owl:someValuesFrom star-wars:Inquisitor
+                                          owl:onProperty star-wars:connectedTo ;
+                                          owl:someValuesFrom star-wars:The_Force
                                         ] ,
                                         [ rdf:type owl:Restriction ;
-                                          owl:onProperty star-wars:sensitiveTo ;
-                                          owl:someValuesFrom star-wars:The_Force
+                                          owl:onProperty star-wars:hadRole ;
+                                          owl:someValuesFrom star-wars:Inquisitor
                                         ] ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty star-wars:born ;
@@ -7152,7 +7196,7 @@ star-wars:The_Grand_Inquisitor rdf:type owl:NamedIndividual ,
 star-wars:The_Son rdf:type owl:NamedIndividual ,
                            star-wars:Sentient ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty star-wars:sensitiveTo ;
+                             owl:onProperty star-wars:connectedTo ;
                              owl:someValuesFrom star-wars:Dark_Side
                            ] ;
                   star-wars:father star-wars:The_Father ;
@@ -7175,7 +7219,6 @@ star-wars:Thrawn rdf:type owl:NamedIndividual ,
                                                  rdf:type owl:Class
                                                ]
                           ] ;
-                 star-wars:fought star-wars:Ezra_Bridger ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Mitth%27raw%27nuruodo"^^xsd:anyURI .
 
 
@@ -7817,7 +7860,7 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
                      ) ;
   rdf:type owl:Class ;
   rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty star-wars:sensitiveTo ;
+                    owl:onProperty star-wars:connectedTo ;
                     owl:someValuesFrom star-wars:The_Force
                   ]
 ] .

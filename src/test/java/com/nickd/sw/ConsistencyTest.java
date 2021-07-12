@@ -57,6 +57,6 @@ public class ConsistencyTest extends TestCase {
         long d = System.currentTimeMillis() - start;
 
         assertTrue(results.getFlattened().size() > 0);
-        assertTrue("Murder inference too slow: " + d + "ms", d < 10000); // 10s
+        assertTrue("Murder inference too slow: " + d + "ms", d < 6000); // 6s
     }
 }

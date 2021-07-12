@@ -9,9 +9,42 @@ Todo
 
 * Queries going v slow
 Event and location value Outer_Rim = 4s
-participatedIn some Murder = 20s
-killedIn some Murder
+killedIn some Murder = ~20s
+Removing all humans = 10s
+Removing all events except Murder =10s
+But even removing all other mentions of Murder does no better
+Deleted all locations and organisations = 5s
+Deleted just orgs = 12s
+locs = 9s?
+COmmits + ConsistencyTest
+01/07 11:18 = 5.2 5.3 5.3s
+01/07 13:43 = 5.6 6.0 5.4 5.5s
+01/07 21:10 = 6.0 6.5 6.3s
+04/07 15:38 = 10 10s
+04/07 23:50 = 11 10s
+05/07 00:19 = 19 19
+05/07 22:06 = 21 22s
+head = 26.0 27.0
+removed killingOf RogueOne and Prop chain - now = 12.5 13.4 12.6
+removed from/on chain = 12.3 12.7 12.3
+removed hadRole/member chain = 13.2 13 12
 
+
+
+* Incorrect use of participant/deathOf etc - using Role - eg participant some Stormtrooper
+should be participant some (hadRole some Stormtrooper)
+* Nute Gunray asserted Murder in other direction
+
+Review all properties:
+* hasTerrain domain should be planet or moon
+* Qui Gon vs MAul DURING Battle of Naboo
+* change sensitiveTo to use connectedTo?
+* fought not used
+* married not used
+* saved not used
+* any need for hadJedi/SithMaster - just use trained
+* is of even defined properly?
+* visited only used once - useful?
 
 * First round of events for each film
     * Ep 1 done

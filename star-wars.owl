@@ -103,9 +103,6 @@ star-wars:destructionOf rdf:type owl:ObjectProperty ;
 ###  http://null.com/star-wars#diedIn
 star-wars:diedIn rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf star-wars:participatedIn ;
-                 owl:propertyChainAxiom ( star-wars:memberOf
-                                          star-wars:diedIn
-                                        ) ;
                  star-wars:todo "Do we need this as its not used directly" .
 
 
@@ -2574,8 +2571,13 @@ star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
                                     ] ;
                            star-wars:deathOf star-wars:Raddus ;
                            star-wars:destructionOf star-wars:MC75_Profundity ;
-                           star-wars:killingOf star-wars:Orson_Krennic ,
-                                               star-wars:Rogue_One ;
+                           star-wars:killingOf <http://null.com/Chirrut_Îmwe> ,
+                                               star-wars:Baze_Malbus ,
+                                               star-wars:Bodhi_Rook ,
+                                               star-wars:Cassian_Andor ,
+                                               star-wars:Jyn_Erso ,
+                                               star-wars:K-2SO ,
+                                               star-wars:Orson_Krennic ;
                            star-wars:location star-wars:Scarif ;
                            star-wars:participant star-wars:Death_Star_1 ;
                            star-wars:year 0 ;
@@ -4882,17 +4884,9 @@ star-wars:Jyn_Erso rdf:type owl:NamedIndividual ,
                                                  ]
                             ] ;
                    star-wars:father star-wars:Galen_Erso ;
-                   star-wars:memberOf star-wars:Rogue_One ;
                    star-wars:raisedBy star-wars:Saw_Gerrera ;
                    star-wars:born -21 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso"^^xsd:anyURI .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource star-wars:Jyn_Erso ;
-   owl:annotatedProperty star-wars:memberOf ;
-   owl:annotatedTarget star-wars:Rogue_One ;
-   rdfs:comment "This will be inferred but for some reason Jyn is left out of the results for \"diedIn value Battle_of_Scariff\" unless we assert it - reasoner bug?"
- ] .
 
 
 ###  http://null.com/star-wars#K-2SO

@@ -38,7 +38,6 @@ removed hadRole/member chain = 13.2 13 12 no difference
 
 * Incorrect use of participant/deathOf etc - using Role - eg participant some Stormtrooper
 should be participant some (hadRole some Stormtrooper)
-* Nute Gunray asserted Murder in other direction
 
 Review all properties:
 * married not used

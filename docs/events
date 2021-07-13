@@ -121,3 +121,11 @@ survivor only (not (memberOf value Rogue_One))
 
 No, that didn't work, but it does make it inconsistent to say one of them survived
 This is because survivor and died are not covering?
+
+
+Battle_of_Scarrif -> killingOf Rogue_One (can be interpreted as killing of all members of the group)
+memberOf o diedIn -> diedIn (really slows reasoner down AND must remove "diedIn disjoint survived")
+
+This works, but why is Jyn missed out? Its fine if we assert she is a member of Rogue One, but not if we infer it from:
+hadRole some (Fighter and (inOrganisation value Rogue_One)) which does correctly infer the memberOf
+It is not worth the huge reasoner overhead, so just enumerate the members

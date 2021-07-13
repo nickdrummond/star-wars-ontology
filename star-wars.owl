@@ -302,7 +302,15 @@ star-wars:parent rdf:type owl:ObjectProperty ;
 ###  http://null.com/star-wars#participant
 star-wars:participant rdf:type owl:ObjectProperty ;
                       owl:inverseOf star-wars:participatedIn ;
-                      rdfs:domain star-wars:Event .
+                      rdfs:domain star-wars:Event ;
+                      rdfs:range [ rdf:type owl:Class ;
+                                   owl:unionOf ( star-wars:Living_thing
+                                                 star-wars:Organisation
+                                                 star-wars:Ship
+                                                 star-wars:Space_Station
+                                                 star-wars:The_Force
+                                               )
+                                 ] .
 
 
 ###  http://null.com/star-wars#participatedIn
@@ -861,6 +869,12 @@ star-wars:Fighter rdf:type owl:Class ;
                   rdfs:subClassOf star-wars:Vocation .
 
 
+###  http://null.com/star-wars#Force_spirit
+star-wars:Force_spirit rdf:type owl:Class ;
+                       rdfs:subClassOf star-wars:Light_Side ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Force_spirit"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Forest
 star-wars:Forest rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Habitat .
@@ -1389,6 +1403,12 @@ star-wars:Porg rdf:type owl:Class ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Porg"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Probe_Droid
+star-wars:Probe_Droid rdf:type owl:Class ;
+                      rdfs:subClassOf star-wars:Droid ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Viper_probe_droid"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Protocol_Droid
 star-wars:Protocol_Droid rdf:type owl:Class ;
                          rdfs:subClassOf star-wars:Droid ;
@@ -1419,7 +1439,11 @@ star-wars:Race rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Rancor
 star-wars:Rancor rdf:type owl:Class ;
-                 rdfs:subClassOf star-wars:Semi-sentient ;
+                 rdfs:subClassOf star-wars:Semi-sentient ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:homeworld ;
+                                   owl:hasValue star-wars:Dathomir
+                                 ] ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Rancor"^^xsd:anyURI .
 
 
@@ -1655,7 +1679,7 @@ star-wars:Tauntaun rdf:type owl:Class ;
                                      rdf:type owl:Class
                                    ] ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:from ;
+                                     owl:onProperty star-wars:homeworld ;
                                      owl:hasValue star-wars:Hoth
                                    ] ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Tauntaun"^^xsd:anyURI .
@@ -1782,7 +1806,7 @@ star-wars:Walker rdf:type owl:Class ;
 star-wars:Wampa rdf:type owl:Class ;
                 rdfs:subClassOf star-wars:Semi-sentient ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty star-wars:from ;
+                                  owl:onProperty star-wars:homeworld ;
                                   owl:hasValue star-wars:Hoth
                                 ] ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Wampa"^^xsd:anyURI .
@@ -2636,14 +2660,17 @@ star-wars:Battle_of_Yavin rdf:type owl:NamedIndividual ,
                                      owl:onProperty star-wars:participant ;
                                      owl:hasValue star-wars:Massassi_Group
                                    ] ;
-                          star-wars:deathOf star-wars:Wullf_Yularen ;
+                          star-wars:deathOf star-wars:Wilhuff_Tarkin ,
+                                            star-wars:Wullf_Yularen ;
                           star-wars:destructionOf star-wars:Death_Star_1 ;
                           star-wars:escapeOf star-wars:Darth_Vader ;
+                          star-wars:injuryOf star-wars:R2-D2 ;
                           star-wars:killingOf star-wars:Biggs_Darklighter ,
                                               star-wars:Porkins ;
                           star-wars:location star-wars:Yavin_4 ;
                           star-wars:participant star-wars:Millenium_Falcon ;
                           star-wars:survivedBy star-wars:Wedge_Antilles ;
+                          star-wars:victoryOf star-wars:Luke_Skywalker ;
                           star-wars:year 0 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin"^^xsd:anyURI .
 
@@ -6736,6 +6763,38 @@ star-wars:Scarif rdf:type owl:NamedIndividual ,
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Scarif"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Search_for_Luke
+star-wars:Search_for_Luke rdf:type owl:NamedIndividual ,
+                                   star-wars:Rescue ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:deathOf ;
+                                     owl:someValuesFrom star-wars:Tauntaun
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:injuryOf ;
+                                     owl:someValuesFrom star-wars:Wampa
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom star-wars:Probe_Droid
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Force_spirit
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty star-wars:connectedTo ;
+                                                                                 owl:hasValue star-wars:Obi-Wan_Kenobi
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ;
+                          star-wars:injuryOf star-wars:Luke_Skywalker ;
+                          star-wars:location star-wars:Hoth ;
+                          star-wars:participant star-wars:Han_Solo ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_search_for_Skywalker"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Sebulba
 star-wars:Sebulba rdf:type owl:NamedIndividual ,
                            star-wars:Dug ;
@@ -7533,7 +7592,6 @@ star-wars:Wilhuff_Tarkin rdf:type owl:NamedIndividual ,
                                   ] ;
                          star-wars:ordered star-wars:The_Disaster ;
                          star-wars:born -64 ;
-                         star-wars:diedInYear 0 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Wilhuff_Tarkin"^^xsd:anyURI .
 
 

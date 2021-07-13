@@ -42,7 +42,6 @@ should be participant some (hadRole some Stormtrooper)
 Review all properties:
 * married not used
 * saved not used
-* any need for hadJedi/SithMaster - just use trained
 * is of even defined properly?
 * visited only used once - useful?
 

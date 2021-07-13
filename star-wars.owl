@@ -641,6 +641,11 @@ star-wars:Captive rdf:type owl:Class ;
                   rdfs:subClassOf star-wars:Role .
 
 
+###  http://null.com/star-wars#Capture
+star-wars:Capture rdf:type owl:Class ;
+                  rdfs:subClassOf star-wars:Event .
+
+
 ###  http://null.com/star-wars#Celestial_Location
 star-wars:Celestial_Location rdf:type owl:Class ;
                              rdfs:subClassOf star-wars:Place .
@@ -908,6 +913,12 @@ star-wars:GNK_Droid rdf:type owl:Class ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/GNK_power_droid"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Gamorrean
+star-wars:Gamorrean rdf:type owl:Class ;
+                    rdfs:subClassOf star-wars:Humanoid ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Gamorrean"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Garbage_Compactor
 star-wars:Garbage_Compactor rdf:type owl:Class ;
                             rdfs:subClassOf star-wars:Facility .
@@ -1105,11 +1116,6 @@ star-wars:Keeradak rdf:type owl:Class ;
 star-wars:Kel_Dor rdf:type owl:Class ;
                   rdfs:subClassOf star-wars:Humanoid ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Kel_Dor"^^xsd:anyURI .
-
-
-###  http://null.com/star-wars#Kidnap
-star-wars:Kidnap rdf:type owl:Class ;
-                 rdfs:subClassOf star-wars:Event .
 
 
 ###  http://null.com/star-wars#Kiffar
@@ -3757,6 +3763,18 @@ star-wars:Eighth_Brother rdf:type owl:NamedIndividual ,
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Eighth_Brother"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Emperors_Throne_Room
+star-wars:Emperors_Throne_Room rdf:type owl:NamedIndividual ,
+                                        star-wars:Duel ;
+                               star-wars:deathOf star-wars:Darth_Vader ;
+                               star-wars:during star-wars:Battle_of_Endor ;
+                               star-wars:killingOf star-wars:Darth_Sidious ;
+                               star-wars:location star-wars:Death_Star_2 ;
+                               star-wars:participant star-wars:Luke_Skywalker ;
+                               star-wars:year 4 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#Meeting_Luke_Skywalker"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Empire_Day
 star-wars:Empire_Day rdf:type owl:NamedIndividual ,
                               star-wars:Event ;
@@ -3893,6 +3911,7 @@ star-wars:Escape_from_Hoth rdf:type owl:NamedIndividual ,
                                     ] ;
                            star-wars:escapeOf star-wars:Millenium_Falcon ;
                            star-wars:participant star-wars:Slave_I ;
+                           star-wars:year 3 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_Battle_of_Hoth"^^xsd:anyURI .
 
 
@@ -3922,6 +3941,30 @@ star-wars:Escape_from_Supremacy rdf:type owl:NamedIndividual ,
                                                    star-wars:Rose_Tico ;
                                 star-wars:victoryOf star-wars:BB-8 ;
                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_the_Resistance_fleet#Infiltrating_the_Supremacy"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Ewok_Feast
+star-wars:Ewok_Feast rdf:type owl:NamedIndividual ,
+                              star-wars:Capture ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:participant ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Ewok
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:livedIn ;
+                                                                            owl:hasValue star-wars:Bright_Tree_Village
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     star-wars:captureOf star-wars:Chewbacca ,
+                                         star-wars:Han_Solo ,
+                                         star-wars:Luke_Skywalker ,
+                                         star-wars:R2-D2 ;
+                     star-wars:during star-wars:Battle_of_Endor ;
+                     star-wars:location star-wars:Bright_Tree_Village ;
+                     star-wars:participant star-wars:C-3PO ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Executor
@@ -5118,7 +5161,7 @@ star-wars:Ki-Adi-Mundi rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Kidnap_of_Palpatine
 star-wars:Kidnap_of_Palpatine rdf:type owl:NamedIndividual ,
-                                       star-wars:Kidnap ,
+                                       star-wars:Capture ,
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty star-wars:killingOf ;
                                          owl:someValuesFrom star-wars:B2_super_battle_droid
@@ -5409,9 +5452,6 @@ star-wars:Luke_Skywalker rdf:type owl:NamedIndividual ,
                                              star-wars:Yoda ;
                          star-wars:born -19 ;
                          star-wars:diedInYear 34 ;
-                         star-wars:todo """add
-killed some
-(Rancor and (ownedBy value Jabba))""" ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker"^^xsd:anyURI .
 
 
@@ -5434,7 +5474,32 @@ star-wars:Luke_meets_Yoda rdf:type owl:NamedIndividual ,
                           star-wars:participant star-wars:Luke_Skywalker ,
                                                 star-wars:Yoda ;
                           star-wars:witnessedBy star-wars:R2-D2 ;
+                          star-wars:year 3 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Searching_for_Yoda"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Luke_vs_Rancor
+star-wars:Luke_vs_Rancor rdf:type owl:NamedIndividual ,
+                                  star-wars:Fight ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:deathOf ;
+                                    owl:someValuesFrom star-wars:Gamorrean
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:deathOf ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( star-wars:Rancor
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty star-wars:ownedBy ;
+                                                                                owl:hasValue star-wars:Jabba
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         star-wars:location <http://null.com/star-wars#Jabba's_Palace> ;
+                         star-wars:victoryOf star-wars:Luke_Skywalker ;
+                         star-wars:year 4 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Luke_Skywalker_arrives_at_the_palace"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Luminara_Unduli
@@ -5600,14 +5665,14 @@ star-wars:Maul_vs_Inquisitors rdf:type owl:NamedIndividual ,
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#An_alliance_of_convenience"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Maul_vs_OB1_final
-star-wars:Maul_vs_OB1_final rdf:type owl:NamedIndividual ,
-                                     star-wars:Duel ;
-                            star-wars:killingOf star-wars:Maul ;
-                            star-wars:location star-wars:Tatooine ;
-                            star-wars:victoryOf star-wars:Obi-Wan_Kenobi ;
-                            star-wars:year -2 ;
-                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Maul#Duel_on_Tatooine"^^xsd:anyURI .
+###  http://null.com/star-wars#Maul_vs_Obi-Wan_final
+star-wars:Maul_vs_Obi-Wan_final rdf:type owl:NamedIndividual ,
+                                         star-wars:Duel ;
+                                star-wars:killingOf star-wars:Maul ;
+                                star-wars:location star-wars:Tatooine ;
+                                star-wars:victoryOf star-wars:Obi-Wan_Kenobi ;
+                                star-wars:year -2 ;
+                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Maul#Duel_on_Tatooine"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Maul_vs_Vizsla
@@ -5882,41 +5947,6 @@ star-wars:Nute_Gunray rdf:type owl:NamedIndividual ,
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Nute_Gunray"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#OB1_vs_Grievous
-star-wars:OB1_vs_Grievous rdf:type owl:NamedIndividual ,
-                                   star-wars:Duel ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:participant ;
-                                     owl:someValuesFrom star-wars:Varactyl
-                                   ] ;
-                          star-wars:killingOf star-wars:Grievous ;
-                          star-wars:location star-wars:Utapau ;
-                          star-wars:victoryOf star-wars:Obi-Wan_Kenobi ;
-                          star-wars:year -19 ;
-                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Grievous#Return_to_Utapau_and_duel_with_Kenobi"^^xsd:anyURI .
-
-
-###  http://null.com/star-wars#OB1_vs_Jango
-star-wars:OB1_vs_Jango rdf:type owl:NamedIndividual ,
-                                star-wars:Fight ;
-                       star-wars:escapeOf star-wars:Jango_Fett ;
-                       star-wars:location star-wars:Kamino ;
-                       star-wars:participant star-wars:Obi-Wan_Kenobi ;
-                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi#Discovery_of_the_Clone_Army"^^xsd:anyURI .
-
-
-###  http://null.com/star-wars#OB1_vs_Vader_DeathStar
-star-wars:OB1_vs_Vader_DeathStar rdf:type owl:NamedIndividual ,
-                                          star-wars:Duel ;
-                                 star-wars:during star-wars:Escape_from_Death_Star ;
-                                 star-wars:killingOf star-wars:Obi-Wan_Kenobi ;
-                                 star-wars:on star-wars:Death_Star_1 ;
-                                 star-wars:victoryOf star-wars:Darth_Vader ;
-                                 star-wars:witnessedBy star-wars:Luke_Skywalker ;
-                                 star-wars:year 0 ;
-                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia#Duel_with_the_Dark_Lord"^^xsd:anyURI .
-
-
 ###  http://null.com/star-wars#Obi-Wan_Kenobi
 star-wars:Obi-Wan_Kenobi rdf:type owl:NamedIndividual ,
                                   star-wars:Human ,
@@ -5930,6 +5960,41 @@ star-wars:Obi-Wan_Kenobi rdf:type owl:NamedIndividual ,
                          star-wars:trainedBy star-wars:Qui-Gon_Jinn ;
                          star-wars:born -57 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Obi-Wan_vs_Grievous
+star-wars:Obi-Wan_vs_Grievous rdf:type owl:NamedIndividual ,
+                                       star-wars:Duel ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom star-wars:Varactyl
+                                       ] ;
+                              star-wars:killingOf star-wars:Grievous ;
+                              star-wars:location star-wars:Utapau ;
+                              star-wars:victoryOf star-wars:Obi-Wan_Kenobi ;
+                              star-wars:year -19 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Grievous#Return_to_Utapau_and_duel_with_Kenobi"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Obi-Wan_vs_Jango
+star-wars:Obi-Wan_vs_Jango rdf:type owl:NamedIndividual ,
+                                    star-wars:Fight ;
+                           star-wars:escapeOf star-wars:Jango_Fett ;
+                           star-wars:location star-wars:Kamino ;
+                           star-wars:participant star-wars:Obi-Wan_Kenobi ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi#Discovery_of_the_Clone_Army"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Obi-Wan_vs_Vader_DeathStar
+star-wars:Obi-Wan_vs_Vader_DeathStar rdf:type owl:NamedIndividual ,
+                                              star-wars:Duel ;
+                                     star-wars:during star-wars:Escape_from_Death_Star ;
+                                     star-wars:killingOf star-wars:Obi-Wan_Kenobi ;
+                                     star-wars:on star-wars:Death_Star_1 ;
+                                     star-wars:victoryOf star-wars:Darth_Vader ;
+                                     star-wars:witnessedBy star-wars:Luke_Skywalker ;
+                                     star-wars:year 0 ;
+                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia#Duel_with_the_Dark_Lord"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ochi
@@ -6682,6 +6747,7 @@ star-wars:Run_on_Death_Star_2 rdf:type owl:NamedIndividual ,
                               star-wars:participant star-wars:Lando_Calrissian ,
                                                     star-wars:Millenium_Falcon ,
                                                     star-wars:Nien_Nunb ;
+                              star-wars:year 4 ;
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_space_battle"^^xsd:anyURI .
 
 
@@ -7120,6 +7186,29 @@ star-wars:Spectres rdf:type owl:NamedIndividual ,
                             star-wars:Cell ;
                    star-wars:memberOf star-wars:Rebel_Alliance ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Spectres"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Speeder_Fight
+star-wars:Speeder_Fight rdf:type owl:NamedIndividual ,
+                                 star-wars:Fight ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:deathOf ;
+                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                        owl:onProperty star-wars:hadRole ;
+                                                        owl:someValuesFrom star-wars:StormTrooper
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:destructionOf ;
+                                   owl:someValuesFrom star-wars:Speeder_Bike
+                                 ] ;
+                        star-wars:during star-wars:Battle_of_Endor ;
+                        star-wars:location star-wars:Endor ;
+                        star-wars:participant star-wars:Leia_Organa ,
+                                              star-wars:Luke_Skywalker ;
+                        star-wars:witnessedBy star-wars:Wicket ;
+                        star-wars:year 4 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Starkiller_Base
@@ -7596,6 +7685,7 @@ star-wars:Vader_is_Lukes_Father rdf:type owl:NamedIndividual ,
                                 star-wars:injuryOf star-wars:Luke_Skywalker ;
                                 star-wars:location star-wars:Cloud_City ;
                                 star-wars:participant star-wars:Darth_Vader ;
+                                star-wars:year 3 ;
                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Vader.27s_trap"^^xsd:anyURI .
 
 
@@ -7813,6 +7903,27 @@ star-wars:Yoda rdf:type owl:NamedIndividual ,
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Yoda_becomes_One_with_the_Force
+star-wars:Yoda_becomes_One_with_the_Force rdf:type owl:NamedIndividual ,
+                                                   star-wars:Event ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:participant ;
+                                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Force_spirit
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty star-wars:connectedTo ;
+                                                                                                 owl:hasValue star-wars:Obi-Wan_Kenobi
+                                                                                               ]
+                                                                                             ) ;
+                                                                          rdf:type owl:Class
+                                                                        ]
+                                                   ] ;
+                                          star-wars:deathOf star-wars:Yoda ;
+                                          star-wars:location star-wars:Yodas_Hut ;
+                                          star-wars:witnessedBy star-wars:Luke_Skywalker ;
+                                          star-wars:year 4 ;
+                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda#Death"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Yodas_Hut
 star-wars:Yodas_Hut rdf:type owl:NamedIndividual ,
                              star-wars:Building ;
@@ -7999,18 +8110,6 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
                                         star-wars:on star-wars:Coruscant ;
                                         star-wars:ownedBy star-wars:Dexter_Jettster ;
                                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Dex%27s_Diner"^^xsd:anyURI .
-
-
-###  http://null.com/star-wars#Emperor's_Throne_Room
-<http://null.com/star-wars#Emperor's_Throne_Room> rdf:type owl:NamedIndividual ,
-                                                           star-wars:Duel ;
-                                                  star-wars:deathOf star-wars:Darth_Vader ;
-                                                  star-wars:during star-wars:Battle_of_Endor ;
-                                                  star-wars:killingOf star-wars:Darth_Sidious ;
-                                                  star-wars:location star-wars:Death_Star_2 ;
-                                                  star-wars:participant star-wars:Luke_Skywalker ;
-                                                  star-wars:year 4 ;
-                                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#Meeting_Luke_Skywalker"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Jabba's_Palace

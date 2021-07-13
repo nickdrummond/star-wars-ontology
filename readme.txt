@@ -40,8 +40,6 @@ removed hadRole/member chain = 13.2 13 12 no difference
 should be participant some (hadRole some Stormtrooper)
 
 Review all properties:
-* married not used
-* saved not used
 * is of even defined properly?
 * visited only used once - useful?
 

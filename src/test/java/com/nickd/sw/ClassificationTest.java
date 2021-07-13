@@ -16,7 +16,7 @@ public class ClassificationTest extends TestCase {
 
     private String BASE = "http://null.com/star-wars#";
     private static Reasoner r;
-    private static long t;
+    private static OWLDataFactory df;
 
     // One time load and classification
     public static Test suite() {
@@ -28,7 +28,8 @@ public class ClassificationTest extends TestCase {
                 Configuration conf = new Configuration();
                 long start = System.currentTimeMillis();
                 r = new Reasoner(conf, ont);
-                t = System.currentTimeMillis() - start;
+                df = r.getDataFactory();
+                long t = System.currentTimeMillis() - start;
                 System.out.println("Classified in " + t + "ms");
 
             }
@@ -39,29 +40,52 @@ public class ClassificationTest extends TestCase {
         return setup;
     }
 
-    // We assert that Cody is a Leader inOrganisation 7th Sky Corps, which is a member of the Grand Army of the Republ.
-    // So, cody should be a member of the Army and Galactic Republic
+    private OWLNamedIndividual ind(String s) {
+        return df.getOWLNamedIndividual(BASE + s);
+    }
+
+    private OWLObjectProperty prop(String s) {
+        return df.getOWLObjectProperty(BASE + s);
+    }
+
+    private OWLClass cls(String s) {
+        return df.getOWLClass(BASE + s);
+    }
+
+    // Cody is a Leader inOrganisation 7th Sky Corps, in the Grand Army of the Republ., in the Republic
+    // So, cody should be a member of the Galactic Republic
     public void testMembershipTransitivity() {
-        OWLNamedIndividual cody = r.getDataFactory().getOWLNamedIndividual(BASE+"Cody");
 
-        OWLNamedIndividual republic = r.getDataFactory().getOWLNamedIndividual(BASE+"Galactic_Republic");
-        OWLObjectProperty memberOf = r.getDataFactory().getOWLObjectProperty(BASE+"memberOf");
-
-        OWLClassExpression expr = r.getDataFactory().getOWLObjectHasValue(memberOf, republic);
+        OWLClassExpression expr = df.getOWLObjectHasValue(
+                prop("memberOf"), ind("Galactic_Republic"));
 
         NodeSet<OWLNamedIndividual> results = r.getInstances(expr);
 
-        assertTrue(results.getFlattened().contains(cody));
+        assertTrue(results.getFlattened().contains(ind("Cody")));
     }
 
-    // We assert that Hunter is a soldier in the Bad Batch, which is in the Grand Army
-    // Clone Troopers are soldiers in the Grand Army
+    // We assert that Hunter is a Trooper in the Bad Batch, which is in the Grand Army
+    // therefore he is a Trooper in the Grand Army
     public void testInOrganisationTransitivity() {
-        OWLClass cloneTrooper = r.getDataFactory().getOWLClass(BASE+"Clone_Trooper");
-        OWLNamedIndividual hunter = r.getDataFactory().getOWLNamedIndividual(BASE+"Hunter");
+        OWLClassExpression expr =
+                df.getOWLObjectSomeValuesFrom(prop("hasRole"),
+                    df.getOWLObjectIntersectionOf(cls("Trooper"),
+                        df.getOWLObjectHasValue(prop("inOrganisation"), ind("Grand_Army_of_the_Republic"))
+                    )
+                );
 
-        NodeSet<OWLNamedIndividual> results = r.getInstances(cloneTrooper);
+        NodeSet<OWLNamedIndividual> results = r.getInstances(expr);
 
-        assertTrue(results.getFlattened().contains(hunter));
+        assertTrue(results.getFlattened().contains(ind("Hunter")));
+    }
+
+    // Luke is from Mos Eisely,
+    // therefore he is from the Outer Rim
+    public void testFromTransitivity() {
+        NodeSet<OWLNamedIndividual> results = r.getInstances(
+                df.getOWLObjectHasValue(prop("from"), ind("Outer_Rim"))
+        );
+
+        assertTrue(results.getFlattened().contains(ind("Luke_Skywalker")));
     }
 }

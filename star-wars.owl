@@ -503,6 +503,12 @@ star-wars:Assassin rdf:type owl:Class ;
                    rdfs:subClassOf star-wars:Criminal .
 
 
+###  http://null.com/star-wars#Asteroid_field
+star-wars:Asteroid_field rdf:type owl:Class ;
+                         rdfs:subClassOf star-wars:Celestial_Location ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Asteroid_field"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Astromech
 star-wars:Astromech rdf:type owl:Class ;
                     rdfs:subClassOf star-wars:Droid ;
@@ -1720,6 +1726,11 @@ star-wars:Togruta rdf:type owl:Class ;
 ###  http://null.com/star-wars#Toydarian
 star-wars:Toydarian rdf:type owl:Class ;
                     rdfs:subClassOf star-wars:Humanoid .
+
+
+###  http://null.com/star-wars#Training
+star-wars:Training rdf:type owl:Class ;
+                   rdfs:subClassOf star-wars:Event .
 
 
 ###  http://null.com/star-wars#Trandoshan
@@ -3057,6 +3068,17 @@ star-wars:Cato_Parasitti rdf:type owl:NamedIndividual ,
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Cato_Parasitti"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Cave_of_Evil
+star-wars:Cave_of_Evil rdf:type owl:NamedIndividual ,
+                                star-wars:Place ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:connectedTo ;
+                                  owl:someValuesFrom star-wars:Dark_Side
+                                ] ;
+                       star-wars:location star-wars:Dagobah ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Cave_of_Evil"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Cham_Syndulla
 star-wars:Cham_Syndulla rdf:type owl:NamedIndividual ,
                                  <http://null.com/star-wars#Twi'Lek> ;
@@ -3837,6 +3859,41 @@ star-wars:Escape_from_Death_Star rdf:type owl:NamedIndividual ,
                                                        star-wars:Obi-Wan_Kenobi ,
                                                        star-wars:R2-D2 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Escape_from_Hoth
+star-wars:Escape_from_Hoth rdf:type owl:NamedIndividual ,
+                                    star-wars:Escape ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:location ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Asteroid_field
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:location ;
+                                                                                  owl:hasValue star-wars:Hoth
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom star-wars:Exogorth
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom star-wars:Mynock
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom star-wars:Star_Destroyer
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom star-wars:Tie_Fighter
+                                    ] ;
+                           star-wars:escapeOf star-wars:Millenium_Falcon ;
+                           star-wars:participant star-wars:Slave_I ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_Battle_of_Hoth"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Escape_from_Jakku
@@ -5356,6 +5413,28 @@ star-wars:Luke_Skywalker rdf:type owl:NamedIndividual ,
 killed some
 (Rancor and (ownedBy value Jabba))""" ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Luke_meets_Yoda
+star-wars:Luke_meets_Yoda rdf:type owl:NamedIndividual ,
+                                   star-wars:Training ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:X-Wing
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty star-wars:location ;
+                                                                                 owl:someValuesFrom star-wars:Swamp
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ;
+                          star-wars:location star-wars:Cave_of_Evil ,
+                                             star-wars:Yodas_Hut ;
+                          star-wars:participant star-wars:Luke_Skywalker ,
+                                                star-wars:Yoda ;
+                          star-wars:witnessedBy star-wars:R2-D2 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Searching_for_Yoda"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Luminara_Unduli
@@ -7396,6 +7475,28 @@ star-wars:Trade_Federation rdf:type owl:NamedIndividual ,
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Trade_Federation"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Trap_on_Cloud_City
+star-wars:Trap_on_Cloud_City rdf:type owl:NamedIndividual ,
+                                      star-wars:Confrontation ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty star-wars:participant ;
+                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                             owl:onProperty star-wars:hadRole ;
+                                                             owl:someValuesFrom star-wars:StormTrooper
+                                                           ]
+                                      ] ;
+                             star-wars:captureOf star-wars:Han_Solo ;
+                             star-wars:escapeOf star-wars:Chewbacca ,
+                                                star-wars:Leia_Organa ;
+                             star-wars:injuryOf star-wars:C-3PO ;
+                             star-wars:location star-wars:Cloud_City ;
+                             star-wars:participant star-wars:Boba_Fett ,
+                                                   star-wars:Darth_Vader ,
+                                                   star-wars:Lando_Calrissian ;
+                             star-wars:year 3 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_city_in_the_clouds"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Trench
 star-wars:Trench rdf:type owl:NamedIndividual ,
                           star-wars:Harch ,
@@ -7491,6 +7592,7 @@ star-wars:Utapau rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Vader_is_Lukes_Father
 star-wars:Vader_is_Lukes_Father rdf:type owl:NamedIndividual ,
                                          star-wars:Duel ;
+                                star-wars:during star-wars:Trap_on_Cloud_City ;
                                 star-wars:injuryOf star-wars:Luke_Skywalker ;
                                 star-wars:location star-wars:Cloud_City ;
                                 star-wars:participant star-wars:Darth_Vader ;
@@ -7705,10 +7807,18 @@ star-wars:Yoda rdf:type owl:NamedIndividual ,
                                              ]
                         ] ;
                star-wars:livedIn star-wars:Coruscant ,
-                                 star-wars:Dagobah ;
+                                 star-wars:Yodas_Hut ;
                star-wars:memberOf star-wars:Jedi_High_Council ;
                star-wars:born -896 ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Yodas_Hut
+star-wars:Yodas_Hut rdf:type owl:NamedIndividual ,
+                             star-wars:Building ;
+                    star-wars:builtBy star-wars:Yoda ;
+                    star-wars:on star-wars:Dagobah ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda%27s_Hut"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ziro

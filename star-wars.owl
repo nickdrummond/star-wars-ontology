@@ -1656,6 +1656,11 @@ star-wars:Tauntaun rdf:type owl:Class ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Tauntaun"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Team
+star-wars:Team rdf:type owl:Class ;
+               rdfs:subClassOf star-wars:Organisation .
+
+
 ###  http://null.com/star-wars#Temple
 star-wars:Temple rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Building .
@@ -2160,7 +2165,10 @@ star-wars:Assault_on_Tuanul rdf:type owl:NamedIndividual ,
                                      ] ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty star-wars:participant ;
-                                       owl:someValuesFrom star-wars:StormTrooper
+                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                            owl:onProperty star-wars:hadRole ;
+                                                            owl:someValuesFrom star-wars:StormTrooper
+                                                          ]
                                      ] ;
                             star-wars:captureOf star-wars:Poe_Dameron ;
                             star-wars:escapeOf star-wars:BB-8 ;
@@ -2182,7 +2190,10 @@ star-wars:Attack_on_Lars_Homestead rdf:type owl:NamedIndividual ,
                                             ] ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty star-wars:participant ;
-                                              owl:someValuesFrom star-wars:StormTrooper
+                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty star-wars:hadRole ;
+                                                                   owl:someValuesFrom star-wars:StormTrooper
+                                                                 ]
                                             ] ;
                                    star-wars:killingOf star-wars:Beru_Whitesun_Lars ,
                                                        star-wars:Owen_Lars ;
@@ -2196,17 +2207,20 @@ star-wars:Attack_on_the_Raddus rdf:type owl:NamedIndividual ,
                                         star-wars:Attack ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty star-wars:victoryOf ;
-                                          owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
-                                                                                    [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty star-wars:ofShip ;
-                                                                                      owl:someValuesFrom star-wars:Tie_Fighter
-                                                                                    ]
-                                                                                    [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty star-wars:inOrganisation ;
-                                                                                      owl:hasValue star-wars:First_Order
-                                                                                    ]
-                                                                                  ) ;
-                                                               rdf:type owl:Class
+                                          owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                               owl:onProperty star-wars:hadRole ;
+                                                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty star-wars:ofShip ;
+                                                                                                           owl:someValuesFrom star-wars:Tie_Fighter
+                                                                                                         ]
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty star-wars:inOrganisation ;
+                                                                                                           owl:hasValue star-wars:First_Order
+                                                                                                         ]
+                                                                                                       ) ;
+                                                                                    rdf:type owl:Class
+                                                                                  ]
                                                              ]
                                         ] ;
                                star-wars:during star-wars:Attack_on_the_Resistance_fleet ;
@@ -2388,17 +2402,20 @@ star-wars:Battle_of_Crait rdf:type owl:NamedIndividual ,
                                    star-wars:Battle ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty star-wars:deathOf ;
-                                     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                                 owl:unionOf ( star-wars:Fighter
-                                                                                               star-wars:Pilot
-                                                                                             )
-                                                                               ]
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty star-wars:inOrganisation ;
-                                                                                 owl:hasValue star-wars:Resistance
-                                                                               ]
-                                                                             ) ;
-                                                          rdf:type owl:Class
+                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                          owl:onProperty star-wars:hadRole ;
+                                                          owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                      owl:unionOf ( star-wars:Fighter
+                                                                                                                    star-wars:Pilot
+                                                                                                                  )
+                                                                                                    ]
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty star-wars:inOrganisation ;
+                                                                                                      owl:hasValue star-wars:Resistance
+                                                                                                    ]
+                                                                                                  ) ;
+                                                                               rdf:type owl:Class
+                                                                             ]
                                                         ]
                                    ] ,
                                    [ rdf:type owl:Restriction ;
@@ -2440,7 +2457,6 @@ star-wars:Battle_of_Endor rdf:type owl:NamedIndividual ,
                                                   star-wars:MC80A_Nautilian ,
                                                   star-wars:MC80_Liberty ;
                           star-wars:location star-wars:Endor ;
-                          star-wars:participant star-wars:Millenium_Falcon ;
                           star-wars:survivedBy star-wars:MC80A_Home_One ;
                           star-wars:year 4 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor"^^xsd:anyURI .
@@ -2933,18 +2949,24 @@ star-wars:Capture_of_Tantive_IV rdf:type owl:NamedIndividual ,
                                          star-wars:Fight ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty star-wars:killingOf ;
-                                           owl:someValuesFrom [ owl:intersectionOf ( star-wars:Trooper
-                                                                                     [ rdf:type owl:Restriction ;
-                                                                                       owl:onProperty star-wars:inOrganisation ;
-                                                                                       owl:hasValue star-wars:Rebel_Alliance
-                                                                                     ]
-                                                                                   ) ;
-                                                                rdf:type owl:Class
+                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                owl:onProperty star-wars:hadRole ;
+                                                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Trooper
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty star-wars:inOrganisation ;
+                                                                                                            owl:hasValue star-wars:Rebel_Alliance
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ]
                                                               ]
                                          ] ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty star-wars:participant ;
-                                           owl:someValuesFrom star-wars:StormTrooper
+                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                owl:onProperty star-wars:hadRole ;
+                                                                owl:someValuesFrom star-wars:StormTrooper
+                                                              ]
                                          ] ;
                                 star-wars:captureOf star-wars:Leia_Organa ;
                                 star-wars:escapeOf star-wars:C-3PO ,
@@ -3376,17 +3398,13 @@ star-wars:Deactivating_the_Shield_Generator_on_Endor rdf:type owl:NamedIndividua
                                                               ] ,
                                                               [ rdf:type owl:Restriction ;
                                                                 owl:onProperty star-wars:participant ;
-                                                                owl:someValuesFrom star-wars:StormTrooper
+                                                                owl:someValuesFrom star-wars:Speeder_Bike
                                                               ] ,
                                                               [ rdf:type owl:Restriction ;
                                                                 owl:onProperty star-wars:participant ;
-                                                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:StormTrooper
-                                                                                                          [ rdf:type owl:Restriction ;
-                                                                                                            owl:onProperty star-wars:ofShip ;
-                                                                                                            owl:someValuesFrom star-wars:Speeder_Bike
-                                                                                                          ]
-                                                                                                        ) ;
-                                                                                     rdf:type owl:Class
+                                                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty star-wars:hadRole ;
+                                                                                     owl:someValuesFrom star-wars:StormTrooper
                                                                                    ]
                                                               ] ,
                                                               [ rdf:type owl:Restriction ;
@@ -3504,7 +3522,10 @@ star-wars:Defection_of_Finn rdf:type owl:NamedIndividual ,
                                      star-wars:Escape ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty star-wars:killingOf ;
-                                       owl:someValuesFrom star-wars:StormTrooper
+                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                            owl:onProperty star-wars:hadRole ;
+                                                            owl:someValuesFrom star-wars:StormTrooper
+                                                          ]
                                      ] ;
                             star-wars:escapeOf star-wars:FN-2187 ,
                                                star-wars:Poe_Dameron ;
@@ -3773,7 +3794,10 @@ star-wars:Escape_from_Death_Star rdf:type owl:NamedIndividual ,
                                           ] ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty star-wars:killingOf ;
-                                            owl:someValuesFrom star-wars:StormTrooper
+                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty star-wars:hadRole ;
+                                                                 owl:someValuesFrom star-wars:StormTrooper
+                                                               ]
                                           ] ;
                                  star-wars:location star-wars:Death_Star_1 ;
                                  star-wars:participant star-wars:C-3PO ,
@@ -4011,7 +4035,10 @@ star-wars:First_Battle_of_Geonosis rdf:type owl:NamedIndividual ,
                                             star-wars:Battle ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty star-wars:deathOf ;
-                                              owl:someValuesFrom star-wars:Jedi
+                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty star-wars:hadRole ;
+                                                                   owl:someValuesFrom star-wars:Jedi
+                                                                 ]
                                             ] ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty star-wars:participant ;
@@ -4350,7 +4377,10 @@ star-wars:Grogu rdf:type owl:NamedIndividual ,
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty star-wars:raisedBy ;
-                           owl:someValuesFrom star-wars:Jedi
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                owl:onProperty star-wars:hadRole ;
+                                                owl:someValuesFrom star-wars:Jedi
+                                              ]
                          ] ;
                 star-wars:friendsWith star-wars:Din_Djarin ;
                 star-wars:livedIn star-wars:Coruscant ;
@@ -5667,12 +5697,8 @@ star-wars:Nien_Nunb rdf:type owl:NamedIndividual ,
                                owl:onProperty star-wars:hadRole ;
                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
                                                                          [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty star-wars:killedIn ;
-                                                                           owl:hasValue star-wars:Battle_of_Exegol
-                                                                         ]
-                                                                         [ rdf:type owl:Restriction ;
                                                                            owl:onProperty star-wars:ofShip ;
-                                                                           owl:hasValue star-wars:Tantive_IV
+                                                                           owl:hasValue star-wars:Millenium_Falcon
                                                                          ]
                                                                        ) ;
                                                     rdf:type owl:Class
@@ -5683,11 +5709,7 @@ star-wars:Nien_Nunb rdf:type owl:NamedIndividual ,
                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
                                                                          [ rdf:type owl:Restriction ;
                                                                            owl:onProperty star-wars:ofShip ;
-                                                                           owl:hasValue star-wars:Millenium_Falcon
-                                                                         ]
-                                                                         [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty star-wars:participatedIn ;
-                                                                           owl:hasValue star-wars:Battle_of_Endor
+                                                                           owl:hasValue star-wars:Tantive_IV
                                                                          ]
                                                                        ) ;
                                                     rdf:type owl:Class
@@ -5897,11 +5919,17 @@ star-wars:Order_66 rdf:type owl:NamedIndividual ,
                             star-wars:Event ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty star-wars:participant ;
-                              owl:someValuesFrom star-wars:Jedi
+                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                   owl:onProperty star-wars:hadRole ;
+                                                   owl:someValuesFrom star-wars:Jedi
+                                                 ]
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty star-wars:participant ;
-                              owl:someValuesFrom star-wars:Trooper
+                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                   owl:onProperty star-wars:hadRole ;
+                                                   owl:someValuesFrom star-wars:Trooper
+                                                 ]
                             ] ;
                    star-wars:killingOf star-wars:Aayla_Secura ,
                                        star-wars:Ki-Adi-Mundi ,
@@ -6027,7 +6055,7 @@ star-wars:Phasma rdf:type owl:NamedIndividual ,
 star-wars:Platform_Classic_34ABY rdf:type owl:NamedIndividual ,
                                           star-wars:Race ,
                                           [ rdf:type owl:Restriction ;
-                                            owl:onProperty star-wars:participatedIn ;
+                                            owl:onProperty star-wars:participant ;
                                             owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                                  owl:onProperty star-wars:brother ;
                                                                  owl:hasValue star-wars:Jarek_Yeager
@@ -6519,6 +6547,20 @@ star-wars:Rose_Tico rdf:type owl:NamedIndividual ,
                     star-wars:saved star-wars:Finn ;
                     star-wars:born 11 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Rose_Tico"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Run_on_Death_Star_2
+star-wars:Run_on_Death_Star_2 rdf:type owl:NamedIndividual ,
+                                       star-wars:Attack ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom star-wars:X-Wing
+                                       ] ;
+                              star-wars:during star-wars:Battle_of_Endor ;
+                              star-wars:participant star-wars:Lando_Calrissian ,
+                                                    star-wars:Millenium_Falcon ,
+                                                    star-wars:Nien_Nunb ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_space_battle"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ryloth

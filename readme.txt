@@ -34,10 +34,33 @@ head = 12.5 13.4 12.6
 removed from/on chain = 12.3 12.7 12.3 no difference
 removed hadRole/member chain = 13.2 13 12 no difference
 
+* do we want useful defs like StormTrooper == hadRole some (Soldier and inOrg ...)?
+  doesn't work for parts of org - ie doesn't catch Rex etc/ bad batch
+  hadRole some (Soldier and inOrganisation value Grand_Army_of_the_Republic)
+   should include Rex, Hunter
 
+   (A) hadRole o inOrganisation -> memberOf  cannot be used with
+   (B) inOrganisation o memberOf -> inOrganisation
 
-* Incorrect use of participant/deathOf etc - using Role - eg participant some Stormtrooper
-should be participant some (hadRole some Stormtrooper)
+   memberOf is just shorthand for hadRole X inOrganisation Y - maybe get rid at person level? But nice to say
+
+   Someone has a role in an org and all its super-orgs
+   Person --hadRole--> (Role --inOrg--> OrgX --memberOf(trans)--> OrgY)
+
+   from (A)
+   Person --memberOf--> OrgX
+   Person --memberOf--> OrgY
+
+   from (B)
+   Person --hadRole--> inOrg --> OrgY
+
+   we could say Clone Trooper == (hadRole some Soldier) and (memberOf value GrandArmy...)
+   but that would include an engineer for the Grand Army who defected to become a fighter for the Separatists
+
+Maybe not - maybe it should be the reverse - Nien Numb was a pilot of Tantive when he died
+
+* what about destructionOf??
+
 
 Review all properties:
 * is of even defined properly?

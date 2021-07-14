@@ -37,7 +37,7 @@ Review all properties:
     * Ep 4 done
     * Ep 5 done
     * Ep 6 done
-    * Ep 7 partial -
+    * Ep 7 done
     * Ep 8 done?
     * Ep 9 partial - Pasaana, finding wayfinder - taking chewie
     * Rebel One partial - revise space battle over Scariff

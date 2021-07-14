@@ -2639,7 +2639,15 @@ star-wars:Battle_of_Starkiller_Base rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Battle_of_Takodana
 star-wars:Battle_of_Takodana rdf:type owl:NamedIndividual ,
-                                      star-wars:Battle ;
+                                      star-wars:Battle ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty star-wars:destructionOf ;
+                                        owl:someValuesFrom star-wars:Tie_Fighter
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty star-wars:participant ;
+                                        owl:someValuesFrom star-wars:X-Wing
+                                      ] ;
                              star-wars:captureOf star-wars:Rey ;
                              star-wars:destructionOf star-wars:Takodana_Castle ;
                              star-wars:escapeOf star-wars:BB-8 ,
@@ -3586,6 +3594,10 @@ star-wars:Defection_of_Finn rdf:type owl:NamedIndividual ,
                                                             owl:onProperty star-wars:hadRole ;
                                                             owl:someValuesFrom star-wars:StormTrooper
                                                           ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:participant ;
+                                       owl:someValuesFrom star-wars:Tie_Fighter
                                      ] ;
                             star-wars:escapeOf star-wars:FN-2187 ,
                                                star-wars:Poe_Dameron ;
@@ -3927,6 +3939,7 @@ star-wars:Escape_from_Jakku rdf:type owl:NamedIndividual ,
                                                star-wars:Rey ;
                             star-wars:location star-wars:Niima_Outpost ;
                             star-wars:participant star-wars:Millenium_Falcon ;
+                            star-wars:year 34 ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VII_The_Force_Awakens#Escape_from_Jakku"^^xsd:anyURI .
 
 
@@ -6683,6 +6696,19 @@ star-wars:Rey rdf:type owl:NamedIndividual ,
               star-wars:born 15 ;
               star-wars:diedInYear 35 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Rey_Skywalker"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rey_meets_Luke
+star-wars:Rey_meets_Luke rdf:type owl:NamedIndividual ,
+                                  star-wars:Training ;
+                         star-wars:location star-wars:Ahch-To ;
+                         star-wars:participant star-wars:Luke_Skywalker ,
+                                               star-wars:Millenium_Falcon ,
+                                               star-wars:Rey ;
+                         star-wars:witnessedBy star-wars:Chewbacca ,
+                                               star-wars:R2-D2 ;
+                         star-wars:year 34 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VII_The_Force_Awakens#Locating_Luke_Skywalker"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rey_vs_Kylo_DeathStar

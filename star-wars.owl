@@ -314,6 +314,7 @@ star-wars:participant rdf:type owl:ObjectProperty ;
                       rdfs:domain star-wars:Event ;
                       rdfs:range [ rdf:type owl:Class ;
                                    owl:unionOf ( star-wars:Living_thing
+                                                 star-wars:Object
                                                  star-wars:Organisation
                                                  star-wars:Ship
                                                  star-wars:Space_Station
@@ -1654,6 +1655,11 @@ star-wars:Scientist rdf:type owl:Class ;
                     rdfs:subClassOf star-wars:Vocation .
 
 
+###  http://null.com/star-wars#Sea_skiff
+star-wars:Sea_skiff rdf:type owl:Class ;
+                    rdfs:subClassOf star-wars:Skiff .
+
+
 ###  http://null.com/star-wars#Sector
 star-wars:Sector rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Celestial_Location ;
@@ -2563,7 +2569,15 @@ star-wars:Bail_Organa rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Barriss_Offee
 star-wars:Barriss_Offee rdf:type owl:NamedIndividual ,
-                                 star-wars:Mirialan ;
+                                 star-wars:Mirialan ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:connectedTo ;
+                                   owl:someValuesFrom star-wars:The_Force
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:hadRole ;
+                                   owl:someValuesFrom star-wars:Padawan
+                                 ] ;
                         star-wars:friendsWith star-wars:Ahsoka_Tano ;
                         star-wars:trainedBy star-wars:Luminara_Unduli ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Barriss_Offee"^^xsd:anyURI .
@@ -3826,22 +3840,22 @@ star-wars:Derriphan rdf:type owl:NamedIndividual ,
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Derriphan"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Destroying_nav_tower_Exegol
-star-wars:Destroying_nav_tower_Exegol rdf:type owl:NamedIndividual ,
-                                               star-wars:Fight ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty star-wars:participant ;
-                                                 owl:someValuesFrom star-wars:Orbak
-                                               ] ;
-                                      star-wars:destructionOf star-wars:Steadfast ;
-                                      star-wars:during star-wars:Battle_of_Exegol ;
-                                      star-wars:location star-wars:Exegol ,
-                                                         star-wars:Steadfast ;
-                                      star-wars:participant star-wars:BB-8 ,
-                                                            star-wars:Finn ,
-                                                            star-wars:Jannah ;
-                                      star-wars:year 35 ;
-                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Exegol_landing_team"^^xsd:anyURI .
+###  http://null.com/star-wars#Destroying_Steadfast_nav_tower
+star-wars:Destroying_Steadfast_nav_tower rdf:type owl:NamedIndividual ,
+                                                  star-wars:Fight ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty star-wars:participant ;
+                                                    owl:someValuesFrom star-wars:Orbak
+                                                  ] ;
+                                         star-wars:destructionOf star-wars:Steadfast ;
+                                         star-wars:during star-wars:Battle_of_Exegol ;
+                                         star-wars:location star-wars:Exegol ,
+                                                            star-wars:Steadfast ;
+                                         star-wars:participant star-wars:BB-8 ,
+                                                               star-wars:Finn ,
+                                                               star-wars:Jannah ;
+                                         star-wars:year 35 ;
+                                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Exegol_landing_team"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Destruction_of_Kijimi
@@ -5016,6 +5030,7 @@ star-wars:Hux_Execution rdf:type owl:NamedIndividual ,
                                    owl:onProperty star-wars:participant ;
                                    owl:hasValue star-wars:First_Order
                                  ] ;
+                        star-wars:during star-wars:Rescue_of_Chewbacca ;
                         star-wars:killingOf star-wars:Armitage_Hux ;
                         star-wars:location star-wars:Steadfast ;
                         star-wars:year 35 ;
@@ -6946,6 +6961,21 @@ star-wars:Razor_Crest rdf:type owl:NamedIndividual ,
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Razor_Crest"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Read_C-3POs_Mind
+star-wars:Read_C-3POs_Mind rdf:type owl:NamedIndividual ,
+                                    star-wars:Mission ;
+                           star-wars:injuryOf star-wars:C-3PO ;
+                           star-wars:location star-wars:Kijimi ;
+                           star-wars:participant star-wars:Babu_Frik ,
+                                                 star-wars:D-0 ,
+                                                 star-wars:Finn ,
+                                                 star-wars:Poe_Dameron ,
+                                                 star-wars:Rey ,
+                                                 star-wars:Zorii_Bliss ;
+                           star-wars:year 35 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker#A_new_mission"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Rebel_Alliance
 star-wars:Rebel_Alliance rdf:type owl:NamedIndividual ,
                                   star-wars:Military_Unit ;
@@ -6996,6 +7026,29 @@ star-wars:Republic_Navy rdf:type owl:NamedIndividual ,
                                  star-wars:Military_Unit ;
                         star-wars:memberOf star-wars:Galactic_Republic ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Galactic_Republic_Navy"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rescue_of_Chewbacca
+star-wars:Rescue_of_Chewbacca rdf:type owl:NamedIndividual ,
+                                       star-wars:Rescue ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                              owl:onProperty star-wars:hadRole ;
+                                                              owl:someValuesFrom star-wars:StormTrooper
+                                                            ]
+                                       ] ;
+                              star-wars:escapeOf star-wars:Chewbacca ,
+                                                 star-wars:Millenium_Falcon ;
+                              star-wars:injuryOf star-wars:Armitage_Hux ,
+                                                 star-wars:Poe_Dameron ;
+                              star-wars:location star-wars:Steadfast ;
+                              star-wars:participant star-wars:BB-8 ,
+                                                    star-wars:C-3PO ,
+                                                    star-wars:D-0 ,
+                                                    star-wars:Finn ;
+                              star-wars:year 35 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker#Rescuing_Chewbacca"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rescue_of_Echo
@@ -7058,6 +7111,41 @@ star-wars:Resistance_base_Ajan_Kloss rdf:type owl:NamedIndividual ,
                                      star-wars:builtBy star-wars:Resistance ;
                                      star-wars:location star-wars:Ajan_Kloss ;
                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Resistance_base_(Ajan_Kloss)"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Retrieving_Palpatines_Wayfinder
+star-wars:Retrieving_Palpatines_Wayfinder rdf:type owl:NamedIndividual ,
+                                                   star-wars:Mission ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:destructionOf ;
+                                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Wayfinder
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty star-wars:location ;
+                                                                                                 owl:hasValue star-wars:Emperors_Throne_Room
+                                                                                               ]
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty star-wars:ownedBy ;
+                                                                                                 owl:hasValue star-wars:Darth_Sidious
+                                                                                               ]
+                                                                                             ) ;
+                                                                          rdf:type owl:Class
+                                                                        ]
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:participant ;
+                                                     owl:someValuesFrom star-wars:Orbak
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:participant ;
+                                                     owl:someValuesFrom star-wars:Sea_skiff
+                                                   ] ;
+                                          star-wars:location star-wars:Kef_Bir ;
+                                          star-wars:participant star-wars:Finn ,
+                                                                star-wars:Jannah ,
+                                                                star-wars:Kylo_Ren ,
+                                                                star-wars:Rey ;
+                                          star-wars:year 35 ;
+                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker#Mission_to_Kef_Bir"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Retrieving_Vaders_Wayfinder
@@ -7197,15 +7285,40 @@ star-wars:Rey_meets_Luke rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Rey_vs_Kylo_DeathStar
 star-wars:Rey_vs_Kylo_DeathStar rdf:type owl:NamedIndividual ,
-                                         star-wars:Duel ;
+                                         star-wars:Duel ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty star-wars:participant ;
+                                           owl:someValuesFrom [ owl:intersectionOf ( star-wars:The_Force
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty star-wars:connectedTo ;
+                                                                                       owl:hasValue star-wars:Leia_Organa
+                                                                                     ]
+                                                                                   ) ;
+                                                                rdf:type owl:Class
+                                                              ]
+                                         ] ;
                                 star-wars:deathOf star-wars:Kylo_Ren ;
+                                star-wars:during star-wars:Retrieving_Palpatines_Wayfinder ;
                                 star-wars:location star-wars:Death_Star_Ruins ;
                                 star-wars:participant star-wars:Leia_Organa ;
                                 star-wars:survivedBy star-wars:Ben_Solo ;
                                 star-wars:victoryOf star-wars:Rey ;
-                                star-wars:witnessedBy star-wars:Finn ;
+                                star-wars:witnessedBy star-wars:Finn ,
+                                                      star-wars:Jannah ;
                                 star-wars:year 35 ;
                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Ben_Solo#The_last_duel"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rey_vs_Kylo_Kijimi
+star-wars:Rey_vs_Kylo_Kijimi rdf:type owl:NamedIndividual ,
+                                      star-wars:Duel ;
+                             star-wars:during star-wars:Rescue_of_Chewbacca ;
+                             star-wars:location star-wars:Kijimi ,
+                                                star-wars:Steadfast ;
+                             star-wars:participant star-wars:Kylo_Ren ,
+                                                   star-wars:Rey ;
+                             star-wars:year 35 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker#Glimpses_of_Rey.27s_past"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rogue_One
@@ -8698,24 +8811,6 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
 #################################################################
 #    General axioms
 #################################################################
-
-[ owl:intersectionOf ( star-wars:Sentient
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty star-wars:hadRole ;
-                         owl:someValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( star-wars:Jedi
-                                                            star-wars:Sith
-                                                          )
-                                            ]
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty star-wars:connectedTo ;
-                    owl:someValuesFrom star-wars:The_Force
-                  ]
-] .
-
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( star-wars:Event

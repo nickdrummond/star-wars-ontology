@@ -39,7 +39,7 @@ Review all properties:
     * Ep 6 done
     * Ep 7 done
     * Ep 8 done
-    * Ep 9 partial - Murder inf = 20s - should be 13s
+    * Ep 9 done
     * Rebel One partial - revise space battle over Scariff
     * Solo - escape from Corellia, train heist, Game - lando (falcon)
 

@@ -1,5 +1,8 @@
 Todo
 
+* Improve classification times
+
+
 * do we want useful defs like StormTrooper == hadRole some (Soldier and inOrg ...)?
   doesn't work for parts of org - ie doesn't catch Rex etc/ bad batch
   hadRole some (Soldier and inOrganisation value Grand_Army_of_the_Republic)
@@ -56,8 +59,6 @@ It feels like we shouldn't need to retract facts really over time as new content
 For a start, it grinds the reasoner to a halt
 
 * Homeworld for each species - might add a lot of places that aren't interesting in any other way
-
-* Male and female? Not that important but would help with brother/sister/mother/father
 
 * We can add images in seeAlso - jpg extension on anyURI. But, cannot manage copyright and hot loading
 eg from Star Wars databank https://lumiere-a.akamaihd.net/v1/images/databank_zygerria_01_169_5cdad909.jpeg

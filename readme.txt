@@ -43,6 +43,12 @@ Review all properties:
     * Rebel One partial - revise space battle over Scariff
     * Solo - escape from Corellia, train heist, Game - lando (falcon)
 
+* Force Ghosts/Connections
+participant some (Force_spirit and (connectedTo value Obi-Wan_Kenobi))
+participant some (The_Force and (connectedTo value Leia_Organa))
+
+* Revise classification of living things - sentience makes it difficult to classify by type (eg Reptile)
+
 * Previous/next for events? What about overlap and will always need changing when "gaps" are filled in
 It feels like we shouldn't need to retract facts really over time as new content comes out
 

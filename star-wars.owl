@@ -172,7 +172,8 @@ star-wars:hadRole rdf:type owl:ObjectProperty ;
 ###  http://null.com/star-wars#hasTerrain
 star-wars:hasTerrain rdf:type owl:ObjectProperty ;
                      rdfs:domain [ rdf:type owl:Class ;
-                                   owl:unionOf ( star-wars:Moon
+                                   owl:unionOf ( star-wars:Asteroid
+                                                 star-wars:Moon
                                                  star-wars:Planet
                                                )
                                  ] ;
@@ -320,7 +321,7 @@ star-wars:participant rdf:type owl:ObjectProperty ;
                                    owl:unionOf ( star-wars:Living_thing
                                                  star-wars:Object
                                                  star-wars:Organisation
-                                                 star-wars:Ship
+                                                 star-wars:Place
                                                  star-wars:The_Force
                                                )
                                  ] .
@@ -536,7 +537,8 @@ star-wars:Arachnid rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Army
 star-wars:Army rdf:type owl:Class ;
-               rdfs:subClassOf star-wars:Organisation .
+               rdfs:subClassOf star-wars:Military_Unit ;
+               owl:disjointWith star-wars:Cell .
 
 
 ###  http://null.com/star-wars#Assassin
@@ -582,6 +584,11 @@ star-wars:B1 rdf:type owl:Class ;
 star-wars:B2_super_battle_droid rdf:type owl:Class ;
                                 rdfs:subClassOf star-wars:Battle_Droid ;
                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/B2-series_super_battle_droid"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Band
+star-wars:Band rdf:type owl:Class ;
+               rdfs:subClassOf star-wars:Organisation .
 
 
 ###  http://null.com/star-wars#Bantha
@@ -700,7 +707,7 @@ star-wars:Celestial_Location rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Cell
 star-wars:Cell rdf:type owl:Class ;
-               rdfs:subClassOf star-wars:Organisation .
+               rdfs:subClassOf star-wars:Military_Unit .
 
 
 ###  http://null.com/star-wars#Cephalopod
@@ -775,6 +782,11 @@ star-wars:Convor rdf:type owl:Class ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Convor"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Council
+star-wars:Council rdf:type owl:Class ;
+                  rdfs:subClassOf star-wars:Organisation .
+
+
 ###  http://null.com/star-wars#Creature
 star-wars:Creature rdf:type owl:Class ;
                    rdfs:subClassOf star-wars:Living_thing .
@@ -812,7 +824,8 @@ star-wars:Dark_Lord rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Dark_Side
 star-wars:Dark_Side rdf:type owl:Class ;
-                    rdfs:subClassOf star-wars:The_Force .
+                    rdfs:subClassOf star-wars:The_Force ;
+                    owl:disjointWith star-wars:Light_Side .
 
 
 ###  http://null.com/star-wars#Desert
@@ -888,6 +901,12 @@ star-wars:Dyad rdf:type owl:Class ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Force_dyad"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Ecumenopolis
+star-wars:Ecumenopolis rdf:type owl:Class ;
+                       rdfs:subClassOf star-wars:Habitat ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Ecumenopolis"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Elite_Praetorian_Guard
 star-wars:Elite_Praetorian_Guard rdf:type owl:Class ;
                                  rdfs:subClassOf star-wars:Guard .
@@ -951,6 +970,10 @@ star-wars:Farmer rdf:type owl:Class ;
 star-wars:Fathier rdf:type owl:Class ;
                   rdfs:subClassOf star-wars:Mammal ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Fathier"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Feature
+star-wars:Feature rdf:type owl:Class .
 
 
 ###  http://null.com/star-wars#Female
@@ -1018,6 +1041,11 @@ star-wars:Gamorrean rdf:type owl:Class ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Gamorrean"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Gang
+star-wars:Gang rdf:type owl:Class ;
+               rdfs:subClassOf star-wars:Organisation .
+
+
 ###  http://null.com/star-wars#Garbage_Compactor
 star-wars:Garbage_Compactor rdf:type owl:Class ;
                             rdfs:subClassOf star-wars:Facility .
@@ -1029,7 +1057,10 @@ star-wars:Gas rdf:type owl:Class ;
 
 
 ###  http://null.com/star-wars#Gender
-star-wars:Gender rdf:type owl:Class .
+star-wars:Gender rdf:type owl:Class ;
+                 rdfs:subClassOf star-wars:Feature ;
+                 owl:disjointWith star-wars:Role ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Gender"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#General
@@ -1675,6 +1706,12 @@ star-wars:Region rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Celestial_Location .
 
 
+###  http://null.com/star-wars#Religious_Order
+star-wars:Religious_Order rdf:type owl:Class ;
+                          rdfs:subClassOf star-wars:Organisation ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Religion"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Reptile
 star-wars:Reptile rdf:type owl:Class ;
                   rdfs:subClassOf star-wars:Creature ;
@@ -1720,7 +1757,8 @@ star-wars:Rokkna rdf:type owl:Class ;
 
 
 ###  http://null.com/star-wars#Role
-star-wars:Role rdf:type owl:Class .
+star-wars:Role rdf:type owl:Class ;
+               rdfs:subClassOf star-wars:Feature .
 
 
 ###  http://null.com/star-wars#Sandcrawler
@@ -1922,11 +1960,6 @@ star-wars:Tauntaun rdf:type owl:Class ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Tauntaun"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Team
-star-wars:Team rdf:type owl:Class ;
-               rdfs:subClassOf star-wars:Organisation .
-
-
 ###  http://null.com/star-wars#Temple
 star-wars:Temple rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Building .
@@ -2097,7 +2130,8 @@ star-wars:Water rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Wayfinder
 star-wars:Wayfinder rdf:type owl:Class ;
-                    rdfs:subClassOf star-wars:Object .
+                    rdfs:subClassOf star-wars:Object ;
+                    owl:disjointWith star-wars:Weapon .
 
 
 ###  http://null.com/star-wars#Weapon
@@ -2263,7 +2297,7 @@ star-wars:Aayla_Secura rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Ace_Squadron
 star-wars:Ace_Squadron rdf:type owl:NamedIndividual ,
-                                star-wars:Organisation ;
+                                star-wars:Military_Unit ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Ace_Squadron"^^xsd:anyURI .
 
 
@@ -2385,7 +2419,7 @@ star-wars:Ajan_Kloss rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Alazmec_of_Winsit
 star-wars:Alazmec_of_Winsit rdf:type owl:NamedIndividual ,
-                                     star-wars:Organisation ,
+                                     star-wars:Religious_Order ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty star-wars:alliedWith ;
                                        owl:someValuesFrom star-wars:Sith
@@ -2756,7 +2790,7 @@ star-wars:Babu_Frik rdf:type owl:NamedIndividual ,
                                owl:someValuesFrom star-wars:Droidsmith
                              ] ;
                     star-wars:from star-wars:Kijimi ;
-                    star-wars:memberOf <http://null.com/star-wars#Citizen's_Fleet> ;
+                    star-wars:memberOf star-wars:Citizens_Fleet ;
                     star-wars:born -50 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Babu_Frik"^^xsd:anyURI .
 
@@ -2949,7 +2983,7 @@ star-wars:Battle_of_Exegol rdf:type owl:NamedIndividual ,
                                                    star-wars:Tantive_IV ;
                            star-wars:location star-wars:Exegol ;
                            star-wars:participant star-wars:Resistance ;
-                           star-wars:victoryOf <http://null.com/star-wars#Citizen's_Fleet> ;
+                           star-wars:victoryOf star-wars:Citizens_Fleet ;
                            star-wars:year 35 ;
                            rdfs:comment """\"Where did they get all these fighter craft? They have no navy.\"
 \"It's not a navy, sir, it's just… people.\"""" ;
@@ -3646,7 +3680,7 @@ star-wars:Chewbacca rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Children_of_the_Watch
 star-wars:Children_of_the_Watch rdf:type owl:NamedIndividual ,
-                                         star-wars:Organisation ;
+                                         star-wars:Religious_Order ;
                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Children_of_the_Watch"^^xsd:anyURI .
 
 
@@ -3687,6 +3721,12 @@ star-wars:Cid rdf:type owl:NamedIndividual ,
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Cid"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Citizens_Fleet
+star-wars:Citizens_Fleet rdf:type owl:NamedIndividual ,
+                                  star-wars:Military_Unit ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Citizens%27_fleet"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Clone_Flight_Seven
 star-wars:Clone_Flight_Seven rdf:type owl:NamedIndividual ,
                                       star-wars:Military_Unit ;
@@ -3695,7 +3735,7 @@ star-wars:Clone_Flight_Seven rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Cloud-Riders
 star-wars:Cloud-Riders rdf:type owl:NamedIndividual ,
-                                star-wars:Organisation ;
+                                star-wars:Gang ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Cloud-Riders"^^xsd:anyURI .
 
 
@@ -3708,7 +3748,7 @@ star-wars:Cloud_City rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Cloud_City_Administrators
 star-wars:Cloud_City_Administrators rdf:type owl:NamedIndividual ,
-                                             star-wars:Organisation ;
+                                             star-wars:Council ;
                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Cloud_City#Government"^^xsd:anyURI .
 
 
@@ -3792,7 +3832,7 @@ star-wars:Coruscant rdf:type owl:NamedIndividual ,
                              star-wars:Planet ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty star-wars:hasTerrain ;
-                               owl:someValuesFrom star-wars:City
+                               owl:someValuesFrom star-wars:Ecumenopolis
                              ] ;
                     star-wars:location star-wars:Core_Worlds ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Coruscant"^^xsd:anyURI .
@@ -4123,7 +4163,7 @@ star-wars:Death_Star_Ruins rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Death_Watch
 star-wars:Death_Watch rdf:type owl:NamedIndividual ,
-                               star-wars:Organisation ;
+                               star-wars:Gang ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Death_Watch"^^xsd:anyURI .
 
 
@@ -4288,7 +4328,7 @@ star-wars:Dooku_vs_3_Jedi rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Droid_Army
 star-wars:Droid_Army rdf:type owl:NamedIndividual ,
-                              star-wars:Military_Unit ,
+                              star-wars:Army ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty star-wars:hadMember ;
                                 owl:someValuesFrom star-wars:Battle_Droid
@@ -4797,6 +4837,13 @@ star-wars:Fifth_Brother rdf:type owl:NamedIndividual ,
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Fifth_Brother"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Figrin_Dan_and_the_Modal_Nodes
+star-wars:Figrin_Dan_and_the_Modal_Nodes rdf:type owl:NamedIndividual ,
+                                                  star-wars:Band ;
+                                         star-wars:location star-wars:Cantina ;
+                                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Figrin_D%27an_and_the_Modal_Nodes"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Final_Order
 star-wars:Final_Order rdf:type owl:NamedIndividual ,
                                star-wars:Dictatorship ;
@@ -5097,7 +5144,7 @@ star-wars:Gonky rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Grand_Army_of_the_Republic
 star-wars:Grand_Army_of_the_Republic rdf:type owl:NamedIndividual ,
-                                              star-wars:Military_Unit ;
+                                              star-wars:Army ;
                                      star-wars:memberOf star-wars:Galactic_Republic ;
                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Grand_Army_of_the_Republic"^^xsd:anyURI .
 
@@ -5251,7 +5298,7 @@ star-wars:Grogu rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Guardians_of_the_Whills
 star-wars:Guardians_of_the_Whills rdf:type owl:NamedIndividual ,
-                                           star-wars:Organisation ;
+                                           star-wars:Religious_Order ;
                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Guardians_of_the_Whills"^^xsd:anyURI .
 
 
@@ -5398,7 +5445,7 @@ star-wars:Hosnian_Prime rdf:type owl:NamedIndividual ,
                                  star-wars:Planet ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty star-wars:hasTerrain ;
-                                   owl:someValuesFrom star-wars:City
+                                   owl:someValuesFrom star-wars:Ecumenopolis
                                  ] ;
                         star-wars:location star-wars:Core_Worlds ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Hosnian_Prime"^^xsd:anyURI .
@@ -5725,7 +5772,7 @@ star-wars:Jedha_City rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Jedi_High_Council
 star-wars:Jedi_High_Council rdf:type owl:NamedIndividual ,
-                                     star-wars:Organisation ;
+                                     star-wars:Council ;
                             star-wars:location star-wars:Jedi_Temple ;
                             star-wars:memberOf star-wars:Jedi_Order ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi_High_Council"^^xsd:anyURI .
@@ -5733,7 +5780,7 @@ star-wars:Jedi_High_Council rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Jedi_Order
 star-wars:Jedi_Order rdf:type owl:NamedIndividual ,
-                              star-wars:Organisation ;
+                              star-wars:Religious_Order ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi_Order"^^xsd:anyURI .
 
 
@@ -5899,7 +5946,7 @@ star-wars:Kazuda_Xiono rdf:type owl:NamedIndividual ,
                        star-wars:friendsWith star-wars:Tamara_Ryvora ;
                        star-wars:from star-wars:Hosnian_Prime ;
                        star-wars:livedIn star-wars:Colossus ;
-                       star-wars:memberOf <http://null.com/star-wars#Citizen's_Fleet> ;
+                       star-wars:memberOf star-wars:Citizens_Fleet ;
                        star-wars:trainedBy star-wars:Jarek_Yeager ,
                                            star-wars:Poe_Dameron ;
                        star-wars:born 14 ;
@@ -5987,7 +6034,7 @@ star-wars:Kit_Fisto rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Knights_of_Ren
 star-wars:Knights_of_Ren rdf:type owl:NamedIndividual ,
-                                  star-wars:Organisation ;
+                                  star-wars:Gang ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Knights_of_Ren"^^xsd:anyURI .
 
 
@@ -6537,7 +6584,8 @@ star-wars:Maul_vs_Vizsla rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Max_Rebo_Band
 star-wars:Max_Rebo_Band rdf:type owl:NamedIndividual ,
-                                 star-wars:Organisation ;
+                                 star-wars:Band ;
+                        star-wars:location <http://null.com/star-wars#Jabba's_Palace> ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Max_Rebo_Band"^^xsd:anyURI .
 
 
@@ -6750,7 +6798,7 @@ star-wars:Mos_Espa rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Mudhorn_Clan
 star-wars:Mudhorn_Clan rdf:type owl:NamedIndividual ,
-                                star-wars:Organisation ;
+                                star-wars:Gang ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Clan_Mudhorn"^^xsd:anyURI .
 
 
@@ -6880,7 +6928,7 @@ star-wars:Nien_Nunb rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Night_Sisters
 star-wars:Night_Sisters rdf:type owl:NamedIndividual ,
-                                 star-wars:Organisation ;
+                                 star-wars:Religious_Order ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Nightsisters"^^xsd:anyURI .
 
 
@@ -8443,9 +8491,15 @@ star-wars:Sinta_Glacier_Colony rdf:type owl:NamedIndividual ,
                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Sinta_Glacier_Colony"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Sith_Eternal
+star-wars:Sith_Eternal rdf:type owl:NamedIndividual ,
+                                star-wars:Religious_Order ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Religion"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Sith_Order
 star-wars:Sith_Order rdf:type owl:NamedIndividual ,
-                              star-wars:Organisation ;
+                              star-wars:Religious_Order ;
                      star-wars:inConflictWith star-wars:Jedi_Order ;
                      rdfs:comment "There can be only 2? Probably not logically consistent" ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Sith"^^xsd:anyURI .
@@ -9515,7 +9569,7 @@ star-wars:Zorii_Bliss rdf:type owl:NamedIndividual ,
                                ] ;
                       star-wars:friendsWith star-wars:Poe_Dameron ;
                       star-wars:from star-wars:Kijimi ;
-                      star-wars:memberOf <http://null.com/star-wars#Citizen's_Fleet> ;
+                      star-wars:memberOf star-wars:Citizens_Fleet ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Zorii_Bliss"^^xsd:anyURI .
 
 
@@ -9601,12 +9655,6 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
                                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_D%27Qar"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Citizen's_Fleet
-<http://null.com/star-wars#Citizen's_Fleet> rdf:type owl:NamedIndividual ,
-                                                     star-wars:Organisation ;
-                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Citizens%27_fleet"^^xsd:anyURI .
-
-
 ###  http://null.com/star-wars#D'Qar
 <http://null.com/star-wars#D'Qar> rdf:type owl:NamedIndividual ,
                                            star-wars:Planet ,
@@ -9669,14 +9717,194 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( star-wars:Event
-                star-wars:Gender
+  owl:members ( star-wars:A-Wing
+                star-wars:B-Wing
+                star-wars:Tie_Fighter
+                star-wars:X-Wing
+                star-wars:Y-Wing
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:AAL
+                star-wars:Blockade_Runner
+                star-wars:Bomber
+                star-wars:Capital_Ship
+                star-wars:Freighter
+                star-wars:Gunship
+                star-wars:Refueling_Station
+                star-wars:Shuttle
+                star-wars:StarFighter
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:AT-AT
+                star-wars:AT-ST
+                star-wars:AT-TE
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Asteroid
+                star-wars:Asteroid_field
+                star-wars:Moon
+                star-wars:Planet
+                star-wars:Region
+                star-wars:Sector
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Attack
+                star-wars:Birth
+                star-wars:Capture
+                star-wars:Confrontation
+                star-wars:Escape
+                star-wars:Fight
+                star-wars:Mission
+                star-wars:Murder
+                star-wars:Race
+                star-wars:Rescue
+                star-wars:Training
+                star-wars:Wedding
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Band
+                star-wars:Council
+                star-wars:Crime_Syndicate
+                star-wars:Gang
+                star-wars:Guild
+                star-wars:Military_Unit
+                star-wars:Political_Organisation
+                star-wars:Religious_Order
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Base
+                star-wars:Building
+                star-wars:City
+                star-wars:Facility
+                star-wars:Village
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Built_Location
+                star-wars:Celestial_Location
+                star-wars:Habitat
+                star-wars:Hyperspace
+                star-wars:Space
+                star-wars:Vehicle
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Creature
+                star-wars:Semi-sentient
+                star-wars:Sentient
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Crime_Syndicate
+                star-wars:Guild
+                star-wars:Military_Unit
+                star-wars:Political_Organisation
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Desert
+                star-wars:Ecumenopolis
+                star-wars:Forest
+                star-wars:Gas
+                star-wars:Ice
+                star-wars:Lava_fields
+                star-wars:Mesa
+                star-wars:Mountains
+                star-wars:Plains
+                star-wars:Rocky
+                star-wars:Swamp
+                star-wars:Tropical
+                star-wars:Tundra
+                star-wars:Volcanoes
+                star-wars:Water
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Detention_Block
+                star-wars:Garbage_Compactor
+                star-wars:Shield_Generator
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Dreadnought
+                star-wars:Star_Cruiser
+                star-wars:Star_Destroyer
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Feature
                 star-wars:Living_thing
                 star-wars:Object
                 star-wars:Organisation
                 star-wars:Place
-                star-wars:Role
                 star-wars:The_Force
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Imperial-class_Star_Destroyer
+                star-wars:Resurgent-class_Star_Destroyer
+                star-wars:Venator-class_Star_Destroyer
+                star-wars:Xyston-class_Star_Destroyer
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Land_Vehicle
+                star-wars:Repulsorcraft
+                star-wars:Ship
+                star-wars:Space_Station
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Podracer
+                star-wars:Skiff
+                star-wars:Snowspeeder
+                star-wars:Speeder
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Sandcrawler
+                star-wars:Superlaser_siege_cannon
+                star-wars:Walker
               )
 ] .
 

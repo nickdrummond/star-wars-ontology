@@ -34,15 +34,6 @@ Review all properties:
 * visited only used once - useful?
 
 * First round of events for each film
-    * Ep 1 done
-    * Ep 2 done
-    * Ep 3 done
-    * Ep 4 done
-    * Ep 5 done
-    * Ep 6 done
-    * Ep 7 done
-    * Ep 8 done
-    * Ep 9 done
     * Rebel One partial - revise space battle over Scariff
     * Solo - escape from Corellia, train heist, Game - lando (falcon)
 
@@ -61,6 +52,7 @@ For a start, it grinds the reasoner to a halt
 * Homeworld for each species - might add a lot of places that aren't interesting in any other way
 
 * We can add images in seeAlso - jpg extension on anyURI. But, cannot manage copyright and hot loading
+Unfortunately, probably no pattern to generate automatically
 eg from Star Wars databank https://lumiere-a.akamaihd.net/v1/images/databank_zygerria_01_169_5cdad909.jpeg
 
 * Can we have ABY/BBY instead of int as custom datatype?

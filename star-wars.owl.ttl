@@ -2039,6 +2039,11 @@ star-wars:Tusken_Raider rdf:type owl:Class ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Tusken_Raider"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#U-Wing
+star-wars:U-Wing rdf:type owl:Class ;
+                 rdfs:subClassOf star-wars:StarFighter .
+
+
 ###  http://null.com/star-wars#Ugnaught
 star-wars:Ugnaught rdf:type owl:Class ;
                    rdfs:subClassOf star-wars:Humanoid ;
@@ -2231,58 +2236,6 @@ star-wars:Zygerrian rdf:type owl:Class ;
 #################################################################
 #    Individuals
 #################################################################
-
-###  http://null.com/star-wars#Chirrut_Îmwe
-<http://null.com/star-wars#Chirrut_Îmwe> rdf:type owl:NamedIndividual ,
-                                        star-wars:Human ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty star-wars:gender ;
-                                          owl:someValuesFrom star-wars:Male
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty star-wars:hadRole ;
-                                          owl:someValuesFrom [ owl:intersectionOf ( star-wars:Monk
-                                                                                    [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty star-wars:inOrganisation ;
-                                                                                      owl:hasValue star-wars:Guardians_of_the_Whills
-                                                                                    ]
-                                                                                  ) ;
-                                                               rdf:type owl:Class
-                                                             ]
-                                        ] ;
-                               star-wars:from star-wars:Jedha ;
-                               star-wars:memberOf star-wars:Rogue_One ;
-                               star-wars:year -52 ;
-                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Chirrut_%C3%8Emwe"^^xsd:anyURI .
-
-
-###  http://null.com/star-wars#Qi'ra
-<http://null.com/star-wars#Qi'ra> rdf:type owl:NamedIndividual ,
-                                 star-wars:Human ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty star-wars:gender ;
-                                   owl:someValuesFrom star-wars:Female
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty star-wars:hadRole ;
-                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:Thief
-                                                                             [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty star-wars:inOrganisation ;
-                                                                               owl:hasValue star-wars:White_Worms
-                                                                             ]
-                                                                           ) ;
-                                                        rdf:type owl:Class
-                                                      ]
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty star-wars:memberOf ;
-                                   owl:hasValue star-wars:Crimson_Dawn
-                                 ] ;
-                        star-wars:from star-wars:Corellia ;
-                        star-wars:loved star-wars:Han_Solo ;
-                        star-wars:born -31 ;
-                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Qi%27ra"^^xsd:anyURI .
-
 
 ###  http://null.com/star-wars#Aayla_Secura
 star-wars:Aayla_Secura rdf:type owl:NamedIndividual ,
@@ -3064,10 +3017,10 @@ star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
                                     ] ;
                            star-wars:deathOf star-wars:Raddus ;
                            star-wars:destructionOf star-wars:MC75_Profundity ;
-                           star-wars:killingOf <http://null.com/star-wars#Chirrut_Îmwe> ,
-                                               star-wars:Baze_Malbus ,
+                           star-wars:killingOf star-wars:Baze_Malbus ,
                                                star-wars:Bodhi_Rook ,
                                                star-wars:Cassian_Andor ,
+                                               star-wars:Chirrut_Îmwe ,
                                                star-wars:Jyn_Erso ,
                                                star-wars:K-2SO ,
                                                star-wars:Orson_Krennic ;
@@ -3171,7 +3124,7 @@ star-wars:Baze_Malbus rdf:type owl:NamedIndividual ,
                                  owl:onProperty star-wars:hadRole ;
                                  owl:someValuesFrom star-wars:Assassin
                                ] ;
-                      star-wars:friendsWith <http://null.com/star-wars#Chirrut_Îmwe> ;
+                      star-wars:friendsWith star-wars:Chirrut_Îmwe ;
                       star-wars:from star-wars:Jedha ;
                       star-wars:memberOf star-wars:Guardians_of_the_Whills ,
                                          star-wars:Rogue_One ;
@@ -3558,6 +3511,25 @@ star-wars:Cantonica rdf:type owl:NamedIndividual ,
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Cantonica"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Capture_of_Galen
+star-wars:Capture_of_Galen rdf:type owl:NamedIndividual ,
+                                    star-wars:Capture ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:killingOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty star-wars:daughter ;
+                                                           owl:hasValue star-wars:Jyn_Erso
+                                                         ]
+                                    ] ;
+                           star-wars:captureOf star-wars:Galen_Erso ;
+                           star-wars:escapeOf star-wars:Jyn_Erso ;
+                           star-wars:location star-wars:Lah_mu ;
+                           star-wars:participant star-wars:Orson_Krennic ,
+                                                 star-wars:Saw_Gerrera ;
+                           star-wars:year -13 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Galen_Walton_Erso#Time_on_Lah.27mu"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Capture_of_Tantive_IV
 star-wars:Capture_of_Tantive_IV rdf:type owl:NamedIndividual ,
                                          star-wars:Fight ,
@@ -3713,6 +3685,30 @@ star-wars:Chirpa rdf:type owl:NamedIndividual ,
                           ] ;
                  star-wars:from star-wars:Bright_Tree_Village ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Chirpa"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Chirrut_Îmwe
+star-wars:Chirrut_Îmwe rdf:type owl:NamedIndividual ,
+                                star-wars:Human ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:gender ;
+                                  owl:someValuesFrom star-wars:Male
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:hadRole ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( star-wars:Monk
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty star-wars:inOrganisation ;
+                                                                              owl:hasValue star-wars:Guardians_of_the_Whills
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       star-wars:from star-wars:Jedha ;
+                       star-wars:memberOf star-wars:Rogue_One ;
+                       star-wars:year -52 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Chirrut_%C3%8Emwe"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Cid
@@ -4394,6 +4390,17 @@ star-wars:Dune_Sea rdf:type owl:NamedIndividual ,
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Dune_Sea"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Eadu
+star-wars:Eadu rdf:type owl:NamedIndividual ,
+                        star-wars:Planet ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:hasTerrain ;
+                          owl:someValuesFrom star-wars:Rocky
+                        ] ;
+               star-wars:location star-wars:Outer_Rim ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Eadu"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Echo
 star-wars:Echo rdf:type owl:NamedIndividual ,
                         star-wars:Clone ,
@@ -4853,6 +4860,27 @@ star-wars:Fifth_Brother rdf:type owl:NamedIndividual ,
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Fifth_Brother"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Fight_on_Jedha
+star-wars:Fight_on_Jedha rdf:type owl:NamedIndividual ,
+                                  star-wars:Fight ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:killingOf ;
+                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                         owl:onProperty star-wars:hadRole ;
+                                                         owl:someValuesFrom star-wars:StormTrooper
+                                                       ]
+                                  ] ;
+                         star-wars:captureOf star-wars:Baze_Malbus ,
+                                             star-wars:Cassian_Andor ,
+                                             star-wars:Chirrut_Îmwe ,
+                                             star-wars:Jyn_Erso ;
+                         star-wars:location star-wars:Jedha_City ;
+                         star-wars:participant star-wars:K-2SO ,
+                                               star-wars:Saw_Gerrera ;
+                         star-wars:year 0 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Rogue_One:_A_Star_Wars_Story#Battle_on_Jedha"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Figrin_Dan_and_the_Modal_Nodes
 star-wars:Figrin_Dan_and_the_Modal_Nodes rdf:type owl:NamedIndividual ,
                                                   star-wars:Band ;
@@ -5038,6 +5066,16 @@ star-wars:Fortress_Vader rdf:type owl:NamedIndividual ,
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Fortress_Vader"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Freeing_of_Jyn
+star-wars:Freeing_of_Jyn rdf:type owl:NamedIndividual ,
+                                  star-wars:Rescue ;
+                         star-wars:escapeOf star-wars:Jyn_Erso ;
+                         star-wars:location star-wars:Wobani ;
+                         star-wars:participant star-wars:Rebel_Alliance ;
+                         star-wars:year 0 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Erso"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Freya_Fenris
 star-wars:Freya_Fenris rdf:type owl:NamedIndividual ,
                                 star-wars:Human ,
@@ -5097,8 +5135,9 @@ star-wars:Galen_Erso rdf:type owl:NamedIndividual ,
                                                      rdf:type owl:Class
                                                    ]
                               ] ;
+                     star-wars:livedIn star-wars:Eadu ,
+                                       star-wars:Lah_mu ;
                      star-wars:born -56 ;
-                     star-wars:diedInYear 0 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Galen_Walton_Erso"^^xsd:anyURI .
 
 
@@ -5418,9 +5457,25 @@ star-wars:Holdo_Maneuver rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Holy_City_Destruction
 star-wars:Holy_City_Destruction rdf:type owl:NamedIndividual ,
-                                         star-wars:Attack ;
+                                         star-wars:Attack ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty star-wars:participant ;
+                                           owl:someValuesFrom [ owl:intersectionOf ( star-wars:U-Wing
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty star-wars:ownedBy ;
+                                                                                       owl:hasValue star-wars:Rebel_Alliance
+                                                                                     ]
+                                                                                   ) ;
+                                                                rdf:type owl:Class
+                                                              ]
+                                         ] ;
                                 star-wars:destructionOf star-wars:Jedha_City ;
-                                star-wars:escapeOf star-wars:Jyn_Erso ;
+                                star-wars:escapeOf star-wars:Baze_Malbus ,
+                                                   star-wars:Bodhi_Rook ,
+                                                   star-wars:Cassian_Andor ,
+                                                   star-wars:Chirrut_Îmwe ,
+                                                   star-wars:Jyn_Erso ,
+                                                   star-wars:K-2SO ;
                                 star-wars:killingOf star-wars:Saw_Gerrera ;
                                 star-wars:location star-wars:Jedha ;
                                 star-wars:participant star-wars:Death_Star_1 ;
@@ -6138,6 +6193,17 @@ star-wars:L3-37 rdf:type owl:NamedIndividual ,
                 star-wars:location star-wars:Millenium_Falcon ;
                 star-wars:diedInYear -10 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/L3-37"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Lah_mu
+star-wars:Lah_mu rdf:type owl:NamedIndividual ,
+                          star-wars:Planet ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hasTerrain ;
+                            owl:someValuesFrom star-wars:Mountains
+                          ] ;
+                 star-wars:location star-wars:Outer_Rim ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Lah%27mu"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Lama_Su
@@ -8294,6 +8360,53 @@ star-wars:Scarif rdf:type owl:NamedIndividual ,
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Scarif"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Search_for_Galen
+star-wars:Search_for_Galen rdf:type owl:NamedIndividual ,
+                                    star-wars:Mission ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:found ;
+                                      owl:someValuesFrom star-wars:Shuttle
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:killingOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty star-wars:hadRole ;
+                                                           owl:someValuesFrom star-wars:Scientist
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:killingOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty star-wars:hadRole ;
+                                                           owl:someValuesFrom star-wars:StormTrooper
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                  owl:unionOf ( star-wars:X-Wing
+                                                                                                star-wars:Y-Wing
+                                                                                              )
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
+                                                                                  owl:hasValue star-wars:Rebel_Alliance
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           star-wars:escapeOf star-wars:Orson_Krennic ;
+                           star-wars:killingOf star-wars:Galen_Erso ;
+                           star-wars:location star-wars:Eadu ;
+                           star-wars:participant star-wars:Bodhi_Rook ,
+                                                 star-wars:Cassian_Andor ,
+                                                 star-wars:Jyn_Erso ,
+                                                 star-wars:K-2SO ;
+                           star-wars:year 0 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso#Encounter_on_Eadu"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Search_for_Luke
 star-wars:Search_for_Luke rdf:type owl:NamedIndividual ,
                                    star-wars:Rescue ,
@@ -9371,6 +9484,21 @@ star-wars:Wilhuff_Tarkin rdf:type owl:NamedIndividual ,
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Wilhuff_Tarkin"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Wobani
+star-wars:Wobani rdf:type owl:NamedIndividual ,
+                          star-wars:Planet ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hasTerrain ;
+                            owl:someValuesFrom star-wars:Hills
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hasTerrain ;
+                            owl:someValuesFrom star-wars:Rocky
+                          ] ;
+                 star-wars:location star-wars:Mid_Rim ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Wobani"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Wolffe
 star-wars:Wolffe rdf:type owl:NamedIndividual ,
                           star-wars:Clone ,
@@ -9720,6 +9848,34 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
                                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Sail_barge"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Qi'ra
+<http://null.com/star-wars#Qi'ra> rdf:type owl:NamedIndividual ,
+                                           star-wars:Human ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty star-wars:gender ;
+                                             owl:someValuesFrom star-wars:Female
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty star-wars:hadRole ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( star-wars:Thief
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty star-wars:inOrganisation ;
+                                                                                         owl:hasValue star-wars:White_Worms
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty star-wars:memberOf ;
+                                             owl:hasValue star-wars:Crimson_Dawn
+                                           ] ;
+                                  star-wars:from star-wars:Corellia ;
+                                  star-wars:loved star-wars:Han_Solo ;
+                                  star-wars:born -31 ;
+                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Qi%27ra"^^xsd:anyURI .
+
+
 ###  https://starwars.fandom.com/Bounty_Hunters'_Guild
 <https://starwars.fandom.com/Bounty_Hunters'_Guild> rdf:type owl:NamedIndividual ,
                                                              star-wars:Guild ;
@@ -9749,6 +9905,7 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
   owl:members ( star-wars:A-Wing
                 star-wars:B-Wing
                 star-wars:Tie_Fighter
+                star-wars:U-Wing
                 star-wars:X-Wing
                 star-wars:Y-Wing
               )
@@ -9957,5 +10114,6 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
                 star-wars:Walker
               )
 ] .
+
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -27,7 +27,7 @@ This works fine again in the simple case, but looks like Drools can't handle the
 
 
 
-* Improve classification times
+* Improve classification times - currently 24s for Murder inference
 
 * do we want useful defs like StormTrooper == hadRole some (Soldier and inOrg ...)?
   doesn't work for parts of org - ie doesn't catch Rex etc/ bad batch
@@ -60,7 +60,7 @@ Review all properties:
 * visited only used once - useful?
 
 * First round of events for each film
-    * Rebel One partial - revise space battle over Scariff
+    * Rogue One partial - revise space battle over Scariff
     * Solo - escape from Corellia, train heist, Game - lando (falcon)
 
 * Force Ghosts/Connections

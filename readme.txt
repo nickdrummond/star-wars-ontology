@@ -60,7 +60,6 @@ Review all properties:
 * visited only used once - useful?
 
 * First round of events for each film
-    * Rogue One partial - revise space battle over Scariff
     * Solo - escape from Corellia, train heist, Game - lando (falcon)
 
 * Force Ghosts/Connections

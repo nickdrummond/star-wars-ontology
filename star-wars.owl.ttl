@@ -640,7 +640,7 @@ star-wars:Blaster rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Blockade_Runner
 star-wars:Blockade_Runner rdf:type owl:Class ;
-                          rdfs:subClassOf star-wars:Ship .
+                          rdfs:subClassOf star-wars:Corvette .
 
 
 ###  http://null.com/star-wars#Bluurg
@@ -672,11 +672,6 @@ star-wars:Built_Location rdf:type owl:Class ;
 ###  http://null.com/star-wars#Buzz_Droid
 star-wars:Buzz_Droid rdf:type owl:Class ;
                      rdfs:subClassOf star-wars:Battle_Droid .
-
-
-###  http://null.com/star-wars#CR90_Corvette
-star-wars:CR90_Corvette rdf:type owl:Class ;
-                        rdfs:subClassOf star-wars:Blockade_Runner .
 
 
 ###  http://null.com/star-wars#Capital_Ship
@@ -780,6 +775,12 @@ star-wars:Confrontation rdf:type owl:Class ;
 star-wars:Convor rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Bird ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Convor"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Corvette
+star-wars:Corvette rdf:type owl:Class ;
+                   rdfs:subClassOf star-wars:Ship ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Corvette"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Council
@@ -1592,6 +1593,11 @@ star-wars:Plains rdf:type owl:Class ;
 ###  http://null.com/star-wars#Planet
 star-wars:Planet rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Celestial_Location .
+
+
+###  http://null.com/star-wars#Plans
+star-wars:Plans rdf:type owl:Class ;
+                rdfs:subClassOf star-wars:Object .
 
 
 ###  http://null.com/star-wars#Podracer
@@ -3004,28 +3010,69 @@ star-wars:Battle_of_Naboo rdf:type owl:NamedIndividual ,
 star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
                                     star-wars:Battle ,
                                     [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:destructionOf ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Star_Destroyer
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
+                                                                                  owl:hasValue star-wars:Galactic_Empire
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:destructionOf ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Tie_Fighter
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
+                                                                                  owl:hasValue star-wars:Galactic_Empire
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:destructionOf ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                  owl:unionOf ( star-wars:U-Wing
+                                                                                                star-wars:X-Wing
+                                                                                              )
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
+                                                                                  owl:hasValue star-wars:Rebel_Alliance
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Corvette
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
+                                                                                  owl:hasValue star-wars:Rebel_Alliance
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
                                       owl:onProperty star-wars:participant ;
                                       owl:hasValue star-wars:Galactic_Empire
                                     ] ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty star-wars:participant ;
                                       owl:hasValue star-wars:Rebel_Alliance
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:participant ;
-                                      owl:hasValue star-wars:Rogue_One
                                     ] ;
                            star-wars:deathOf star-wars:Raddus ;
-                           star-wars:destructionOf star-wars:MC75_Profundity ;
-                           star-wars:killingOf star-wars:Baze_Malbus ,
-                                               star-wars:Bodhi_Rook ,
-                                               star-wars:Cassian_Andor ,
-                                               star-wars:Chirrut_Îmwe ,
-                                               star-wars:Jyn_Erso ,
-                                               star-wars:K-2SO ,
-                                               star-wars:Orson_Krennic ;
+                           star-wars:destructionOf star-wars:Citadel_Tower ,
+                                                   star-wars:MC75_Profundity ,
+                                                   star-wars:Shield_Gate ;
+                           star-wars:escapeOf star-wars:Tantive_IV ;
                            star-wars:location star-wars:Scarif ;
-                           star-wars:participant star-wars:Death_Star_1 ;
+                           star-wars:participant star-wars:Death_Star_1 ,
+                                                 star-wars:Devastator ;
                            star-wars:year 0 ;
                            star-wars:todo "must be some way to say \"killed all members of rogue one\""^^xsd:anyURI ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Scarif"^^xsd:anyURI .
@@ -3733,6 +3780,14 @@ star-wars:Cid rdf:type owl:NamedIndividual ,
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Cid"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Citadel_Tower
+star-wars:Citadel_Tower rdf:type owl:NamedIndividual ,
+                                 star-wars:Building ;
+                        star-wars:builtBy star-wars:Galactic_Empire ;
+                        star-wars:location star-wars:Scarif ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Citadel_Tower"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Citizens_Fleet
 star-wars:Citizens_Fleet rdf:type owl:NamedIndividual ,
                                   star-wars:Military_Unit ;
@@ -4164,6 +4219,12 @@ star-wars:Death_Star_Garbage_Compactor rdf:type owl:NamedIndividual ,
                                                           star-wars:Luke_Skywalker ;
                                        star-wars:victoryOf star-wars:R2-D2 ;
                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Garbage_masher_3263827"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Death_Star_Plans
+star-wars:Death_Star_Plans rdf:type owl:NamedIndividual ,
+                                    star-wars:Plans ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Death_Star_plans"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Death_Star_Ruins
@@ -8541,6 +8602,14 @@ star-wars:Sheev_Palpatine rdf:type owl:NamedIndividual ,
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Shield_Gate
+star-wars:Shield_Gate rdf:type owl:NamedIndividual ,
+                               star-wars:Space_Station ;
+                      star-wars:location star-wars:Scarif ;
+                      star-wars:ownedBy star-wars:Galactic_Empire ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Shield_Gate"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Shmi_Skywalker
 star-wars:Shmi_Skywalker rdf:type owl:NamedIndividual ,
                                   star-wars:Human ,
@@ -8810,6 +8879,24 @@ star-wars:Steadfast rdf:type owl:NamedIndividual ,
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Steadfast_(Resurgent-class)"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Stealing_the_Death_Star_Plans
+star-wars:Stealing_the_Death_Star_Plans rdf:type owl:NamedIndividual ,
+                                                 star-wars:Mission ;
+                                        star-wars:during star-wars:Battle_of_Scarif ;
+                                        star-wars:found star-wars:Death_Star_Plans ;
+                                        star-wars:killingOf star-wars:Baze_Malbus ,
+                                                            star-wars:Bodhi_Rook ,
+                                                            star-wars:Cassian_Andor ,
+                                                            star-wars:Chirrut_Îmwe ,
+                                                            star-wars:Jyn_Erso ,
+                                                            star-wars:K-2SO ,
+                                                            star-wars:Orson_Krennic ;
+                                        star-wars:location star-wars:Citadel_Tower ;
+                                        star-wars:participant star-wars:Rogue_One ;
+                                        star-wars:year 0 ;
+                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso#Infiltrating_the_Citadel"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Supremacy
 star-wars:Supremacy rdf:type owl:NamedIndividual ,
                              star-wars:Dreadnought ;
@@ -8948,7 +9035,7 @@ star-wars:Tamara_Ryvora rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Tantive_IV
 star-wars:Tantive_IV rdf:type owl:NamedIndividual ,
-                              star-wars:CR90_Corvette ;
+                              star-wars:Blockade_Runner ;
                      star-wars:ownedBy star-wars:Leia_Organa ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Tantive_IV"^^xsd:anyURI .
 

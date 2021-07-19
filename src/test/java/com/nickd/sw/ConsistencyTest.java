@@ -23,7 +23,7 @@ public class ConsistencyTest extends TestCase {
         TestSetup setup = new TestSetup(new TestSuite(ConsistencyTest.class)) {
             protected void setUp(  ) throws Exception {
                 OWLOntologyManager mngr = new OWLManager().get();
-                File starwarsOwl = new File("star-wars.owl");
+                File starwarsOwl = new File("star-wars.owl.ttl");
                 OWLOntology ont = mngr.loadOntologyFromOntologyDocument(starwarsOwl);
                 Configuration conf = new Configuration();
                 long start = System.currentTimeMillis();

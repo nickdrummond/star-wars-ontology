@@ -54,13 +54,9 @@ This works fine again in the simple case, but looks like Drools can't handle the
 
 Maybe not - maybe it should be the reverse - Nien Numb was a pilot of Tantive when he died
 
-
 Review all properties:
 * is of even defined properly?
 * visited only used once - useful?
-
-* First round of events for each film
-    * Solo - escape from Corellia, train heist, Game - lando (falcon)
 
 * Force Ghosts/Connections
 participant some (Force_spirit and (connectedTo value Obi-Wan_Kenobi))

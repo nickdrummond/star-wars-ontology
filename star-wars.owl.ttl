@@ -681,7 +681,8 @@ star-wars:Built_Location rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Buzz_Droid
 star-wars:Buzz_Droid rdf:type owl:Class ;
-                     rdfs:subClassOf star-wars:Battle_Droid .
+                     rdfs:subClassOf star-wars:Battle_Droid ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Pistoeka_sabotage_droid"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Capital_Ship
@@ -1171,6 +1172,11 @@ star-wars:Hills rdf:type owl:Class ;
                 rdfs:subClassOf star-wars:Habitat .
 
 
+###  http://null.com/star-wars#Holocron
+star-wars:Holocron rdf:type owl:Class ;
+                   rdfs:subClassOf star-wars:Object .
+
+
 ###  http://null.com/star-wars#Human
 star-wars:Human rdf:type owl:Class ;
                 rdfs:subClassOf star-wars:Humanoid ;
@@ -1199,7 +1205,8 @@ star-wars:Hyperspace rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#IG-100_MagnaGuard
 star-wars:IG-100_MagnaGuard rdf:type owl:Class ;
-                            rdfs:subClassOf star-wars:Battle_Droid .
+                            rdfs:subClassOf star-wars:Battle_Droid ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/IG-100_MagnaGuard"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ice
@@ -1383,13 +1390,21 @@ star-wars:Loth-wolf rdf:type owl:Class ;
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty star-wars:connectedTo ;
                                       owl:hasValue star-wars:World_Between_Worlds
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:homeworld ;
+                                      owl:hasValue star-wars:Lothal
                                     ] ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Loth-wolf"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Loth_Cat
 star-wars:Loth_Cat rdf:type owl:Class ;
-                   rdfs:subClassOf star-wars:Mammal ;
+                   rdfs:subClassOf star-wars:Mammal ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:homeworld ;
+                                     owl:hasValue star-wars:Lothal
+                                   ] ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Loth-cat"^^xsd:anyURI .
 
 
@@ -2162,7 +2177,8 @@ star-wars:Vulptex rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Vulture_Droid
 star-wars:Vulture_Droid rdf:type owl:Class ;
-                        rdfs:subClassOf star-wars:Battle_Droid .
+                        rdfs:subClassOf star-wars:Battle_Droid ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Variable_Geometry_Self-Propelled_Battle_Droid,_Mark_I"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Walker
@@ -2569,6 +2585,27 @@ star-wars:Anaxes rdf:type owl:NamedIndividual ,
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Anaxes"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Arihnda_Pryce
+star-wars:Arihnda_Pryce rdf:type owl:NamedIndividual ,
+                                 star-wars:Human ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:gender ;
+                                   owl:someValuesFrom star-wars:Female
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:hadRole ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:Moff
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:inOrganisation ;
+                                                                               owl:hasValue star-wars:Galactic_Empire
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Arihnda_Pryce"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Armitage_Hux
 star-wars:Armitage_Hux rdf:type owl:NamedIndividual ,
                                 star-wars:Human ,
@@ -2881,18 +2918,12 @@ star-wars:Barriss_Offee rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Battle_of_Anaxes
 star-wars:Battle_of_Anaxes rdf:type owl:NamedIndividual ,
-                                    star-wars:Battle ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:participant ;
-                                      owl:hasValue star-wars:Galactic_Republic
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:participant ;
-                                      owl:hasValue star-wars:Seperatist_Alliance
-                                    ] ;
+                                    star-wars:Battle ;
                            star-wars:deathOf star-wars:Trench ;
                            star-wars:location star-wars:Anaxes ;
-                           star-wars:participant star-wars:Anakin_Skywalker ;
+                           star-wars:participant star-wars:Anakin_Skywalker ,
+                                                 star-wars:Galactic_Republic ,
+                                                 star-wars:Seperatist_Alliance ;
                            star-wars:year -19 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Anaxes"^^xsd:anyURI .
 
@@ -2981,20 +3012,14 @@ star-wars:Battle_of_Crait rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Battle_of_Endor
 star-wars:Battle_of_Endor rdf:type owl:NamedIndividual ,
-                                   star-wars:Battle ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:participant ;
-                                     owl:hasValue star-wars:Galactic_Empire
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:participant ;
-                                     owl:hasValue star-wars:Rebel_Alliance
-                                   ] ;
+                                   star-wars:Battle ;
                           star-wars:destructionOf star-wars:Death_Star_2 ,
                                                   star-wars:Executor ,
                                                   star-wars:MC80A_Nautilian ,
                                                   star-wars:MC80_Liberty ;
                           star-wars:location star-wars:Endor ;
+                          star-wars:participant star-wars:Galactic_Empire ,
+                                                star-wars:Rebel_Alliance ;
                           star-wars:survivedBy star-wars:MC80A_Home_One ;
                           star-wars:year 4 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor"^^xsd:anyURI .
@@ -3027,17 +3052,11 @@ star-wars:Battle_of_Hoth rdf:type owl:NamedIndividual ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty star-wars:participant ;
                                     owl:someValuesFrom star-wars:AT-AT
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty star-wars:escapeOf ;
-                                    owl:hasValue star-wars:Rebel_Alliance
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty star-wars:participant ;
-                                    owl:hasValue star-wars:Galactic_Empire
                                   ] ;
                          star-wars:destructionOf star-wars:Echo_Base ;
+                         star-wars:escapeOf star-wars:Rebel_Alliance ;
                          star-wars:location star-wars:Echo_Base ;
+                         star-wars:participant star-wars:Galactic_Empire ;
                          star-wars:year 3 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Hoth"^^xsd:anyURI .
 
@@ -3123,14 +3142,6 @@ star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
                                                                               ) ;
                                                            rdf:type owl:Class
                                                          ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:participant ;
-                                      owl:hasValue star-wars:Galactic_Empire
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:participant ;
-                                      owl:hasValue star-wars:Rebel_Alliance
                                     ] ;
                            star-wars:deathOf star-wars:Raddus ;
                            star-wars:destructionOf star-wars:Citadel_Tower ,
@@ -3139,7 +3150,9 @@ star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
                            star-wars:escapeOf star-wars:Tantive_IV ;
                            star-wars:location star-wars:Scarif ;
                            star-wars:participant star-wars:Death_Star_1 ,
-                                                 star-wars:Devastator ;
+                                                 star-wars:Devastator ,
+                                                 star-wars:Galactic_Empire ,
+                                                 star-wars:Rebel_Alliance ;
                            star-wars:year 0 ;
                            star-wars:todo "must be some way to say \"killed all members of rogue one\""^^xsd:anyURI ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Scarif"^^xsd:anyURI .
@@ -3203,15 +3216,7 @@ star-wars:Battle_of_Umbara rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Battle_of_Yavin
 star-wars:Battle_of_Yavin rdf:type owl:NamedIndividual ,
-                                   star-wars:Battle ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:participant ;
-                                     owl:hasValue star-wars:Galactic_Empire
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:participant ;
-                                     owl:hasValue star-wars:Massassi_Group
-                                   ] ;
+                                   star-wars:Battle ;
                           star-wars:deathOf star-wars:Wilhuff_Tarkin ,
                                             star-wars:Wullf_Yularen ;
                           star-wars:destructionOf star-wars:Death_Star_1 ;
@@ -3220,7 +3225,9 @@ star-wars:Battle_of_Yavin rdf:type owl:NamedIndividual ,
                           star-wars:killingOf star-wars:Biggs_Darklighter ,
                                               star-wars:Porkins ;
                           star-wars:location star-wars:Yavin_4 ;
-                          star-wars:participant star-wars:Millenium_Falcon ;
+                          star-wars:participant star-wars:Galactic_Empire ,
+                                                star-wars:Massassi_Group ,
+                                                star-wars:Millenium_Falcon ;
                           star-wars:survivedBy star-wars:Wedge_Antilles ;
                           star-wars:victoryOf star-wars:Luke_Skywalker ;
                           star-wars:year 0 ;
@@ -4469,6 +4476,7 @@ star-wars:Dooku_vs_3_Jedi rdf:type owl:NamedIndividual ,
                           star-wars:escapeOf star-wars:Count_Dooku ;
                           star-wars:injuryOf star-wars:Anakin_Skywalker ,
                                              star-wars:Obi-Wan_Kenobi ;
+                          star-wars:location star-wars:Geonosis ;
                           star-wars:survivedBy star-wars:Yoda ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/First_Battle_of_Geonosis#Confronting_the_Count"^^xsd:anyURI .
 
@@ -5111,20 +5119,12 @@ star-wars:First_Battle_of_Geonosis rdf:type owl:NamedIndividual ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty star-wars:participant ;
                                               owl:someValuesFrom star-wars:Reek
-                                            ] ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty star-wars:participant ;
-                                              owl:hasValue star-wars:Droid_Army
-                                            ] ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty star-wars:participant ;
-                                              owl:hasValue star-wars:Grand_Army_of_the_Republic
-                                            ] ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty star-wars:participant ;
-                                              owl:hasValue star-wars:Jedi_Order
                                             ] ;
                                    star-wars:during star-wars:The_Clone_Wars ;
+                                   star-wars:location star-wars:Geonosis ;
+                                   star-wars:participant star-wars:Droid_Army ,
+                                                         star-wars:Grand_Army_of_the_Republic ,
+                                                         star-wars:Jedi_Order ;
                                    star-wars:survivedBy star-wars:Anakin_Skywalker ,
                                                         star-wars:Obi-Wan_Kenobi ,
                                                         star-wars:Padme_Amidala ;
@@ -6582,8 +6582,17 @@ star-wars:Leia_vs_Jabba rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Liberation_of_Lothal
 star-wars:Liberation_of_Lothal rdf:type owl:NamedIndividual ,
-                                        star-wars:Battle ;
+                                        star-wars:Battle ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty star-wars:participant ;
+                                          owl:someValuesFrom star-wars:Loth-wolf
+                                        ] ;
+                               star-wars:deathOf star-wars:Arihnda_Pryce ;
                                star-wars:location star-wars:Lothal ;
+                               star-wars:participant star-wars:Galactic_Empire ,
+                                                     star-wars:Rex ;
+                               star-wars:victoryOf star-wars:Spectres ;
+                               star-wars:year 0 ;
                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal"^^xsd:anyURI .
 
 
@@ -7960,7 +7969,7 @@ star-wars:R1-J5 rdf:type owl:NamedIndividual ,
                          star-wars:Astromech ;
                 star-wars:employedBy star-wars:Jarek_Yeager ;
                 star-wars:livedIn star-wars:Colossus ;
-                rdfs:label "Bucket"^^xsd:anyURI ;
+                rdfs:label "Bucket" ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/R1-J5"^^xsd:anyURI .
 
 
@@ -9651,7 +9660,18 @@ star-wars:Tusken_Raider_camp rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Twilight_of_the_Apprentice
 star-wars:Twilight_of_the_Apprentice rdf:type owl:NamedIndividual ,
-                                              star-wars:Fight ;
+                                              star-wars:Fight ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty star-wars:found ;
+                                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Holocron
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty star-wars:builtBy ;
+                                                                                            owl:hasValue star-wars:Sith_Order
+                                                                                          ]
+                                                                                        ) ;
+                                                                     rdf:type owl:Class
+                                                                   ]
+                                              ] ;
                                      star-wars:injuryOf star-wars:Kanan_Jarrus ;
                                      star-wars:location star-wars:Malachor_Sith_Temple ;
                                      star-wars:participant star-wars:C1-10P ,
@@ -10403,6 +10423,7 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( star-wars:Coaxium
+                star-wars:Holocron
                 star-wars:Plans
                 star-wars:Wayfinder
                 star-wars:Weapon
@@ -10414,15 +10435,6 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
   owl:members ( star-wars:Creature
                 star-wars:Semi-sentient
                 star-wars:Sentient
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( star-wars:Crime_Syndicate
-                star-wars:Guild
-                star-wars:Military_Unit
-                star-wars:Political_Organisation
               )
 ] .
 

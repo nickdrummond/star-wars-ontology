@@ -1,32 +1,5 @@
 Todo
 
-* How can we best use SPARQL and SQWRL?
-https://github.com/protegeproject/swrlapi/wiki/SWRLLanguageFAQ
-
-
-Someone who was killed during an event died on the date of that event
-- need to infer "died" from event
-- eg Plo Koon died in Order 66 on 19BBY
-- doesn't look like you can use property chains for datatype properties
-- Can we use SWRL?
-
-https://github.com/protegeproject/swrlapi/wiki/SWRLLanguageFAQ
-https://drive.google.com/file/d/1Ofk0HxmJdKspsSAmzOdB9PsXpvR3nJqv/view
-
-
-Sentient(?person) ^ diedIn(?person, ?event) ^ year(?event, ?y) -> diedInYear(?person, ?y)
-SWRL tab freezes up when we try to run it
-Reduced the number of instances to just Attack_on_the_Raddus + Leia + Ackbar
-It runs the rule pretty much instantly but you have to assert them back into the ontology with the SWRL tab - clunky
-
-If we just want to query
-https://github.com/protegeproject/swrlapi/wiki/SQWRL
-Sentient(?person) ^ diedIn(?person, ?event) ^ year(?event, ?y) -> sqwrl:select(?person, ?y) ^ sqwrl:orderBy(?y)
-
-This works fine again in the simple case, but looks like Drools can't handle the number of individuals
-
-
-
 * Improve classification times - currently 24s for Murder inference
 
 * do we want useful defs like StormTrooper == hadRole some (Soldier and inOrg ...)?
@@ -78,4 +51,4 @@ eg from Star Wars databank https://lumiere-a.akamaihd.net/v1/images/databank_zyg
 
 * Can we have ABY/BBY instead of int as custom datatype?
 
-* More clarity of groups in fights
+* More clarity of groups in fights?

@@ -1,26 +1,20 @@
-# Birth and death dates for Humanoids (again, need to be more general than this)
-
-# rdfs:subClassOf star-wars:Humanoid ,
-#                                                   [ rdf:type owl:Restriction ;
-#                                                     owl:onProperty star-wars:homeworld ;
-#                                                     owl:hasValue star-wars:Utapau
-
+# Birth, death and gender
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX sw: <http://null.com/star-wars#>
-SELECT ?person ?born ?died
+SELECT ?person ?gender ?born ?died
 WHERE {
 	  ?person a sw:Sentient .
-	  OPTIONAL { ?person rdfs:subClassOf ?restr .
-	  ?restr rdf:type owl:Restriction .
-	  ?restr owl:onProperty sw:gender .
-	  ?restr owl:someValuesFrom sw:Female } # cannot get this to work
+	  OPTIONAL { ?person a ?restr .
+				 ?restr rdf:type owl:Restriction ;
+		  		  owl:onProperty sw:gender ;
+				  owl:someValuesFrom ?gender}
 	  OPTIONAL { ?person sw:born ?born }
 	  OPTIONAL { ?event sw:deathOf ?person ;
 	      sw:year ?died }
 	  OPTIONAL { ?event sw:killingOf ?person ;
    	      sw:year ?died }
    	  }
-ORDER BY ASC (?person)
+ORDER BY ASC (?born)

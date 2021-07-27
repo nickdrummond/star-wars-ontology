@@ -57,12 +57,14 @@ public void testEvents() throws IOException {
         qexec.execSelect().forEachRemaining(soln -> {
             Literal year = soln.getLiteral("year");
             RDFNode event = soln.get("event");
-            RDFNode location = soln.get("loc");
+            RDFNode after = soln.get("after");
+            RDFNode during = soln.get("during");
 
             System.out.println(
                     ((year != null) ? year.getInt() : "?") +
                             "\t\t" + event.asResource().getLocalName() +
-                            "\t\t" + ((location != null) ? location.asResource().getLocalName() : ""));
+                            "\t\t" + ((after != null) ? "after: " + after.asResource().getLocalName() : "\t\t\t\t\t\t\t\t") +
+                            "\t\t" + ((during != null) ? "during: " + during.asResource().getLocalName() : ""));
         });
     }
 }

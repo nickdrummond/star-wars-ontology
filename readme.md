@@ -27,6 +27,12 @@ The ontology covers major characters, events and places in the canon films and T
 
 ## Todo
 
+* Clone Wars series
+* Rebels
+* Resistance
+* Bad Batch
+* Mandalorian
+
 * Improve classification times - currently 24s for Murder inference
 
 * Review property "of" - is it even defined properly?

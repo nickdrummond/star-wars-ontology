@@ -681,6 +681,11 @@ star-wars:Bomber rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Ship .
 
 
+###  http://null.com/star-wars#Book
+star-wars:Book rdf:type owl:Class ;
+               rdfs:subClassOf star-wars:Object .
+
+
 ###  http://null.com/star-wars#Bounty_Hunter
 star-wars:Bounty_Hunter rdf:type owl:Class ;
                         rdfs:subClassOf star-wars:Vocation .
@@ -3123,7 +3128,7 @@ star-wars:Battle_of_Crait rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Battle_of_Endor
 star-wars:Battle_of_Endor rdf:type owl:NamedIndividual ,
                                    star-wars:Battle ;
-                          star-wars:after star-wars:Escape_from_Carkoon ;
+                          star-wars:after star-wars:Yoda_becomes_One_with_the_Force ;
                           star-wars:destructionOf star-wars:Death_Star_2 ,
                                                   star-wars:Executor ,
                                                   star-wars:MC80A_Nautilian ,
@@ -4471,6 +4476,7 @@ star-wars:Deactivating_the_Shield_Generator_on_Endor rdf:type owl:NamedIndividua
                                                                 owl:onProperty star-wars:victoryOf ;
                                                                 owl:someValuesFrom star-wars:Ewok
                                                               ] ;
+                                                     star-wars:after star-wars:Ewok_Feast ;
                                                      star-wars:during star-wars:Battle_of_Endor ;
                                                      star-wars:participant star-wars:C-3PO ,
                                                                            star-wars:Chewbacca ,
@@ -4585,6 +4591,7 @@ star-wars:Death_of_the_Supreme_Leader rdf:type owl:NamedIndividual ,
                                                                       owl:someValuesFrom star-wars:Elite_Praetorian_Guard
                                                                     ]
                                                ] ;
+                                      star-wars:after star-wars:Three_Lessons ;
                                       star-wars:during star-wars:Attack_on_the_Resistance_fleet ;
                                       star-wars:killingOf star-wars:Snoke ;
                                       star-wars:location star-wars:Supremacy ;
@@ -4872,7 +4879,7 @@ star-wars:Emperors_Throne_Room rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Empire_Day
 star-wars:Empire_Day rdf:type owl:NamedIndividual ,
                               star-wars:Event ;
-                     star-wars:year -19 ;
+                     star-wars:starting -19 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Empire_Day"^^xsd:anyURI .
 
 
@@ -5124,6 +5131,21 @@ star-wars:Ewok_Feast rdf:type owl:NamedIndividual ,
                      star-wars:participant star-wars:C-3PO ;
                      star-wars:year 4 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Execution_of_Hux
+star-wars:Execution_of_Hux rdf:type owl:NamedIndividual ,
+                                    star-wars:Execution ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:hasValue star-wars:First_Order
+                                    ] ;
+                           star-wars:after star-wars:Rescue_of_Chewbacca ;
+                           star-wars:killingOf star-wars:Armitage_Hux ;
+                           star-wars:location star-wars:Steadfast ;
+                           star-wars:orderedBy star-wars:Enric_Pryde ;
+                           star-wars:year 35 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Armitage_Hux#Death"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Executor
@@ -5956,7 +5978,7 @@ star-wars:Hera_Syndulla rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Holdo_Maneuver
 star-wars:Holdo_Maneuver rdf:type owl:NamedIndividual ,
                                   star-wars:Attack ;
-                         star-wars:after star-wars:Attack_on_the_Raddus ;
+                         star-wars:after star-wars:Mutiny_on_the_Raddus ;
                          star-wars:destructionOf star-wars:MC85_Raddus ,
                                                  star-wars:Supremacy ;
                          star-wars:during star-wars:Attack_on_the_Resistance_fleet ;
@@ -6079,21 +6101,6 @@ star-wars:Hutt_Treaty rdf:type owl:NamedIndividual ,
                                             star-wars:Ziro ;
                       star-wars:year -22 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Teth#Aftermath"^^xsd:anyURI .
-
-
-###  http://null.com/star-wars#Hux_Execution
-star-wars:Hux_Execution rdf:type owl:NamedIndividual ,
-                                 star-wars:Execution ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty star-wars:participant ;
-                                   owl:hasValue star-wars:First_Order
-                                 ] ;
-                        star-wars:during star-wars:Rescue_of_Chewbacca ;
-                        star-wars:killingOf star-wars:Armitage_Hux ;
-                        star-wars:location star-wars:Steadfast ;
-                        star-wars:orderedBy star-wars:Enric_Pryde ;
-                        star-wars:year 35 ;
-                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Armitage_Hux#Death"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Hype_Fazon
@@ -6274,7 +6281,7 @@ star-wars:Jango_Fett rdf:type owl:NamedIndividual ,
                                 owl:onProperty star-wars:hadRole ;
                                 owl:someValuesFrom star-wars:Mandalorian
                               ] ;
-                     star-wars:year -22 ;
+                     star-wars:from star-wars:Concord_Dawn ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Jango_Fett"^^xsd:anyURI .
 
 
@@ -7335,7 +7342,7 @@ star-wars:Meeting_with_Boolio rdf:type owl:NamedIndividual ,
                                          owl:onProperty star-wars:participant ;
                                          owl:someValuesFrom star-wars:Tie_Fighter
                                        ] ;
-                              star-wars:after star-wars:Retrieving_Vaders_Wayfinder ;
+                              star-wars:after star-wars:Palpatines_Broadcast ;
                               star-wars:deathOf star-wars:Boolio ;
                               star-wars:location star-wars:Sinta_Glacier_Colony ;
                               star-wars:participant star-wars:Chewbacca ,
@@ -7456,7 +7463,7 @@ star-wars:Mission_to_Pasaana rdf:type owl:NamedIndividual ,
                                                              owl:hasValue star-wars:Knights_of_Ren
                                                            ]
                                       ] ;
-                             star-wars:after star-wars:Meeting_with_Boolio ;
+                             star-wars:after star-wars:Rey_Training ;
                              star-wars:captureOf star-wars:Chewbacca ;
                              star-wars:found star-wars:D-0 ,
                                              star-wars:Ochis_Blade ;
@@ -7573,6 +7580,8 @@ star-wars:Mustafar rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Mutiny_on_the_Raddus
 star-wars:Mutiny_on_the_Raddus rdf:type owl:NamedIndividual ,
                                         star-wars:Confrontation ;
+                               star-wars:after star-wars:Attack_on_the_Raddus ;
+                               star-wars:during star-wars:Attack_on_the_Resistance_fleet ;
                                star-wars:location star-wars:MC85_Raddus ;
                                star-wars:participant star-wars:Amilyn_Holdo ,
                                                      star-wars:Poe_Dameron ;
@@ -8568,6 +8577,7 @@ star-wars:Recruiting_the_Master_Codebreaker rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Ren_vs_Finn_and_Rey
 star-wars:Ren_vs_Finn_and_Rey rdf:type owl:NamedIndividual ,
                                        star-wars:Duel ;
+                              star-wars:after star-wars:Solo_vs_Solo ;
                               star-wars:during star-wars:Deactivating_the_Shield_on_Starkiller_Base ;
                               star-wars:injuryOf star-wars:Finn ,
                                                  star-wars:Kylo_Ren ;
@@ -8594,6 +8604,7 @@ star-wars:Rescue_of_Chewbacca rdf:type owl:NamedIndividual ,
                                                               owl:someValuesFrom star-wars:StormTrooper
                                                             ]
                                        ] ;
+                              star-wars:after star-wars:Read_C-3POs_Mind ;
                               star-wars:escapeOf star-wars:Chewbacca ,
                                                  star-wars:Millenium_Falcon ;
                               star-wars:injuryOf star-wars:Armitage_Hux ,
@@ -8703,7 +8714,7 @@ star-wars:Retrieving_Palpatines_Wayfinder rdf:type owl:NamedIndividual ,
                                                      owl:onProperty star-wars:participant ;
                                                      owl:someValuesFrom star-wars:Sea_skiff
                                                    ] ;
-                                          star-wars:after star-wars:Read_C-3POs_Mind ;
+                                          star-wars:after star-wars:Execution_of_Hux ;
                                           star-wars:location star-wars:Kef_Bir ;
                                           star-wars:participant star-wars:Finn ,
                                                                 star-wars:Jannah ,
@@ -8848,6 +8859,7 @@ star-wars:Rey rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Rey_Training
 star-wars:Rey_Training rdf:type owl:NamedIndividual ,
                                 star-wars:Training ;
+                       star-wars:after star-wars:Meeting_with_Boolio ;
                        star-wars:injuryOf star-wars:BB-8 ;
                        star-wars:location star-wars:Resistance_base_Ajan_Kloss ;
                        star-wars:participant star-wars:Rey ;
@@ -8858,22 +8870,11 @@ star-wars:Rey_Training rdf:type owl:NamedIndividual ,
 
 ###  http://null.com/star-wars#Rey_meets_Luke
 star-wars:Rey_meets_Luke rdf:type owl:NamedIndividual ,
-                                  star-wars:Training ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty star-wars:witnessedBy ;
-                                    owl:someValuesFrom star-wars:Lanai
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty star-wars:witnessedBy ;
-                                    owl:someValuesFrom star-wars:Porg
-                                  ] ;
-                         star-wars:destructionOf star-wars:Tree_Library ;
+                                  star-wars:Training ;
+                         star-wars:after star-wars:Battle_of_Starkiller_Base ;
                          star-wars:location star-wars:Ahch-To ;
                          star-wars:participant star-wars:Luke_Skywalker ,
-                                               star-wars:Millenium_Falcon ,
                                                star-wars:Rey ;
-                         star-wars:witnessedBy star-wars:Chewbacca ,
-                                               star-wars:R2-D2 ;
                          star-wars:year 34 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VII_The_Force_Awakens#Locating_Luke_Skywalker"^^xsd:anyURI .
 
@@ -10043,6 +10044,77 @@ star-wars:Thrawn rdf:type owl:NamedIndividual ,
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Mitth%27raw%27nuruodo"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Three_Lessons
+star-wars:Three_Lessons rdf:type owl:NamedIndividual ,
+                                 star-wars:Training ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:Event
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:stole ;
+                                                                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Book
+                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty star-wars:ownedBy ;
+                                                                                                                           owl:someValuesFrom star-wars:Jedi
+                                                                                                                         ]
+                                                                                                                       ) ;
+                                                                                                    rdf:type owl:Class
+                                                                                                  ]
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:participant ;
+                                                                               owl:hasValue star-wars:Rey
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:Event
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:participant ;
+                                                                               owl:hasValue star-wars:Rey
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:visited ;
+                                                                               owl:hasValue star-wars:Mirror_cave
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:participant ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:Force_spirit
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:connectedTo ;
+                                                                               owl:hasValue star-wars:Yoda
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:witnessedBy ;
+                                   owl:someValuesFrom star-wars:Lanai
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:witnessedBy ;
+                                   owl:someValuesFrom star-wars:Porg
+                                 ] ;
+                        star-wars:after star-wars:Rey_meets_Luke ;
+                        star-wars:destructionOf star-wars:Tree_Library ;
+                        star-wars:location star-wars:Ahch-To ;
+                        star-wars:participant star-wars:Luke_Skywalker ,
+                                              star-wars:Millenium_Falcon ,
+                                              star-wars:Rey ;
+                        star-wars:witnessedBy star-wars:Chewbacca ,
+                                              star-wars:R2-D2 ;
+                        star-wars:year 34 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Rey_Skywalker#Training_and_revelations"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Tobias_Beckett
 star-wars:Tobias_Beckett rdf:type owl:NamedIndividual ,
                                   star-wars:Human ,
@@ -10663,6 +10735,7 @@ star-wars:Yoda_becomes_One_with_the_Force rdf:type owl:NamedIndividual ,
                                                                           rdf:type owl:Class
                                                                         ]
                                                    ] ;
+                                          star-wars:after star-wars:Escape_from_Carkoon ;
                                           star-wars:deathOf star-wars:Yoda ;
                                           star-wars:location star-wars:Yodas_Hut ;
                                           star-wars:witnessedBy star-wars:Luke_Skywalker ;
@@ -10869,7 +10942,7 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
                                                                             rdf:type owl:Class
                                                                           ]
                                                      ] ;
-                                            star-wars:after star-wars:Battle_of_Starkiller_Base ;
+                                            star-wars:after star-wars:Rey_meets_Luke ;
                                             star-wars:destructionOf star-wars:Fulminatrix ,
                                                                     star-wars:Resistance_base ;
                                             star-wars:participant star-wars:First_Order ,
@@ -11049,22 +11122,23 @@ star-wars:Zygerria rdf:type owl:NamedIndividual ,
 
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( star-wars:Book
+                star-wars:Coaxium
+                star-wars:Holocron
+                star-wars:Plans
+                star-wars:Wayfinder
+                star-wars:Weapon
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( star-wars:Built_Location
                 star-wars:Celestial_Location
                 star-wars:Habitat
                 star-wars:Hyperspace
                 star-wars:Space
                 star-wars:Vehicle
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( star-wars:Coaxium
-                star-wars:Holocron
-                star-wars:Plans
-                star-wars:Wayfinder
-                star-wars:Weapon
               )
 ] .
 

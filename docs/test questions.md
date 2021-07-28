@@ -9,7 +9,9 @@ We have the following mechanisms available to us:
 * DL query
 * SparQL
 * Sqwrl?
-
+* Protege tooling
+    * Individuals matrix
+    * Ontograf
 
 ## Is Anakin from Tatooine?
 We have asserted he's from Mos Espa

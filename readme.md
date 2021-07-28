@@ -34,15 +34,15 @@ The ontology covers major characters, events and places in the canon films and T
     * Bad Batch
     * Mandalorian
 
-* Previous/next for events? What about overlap and will always need changing when "gaps" are filled in
-  It feels like we shouldn't need to retract facts over time as new content comes out
-  
 * Walk the graph to show the order of events?
 
 * Improve classification times - currently 24s for Murder inference
 
 * Review property "of" - is it even defined properly?
 * "visited" only used once - is it useful?
+* "healed" also only used once
+* "surrenderOf" - anywhere else to use this?
+* is "on" really helping? It's just a nice bit of syntactic sugar
 
 * Revise classification of living things - sentience makes it difficult to classify by type (eg Reptile)
   

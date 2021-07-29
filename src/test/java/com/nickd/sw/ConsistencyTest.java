@@ -43,8 +43,8 @@ public class ConsistencyTest extends TestCase {
         assertTrue(r.isConsistent());
     }
 
-    public void testClassificationInLessThan2s() {
-        assertTrue(t < 2000);
+    public void testClassificationInLessThan1s() {
+        assertTrue(t < 700);
     }
 
     public void testMurderedSpeed() {
@@ -56,7 +56,8 @@ public class ConsistencyTest extends TestCase {
         NodeSet<OWLNamedIndividual> results = r.getInstances(murdered);
         long d = System.currentTimeMillis() - start;
 
+        System.out.println("Murder inference = " + d + "ms");
         assertTrue(results.getFlattened().size() > 0);
-        assertTrue("Murder inference too slow: " + d + "ms", d < 6000); // 6s
+        assertTrue("Murder inference too slow", d < 15000); // 15s
     }
 }

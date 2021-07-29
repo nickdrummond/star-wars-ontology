@@ -13,8 +13,9 @@ There could be a lot of other queries testing
 
 ### allDifferent
 
-Initial trial of allDifferent on eg Humans increased classification times significantly
-TODO try again for stats
+allDifferent between individuals increased classification times significantly.
+
+Murder query goes from 10s to 112s
 
 ### Property Domain/Range
 

@@ -7,21 +7,7 @@
 @prefix star-wars: <http://null.com/star-wars#> .
 @base <http://null.com/star-wars> .
 
-<http://null.com/star-wars> rdf:type owl:Ontology ;
-                             rdfs:comment """Scope
-* Original films
-* Prequels
-* Sequels
-* Rogue One
-* Solo
-* Rebels
-* Clone Wars
-* Resistance
-* Bad Batch
-* Mandalorian""" ,
-                                          "Star Wars ontology - this would be a great test of partitioning by episode as the open world allows additional information to be associated at the correct times." ,
-                                          """Warnings:
-Cannot add min card 14000 to the battle of Exegol - it breaks the reasoner""" .
+<http://null.com/star-wars> rdf:type owl:Ontology .
 
 #################################################################
 #    Annotation properties
@@ -41,8 +27,7 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 ###  http://null.com/star-wars#after
 star-wars:after rdf:type owl:ObjectProperty ;
-                owl:inverseOf star-wars:before ;
-                rdfs:domain star-wars:Event .
+                owl:inverseOf star-wars:before .
 
 
 ###  http://null.com/star-wars#alliedWith
@@ -52,9 +37,7 @@ star-wars:alliedWith rdf:type owl:ObjectProperty ;
 
 
 ###  http://null.com/star-wars#before
-star-wars:before rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf owl:topObjectProperty ;
-                 rdfs:domain star-wars:Event .
+star-wars:before rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#brother
@@ -125,9 +108,7 @@ star-wars:diedIn rdf:type owl:ObjectProperty ;
 ###  http://null.com/star-wars#during
 star-wars:during rdf:type owl:ObjectProperty ;
                  owl:inverseOf star-wars:included ;
-                 rdf:type owl:TransitiveProperty ;
-                 rdfs:domain star-wars:Event ;
-                 rdfs:range star-wars:Event .
+                 rdf:type owl:TransitiveProperty .
 
 
 ###  http://null.com/star-wars#employedBy
@@ -164,7 +145,6 @@ star-wars:friendsWith rdf:type owl:ObjectProperty ;
 ###  http://null.com/star-wars#from
 star-wars:from rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf star-wars:livedIn ;
-               rdfs:range star-wars:Place ;
                owl:propertyChainAxiom ( star-wars:from
                                         star-wars:on
                                       ) .
@@ -181,19 +161,11 @@ star-wars:hadMember rdf:type owl:ObjectProperty ;
 
 
 ###  http://null.com/star-wars#hadRole
-star-wars:hadRole rdf:type owl:ObjectProperty ;
-                  rdfs:range star-wars:Role .
+star-wars:hadRole rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#hasTerrain
-star-wars:hasTerrain rdf:type owl:ObjectProperty ;
-                     rdfs:domain [ rdf:type owl:Class ;
-                                   owl:unionOf ( star-wars:Asteroid
-                                                 star-wars:Moon
-                                                 star-wars:Planet
-                                               )
-                                 ] ;
-                     rdfs:range star-wars:Habitat .
+star-wars:hasTerrain rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#healingOf
@@ -212,15 +184,13 @@ star-wars:inConflictWith rdf:type owl:ObjectProperty ,
 
 ###  http://null.com/star-wars#inOrganisation
 star-wars:inOrganisation rdf:type owl:ObjectProperty ;
-                         rdfs:domain star-wars:Role ;
-                         rdfs:range star-wars:Organisation .
+                         rdfs:comment """How a Role is associated with an Organisation
+eg Pilot and (inOrganisation value Rebel_Alliance)""" .
 
 
 ###  http://null.com/star-wars#included
 star-wars:included rdf:type owl:ObjectProperty ,
-                            owl:TransitiveProperty ;
-                   rdfs:domain star-wars:Event ;
-                   rdfs:range star-wars:Event .
+                            owl:TransitiveProperty .
 
 
 ###  http://null.com/star-wars#injuredIn
@@ -286,18 +256,11 @@ star-wars:mother rdf:type owl:ObjectProperty ;
 
 
 ###  http://null.com/star-wars#of
-star-wars:of rdf:type owl:ObjectProperty ;
-             rdfs:range [ rdf:type owl:Class ;
-                          owl:unionOf ( star-wars:Living_thing
-                                        star-wars:Place
-                                      )
-                        ] .
+star-wars:of rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#ofShip
-star-wars:ofShip rdf:type owl:ObjectProperty ;
-                 rdfs:domain star-wars:Role ;
-                 rdfs:range star-wars:Ship .
+star-wars:ofShip rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#on
@@ -326,7 +289,6 @@ star-wars:parent rdf:type owl:ObjectProperty ;
 ###  http://null.com/star-wars#participant
 star-wars:participant rdf:type owl:ObjectProperty ;
                       owl:inverseOf star-wars:participatedIn ;
-                      rdfs:domain star-wars:Event ;
                       rdfs:range [ rdf:type owl:Class ;
                                    owl:unionOf ( star-wars:Living_thing
                                                  star-wars:Object
@@ -334,12 +296,15 @@ star-wars:participant rdf:type owl:ObjectProperty ;
                                                  star-wars:Place
                                                  star-wars:The_Force
                                                )
-                                 ] .
+                                 ] ;
+                      rdfs:comment """Events have participants.
+They can be individuals (Living_Things), Organisations, The_Force, Objects or Places (Normally Spacecraft or space stations)
+
+eg Obi-Wan_vs_Maul -> participant -> Obi-Wan""" .
 
 
 ###  http://null.com/star-wars#participatedIn
-star-wars:participatedIn rdf:type owl:ObjectProperty ;
-                         rdfs:range star-wars:Event .
+star-wars:participatedIn rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#raised

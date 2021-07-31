@@ -1903,6 +1903,12 @@ star-wars:Religious_Order rdf:type owl:Class ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Religion"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Reptavian
+star-wars:Reptavian rdf:type owl:Class ;
+                    rdfs:subClassOf star-wars:Creature ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Reptavian"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Reptile
 star-wars:Reptile rdf:type owl:Class ;
                   rdfs:subClassOf star-wars:Creature ;
@@ -2269,7 +2275,7 @@ star-wars:Ugnaught rdf:type owl:Class ;
 
 ###  http://null.com/star-wars#Varactyl
 star-wars:Varactyl rdf:type owl:Class ;
-                   rdfs:subClassOf star-wars:Reptile ;
+                   rdfs:subClassOf star-wars:Reptavian ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Varactyl"^^xsd:anyURI .
 
 
@@ -9238,6 +9244,17 @@ star-wars:Rescue_of_Qin rdf:type owl:NamedIndividual ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty star-wars:destructionOf ;
                                    owl:someValuesFrom star-wars:Droid
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:participant ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:X-Wing
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:memberOf ;
+                                                                               owl:hasValue star-wars:New_Republic
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
                                  ] ;
                         star-wars:after star-wars:Hunting_Fennec_Shand ;
                         star-wars:captureOf star-wars:Burg ,
@@ -10016,6 +10033,71 @@ star-wars:Showdown_at_Toydaria rdf:type owl:NamedIndividual ,
                                                      star-wars:Savage_Opress ;
                                star-wars:year -20 ;
                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Showdown_at_Toydaria"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Showdown_on_Navarro
+star-wars:Showdown_on_Navarro rdf:type owl:NamedIndividual ,
+                                       star-wars:Confrontation ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Rescue
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty star-wars:escapeOf ;
+                                                                                     owl:hasValue star-wars:Grogu
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty star-wars:participant ;
+                                                                                     owl:hasValue star-wars:IG-11
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom star-wars:Bluurg
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                              owl:onProperty star-wars:hadRole ;
+                                                              owl:someValuesFrom star-wars:Bounty_Hunter
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                              owl:onProperty star-wars:hadRole ;
+                                                              owl:someValuesFrom star-wars:StormTrooper
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom star-wars:Reptavian
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Tie_Fighter
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty star-wars:ownedBy ;
+                                                                                     owl:hasValue star-wars:Gideon
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ;
+                              star-wars:captureOf star-wars:Grogu ;
+                              star-wars:deathOf star-wars:IG-11 ;
+                              star-wars:healingOf star-wars:Greef_Karga ;
+                              star-wars:injuryOf star-wars:Din_Djarin ,
+                                                 star-wars:Greef_Karga ;
+                              star-wars:killingOf star-wars:Kuiil ,
+                                                  star-wars:The_Client ;
+                              star-wars:location star-wars:Navarro ;
+                              star-wars:participant star-wars:Cara_Dune ,
+                                                    star-wars:Gideon ,
+                                                    star-wars:The_Armorer ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_The_Reckoning"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Siege_of_Mandalore

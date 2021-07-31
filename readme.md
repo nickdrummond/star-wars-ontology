@@ -33,6 +33,7 @@ The ontology covers major characters, events and places in the canon films and T
     * Resistance
     * Bad Batch
     * Mandalorian
+        * S
 
 * Walk the graph to show the order of events?
 

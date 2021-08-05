@@ -32,17 +32,12 @@ The ontology covers major characters, events and places in the canon films and T
     * Rebels
     * Resistance
     * Bad Batch
-    * Mandalorian
-        * S
-
-* Walk the graph to show the order of events?
-
+    * Mandalorian Series 2
 * Review property "of" - is it even defined properly?
 * "visited" only used once - is it useful?
 * "healed" also only used once
 * "surrenderOf" - anywhere else to use this?
 * is "on" really helping? It's just a nice bit of syntactic sugar
-* Would be nice to have ranges on all but this really increases query time
 
 * Revise classification of living things - sentience makes it difficult to classify by type (eg Reptile)
   

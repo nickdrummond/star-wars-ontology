@@ -857,6 +857,12 @@ star-wars:City rdf:type owl:Class ;
                rdfs:subClassOf star-wars:Built_Location .
 
 
+###  http://null.com/star-wars#Class_546_Cruiser
+star-wars:Class_546_Cruiser rdf:type owl:Class ;
+                            rdfs:subClassOf star-wars:Light_Cruiser ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Class_546_Cruiser"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Clawdite
 star-wars:Clawdite rdf:type owl:Class ;
                    rdfs:subClassOf star-wars:Humanoid ,
@@ -1737,6 +1743,12 @@ star-wars:Lava_fields rdf:type owl:Class ;
 ###  http://null.com/star-wars#Leader
 star-wars:Leader rdf:type owl:Class ;
                  rdfs:subClassOf star-wars:Role .
+
+
+###  http://null.com/star-wars#Light_Cruiser
+star-wars:Light_Cruiser rdf:type owl:Class ;
+                        rdfs:subClassOf star-wars:Capital_Ship ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Light_cruiser"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Light_Side
@@ -2722,6 +2734,11 @@ star-wars:Trandoshan rdf:type owl:Class ;
                                        owl:someValuesFrom star-wars:Sentient
                                      ] ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Trandoshan"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Transport
+star-wars:Transport rdf:type owl:Class ;
+                    rdfs:subClassOf star-wars:Land_Vehicle .
 
 
 ###  http://null.com/star-wars#Troop_Transporter
@@ -4357,6 +4374,7 @@ star-wars:Boba_Fett rdf:type owl:NamedIndividual ,
 ###  http://null.com/star-wars#Boba_vs_Bib
 star-wars:Boba_vs_Bib rdf:type owl:NamedIndividual ,
                                star-wars:Murder ;
+                      star-wars:after star-wars:Rescue_the_Child ;
                       star-wars:killingOf star-wars:Bib_Fortuna ;
                       star-wars:location <http://null.com/star-wars#Jabba's_Palace> ;
                       star-wars:victoryOf star-wars:Boba_Fett ;
@@ -5912,27 +5930,13 @@ star-wars:Eravana rdf:type owl:NamedIndividual ,
 star-wars:Escape_from_Carkoon rdf:type owl:NamedIndividual ,
                                        star-wars:Escape ,
                                        [ rdf:type owl:Restriction ;
-                                         owl:onProperty star-wars:included ;
-                                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Event
-                                                                                   [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty star-wars:participant ;
-                                                                                     owl:someValuesFrom star-wars:Sarlacc
-                                                                                   ]
-                                                                                   [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty star-wars:eatingOf ;
-                                                                                     owl:hasValue star-wars:Boba_Fett
-                                                                                   ]
-                                                                                 ) ;
-                                                              rdf:type owl:Class
-                                                            ]
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
                                          owl:onProperty star-wars:participant ;
                                          owl:someValuesFrom star-wars:Sarlacc
                                        ] ;
                               star-wars:after star-wars:Luke_vs_Rancor ;
                               star-wars:deathOf star-wars:Salacious_B._Crumb ;
                               star-wars:destructionOf star-wars:Khetanna ;
+                              star-wars:eatingOf star-wars:Boba_Fett ;
                               star-wars:escapeOf star-wars:C-3PO ,
                                                  star-wars:Chewbacca ,
                                                  star-wars:Han_Solo ,
@@ -5941,7 +5945,6 @@ star-wars:Escape_from_Carkoon rdf:type owl:NamedIndividual ,
                                                  star-wars:Luke_Skywalker ,
                                                  star-wars:R2-D2 ;
                               star-wars:location star-wars:Great_Pit_of_Carkoon ;
-                              star-wars:participant star-wars:Boba_Fett ;
                               star-wars:year 4 ;
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Skirmish_at_the_Great_Pit_of_Carkoon"^^xsd:anyURI .
 
@@ -6743,6 +6746,13 @@ star-wars:Gideon rdf:type owl:NamedIndividual ,
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Gideon"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Gideons_Cruiser
+star-wars:Gideons_Cruiser rdf:type owl:NamedIndividual ,
+                                   star-wars:Class_546_Cruiser ;
+                          star-wars:ownedBy star-wars:Imperial_Remnant ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Gideon%27s_light_cruiser"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Gonky
 star-wars:Gonky rdf:type owl:NamedIndividual ,
                          star-wars:GNK_Droid ;
@@ -7381,6 +7391,43 @@ star-wars:Imperial_Remnant rdf:type owl:NamedIndividual ,
                                     star-wars:Cell ;
                            star-wars:memberOf star-wars:Galactic_Empire ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Gideon%27s_Imperial_remnant"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Infiltrating_the_Refinery
+star-wars:Infiltrating_the_Refinery rdf:type owl:NamedIndividual ,
+                                             star-wars:Mission ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:destructionOf ;
+                                               owl:someValuesFrom star-wars:Tie_Fighter
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:killingOf ;
+                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty star-wars:hadRole ;
+                                                                    owl:someValuesFrom star-wars:Pirate
+                                                                  ]
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:killingOf ;
+                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty star-wars:hadRole ;
+                                                                    owl:someValuesFrom star-wars:StormTrooper
+                                                                  ]
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:stole ;
+                                               owl:someValuesFrom star-wars:Transport
+                                             ] ;
+                                    star-wars:after star-wars:Calling_to_the_Jedi ;
+                                    star-wars:killingOf star-wars:Valin_Hess ;
+                                    star-wars:location star-wars:Morak ;
+                                    star-wars:participant star-wars:Boba_Fett ,
+                                                          star-wars:Cara_Dune ,
+                                                          star-wars:Din_Djarin ,
+                                                          star-wars:Fennec_Shand ,
+                                                          star-wars:Migs_Mayfeld ;
+                                    star-wars:year 9 ;
+                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_15:_The_Believer"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Inner_Rim
@@ -8963,6 +9010,16 @@ star-wars:Morai rdf:type owl:NamedIndividual ,
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Morai"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Morak
+star-wars:Morak rdf:type owl:NamedIndividual ,
+                         star-wars:Planet ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:hasTerrain ;
+                           owl:someValuesFrom star-wars:Forest
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Morak"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Morgan_Elsbeth
 star-wars:Morgan_Elsbeth rdf:type owl:NamedIndividual ,
                                   star-wars:Human ,
@@ -10324,6 +10381,37 @@ star-wars:Rescue_of_Qin rdf:type owl:NamedIndividual ,
                                               star-wars:Ranzar_Malk ;
                         star-wars:year 9 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_6:_The_Prisoner"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rescue_the_Child
+star-wars:Rescue_the_Child rdf:type owl:NamedIndividual ,
+                                    star-wars:Rescue ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:destructionOf ;
+                                      owl:someValuesFrom star-wars:Dark_Trooper_3rd_gen
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:killingOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty star-wars:hadRole ;
+                                                           owl:someValuesFrom star-wars:StormTrooper
+                                                         ]
+                                    ] ;
+                           star-wars:after star-wars:Infiltrating_the_Refinery ;
+                           star-wars:captureOf star-wars:Pershing ;
+                           star-wars:escapeOf star-wars:Grogu ;
+                           star-wars:location star-wars:Gideons_Cruiser ;
+                           star-wars:participant star-wars:Bo-Katan_Kryze ,
+                                                 star-wars:Boba_Fett ,
+                                                 star-wars:Cara_Dune ,
+                                                 star-wars:Din_Djarin ,
+                                                 star-wars:Fennec_Shand ,
+                                                 star-wars:Gideon ,
+                                                 star-wars:Koska_Reeves ,
+                                                 star-wars:Luke_Skywalker ,
+                                                 star-wars:R2-D2 ;
+                           star-wars:year 9 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_16:_The_Rescue"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Resistance
@@ -12413,6 +12501,27 @@ star-wars:Val rdf:type owl:NamedIndividual ,
                        ] ;
               star-wars:loved star-wars:Tobias_Beckett ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Val"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Valin_Hess
+star-wars:Valin_Hess rdf:type owl:NamedIndividual ,
+                              star-wars:Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:gender ;
+                                owl:someValuesFrom star-wars:Male
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:General
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:inOrganisation ;
+                                                                            owl:hasValue star-wars:Imperial_Remnant
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Valin_Hess"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Vallt

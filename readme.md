@@ -32,7 +32,6 @@ The ontology covers major characters, events and places in the canon films and T
     * Rebels
     * Resistance
     * Bad Batch
-    * Mandalorian Series 2
 * Review property "of" - is it even defined properly?
 * "visited" only used once - is it useful?
 * "healed" also only used once

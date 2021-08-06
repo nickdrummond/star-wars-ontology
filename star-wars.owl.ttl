@@ -244,6 +244,10 @@ star-wars:loved rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf star-wars:knew .
 
 
+###  http://null.com/star-wars#madeOf
+star-wars:madeOf rdf:type owl:ObjectProperty .
+
+
 ###  http://null.com/star-wars#married
 star-wars:married rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf star-wars:loved ;
@@ -978,6 +982,12 @@ star-wars:Dark_Side rdf:type owl:Class ;
                     rdfs:subClassOf star-wars:The_Force ;
                     owl:disjointWith star-wars:Light_Side ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Dark_side_of_the_Force"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Dark_Trooper_3rd_gen
+star-wars:Dark_Trooper_3rd_gen rdf:type owl:Class ;
+                               rdfs:subClassOf star-wars:Battle_Droid ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Third-generation_design_Dark_Trooper"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Desert
@@ -1791,6 +1801,11 @@ star-wars:Lucrehulk_Freighter rdf:type owl:Class ;
 ###  http://null.com/star-wars#Maelstrom
 star-wars:Maelstrom rdf:type owl:Class ;
                     rdfs:subClassOf star-wars:Celestial_Location .
+
+
+###  http://null.com/star-wars#Magistrate
+star-wars:Magistrate rdf:type owl:Class ;
+                     rdfs:subClassOf star-wars:Leader .
 
 
 ###  http://null.com/star-wars#Male
@@ -4525,6 +4540,38 @@ star-wars:Cad_Bane rdf:type owl:NamedIndividual ,
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Cad_Bane"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Calling_to_the_Jedi
+star-wars:Calling_to_the_Jedi rdf:type owl:NamedIndividual ,
+                                       star-wars:Mission ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                              owl:onProperty star-wars:hadRole ;
+                                                              owl:someValuesFrom star-wars:StormTrooper
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom star-wars:Dark_Trooper_3rd_gen
+                                       ] ;
+                              star-wars:after star-wars:Fight_for_Calodan ;
+                              star-wars:captureOf star-wars:Grogu ;
+                              star-wars:destructionOf star-wars:Razor_Crest ;
+                              star-wars:location star-wars:Seeing_stone ;
+                              star-wars:participant star-wars:Boba_Fett ,
+                                                    star-wars:Din_Djarin ,
+                                                    star-wars:Fennec_Shand ;
+                              star-wars:year 9 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_14:_The_Tragedy"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Calodan
+star-wars:Calodan rdf:type owl:NamedIndividual ,
+                           star-wars:City ;
+                  star-wars:on star-wars:Corvus ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Calodan"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Cantina
 star-wars:Cantina rdf:type owl:NamedIndividual ,
                            star-wars:Building ;
@@ -5075,6 +5122,17 @@ star-wars:Coruscant_Guard rdf:type owl:NamedIndividual ,
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Coruscant_Guard"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Corvus
+star-wars:Corvus rdf:type owl:NamedIndividual ,
+                          star-wars:Planet ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hasTerrain ;
+                            owl:someValuesFrom star-wars:Forest
+                          ] ;
+                 star-wars:location star-wars:Outer_Rim ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Corvus"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Council_of_Neutral_Systems
 star-wars:Council_of_Neutral_Systems rdf:type owl:NamedIndividual ,
                                               star-wars:Political_Organisation ;
@@ -5446,6 +5504,12 @@ star-wars:Death_of_the_Supreme_Leader rdf:type owl:NamedIndividual ,
                                       star-wars:victoryOf star-wars:Kylo_Ren ;
                                       star-wars:year 34 ;
                                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_the_Resistance_fleet#Duel_on_the_Supremacy"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Deep_Core
+star-wars:Deep_Core rdf:type owl:NamedIndividual ,
+                             star-wars:Region ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Deep_Core"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Defection_of_Finn
@@ -6167,6 +6231,7 @@ star-wars:Fennec_Shand rdf:type owl:NamedIndividual ,
                                   owl:onProperty star-wars:hadRole ;
                                   owl:someValuesFrom star-wars:Bounty_Hunter
                                 ] ;
+                       star-wars:alliedWith star-wars:Boba_Fett ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Fennec_Shand"^^xsd:anyURI .
 
 
@@ -6187,6 +6252,31 @@ star-wars:Fifth_Brother rdf:type owl:NamedIndividual ,
                                  ] ;
                         star-wars:employedBy star-wars:Darth_Vader ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Fifth_Brother"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Fight_for_Calodan
+star-wars:Fight_for_Calodan rdf:type owl:NamedIndividual ,
+                                     star-wars:Fight ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:traded ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Weapon
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:madeOf ;
+                                                                                   owl:someValuesFrom star-wars:Beskar
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                            star-wars:after star-wars:Heist_on_Trask ;
+                            star-wars:deathOf star-wars:Lang ;
+                            star-wars:location star-wars:Calodan ;
+                            star-wars:participant star-wars:Morgan_Elsbeth ,
+                                                  star-wars:Slave_I ;
+                            star-wars:victoryOf star-wars:Ahsoka_Tano ,
+                                                star-wars:Din_Djarin ;
+                            star-wars:year 9 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_13:_The_Jedi"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Fight_on_Jedha
@@ -6644,7 +6734,7 @@ star-wars:Gideon rdf:type owl:NamedIndividual ,
                             owl:someValuesFrom [ owl:intersectionOf ( star-wars:Moff
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty star-wars:inOrganisation ;
-                                                                        owl:hasValue star-wars:Galactic_Empire
+                                                                        owl:hasValue star-wars:Imperial_Remnant
                                                                       ]
                                                                     ) ;
                                                  rdf:type owl:Class
@@ -7181,6 +7271,7 @@ star-wars:Hunting_Fennec_Shand rdf:type owl:NamedIndividual ,
                                           owl:onProperty star-wars:participant ;
                                           owl:someValuesFrom star-wars:Tusken_Raider
                                         ] ;
+                               star-wars:after star-wars:Fight_on_Sorgan ;
                                star-wars:deathOf star-wars:Toro_Calican ;
                                star-wars:injuryOf star-wars:Fennec_Shand ;
                                star-wars:location star-wars:Mos_Eisley ;
@@ -7817,6 +7908,18 @@ star-wars:Kijimi rdf:type owl:NamedIndividual ,
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Kijimi"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Kill_Ahsoka_Tano
+star-wars:Kill_Ahsoka_Tano rdf:type owl:NamedIndividual ,
+                                    star-wars:Job ;
+                           star-wars:during star-wars:Fight_for_Calodan ;
+                           star-wars:location star-wars:Corvus ;
+                           star-wars:participant star-wars:Ahsoka_Tano ,
+                                                 star-wars:Din_Djarin ,
+                                                 star-wars:Grogu ;
+                           star-wars:year 9 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_13:_The_Jedi#Meeting_the_Magistrate"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Killing_a_Krayt_Dragon
 star-wars:Killing_a_Krayt_Dragon rdf:type owl:NamedIndividual ,
                                           star-wars:Mission ,
@@ -8034,6 +8137,21 @@ star-wars:Lando_Calrissian rdf:type owl:NamedIndividual ,
                            star-wars:friendsWith star-wars:Han_Solo ;
                            star-wars:born -31 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Landonis_Balthazar_Calrissian"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Lang
+star-wars:Lang rdf:type owl:NamedIndividual ,
+                        star-wars:Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:gender ;
+                          owl:someValuesFrom star-wars:Male
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:hadRole ;
+                          owl:someValuesFrom star-wars:Mercenary
+                        ] ;
+               star-wars:employedBy star-wars:Morgan_Elsbeth ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Lang"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Lasan
@@ -8843,6 +8961,29 @@ star-wars:Morai rdf:type owl:NamedIndividual ,
                 star-wars:connectedTo star-wars:Ahsoka_Tano ,
                                       star-wars:The_Daughter ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Morai"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Morgan_Elsbeth
+star-wars:Morgan_Elsbeth rdf:type owl:NamedIndividual ,
+                                  star-wars:Human ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:gender ;
+                                    owl:someValuesFrom star-wars:Female
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:hadRole ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( star-wars:Magistrate
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty star-wars:of ;
+                                                                                owl:hasValue star-wars:Calodan
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         star-wars:employedBy star-wars:Thrawn ;
+                         star-wars:year 9 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Morgan_Elsbeth"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Mortis
@@ -10826,6 +10967,17 @@ star-wars:Secret_Marriage rdf:type owl:NamedIndividual ,
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Wedding_of_Anakin_Skywalker_and_Padm%C3%A9_Amidala"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Seeing_stone
+star-wars:Seeing_stone rdf:type owl:NamedIndividual ,
+                                star-wars:Temple ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:builtBy ;
+                                  owl:hasValue star-wars:Jedi_Order
+                                ] ;
+                       star-wars:location star-wars:Tython ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Seeing_stone"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Seelos
 star-wars:Seelos rdf:type owl:NamedIndividual ,
                           star-wars:Planet ,
@@ -11002,6 +11154,7 @@ star-wars:Showdown_on_Navarro rdf:type owl:NamedIndividual ,
                                          owl:onProperty star-wars:participant ;
                                          owl:someValuesFrom star-wars:Reptavian
                                        ] ;
+                              star-wars:after star-wars:Rescue_of_Qin ;
                               star-wars:captureOf star-wars:Grogu ;
                               star-wars:deathOf star-wars:IG-11 ;
                               star-wars:healingOf star-wars:Greef_Karga ;
@@ -12155,6 +12308,17 @@ Kanan blinded
  by Maul - not modelled
 Ahsoka and Vader injured""" ;
                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Tython
+star-wars:Tython rdf:type owl:NamedIndividual ,
+                          star-wars:Planet ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hasTerrain ;
+                            owl:someValuesFrom star-wars:Mountains
+                          ] ;
+                 star-wars:location star-wars:Deep_Core ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Tython"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Umbara

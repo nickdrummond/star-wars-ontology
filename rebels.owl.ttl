@@ -1,0 +1,300 @@
+@prefix : <http://null.com/star-wars#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix star-wars: <http://null.com/star-wars#> .
+@base <http://null.com/star-wars/rebels> .
+
+<http://null.com/star-wars/rebels> rdf:type owl:Ontology ;
+                                    owl:imports <http://null.com/star-wars> ;
+                                    rdfs:comment "Events and characters primarily from \"Star Wars: Rebels\"" .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://null.com/star-wars#Ahsoka_vs_Vader
+star-wars:Ahsoka_vs_Vader rdf:type owl:NamedIndividual ,
+                                   star-wars:Duel ;
+                          star-wars:after star-wars:Maul_vs_Inquisitors ;
+                          star-wars:during star-wars:Twilight_of_the_Apprentice ;
+                          star-wars:injuryOf star-wars:Ahsoka_Tano ,
+                                             star-wars:Darth_Vader ;
+                          star-wars:location star-wars:Malachor_Sith_Temple ;
+                          star-wars:witnessedBy star-wars:Ezra_Bridger ;
+                          star-wars:year -3 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#A_dark_showdown"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#C1-10P
+star-wars:C1-10P rdf:type owl:NamedIndividual ,
+                          star-wars:Astromech ;
+                 star-wars:employedBy star-wars:Hera_Syndulla ;
+                 star-wars:memberOf star-wars:Spectres ;
+                 rdfs:label "Chopper" ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/C1-10P" .
+
+
+###  http://null.com/star-wars#Cham_Syndulla
+star-wars:Cham_Syndulla rdf:type owl:NamedIndividual ,
+                                 <http://null.com/star-wars#Twi'Lek> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:gender ;
+                                   owl:someValuesFrom star-wars:Male
+                                 ] ;
+                        star-wars:daughter star-wars:Hera_Syndulla ;
+                        star-wars:from star-wars:Ryloth ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Cham_Syndulla"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Cikatro_Vizago
+star-wars:Cikatro_Vizago rdf:type owl:NamedIndividual ,
+                                  star-wars:Devaronian ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:gender ;
+                                    owl:someValuesFrom star-wars:Male
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:hadRole ;
+                                    owl:someValuesFrom star-wars:Criminal
+                                  ] ;
+                         star-wars:livedIn star-wars:Lothal ;
+                         star-wars:born -45 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Cikatro_Vizago"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Dume
+star-wars:Dume rdf:type owl:NamedIndividual ,
+                        star-wars:Loth-wolf ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:gender ;
+                          owl:someValuesFrom star-wars:Male
+                        ] ;
+               star-wars:alliedWith star-wars:Ezra_Bridger ;
+               star-wars:connectedTo star-wars:Kanan_Jarrus ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Dume_(Loth-wolf)"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Ezra_Bridger
+star-wars:Ezra_Bridger rdf:type owl:NamedIndividual ,
+                                star-wars:Human ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:gender ;
+                                  owl:someValuesFrom star-wars:Male
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:hadRole ;
+                                  owl:someValuesFrom star-wars:Padawan
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:parent ;
+                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                       owl:onProperty star-wars:killedIn ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Escape
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty star-wars:participant ;
+                                                                                                   owl:hasValue star-wars:Galactic_Empire
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:participatedIn ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( star-wars:Birth
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty star-wars:during ;
+                                                                              owl:hasValue star-wars:Empire_Day
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       star-wars:alliedWith star-wars:Maul ;
+                       star-wars:friendsWith star-wars:Hondo_Ohnaka ;
+                       star-wars:from star-wars:Lothal ;
+                       star-wars:memberOf star-wars:Spectres ;
+                       star-wars:trainedBy star-wars:Kanan_Jarrus ;
+                       star-wars:visited star-wars:Lothal_Jedi_Temple ,
+                                         star-wars:World_Between_Worlds ;
+                       star-wars:born -19 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Ezra_Bridger"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Ezra_vs_Thrawn
+star-wars:Ezra_vs_Thrawn rdf:type owl:NamedIndividual ,
+                                  star-wars:Fight ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:participant ;
+                                    owl:someValuesFrom star-wars:Purrgil
+                                  ] ;
+                         star-wars:during star-wars:Liberation_of_Lothal ;
+                         star-wars:location star-wars:Chimaera ;
+                         star-wars:participant star-wars:Ezra_Bridger ,
+                                               star-wars:Thrawn ;
+                         star-wars:year 0 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal#Back-up_plans"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Ghost
+star-wars:Ghost rdf:type owl:NamedIndividual ,
+                         star-wars:Freighter ;
+                star-wars:ownedBy star-wars:Hera_Syndulla ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Ghost"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hera_Syndulla
+star-wars:Hera_Syndulla rdf:type owl:NamedIndividual ,
+                                 <http://null.com/star-wars#Twi'Lek> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:gender ;
+                                   owl:someValuesFrom star-wars:Female
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:hadRole ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:ofShip ;
+                                                                               owl:hasValue star-wars:Ghost
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        star-wars:from star-wars:Ryloth ;
+                        star-wars:loved star-wars:Kanan_Jarrus ;
+                        star-wars:memberOf star-wars:Spectres ;
+                        star-wars:born -29 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera_Syndulla"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hondo_Ohnaka
+star-wars:Hondo_Ohnaka rdf:type owl:NamedIndividual ,
+                                star-wars:Weequay ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:gender ;
+                                  owl:someValuesFrom star-wars:Male
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:hadRole ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                                                                            star-wars:Pirate
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       star-wars:friendsWith star-wars:Ezra_Bridger ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Hondo_Ohnaka" .
+
+
+###  http://null.com/star-wars#Kanan_Jarrus
+star-wars:Kanan_Jarrus rdf:type owl:NamedIndividual ,
+                                star-wars:Human ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:gender ;
+                                  owl:someValuesFrom star-wars:Male
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:hadRole ;
+                                  owl:someValuesFrom star-wars:Jedi_Knight
+                                ] ;
+                       star-wars:from star-wars:Coruscant ;
+                       star-wars:loved star-wars:Hera_Syndulla ;
+                       star-wars:memberOf star-wars:Spectres ;
+                       star-wars:born -33 ;
+                       star-wars:diedInYear 0 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Kanan_Jarrus"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Liberation_of_Lothal
+star-wars:Liberation_of_Lothal rdf:type owl:NamedIndividual ,
+                                        star-wars:Battle ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty star-wars:participant ;
+                                          owl:someValuesFrom star-wars:Loth-wolf
+                                        ] ;
+                               star-wars:deathOf star-wars:Arihnda_Pryce ;
+                               star-wars:location star-wars:Lothal ;
+                               star-wars:participant star-wars:Galactic_Empire ,
+                                                     star-wars:Rex ;
+                               star-wars:victoryOf star-wars:Spectres ;
+                               star-wars:year 0 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Maul_vs_Inquisitors
+star-wars:Maul_vs_Inquisitors rdf:type owl:NamedIndividual ,
+                                       star-wars:Duel ;
+                              star-wars:deathOf star-wars:Eighth_Brother ;
+                              star-wars:during star-wars:Twilight_of_the_Apprentice ;
+                              star-wars:killingOf star-wars:Fifth_Brother ,
+                                                  star-wars:Seventh_Sister ;
+                              star-wars:location star-wars:Malachor_Sith_Temple ;
+                              star-wars:victoryOf star-wars:Maul ;
+                              star-wars:year -3 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#An_alliance_of_convenience"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Phantom
+star-wars:Phantom rdf:type owl:NamedIndividual ,
+                           star-wars:StarFighter ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty star-wars:destroyedDuring ;
+                             owl:someValuesFrom [ owl:intersectionOf ( star-wars:Mission
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty star-wars:participant ;
+                                                                         owl:hasValue star-wars:Spectres
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty star-wars:year ;
+                                                                         owl:hasValue -2
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  star-wars:on star-wars:Ghost ;
+                  star-wars:ownedBy star-wars:Hera_Syndulla ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Phantom"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Phantom_II
+star-wars:Phantom_II rdf:type owl:NamedIndividual ,
+                              star-wars:Shuttle ;
+                     star-wars:on star-wars:Ghost ;
+                     star-wars:ownedBy star-wars:Hera_Syndulla ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Phantom_II"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Twilight_of_the_Apprentice
+star-wars:Twilight_of_the_Apprentice rdf:type owl:NamedIndividual ,
+                                              star-wars:Fight ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty star-wars:found ;
+                                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Holocron
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty star-wars:builtBy ;
+                                                                                            owl:hasValue star-wars:Sith_Order
+                                                                                          ]
+                                                                                        ) ;
+                                                                     rdf:type owl:Class
+                                                                   ]
+                                              ] ;
+                                     star-wars:injuryOf star-wars:Kanan_Jarrus ;
+                                     star-wars:location star-wars:Malachor_Sith_Temple ;
+                                     star-wars:participant star-wars:C1-10P ,
+                                                           star-wars:Ezra_Bridger ;
+                                     star-wars:survivedBy star-wars:Maul ;
+                                     star-wars:year -3 ;
+                                     rdfs:comment """Inquisitors killed by Maul
+LOts of different people fight
+Kanan blinded
+ by Maul - not modelled
+Ahsoka and Vader injured""" ;
+                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice"^^xsd:anyURI .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

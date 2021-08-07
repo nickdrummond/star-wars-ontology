@@ -1,0 +1,1372 @@
+@prefix : <http://null.com/star-wars#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix star-wars: <http://null.com/star-wars#> .
+@base <http://null.com/star-wars/mandalorian> .
+
+<http://null.com/star-wars/mandalorian> rdf:type owl:Ontology ;
+                                         owl:imports <http://null.com/star-wars> .
+
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://null.com/star-wars#An_off_the_books_job
+star-wars:An_off_the_books_job rdf:type owl:NamedIndividual ,
+                                        star-wars:Job ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty star-wars:participant ;
+                                          owl:someValuesFrom star-wars:TT-8L_Gatekeeper_Droid
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty star-wars:participant ;
+                                          owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                               owl:onProperty star-wars:hadRole ;
+                                                               owl:someValuesFrom star-wars:StormTrooper
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty star-wars:traded ;
+                                          owl:someValuesFrom star-wars:Beskar
+                                        ] ;
+                               star-wars:after star-wars:Capture_the_Mythrol ;
+                               star-wars:location star-wars:Navarro ;
+                               star-wars:orderedBy star-wars:The_Client ;
+                               star-wars:participant star-wars:Din_Djarin ,
+                                                     star-wars:Pershing ,
+                                                     star-wars:The_Armorer ;
+                               star-wars:year 9 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin#The_new_job"^^xsd:anyURI .
+
+
+
+###  http://null.com/star-wars#Boba_vs_Bib
+star-wars:Boba_vs_Bib rdf:type owl:NamedIndividual ,
+                               star-wars:Murder ;
+                      star-wars:after star-wars:Rescue_the_Child ;
+                      star-wars:killingOf star-wars:Bib_Fortuna ;
+                      star-wars:location <http://null.com/star-wars#Jabba's_Palace> ;
+                      star-wars:victoryOf star-wars:Boba_Fett ;
+                      star-wars:witnessedBy star-wars:Fennec_Shand ;
+                      star-wars:year 9 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Bib_Fortuna#Death"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Bothan-Five
+star-wars:Bothan-Five rdf:type owl:NamedIndividual ,
+                               star-wars:Ship ;
+                      star-wars:ownedBy star-wars:New_Republic ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Bothan-Five"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Burg
+star-wars:Burg rdf:type owl:NamedIndividual ,
+                        star-wars:Devaronian ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:gender ;
+                          owl:someValuesFrom star-wars:Male
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:hadRole ;
+                          owl:someValuesFrom star-wars:Mercenary
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Burg"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Calling_to_the_Jedi
+star-wars:Calling_to_the_Jedi rdf:type owl:NamedIndividual ,
+                                       star-wars:Mission ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                              owl:onProperty star-wars:hadRole ;
+                                                              owl:someValuesFrom star-wars:StormTrooper
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom star-wars:Dark_Trooper_3rd_gen
+                                       ] ;
+                              star-wars:after star-wars:Fight_for_Calodan ;
+                              star-wars:captureOf star-wars:Grogu ;
+                              star-wars:destructionOf star-wars:Razor_Crest ;
+                              star-wars:location star-wars:Seeing_stone ;
+                              star-wars:participant star-wars:Boba_Fett ,
+                                                    star-wars:Din_Djarin ,
+                                                    star-wars:Fennec_Shand ;
+                              star-wars:year 9 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_14:_The_Tragedy"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Calodan
+star-wars:Calodan rdf:type owl:NamedIndividual ,
+                           star-wars:City ;
+                  star-wars:on star-wars:Corvus ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Calodan"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Capture_the_Mythrol
+star-wars:Capture_the_Mythrol rdf:type owl:NamedIndividual ,
+                                       star-wars:Job ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:destructionOf ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Speeder
+                                                                                   [ rdf:type owl:Class ;
+                                                                                     owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty star-wars:ownedBy ;
+                                                                                                        owl:someValuesFrom star-wars:Droid
+                                                                                                      ]
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom star-wars:Quarren
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom star-wars:Ravinak
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:traded ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Money
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty star-wars:ownedBy ;
+                                                                                     owl:hasValue star-wars:Greef_Karga
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ;
+                              star-wars:captureOf star-wars:The_Mythrol ;
+                              star-wars:location star-wars:Maldo_Kreis ;
+                              star-wars:participant star-wars:Din_Djarin ,
+                                                    star-wars:Razor_Crest ;
+                              star-wars:sometimeAfter star-wars:Great_Purge ;
+                              star-wars:year 9 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin#Hunting_a_Mythrol"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Cara_Dune
+star-wars:Cara_Dune rdf:type owl:NamedIndividual ,
+                             star-wars:Human ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:gender ;
+                               owl:someValuesFrom star-wars:Female
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hadRole ;
+                               owl:someValuesFrom star-wars:Mercenary
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Trooper
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty star-wars:inOrganisation ;
+                                                                           owl:hasValue star-wars:Rebel_Alliance
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    star-wars:from star-wars:Alderaan ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Carasynthia_Dune"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Cobb_Vanth
+star-wars:Cobb_Vanth rdf:type owl:NamedIndividual ,
+                              star-wars:Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:of ;
+                                                                            owl:hasValue star-wars:Mos_Pelgo
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:traded ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Armour
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:ownedBy ;
+                                                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty star-wars:hadRole ;
+                                                                                                 owl:someValuesFrom star-wars:Mandalorian
+                                                                                               ]
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     star-wars:from star-wars:Tatooine ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Cobb_Vanth"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Din_Djarin
+star-wars:Din_Djarin rdf:type owl:NamedIndividual ,
+                              star-wars:Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:gender ;
+                                owl:someValuesFrom star-wars:Male
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom star-wars:Bounty_Hunter
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom star-wars:Mandalorian
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:born ;
+                                owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                     owl:onDatatype xsd:int ;
+                                                     owl:withRestrictions ( [ xsd:maxExclusive "-19"^^xsd:int
+                                                                            ]
+                                                                          )
+                                                   ]
+                              ] ;
+                     star-wars:alliedWith star-wars:Ahsoka_Tano ;
+                     star-wars:memberOf star-wars:Mudhorn_Clan ;
+                     star-wars:quote "Dank Farrik" ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Fight_for_Calodan
+star-wars:Fight_for_Calodan rdf:type owl:NamedIndividual ,
+                                     star-wars:Fight ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:traded ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Weapon
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:madeOf ;
+                                                                                   owl:someValuesFrom star-wars:Beskar
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                            star-wars:after star-wars:Heist_on_Trask ;
+                            star-wars:deathOf star-wars:Lang ;
+                            star-wars:location star-wars:Calodan ;
+                            star-wars:participant star-wars:Morgan_Elsbeth ,
+                                                  star-wars:Slave_I ;
+                            star-wars:victoryOf star-wars:Ahsoka_Tano ,
+                                                star-wars:Din_Djarin ;
+                            star-wars:year 9 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_13:_The_Jedi"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Fight_on_Sorgan
+star-wars:Fight_on_Sorgan rdf:type owl:NamedIndividual ,
+                                   star-wars:Fight ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:killingOf ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Kubaz
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty star-wars:hadRole ;
+                                                                                 owl:someValuesFrom star-wars:Bounty_Hunter
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom star-wars:AT-ST
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom star-wars:Klatooinian
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty star-wars:hadRole ;
+                                                                                 owl:someValuesFrom star-wars:Farmer
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty star-wars:livedIn ;
+                                                                                 owl:someValuesFrom star-wars:Village
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty star-wars:trainedBy ;
+                                                                                 owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                      owl:oneOf ( star-wars:Cara_Dune
+                                                                                                                  star-wars:Din_Djarin
+                                                                                                                )
+                                                                                                    ]
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ;
+                          star-wars:after star-wars:Trading_the_Child ;
+                          star-wars:location star-wars:Sorgan ;
+                          star-wars:participant star-wars:Cara_Dune ,
+                                                star-wars:Din_Djarin ,
+                                                star-wars:Grogu ;
+                          star-wars:year 9 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_4:_Sanctuary"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Finding_a_Mandalorian
+star-wars:Finding_a_Mandalorian rdf:type owl:NamedIndividual ,
+                                         star-wars:Mission ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty star-wars:included ;
+                                           owl:someValuesFrom [ owl:intersectionOf ( star-wars:Fight
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty star-wars:participant ;
+                                                                                       owl:someValuesFrom star-wars:Gamorrean
+                                                                                     ]
+                                                                                   ) ;
+                                                                rdf:type owl:Class
+                                                              ]
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty star-wars:killingOf ;
+                                           owl:someValuesFrom star-wars:Zabrak
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty star-wars:killingOf ;
+                                           owl:someValuesFrom <http://null.com/star-wars#Twi'Lek>
+                                         ] ;
+                                star-wars:after star-wars:Showdown_on_Navarro ;
+                                star-wars:killingOf star-wars:Gor_Koresh ;
+                                star-wars:participant star-wars:Din_Djarin ;
+                                star-wars:witnessedBy star-wars:Grogu ;
+                                star-wars:year 9 ;
+                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_9:_The_Marshal"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Finding_the_Child
+star-wars:Finding_the_Child rdf:type owl:NamedIndividual ,
+                                     star-wars:Rescue ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:killingOf ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Nikto
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:hadRole ;
+                                                                                   owl:someValuesFrom star-wars:Mercenary
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:participant ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Bluurg
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:trainedBy ;
+                                                                                   owl:hasValue star-wars:Kuiil
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                            star-wars:after star-wars:An_off_the_books_job ;
+                            star-wars:killingOf star-wars:IG-11 ;
+                            star-wars:location star-wars:Arvala-7 ;
+                            star-wars:participant star-wars:Din_Djarin ,
+                                                  star-wars:Grogu ,
+                                                  star-wars:Kuiil ;
+                            star-wars:year 9 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin#Finding_the_Child"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Frog_Lady
+star-wars:Frog_Lady rdf:type owl:NamedIndividual ,
+                             star-wars:Amphibian ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:gender ;
+                               owl:someValuesFrom star-wars:Female
+                             ] ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Frog_Lady"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Gideon
+star-wars:Gideon rdf:type owl:NamedIndividual ,
+                          star-wars:Human ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:gender ;
+                            owl:someValuesFrom star-wars:Male
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hadRole ;
+                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Moff
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:inOrganisation ;
+                                                                        owl:hasValue star-wars:Imperial_Remnant
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Gideon"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Gideons_Cruiser
+star-wars:Gideons_Cruiser rdf:type owl:NamedIndividual ,
+                                   star-wars:Class_546_Cruiser ;
+                          star-wars:ownedBy star-wars:Imperial_Remnant ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Gideon%27s_light_cruiser"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Great_Purge
+star-wars:Great_Purge rdf:type owl:NamedIndividual ,
+                               star-wars:Event ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( star-wars:Event
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:participant ;
+                                                                             owl:hasValue star-wars:Gideon
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:stole ;
+                                                                             owl:hasValue star-wars:Darksaber
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:killingOf ;
+                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                      owl:onProperty star-wars:hadRole ;
+                                                      owl:someValuesFrom star-wars:Mandalorian
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:stole ;
+                                 owl:someValuesFrom star-wars:Beskar
+                               ] ;
+                      star-wars:participant star-wars:Galactic_Empire ,
+                                            star-wars:Mandalore ;
+                      star-wars:sometimeAfter star-wars:Mandalorean_Civil_War ;
+                      star-wars:survivedBy star-wars:Bo-Katan_Kryze ,
+                                           star-wars:The_Tribe ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Great_Purge"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Greef_Karga
+star-wars:Greef_Karga rdf:type owl:NamedIndividual ,
+                               star-wars:Human ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:gender ;
+                                 owl:someValuesFrom star-wars:Male
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( star-wars:Agent
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:inOrganisation ;
+                                                                             owl:hasValue star-wars:Bounty_Hunters_Guild
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      star-wars:livedIn star-wars:Navarro ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Greef_Karga"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Grogu
+star-wars:Grogu rdf:type owl:NamedIndividual ,
+                         <http://null.com/star-wars#Yoda's_Species> ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:connectedTo ;
+                           owl:someValuesFrom star-wars:The_Force
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:gender ;
+                           owl:someValuesFrom star-wars:Male
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( star-wars:Captive
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty star-wars:on ;
+                                                                       owl:hasValue star-wars:Arvala-7
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:raisedBy ;
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                owl:onProperty star-wars:hadRole ;
+                                                owl:someValuesFrom star-wars:Jedi
+                                              ]
+                         ] ;
+                star-wars:born -41 ;
+                star-wars:friendsWith star-wars:Din_Djarin ;
+                star-wars:livedIn star-wars:Coruscant ;
+                star-wars:memberOf star-wars:Mudhorn_Clan ;
+                star-wars:survivorOf star-wars:Order_66 ;
+                rdfs:label "The Child" ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Grogu"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Heist_on_Trask
+star-wars:Heist_on_Trask rdf:type owl:NamedIndividual ,
+                                  star-wars:Job ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:killingOf ;
+                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                         owl:onProperty star-wars:hadRole ;
+                                                         owl:someValuesFrom star-wars:StormTrooper
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:stole ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( star-wars:Freighter
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty star-wars:ownedBy ;
+                                                                                owl:hasValue star-wars:Imperial_Remnant
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         star-wars:after star-wars:Mamacores_Lunch ;
+                         star-wars:location star-wars:Trask ;
+                         star-wars:participant star-wars:Clan_Kryze ,
+                                               star-wars:Din_Djarin ;
+                         star-wars:year 9 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_11:_The_Heiress#The_heist"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hunting_Fennec_Shand
+star-wars:Hunting_Fennec_Shand rdf:type owl:NamedIndividual ,
+                                        star-wars:Job ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty star-wars:participant ;
+                                          owl:someValuesFrom star-wars:Pit_Droid
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty star-wars:participant ;
+                                          owl:someValuesFrom star-wars:Tusken_Raider
+                                        ] ;
+                               star-wars:after star-wars:Fight_on_Sorgan ;
+                               star-wars:deathOf star-wars:Toro_Calican ;
+                               star-wars:injuryOf star-wars:Fennec_Shand ;
+                               star-wars:location star-wars:Mos_Eisley ;
+                               star-wars:participant star-wars:Din_Djarin ,
+                                                     star-wars:Grogu ,
+                                                     star-wars:Peli_Motto ;
+                               star-wars:year 9 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_5:_The_Gunslinger"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#IG-11
+star-wars:IG-11 rdf:type owl:NamedIndividual ,
+                         star-wars:Droid ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:hadRole ;
+                           owl:someValuesFrom star-wars:Bounty_Hunter
+                         ] ;
+                star-wars:builtBy star-wars:Kuiil ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/IG-11"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Imperial_Remnant
+star-wars:Imperial_Remnant rdf:type owl:NamedIndividual ,
+                                    star-wars:Cell ;
+                           star-wars:memberOf star-wars:Galactic_Empire ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Gideon%27s_Imperial_remnant"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Infiltrating_the_Refinery
+star-wars:Infiltrating_the_Refinery rdf:type owl:NamedIndividual ,
+                                             star-wars:Mission ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:destructionOf ;
+                                               owl:someValuesFrom star-wars:Tie_Fighter
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:killingOf ;
+                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty star-wars:hadRole ;
+                                                                    owl:someValuesFrom star-wars:Pirate
+                                                                  ]
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:killingOf ;
+                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty star-wars:hadRole ;
+                                                                    owl:someValuesFrom star-wars:StormTrooper
+                                                                  ]
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:stole ;
+                                               owl:someValuesFrom star-wars:Transport
+                                             ] ;
+                                    star-wars:after star-wars:Calling_to_the_Jedi ;
+                                    star-wars:killingOf star-wars:Valin_Hess ;
+                                    star-wars:location star-wars:Morak ;
+                                    star-wars:participant star-wars:Boba_Fett ,
+                                                          star-wars:Cara_Dune ,
+                                                          star-wars:Din_Djarin ,
+                                                          star-wars:Fennec_Shand ,
+                                                          star-wars:Migs_Mayfeld ;
+                                    star-wars:year 9 ;
+                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_15:_The_Believer"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Kill_Ahsoka_Tano
+star-wars:Kill_Ahsoka_Tano rdf:type owl:NamedIndividual ,
+                                    star-wars:Job ;
+                           star-wars:during star-wars:Fight_for_Calodan ;
+                           star-wars:location star-wars:Corvus ;
+                           star-wars:participant star-wars:Ahsoka_Tano ,
+                                                 star-wars:Din_Djarin ,
+                                                 star-wars:Grogu ;
+                           star-wars:year 9 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_13:_The_Jedi#Meeting_the_Magistrate"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Killing_a_Krayt_Dragon
+star-wars:Killing_a_Krayt_Dragon rdf:type owl:NamedIndividual ,
+                                          star-wars:Mission ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty star-wars:found ;
+                                            owl:someValuesFrom star-wars:Armour
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty star-wars:killingOf ;
+                                            owl:someValuesFrom star-wars:Bantha
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty star-wars:killingOf ;
+                                            owl:someValuesFrom star-wars:Greater_Krayt_Dragon
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty star-wars:participant ;
+                                            owl:someValuesFrom star-wars:Tusken_Raider
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty star-wars:participant ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Human
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty star-wars:from ;
+                                                                                        owl:hasValue star-wars:Mos_Pelgo
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ;
+                                 star-wars:after star-wars:Finding_a_Mandalorian ;
+                                 star-wars:location star-wars:Mos_Pelgo ;
+                                 star-wars:participant star-wars:Cobb_Vanth ,
+                                                       star-wars:Din_Djarin ;
+                                 star-wars:witnessedBy star-wars:Boba_Fett ,
+                                                       star-wars:Grogu ;
+                                 star-wars:year 9 ;
+                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_9:_The_Marshal"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Kuiil
+star-wars:Kuiil rdf:type owl:NamedIndividual ,
+                         star-wars:Ugnaught ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:gender ;
+                           owl:someValuesFrom star-wars:Male
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:hadRole ;
+                           owl:someValuesFrom star-wars:Farmer
+                         ] ;
+                star-wars:livedIn star-wars:Arvala-7 ;
+                star-wars:quote "I have spoken" ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Kuiil"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Lang
+star-wars:Lang rdf:type owl:NamedIndividual ,
+                        star-wars:Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:gender ;
+                          owl:someValuesFrom star-wars:Male
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:hadRole ;
+                          owl:someValuesFrom star-wars:Mercenary
+                        ] ;
+               star-wars:employedBy star-wars:Morgan_Elsbeth ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Lang"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Leaving_Arvala-7
+star-wars:Leaving_Arvala-7 rdf:type owl:NamedIndividual ,
+                                    star-wars:Mission ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:killingOf ;
+                                      owl:someValuesFrom star-wars:Mudhorn
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:killingOf ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Jawa
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:stole ;
+                                                                                  owl:someValuesFrom [ owl:intersectionOf ( star-wars:Parts
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty star-wars:of ;
+                                                                                                                              owl:hasValue star-wars:Razor_Crest
+                                                                                                                            ]
+                                                                                                                          ) ;
+                                                                                                       rdf:type owl:Class
+                                                                                                     ]
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:killingOf ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Trandoshan
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:hadRole ;
+                                                                                  owl:someValuesFrom star-wars:Bounty_Hunter
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom star-wars:Bluurg
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom star-wars:Sandcrawler
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:stole ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Egg
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
+                                                                                  owl:someValuesFrom star-wars:Mudhorn
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           star-wars:after star-wars:Finding_the_Child ;
+                           star-wars:location star-wars:Arvala-7 ;
+                           star-wars:participant star-wars:Din_Djarin ,
+                                                 star-wars:Grogu ,
+                                                 star-wars:Kuiil ,
+                                                 star-wars:Razor_Crest ;
+                           star-wars:year 9 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_2:_The_Child"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Mamacores_Lunch
+star-wars:Mamacores_Lunch rdf:type owl:NamedIndividual ,
+                                   star-wars:Rescue ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Event
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty star-wars:participant ;
+                                                                                 owl:someValuesFrom star-wars:Mamacore
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty star-wars:eatingOf ;
+                                                                                 owl:hasValue star-wars:Grogu
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:killingOf ;
+                                     owl:someValuesFrom star-wars:Mamacore
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom star-wars:Quarren
+                                   ] ;
+                          star-wars:after star-wars:Transporting_Eggs ;
+                          star-wars:escapeOf star-wars:Din_Djarin ,
+                                             star-wars:Grogu ;
+                          star-wars:location star-wars:Trask ;
+                          star-wars:participant star-wars:Axe_Woves ,
+                                                star-wars:Bo-Katan_Kryze ,
+                                                star-wars:Koska_Reeves ;
+                          star-wars:year 9 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_11:_The_Heiress#A_perilous_cruise"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Migs_Mayfeld
+star-wars:Migs_Mayfeld rdf:type owl:NamedIndividual ,
+                                star-wars:Human ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:gender ;
+                                  owl:someValuesFrom star-wars:Male
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:hadRole ;
+                                  owl:someValuesFrom star-wars:Mercenary
+                                ] ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Migs_Mayfeld"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Morgan_Elsbeth
+star-wars:Morgan_Elsbeth rdf:type owl:NamedIndividual ,
+                                  star-wars:Human ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:gender ;
+                                    owl:someValuesFrom star-wars:Female
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:hadRole ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( star-wars:Magistrate
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:of ;
+                                                                                  owl:hasValue star-wars:Calodan
+                                                                                ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         star-wars:employedBy star-wars:Thrawn ;
+                         star-wars:year 9 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Morgan_Elsbeth"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Mudhorn_Clan
+star-wars:Mudhorn_Clan rdf:type owl:NamedIndividual ,
+                                star-wars:Gang ;
+                       star-wars:memberOf star-wars:The_Tribe ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Clan_Mudhorn"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Paz_Vizsla
+star-wars:Paz_Vizsla rdf:type owl:NamedIndividual ,
+                              star-wars:Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:gender ;
+                                owl:someValuesFrom star-wars:Male
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom star-wars:Mandalorian
+                              ] ;
+                     star-wars:livedIn star-wars:Navarro ;
+                     star-wars:memberOf star-wars:The_Tribe ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Paz_Vizsla"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Peli_Motto
+star-wars:Peli_Motto rdf:type owl:NamedIndividual ,
+                              star-wars:Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:gender ;
+                                owl:someValuesFrom star-wars:Female
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Mechanic
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty star-wars:location ;
+                                                                              owl:someValuesFrom [ owl:intersectionOf ( star-wars:Space_Port
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty star-wars:location ;
+                                                                                                                            owl:hasValue star-wars:Mos_Eisley
+                                                                                                                          ]
+                                                                                                                      ) ;
+                                                                                                   rdf:type owl:Class
+                                                                                                 ]
+                                                                            ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Peli_Motto"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Pershing
+star-wars:Pershing rdf:type owl:NamedIndividual ,
+                            star-wars:Human ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty star-wars:hadRole ;
+                              owl:someValuesFrom [ owl:intersectionOf ( star-wars:Doctor
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty star-wars:inOrganisation ;
+                                                                          owl:hasValue star-wars:Galactic_Empire
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Pershing"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Q9-0
+star-wars:Q9-0 rdf:type owl:NamedIndividual ,
+                        star-wars:Protocol_Droid ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:gender ;
+                          owl:someValuesFrom star-wars:Male
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:hadRole ;
+                          owl:someValuesFrom star-wars:Mercenary
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Q9-0"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Qin
+star-wars:Qin rdf:type owl:NamedIndividual ,
+                       <http://null.com/star-wars#Twi'Lek> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty star-wars:gender ;
+                         owl:someValuesFrom star-wars:Male
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty star-wars:hadRole ;
+                         owl:someValuesFrom star-wars:Criminal
+                       ] ;
+              star-wars:sister <http://null.com/star-wars#Xi'an> ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Qin"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Ranzar_Malk
+star-wars:Ranzar_Malk rdf:type owl:NamedIndividual ,
+                               star-wars:Human ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:gender ;
+                                 owl:someValuesFrom star-wars:Male
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom star-wars:Criminal
+                               ] ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Ranzar_Malk"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Razor_Crest
+star-wars:Razor_Crest rdf:type owl:NamedIndividual ,
+                               star-wars:Gunship ;
+                      star-wars:ownedBy star-wars:Din_Djarin ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Razor_Crest"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Removing_Imperials_from_Nevarro
+star-wars:Removing_Imperials_from_Nevarro rdf:type owl:NamedIndividual ,
+                                                   star-wars:Attack ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:destructionOf ;
+                                                     owl:someValuesFrom star-wars:Tie_Fighter
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:destructionOf ;
+                                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Base
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty star-wars:ownedBy ;
+                                                                                                 owl:hasValue star-wars:Imperial_Remnant
+                                                                                               ]
+                                                                                             ) ;
+                                                                          rdf:type owl:Class
+                                                                        ]
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:found ;
+                                                     owl:someValuesFrom star-wars:Plans
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:killingOf ;
+                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty star-wars:hadRole ;
+                                                                          owl:someValuesFrom star-wars:Scientist
+                                                                        ]
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:killingOf ;
+                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty star-wars:hadRole ;
+                                                                          owl:someValuesFrom star-wars:StormTrooper
+                                                                        ]
+                                                   ] ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:stole ;
+                                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Marauder
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty star-wars:ownedBy ;
+                                                                                                 owl:hasValue star-wars:Imperial_Remnant
+                                                                                               ]
+                                                                                             ) ;
+                                                                          rdf:type owl:Class
+                                                                        ]
+                                                   ] ;
+                                          star-wars:after star-wars:Heist_on_Trask ;
+                                          star-wars:location star-wars:Navarro ;
+                                          star-wars:participant star-wars:Cara_Dune ,
+                                                                star-wars:Din_Djarin ,
+                                                                star-wars:Greef_Karga ,
+                                                                star-wars:The_Mythrol ;
+                                          star-wars:year 9 ;
+                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_12:_The_Siege"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rescue_of_Qin
+star-wars:Rescue_of_Qin rdf:type owl:NamedIndividual ,
+                                 star-wars:Rescue ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:destructionOf ;
+                                   owl:someValuesFrom star-wars:Droid
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:participant ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:X-Wing
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:memberOf ;
+                                                                               owl:hasValue star-wars:New_Republic
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        star-wars:after star-wars:Hunting_Fennec_Shand ;
+                        star-wars:captureOf star-wars:Burg ,
+                                            star-wars:Migs_Mayfeld ,
+                                            <http://null.com/star-wars#Xi'an> ;
+                        star-wars:deathOf star-wars:Q9-0 ,
+                                          star-wars:Qin ;
+                        star-wars:location star-wars:Bothan-Five ;
+                        star-wars:participant star-wars:Din_Djarin ,
+                                              star-wars:Grogu ,
+                                              star-wars:Ranzar_Malk ;
+                        star-wars:year 9 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_6:_The_Prisoner"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rescue_the_Child
+star-wars:Rescue_the_Child rdf:type owl:NamedIndividual ,
+                                    star-wars:Rescue ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:destructionOf ;
+                                      owl:someValuesFrom star-wars:Dark_Trooper_3rd_gen
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:killingOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty star-wars:hadRole ;
+                                                           owl:someValuesFrom star-wars:StormTrooper
+                                                         ]
+                                    ] ;
+                           star-wars:after star-wars:Infiltrating_the_Refinery ;
+                           star-wars:captureOf star-wars:Pershing ;
+                           star-wars:escapeOf star-wars:Grogu ;
+                           star-wars:location star-wars:Gideons_Cruiser ;
+                           star-wars:participant star-wars:Bo-Katan_Kryze ,
+                                                 star-wars:Boba_Fett ,
+                                                 star-wars:Cara_Dune ,
+                                                 star-wars:Din_Djarin ,
+                                                 star-wars:Fennec_Shand ,
+                                                 star-wars:Gideon ,
+                                                 star-wars:Koska_Reeves ,
+                                                 star-wars:Luke_Skywalker ,
+                                                 star-wars:R2-D2 ;
+                           star-wars:year 9 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_16:_The_Rescue"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Showdown_on_Navarro
+star-wars:Showdown_on_Navarro rdf:type owl:NamedIndividual ,
+                                       star-wars:Confrontation ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:destructionOf ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Tie_Fighter
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty star-wars:ownedBy ;
+                                                                                     owl:hasValue star-wars:Gideon
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Rescue
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty star-wars:escapeOf ;
+                                                                                     owl:hasValue star-wars:Grogu
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty star-wars:participant ;
+                                                                                     owl:hasValue star-wars:IG-11
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom star-wars:Bluurg
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                              owl:onProperty star-wars:hadRole ;
+                                                              owl:someValuesFrom star-wars:Bounty_Hunter
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                              owl:onProperty star-wars:hadRole ;
+                                                              owl:someValuesFrom star-wars:StormTrooper
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom star-wars:Reptavian
+                                       ] ;
+                              star-wars:after star-wars:Rescue_of_Qin ;
+                              star-wars:captureOf star-wars:Grogu ;
+                              star-wars:deathOf star-wars:IG-11 ;
+                              star-wars:healingOf star-wars:Greef_Karga ;
+                              star-wars:injuryOf star-wars:Din_Djarin ,
+                                                 star-wars:Greef_Karga ;
+                              star-wars:killingOf star-wars:Kuiil ,
+                                                  star-wars:The_Client ;
+                              star-wars:location star-wars:Navarro ;
+                              star-wars:participant star-wars:Cara_Dune ,
+                                                    star-wars:Gideon ,
+                                                    star-wars:The_Armorer ;
+                              star-wars:year 9 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_The_Reckoning"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#The_Armorer
+star-wars:The_Armorer rdf:type owl:NamedIndividual ,
+                               star-wars:Human ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:gender ;
+                                 owl:someValuesFrom star-wars:Female
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom star-wars:Mandalorian
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:inOrganisation ;
+                                                                             owl:hasValue star-wars:The_Tribe
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      star-wars:livedIn star-wars:Navarro ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Armorer"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#The_Client
+star-wars:The_Client rdf:type owl:NamedIndividual ,
+                              star-wars:Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Agent
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:inOrganisation ;
+                                                                            owl:hasValue star-wars:Imperial_Remnant
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     star-wars:employedBy star-wars:Gideon ;
+                     star-wars:visited star-wars:Navarro ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Client"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#The_Mythrol
+star-wars:The_Mythrol rdf:type owl:NamedIndividual ,
+                               star-wars:Mythrol ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:stole ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( star-wars:Money
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:ownedBy ;
+                                                                             owl:hasValue star-wars:Greef_Karga
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      star-wars:employedBy star-wars:Greef_Karga ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mythrol"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#The_Tribe
+star-wars:The_Tribe rdf:type owl:NamedIndividual ,
+                             star-wars:Religious_Order ;
+                    star-wars:memberOf star-wars:Children_of_the_Watch ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Tribe"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Trading_the_Child
+star-wars:Trading_the_Child rdf:type owl:NamedIndividual ,
+                                     star-wars:Mission ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:destructionOf ;
+                                       owl:someValuesFrom star-wars:TT-8L_Gatekeeper_Droid
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:killingOf ;
+                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                            owl:onProperty star-wars:hadRole ;
+                                                            owl:someValuesFrom star-wars:Bounty_Hunter
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:killingOf ;
+                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                            owl:onProperty star-wars:hadRole ;
+                                                            owl:someValuesFrom star-wars:StormTrooper
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:traded ;
+                                       owl:someValuesFrom star-wars:Beskar
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:participant ;
+                                       owl:hasValue star-wars:The_Tribe
+                                     ] ;
+                            star-wars:after star-wars:Leaving_Arvala-7 ;
+                            star-wars:escapeOf star-wars:Grogu ;
+                            star-wars:location star-wars:Navarro ;
+                            star-wars:participant star-wars:Greef_Karga ,
+                                                  star-wars:Paz_Vizsla ,
+                                                  star-wars:Pershing ,
+                                                  star-wars:The_Armorer ,
+                                                  star-wars:The_Client ;
+                            star-wars:traded star-wars:Grogu ;
+                            star-wars:year 9 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_3:_The_Sin"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Transporting_Eggs
+star-wars:Transporting_Eggs rdf:type owl:NamedIndividual ,
+                                     star-wars:Job ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:eatingOf ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Egg
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:ownedBy ;
+                                                                                   owl:hasValue star-wars:Frog_Lady
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Crash
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:location ;
+                                                                                   owl:hasValue star-wars:Maldo_Kreis
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:participant ;
+                                                                                   owl:hasValue star-wars:Razor_Crest
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Crash
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:location ;
+                                                                                   owl:hasValue star-wars:Trask
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:participant ;
+                                                                                   owl:hasValue star-wars:Razor_Crest
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:participant ;
+                                       owl:someValuesFrom star-wars:Knobby_white_ice_spider
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:participant ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:X-Wing
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:ownedBy ;
+                                                                                   owl:hasValue star-wars:New_Republic
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                            star-wars:after star-wars:Killing_a_Krayt_Dragon ;
+                            star-wars:location star-wars:Maldo_Kreis ,
+                                               star-wars:Razor_Crest ;
+                            star-wars:participant star-wars:Din_Djarin ,
+                                                  star-wars:Frog_Lady ,
+                                                  star-wars:Grogu ;
+                            star-wars:year 9 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_10:_The_Passenger"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Valin_Hess
+star-wars:Valin_Hess rdf:type owl:NamedIndividual ,
+                              star-wars:Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:gender ;
+                                owl:someValuesFrom star-wars:Male
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:General
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty star-wars:inOrganisation ;
+                                                                              owl:hasValue star-wars:Imperial_Remnant
+                                                                            ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Valin_Hess"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Xi'an
+<http://null.com/star-wars#Xi'an> rdf:type owl:NamedIndividual ,
+                                           <http://null.com/star-wars#Twi'Lek> ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty star-wars:gender ;
+                                             owl:someValuesFrom star-wars:Female
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty star-wars:hadRole ;
+                                             owl:someValuesFrom star-wars:Mercenary
+                                           ] ;
+                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Xi%27an"^^xsd:anyURI .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -18,29 +18,46 @@ The ontology covers major characters, events and places in the canon films and T
 ## Status
 
 * In progress
-* Basic modelling of films completed
+* Basic modelling of all live action content completed
 * Many open modelling questions
 * Tests and queries still experimental
 * No modularisation currently
+
+## Metrics
+
+|Type |Count |
+--- | ---
+|Axiom |5539
+|Logical axioms |3695
+|Declaration axioms	|1019
+|Classes	|342
+|Object properties	|79
+|Data properties	|4
+|Individuals	|593
+|Annotation Properties	|5
 
 ---
 
 ## Todo
 
+* Try to modularise The Mandalorian
 * Series
-    * Clone Wars series
-    * Rebels
-    * Resistance
-    * Bad Batch
+    * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
+    * Rebels - 4 series eps(15, 22, 22, 16)
+    * Resistance - 2 series eps(21, 19)
+    * Bad Batch - 1 series eps(incomplete)
+
 * Review property "of" - is it even defined properly?
+
 * "visited" only used once - is it useful?
+
 * "healed" also only used once
+
 * "surrenderOf" - anywhere else to use this?
+
 * is "on" really helping? It's just a nice bit of syntactic sugar
 
-* Revise classification of living things - sentience makes it difficult to classify by type (eg Reptile)
-  
-* Homeworld for each species - might add a lot of places that aren't interesting in any other way
+* homeworld for each species - but only for planets that are interesting in some other way
 
 * We can add images in seeAlso - jpg extension on anyURI. But, cannot manage copyright and hot loading
 Unfortunately, probably no pattern to generate automatically

@@ -26,7 +26,7 @@ public class SparqlTest extends TestCase {
         TestSetup setup = new TestSetup(new TestSuite(SparqlTest.class)) {
             protected void setUp(  ) throws Exception {
                 long t1 = System.currentTimeMillis();
-                Model model = RDFDataMgr.loadModel("star-wars.owl.ttl", Lang.TURTLE);
+                Model model = RDFDataMgr.loadModel("ontologies/star-wars.owl.ttl", Lang.TURTLE);
 
                 long t2 = System.currentTimeMillis();
                 System.out.println("loaded in = " + (t2 - t1));

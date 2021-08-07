@@ -10,7 +10,7 @@ The ontology covers major characters, events and places in the canon films and T
 
 ## Contents
 
-* [star-wars.owl.ttl](star-wars.owl.ttl) - Ontology of Star Wars Universe characters, events and places from the major canon film and TV series
+* [star-wars.owl.ttl](ontologies/star-wars.owl.ttl) - Ontology of Star Wars Universe characters, events and places from the major canon film and TV series
 * [src/test](src/test/) - A set of Java tests against the ontology for quality checking etc
 * [sparql](sparql/) - A set of Sparql queries to summarise or infer things about our ontology
 * [docs](docs/) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
@@ -40,7 +40,8 @@ The ontology covers major characters, events and places in the canon films and T
 
 ## Todo
 
-* Try to modularise The Mandalorian
+* Try to modularise
+  * update tests to work with imports
 * Series
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Rebels - 4 series eps(15, 22, 22, 16)

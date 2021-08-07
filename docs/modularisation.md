@@ -28,7 +28,7 @@ Currently several individuals referenced (search for hasValue):
 
 ### star-wars
 
-Events in the wider Universe
+Characters, places and events in the wider Universe
 
 ### resistance
 

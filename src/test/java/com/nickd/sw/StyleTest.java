@@ -30,7 +30,7 @@ public class StyleTest extends TestCase {
         TestSetup setup = new TestSetup(new TestSuite(StyleTest.class)) {
             protected void setUp(  ) throws Exception {
                 mngr = new OWLManager().get();
-                File starwarsOwl = new File("star-wars.owl.ttl");
+                File starwarsOwl = new File("ontologies/star-wars.owl.ttl");
                 long start = System.currentTimeMillis();
                 ont = mngr.loadOntologyFromOntologyDocument(starwarsOwl);
                 t = System.currentTimeMillis() - start;

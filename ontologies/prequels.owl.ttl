@@ -1,0 +1,509 @@
+@prefix : <http://null.com/star-wars#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix star-wars: <http://null.com/star-wars#> .
+@base <http://null.com/star-wars> .
+
+<http://null.com/star-wars/prequels> rdf:type owl:Ontology ;
+                                    owl:imports <http://null.com/star-wars> ;
+                                    rdfs:comment "Events and characters primarily from the prequel films" .
+
+
+###  http://null.com/star-wars#Dooku_vs_3_Jedi
+star-wars:Dooku_vs_3_Jedi rdf:type owl:NamedIndividual ,
+                                   star-wars:Duel ;
+                          star-wars:during star-wars:First_Battle_of_Geonosis ;
+                          star-wars:escapeOf star-wars:Count_Dooku ;
+                          star-wars:injuryOf star-wars:Anakin_Skywalker ,
+                                             star-wars:Obi-Wan_Kenobi ;
+                          star-wars:location star-wars:Geonosis ;
+                          star-wars:survivedBy star-wars:Yoda ;
+                          star-wars:year -22 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/First_Battle_of_Geonosis#Confronting_the_Count"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Failed_Assasination_of_Padme
+star-wars:Failed_Assasination_of_Padme rdf:type owl:NamedIndividual ,
+                                                star-wars:Attack ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty star-wars:killingOf ;
+                                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty star-wars:employedBy ;
+                                                                       owl:hasValue star-wars:Padme_Amidala
+                                                                     ]
+                                                ] ;
+                                       star-wars:deathOf star-wars:Zam_Wesell ;
+                                       star-wars:location star-wars:Coruscant ;
+                                       star-wars:orderedBy star-wars:Nute_Gunray ;
+                                       star-wars:participant star-wars:Anakin_Skywalker ,
+                                                             star-wars:Jango_Fett ,
+                                                             star-wars:Obi-Wan_Kenobi ;
+                                       star-wars:survivedBy star-wars:Padme_Amidala ;
+                                       star-wars:year -22 ;
+                                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Padm%C3%A9_Amidala#Separatist_Crisis"^^xsd:anyURI .
+
+###  http://null.com/star-wars#First_Battle_of_Geonosis
+star-wars:First_Battle_of_Geonosis rdf:type owl:NamedIndividual ,
+                                            star-wars:Battle ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty star-wars:deathOf ;
+                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty star-wars:hadRole ;
+                                                                   owl:someValuesFrom star-wars:Jedi
+                                                                 ]
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty star-wars:participant ;
+                                              owl:someValuesFrom star-wars:Acklay
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty star-wars:participant ;
+                                              owl:someValuesFrom star-wars:Nexu
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty star-wars:participant ;
+                                              owl:someValuesFrom star-wars:Reek
+                                            ] ;
+                                   star-wars:after star-wars:Torture_of_Shmi ;
+                                   star-wars:during star-wars:Clone_Wars ;
+                                   star-wars:location star-wars:Geonosis ;
+                                   star-wars:participant star-wars:Droid_Army ,
+                                                         star-wars:Grand_Army_of_the_Republic ,
+                                                         star-wars:Jedi_Order ;
+                                   star-wars:survivedBy star-wars:Anakin_Skywalker ,
+                                                        star-wars:Obi-Wan_Kenobi ,
+                                                        star-wars:Padme_Amidala ;
+                                   star-wars:year -22 ;
+                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/First_Battle_of_Geonosis" .
+
+
+###  http://null.com/star-wars#Kidnap_of_Palpatine
+star-wars:Kidnap_of_Palpatine rdf:type owl:NamedIndividual ,
+                                       star-wars:Capture ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom star-wars:B2_Super_Battle_Droid
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:killingOf ;
+                                         owl:someValuesFrom star-wars:IG-100_MagnaGuard
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom star-wars:Battle_Droid
+                                       ] ;
+                              star-wars:during star-wars:Battle_of_Coruscant ;
+                              star-wars:location star-wars:Invisible_Hand ;
+                              star-wars:participant star-wars:Anakin_Skywalker ,
+                                                    star-wars:Obi-Wan_Kenobi ,
+                                                    star-wars:R2-D2 ,
+                                                    star-wars:Sheev_Palpatine ;
+                              star-wars:year -19 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Coruscant#Jedi_rescue"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Qui-Gon_vs_Maul
+star-wars:Qui-Gon_vs_Maul rdf:type owl:NamedIndividual ,
+                                   star-wars:Duel ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom star-wars:Speeder
+                                   ] ;
+                          star-wars:after star-wars:Boonta_Eve_Classic_32BBY ;
+                          star-wars:during star-wars:Invasion_of_Naboo ;
+                          star-wars:escapeOf star-wars:Anakin_Skywalker ,
+                                             star-wars:Padme_Amidala ,
+                                             star-wars:Qui-Gon_Jinn ;
+                          star-wars:location star-wars:Tatooine ;
+                          star-wars:participant star-wars:Maul ,
+                                                star-wars:Naboo_Royal_Starship ;
+                          star-wars:year -32 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Duel_on_Tatooine"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Secret_Marriage
+star-wars:Secret_Marriage rdf:type owl:NamedIndividual ,
+                                   star-wars:Wedding ;
+                          star-wars:after star-wars:First_Battle_of_Geonosis ;
+                          star-wars:location star-wars:Naboo ;
+                          star-wars:participant star-wars:Anakin_Skywalker ,
+                                                star-wars:Padme_Amidala ;
+                          star-wars:witnessedBy star-wars:C-3PO ,
+                                                star-wars:R2-D2 ;
+                          star-wars:year -22 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Wedding_of_Anakin_Skywalker_and_Padm%C3%A9_Amidala"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Shmi_Skywalker
+star-wars:Shmi_Skywalker rdf:type owl:NamedIndividual ,
+                                  star-wars:Human ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:gender ;
+                                    owl:someValuesFrom star-wars:Female
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:hadRole ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( star-wars:Slave
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
+                                                                                  owl:hasValue star-wars:Watto
+                                                                                ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         star-wars:livedIn star-wars:Mos_Espa ;
+                         star-wars:raised star-wars:Owen_Lars ;
+                         star-wars:son star-wars:Anakin_Skywalker ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Torture_of_Shmi
+star-wars:Torture_of_Shmi rdf:type owl:NamedIndividual ,
+                                   star-wars:Fight ,
+                                   [ rdf:type owl:Class ;
+                                     owl:complementOf [ rdf:type owl:Restriction ;
+                                                        owl:onProperty star-wars:survivorOf ;
+                                                        owl:someValuesFrom [ owl:intersectionOf ( star-wars:Tusken_Raider
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty star-wars:location ;
+                                                                                                      owl:hasValue star-wars:Tusken_Raider_camp
+                                                                                                    ]
+                                                                                                ) ;
+                                                                             rdf:type owl:Class
+                                                                           ]
+                                                      ]
+                                   ] ;
+                          star-wars:after star-wars:Obi-Wan_vs_Jango ;
+                          star-wars:deathOf star-wars:Shmi_Skywalker ;
+                          star-wars:location star-wars:Tusken_Raider_camp ;
+                          star-wars:participant star-wars:Anakin_Skywalker ;
+                          star-wars:year -22 ;
+                          star-wars:todo "No survivors" ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars#Emancipation.2C_captivity.2C_and_death"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Anakin_vs_Dooku
+star-wars:Anakin_vs_Dooku rdf:type owl:NamedIndividual ,
+                                   star-wars:Duel ;
+                          star-wars:after star-wars:Kidnap_of_Palpatine ;
+                          star-wars:during star-wars:Battle_of_Coruscant ;
+                          star-wars:killingOf star-wars:Count_Dooku ;
+                          star-wars:location star-wars:Invisible_Hand ;
+                          star-wars:victoryOf star-wars:Anakin_Skywalker ;
+                          star-wars:witnessedBy star-wars:Sheev_Palpatine ;
+                          star-wars:year -19 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Dooku#Death"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Battle_of_Naboo
+star-wars:Battle_of_Naboo rdf:type owl:NamedIndividual ,
+                                   star-wars:Battle ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:location ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Plains
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:on ;
+                                                                                   owl:hasValue star-wars:Naboo
+                                                                                 ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Army
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty star-wars:of ;
+                                                                                   owl:someValuesFrom star-wars:Gungan
+                                                                                 ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ;
+                          star-wars:after star-wars:Election_of_Supreme_Chancellor_32_BBY ;
+                          star-wars:captureOf star-wars:Nute_Gunray ;
+                          star-wars:destructionOf star-wars:Vuutun_Palaa ;
+                          star-wars:during star-wars:Invasion_of_Naboo ;
+                          star-wars:location star-wars:Naboo ;
+                          star-wars:participant star-wars:Anakin_Skywalker ,
+                                                star-wars:Boss_Nass ,
+                                                star-wars:Jar_Jar_Binks ,
+                                                star-wars:Padme_Amidala ,
+                                                star-wars:Trade_Federation ;
+                          star-wars:year -32 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Naboo"^^xsd:anyURI .
+
+
+
+###  http://null.com/star-wars#Boonta_Eve_Classic_32BBY
+star-wars:Boonta_Eve_Classic_32BBY rdf:type owl:NamedIndividual ,
+                                            star-wars:Race ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty star-wars:participant ;
+                                              owl:someValuesFrom star-wars:Podracer
+                                            ] ;
+                                   star-wars:after star-wars:Capture_of_Theed ;
+                                   star-wars:during star-wars:Invasion_of_Naboo ;
+                                   star-wars:location star-wars:Mos_Espa ;
+                                   star-wars:participant star-wars:Sebulba ;
+                                   star-wars:victoryOf star-wars:Anakin_Skywalker ;
+                                   star-wars:witnessedBy star-wars:Aurra_Sing ,
+                                                         star-wars:Jabba ,
+                                                         star-wars:Obi-Wan_Kenobi ,
+                                                         star-wars:Padme_Amidala ,
+                                                         star-wars:Qui-Gon_Jinn ;
+                                   star-wars:year -32 ;
+                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Boonta_Eve_Classic"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Capture_of_Theed
+star-wars:Capture_of_Theed rdf:type owl:NamedIndividual ,
+                                    star-wars:Battle ;
+                           star-wars:during star-wars:Invasion_of_Naboo ;
+                           star-wars:escapeOf star-wars:Jar_Jar_Binks ,
+                                              star-wars:Obi-Wan_Kenobi ,
+                                              star-wars:Padme_Amidala ,
+                                              star-wars:Qui-Gon_Jinn ,
+                                              star-wars:R2-D2 ;
+                           star-wars:location star-wars:Naboo ;
+                           star-wars:participant star-wars:Trade_Federation ;
+                           star-wars:year -32 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Capture_of_Theed"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Election_of_Supreme_Chancellor_32_BBY
+star-wars:Election_of_Supreme_Chancellor_32_BBY rdf:type owl:NamedIndividual ,
+                                                         star-wars:Event ;
+                                                star-wars:after star-wars:Qui-Gon_vs_Maul ;
+                                                star-wars:during star-wars:Invasion_of_Naboo ;
+                                                star-wars:location star-wars:Coruscant ;
+                                                star-wars:participant star-wars:Padme_Amidala ,
+                                                                      star-wars:Sheev_Palpatine ;
+                                                star-wars:year -32 ;
+                                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Supreme_Chancellor_Election,_32_BBY"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Obi-Wan_vs_Jango
+star-wars:Obi-Wan_vs_Jango rdf:type owl:NamedIndividual ,
+                                    star-wars:Fight ;
+                           star-wars:after star-wars:Failed_Assasination_of_Padme ;
+                           star-wars:escapeOf star-wars:Jango_Fett ;
+                           star-wars:location star-wars:Kamino ;
+                           star-wars:participant star-wars:Obi-Wan_Kenobi ;
+                           star-wars:year -22 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi#Discovery_of_the_Clone_Army"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Battle_of_the_Heroes
+star-wars:Battle_of_the_Heroes rdf:type owl:NamedIndividual ,
+                                        star-wars:Duel ;
+                               star-wars:after star-wars:Vader_wipes_out_Seperatist_Leaders ;
+                               star-wars:injuryOf star-wars:Padme_Amidala ;
+                               star-wars:location star-wars:Mustafar ;
+                               star-wars:participant star-wars:Darth_Vader ;
+                               star-wars:victoryOf star-wars:Obi-Wan_Kenobi ;
+                               star-wars:year -19 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Duel_on_Mustafar"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Birth_of_Hope
+star-wars:Birth_of_Hope rdf:type owl:NamedIndividual ,
+                                 star-wars:Birth ;
+                        star-wars:after star-wars:Battle_of_the_Heroes ;
+                        star-wars:deathOf star-wars:Padme_Amidala ;
+                        star-wars:location star-wars:Polis_Massa ;
+                        star-wars:survivedBy star-wars:Leia_Organa ,
+                                             star-wars:Luke_Skywalker ;
+                        star-wars:year -19 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Padm%C3%A9_Amidala#Death"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Blockade_of_Naboo
+star-wars:Blockade_of_Naboo rdf:type owl:NamedIndividual ,
+                                     star-wars:Confrontation ;
+                            star-wars:location star-wars:Naboo ;
+                            star-wars:participant star-wars:Trade_Federation ;
+                            star-wars:year -32 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Invasion_of_Naboo#Prelude"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Duel_of_the_Fates
+star-wars:Duel_of_the_Fates rdf:type owl:NamedIndividual ,
+                                     star-wars:Duel ;
+                            star-wars:during star-wars:Battle_of_Naboo ;
+                            star-wars:injuryOf star-wars:Maul ;
+                            star-wars:killingOf star-wars:Qui-Gon_Jinn ;
+                            star-wars:location star-wars:Theed ;
+                            star-wars:participant star-wars:Obi-Wan_Kenobi ;
+                            star-wars:year -32 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Qui-Gon_Jinn#The_Duel_of_the_Fates"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Invasion_of_Naboo
+star-wars:Invasion_of_Naboo rdf:type owl:NamedIndividual ,
+                                     star-wars:Event ;
+                            star-wars:after star-wars:Negotiating_with_Trade_Federation ;
+                            star-wars:location star-wars:Naboo ;
+                            star-wars:participant star-wars:Trade_Federation ;
+                            star-wars:year -32 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Invasion_of_Naboo"^^xsd:anyURI .
+
+
+
+###  http://null.com/star-wars#Negotiating_with_Trade_Federation
+star-wars:Negotiating_with_Trade_Federation rdf:type owl:NamedIndividual ,
+                                                     star-wars:Mission ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty star-wars:participant ;
+                                                       owl:someValuesFrom star-wars:B1_Battle_Droid
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty star-wars:participant ;
+                                                       owl:someValuesFrom star-wars:Destroyer_Droid
+                                                     ] ;
+                                            star-wars:during star-wars:Blockade_of_Naboo ;
+                                            star-wars:escapeOf star-wars:Obi-Wan_Kenobi ,
+                                                               star-wars:Qui-Gon_Jinn ;
+                                            star-wars:location star-wars:Saak_ak ;
+                                            star-wars:participant star-wars:Nute_Gunray ;
+                                            star-wars:year -32 ;
+                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Escape_from_the_Saak%27ak"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Siege_of_the_Jedi_Temple
+star-wars:Siege_of_the_Jedi_Temple rdf:type owl:NamedIndividual ,
+                                            star-wars:Attack ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty star-wars:killingOf ;
+                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty star-wars:hadRole ;
+                                                                   owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                        owl:unionOf ( star-wars:Jedi_Knight
+                                                                                                        star-wars:Jedi_Youngling
+                                                                                                        star-wars:Padawan
+                                                                                                    )
+                                                                                      ]
+                                                                 ]
+                                            ] ;
+                                   star-wars:after star-wars:Mace_vs_Emperor ;
+                                   star-wars:during star-wars:Order_66 ;
+                                   star-wars:location star-wars:Jedi_Temple ;
+                                   star-wars:participant <http://null.com/star-wars#501st> ;
+                                   star-wars:victoryOf star-wars:Darth_Vader ;
+                                   star-wars:witnessedBy star-wars:Bail_Organa ;
+                                   star-wars:year -19 ;
+                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Siege_of_the_Jedi_Temple"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Mace_vs_Emperor
+star-wars:Mace_vs_Emperor rdf:type owl:NamedIndividual ,
+                                   star-wars:Duel ;
+                          star-wars:after star-wars:Obi-Wan_vs_Grievous ;
+                          star-wars:injuryOf star-wars:Darth_Sidious ;
+                          star-wars:killingOf star-wars:Agen_Kolar ,
+                                              star-wars:Kit_Fisto ,
+                                              star-wars:Mace_Windu ,
+                                              star-wars:Saesee_Tiin ;
+                          star-wars:location star-wars:Coruscant ;
+                          star-wars:year -19 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#Duel_in_the_Chancellor.27s_Office"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Mace_vs_Jango
+star-wars:Mace_vs_Jango rdf:type owl:NamedIndividual ,
+                                 star-wars:Duel ;
+                        star-wars:during star-wars:First_Battle_of_Geonosis ;
+                        star-wars:killingOf star-wars:Jango_Fett ;
+                        star-wars:location star-wars:Geonosis ;
+                        star-wars:victoryOf star-wars:Mace_Windu ;
+                        star-wars:year -22 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Jango_Fett#Death_on_Geonosis"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Order_66
+star-wars:Order_66 rdf:type owl:NamedIndividual ,
+                            star-wars:Event ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty star-wars:participant ;
+                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                   owl:onProperty star-wars:hadRole ;
+                                                   owl:someValuesFrom star-wars:Jedi
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty star-wars:participant ;
+                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                   owl:onProperty star-wars:hadRole ;
+                                                   owl:someValuesFrom star-wars:Trooper
+                                                 ]
+                            ] ;
+                   star-wars:after star-wars:Mace_vs_Emperor ;
+                   star-wars:killingOf star-wars:Aayla_Secura ,
+                                       star-wars:Ki-Adi-Mundi ,
+                                       star-wars:Plo_Koon ,
+                                       star-wars:Shaak_Ti ;
+                   star-wars:location star-wars:Outer_Rim ;
+                   star-wars:orderedBy star-wars:Darth_Sidious ;
+                   star-wars:survivedBy star-wars:Ahsoka_Tano ,
+                                        star-wars:Jocasta_Nu ,
+                                        star-wars:Obi-Wan_Kenobi ,
+                                        star-wars:Yoda ;
+                   star-wars:year -19 ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Order_66"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Proclamation_of_the_New_Order
+star-wars:Proclamation_of_the_New_Order rdf:type owl:NamedIndividual ,
+                                                 star-wars:Event ;
+                                        star-wars:after star-wars:Vader_wipes_out_Seperatist_Leaders ;
+                                        star-wars:destructionOf star-wars:Galactic_Republic ;
+                                        star-wars:during star-wars:Clone_Wars ,
+                                                         star-wars:Empire_Day ;
+                                        star-wars:location star-wars:Galactic_Senate ;
+                                        star-wars:orderedBy star-wars:Sheev_Palpatine ;
+                                        star-wars:participant star-wars:Galactic_Empire ;
+                                        star-wars:year -19 ;
+                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Proclamation_of_the_New_Order"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Obi-Wan_vs_Grievous
+star-wars:Obi-Wan_vs_Grievous rdf:type owl:NamedIndividual ,
+                                       star-wars:Duel ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty star-wars:participant ;
+                                         owl:someValuesFrom star-wars:Varactyl
+                                       ] ;
+                              star-wars:after star-wars:Battle_of_Coruscant ;
+                              star-wars:killingOf star-wars:Grievous ;
+                              star-wars:location star-wars:Utapau ;
+                              star-wars:victoryOf star-wars:Obi-Wan_Kenobi ;
+                              star-wars:year -19 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Grievous#Return_to_Utapau_and_duel_with_Kenobi"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Yoda_vs_Emperor
+star-wars:Yoda_vs_Emperor rdf:type owl:NamedIndividual ,
+                                   star-wars:Duel ;
+                          star-wars:after star-wars:Proclamation_of_the_New_Order ;
+                          star-wars:escapeOf star-wars:Yoda ;
+                          star-wars:location star-wars:Galactic_Senate ;
+                          star-wars:victoryOf star-wars:Darth_Sidious ;
+                          star-wars:year -19 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Duel_in_the_Galactic_Senate"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Vader_wipes_out_Seperatist_Leaders
+star-wars:Vader_wipes_out_Seperatist_Leaders rdf:type owl:NamedIndividual ,
+                                                      star-wars:Execution ;
+                                             star-wars:after star-wars:Order_66 ;
+                                             star-wars:killingOf star-wars:Nute_Gunray ,
+                                                                 star-wars:Poggle_the_Lesser ,
+                                                                 star-wars:Wat_Tambor ;
+                                             star-wars:location star-wars:Mustafar ;
+                                             star-wars:victoryOf star-wars:Darth_Vader ;
+                                             star-wars:year -19 ;
+                                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_Revenge_of_the_Sith#Birth_of_the_Empire"^^xsd:anyURI .

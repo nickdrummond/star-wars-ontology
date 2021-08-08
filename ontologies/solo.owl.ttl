@@ -1,0 +1,414 @@
+@prefix : <http://null.com/star-wars#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix star-wars: <http://null.com/star-wars#> .
+@base <http://null.com/star-wars/solo> .
+
+<http://null.com/star-wars/solo> rdf:type owl:Ontology ;
+                                  owl:imports <http://null.com/star-wars> ;
+                                  rdfs:comment "Characters and events  from \"Solo\"" .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://null.com/star-wars#An_Audience_with_Dryden_Vos
+star-wars:An_Audience_with_Dryden_Vos rdf:type owl:NamedIndividual ,
+                                               star-wars:Confrontation ;
+                                      star-wars:after star-wars:Heist_on_Vandor ;
+                                      star-wars:location star-wars:Fort_Ypso ;
+                                      star-wars:participant star-wars:Chewbacca ,
+                                                            star-wars:Dryden_Vos ,
+                                                            star-wars:Han_Solo ,
+                                                            star-wars:Tobias_Beckett ,
+                                                            <http://null.com/star-wars#Qi'ra> ;
+                                      star-wars:year -10 ;
+                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Fort_Ypso"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Aurra_Sing
+star-wars:Aurra_Sing rdf:type owl:NamedIndividual ,
+                              star-wars:Palliduvan ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:diedIn ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Murder
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:victoryOf ;
+                                                                            owl:hasValue star-wars:Tobias_Beckett
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:year ;
+                                                                            owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                                 owl:onDatatype xsd:int ;
+                                                                                                 owl:withRestrictions ( [ xsd:minExclusive "-21"^^xsd:int
+                                                                                                                        ]
+                                                                                                                        [ xsd:maxExclusive "10"^^xsd:int
+                                                                                                                        ]
+                                                                                                                      )
+                                                                                               ]
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Aurra_Sing"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Becketts_crew
+star-wars:Becketts_crew rdf:type owl:NamedIndividual ,
+                                 star-wars:Gang ;
+                        star-wars:memberOf star-wars:Crimson_Dawn ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Beckett%27s_gang"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Cloud-Riders
+star-wars:Cloud-Riders rdf:type owl:NamedIndividual ,
+                                star-wars:Gang ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Cloud-Riders"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Dryden_Vos
+star-wars:Dryden_Vos rdf:type owl:NamedIndividual ,
+                              star-wars:Near_Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:gender ;
+                                owl:someValuesFrom star-wars:Male
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:inOrganisation ;
+                                                                            owl:hasValue star-wars:Crimson_Dawn
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Dryden_Vos"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Enfys_Nest
+star-wars:Enfys_Nest rdf:type owl:NamedIndividual ,
+                              star-wars:Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:gender ;
+                                owl:someValuesFrom star-wars:Female
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:inOrganisation ;
+                                                                            owl:hasValue star-wars:Cloud-Riders
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     star-wars:born -27 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Enfys_Nest"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Eravana
+star-wars:Eravana rdf:type owl:NamedIndividual ,
+                           star-wars:Freighter ;
+                  star-wars:ownedBy star-wars:Chewbacca ,
+                                    star-wars:Han_Solo ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Eravana"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Escape_from_Corellia
+star-wars:Escape_from_Corellia rdf:type owl:NamedIndividual ,
+                                        star-wars:Escape ;
+                               star-wars:captureOf <http://null.com/star-wars#Qi'ra> ;
+                               star-wars:escapeOf star-wars:Han_Solo ;
+                               star-wars:injuryOf star-wars:Proxima ;
+                               star-wars:location star-wars:Corellia ;
+                               star-wars:year -13 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Han_Solo#Working_for_the_White_Worms"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#First_Light
+star-wars:First_Light rdf:type owl:NamedIndividual ,
+                               star-wars:Yacht ;
+                      star-wars:ownedBy star-wars:Dryden_Vos ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/First_Light"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hans_Kessel_Run
+star-wars:Hans_Kessel_Run rdf:type owl:NamedIndividual ,
+                                   star-wars:Escape ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:deathOf ;
+                                     owl:someValuesFrom star-wars:Summa-verminoth
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom star-wars:Imperial-class_Star_Destroyer
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom star-wars:Tie_Fighter
+                                   ] ;
+                          star-wars:after star-wars:An_Audience_with_Dryden_Vos ;
+                          star-wars:location star-wars:Akkadese_Maelstrom ;
+                          star-wars:participant star-wars:Millenium_Falcon ;
+                          star-wars:year -10 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Finding_a_ship"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Heist_on_Vandor
+star-wars:Heist_on_Vandor rdf:type owl:NamedIndividual ,
+                                   star-wars:Job ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Train
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty star-wars:ownedBy ;
+                                                                                 owl:hasValue star-wars:Galactic_Empire
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty star-wars:participant ;
+                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                          owl:onProperty star-wars:hadRole ;
+                                                          owl:someValuesFrom star-wars:StormTrooper
+                                                        ]
+                                   ] ;
+                          star-wars:after star-wars:Mimban_Campaign ;
+                          star-wars:killingOf star-wars:Rio_Durant ,
+                                              star-wars:Val ;
+                          star-wars:location star-wars:Vandor ;
+                          star-wars:participant star-wars:Becketts_crew ,
+                                                star-wars:Cloud-Riders ;
+                          star-wars:year -10 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Heist_on_Vandor"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Kessel_Slave_Emancipation
+star-wars:Kessel_Slave_Emancipation rdf:type owl:NamedIndividual ,
+                                             star-wars:Rescue ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:escapeOf ;
+                                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Droid
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty star-wars:hadRole ;
+                                                                                           owl:someValuesFrom star-wars:Slave
+                                                                                         ]
+                                                                                       ) ;
+                                                                    rdf:type owl:Class
+                                                                  ]
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:escapeOf ;
+                                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Wookie
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty star-wars:hadRole ;
+                                                                                           owl:someValuesFrom star-wars:Slave
+                                                                                         ]
+                                                                                       ) ;
+                                                                    rdf:type owl:Class
+                                                                  ]
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty star-wars:stole ;
+                                               owl:someValuesFrom star-wars:Coaxium
+                                             ] ;
+                                    star-wars:deathOf star-wars:L3-37 ;
+                                    star-wars:during star-wars:Hans_Kessel_Run ;
+                                    star-wars:injuryOf star-wars:Lando_Calrissian ;
+                                    star-wars:location star-wars:Kessel ;
+                                    star-wars:participant star-wars:Chewbacca ,
+                                                          star-wars:Han_Solo ,
+                                                          star-wars:Pyke_Syndicate ,
+                                                          star-wars:Tobias_Beckett ,
+                                                          <http://null.com/star-wars#Qi'ra> ;
+                                    star-wars:year -10 ;
+                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Infiltrating_Kessel"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Mimban_Campaign
+star-wars:Mimban_Campaign rdf:type owl:NamedIndividual ,
+                                   star-wars:Battle ;
+                          star-wars:escapeOf star-wars:Chewbacca ,
+                                             star-wars:Han_Solo ;
+                          star-wars:location star-wars:Mimban ;
+                          star-wars:participant star-wars:Rio_Durant ,
+                                                star-wars:Tobias_Beckett ,
+                                                star-wars:Val ;
+                          star-wars:year -10 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Mimban_campaign"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Proxima
+star-wars:Proxima rdf:type owl:NamedIndividual ,
+                           star-wars:Grindalid ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty star-wars:gender ;
+                             owl:someValuesFrom star-wars:Female
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty star-wars:hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty star-wars:inOrganisation ;
+                                                                         owl:hasValue star-wars:White_Worms
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  star-wars:from star-wars:Corellia ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Proxima"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Qira_vs_Dryden
+star-wars:Qira_vs_Dryden rdf:type owl:NamedIndividual ,
+                                  star-wars:Duel ;
+                         star-wars:during star-wars:Standoff_on_Savareen ;
+                         star-wars:killingOf star-wars:Dryden_Vos ;
+                         star-wars:location star-wars:First_Light ;
+                         star-wars:participant star-wars:Han_Solo ;
+                         star-wars:victoryOf <http://null.com/star-wars#Qi'ra> ;
+                         star-wars:year -10 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Dryden_Vos#Coaxium_Heist"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rio_Durant
+star-wars:Rio_Durant rdf:type owl:NamedIndividual ,
+                              star-wars:Ardennian ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:gender ;
+                                owl:someValuesFrom star-wars:Male
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:hadRole ;
+                                owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:inOrganisation ;
+                                                                            owl:hasValue star-wars:Becketts_crew
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Rio_Durant"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Solo_vs_Beckett
+star-wars:Solo_vs_Beckett rdf:type owl:NamedIndividual ,
+                                   star-wars:Confrontation ;
+                          star-wars:after star-wars:Qira_vs_Dryden ;
+                          star-wars:during star-wars:Standoff_on_Savareen ;
+                          star-wars:killingOf star-wars:Tobias_Beckett ;
+                          star-wars:location star-wars:Savareen ;
+                          star-wars:participant star-wars:Chewbacca ;
+                          star-wars:victoryOf star-wars:Han_Solo ;
+                          star-wars:year -10 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Tobias_Beckett#Refinery_on_Savareen_and_Death"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Standoff_on_Savareen
+star-wars:Standoff_on_Savareen rdf:type owl:NamedIndividual ,
+                                        star-wars:Confrontation ;
+                               star-wars:after star-wars:Hans_Kessel_Run ;
+                               star-wars:escapeOf star-wars:Lando_Calrissian ;
+                               star-wars:location star-wars:Savareen ;
+                               star-wars:participant star-wars:Cloud-Riders ,
+                                                     star-wars:Crimson_Dawn ,
+                                                     star-wars:Enfys_Nest ,
+                                                     star-wars:Han_Solo ;
+                               star-wars:year -10 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Landing_on_Savareen"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Tobias_Beckett
+star-wars:Tobias_Beckett rdf:type owl:NamedIndividual ,
+                                  star-wars:Human ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:gender ;
+                                    owl:someValuesFrom star-wars:Male
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:hadRole ;
+                                    owl:someValuesFrom star-wars:Thief
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:hadRole ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( star-wars:Leader
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty star-wars:inOrganisation ;
+                                                                                owl:hasValue star-wars:Becketts_crew
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         star-wars:loved star-wars:Val ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Tobias_Beckett"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Val
+star-wars:Val rdf:type owl:NamedIndividual ,
+                       star-wars:Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty star-wars:gender ;
+                         owl:someValuesFrom star-wars:Female
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty star-wars:hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Fighter
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty star-wars:inOrganisation ;
+                                                                     owl:hasValue star-wars:Becketts_crew
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              star-wars:loved star-wars:Tobias_Beckett ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Val"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#White_Worms
+star-wars:White_Worms rdf:type owl:NamedIndividual ,
+                               star-wars:Crime_Syndicate ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/White_Worms"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Qi'ra
+<http://null.com/star-wars#Qi'ra> rdf:type owl:NamedIndividual ,
+                                           star-wars:Human ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty star-wars:gender ;
+                                             owl:someValuesFrom star-wars:Female
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty star-wars:hadRole ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( star-wars:Thief
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty star-wars:inOrganisation ;
+                                                                                         owl:hasValue star-wars:White_Worms
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty star-wars:memberOf ;
+                                             owl:hasValue star-wars:Crimson_Dawn
+                                           ] ;
+                                  star-wars:from star-wars:Corellia ;
+                                  star-wars:loved star-wars:Han_Solo ;
+                                  star-wars:born -31 ;
+                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Qi%27ra"^^xsd:anyURI .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

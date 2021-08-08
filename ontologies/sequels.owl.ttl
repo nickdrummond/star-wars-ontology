@@ -5,7 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix star-wars: <http://null.com/star-wars#> .
-@base <http://null.com/star-wars> .
+@base <http://null.com/star-wars/sequels> .
 
 <http://null.com/star-wars/sequels> rdf:type owl:Ontology ;
                                      owl:imports <http://null.com/star-wars> ;
@@ -270,11 +270,27 @@ star-wars:Ben_Solo rdf:type owl:NamedIndividual ,
                    star-wars:father star-wars:Han_Solo ;
                    star-wars:loved star-wars:Rey ;
                    star-wars:mother star-wars:Leia_Organa ;
+                   star-wars:owned star-wars:Skywalker_Lightsaber ;
                    star-wars:saved star-wars:Rey ;
                    star-wars:trainedBy star-wars:Luke_Skywalker ;
-                   star-wars:owned star-wars:Skywalker_Lightsaber ;
                    star-wars:born 5 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Ben_Solo"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Boolio
+star-wars:Boolio rdf:type owl:NamedIndividual ,
+                          star-wars:Ovissian ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:gender ;
+                            owl:someValuesFrom star-wars:Male
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty star-wars:hadRole ;
+                            owl:someValuesFrom star-wars:Miner
+                          ] ;
+                 star-wars:alliedWith star-wars:Resistance ;
+                 star-wars:livedIn star-wars:Sinta_Glacier_Colony ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Boolio"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Confronting_the_Phantom_Emperor
@@ -428,6 +444,43 @@ star-wars:End_of_Sith_Eternal rdf:type owl:NamedIndividual ,
                               star-wars:survivedBy star-wars:Rey ;
                               star-wars:year 35 ;
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#End_of_the_Sith_Eternal"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Enric_Pryde
+star-wars:Enric_Pryde rdf:type owl:NamedIndividual ,
+                               star-wars:Human ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:gender ;
+                                 owl:someValuesFrom star-wars:Male
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( star-wars:Commander
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:inOrganisation ;
+                                                                             owl:hasValue star-wars:Final_Order
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( star-wars:General
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty star-wars:inOrganisation ;
+                                                                             owl:hasValue star-wars:First_Order
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      star-wars:born -27 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Enric_Pryde"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Eravana
+star-wars:Eravana rdf:type owl:NamedIndividual .
 
 
 ###  http://null.com/star-wars#Escape_from_Jakku
@@ -873,11 +926,11 @@ star-wars:Rey rdf:type owl:NamedIndividual ,
                                     star-wars:Poe_Dameron ;
               star-wars:from star-wars:Jakku ;
               star-wars:memberOf star-wars:Resistance ;
+              star-wars:owned star-wars:Skywalker_Lightsaber ;
               star-wars:raisedBy star-wars:Unkar_Plutt ;
               star-wars:saved star-wars:Ben_Solo ;
               star-wars:trainedBy star-wars:Leia_Organa ,
                                   star-wars:Luke_Skywalker ;
-              star-wars:owned star-wars:Skywalker_Lightsaber ;
               star-wars:born 15 ;
               star-wars:diedInYear 35 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Rey_Skywalker"^^xsd:anyURI .
@@ -944,6 +997,41 @@ star-wars:Rey_vs_Kylo_Kijimi rdf:type owl:NamedIndividual ,
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker#Glimpses_of_Rey.27s_past"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Rose_Tico
+star-wars:Rose_Tico rdf:type owl:NamedIndividual ,
+                             star-wars:Human ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:gender ;
+                               owl:someValuesFrom star-wars:Female
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Mechanic
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty star-wars:inOrganisation ;
+                                                                           owl:hasValue star-wars:Resistance
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty star-wars:inOrganisation ;
+                                                                           owl:hasValue star-wars:Resistance
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    star-wars:friendsWith star-wars:Finn ;
+                    star-wars:saved star-wars:Finn ;
+                    star-wars:born 11 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Rose_Tico"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Skirmish_on_the_Eravana
 star-wars:Skirmish_on_the_Eravana rdf:type owl:NamedIndividual ,
                                            star-wars:Fight ,
@@ -1005,6 +1093,14 @@ star-wars:Solo_vs_Solo rdf:type owl:NamedIndividual ,
                                              star-wars:Rey ;
                        star-wars:year 34 ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Han_Solo#Death"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Starkiller_Base
+star-wars:Starkiller_Base rdf:type owl:NamedIndividual ,
+                                   star-wars:Base ;
+                          star-wars:builtBy star-wars:First_Order ;
+                          star-wars:on star-wars:Ilum ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Starkiller_Base"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Three_Lessons

@@ -9,6 +9,7 @@ back to main individuals that must be in the core ontologies - We don't want to 
 
 Perhaps only events can really be in the modules? 
 
+
 ## Structure
 
 * base
@@ -23,13 +24,19 @@ Perhaps only events can really be in the modules?
 Should include all Properties and Classes
 Should avoid referencing instance data
 
-Currently several individuals referenced (search for hasValue):
-* Rebel Scum (Rebel_Alliance, Resistance) - we could just get rid of this
-* homeworlds - can we switch these round onto the Planets themselves
-* Sith Lord memberOf
-* Star Destroyers ownedBy
-* Clone
-* Fulcrum
+Which means we cannot make statements like the following
+
+    All Mon Calamari are from Mon Cala
+
+Instead, we can have the weaker
+
+    Mon Cala is the homeworld of Mon Calamari
+
+Similarly, we cannot have the following without stubs
+
+    All Sith are inOrganisation Sith_Order
+    All Clones are clones of Jango Fett
+    All Imperial Star Destroyers are owned by the Empire
 
 ### star-wars
 

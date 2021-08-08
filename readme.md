@@ -42,6 +42,7 @@ The ontology covers major characters, events and places in the canon films and T
 
 * Try to modularise
   * update tests to work with imports
+  * fix dependencies on base as it cannot be saved without corrupting
 * Series
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Rebels - 4 series eps(15, 22, 22, 16)

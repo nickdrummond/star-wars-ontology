@@ -4,6 +4,11 @@
 
 Cross over material - what level of duplication is ok?
 
+Very difficult to extract characters to sub-modules as they are very "mobile" and/or inevitably relate
+back to main individuals that must be in the core ontologies - We don't want to defeat our modelling principles of turning relations around in order to allow the modules to work
+
+Perhaps only events can really be in the modules? 
+
 ## Structure
 
 * base

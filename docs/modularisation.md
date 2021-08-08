@@ -12,11 +12,7 @@ Perhaps only events can really be in the modules?
 
 ## Structure
 
-* base
-    * star-wars
-        * mandalorian
-        * rebels
-        * resistance
+![Import Structure](imports.png)
     
 ## Modules
 
@@ -32,7 +28,7 @@ Instead, we can have the weaker
 
     Mon Cala is the homeworld of Mon Calamari
 
-Similarly, we cannot have the following without stubs
+Some statements require a type reference at the minimum
 
     All Sith are inOrganisation Sith_Order
     All Clones are clones of Jango Fett

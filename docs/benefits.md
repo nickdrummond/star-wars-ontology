@@ -50,4 +50,4 @@ We could modularise our ontology into each episode/series - only exposing the fa
 
 It is nice to make assertions about Anakin and Darth Vader separately, but allow the inference to match
 
-As the ontology gets larger, modules help with focus
+As the ontology gets larger, modules help with focus, although there is a tradeoff with the simplicity of one ontology

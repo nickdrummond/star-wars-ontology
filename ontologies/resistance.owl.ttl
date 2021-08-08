@@ -5,7 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix star-wars: <http://null.com/star-wars#> .
-@base <http://null.com/star-wars> .
+@base <http://null.com/star-wars/resistance> .
 
 <http://null.com/star-wars/resistance> rdf:type owl:Ontology ;
                                         owl:imports <http://null.com/star-wars> ;
@@ -19,6 +19,17 @@
 star-wars:Ace_Squadron rdf:type owl:NamedIndividual ,
                                 star-wars:Military_Unit ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Ace_Squadron"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Attack_on_Castilon
+star-wars:Attack_on_Castilon rdf:type owl:NamedIndividual ,
+                                      star-wars:Attack ;
+                             star-wars:killingOf star-wars:Elrik_Vonreg ;
+                             star-wars:location star-wars:Castillon ;
+                             star-wars:participant star-wars:Colossus ,
+                                                   star-wars:Kazuda_Xiono ;
+                             star-wars:year 34 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_Castilon"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Aunt-Z
@@ -84,11 +95,51 @@ star-wars:CB-23 rdf:type owl:NamedIndividual ,
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/CB-23"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Citizens_Fleet
+star-wars:Citizens_Fleet rdf:type owl:NamedIndividual .
+
+
 ###  http://null.com/star-wars#Colossus
 star-wars:Colossus rdf:type owl:NamedIndividual ,
                             star-wars:Refueling_Station ;
                    star-wars:location star-wars:Castillon ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Colossus"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Delivering_intel_to_the_Resistance
+star-wars:Delivering_intel_to_the_Resistance rdf:type owl:NamedIndividual ,
+                                                      star-wars:Mission ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty star-wars:location ;
+                                                        owl:someValuesFrom star-wars:Space
+                                                      ] ;
+                                             star-wars:escapeOf star-wars:Elrik_Vonreg ;
+                                             star-wars:participant star-wars:BB-8 ,
+                                                                   star-wars:Kazuda_Xiono ,
+                                                                   star-wars:Poe_Dameron ;
+                                             star-wars:year 34 ;
+                                             rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Recruit"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Elrik_Vonreg
+star-wars:Elrik_Vonreg rdf:type owl:NamedIndividual ,
+                                star-wars:Human ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:gender ;
+                                  owl:someValuesFrom star-wars:Male
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:hadRole ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( star-wars:Pilot
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty star-wars:inOrganisation ;
+                                                                              owl:hasValue star-wars:First_Order
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Elrik_Vonreg"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Flix
@@ -268,6 +319,10 @@ star-wars:Kragan_Gorr rdf:type owl:NamedIndividual ,
                       star-wars:from star-wars:Mon_Cala ;
                       star-wars:livedIn star-wars:Castillon ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Kragan_Gorr"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Maz_Kanata
+star-wars:Maz_Kanata rdf:type owl:NamedIndividual .
 
 
 ###  http://null.com/star-wars#Neeku_Vozo

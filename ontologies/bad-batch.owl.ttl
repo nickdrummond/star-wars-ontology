@@ -1,0 +1,56 @@
+@prefix : <http://null.com/star-wars#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix star-wars: <http://null.com/star-wars#> .
+@base <http://null.com/star-wars> .
+
+<http://null.com/star-wars/bad-batch> rdf:type owl:Ontology ;
+                                        owl:imports <http://null.com/star-wars> .
+
+
+###  http://null.com/star-wars#Cid
+star-wars:Cid rdf:type owl:NamedIndividual ,
+                       star-wars:Trandoshan ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty star-wars:gender ;
+                         owl:someValuesFrom star-wars:Female
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty star-wars:hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( star-wars:Informant
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty star-wars:inOrganisation ;
+                                                                       owl:hasValue star-wars:Jedi_Order
+                                                                     ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              star-wars:livedIn star-wars:Ord_Mantell ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Cid"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Gonky
+star-wars:Gonky rdf:type owl:NamedIndividual ,
+                         star-wars:GNK_Droid ;
+                star-wars:memberOf star-wars:Bad_Batch ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Gonky_(Clone_Force_99)"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Omega
+star-wars:Omega rdf:type owl:NamedIndividual ,
+                         star-wars:Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty star-wars:gender ;
+                           owl:someValuesFrom star-wars:Female
+                         ] ;
+                star-wars:cloneOf star-wars:Jango_Fett ;
+                star-wars:friendsWith star-wars:Wrecker ;
+                star-wars:from star-wars:Kamino ;
+                star-wars:memberOf star-wars:Bad_Batch ;
+                star-wars:trainedBy star-wars:Lama_Su ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Omega"^^xsd:anyURI .
+

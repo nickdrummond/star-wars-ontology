@@ -129,6 +129,23 @@ star-wars:Attack_on_the_Resistance_fleet rdf:type owl:NamedIndividual ,
                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_the_Resistance_fleet"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Babu_Frik
+star-wars:Babu_Frik rdf:type owl:NamedIndividual ,
+                             star-wars:Anzellan ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:gender ;
+                               owl:someValuesFrom star-wars:Male
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty star-wars:hadRole ;
+                               owl:someValuesFrom star-wars:Droidsmith
+                             ] ;
+                    star-wars:from star-wars:Kijimi ;
+                    star-wars:memberOf star-wars:Citizens_Fleet ;
+                    star-wars:born -50 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Babu_Frik"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Battle_of_Crait
 star-wars:Battle_of_Crait rdf:type owl:NamedIndividual ,
                                    star-wars:Battle ,
@@ -183,6 +200,49 @@ star-wars:Battle_of_Crait rdf:type owl:NamedIndividual ,
                           star-wars:year 34 ;
                           rdfs:comment "Luke is actually on Ahch-To, Force projecting to Crait." ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Crait"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Battle_of_D'Qar
+<http://null.com/star-wars#Battle_of_D'Qar> rdf:type owl:NamedIndividual ,
+                                                     star-wars:Battle ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty star-wars:deathOf ;
+                                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty star-wars:sister ;
+                                                                            owl:hasValue star-wars:Rose_Tico
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty star-wars:destructionOf ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Bomber
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty star-wars:memberOf ;
+                                                                                                     owl:hasValue star-wars:Resistance
+                                                                                                   ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty star-wars:destructionOf ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Tie_Fighter
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty star-wars:memberOf ;
+                                                                                                     owl:hasValue star-wars:First_Order
+                                                                                                   ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ;
+                                            star-wars:after star-wars:Rey_meets_Luke ;
+                                            star-wars:destructionOf star-wars:Fulminatrix ,
+                                                                    star-wars:Resistance_base ;
+                                            star-wars:location <http://null.com/star-wars#D'Qar> ;
+                                            star-wars:participant star-wars:First_Order ,
+                                                                  star-wars:Poe_Dameron ,
+                                                                  star-wars:Resistance ;
+                                            star-wars:year 34 ;
+                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_D%27Qar"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Battle_of_Exegol
@@ -350,6 +410,13 @@ star-wars:Death_of_the_Supreme_Leader rdf:type owl:NamedIndividual ,
                                       star-wars:victoryOf star-wars:Kylo_Ren ;
                                       star-wars:year 34 ;
                                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_the_Resistance_fleet#Duel_on_the_Supremacy"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Death_Star_Ruins
+star-wars:Death_Star_Ruins rdf:type owl:NamedIndividual ,
+                                    star-wars:Built_Location ;
+                           star-wars:location star-wars:Kef_Bir ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Death_Star_ruins"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Defection_of_Finn
@@ -531,6 +598,46 @@ star-wars:Execution_of_Hux rdf:type owl:NamedIndividual ,
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Armitage_Hux#Death"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Finn
+star-wars:Finn rdf:type owl:NamedIndividual ,
+                        star-wars:Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:gender ;
+                          owl:someValuesFrom star-wars:Male
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty star-wars:hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( star-wars:Fighter
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty star-wars:inOrganisation ;
+                                                                        owl:hasValue star-wars:Resistance
+                                                                      ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               star-wars:born 11 ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Finn"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#FN-2187
+star-wars:FN-2187 rdf:type owl:NamedIndividual ,
+                           star-wars:Human ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty star-wars:hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( star-wars:Trooper
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty star-wars:inOrganisation ;
+                                                                           owl:hasValue star-wars:First_Order
+                                                                         ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  owl:sameAs star-wars:Finn ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Finn"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Holdo_Maneuver
 star-wars:Holdo_Maneuver rdf:type owl:NamedIndividual ,
                                   star-wars:Attack ;
@@ -574,6 +681,38 @@ star-wars:Kylo_Ren rdf:type owl:NamedIndividual ,
                             ] ;
                    star-wars:trainedBy star-wars:Snoke ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Ben_Solo"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Master_Codebreaker
+star-wars:Master_Codebreaker rdf:type owl:NamedIndividual ,
+                                      star-wars:Human ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty star-wars:gender ;
+                                        owl:someValuesFrom star-wars:Male
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty star-wars:hadRole ;
+                                        owl:someValuesFrom star-wars:Slicer
+                                      ] ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Master_Codebreaker"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Maz_Kanata
+star-wars:Maz_Kanata rdf:type owl:NamedIndividual ,
+                              star-wars:Humanoid ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:connectedTo ;
+                                owl:someValuesFrom star-wars:The_Force
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty star-wars:gender ;
+                                owl:someValuesFrom star-wars:Female
+                              ] ;
+                     star-wars:from star-wars:Takodana_Castle ;
+                     star-wars:knew star-wars:Master_Codebreaker ;
+                     star-wars:loved star-wars:Chewbacca ;
+                     star-wars:born -973 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Maz_Kanata"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Meeting_with_Boolio
@@ -1103,6 +1242,14 @@ star-wars:Starkiller_Base rdf:type owl:NamedIndividual ,
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Starkiller_Base"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Takodana_Castle
+star-wars:Takodana_Castle rdf:type owl:NamedIndividual ,
+                                   star-wars:Building ;
+                          star-wars:on star-wars:Takodana ;
+                          star-wars:ownedBy star-wars:Maz_Kanata ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Takodana_Castle"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Three_Lessons
 star-wars:Three_Lessons rdf:type owl:NamedIndividual ,
                                  star-wars:Training ,
@@ -1174,47 +1321,49 @@ star-wars:Three_Lessons rdf:type owl:NamedIndividual ,
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Rey_Skywalker#Training_and_revelations"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Battle_of_D'Qar
-<http://null.com/star-wars#Battle_of_D'Qar> rdf:type owl:NamedIndividual ,
-                                                     star-wars:Battle ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty star-wars:deathOf ;
-                                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty star-wars:sister ;
-                                                                            owl:hasValue star-wars:Rose_Tico
-                                                                          ]
-                                                     ] ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty star-wars:destructionOf ;
-                                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Bomber
-                                                                                                 [ rdf:type owl:Restriction ;
-                                                                                                   owl:onProperty star-wars:memberOf ;
-                                                                                                   owl:hasValue star-wars:Resistance
-                                                                                                 ]
-                                                                                               ) ;
-                                                                            rdf:type owl:Class
-                                                                          ]
-                                                     ] ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty star-wars:destructionOf ;
-                                                       owl:someValuesFrom [ owl:intersectionOf ( star-wars:Tie_Fighter
-                                                                                                 [ rdf:type owl:Restriction ;
-                                                                                                   owl:onProperty star-wars:memberOf ;
-                                                                                                   owl:hasValue star-wars:First_Order
-                                                                                                 ]
-                                                                                               ) ;
-                                                                            rdf:type owl:Class
-                                                                          ]
-                                                     ] ;
-                                            star-wars:after star-wars:Rey_meets_Luke ;
-                                            star-wars:destructionOf star-wars:Fulminatrix ,
-                                                                    star-wars:Resistance_base ;
-                                            star-wars:location <http://null.com/star-wars#D'Qar> ;
-                                            star-wars:participant star-wars:First_Order ,
-                                                                  star-wars:Poe_Dameron ,
-                                                                  star-wars:Resistance ;
-                                            star-wars:year 34 ;
-                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_D%27Qar"^^xsd:anyURI .
+###  http://null.com/star-wars#Unkar_Plutt
+star-wars:Unkar_Plutt rdf:type owl:NamedIndividual ,
+                               star-wars:Crolute ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:gender ;
+                                 owl:someValuesFrom star-wars:Male
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom star-wars:Junk_Dealer
+                               ] ;
+                      star-wars:livedIn star-wars:Niima_Outpost ;
+                      star-wars:born -16 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Unkar_Plutt"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Zorii_Bliss
+star-wars:Zorii_Bliss rdf:type owl:NamedIndividual ,
+                               star-wars:Human ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:gender ;
+                                 owl:someValuesFrom star-wars:Female
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:hadRole ;
+                                 owl:someValuesFrom star-wars:Smuggler
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty star-wars:born ;
+                                 owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                      owl:onDatatype xsd:int ;
+                                                      owl:withRestrictions ( [ xsd:minExclusive "-1"^^xsd:int
+                                                                             ]
+                                                                               [ xsd:maxExclusive "1"^^xsd:int
+                                                                               ]
+                                                                           )
+                                                    ]
+                               ] ;
+                      star-wars:friendsWith star-wars:Poe_Dameron ;
+                      star-wars:from star-wars:Kijimi ;
+                      star-wars:memberOf star-wars:Citizens_Fleet ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Zorii_Bliss"^^xsd:anyURI .
+
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

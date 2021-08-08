@@ -4,7 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://null.com/star-wars> .
+@base <http://null.com/star-wars/base> .
 
 <http://null.com/star-wars/base> rdf:type owl:Ontology .
 
@@ -267,7 +267,10 @@ eg Pilot and (inOrganisation value Rebel_Alliance)""" .
 
 
 ###  http://null.com/star-wars#of
-:of rdf:type owl:ObjectProperty .
+:of rdf:type owl:ObjectProperty ;
+    rdfs:comment """Used to denote the make up of something - eg Army
+Army and of value Naboo
+Army and of value Gungan""" .
 
 
 ###  http://null.com/star-wars#ofShip
@@ -289,12 +292,12 @@ eg Pilot and (inOrganisation value Rebel_Alliance)""" .
 
 
 ###  http://null.com/star-wars#owned
-:owned rdf:type owl:ObjectProperty .
+:owned rdf:type owl:ObjectProperty ;
+       owl:inverseOf :ownedBy .
 
 
 ###  http://null.com/star-wars#ownedBy
-:ownedBy rdf:type owl:ObjectProperty ;
-         owl:inverseOf :owned .
+:ownedBy rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#parent
@@ -444,16 +447,6 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan""" .
 ###  http://null.com/star-wars#witnessedBy
 :witnessedBy rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf :participant .
-
-
-###  http://null.com/star-wars/base#owned
-:owned rdf:type owl:ObjectProperty .
-
-
-###  http://www.w3.org/2002/07/owl#topObjectProperty
-owl:topObjectProperty rdfs:comment """Used to denote the make up of something - eg Army
-Army and of value Naboo
-Army and of value Gungan""" .
 
 
 #################################################################
@@ -2568,11 +2561,6 @@ or minus is BBY""" .
         rdfs:subClassOf :Building .
 
 
-###  http://null.com/star-wars#Test
-:Test rdf:type owl:Class ;
-      rdfs:subClassOf :Actor .
-
-
 ###  http://null.com/star-wars#Thala-siren
 :Thala-siren rdf:type owl:Class ;
              rdfs:subClassOf :Mammal ,
@@ -2938,28 +2926,28 @@ or minus is BBY""" .
 #################################################################
 
 ###  http://null.com/star-wars#Final_Order
-:Final_Order rdf:type owl:NamedIndividual,
-             :Dictatorship .
+:Final_Order rdf:type owl:NamedIndividual ,
+                      :Dictatorship .
 
 
 ###  http://null.com/star-wars#First_Order
-:First_Order rdf:type owl:NamedIndividual,
-                        :Dictatorship .
+:First_Order rdf:type owl:NamedIndividual ,
+                      :Dictatorship .
 
 
 ###  http://null.com/star-wars#Galactic_Empire
-:Galactic_Empire rdf:type owl:NamedIndividual,
-                 :Dictatorship .
+:Galactic_Empire rdf:type owl:NamedIndividual ,
+                          :Dictatorship .
 
 
 ###  http://null.com/star-wars#Galactic_Republic
-:Galactic_Republic rdf:type owl:NamedIndividual,
+:Galactic_Republic rdf:type owl:NamedIndividual ,
                             :Political_Organisation .
 
 
 ###  http://null.com/star-wars#Jango_Fett
 :Jango_Fett rdf:type owl:NamedIndividual ,
-                        :Human .
+                     :Human .
 
 
 ###  http://null.com/star-wars#Rebel_Alliance
@@ -3026,6 +3014,22 @@ or minus is BBY""" .
 
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Armour
+                :Beskar
+                :Book
+                :Coaxium
+                :Egg
+                :Holocron
+                :Money
+                :Parts
+                :Plans
+                :Wayfinder
+                :Weapon
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Asteroid
                 :Asteroid_field
                 :Maelstrom
@@ -3042,6 +3046,7 @@ or minus is BBY""" .
                 :Birth
                 :Capture
                 :Confrontation
+                :Crash
                 :Escape
                 :Fight
                 :Job
@@ -3075,21 +3080,6 @@ or minus is BBY""" .
                 :City
                 :Facility
                 :Village
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Beskar
-                :Book
-                :Coaxium
-                :Egg
-                :Holocron
-                :Money
-                :Parts
-                :Plans
-                :Wayfinder
-                :Weapon
               )
 ] .
 

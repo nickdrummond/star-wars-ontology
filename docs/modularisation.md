@@ -1,14 +1,25 @@
 # Modularisation
 
+
 ## Issues
 
-Cross over material - what level of duplication is ok?
+This is a dynamic, large and forever changing domain.
+Some of the benefits of modularising increase as the domain gets larger.
 
-Very difficult to extract characters to sub-modules as they are very "mobile" and/or inevitably relate
-back to main individuals that must be in the core ontologies - We don't want to defeat our modelling principles of turning relations around in order to allow the modules to work
+However, in order to keep things manageable, assertions should ideally not need to be retracted or moved once stated.
 
-Perhaps only events can really be in the modules? 
+Therefore, we would like a module scheme that allows for characters/places/objects to show up in multiple places in future without having to extract them back out to the more general ontologies. 
 
+Any character in a  sub-module is at risk of this as they are very "mobile" in the storytelling.
+In addition, they inevitably relate back to "main" individuals that must be in the core ontologies -
+this can lead to us defeating our modelling principles of turning relations around in order to allow the modules to work (eg parent/child)
+
+Therefore, only events should be modelled outside the core modules?
+
+The only alternative is to accept constant moving or duplicating assertions in multiple places when characters cross over - but what level of duplication is ok?
+
+If we get this right, the character will be in the main ontology and then we'll
+get a different "view" of them depending on which sub-modules we pull in.
 
 ## Structure
 

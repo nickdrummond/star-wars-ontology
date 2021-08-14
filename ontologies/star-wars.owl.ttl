@@ -4,7 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://null.com/star-wars> .
+@base <http://null.com/star-wars#> .
 
 <http://null.com/star-wars> rdf:type owl:Ontology ;
                              owl:imports <http://null.com/star-wars/base> ;
@@ -767,6 +767,28 @@
             :memberOf :Rogue_One ;
             :born -25 ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Bodhi_Rook"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Bolza_Grool
+:Bolza_Grool rdf:type owl:NamedIndividual ,
+                      :Klatooinian ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :gender ;
+                        owl:someValuesFrom :Male
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Trader
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :traded ;
+                                                                    owl:someValuesFrom :Gorg
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             :livedIn :Colossus ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Bolza_Grool" .
 
 
 ###  http://null.com/star-wars#Boolio
@@ -2058,6 +2080,13 @@
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Finn"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Fireball
+:Fireball rdf:type owl:NamedIndividual ,
+                   :StarFighter ;
+          :ownedBy :Team_Fireball ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Fireball"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#First_Jedi_Temple
 :First_Jedi_Temple rdf:type owl:NamedIndividual ,
                             :Temple ;
@@ -2407,6 +2436,17 @@
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Gregor"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Grevel
+:Grevel rdf:type owl:NamedIndividual ,
+                 :Aleena ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :gender ;
+                   owl:someValuesFrom :Male
+                 ] ;
+        :livedIn :Colossus ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Grevel"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Grievous
 :Grievous rdf:type owl:NamedIndividual ,
                    :Kaleesh ,
@@ -2497,6 +2537,28 @@
 :Guavian_Death_Gang rdf:type owl:NamedIndividual ,
                              :Crime_Syndicate ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Guavian_Death_Gang"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hamato_Xiono
+:Hamato_Xiono rdf:type owl:NamedIndividual ,
+                       :Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :gender ;
+                         owl:someValuesFrom :Male
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Senator
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :inOrganisation ;
+                                                                     owl:hasValue :New_Republic
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              :from :Hosnian_Prime ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Hamato_Xiono" .
 
 
 ###  http://null.com/star-wars#Han_Solo
@@ -2885,7 +2947,19 @@
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hadRole ;
                          owl:someValuesFrom :Pilot
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Leader
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :inOrganisation ;
+                                                                     owl:hasValue :Team_Fireball
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
                        ] ;
+              :friendsWith :Poe_Dameron ;
               :livedIn :Colossus ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Jarek_Yeager"^^xsd:anyURI .
 
@@ -3086,6 +3160,17 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Mechanic
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :inOrganisation ;
+                                                                     owl:hasValue :Team_Fireball
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
                          owl:someValuesFrom [ owl:intersectionOf ( :Spy
                                                                    [ rdf:type owl:Restriction ;
                                                                      owl:onProperty :inOrganisation ;
@@ -3095,6 +3180,7 @@
                                               rdf:type owl:Class
                                             ]
                        ] ;
+              :father :Hamato_Xiono ;
               :friendsWith :Tamara_Ryvora ;
               :from :Hosnian_Prime ;
               :livedIn :Colossus ;
@@ -4004,7 +4090,14 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :hadRole ;
-                       owl:someValuesFrom :Mechanic
+                       owl:someValuesFrom [ owl:intersectionOf ( :Mechanic
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :inOrganisation ;
+                                                                   owl:hasValue :Team_Fireball
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ]
                      ] ;
             :employedBy :Jarek_Yeager ;
             :friendsWith :Bibo ,
@@ -4706,7 +4799,18 @@
 
 ###  http://null.com/star-wars#R1-J5
 :R1-J5 rdf:type owl:NamedIndividual ,
-                :Astromech ;
+                :Astromech ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Mechanic
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :inOrganisation ;
+                                                              owl:hasValue :Team_Fireball
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
        :employedBy :Jarek_Yeager ;
        :livedIn :Colossus ;
        rdfs:label "Bucket" ;
@@ -5644,7 +5748,14 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :hadRole ;
-                          owl:someValuesFrom :Mechanic
+                          owl:someValuesFrom [ owl:intersectionOf ( :Mechanic
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :inOrganisation ;
+                                                                      owl:hasValue :Team_Fireball
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :hadRole ;
@@ -5683,6 +5794,10 @@
                    ] ,
                    [ rdf:type owl:Restriction ;
                      owl:onProperty :homeworldOf ;
+                     owl:someValuesFrom :Gorg
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :homeworldOf ;
                      owl:someValuesFrom :Krayt_Dragon
                    ] ,
                    [ rdf:type owl:Restriction ;
@@ -5691,6 +5806,13 @@
                    ] ;
           :location :Outer_Rim ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Tatooine"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Team_Fireball
+:Team_Fireball rdf:type owl:NamedIndividual ,
+                        :Gang ;
+               :memberOf :Ace_Squadron ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Team_Fireball"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Tech
@@ -6203,6 +6325,12 @@
                        :Lucrehulk_Freighter ;
               :ownedBy :Trade_Federation ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Vuutun_Palaa"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Warbird_gang
+:Warbird_gang rdf:type owl:NamedIndividual ,
+                       :Gang ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Warbird_gang"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Wat_Tambor
@@ -6719,4 +6847,4 @@
                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Xi%27an"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

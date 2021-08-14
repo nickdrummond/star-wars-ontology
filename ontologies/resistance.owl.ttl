@@ -5,7 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix star-wars: <http://null.com/star-wars#> .
-@base <http://null.com/star-wars/resistance> .
+@base <http://null.com/star-wars#> .
 
 <http://null.com/star-wars/resistance> rdf:type owl:Ontology ;
                                         owl:imports <http://null.com/star-wars> ;
@@ -32,6 +32,28 @@ star-wars:Delivering_intel_to_the_Resistance rdf:type owl:NamedIndividual ,
                                                       [ rdf:type owl:Restriction ;
                                                         owl:onProperty star-wars:location ;
                                                         owl:someValuesFrom star-wars:Space
+                                                      ] ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty star-wars:participant ;
+                                                        owl:someValuesFrom [ owl:intersectionOf ( star-wars:Tie_Fighter
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty star-wars:ownedBy ;
+                                                                                                    owl:hasValue star-wars:New_Republic
+                                                                                                  ]
+                                                                                                ) ;
+                                                                             rdf:type owl:Class
+                                                                           ]
+                                                      ] ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty star-wars:participant ;
+                                                        owl:someValuesFrom [ owl:intersectionOf ( star-wars:X-Wing
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty star-wars:ownedBy ;
+                                                                                                    owl:hasValue star-wars:First_Order
+                                                                                                  ]
+                                                                                                ) ;
+                                                                             rdf:type owl:Class
+                                                                           ]
                                                       ] ;
                                              star-wars:escapeOf star-wars:Elrik_Vonreg ;
                                              star-wars:participant star-wars:BB-8 ,
@@ -39,6 +61,103 @@ star-wars:Delivering_intel_to_the_Resistance rdf:type owl:NamedIndividual ,
                                                                    star-wars:Poe_Dameron ;
                                              star-wars:year 34 ;
                                              rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Recruit"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Introduction_to_the_Colossus
+star-wars:Introduction_to_the_Colossus rdf:type owl:NamedIndividual ,
+                                                star-wars:Event ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty star-wars:included ;
+                                                  owl:someValuesFrom [ owl:intersectionOf ( star-wars:Fight
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty star-wars:location ;
+                                                                                              owl:hasValue <http://null.com/star-wars#Aunt_Z's_Tavern>
+                                                                                            ]
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty star-wars:participant ;
+                                                                                              owl:hasValue star-wars:Bolza_Grool
+                                                                                            ]
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty star-wars:participant ;
+                                                                                              owl:hasValue star-wars:Grevel
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ]
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty star-wars:included ;
+                                                  owl:someValuesFrom [ owl:intersectionOf ( star-wars:Holo-darts
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty star-wars:participant ;
+                                                                                              owl:hasValue star-wars:Kazuda_Xiono
+                                                                                            ]
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty star-wars:victoryOf ;
+                                                                                              owl:hasValue star-wars:Grevel
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ]
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty star-wars:included ;
+                                                  owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty star-wars:traded ;
+                                                                                              owl:someValuesFrom star-wars:Parts
+                                                                                            ]
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty star-wars:participant ;
+                                                                                              owl:hasValue star-wars:Flix
+                                                                                            ]
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty star-wars:participant ;
+                                                                                              owl:hasValue star-wars:Orka
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ]
+                                                ] ;
+                                       star-wars:participant star-wars:BB-8 ,
+                                                             star-wars:Kazuda_Xiono ,
+                                                             star-wars:Poe_Dameron ,
+                                                             star-wars:Team_Fireball ;
+                                       star-wars:year 34 ;
+                                       rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Recruit#Landing_on_Castilon"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Kaz_vs_Torra
+star-wars:Kaz_vs_Torra rdf:type owl:NamedIndividual ,
+                                star-wars:Race ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty star-wars:included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( star-wars:Crash
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty star-wars:participant ;
+                                                                              owl:hasValue star-wars:Fireball
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       star-wars:location star-wars:Colossus ;
+                       star-wars:participant star-wars:Kazuda_Xiono ;
+                       star-wars:victoryOf star-wars:Torra_Doza ;
+                       star-wars:year 34 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Race_between_Kazuda_Xiono_and_Torra_Doza"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Pirate_Raid_on_the_Colossus
+star-wars:Pirate_Raid_on_the_Colossus rdf:type owl:NamedIndividual ,
+                                               star-wars:Attack ;
+                                      star-wars:location star-wars:Colossus ;
+                                      star-wars:orderedBy star-wars:First_Order ;
+                                      star-wars:participant star-wars:Ace_Squadron ,
+                                                            star-wars:Grevel ,
+                                                            star-wars:Kazuda_Xiono ,
+                                                            star-wars:Warbird_gang ;
+                                      star-wars:year 34 ;
+                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Triple_Dark#Raiding_the_Colossus"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Platform_Classic_34ABY
@@ -62,4 +181,4 @@ star-wars:Platform_Classic_34ABY rdf:type owl:NamedIndividual ,
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Platform_Classic"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

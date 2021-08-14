@@ -21,7 +21,7 @@ The ontology covers major characters, events and places in the canon films and T
 * Basic modelling of all live action content completed
 * Many open modelling questions
 * Tests and queries still experimental
-* No modularisation currently
+* Initial modularisation experiments
 
 ## Metrics
 
@@ -40,13 +40,12 @@ The ontology covers major characters, events and places in the canon films and T
 
 ## Todo
 
-* Try to modularise
-  * update tests to work with imports
-  * fix dependencies on base as it cannot be saved without corrupting
+* update tests to work with imports
+* Protege bug: changes to base cannot be saved without corrupting (genid) if other ontologies loaded - Pull request submitted
 * Series
-    * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
-    * Rebels - 4 series eps(15, 22, 22, 16)
     * Resistance - 2 series eps(21, 19)
+    * Rebels - 4 series eps(15, 22, 22, 16)
+    * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Bad Batch - 1 series eps(incomplete)
 
 * Review property "of" - is it even defined properly?
@@ -58,11 +57,5 @@ The ontology covers major characters, events and places in the canon films and T
 * "surrenderOf" - anywhere else to use this?
 
 * is "on" really helping? It's just a nice bit of syntactic sugar
-
-* homeworld for each species - but only for planets that are interesting in some other way
-
-* We can add images in seeAlso - jpg extension on anyURI. But, cannot manage copyright and hot loading
-Unfortunately, probably no pattern to generate automatically
-eg from Star Wars databank https://lumiere-a.akamaihd.net/v1/images/databank_zygerria_01_169_5cdad909.jpeg
 
 * Can we have ABY/BBY instead of int as custom datatype?

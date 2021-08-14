@@ -46,8 +46,13 @@ eg No need to name everything (parents etc) - we can talk about Ezra's parents w
 
 ## Modularity
 
-We could modularise our ontology into each episode/series - only exposing the facts as they are exposed
+The ontology is modularised into each episode/series.
 
-It is nice to make assertions about Anakin and Darth Vader separately, but allow the inference to match
+As the ontology gets larger, modules help with focus, although there is a tradeoff with the fluidity of developing one ontology
 
-As the ontology gets larger, modules help with focus, although there is a tradeoff with the simplicity of one ontology
+## Referencing
+
+We can reference any number of sources to our entities/assertions - eg Wookipedia
+
+We could reference images/videos - many ontology tools recognise common formats eg jpg
+But, we would need to deal with permissions/hot linking etc so this is out of scope currently.

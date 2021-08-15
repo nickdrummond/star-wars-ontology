@@ -8,7 +8,7 @@
 
 <http://null.com/star-wars> rdf:type owl:Ontology ;
                              owl:imports <http://null.com/star-wars/base> ;
-                             rdfs:comment "asdas" .
+                             rdfs:comment "asdas"^^xsd:string .
 
 #################################################################
 #    Individuals
@@ -613,7 +613,7 @@
                              ] ;
                     :from :Tatooine ;
                     :married :Owen_Lars ;
-                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Beru_Whitesun_Lars" .
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Beru_Whitesun_Lars"^^xsd:string .
 
 
 ###  http://null.com/star-wars#Bespin
@@ -677,6 +677,19 @@
                    :from :Tatooine ;
                    :born -19 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Biggs_Darklighter"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Bitey
+:Bitey rdf:type owl:NamedIndividual ,
+                :Gorg ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :gender ;
+                  owl:someValuesFrom :Male
+                ] ;
+       :livedIn :Colossus ;
+       :ownedBy :Flix ,
+                :Orka ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Bitey"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Bo-Katan_Kryze
@@ -788,7 +801,7 @@
                                            ]
                       ] ;
              :livedIn :Colossus ;
-             rdfs:seeAlso "https://starwars.fandom.com/wiki/Bolza_Grool" .
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Bolza_Grool"^^xsd:string .
 
 
 ###  http://null.com/star-wars#Boolio
@@ -899,8 +912,8 @@
                  :Astromech ;
         :employedBy :Hera_Syndulla ;
         :memberOf :Spectres ;
-        rdfs:label "Chopper" ;
-        rdfs:seeAlso "https://starwars.fandom.com/wiki/C1-10P" .
+        rdfs:label "Chopper"^^xsd:string ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/C1-10P"^^xsd:string .
 
 
 ###  http://null.com/star-wars#CB-23
@@ -1038,6 +1051,10 @@
                     [ rdf:type owl:Restriction ;
                       owl:onProperty :hasTerrain ;
                       owl:someValuesFrom :Water
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :homeworldOf ;
+                      owl:someValuesFrom :Chelidae
                     ] ;
            :location :Mid_Rim ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Castilon"^^xsd:anyURI .
@@ -1108,7 +1125,7 @@
 ###  http://null.com/star-wars#Children_of_the_Watch
 :Children_of_the_Watch rdf:type owl:NamedIndividual ,
                                 :Religious_Order ;
-                       :quote "This is the Way" ;
+                       :quote "This is the Way"^^xsd:string ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Children_of_the_Watch"^^xsd:anyURI .
 
 
@@ -1684,7 +1701,7 @@
                      ] ;
             :alliedWith :Ahsoka_Tano ;
             :memberOf :Mudhorn_Clan ;
-            :quote "Dank Farrik" ;
+            :quote "Dank Farrik"^^xsd:string ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin"^^xsd:anyURI .
 
 
@@ -1806,6 +1823,18 @@
                          ] ;
                 :employedBy :Darth_Vader ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Eighth_Brother"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Eila
+:Eila rdf:type owl:NamedIndividual ,
+               :Human ,
+               [ rdf:type owl:Restriction ;
+                 owl:onProperty :gender ;
+                 owl:someValuesFrom :Female
+               ] ;
+      :brother :Kel ;
+      :from :Tehar ;
+      rdfs:seeAlso "https://starwars.fandom.com/wiki/Eila"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Elrik_Vonreg
@@ -2523,7 +2552,7 @@
        :memberOf :Mudhorn_Clan ;
        :survivorOf :Order_66 ;
        :born -41 ;
-       rdfs:label "The Child" ;
+       rdfs:label "The Child"^^xsd:string ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Grogu"^^xsd:anyURI .
 
 
@@ -2558,7 +2587,7 @@
                                             ]
                        ] ;
               :from :Hosnian_Prime ;
-              rdfs:seeAlso "https://starwars.fandom.com/wiki/Hamato_Xiono" .
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Hamato_Xiono"^^xsd:string .
 
 
 ###  http://null.com/star-wars#Han_Solo
@@ -2647,7 +2676,7 @@
                                             ]
                        ] ;
               :friendsWith :Ezra_Bridger ;
-              rdfs:seeAlso "https://starwars.fandom.com/wiki/Hondo_Ohnaka" .
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Hondo_Ohnaka"^^xsd:string .
 
 
 ###  http://null.com/star-wars#Hosnian_Prime
@@ -2712,7 +2741,8 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :hadRole ;
-                       owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                       owl:someValuesFrom [ owl:intersectionOf ( :Leader
+                                                                 :Pilot
                                                                  [ rdf:type owl:Restriction ;
                                                                    owl:onProperty :inOrganisation ;
                                                                    owl:hasValue :Ace_Squadron
@@ -2829,6 +2859,16 @@
 :Jabbas_Empire rdf:type owl:NamedIndividual ,
                         :Crime_Syndicate ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Jabba_Desilijic_Tiure%27s_criminal_empire"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Jace_Rucklin
+:Jace_Rucklin rdf:type owl:NamedIndividual ,
+                       :Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :gender ;
+                         owl:someValuesFrom :Male
+                       ] ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Jace_Rucklin"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Jakku
@@ -3203,8 +3243,20 @@
                     owl:someValuesFrom :Orbak
                   ] ;
          :location :Outer_Rim ;
-         rdfs:comment "Also a moon of Endor (Gas Giant)" ;
+         rdfs:comment "Also a moon of Endor (Gas Giant)"^^xsd:string ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Kef_Bir"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Kel
+:Kel rdf:type owl:NamedIndividual ,
+              :Human ,
+              [ rdf:type owl:Restriction ;
+                owl:onProperty :gender ;
+                owl:someValuesFrom :Male
+              ] ;
+     :from :Tehar ;
+     :livedIn :Colossus ;
+     rdfs:seeAlso "https://starwars.fandom.com/wiki/Kel"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Kessel
@@ -3338,7 +3390,7 @@
                   owl:someValuesFrom :Farmer
                 ] ;
        :livedIn :Arvala-7 ;
-       :quote "I have spoken" ;
+       :quote "I have spoken"^^xsd:string ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Kuiil"^^xsd:anyURI .
 
 
@@ -3628,7 +3680,7 @@
                             owl:someValuesFrom :Jedi_Master
                           ] ;
                  :diedInYear -18 ;
-                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Luminara_Unduli" .
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Luminara_Unduli"^^xsd:string .
 
 
 ###  http://null.com/star-wars#MC75_Profundity
@@ -3743,6 +3795,21 @@
                                 :Event ;
                        :year -2 ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Mandalorian_Civil_War_(Imperial_Era)"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Marcus_Speedstar
+:Marcus_Speedstar rdf:type owl:NamedIndividual ,
+                           :Human ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :gender ;
+                             owl:someValuesFrom :Male
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom :Pilot
+                           ] ;
+                  :brother :Jarek_Yeager ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Marcus_Speedstar"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Massassi_Group
@@ -3980,7 +4047,7 @@
 :Mos_Eisley rdf:type owl:NamedIndividual ,
                      :Space_Port ;
             :location :Tatooine ;
-            rdfs:seeAlso "https://starwars.fandom.com/wiki/Mos_Eisley" .
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Mos_Eisley"^^xsd:string .
 
 
 ###  http://null.com/star-wars#Mos_Espa
@@ -4734,6 +4801,28 @@
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Pyke_Syndicate"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Pyre
+:Pyre rdf:type owl:NamedIndividual ,
+               :Human ,
+               [ rdf:type owl:Restriction ;
+                 owl:onProperty :gender ;
+                 owl:someValuesFrom :Male
+               ] ,
+               [ rdf:type owl:Restriction ;
+                 owl:onProperty :hadRole ;
+                 owl:someValuesFrom [ owl:intersectionOf ( :Commander
+                                                           :StormTrooper
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :inOrganisation ;
+                                                             owl:hasValue :First_Order
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ]
+               ] ;
+      rdfs:seeAlso "https://starwars.fandom.com/wiki/Pyre"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Q9-0
 :Q9-0 rdf:type owl:NamedIndividual ,
                :Protocol_Droid ,
@@ -4813,7 +4902,7 @@
                 ] ;
        :employedBy :Jarek_Yeager ;
        :livedIn :Colossus ;
-       rdfs:label "Bucket" ;
+       rdfs:label "Bucket"^^xsd:string ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/R1-J5"^^xsd:anyURI .
 
 
@@ -5003,7 +5092,7 @@
                   :Gregor ,
                   :Wolffe ;
      :born -32 ;
-     rdfs:comment "CT-7567" ;
+     rdfs:comment "CT-7567"^^xsd:string ;
      rdfs:seeAlso "https://starwars.fandom.com/wiki/Rex"^^xsd:anyURI .
 
 
@@ -5489,7 +5578,7 @@
 :Sith_Order rdf:type owl:NamedIndividual ,
                      :Religious_Order ;
             :inConflictWith :Jedi_Order ;
-            rdfs:comment "There can be only 2? Probably not logically consistent" ;
+            rdfs:comment "There can be only 2? Probably not logically consistent"^^xsd:string ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Sith"^^xsd:anyURI .
 
 
@@ -5828,6 +5917,13 @@
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Techno_Union"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Tehar
+:Tehar rdf:type owl:NamedIndividual ,
+                :Planet ;
+       :location :Unknown_Regions ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Tehar"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Teth
 :Teth rdf:type owl:NamedIndividual ,
                :Planet ,
@@ -6030,6 +6126,27 @@
                                       ]
                  ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Mitth%27raw%27nuruodo"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Tierny
+:Tierny rdf:type owl:NamedIndividual ,
+                 :Human ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :gender ;
+                   owl:someValuesFrom :Female
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom [ owl:intersectionOf ( :Agent
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :inOrganisation ;
+                                                               owl:hasValue :First_Order
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
+                 ] ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Tierny"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Tobias_Beckett
@@ -6722,6 +6839,21 @@
                    ] ;
           :location :Outer_Rim ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Zygerria"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#4D-M1N
+<http://null.com/star-wars#4D-M1N> rdf:type owl:NamedIndividual ,
+                                            :Droid ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :gender ;
+                                              owl:someValuesFrom :Female
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hadRole ;
+                                              owl:someValuesFrom :Guard
+                                            ] ;
+                                   :employedBy :Imanuel_Doza ;
+                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/4D-M1N"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#4-A7

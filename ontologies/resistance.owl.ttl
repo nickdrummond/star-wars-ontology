@@ -9,7 +9,7 @@
 
 <http://null.com/star-wars/resistance> rdf:type owl:Ontology ;
                                         owl:imports <http://null.com/star-wars> ;
-                                        rdfs:comment "Characters and events primarily from \"Star Wars: Resistance\"" .
+                                        rdfs:comment "Characters and events primarily from \"Star Wars: Resistance\""^^xsd:string .
 
 #################################################################
 #    Individuals
@@ -63,6 +63,64 @@ star-wars:Delivering_intel_to_the_Resistance rdf:type owl:NamedIndividual ,
                                              rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Recruit"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Getting_into_the_High_Tower
+star-wars:Getting_into_the_High_Tower rdf:type owl:NamedIndividual ,
+                                               star-wars:Mission ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty star-wars:included ;
+                                                 owl:someValuesFrom [ owl:intersectionOf ( star-wars:Meeting
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty star-wars:participant ;
+                                                                                             owl:hasValue star-wars:Elrik_Vonreg
+                                                                                           ]
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty star-wars:participant ;
+                                                                                             owl:hasValue star-wars:Imanuel_Doza
+                                                                                           ]
+                                                                                         ) ;
+                                                                      rdf:type owl:Class
+                                                                    ]
+                                               ] ;
+                                      star-wars:after star-wars:Rucklins_Racer ;
+                                      star-wars:location star-wars:Colossus ;
+                                      star-wars:participant star-wars:BB-8 ,
+                                                            star-wars:First_Order ,
+                                                            star-wars:Hype_Fazon ,
+                                                            star-wars:Kazuda_Xiono ,
+                                                            star-wars:Tamara_Ryvora ,
+                                                            star-wars:Torra_Doza ;
+                                      star-wars:year 34 ;
+                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/The_High_Tower"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hunting_the_Children_from_Tehar
+star-wars:Hunting_the_Children_from_Tehar rdf:type owl:NamedIndividual ,
+                                                   star-wars:Escape ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty star-wars:participant ;
+                                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Chelidae
+                                                                                               star-wars:Mechanic
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty star-wars:livedIn ;
+                                                                                                 owl:hasValue star-wars:Colossus
+                                                                                               ]
+                                                                                             ) ;
+                                                                          rdf:type owl:Class
+                                                                        ]
+                                                   ] ;
+                                          star-wars:after star-wars:Getting_into_the_High_Tower ,
+                                                          star-wars:Massacre_on_Tehar ;
+                                          star-wars:escapeOf star-wars:Eila ,
+                                                             star-wars:Kel ;
+                                          star-wars:location star-wars:Colossus ;
+                                          star-wars:orderedBy star-wars:Phasma ;
+                                          star-wars:participant star-wars:First_Order ,
+                                                                star-wars:Kazuda_Xiono ,
+                                                                star-wars:Pyre ;
+                                          star-wars:year 34 ;
+                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Children_from_Tehar"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Introduction_to_the_Colossus
 star-wars:Introduction_to_the_Colossus rdf:type owl:NamedIndividual ,
                                                 star-wars:Event ,
@@ -114,10 +172,15 @@ star-wars:Introduction_to_the_Colossus rdf:type owl:NamedIndividual ,
                                                                                               owl:onProperty star-wars:participant ;
                                                                                               owl:hasValue star-wars:Orka
                                                                                             ]
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty star-wars:traded ;
+                                                                                              owl:hasValue star-wars:Bitey
+                                                                                            ]
                                                                                           ) ;
                                                                        rdf:type owl:Class
                                                                      ]
                                                 ] ;
+                                       star-wars:after star-wars:Delivering_intel_to_the_Resistance ;
                                        star-wars:participant star-wars:BB-8 ,
                                                              star-wars:Kazuda_Xiono ,
                                                              star-wars:Poe_Dameron ,
@@ -140,6 +203,7 @@ star-wars:Kaz_vs_Torra rdf:type owl:NamedIndividual ,
                                                        rdf:type owl:Class
                                                      ]
                                 ] ;
+                       star-wars:after star-wars:Introduction_to_the_Colossus ;
                        star-wars:location star-wars:Colossus ;
                        star-wars:participant star-wars:Kazuda_Xiono ;
                        star-wars:victoryOf star-wars:Torra_Doza ;
@@ -147,29 +211,47 @@ star-wars:Kaz_vs_Torra rdf:type owl:NamedIndividual ,
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Race_between_Kazuda_Xiono_and_Torra_Doza"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Pirate_Raid_on_the_Colossus
-star-wars:Pirate_Raid_on_the_Colossus rdf:type owl:NamedIndividual ,
-                                               star-wars:Attack ;
-                                      star-wars:location star-wars:Colossus ;
-                                      star-wars:orderedBy star-wars:First_Order ;
-                                      star-wars:participant star-wars:Ace_Squadron ,
-                                                            star-wars:Grevel ,
-                                                            star-wars:Kazuda_Xiono ,
-                                                            star-wars:Warbird_gang ;
-                                      star-wars:year 34 ;
-                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Triple_Dark#Raiding_the_Colossus"^^xsd:anyURI .
+###  http://null.com/star-wars#Massacre_on_Tehar
+star-wars:Massacre_on_Tehar rdf:type owl:NamedIndividual ,
+                                     star-wars:Attack ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty star-wars:killingOf ;
+                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                            owl:onProperty star-wars:livedIn ;
+                                                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Village
+                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty star-wars:on ;
+                                                                                                        owl:hasValue star-wars:Tehar
+                                                                                                      ]
+                                                                                                    ) ;
+                                                                                 rdf:type owl:Class
+                                                                               ]
+                                                          ]
+                                     ] ;
+                            star-wars:escapeOf star-wars:Eila ,
+                                               star-wars:Kel ;
+                            star-wars:location star-wars:Tehar ;
+                            star-wars:participant star-wars:First_Order ,
+                                                  star-wars:Kylo_Ren ;
+                            star-wars:year 34 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Massacre_on_Tehar"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Platform_Classic_34ABY
 star-wars:Platform_Classic_34ABY rdf:type owl:NamedIndividual ,
                                           star-wars:Race ,
                                           [ rdf:type owl:Restriction ;
-                                            owl:onProperty star-wars:victoryOf ;
-                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty star-wars:brother ;
-                                                                 owl:hasValue star-wars:Jarek_Yeager
+                                            owl:onProperty star-wars:included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( star-wars:Confrontation
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty star-wars:participant ;
+                                                                                        owl:hasValue star-wars:Guavian_Death_Gang
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
                                                                ]
                                           ] ;
+                                 star-wars:after star-wars:Raid_on_the_Colossus ;
                                  star-wars:location star-wars:Colossus ;
                                  star-wars:participant star-wars:Bo_Keevil ,
                                                        star-wars:Freya_Fenris ,
@@ -177,8 +259,193 @@ star-wars:Platform_Classic_34ABY rdf:type owl:NamedIndividual ,
                                                        star-wars:Hype_Fazon ,
                                                        star-wars:Jarek_Yeager ,
                                                        star-wars:Torra_Doza ;
+                                 star-wars:victoryOf star-wars:Marcus_Speedstar ;
                                  star-wars:year 34 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Platform_Classic"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Raid_on_the_Colossus
+star-wars:Raid_on_the_Colossus rdf:type owl:NamedIndividual ,
+                                        star-wars:Attack ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty star-wars:included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( star-wars:Repair
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty star-wars:of ;
+                                                                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Weapon
+                                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                                  owl:onProperty star-wars:on ;
+                                                                                                                                  owl:hasValue star-wars:Colossus
+                                                                                                                                ]
+                                                                                                                              ) ;
+                                                                                                           rdf:type owl:Class
+                                                                                                         ]
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty star-wars:participant ;
+                                                                                      owl:hasValue star-wars:Jarek_Yeager
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty star-wars:participant ;
+                                                                                      owl:hasValue star-wars:Kazuda_Xiono
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ;
+                               star-wars:after star-wars:Rescue_of_Synara ;
+                               star-wars:location star-wars:Colossus ;
+                               star-wars:participant star-wars:BB-8 ,
+                                                     star-wars:Synara_San ,
+                                                     star-wars:Tamara_Ryvora ,
+                                                     star-wars:Warbird_gang ;
+                               star-wars:year 34 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Synara%27s_Score"^^xsd:anyURI .
+
+[ rdf:type owl:NegativePropertyAssertion ;
+   owl:sourceIndividual star-wars:Raid_on_the_Colossus ;
+   owl:assertionProperty star-wars:participant ;
+   owl:targetIndividual star-wars:Ace_Squadron
+ ] .
+
+
+###  http://null.com/star-wars#Rescue_of_Synara
+star-wars:Rescue_of_Synara rdf:type owl:NamedIndividual ,
+                                    star-wars:Rescue ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:eatingOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty star-wars:hadRole ;
+                                                           owl:someValuesFrom star-wars:Pirate
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Training
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:location ;
+                                                                                  owl:someValuesFrom star-wars:Asteroid_field
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:location ;
+                                      owl:someValuesFrom star-wars:Space
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom star-wars:Freighter
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom star-wars:Kowakian_monkey-lizard
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:StarFighter
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
+                                                                                  owl:someValuesFrom star-wars:Pirate
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty star-wars:participant ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:X-Wing
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty star-wars:ownedBy ;
+                                                                                  owl:hasValue star-wars:Resistance
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           star-wars:after star-wars:Hunting_the_Children_from_Tehar ;
+                           star-wars:participant star-wars:BB-8 ,
+                                                 star-wars:CB-23 ,
+                                                 star-wars:Kazuda_Xiono ,
+                                                 star-wars:Poe_Dameron ,
+                                                 star-wars:Synara_San ;
+                           star-wars:year 34 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Signal_from_Sector_Six"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rucklins_Racer
+star-wars:Rucklins_Racer rdf:type owl:NamedIndividual ,
+                                  star-wars:Crash ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:destructionOf ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( star-wars:Ship
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty star-wars:ownedBy ;
+                                                                                owl:hasValue star-wars:Jace_Rucklin
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty star-wars:included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( star-wars:Event
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty star-wars:stole ;
+                                                                                owl:someValuesFrom star-wars:Coaxium
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty star-wars:participant ;
+                                                                                owl:hasValue star-wars:Jace_Rucklin
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         star-wars:after star-wars:Rucklins_Trap ;
+                         star-wars:location star-wars:Colossus ;
+                         star-wars:participant star-wars:BB-8 ;
+                         star-wars:survivedBy star-wars:Jace_Rucklin ,
+                                              star-wars:Kazuda_Xiono ;
+                         star-wars:year 34 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Fuel_for_the_Fire"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rucklins_Trap
+star-wars:Rucklins_Trap rdf:type owl:NamedIndividual ,
+                                 star-wars:Crash ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty star-wars:destructionOf ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( star-wars:Speeder_Bike
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty star-wars:ownedBy ;
+                                                                               owl:hasValue star-wars:Jace_Rucklin
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        star-wars:after star-wars:Triple_Dark_Pirate_Raid ;
+                        star-wars:location star-wars:Colossus ;
+                        star-wars:participant star-wars:Jace_Rucklin ;
+                        star-wars:survivedBy star-wars:Kazuda_Xiono ;
+                        star-wars:year 34 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Fuel_for_the_Fire"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Triple_Dark_Pirate_Raid
+star-wars:Triple_Dark_Pirate_Raid rdf:type owl:NamedIndividual ,
+                                           star-wars:Attack ;
+                                  star-wars:after star-wars:Kaz_vs_Torra ;
+                                  star-wars:location star-wars:Colossus ;
+                                  star-wars:orderedBy star-wars:Pyre ;
+                                  star-wars:participant star-wars:Ace_Squadron ,
+                                                        star-wars:Grevel ,
+                                                        star-wars:Kazuda_Xiono ,
+                                                        star-wars:Warbird_gang ;
+                                  star-wars:year 34 ;
+                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Triple_Dark#Raiding_the_Colossus"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

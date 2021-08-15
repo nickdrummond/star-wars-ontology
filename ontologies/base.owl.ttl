@@ -7,7 +7,7 @@
 @base <http://null.com/star-wars#> .
 
 <http://null.com/star-wars/base> rdf:type owl:Ontology ;
-                                  rdfs:comment "asdasdas" .
+                                  rdfs:comment "asdasdas"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -106,7 +106,7 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 ###  http://null.com/star-wars#diedIn
 :diedIn rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :participatedIn ;
-        :todo "Do we need this as its not used directly" .
+        :todo "Do we need this as its not used directly"^^xsd:string .
 
 
 ###  http://null.com/star-wars#during
@@ -193,7 +193,7 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 ###  http://null.com/star-wars#inOrganisation
 :inOrganisation rdf:type owl:ObjectProperty ;
                 rdfs:comment """How a Role is associated with an Organisation
-eg Pilot and (inOrganisation value Rebel_Alliance)""" .
+eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#included
@@ -271,7 +271,7 @@ eg Pilot and (inOrganisation value Rebel_Alliance)""" .
 :of rdf:type owl:ObjectProperty ;
     rdfs:comment """Used to denote the make up of something - eg Army
 Army and of value Naboo
-Army and of value Gungan""" .
+Army and of value Gungan"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#ofShip
@@ -318,7 +318,7 @@ Army and of value Gungan""" .
              rdfs:comment """Events have participants.
 They can be individuals (Living_Things), Organisations, The_Force, Objects or Places (Normally Spacecraft or space stations)
 
-eg Obi-Wan_vs_Maul -> participant -> Obi-Wan""" .
+eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#participatedIn
@@ -371,7 +371,7 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan""" .
 ###  http://null.com/star-wars#sometimeAfter
 :sometimeAfter rdf:type owl:ObjectProperty ;
                owl:inverseOf :sometimeBefore ;
-               rdfs:comment "Less directly following another event" .
+               rdfs:comment "Less directly following another event"^^xsd:string .
 
 
 ###  http://null.com/star-wars#sometimeBefore
@@ -473,7 +473,7 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan""" .
 :year rdf:type owl:DatatypeProperty ;
       rdfs:range xsd:int ;
       rdfs:comment """ABY
-or minus is BBY""" .
+or minus is BBY"""^^xsd:string .
 
 
 #################################################################
@@ -736,6 +736,12 @@ or minus is BBY""" .
                  rdfs:subClassOf :Corvette .
 
 
+###  http://null.com/star-wars#Blue_Milk
+:Blue_Milk rdf:type owl:Class ;
+           rdfs:subClassOf :Drink ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Blue_milk"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Bluurg
 :Bluurg rdf:type owl:Class ;
         rdfs:subClassOf :Reptile ,
@@ -850,6 +856,16 @@ or minus is BBY""" .
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Chadra-Fan"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Chelidae
+:Chelidae rdf:type owl:Class ;
+          rdfs:subClassOf :Amphibian ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :sentience ;
+                            owl:someValuesFrom :Sentient
+                          ] ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Chelidae"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Chiss
 :Chiss rdf:type owl:Class ;
        rdfs:subClassOf :Near_Human ,
@@ -914,6 +930,11 @@ or minus is BBY""" .
 ###  http://null.com/star-wars#Confrontation
 :Confrontation rdf:type owl:Class ;
                rdfs:subClassOf :Event .
+
+
+###  http://null.com/star-wars#Consumable
+:Consumable rdf:type owl:Class ;
+            rdfs:subClassOf :Object .
 
 
 ###  http://null.com/star-wars#Convor
@@ -1062,6 +1083,11 @@ or minus is BBY""" .
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Dreadnought"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Drink
+:Drink rdf:type owl:Class ;
+       rdfs:subClassOf :Consumable .
+
+
 ###  http://null.com/star-wars#Droid
 :Droid rdf:type owl:Class ;
        rdfs:subClassOf :Actor ;
@@ -1123,7 +1149,7 @@ or minus is BBY""" .
 
 ###  http://null.com/star-wars#Egg
 :Egg rdf:type owl:Class ;
-     rdfs:subClassOf :Object .
+     rdfs:subClassOf :Food .
 
 
 ###  http://null.com/star-wars#Elite_Praetorian_Guard
@@ -1180,7 +1206,7 @@ or minus is BBY""" .
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Sentient
                           ] ;
-          rdfs:label "Space slug" ;
+          rdfs:label "Space slug"^^xsd:string ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Exogorth"^^xsd:anyURI .
 
 
@@ -1227,6 +1253,11 @@ or minus is BBY""" .
 ###  http://null.com/star-wars#Flying_Creature
 :Flying_Creature rdf:type owl:Class ;
                  rdfs:subClassOf :Living_thing .
+
+
+###  http://null.com/star-wars#Food
+:Food rdf:type owl:Class ;
+      rdfs:subClassOf :Consumable .
 
 
 ###  http://null.com/star-wars#Force_Bond
@@ -1845,6 +1876,11 @@ or minus is BBY""" .
           rdfs:subClassOf :Vocation .
 
 
+###  http://null.com/star-wars#Meeting
+:Meeting rdf:type owl:Class ;
+         rdfs:subClassOf :Event .
+
+
 ###  http://null.com/star-wars#Mercenary
 :Mercenary rdf:type owl:Class ;
            rdfs:subClassOf :Fighter ;
@@ -2285,6 +2321,11 @@ or minus is BBY""" .
 :Religious_Order rdf:type owl:Class ;
                  rdfs:subClassOf :Organisation ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Religion"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Repair
+:Repair rdf:type owl:Class ;
+        rdfs:subClassOf :Event .
 
 
 ###  http://null.com/star-wars#Reptavian
@@ -3067,22 +3108,6 @@ or minus is BBY""" .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Armour
-                :Beskar
-                :Book
-                :Coaxium
-                :Egg
-                :Holocron
-                :Money
-                :Parts
-                :Plans
-                :Wayfinder
-                :Weapon
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Asteroid
                 :Asteroid_field
                 :Maelstrom
@@ -3104,9 +3129,11 @@ or minus is BBY""" .
                 :Fight
                 :Game
                 :Job
+                :Meeting
                 :Mission
                 :Murder
                 :Race
+                :Repair
                 :Rescue
                 :Training
                 :Wedding
@@ -3134,6 +3161,21 @@ or minus is BBY""" .
                 :City
                 :Facility
                 :Village
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Beskar
+                :Book
+                :Coaxium
+                :Consumable
+                :Holocron
+                :Money
+                :Parts
+                :Plans
+                :Wayfinder
+                :Weapon
               )
 ] .
 

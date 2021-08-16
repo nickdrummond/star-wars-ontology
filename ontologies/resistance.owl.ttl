@@ -7,8 +7,8 @@
 @base <http://null.com/star-wars#> .
 
 <http://null.com/star-wars/resistance> rdf:type owl:Ontology ;
-                                       owl:imports <http://null.com/star-wars> ;
-                                       rdfs:comment "Characters and events primarily from \"Star Wars: Resistance\""^^xsd:string .
+                                        owl:imports <http://null.com/star-wars> ;
+                                        rdfs:comment "Characters and events primarily from \"Star Wars: Resistance\""^^xsd:string .
 
 #################################################################
 #    Individuals
@@ -20,9 +20,81 @@
                     :killingOf :Elrik_Vonreg ;
                     :location :Castillon ;
                     :participant :Colossus ,
-                    :Kazuda_Xiono ;
+                                 :Kazuda_Xiono ;
                     :year 34 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_Castilon"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Collecting_info_on_Doza
+:Collecting_info_on_Doza rdf:type owl:NamedIndividual ,
+                                  :Mission ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :found ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Information
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :about ;
+                                                                                owl:hasValue :Colossus
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :about ;
+                                                                                owl:hasValue :First_Order
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :found ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Uniform
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :ownedBy ;
+                                                                                owl:hasValue :Galactic_Empire
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :ownedBy ;
+                                                                                owl:hasValue :Imanuel_Doza
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :location ;
+                                                                                owl:someValuesFrom :Trash_Incinerator
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Game
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:hasValue :Kazuda_Xiono
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:hasValue :Torra_Doza
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         :after :Platform_Classic_34ABY ;
+                         :location :Colossus ;
+                         :participant :BB-8 ,
+                                      :Buggles ,
+                                      :Imanuel_Doza ,
+                                      :Kazuda_Xiono ,
+                                      :Pyre ,
+                                      :Torra_Doza ,
+                                      <http://null.com/star-wars#4D-M1N> ;
+                         :year 34 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Secrets_and_Holograms"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Delivering_intel_to_the_Resistance
@@ -41,7 +113,7 @@
                                                                                          ]
                                                                                        ) ;
                                                                     rdf:type owl:Class
-                                                        ]
+                                                                  ]
                                              ] ,
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty :participant ;
@@ -52,14 +124,66 @@
                                                                                          ]
                                                                                        ) ;
                                                                     rdf:type owl:Class
-                                                        ]
+                                                                  ]
                                              ] ;
                                     :escapeOf :Elrik_Vonreg ;
                                     :participant :BB-8 ,
-                                    :Kazuda_Xiono ,
-                                    :Poe_Dameron ;
+                                                 :Kazuda_Xiono ,
+                                                 :Poe_Dameron ;
                                     :year 34 ;
                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Recruit"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Finding_the_First_Order_Outpost
+:Finding_the_First_Order_Outpost rdf:type owl:NamedIndividual ,
+                                          :Mission ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :traded ;
+                                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Information
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty :about ;
+                                                                                                                                    owl:hasValue :First_Order
+                                                                                                                                  ]
+                                                                                                                                ) ;
+                                                                                                             rdf:type owl:Class
+                                                                                                           ]
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :location ;
+                                                                                        owl:hasValue :Tantive_IV
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:hasValue :Leia_Organa
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :killingOf ;
+                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :hadRole ;
+                                                                 owl:someValuesFrom :StormTrooper
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :participant ;
+                                            owl:someValuesFrom :Tie_Fighter
+                                          ] ;
+                                 :after :Collecting_info_on_Doza ;
+                                 :destructionOf :Station_Theta_Black ;
+                                 :location :Station_Theta_Black ;
+                                 :participant :BB-8 ,
+                                              :CB-23 ,
+                                              :Phasma ;
+                                 :survivedBy :Kazuda_Xiono ,
+                                             :Poe_Dameron ;
+                                 :year 34 ;
+                                 rdfs:comment "https://starwars.fandom.com/wiki/Station_Theta_Black_(episode)"^^xsd:string .
 
 
 ###  http://null.com/star-wars#Getting_into_the_High_Tower
@@ -78,16 +202,16 @@
                                                                                   ]
                                                                                 ) ;
                                                              rdf:type owl:Class
-                                                 ]
+                                                           ]
                                       ] ;
                              :after :Rucklins_Racer ;
                              :location :Colossus ;
                              :participant :BB-8 ,
-                             :First_Order ,
-                             :Hype_Fazon ,
-                             :Kazuda_Xiono ,
-                             :Tamara_Ryvora ,
-                             :Torra_Doza ;
+                                          :First_Order ,
+                                          :Hype_Fazon ,
+                                          :Kazuda_Xiono ,
+                                          :Tamara_Ryvora ,
+                                          :Torra_Doza ;
                              :year 34 ;
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/The_High_Tower"^^xsd:anyURI .
 
@@ -105,17 +229,17 @@
                                                                                       ]
                                                                                     ) ;
                                                                  rdf:type owl:Class
-                                                     ]
+                                                               ]
                                           ] ;
                                  :after :Getting_into_the_High_Tower ,
-                                          :Massacre_on_Tehar ;
+                                        :Massacre_on_Tehar ;
                                  :escapeOf :Eila ,
-                                 :Kel ;
+                                           :Kel ;
                                  :location :Colossus ;
                                  :orderedBy :Phasma ;
                                  :participant :First_Order ,
-                                 :Kazuda_Xiono ,
-                                 :Pyre ;
+                                              :Kazuda_Xiono ,
+                                              :Pyre ;
                                  :year 34 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Children_from_Tehar"^^xsd:anyURI .
 
@@ -140,7 +264,7 @@
                                                                                    ]
                                                                                  ) ;
                                                               rdf:type owl:Class
-                                                  ]
+                                                            ]
                                        ] ,
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :included ;
@@ -155,7 +279,7 @@
                                                                                    ]
                                                                                  ) ;
                                                               rdf:type owl:Class
-                                                  ]
+                                                            ]
                                        ] ,
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :included ;
@@ -177,13 +301,13 @@
                                                                                    ]
                                                                                  ) ;
                                                               rdf:type owl:Class
-                                                  ]
+                                                            ]
                                        ] ;
                               :after :Delivering_intel_to_the_Resistance ;
                               :participant :BB-8 ,
-                              :Kazuda_Xiono ,
-                              :Poe_Dameron ,
-                              :Team_Fireball ;
+                                           :Kazuda_Xiono ,
+                                           :Poe_Dameron ,
+                                           :Team_Fireball ;
                               :year 34 ;
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Recruit#Landing_on_Castilon"^^xsd:anyURI .
 
@@ -200,7 +324,7 @@
                                                                    ]
                                                                  ) ;
                                               rdf:type owl:Class
-                                  ]
+                                            ]
                        ] ;
               :after :Introduction_to_the_Colossus ;
               :location :Colossus ;
@@ -224,14 +348,14 @@
                                                                                              ]
                                                                                            ) ;
                                                                         rdf:type owl:Class
-                                                            ]
-                                       ]
+                                                                      ]
+                                                 ]
                             ] ;
                    :escapeOf :Eila ,
-                   :Kel ;
+                             :Kel ;
                    :location :Tehar ;
                    :participant :First_Order ,
-                   :Kylo_Ren ;
+                                :Kylo_Ren ;
                    :year 34 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Massacre_on_Tehar"^^xsd:anyURI .
 
@@ -248,16 +372,16 @@
                                                                              ]
                                                                            ) ;
                                                         rdf:type owl:Class
-                                            ]
+                                                      ]
                                  ] ;
                         :after :Raid_on_the_Colossus ;
                         :location :Colossus ;
                         :participant :Bo_Keevil ,
-                        :Freya_Fenris ,
-                        :Griff_Halloran ,
-                        :Hype_Fazon ,
-                        :Jarek_Yeager ,
-                        :Torra_Doza ;
+                                     :Freya_Fenris ,
+                                     :Griff_Halloran ,
+                                     :Hype_Fazon ,
+                                     :Jarek_Yeager ,
+                                     :Torra_Doza ;
                         :victoryOf :Marcus_Speedstar ;
                         :year 34 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Platform_Classic"^^xsd:anyURI .
@@ -278,7 +402,7 @@
                                                                                                                        ]
                                                                                                                      ) ;
                                                                                                   rdf:type owl:Class
-                                                                                      ]
+                                                                                                ]
                                                                            ]
                                                                            [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :participant ;
@@ -290,14 +414,14 @@
                                                                            ]
                                                                          ) ;
                                                       rdf:type owl:Class
-                                          ]
+                                                    ]
                                ] ;
                       :after :Rescue_of_Synara ;
                       :location :Colossus ;
                       :participant :BB-8 ,
-                      :Synara_San ,
-                      :Tamara_Ryvora ,
-                      :Warbird_gang ;
+                                   :Synara_San ,
+                                   :Tamara_Ryvora ,
+                                   :Warbird_gang ;
                       :year 34 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Synara%27s_Score"^^xsd:anyURI .
 
@@ -316,7 +440,7 @@
                              owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                   owl:onProperty :hadRole ;
                                                   owl:someValuesFrom :Pirate
-                                      ]
+                                                ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
@@ -327,7 +451,7 @@
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
-                                      ]
+                                                ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :location ;
@@ -350,7 +474,7 @@
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
-                                      ]
+                                                ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :participant ;
@@ -361,14 +485,14 @@
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
-                                      ]
+                                                ]
                            ] ;
                   :after :Hunting_the_Children_from_Tehar ;
                   :participant :BB-8 ,
-                  :CB-23 ,
-                  :Kazuda_Xiono ,
-                  :Poe_Dameron ,
-                  :Synara_San ;
+                               :CB-23 ,
+                               :Kazuda_Xiono ,
+                               :Poe_Dameron ,
+                               :Synara_San ;
                   :year 34 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Signal_from_Sector_Six"^^xsd:anyURI .
 
@@ -385,7 +509,7 @@
                                                                      ]
                                                                    ) ;
                                                 rdf:type owl:Class
-                                    ]
+                                              ]
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :included ;
@@ -400,13 +524,13 @@
                                                                      ]
                                                                    ) ;
                                                 rdf:type owl:Class
-                                    ]
+                                              ]
                          ] ;
                 :after :Rucklins_Trap ;
                 :location :Colossus ;
                 :participant :BB-8 ;
                 :survivedBy :Jace_Rucklin ,
-                :Kazuda_Xiono ;
+                            :Kazuda_Xiono ;
                 :year 34 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Fuel_for_the_Fire"^^xsd:anyURI .
 
@@ -423,7 +547,7 @@
                                                                     ]
                                                                   ) ;
                                                rdf:type owl:Class
-                                   ]
+                                             ]
                         ] ;
                :after :Triple_Dark_Pirate_Raid ;
                :location :Colossus ;
@@ -440,9 +564,9 @@
                          :location :Colossus ;
                          :orderedBy :Pyre ;
                          :participant :Ace_Squadron ,
-                         :Grevel ,
-                         :Kazuda_Xiono ,
-                         :Warbird_gang ;
+                                      :Grevel ,
+                                      :Kazuda_Xiono ,
+                                      :Warbird_gang ;
                          :year 34 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Triple_Dark#Raiding_the_Colossus"^^xsd:anyURI .
 

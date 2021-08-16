@@ -4,236 +4,235 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix star-wars: <http://null.com/star-wars#> .
 @base <http://null.com/star-wars/rogue_one> .
 
-<http://null.com/star-wars/rogue_one> rdf:type owl:Ontology ;
-                                       owl:imports <http://null.com/star-wars> ;
-                                       rdfs:comment "Characters and events primarily from thie film \"Rogue One\"" .
+<http://null.com/star-wars/rogue_one> a owl:Ontology ;
+                                      owl:imports <http://null.com/star-wars> ;
+                                      rdfs:comment "Characters and events primarily from thie film \"Rogue One\"" .
 
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://null.com/star-wars#Battle_of_Scarif
-star-wars:Battle_of_Scarif rdf:type owl:NamedIndividual ,
-                                    star-wars:Battle ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:destructionOf ;
-                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Star_Destroyer
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty star-wars:ownedBy ;
-                                                                                  owl:hasValue star-wars:Galactic_Empire
-                                                                                ]
-                                                                              ) ;
-                                                           rdf:type owl:Class
-                                                         ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:destructionOf ;
-                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Tie_Fighter
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty star-wars:ownedBy ;
-                                                                                  owl:hasValue star-wars:Galactic_Empire
-                                                                                ]
-                                                                              ) ;
-                                                           rdf:type owl:Class
-                                                         ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:destructionOf ;
-                                      owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                                  owl:unionOf ( star-wars:U-Wing
-                                                                                                star-wars:X-Wing
-                                                                                              )
-                                                                                ]
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty star-wars:ownedBy ;
-                                                                                  owl:hasValue star-wars:Rebel_Alliance
-                                                                                ]
-                                                                              ) ;
-                                                           rdf:type owl:Class
-                                                         ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:participant ;
-                                      owl:someValuesFrom [ owl:intersectionOf ( star-wars:Corvette
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty star-wars:ownedBy ;
-                                                                                  owl:hasValue star-wars:Rebel_Alliance
-                                                                                ]
-                                                                              ) ;
-                                                           rdf:type owl:Class
-                                                         ]
-                                    ] ;
-                           star-wars:after star-wars:Search_for_Galen ;
-                           star-wars:deathOf star-wars:Raddus ;
-                           star-wars:destructionOf star-wars:Citadel_Tower ,
-                                                   star-wars:MC75_Profundity ,
-                                                   star-wars:Shield_Gate ;
-                           star-wars:escapeOf star-wars:Tantive_IV ;
-                           star-wars:location star-wars:Scarif ;
-                           star-wars:participant star-wars:Death_Star_1 ,
-                                                 star-wars:Devastator ,
-                                                 star-wars:Galactic_Empire ,
-                                                 star-wars:Rebel_Alliance ;
-                           star-wars:year 0 ;
-                           star-wars:todo "must be some way to say \"killed all members of rogue one\""^^xsd:anyURI ;
-                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Scarif"^^xsd:anyURI .
+:Battle_of_Scarif a owl:NamedIndividual ,
+                    :Battle ,
+                    [ a owl:Restriction ;
+                      owl:onProperty :destructionOf ;
+                      owl:someValuesFrom [ owl:intersectionOf ( :Star_Destroyer
+                                                                [ a owl:Restriction ;
+                                                                  owl:onProperty :ownedBy ;
+                                                                  owl:hasValue :Galactic_Empire
+                                                                ]
+                                                              ) ;
+                                           a owl:Class
+                        ]
+                    ] ,
+                    [ a owl:Restriction ;
+                      owl:onProperty :destructionOf ;
+                      owl:someValuesFrom [ owl:intersectionOf ( :Tie_Fighter
+                                                                [ a owl:Restriction ;
+                                                                  owl:onProperty :ownedBy ;
+                                                                  owl:hasValue :Galactic_Empire
+                                                                ]
+                                                              ) ;
+                                           a owl:Class
+                        ]
+                    ] ,
+                    [ a owl:Restriction ;
+                      owl:onProperty :destructionOf ;
+                      owl:someValuesFrom [ owl:intersectionOf ( [ a owl:Class ;
+                                                                  owl:unionOf ( :U-Wing
+                                                                                :X-Wing
+                                                                    )
+                                                                ]
+                                                                [ a owl:Restriction ;
+                                                                  owl:onProperty :ownedBy ;
+                                                                  owl:hasValue :Rebel_Alliance
+                                                                ]
+                                                              ) ;
+                                           a owl:Class
+                        ]
+                    ] ,
+                    [ a owl:Restriction ;
+                      owl:onProperty :participant ;
+                      owl:someValuesFrom [ owl:intersectionOf ( :Corvette
+                                                                [ a owl:Restriction ;
+                                                                  owl:onProperty :ownedBy ;
+                                                                  owl:hasValue :Rebel_Alliance
+                                                                ]
+                                                              ) ;
+                                           a owl:Class
+                        ]
+                    ] ;
+                  :after :Search_for_Galen ;
+                  :deathOf :Raddus ;
+                  :destructionOf :Citadel_Tower ,
+                  :MC75_Profundity ,
+                  :Shield_Gate ;
+                  :escapeOf :Tantive_IV ;
+                  :location :Scarif ;
+                  :participant :Death_Star_1 ,
+                  :Devastator ,
+                  :Galactic_Empire ,
+                  :Rebel_Alliance ;
+                  :year 0 ;
+                  :todo "must be some way to say \"killed all members of rogue one\""^^xsd:anyURI ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Scarif"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Capture_of_Galen
-star-wars:Capture_of_Galen rdf:type owl:NamedIndividual ,
-                                    star-wars:Capture ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:killingOf ;
-                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                           owl:onProperty star-wars:daughter ;
-                                                           owl:hasValue star-wars:Jyn_Erso
-                                                         ]
-                                    ] ;
-                           star-wars:captureOf star-wars:Galen_Erso ;
-                           star-wars:escapeOf star-wars:Jyn_Erso ;
-                           star-wars:location star-wars:Lah_mu ;
-                           star-wars:participant star-wars:Orson_Krennic ,
-                                                 star-wars:Saw_Gerrera ;
-                           star-wars:year -13 ;
-                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Galen_Walton_Erso#Time_on_Lah.27mu"^^xsd:anyURI .
+:Capture_of_Galen a owl:NamedIndividual ,
+                    :Capture ,
+                    [ a owl:Restriction ;
+                      owl:onProperty :killingOf ;
+                      owl:someValuesFrom [ a owl:Restriction ;
+                                           owl:onProperty :daughter ;
+                                           owl:hasValue :Jyn_Erso
+                        ]
+                    ] ;
+                  :captureOf :Galen_Erso ;
+                  :escapeOf :Jyn_Erso ;
+                  :location :Lah_mu ;
+                  :participant :Orson_Krennic ,
+                  :Saw_Gerrera ;
+                  :year -13 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Galen_Walton_Erso#Time_on_Lah.27mu"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Capture_of_Tantive_IV
-star-wars:Capture_of_Tantive_IV rdf:type owl:NamedIndividual ,
-                                         star-wars:Fight ;
-                                star-wars:after star-wars:Battle_of_Scarif ;
-                                star-wars:year 0 ;
-                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope#Assault_on_Tantive_IV"^^xsd:anyURI .
+:Capture_of_Tantive_IV a owl:NamedIndividual ,
+                         :Fight ;
+                       :after :Battle_of_Scarif ;
+                       :year 0 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope#Assault_on_Tantive_IV"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Fight_on_Jedha
-star-wars:Fight_on_Jedha rdf:type owl:NamedIndividual ,
-                                  star-wars:Fight ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty star-wars:killingOf ;
-                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                         owl:onProperty star-wars:hadRole ;
-                                                         owl:someValuesFrom star-wars:StormTrooper
-                                                       ]
-                                  ] ;
-                         star-wars:after star-wars:Freeing_of_Jyn ;
-                         star-wars:captureOf star-wars:Baze_Malbus ,
-                                             star-wars:Cassian_Andor ,
-                                             star-wars:Chirrut_Îmwe ,
-                                             star-wars:Jyn_Erso ;
-                         star-wars:location star-wars:Jedha_City ;
-                         star-wars:participant star-wars:K-2SO ,
-                                               star-wars:Saw_Gerrera ;
-                         star-wars:year 0 ;
-                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Rogue_One:_A_Star_Wars_Story#Battle_on_Jedha"^^xsd:anyURI .
+:Fight_on_Jedha a owl:NamedIndividual ,
+                  :Fight ,
+                  [ a owl:Restriction ;
+                    owl:onProperty :killingOf ;
+                    owl:someValuesFrom [ a owl:Restriction ;
+                                         owl:onProperty :hadRole ;
+                                         owl:someValuesFrom :StormTrooper
+                      ]
+                  ] ;
+                :after :Freeing_of_Jyn ;
+                :captureOf :Baze_Malbus ,
+                :Cassian_Andor ,
+                :Chirrut_Îmwe ,
+                :Jyn_Erso ;
+                :location :Jedha_City ;
+                :participant :K-2SO ,
+                :Saw_Gerrera ;
+                :year 0 ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Rogue_One:_A_Star_Wars_Story#Battle_on_Jedha"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Freeing_of_Jyn
-star-wars:Freeing_of_Jyn rdf:type owl:NamedIndividual ,
-                                  star-wars:Rescue ;
-                         star-wars:escapeOf star-wars:Jyn_Erso ;
-                         star-wars:location star-wars:Wobani ;
-                         star-wars:participant star-wars:Rebel_Alliance ;
-                         star-wars:year 0 ;
-                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Erso"^^xsd:anyURI .
+:Freeing_of_Jyn a owl:NamedIndividual ,
+                  :Rescue ;
+                :escapeOf :Jyn_Erso ;
+                :location :Wobani ;
+                :participant :Rebel_Alliance ;
+                :year 0 ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Erso"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Holy_City_Destruction
-star-wars:Holy_City_Destruction rdf:type owl:NamedIndividual ,
-                                         star-wars:Attack ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty star-wars:participant ;
-                                           owl:someValuesFrom [ owl:intersectionOf ( star-wars:U-Wing
-                                                                                     [ rdf:type owl:Restriction ;
-                                                                                       owl:onProperty star-wars:ownedBy ;
-                                                                                       owl:hasValue star-wars:Rebel_Alliance
-                                                                                     ]
-                                                                                   ) ;
-                                                                rdf:type owl:Class
-                                                              ]
-                                         ] ;
-                                star-wars:after star-wars:Fight_on_Jedha ;
-                                star-wars:destructionOf star-wars:Jedha_City ;
-                                star-wars:escapeOf star-wars:Baze_Malbus ,
-                                                   star-wars:Bodhi_Rook ,
-                                                   star-wars:Cassian_Andor ,
-                                                   star-wars:Chirrut_Îmwe ,
-                                                   star-wars:Jyn_Erso ,
-                                                   star-wars:K-2SO ;
-                                star-wars:killingOf star-wars:Saw_Gerrera ;
-                                star-wars:location star-wars:Jedha ;
-                                star-wars:participant star-wars:Death_Star_1 ;
-                                star-wars:year 0 ;
-                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Destruction_of_Jedha_City"^^xsd:anyURI .
+:Holy_City_Destruction a owl:NamedIndividual ,
+                         :Attack ,
+                         [ a owl:Restriction ;
+                           owl:onProperty :participant ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :U-Wing
+                                                                     [ a owl:Restriction ;
+                                                                       owl:onProperty :ownedBy ;
+                                                                       owl:hasValue :Rebel_Alliance
+                                                                     ]
+                                                                   ) ;
+                                                a owl:Class
+                             ]
+                         ] ;
+                       :after :Fight_on_Jedha ;
+                       :destructionOf :Jedha_City ;
+                       :escapeOf :Baze_Malbus ,
+                       :Bodhi_Rook ,
+                       :Cassian_Andor ,
+                       :Chirrut_Îmwe ,
+                       :Jyn_Erso ,
+                       :K-2SO ;
+                       :killingOf :Saw_Gerrera ;
+                       :location :Jedha ;
+                       :participant :Death_Star_1 ;
+                       :year 0 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Destruction_of_Jedha_City"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Search_for_Galen
-star-wars:Search_for_Galen rdf:type owl:NamedIndividual ,
-                                    star-wars:Mission ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:found ;
-                                      owl:someValuesFrom star-wars:Shuttle
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:killingOf ;
-                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                           owl:onProperty star-wars:hadRole ;
-                                                           owl:someValuesFrom star-wars:Scientist
-                                                         ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:killingOf ;
-                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                           owl:onProperty star-wars:hadRole ;
-                                                           owl:someValuesFrom star-wars:StormTrooper
-                                                         ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty star-wars:participant ;
-                                      owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                                  owl:unionOf ( star-wars:X-Wing
-                                                                                                star-wars:Y-Wing
-                                                                                              )
-                                                                                ]
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty star-wars:ownedBy ;
-                                                                                  owl:hasValue star-wars:Rebel_Alliance
-                                                                                ]
-                                                                              ) ;
-                                                           rdf:type owl:Class
-                                                         ]
-                                    ] ;
-                           star-wars:after star-wars:Holy_City_Destruction ;
-                           star-wars:escapeOf star-wars:Orson_Krennic ;
-                           star-wars:killingOf star-wars:Galen_Erso ;
-                           star-wars:location star-wars:Eadu ;
-                           star-wars:participant star-wars:Bodhi_Rook ,
-                                                 star-wars:Cassian_Andor ,
-                                                 star-wars:Jyn_Erso ,
-                                                 star-wars:K-2SO ;
-                           star-wars:year 0 ;
-                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso#Encounter_on_Eadu"^^xsd:anyURI .
+:Search_for_Galen a owl:NamedIndividual ,
+                    :Mission ,
+                    [ a owl:Restriction ;
+                      owl:onProperty :found ;
+                      owl:someValuesFrom :Shuttle
+                    ] ,
+                    [ a owl:Restriction ;
+                      owl:onProperty :killingOf ;
+                      owl:someValuesFrom [ a owl:Restriction ;
+                                           owl:onProperty :hadRole ;
+                                           owl:someValuesFrom :Scientist
+                        ]
+                    ] ,
+                    [ a owl:Restriction ;
+                      owl:onProperty :killingOf ;
+                      owl:someValuesFrom [ a owl:Restriction ;
+                                           owl:onProperty :hadRole ;
+                                           owl:someValuesFrom :StormTrooper
+                        ]
+                    ] ,
+                    [ a owl:Restriction ;
+                      owl:onProperty :participant ;
+                      owl:someValuesFrom [ owl:intersectionOf ( [ a owl:Class ;
+                                                                  owl:unionOf ( :X-Wing
+                                                                                :Y-Wing
+                                                                    )
+                                                                ]
+                                                                [ a owl:Restriction ;
+                                                                  owl:onProperty :ownedBy ;
+                                                                  owl:hasValue :Rebel_Alliance
+                                                                ]
+                                                              ) ;
+                                           a owl:Class
+                        ]
+                    ] ;
+                  :after :Holy_City_Destruction ;
+                  :escapeOf :Orson_Krennic ;
+                  :killingOf :Galen_Erso ;
+                  :location :Eadu ;
+                  :participant :Bodhi_Rook ,
+                  :Cassian_Andor ,
+                  :Jyn_Erso ,
+                  :K-2SO ;
+                  :year 0 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso#Encounter_on_Eadu"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Stealing_the_Death_Star_Plans
-star-wars:Stealing_the_Death_Star_Plans rdf:type owl:NamedIndividual ,
-                                                 star-wars:Mission ;
-                                        star-wars:during star-wars:Battle_of_Scarif ;
-                                        star-wars:found star-wars:Death_Star_Plans ;
-                                        star-wars:killingOf star-wars:Baze_Malbus ,
-                                                            star-wars:Bodhi_Rook ,
-                                                            star-wars:Cassian_Andor ,
-                                                            star-wars:Chirrut_Îmwe ,
-                                                            star-wars:Jyn_Erso ,
-                                                            star-wars:K-2SO ,
-                                                            star-wars:Orson_Krennic ;
-                                        star-wars:location star-wars:Citadel_Tower ;
-                                        star-wars:participant star-wars:Rogue_One ;
-                                        star-wars:year 0 ;
-                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso#Infiltrating_the_Citadel"^^xsd:anyURI .
+:Stealing_the_Death_Star_Plans a owl:NamedIndividual ,
+                                 :Mission ;
+                               :during :Battle_of_Scarif ;
+                               :found :Death_Star_Plans ;
+                               :killingOf :Baze_Malbus ,
+                               :Bodhi_Rook ,
+                               :Cassian_Andor ,
+                               :Chirrut_Îmwe ,
+                               :Jyn_Erso ,
+                               :K-2SO ,
+                               :Orson_Krennic ;
+                               :location :Citadel_Tower ;
+                               :participant :Rogue_One ;
+                               :year 0 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso#Infiltrating_the_Citadel"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -4,187 +4,186 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix star-wars: <http://null.com/star-wars#> .
 @base <http://null.com/star-wars/solo> .
 
-<http://null.com/star-wars/solo> rdf:type owl:Ontology ;
-                                  owl:imports <http://null.com/star-wars> ;
-                                  rdfs:comment "Characters and events  from \"Solo\"" .
+<http://null.com/star-wars/solo> a owl:Ontology ;
+                                 owl:imports <http://null.com/star-wars> ;
+                                 rdfs:comment "Characters and events  from \"Solo\"" .
 
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://null.com/star-wars#An_Audience_with_Dryden_Vos
-star-wars:An_Audience_with_Dryden_Vos rdf:type owl:NamedIndividual ,
-                                               star-wars:Confrontation ;
-                                      star-wars:after star-wars:Heist_on_Vandor ;
-                                      star-wars:location star-wars:Fort_Ypso ;
-                                      star-wars:participant star-wars:Chewbacca ,
-                                                            star-wars:Dryden_Vos ,
-                                                            star-wars:Han_Solo ,
-                                                            star-wars:Tobias_Beckett ,
-                                                            <http://null.com/star-wars#Qi'ra> ;
-                                      star-wars:year -10 ;
-                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Fort_Ypso"^^xsd:anyURI .
+:An_Audience_with_Dryden_Vos a owl:NamedIndividual ,
+                               :Confrontation ;
+                             :after :Heist_on_Vandor ;
+                             :location :Fort_Ypso ;
+                             :participant :Chewbacca ,
+                             :Dryden_Vos ,
+                             :Han_Solo ,
+                             :Tobias_Beckett ,
+                             <http://null.com/star-wars#Qi'ra> ;
+                             :year -10 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Fort_Ypso"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Escape_from_Corellia
-star-wars:Escape_from_Corellia rdf:type owl:NamedIndividual ,
-                                        star-wars:Escape ;
-                               star-wars:captureOf <http://null.com/star-wars#Qi'ra> ;
-                               star-wars:escapeOf star-wars:Han_Solo ;
-                               star-wars:injuryOf star-wars:Proxima ;
-                               star-wars:location star-wars:Corellia ;
-                               star-wars:year -13 ;
-                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Han_Solo#Working_for_the_White_Worms"^^xsd:anyURI .
+:Escape_from_Corellia a owl:NamedIndividual ,
+                        :Escape ;
+                      :captureOf <http://null.com/star-wars#Qi'ra> ;
+                      :escapeOf :Han_Solo ;
+                      :injuryOf :Proxima ;
+                      :location :Corellia ;
+                      :year -13 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Han_Solo#Working_for_the_White_Worms"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Hans_Kessel_Run
-star-wars:Hans_Kessel_Run rdf:type owl:NamedIndividual ,
-                                   star-wars:Escape ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:deathOf ;
-                                     owl:someValuesFrom star-wars:Summa-verminoth
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:participant ;
-                                     owl:someValuesFrom star-wars:Imperial-class_Star_Destroyer
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:participant ;
-                                     owl:someValuesFrom star-wars:Tie_Fighter
-                                   ] ;
-                          star-wars:after star-wars:An_Audience_with_Dryden_Vos ;
-                          star-wars:location star-wars:Akkadese_Maelstrom ;
-                          star-wars:participant star-wars:Millenium_Falcon ;
-                          star-wars:year -10 ;
-                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Finding_a_ship"^^xsd:anyURI .
+:Hans_Kessel_Run a owl:NamedIndividual ,
+                   :Escape ,
+                   [ a owl:Restriction ;
+                     owl:onProperty :deathOf ;
+                     owl:someValuesFrom :Summa-verminoth
+                   ] ,
+                   [ a owl:Restriction ;
+                     owl:onProperty :participant ;
+                     owl:someValuesFrom :Imperial-class_Star_Destroyer
+                   ] ,
+                   [ a owl:Restriction ;
+                     owl:onProperty :participant ;
+                     owl:someValuesFrom :Tie_Fighter
+                   ] ;
+                 :after :An_Audience_with_Dryden_Vos ;
+                 :location :Akkadese_Maelstrom ;
+                 :participant :Millenium_Falcon ;
+                 :year -10 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Finding_a_ship"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Heist_on_Vandor
-star-wars:Heist_on_Vandor rdf:type owl:NamedIndividual ,
-                                   star-wars:Job ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:participant ;
-                                     owl:someValuesFrom [ owl:intersectionOf ( star-wars:Train
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty star-wars:ownedBy ;
-                                                                                 owl:hasValue star-wars:Galactic_Empire
-                                                                               ]
-                                                                             ) ;
-                                                          rdf:type owl:Class
-                                                        ]
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty star-wars:participant ;
-                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                          owl:onProperty star-wars:hadRole ;
-                                                          owl:someValuesFrom star-wars:StormTrooper
-                                                        ]
-                                   ] ;
-                          star-wars:after star-wars:Mimban_Campaign ;
-                          star-wars:killingOf star-wars:Rio_Durant ,
-                                              star-wars:Val ;
-                          star-wars:location star-wars:Vandor ;
-                          star-wars:participant star-wars:Becketts_crew ,
-                                                star-wars:Cloud-Riders ;
-                          star-wars:year -10 ;
-                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Heist_on_Vandor"^^xsd:anyURI .
+:Heist_on_Vandor a owl:NamedIndividual ,
+                   :Job ,
+                   [ a owl:Restriction ;
+                     owl:onProperty :participant ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Train
+                                                               [ a owl:Restriction ;
+                                                                 owl:onProperty :ownedBy ;
+                                                                 owl:hasValue :Galactic_Empire
+                                                               ]
+                                                             ) ;
+                                          a owl:Class
+                       ]
+                   ] ,
+                   [ a owl:Restriction ;
+                     owl:onProperty :participant ;
+                     owl:someValuesFrom [ a owl:Restriction ;
+                                          owl:onProperty :hadRole ;
+                                          owl:someValuesFrom :StormTrooper
+                       ]
+                   ] ;
+                 :after :Mimban_Campaign ;
+                 :killingOf :Rio_Durant ,
+                 :Val ;
+                 :location :Vandor ;
+                 :participant :Becketts_crew ,
+                 :Cloud-Riders ;
+                 :year -10 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Heist_on_Vandor"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Kessel_Slave_Emancipation
-star-wars:Kessel_Slave_Emancipation rdf:type owl:NamedIndividual ,
-                                             star-wars:Rescue ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty star-wars:escapeOf ;
-                                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Droid
-                                                                                         [ rdf:type owl:Restriction ;
-                                                                                           owl:onProperty star-wars:hadRole ;
-                                                                                           owl:someValuesFrom star-wars:Slave
-                                                                                         ]
-                                                                                       ) ;
-                                                                    rdf:type owl:Class
-                                                                  ]
-                                             ] ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty star-wars:escapeOf ;
-                                               owl:someValuesFrom [ owl:intersectionOf ( star-wars:Wookie
-                                                                                         [ rdf:type owl:Restriction ;
-                                                                                           owl:onProperty star-wars:hadRole ;
-                                                                                           owl:someValuesFrom star-wars:Slave
-                                                                                         ]
-                                                                                       ) ;
-                                                                    rdf:type owl:Class
-                                                                  ]
-                                             ] ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty star-wars:stole ;
-                                               owl:someValuesFrom star-wars:Coaxium
-                                             ] ;
-                                    star-wars:deathOf star-wars:L3-37 ;
-                                    star-wars:during star-wars:Hans_Kessel_Run ;
-                                    star-wars:injuryOf star-wars:Lando_Calrissian ;
-                                    star-wars:location star-wars:Kessel ;
-                                    star-wars:participant star-wars:Chewbacca ,
-                                                          star-wars:Han_Solo ,
-                                                          star-wars:Pyke_Syndicate ,
-                                                          star-wars:Tobias_Beckett ,
-                                                          <http://null.com/star-wars#Qi'ra> ;
-                                    star-wars:year -10 ;
-                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Infiltrating_Kessel"^^xsd:anyURI .
+:Kessel_Slave_Emancipation a owl:NamedIndividual ,
+                             :Rescue ,
+                             [ a owl:Restriction ;
+                               owl:onProperty :escapeOf ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Droid
+                                                                         [ a owl:Restriction ;
+                                                                           owl:onProperty :hadRole ;
+                                                                           owl:someValuesFrom :Slave
+                                                                         ]
+                                                                       ) ;
+                                                    a owl:Class
+                                 ]
+                             ] ,
+                             [ a owl:Restriction ;
+                               owl:onProperty :escapeOf ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Wookie
+                                                                         [ a owl:Restriction ;
+                                                                           owl:onProperty :hadRole ;
+                                                                           owl:someValuesFrom :Slave
+                                                                         ]
+                                                                       ) ;
+                                                    a owl:Class
+                                 ]
+                             ] ,
+                             [ a owl:Restriction ;
+                               owl:onProperty :stole ;
+                               owl:someValuesFrom :Coaxium
+                             ] ;
+                           :deathOf :L3-37 ;
+                           :during :Hans_Kessel_Run ;
+                           :injuryOf :Lando_Calrissian ;
+                           :location :Kessel ;
+                           :participant :Chewbacca ,
+                           :Han_Solo ,
+                           :Pyke_Syndicate ,
+                           :Tobias_Beckett ,
+                           <http://null.com/star-wars#Qi'ra> ;
+                           :year -10 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Infiltrating_Kessel"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Mimban_Campaign
-star-wars:Mimban_Campaign rdf:type owl:NamedIndividual ,
-                                   star-wars:Battle ;
-                          star-wars:escapeOf star-wars:Chewbacca ,
-                                             star-wars:Han_Solo ;
-                          star-wars:location star-wars:Mimban ;
-                          star-wars:participant star-wars:Rio_Durant ,
-                                                star-wars:Tobias_Beckett ,
-                                                star-wars:Val ;
-                          star-wars:year -10 ;
-                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Mimban_campaign"^^xsd:anyURI .
+:Mimban_Campaign a owl:NamedIndividual ,
+                   :Battle ;
+                 :escapeOf :Chewbacca ,
+                 :Han_Solo ;
+                 :location :Mimban ;
+                 :participant :Rio_Durant ,
+                 :Tobias_Beckett ,
+                 :Val ;
+                 :year -10 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Mimban_campaign"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Qira_vs_Dryden
-star-wars:Qira_vs_Dryden rdf:type owl:NamedIndividual ,
-                                  star-wars:Duel ;
-                         star-wars:during star-wars:Standoff_on_Savareen ;
-                         star-wars:killingOf star-wars:Dryden_Vos ;
-                         star-wars:location star-wars:First_Light ;
-                         star-wars:participant star-wars:Han_Solo ;
-                         star-wars:victoryOf <http://null.com/star-wars#Qi'ra> ;
-                         star-wars:year -10 ;
-                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Dryden_Vos#Coaxium_Heist"^^xsd:anyURI .
+:Qira_vs_Dryden a owl:NamedIndividual ,
+                  :Duel ;
+                :during :Standoff_on_Savareen ;
+                :killingOf :Dryden_Vos ;
+                :location :First_Light ;
+                :participant :Han_Solo ;
+                :victoryOf <http://null.com/star-wars#Qi'ra> ;
+                :year -10 ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Dryden_Vos#Coaxium_Heist"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Solo_vs_Beckett
-star-wars:Solo_vs_Beckett rdf:type owl:NamedIndividual ,
-                                   star-wars:Confrontation ;
-                          star-wars:after star-wars:Qira_vs_Dryden ;
-                          star-wars:during star-wars:Standoff_on_Savareen ;
-                          star-wars:killingOf star-wars:Tobias_Beckett ;
-                          star-wars:location star-wars:Savareen ;
-                          star-wars:participant star-wars:Chewbacca ;
-                          star-wars:victoryOf star-wars:Han_Solo ;
-                          star-wars:year -10 ;
-                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Tobias_Beckett#Refinery_on_Savareen_and_Death"^^xsd:anyURI .
+:Solo_vs_Beckett a owl:NamedIndividual ,
+                   :Confrontation ;
+                 :after :Qira_vs_Dryden ;
+                 :during :Standoff_on_Savareen ;
+                 :killingOf :Tobias_Beckett ;
+                 :location :Savareen ;
+                 :participant :Chewbacca ;
+                 :victoryOf :Han_Solo ;
+                 :year -10 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Tobias_Beckett#Refinery_on_Savareen_and_Death"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Standoff_on_Savareen
-star-wars:Standoff_on_Savareen rdf:type owl:NamedIndividual ,
-                                        star-wars:Confrontation ;
-                               star-wars:after star-wars:Hans_Kessel_Run ;
-                               star-wars:escapeOf star-wars:Lando_Calrissian ;
-                               star-wars:location star-wars:Savareen ;
-                               star-wars:participant star-wars:Cloud-Riders ,
-                                                     star-wars:Crimson_Dawn ,
-                                                     star-wars:Enfys_Nest ,
-                                                     star-wars:Han_Solo ;
-                               star-wars:year -10 ;
-                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Landing_on_Savareen"^^xsd:anyURI .
+:Standoff_on_Savareen a owl:NamedIndividual ,
+                        :Confrontation ;
+                      :after :Hans_Kessel_Run ;
+                      :escapeOf :Lando_Calrissian ;
+                      :location :Savareen ;
+                      :participant :Cloud-Riders ,
+                      :Crimson_Dawn ,
+                      :Enfys_Nest ,
+                      :Han_Solo ;
+                      :year -10 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Landing_on_Savareen"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

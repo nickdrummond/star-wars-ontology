@@ -43,10 +43,6 @@
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :destructionOf ;
                                 owl:someValuesFrom :Tie_Fighter
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :participant ;
-                                owl:someValuesFrom :Resurgent-class_Star_Destroyer
                               ] ;
                      :after :Tam_joins_the_First_Order ;
                      :during :Occupation_of_the_Colossus ;
@@ -56,7 +52,8 @@
                      :participant :Fireball ,
                                   :Galleon ,
                                   :Hype_Fazon ,
-                                  :Jarek_Yeager ;
+                                  :Jarek_Yeager ,
+                                  :Pyres_Star_Destroyer ;
                      :year 34 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_Castilon"^^xsd:anyURI .
 
@@ -207,6 +204,56 @@
                           :participant :Team_Colossus ;
                           :year 34 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/No_Escape:_Part_2"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Escape_of_the_Engineer
+:Escape_of_the_Engineer rdf:type owl:NamedIndividual ,
+                                 :Escape ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :about ;
+                                                                               owl:hasValue :Colossus
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:hasValue :First_Order
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:hasValue :Nenavakasa_Nalor
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Repair
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:hasValue :Neeku_Vozo
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :participant ;
+                                   owl:someValuesFrom :Tie_Fighter
+                                 ] ;
+                        :after :Sabotaging_the_Colossus ;
+                        :escapeOf :Colossus ,
+                                  :Nenavakasa_Nalor ;
+                        :location :Colossus ;
+                        :participant :CB-23 ,
+                                     :Kazuda_Xiono ,
+                                     :Neeku_Vozo ,
+                                     :Pyres_Star_Destroyer ,
+                                     :Synara_San ;
+                        :year 34 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Engineer#The_moment_of_truth"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Finding_the_First_Order_Outpost
@@ -487,12 +534,9 @@
                                                                      ) ;
                                                   rdf:type owl:Class
                                                 ]
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :location ;
-                             owl:someValuesFrom :Resurgent-class_Star_Destroyer
                            ] ;
                   :after :Repairing_Gravity ;
+                  :location :Pyres_Star_Destroyer ;
                   :participant :Jace_Rucklin ,
                                :Pyre ,
                                :Tamara_Ryvora ,
@@ -1003,6 +1047,19 @@
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_on_the_Colossus"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Rescuing_the_Engineer
+:Rescuing_the_Engineer rdf:type owl:NamedIndividual ,
+                                :Rescue ;
+                       :after :Hungry_Crew ;
+                       :location :Colossus ;
+                       :participant :CB-23 ,
+                                    :Kazuda_Xiono ,
+                                    :Synara_San ;
+                       :survivedBy :Nenavakasa_Nalor ;
+                       :year 34 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Engineer"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Researching_the_Unknown_Regions
 :Researching_the_Unknown_Regions rdf:type owl:NamedIndividual ,
                                           :Mission ,
@@ -1217,6 +1274,17 @@
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Mission_on_the_Colossus_platform#A_target_of_thieves"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Sabotaging_the_Colossus
+:Sabotaging_the_Colossus rdf:type owl:NamedIndividual ,
+                                  :Repair ;
+                         :after :Rescuing_the_Engineer ;
+                         :location :Colossus ;
+                         :orderedBy :Tierny ;
+                         :participant :Neeku_Vozo ,
+                                      :Nenavakasa_Nalor ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Engineer#Repairing_the_Colossus"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Salvaging_the_Dreadnaught
 :Salvaging_the_Dreadnaught rdf:type owl:NamedIndividual ,
                                     :Mission ,
@@ -1363,10 +1431,6 @@
                                                        :Fight ,
                                                        [ rdf:type owl:Restriction ;
                                                          owl:onProperty :participant ;
-                                                         owl:someValuesFrom :Star_Destroyer
-                                                       ] ,
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :participant ;
                                                          owl:someValuesFrom :Tie_Fighter
                                                        ] ;
                                               :after :Informing_on_Kaz ;
@@ -1374,7 +1438,8 @@
                                               :escapeOf :Colossus ,
                                                         :Galleon ;
                                               :location <http://null.com/star-wars#D'Qar> ;
-                                              :participant :Ace_Squadron ;
+                                              :participant :Ace_Squadron ,
+                                                           :Pyres_Star_Destroyer ;
                                               :witnessedBy :Tamara_Ryvora ;
                                               :year 34 ;
                                               rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Quick_Salvage_Run#Skirmish_above_D.27Qar"^^xsd:anyURI .

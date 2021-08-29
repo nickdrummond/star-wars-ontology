@@ -12,13 +12,14 @@ Therefore, we would like a module scheme that allows for characters/places/objec
 
 Any character in a  sub-module is at risk of this as they are very "mobile" in the storytelling.
 In addition, they inevitably relate back to "main" individuals that must be in the core ontologies -
-this can lead to us defeating our modelling principles of turning relations around in order to allow the modules to work (eg parent/child)
+this can defeat our modelling principles of turning relations around in order to allow the modules to work (eg parent/child)
 
-Therefore, only events should be modelled outside the core modules?
+Only events should be modelled outside the core modules? Even these are becoming more "mobile" as timelines are interlinked in the storytelling (eg The Hosnian Cataclysm).
+We will then assert their links in the timeline of each module.
 
 The only alternative is to accept constant moving or duplicating assertions in multiple places when characters cross over - but what level of duplication is ok?
 
-If we get this right, the character will be in the main ontology and then we'll
+If we get this right, the characters will be in the main ontology and then we'll
 get a different "view" of them depending on which sub-modules we pull in.
 
 ## Structure
@@ -51,7 +52,9 @@ Characters, places and events in the wider Universe
 
 ### resistance
 
-Characters and events from the series.
+Events from the series. The first season especially was challenging to model in the existing framework as there is less direct conflict and a lot of the story is relationship driven. We can use this experience to expand some of the more subtle plot points in the rest of the Universe.
+
+There are links to the timeline of the sequels as yet to be resolved. eg Hosnian Cataclysm.
 
 ### rebels
 

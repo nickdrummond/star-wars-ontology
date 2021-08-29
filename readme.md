@@ -40,13 +40,16 @@ The ontology covers major characters, events and places in the canon films and T
 
 ## Todo
 
+* Can we easily query/infer a timeline for a given character?
 * update tests to work with imports
-* Protege bug: changes to base cannot be saved without corrupting (genid) if other ontologies loaded - Pull request submitted
+
 * Series
-    * Resistance - 2 series eps(21, 19)
+    * Resistance series 2 (19)
     * Rebels - 4 series eps(15, 22, 22, 16)
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Bad Batch - 1 series eps(incomplete)
+
+* Changes to base cannot be saved if other ontologies loaded - https://github.com/protegeproject/protege/pull/1025
 
 * Review property "of" - is it even defined properly?
 

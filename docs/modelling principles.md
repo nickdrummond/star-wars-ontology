@@ -29,3 +29,17 @@ Force ghosts and connections are manifestations of the Force, not the individual
 
     participant some (Force_spirit and (connectedTo value Obi-Wan_Kenobi))
     participant some (The_Force and (connectedTo value Leia_Organa))
+
+## Information
+
+Information is treated as an object in the Universe, can have a subject and can be traded or found.
+
+    Information and (about value Luke_Skywalker)
+
+We might be interested in the form of the information
+
+    Plans and (about value Death_Star)    
+
+Events like `Meeting` are not an object but may also have a subject
+
+    Meeting and (about value First_Order)

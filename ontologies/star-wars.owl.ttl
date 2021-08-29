@@ -33,6 +33,7 @@
 ###  http://null.com/star-wars#Ace_Squadron
 :Ace_Squadron rdf:type owl:NamedIndividual ,
                        :Military_Unit ;
+              :memberOf :Team_Colossus ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Ace_Squadron"^^xsd:anyURI .
 
 
@@ -1086,6 +1087,20 @@
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Cave_of_Evil"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Celsor_3
+:Celsor_3 rdf:type owl:NamedIndividual ,
+                   :Moon ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :hasTerrain ;
+                     owl:someValuesFrom :Ice
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :homeworldOf ;
+                     owl:someValuesFrom :Jakoosk
+                   ] ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Celsor_3"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Cham_Syndulla
 :Cham_Syndulla rdf:type owl:NamedIndividual ,
                         <http://null.com/star-wars#Twi'Lek> ,
@@ -2134,6 +2149,7 @@
 ###  http://null.com/star-wars#Fireball
 :Fireball rdf:type owl:NamedIndividual ,
                    :StarFighter ;
+          :memberOf :Ace_Squadron ;
           :ownedBy :Team_Fireball ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Fireball"^^xsd:anyURI .
 
@@ -2259,6 +2275,19 @@
                       :Dreadnought ;
              :ownedBy :First_Order ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Fulminatrix"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#G1-7CH
+:G1-7CH rdf:type owl:NamedIndividual ,
+                 :Droid ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :gender ;
+                   owl:someValuesFrom :Male
+                 ] ;
+        :employedBy :Aunt-Z ;
+        :livedIn :Colossus ;
+        rdfs:label "Glitch"^^xsd:string ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/G1-7CH"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Galactic_Empire
@@ -2905,7 +2934,25 @@
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :gender ;
                          owl:someValuesFrom :Male
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom :Pilot
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :inOrganisation ;
+                                                                     owl:hasValue :First_Order
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
                        ] ;
+              :livedIn :Colossus ;
+              :savedBy :Kazuda_Xiono ,
+                       :Tamara_Ryvora ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Jace_Rucklin"^^xsd:anyURI .
 
 
@@ -6807,6 +6854,14 @@
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Yavin_4"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Yeagers_Racer
+:Yeagers_Racer rdf:type owl:NamedIndividual ,
+                        :StarFighter ;
+               :memberOf :Ace_Squadron ;
+               :ownedBy :Jarek_Yeager ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Jarek_Yeager%27s_racer"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Yoda
 :Yoda rdf:type owl:NamedIndividual ,
                <http://null.com/star-wars#Yoda's_Species> ,
@@ -7089,6 +7144,10 @@
                                   :loved :Han_Solo ;
                                   :born -31 ;
                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Qi%27ra"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Skirmish_at_D'Qar
+<http://null.com/star-wars#Skirmish_at_D'Qar> rdf:type owl:NamedIndividual .
 
 
 ###  http://null.com/star-wars#Xi'an

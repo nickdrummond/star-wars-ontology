@@ -4,7 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://null.com/star-wars/resistance> .
+@base <http://null.com/star-wars#> .
 
 <http://null.com/star-wars/resistance> rdf:type owl:Ontology ;
                                         owl:imports <http://null.com/star-wars> ;
@@ -13,6 +13,29 @@
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://null.com/star-wars#Ace_Squadron_Training
+:Ace_Squadron_Training rdf:type owl:NamedIndividual ,
+                                :Training ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:someValuesFrom :Jakoosk
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       :after <http://null.com/star-wars#Skirmish_at_D'Qar> ;
+                       :location :Celsor_3 ;
+                       :orderedBy :Imanuel_Doza ;
+                       :participant :Ace_Squadron ;
+                       :survivedBy :Jarek_Yeager ;
+                       :year 34 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Live_Fire"^^xsd:anyURI .
+
 
 ###  http://null.com/star-wars#Attack_on_Castillon
 :Attack_on_Castillon rdf:type owl:NamedIndividual ,
@@ -413,6 +436,33 @@
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Mission_to_Doza_Tower"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Informing_on_Kaz
+:Informing_on_Kaz rdf:type owl:NamedIndividual ,
+                           :Meeting ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :about ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Kazuda_Xiono
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :location ;
+                             owl:someValuesFrom :Resurgent-class_Star_Destroyer
+                           ] ;
+                  :after :Repairing_Gravity ;
+                  :participant :Jace_Rucklin ,
+                               :Pyre ,
+                               :Tamara_Ryvora ,
+                               :Tierny ;
+                  :year 34 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Quick_Salvage_Run"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Introduction_to_the_Colossus
 :Introduction_to_the_Colossus rdf:type owl:NamedIndividual ,
                                        :Event ,
@@ -738,6 +788,64 @@
    owl:assertionProperty :participant ;
    owl:targetIndividual :Ace_Squadron
  ] .
+
+
+###  http://null.com/star-wars#Repairing_Gravity
+:Repairing_Gravity rdf:type owl:NamedIndividual ,
+                            :Repair ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :First_Order
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :MB-13A
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :Kazuda_Xiono
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :Tamara_Ryvora
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :MB-13A
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :location ;
+                              owl:someValuesFrom :Space
+                            ] ;
+                   :after :Attack_on_Castillon ;
+                   :killingOf :MB-13A ;
+                   :location :Colossus ;
+                   :participant :CB-23 ,
+                                :Neeku_Vozo ,
+                                :Torra_Doza ;
+                   :year 34 ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Into_the_Unknown"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rescue_of_Synara
@@ -1071,6 +1179,31 @@
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Mission_on_the_Colossus_platform#A_target_of_thieves"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Salvaging_the_Dreadnaught
+:Salvaging_the_Dreadnaught rdf:type owl:NamedIndividual ,
+                                    :Mission ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :found ;
+                                      owl:someValuesFrom :Coaxium
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :found ;
+                                      owl:someValuesFrom :Parts
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :location ;
+                                      owl:someValuesFrom :Dreadnought
+                                    ] ;
+                           :after :Repairing_Gravity ;
+                           :location <http://null.com/star-wars#D'Qar> ;
+                           :participant :CB-23 ,
+                                        :Kazuda_Xiono ,
+                                        :Neeku_Vozo ,
+                                        :Warbird_gang ;
+                           :year 34 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Quick_Salvage_Run"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Search_for_Synara
 :Search_for_Synara rdf:type owl:NamedIndividual ,
                             :Escape ,
@@ -1119,6 +1252,20 @@
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/No_Escape:_Part_2#Tamara.27s_choice"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Tie_Fighter_Training
+:Tie_Fighter_Training rdf:type owl:NamedIndividual ,
+                               :Training ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :location ;
+                                 owl:someValuesFrom :Space
+                               ] ;
+                      :after <http://null.com/star-wars#Skirmish_at_D'Qar> ;
+                      :participant :Tamara_Ryvora ;
+                      :survivedBy :Jace_Rucklin ;
+                      :year 34 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Live_Fire#A_live_fire_exercise"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Triple_Dark_Pirate_Raid
 :Triple_Dark_Pirate_Raid rdf:type owl:NamedIndividual ,
                                   :Attack ;
@@ -1134,4 +1281,26 @@
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Raid_on_the_Colossus"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  http://null.com/star-wars#Skirmish_at_D'Qar
+<http://null.com/star-wars#Skirmish_at_D'Qar> rdf:type owl:NamedIndividual ,
+                                                       :Fight ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :participant ;
+                                                         owl:someValuesFrom :Star_Destroyer
+                                                       ] ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :participant ;
+                                                         owl:someValuesFrom :Tie_Fighter
+                                                       ] ;
+                                              :after :Informing_on_Kaz ;
+                                              :during :Salvaging_the_Dreadnaught ;
+                                              :escapeOf :Colossus ,
+                                                        :Galleon ;
+                                              :location <http://null.com/star-wars#D'Qar> ;
+                                              :participant :Ace_Squadron ;
+                                              :witnessedBy :Tamara_Ryvora ;
+                                              :year 34 ;
+                                              rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Quick_Salvage_Run#Skirmish_above_D.27Qar"^^xsd:anyURI .
+
+
+###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

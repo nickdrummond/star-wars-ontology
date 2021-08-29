@@ -311,6 +311,28 @@
 :Hosnian_Cataclysm :during :Resisting_the_First_Order .
 
 
+###  http://null.com/star-wars#Hungry_Crew
+:Hungry_Crew rdf:type owl:NamedIndividual ,
+                      :Meeting ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :about ;
+                        owl:someValuesFrom :Food
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :participant ;
+                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                             owl:onProperty :livedIn ;
+                                             owl:hasValue :Colossus
+                                           ]
+                      ] ;
+             :after :Ace_Squadron_Training ;
+             :location :Colossus ;
+             :participant :Aunt-Z ,
+                          :Kragan_Gorr ;
+             :year 34 ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Hunt_on_Celsor_3"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Hunting_the_Children_from_Tehar
 :Hunting_the_Children_from_Tehar rdf:type owl:NamedIndividual ,
                                           :Escape ,
@@ -341,6 +363,22 @@
                                               :Pyre ;
                                  :year 34 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Hunt_for_Eila_and_Kel"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hunting_the_Jakoosk
+:Hunting_the_Jakoosk rdf:type owl:NamedIndividual ,
+                              :Mission ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :survivedBy ;
+                                owl:someValuesFrom :Jakoosk
+                              ] ;
+                     :during :Hungry_Crew ;
+                     :location :Celsor_3 ;
+                     :participant :Galleon ,
+                                  :Kazuda_Xiono ,
+                                  :Torra_Doza ;
+                     :year 34 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Hunt_on_Celsor_3"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Infiltrating_the_First_Order
@@ -1226,6 +1264,45 @@
                                 :Neeku_Vozo ;
                    :year 34 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Occupation_of_the_Colossus#Helping_Synara"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Second_Attempt_on_the_Jakoosk
+:Second_Attempt_on_the_Jakoosk rdf:type owl:NamedIndividual ,
+                                        :Mission ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Drell
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Snarl
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :stole ;
+                                                                                      owl:hasValue :Blue_Ace
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :stole ;
+                                                                                      owl:hasValue :Fireball
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :killingOf ;
+                                          owl:someValuesFrom :Jakoosk
+                                        ] ;
+                               :after :Hunting_the_Jakoosk ;
+                               :location :Celsor_3 ;
+                               :participant :Buggles ,
+                                            :CB-23 ,
+                                            :Kazuda_Xiono ,
+                                            :Torra_Doza ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Hunt_on_Celsor_3"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Tam_joins_the_First_Order

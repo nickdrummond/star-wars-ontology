@@ -105,6 +105,64 @@
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Bibo_incident"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Capture_by_Ax_Tagrin
+:Capture_by_Ax_Tagrin rdf:type owl:NamedIndividual ,
+                               :Trap ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :injuryOf ;
+                                                                             owl:hasValue :CB-23
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :injuryOf ;
+                                                                             owl:hasValue :Norath_Kev
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Dalkor_Dagger
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Ax_Tagrin
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Jarek_Yeager
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Synara_San
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Speeder_Bike
+                               ] ;
+                      :after :Finding_Norath_Kev ;
+                      :captureOf :CB-23 ,
+                                 :Jarek_Yeager ,
+                                 :Synara_San ;
+                      :during :Hunt_for_the_Colossus ;
+                      :escapeOf :Kazuda_Xiono ,
+                                :Norath_Kev ;
+                      :location :Varkana ;
+                      :participant :Ax_Tagrin ;
+                      :year 34 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Norath_Kev#A_second_round"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Collecting_info_on_Doza
 :Collecting_info_on_Doza rdf:type owl:NamedIndividual ,
                                   :Mission ,
@@ -303,6 +361,66 @@
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Engineer#The_moment_of_truth"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Finding_Norath_Kev
+:Finding_Norath_Kev rdf:type owl:NamedIndividual ,
+                             :Mission ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :captureOf ;
+                                                                           owl:hasValue :Norath_Kev
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Ax_Tagrin
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :CB-23
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Lechee
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Ax_Tagrin
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Synara_San
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    :after :Infiltration_of_the_Titan ;
+                    :during :Hunt_for_the_Colossus ;
+                    :found :Norath_Kev ;
+                    :injuryOf :Synara_San ;
+                    :location :Vargo_Spaceport ;
+                    :participant :CB-23 ,
+                                 :Jarek_Yeager ,
+                                 :Kazuda_Xiono ;
+                    :year 34 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Norath_Kev"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Finding_the_First_Order_Outpost
 :Finding_the_First_Order_Outpost rdf:type owl:NamedIndividual ,
                                           :Mission ,
@@ -364,11 +482,14 @@
                                                   owl:someValuesFrom [ owl:intersectionOf ( :Crash
                                                                                             [ rdf:type owl:Restriction ;
                                                                                               owl:onProperty :participant ;
-                                                                                              owl:someValuesFrom :Freighter
-                                                                                            ]
-                                                                                            [ rdf:type owl:Restriction ;
-                                                                                              owl:onProperty :ownedBy ;
-                                                                                              owl:hasValue :Teroj_Kee
+                                                                                              owl:someValuesFrom [ owl:intersectionOf ( :Freighter
+                                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                                          owl:onProperty :ownedBy ;
+                                                                                                                                          owl:hasValue :Teroj_Kee
+                                                                                                                                        ]
+                                                                                                                                      ) ;
+                                                                                                                   rdf:type owl:Class
+                                                                                                                 ]
                                                                                             ]
                                                                                           ) ;
                                                                        rdf:type owl:Class
@@ -994,6 +1115,26 @@
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Platform_Classic"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Protecting_the_escape
+:Protecting_the_escape rdf:type owl:NamedIndividual ,
+                                :Fight ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :destructionOf ;
+                                  owl:someValuesFrom :Tie_Fighter
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:someValuesFrom :Star_Commuter_2000
+                                ] ;
+                       :after :Rescue_of_Yeager_and_Synara ;
+                       :during :Hunt_for_the_Colossus ;
+                       :escapeOf :Colossus ;
+                       :location :Varkana ;
+                       :victoryOf :Ace_Squadron ;
+                       :year 34 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Breakout#Aces_to_the_rescue"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Raid_on_the_Colossus
 :Raid_on_the_Colossus rdf:type owl:NamedIndividual ,
                                :Attack ,
@@ -1162,6 +1303,88 @@
                                :Synara_San ;
                   :year 34 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Investigation_of_a_G-class_freighter"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rescue_of_Yeager_and_Synara
+:Rescue_of_Yeager_and_Synara rdf:type owl:NamedIndividual ,
+                                      :Rescue ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :about ;
+                                                                                    owl:hasValue :Colossus
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :Ax_Tagrin
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:someValuesFrom :Star_Commuter_2000
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :injuryOf ;
+                                                                                    owl:hasValue :Ax_Tagrin
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :injuryOf ;
+                                                                                    owl:hasValue :Tierny
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :victoryOf ;
+                                                                                    owl:hasValue :CB-23
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Torture
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :CB-23
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :Jarek_Yeager
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :Synara_San
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :stole ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Armour
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :ownedBy ;
+                                                                                    owl:someValuesFrom :StormTrooper
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ;
+                             :after :Capture_by_Ax_Tagrin ;
+                             :during :Hunt_for_the_Colossus ;
+                             :location :Vargo_Spaceport ;
+                             :participant :Kazuda_Xiono ,
+                                          :Norath_Kev ,
+                                          :Pyre ,
+                                          :Tierny ;
+                             :year 34 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Breakout"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rescue_on_the_Colossus

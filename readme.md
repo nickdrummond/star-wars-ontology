@@ -27,6 +27,15 @@ The ontology covers major characters, events and places in the canon films and T
 
 |Type |Count |
 --- | ---
+|Events                 |221
+|Characters             |250
+|Species                |121
+|Planets and Moons      |80
+|Organisations or units |56
+|Named vehicles         |46
+
+|Structure |Count |
+--- | ---
 |Axiom                  |6839
 |Logical axioms         |4637
 |Declaration axioms	    |1193

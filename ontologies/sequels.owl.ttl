@@ -203,7 +203,7 @@
                                owl:onProperty :participant ;
                                owl:someValuesFrom :X-Wing
                              ] ;
-                    :after :Skirmish_on_the_Eravana ;
+                    :after :Meeting_Maz ;
                     :captureOf :Rey ;
                     :destructionOf :Takodana_Castle ;
                     :escapeOf :BB-8 ,
@@ -434,6 +434,56 @@
 ###  http://null.com/star-wars#Hosnian_Cataclysm
 :Hosnian_Cataclysm rdf:type owl:NamedIndividual ;
                    :after :Battle_of_Takodana .
+
+
+###  http://null.com/star-wars#Meeting_Maz
+:Meeting_Maz rdf:type owl:NamedIndividual ,
+                      :Meeting ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :traded ;
+                                                                    owl:someValuesFrom :Escape
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:hasValue :Finn
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:hasValue :Sidon_Ithano
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :connectedTo ;
+                                                                    owl:someValuesFrom :The_Force
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :found ;
+                                                                    owl:hasValue :Skywalker_Lightsaber
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:hasValue :Rey
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             :after :Skirmish_on_the_Eravana ;
+             :during :Hosnian_Cataclysm ;
+             :location :Takodana_Castle ;
+             :participant :BB-8 ,
+                          :Han_Solo ,
+                          :Maz_Kanata ;
+             :year 34 ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Rey_Skywalker#The_Force_within"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Meeting_with_Boolio

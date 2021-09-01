@@ -38,6 +38,25 @@
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Live_Fire"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Arming_of_Kragan
+:Arming_of_Kragan rdf:type owl:NamedIndividual ,
+                           :Meeting ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :location ;
+                             owl:someValuesFrom :Asteroid
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :traded ;
+                             owl:someValuesFrom :B2_Super_Battle_Droid
+                           ] ;
+                  :after :Escape_from_Varkana ;
+                  :during :Hunt_for_the_Colossus ;
+                  :participant :Kragan_Gorr ,
+                               :Sidon_Ithano ;
+                  :year 34 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mutiny#The_Crimson_Corsair"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Attack_on_Castillon
 :Attack_on_Castillon rdf:type owl:NamedIndividual ,
                               :Battle ,
@@ -284,6 +303,26 @@
                           :participant :Team_Colossus ;
                           :year 34 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/No_Escape:_Part_2"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Escape_from_Varkana
+:Escape_from_Varkana rdf:type owl:NamedIndividual ,
+                              :Fight ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :destructionOf ;
+                                owl:someValuesFrom :Tie_Fighter
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :participant ;
+                                owl:someValuesFrom :Star_Commuter_2000
+                              ] ;
+                     :after :Rescue_of_Yeager_and_Synara ;
+                     :during :Hunt_for_the_Colossus ;
+                     :escapeOf :Colossus ;
+                     :location :Varkana ;
+                     :victoryOf :Ace_Squadron ;
+                     :year 34 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Breakout#Aces_to_the_rescue"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Escape_of_Venisa_Doza
@@ -1077,6 +1116,75 @@
                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Mission_to_contact_the_Resistance"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Mutiny_on_the_Colossus
+:Mutiny_on_the_Colossus rdf:type owl:NamedIndividual ,
+                                 :Fight ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :orderedBy ;
+                                                                               owl:someValuesFrom :B1_Battle_Droid
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:someValuesFrom :B2_Super_Battle_Droid
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :Warbird_gang
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :on ;
+                                                                               owl:hasValue :Galleon
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:hasValue :Warbird_gang
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:hasValue :Synara_San
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:hasValue :Valik
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :participant ;
+                                   owl:someValuesFrom :B2_Super_Battle_Droid
+                                 ] ;
+                        :after :Repairing_Battle_Droids ;
+                        :captureOf :Kazuda_Xiono ,
+                                   :Neeku_Vozo ,
+                                   :Synara_San ;
+                        :during :Hunt_for_the_Colossus ;
+                        :injuryOf <http://null.com/star-wars#4D-M1N> ;
+                        :location :Colossus ;
+                        :participant :Kragan_Gorr ,
+                                     :Warbird_gang ;
+                        :year 34 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mutiny#The_mutiny"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Occupation_of_the_Colossus
 :Occupation_of_the_Colossus rdf:type owl:NamedIndividual ,
                                      :Confrontation ;
@@ -1113,26 +1221,6 @@
                         :victoryOf :Marcus_Speedstar ;
                         :year 34 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Platform_Classic"^^xsd:anyURI .
-
-
-###  http://null.com/star-wars#Protecting_the_escape
-:Protecting_the_escape rdf:type owl:NamedIndividual ,
-                                :Fight ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :destructionOf ;
-                                  owl:someValuesFrom :Tie_Fighter
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :participant ;
-                                  owl:someValuesFrom :Star_Commuter_2000
-                                ] ;
-                       :after :Rescue_of_Yeager_and_Synara ;
-                       :during :Hunt_for_the_Colossus ;
-                       :escapeOf :Colossus ;
-                       :location :Varkana ;
-                       :victoryOf :Ace_Squadron ;
-                       :year 34 ;
-                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Breakout#Aces_to_the_rescue"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Raid_on_the_Colossus
@@ -1179,6 +1267,28 @@
    owl:assertionProperty :participant ;
    owl:targetIndividual :Ace_Squadron
  ] .
+
+
+###  http://null.com/star-wars#Repairing_Battle_Droids
+:Repairing_Battle_Droids rdf:type owl:NamedIndividual ,
+                                  :Repair ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :participant ;
+                                    owl:someValuesFrom :B1_Battle_Droid
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :participant ;
+                                    owl:someValuesFrom :B2_Super_Battle_Droid
+                                  ] ;
+                         :after :Arming_of_Kragan ;
+                         :during :Hunt_for_the_Colossus ;
+                         :location :Colossus ;
+                         :orderedBy :Kragan_Gorr ;
+                         :participant :Drell ,
+                                      :Neeku_Vozo ,
+                                      :Valik ;
+                         :year 34 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mutiny#Finding_a_mechanic"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Repairing_Gravity

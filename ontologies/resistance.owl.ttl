@@ -124,6 +124,33 @@
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Rendezvous_Point"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Battle_of_Aeos_Prime
+:Battle_of_Aeos_Prime rdf:type owl:NamedIndividual ,
+                               :Battle ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Aeosian
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Krakavora
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Tie_Fighter
+                               ] ;
+                      :after :Kaz_Leaves_the_Colossus ;
+                      :during :Hunt_for_the_Colossus ;
+                      :escapeOf :Colossus ;
+                      :location :Aeos_Prime ;
+                      :participant :Ace_Squadron ,
+                                   :Pyres_Star_Destroyer ,
+                                   :Tamara_Ryvora ,
+                                   :Yeagers_Racer ;
+                      :year 34 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Aeos_Prime#Under_attack"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Bibos_Mother
 :Bibos_Mother rdf:type owl:NamedIndividual ,
                        :Attack ,
@@ -933,6 +960,41 @@
                                            :Team_Fireball ;
                               :year 34 ;
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Mission_on_the_Colossus_platform"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Kaz_Leaves_the_Colossus
+:Kaz_Leaves_the_Colossus rdf:type owl:NamedIndividual ,
+                                  :Departure ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :destructionOf ;
+                                    owl:someValuesFrom :Probe_Droid
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:someValuesFrom :Probe_Droid
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :about ;
+                                                                                owl:hasValue :Colossus
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:hasValue :First_Order
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         :after :Meeting_the_Aeosian_Queen ;
+                         :during :Hunt_for_the_Colossus ;
+                         :location :Aeos_Prime ;
+                         :participant :Fireball ,
+                                      :Kazuda_Xiono ;
+                         :year 34 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/No_Place_Safe"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Kaz_vs_Torra

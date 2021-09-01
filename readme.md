@@ -44,7 +44,6 @@ The ontology covers major characters, events and places in the canon films and T
 * update tests to work with imports
 
 * Series
-    * Resistance series 2 (19)
     * Rebels - 4 series eps(15, 22, 22, 16)
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Bad Batch - 1 series eps(incomplete)

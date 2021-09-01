@@ -559,6 +559,12 @@
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Bail_Prestor_Organa"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Barabesh_system
+:Barabesh_system rdf:type owl:NamedIndividual ,
+                          :System ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Barabesh_system"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Barriss_Offee
 :Barriss_Offee rdf:type owl:NamedIndividual ,
                         :Mirialan ,
@@ -1618,6 +1624,17 @@
                         :Ship ;
                :ownedBy :Ax_Tagrin ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Dalkor_Dagger"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Dantooine
+:Dantooine rdf:type owl:NamedIndividual ,
+                    :Planet ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasTerrain ;
+                      owl:someValuesFrom :Forest
+                    ] ;
+           :location :Outer_Rim ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Dantooine"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Darksaber
@@ -3075,6 +3092,13 @@
               :savedBy :Kazuda_Xiono ,
                        :Tamara_Ryvora ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Jace_Rucklin"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Jade_Squadron
+:Jade_Squadron rdf:type owl:NamedIndividual ,
+                        :Cell ;
+               :memberOf :Resistance ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Jade_Squadron"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Jakku
@@ -6924,10 +6948,15 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hadRole ;
-                        owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                        owl:someValuesFrom [ owl:intersectionOf ( :Commander
+                                                                  :Pilot
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :ofShip ;
+                                                                    owl:someValuesFrom :X-Wing
+                                                                  ]
                                                                   [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :inOrganisation ;
-                                                                    owl:hasValue :Resistance
+                                                                    owl:hasValue :Jade_Squadron
                                                                   ]
                                                                 ) ;
                                              rdf:type owl:Class

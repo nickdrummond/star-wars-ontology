@@ -151,6 +151,65 @@
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Aeos_Prime#Under_attack"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Battle_of_Barabesh
+:Battle_of_Barabesh rdf:type owl:NamedIndividual ,
+                             :Battle ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :location ;
+                                                                           owl:hasValue :Pyres_Star_Destroyer
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :CB-23
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Jarek_Yeager
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Kazuda_Xiono
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Tamara_Ryvora
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Execution
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :killingOf ;
+                                                                           owl:hasValue :Tierny
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Kylo_Ren
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    :after :Kaz_and_Tam_warn_the_Colossus ;
+                    :destructionOf :Pyres_Star_Destroyer ;
+                    :during :Hunt_for_the_Colossus ;
+                    :injuryOf :CB-23 ;
+                    :killingOf :Jace_Rucklin ,
+                               :Pyre ,
+                               :Tierny ;
+                    :location :Barabesh_system ;
+                    :participant :Ace_Squadron ,
+                                 :Colossus ,
+                                 :Jade_Squadron ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Escape#Standing_their_ground"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Bibos_Mother
 :Bibos_Mother rdf:type owl:NamedIndividual ,
                        :Attack ,
@@ -452,6 +511,49 @@
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Engineer#The_moment_of_truth"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Evacuating_Recruits_from_Dantooine
+:Evacuating_Recruits_from_Dantooine rdf:type owl:NamedIndividual ,
+                                             :Mission ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :destructionOf ;
+                                               owl:someValuesFrom :Tie_Fighter
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :destructionOf ;
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :Shuttle
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :escapeOf ;
+                                               owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :Shuttle
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :participant ;
+                                               owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                               owl:onClass [ owl:intersectionOf ( :Shuttle
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :ownedBy ;
+                                                                                    owl:hasValue :Resistance
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                             ] ;
+                                    :after :Battle_of_Aeos_Prime ;
+                                    :during :Hunt_for_the_Colossus ;
+                                    :killingOf :Galek ;
+                                    :location :Dantooine ;
+                                    :participant :Blue_Ace ,
+                                                 :Fireball ,
+                                                 :Green_Ace ,
+                                                 :Jace_Rucklin ,
+                                                 :Jade_Squadron ,
+                                                 :Tamara_Ryvora ;
+                                    :year 34 ;
+                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Rebuilding_the_Resistance"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Exile_of_the_Warbird_Gang
 :Exile_of_the_Warbird_Gang rdf:type owl:NamedIndividual ,
                                     :Departure ;
@@ -468,6 +570,30 @@
    owl:assertionProperty :participant ;
    owl:targetIndividual :Synara_San
  ] .
+
+
+###  http://null.com/star-wars#Failed_escape_from_Castillon
+:Failed_escape_from_Castillon rdf:type owl:NamedIndividual ,
+                                       :Fight ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :destructionOf ;
+                                         owl:someValuesFrom :AAL
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :killingOf ;
+                                         owl:someValuesFrom :StormTrooper
+                                       ] ;
+                              :after :Reuniting_with_Tam ;
+                              :during :Hunt_for_the_Colossus ;
+                              :location :Castillon ,
+                                        :Pyres_Star_Destroyer ;
+                              :participant :CB-23 ,
+                                           :Jarek_Yeager ,
+                                           :Kazuda_Xiono ,
+                                           :Tamara_Ryvora ,
+                                           :Tierny ;
+                              :year 35 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Escape#Failed_escape"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Finding_Norath_Kev
@@ -997,6 +1123,44 @@
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/No_Place_Safe"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Kaz_and_Tam_warn_the_Colossus
+:Kaz_and_Tam_warn_the_Colossus rdf:type owl:NamedIndividual ,
+                                        :Communication ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :about ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :First_Order
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Kazuda_Xiono
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Tamara_Ryvora
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ;
+                               :after :Failed_escape_from_Castillon ;
+                               :during :Hunt_for_the_Colossus ;
+                               :participant :Colossus ,
+                                            :Kazuda_Xiono ,
+                                            :Tamara_Ryvora ;
+                               :year 35 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Escape#Into_the_engineering_deck"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Kaz_vs_Torra
 :Kaz_vs_Torra rdf:type owl:NamedIndividual ,
                        :Race ,
@@ -1086,6 +1250,28 @@
                                   :Valik ;
                      :year 34 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Kidnapping_of_Torra_Doza"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Massacre_on_Aeos
+:Massacre_on_Aeos rdf:type owl:NamedIndividual ,
+                           :Attack ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :destructionOf ;
+                             owl:someValuesFrom :Village
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :killingOf ;
+                             owl:someValuesFrom :Aeosian
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :Star_Destroyer
+                           ] ;
+                  :after :Evacuating_Recruits_from_Dantooine ;
+                  :during :Hunt_for_the_Colossus ;
+                  :location :Aeos_Prime ;
+                  :year 35 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Suppression_of_the_Aeos_system"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Massacre_on_Tehar
@@ -1832,6 +2018,28 @@
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/No_Escape:_Part_1"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Reuniting_with_Tam
+:Reuniting_with_Tam rdf:type owl:NamedIndividual ,
+                             :Meeting ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :destructionOf ;
+                               owl:someValuesFrom :Tie_Fighter
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom :AAL
+                             ] ;
+                    :after :Tam_calls_Home ;
+                    :during :Hunt_for_the_Colossus ;
+                    :injuryOf :Jace_Rucklin ;
+                    :location :Castillon ;
+                    :participant :Jarek_Yeager ,
+                                 :Kazuda_Xiono ,
+                                 :Tamara_Ryvora ;
+                    :year 35 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Escape#A_.22training_flight.22"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Rucklins_Racer
 :Rucklins_Racer rdf:type owl:NamedIndividual ,
                          :Crash ,
@@ -2109,6 +2317,25 @@
                                       :Kazuda_Xiono ,
                                       :Kel ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Relic_Raiders"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Tam_calls_Home
+:Tam_calls_Home rdf:type owl:NamedIndividual ,
+                         :Communication ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :about ;
+                           owl:someValuesFrom :Meeting
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :participant ;
+                           owl:someValuesFrom :Mouse_Droid
+                         ] ;
+                :after :Massacre_on_Aeos ;
+                :during :Hunt_for_the_Colossus ;
+                :location :Pyres_Star_Destroyer ;
+                :participant :Tamara_Ryvora ;
+                :year 35 ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Escape#Tam.27s_change_of_heart"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Tam_joins_the_First_Order

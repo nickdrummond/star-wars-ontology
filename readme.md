@@ -27,13 +27,13 @@ The ontology covers major characters, events and places in the canon films and T
 
 |Type |Count |
 --- | ---
-|Axiom |5539
-|Logical axioms |3695
-|Declaration axioms	|1019
-|Classes	|342
-|Object properties	|79
-|Data properties	|4
-|Individuals	|593
+|Axiom                  |6839
+|Logical axioms         |4637
+|Declaration axioms	    |1193
+|Classes	            |386
+|Object properties	    |81
+|Data properties    	|4
+|Individuals	        |721
 |Annotation Properties	|5
 
 ---

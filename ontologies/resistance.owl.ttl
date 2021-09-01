@@ -57,6 +57,31 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mutiny#The_Crimson_Corsair"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Attack_of_the_Aeosians
+:Attack_of_the_Aeosians rdf:type owl:NamedIndividual ,
+                                 :Confrontation ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :destructionOf ;
+                                                                               owl:someValuesFrom :Battle_Droid
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:someValuesFrom :Aeosian
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        :after :Scouting_out_Aeos ;
+                        :during :Hunt_for_the_Colossus ;
+                        :location :Colossus ;
+                        :year 34 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/The_New_World#First_contact"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Attack_on_Castillon
 :Attack_on_Castillon rdf:type owl:NamedIndividual ,
                               :Battle ,
@@ -398,6 +423,24 @@
                                      :Synara_San ;
                         :year 34 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Engineer#The_moment_of_truth"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Exile_of_the_Warbird_Gang
+:Exile_of_the_Warbird_Gang rdf:type owl:NamedIndividual ,
+                                    :Departure ;
+                           :after :Mutiny_on_the_Colossus ;
+                           :during :Hunt_for_the_Colossus ;
+                           :location :Colossus ;
+                           :participant :Galleon ,
+                                        :Warbird_gang ;
+                           :year 34 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mutiny#Breaking_with_Kragan"^^xsd:anyURI .
+
+[ rdf:type owl:NegativePropertyAssertion ;
+   owl:sourceIndividual :Exile_of_the_Warbird_Gang ;
+   owl:assertionProperty :participant ;
+   owl:targetIndividual :Synara_San
+ ] .
 
 
 ###  http://null.com/star-wars#Finding_Norath_Kev
@@ -1009,6 +1052,34 @@
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Massacre_on_Tehar"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Meeting_the_Aeosian_Queen
+:Meeting_the_Aeosian_Queen rdf:type owl:NamedIndividual ,
+                                    :Meeting ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :traded ;
+                                                           owl:someValuesFrom :Medicine
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :participant ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Aeosian
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :hadRole ;
+                                                                                  owl:someValuesFrom :Queen
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           :after :Attack_of_the_Aeosians ;
+                           :location :Aeos_Prime ;
+                           :participant :Griff_Halloran ,
+                                        :Kazuda_Xiono ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/The_New_World#Meeting_with_the_Queen"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Mission_for_fuel_on_Drahgor_III
 :Mission_for_fuel_on_Drahgor_III rdf:type owl:NamedIndividual ,
                                           :Mission ,
@@ -1132,21 +1203,6 @@
                                                                              ]
                                                                              [ rdf:type owl:Restriction ;
                                                                                owl:onProperty :of ;
-                                                                               owl:hasValue :Warbird_gang
-                                                                             ]
-                                                                           ) ;
-                                                        rdf:type owl:Class
-                                                      ]
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :included ;
-                                   owl:someValuesFrom [ owl:intersectionOf ( :Departure
-                                                                             [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :on ;
-                                                                               owl:hasValue :Galleon
-                                                                             ]
-                                                                             [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :participant ;
                                                                                owl:hasValue :Warbird_gang
                                                                              ]
                                                                            ) ;
@@ -1811,6 +1867,28 @@
                                         :Warbird_gang ;
                            :year 34 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Quick_Salvage_Run"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Scouting_out_Aeos
+:Scouting_out_Aeos rdf:type owl:NamedIndividual ,
+                            :Mission ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :found ;
+                              owl:someValuesFrom :Village
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :participant ;
+                              owl:someValuesFrom :Aeosian
+                            ] ;
+                   :after :Exile_of_the_Warbird_Gang ;
+                   :captureOf :CB-23 ,
+                              :Griff_Halloran ,
+                              :Kazuda_Xiono ;
+                   :during :Hunt_for_the_Colossus ;
+                   :location :Aeos_Prime ;
+                   :participant :Ace_Squadron ;
+                   :year 34 ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/The_New_World"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Search_for_Synara

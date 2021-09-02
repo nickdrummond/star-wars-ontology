@@ -21,7 +21,7 @@ The ontology covers major characters, events and places in the canon films and T
 * Basic modelling of all live action content completed
 * Many open modelling questions
 * Tests and queries still experimental
-* Initial modularisation experiments
+* Modularisation of events
 
 ## Metrics
 
@@ -31,6 +31,7 @@ The ontology covers major characters, events and places in the canon films and T
 |Characters             |250
 |Species                |121
 |Planets and Moons      |80
+|Built locations        |39
 |Organisations or units |56
 |Named vehicles         |46
 

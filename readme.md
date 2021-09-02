@@ -10,7 +10,7 @@ The ontology covers major characters, events and places in the canon films and T
 
 ## Contents
 
-* [star-wars.owl.ttl](ontologies/star-wars.owl.ttl) - Ontology of Star Wars Universe characters, events and places from the major canon film and TV series
+* [ontologies](ontologies/) - Ontologies of Star Wars Universe characters, events and places from the major canon film and TV series. Start with [all.owl.ttl](ontologies/all.owl.ttl)
 * [src/test](src/test/) - A set of Java tests against the ontology for quality checking etc
 * [sparql](sparql/) - A set of Sparql queries to summarise or infer things about our ontology
 * [docs](docs/) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
@@ -21,7 +21,7 @@ The ontology covers major characters, events and places in the canon films and T
 * Basic modelling of all live action content completed
 * Many open modelling questions
 * Tests and queries still experimental
-* Modularisation of events
+* Modularisation of events by film/series
 
 ## Metrics
 

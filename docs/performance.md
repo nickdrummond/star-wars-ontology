@@ -25,5 +25,7 @@ However, we do lose helpful consistency checking.
 eg participants in Events must not include Roles - leaving this range on participant is not too bad.
 Whereas, adding a range back on "during" automatically adds a few seconds on.
 
+We could add these domains/ranges into the questions or other optional top level ontology?
+
 ### Cardinality
 Cannot add participant min 14000 to the battle of Exegol - it breaks the reasoner

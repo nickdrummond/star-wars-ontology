@@ -28,6 +28,10 @@ get a different "view" of them depending on which sub-modules we pull in.
     
 ## Modules
 
+### all
+
+Top level ontology importing all content
+
 ### base
 Should include all Properties and Classes
 Should avoid referencing instance data
@@ -48,22 +52,46 @@ Some statements require a type reference at the minimum
 
 ### star-wars
 
-Characters, places and events in the wider Universe
+Characters, places and a small number of events in the wider Universe
 
-### resistance
+### Event ontologies
+
+#### trilogy
+
+#### sequels
+
+#### prequels
+
+#### rogue_one
+
+#### solo
+
+#### mandalorian
+
+Characters and events from the series.
+
+#### resistance
 
 Events from the series. The first season especially was challenging to model in the existing framework as there is less direct conflict and a lot of the story is relationship driven. We can use this experience to expand some of the more subtle plot points in the rest of the Universe.
 
 There are links to the timeline of the sequels as yet to be resolved. eg Hosnian Cataclysm.
 
-### rebels
+#### rebels
 
 Characters and events from the series.
 
-### mandalorian
+#### clone_wars
 
-Characters and events from the series.
+#### bad_batch
 
-Not including more widely known characters - eg Ahsoka
+### Eras
 
-Should planets that are only mentioned in the series also be in this ontology? - eg Nevarro
+Grouping events by the timespan they occur during:
+
+* republic-era
+* imperial-era
+* new-republic-era
+
+### questions
+
+Ontology containing 

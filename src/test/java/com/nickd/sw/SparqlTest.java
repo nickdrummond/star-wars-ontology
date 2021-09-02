@@ -15,6 +15,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class SparqlTest extends TestCase {
@@ -26,7 +28,15 @@ public class SparqlTest extends TestCase {
         TestSetup setup = new TestSetup(new TestSuite(SparqlTest.class)) {
             protected void setUp(  ) throws Exception {
                 long t1 = System.currentTimeMillis();
-                Model model = RDFDataMgr.loadModel("ontologies/star-wars.owl.ttl", Lang.TURTLE);
+
+                Model model = RDFDataMgr.loadModel("ontologies/all.owl.ttl", Lang.TURTLE);
+                File onts = new File("ontologies/");
+                // load all ontologies/ - TODO use imports
+                Arrays.stream(Objects.requireNonNull(onts.listFiles())).forEach(f -> {
+                    System.out.println("f = " + f);
+                    Model m = RDFDataMgr.loadModel(f.getAbsolutePath(), Lang.TURTLE);
+                    model.add(m);
+                });
 
                 long t2 = System.currentTimeMillis();
                 System.out.println("loaded in = " + (t2 - t1));

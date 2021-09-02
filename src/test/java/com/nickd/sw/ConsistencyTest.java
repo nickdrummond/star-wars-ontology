@@ -1,5 +1,6 @@
 package com.nickd.sw;
 
+import com.nickd.sw.util.TestHelper;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -14,46 +15,30 @@ import java.io.File;
 
 public class ConsistencyTest extends TestCase {
 
-    private String BASE = "http://null.com/star-wars#";
-    private static Reasoner r;
-    private static long t;
+    private static TestHelper helper;
 
-    // One time load and classification
-    public static Test suite() {
-        TestSetup setup = new TestSetup(new TestSuite(ConsistencyTest.class)) {
-            protected void setUp(  ) throws Exception {
-                OWLOntologyManager mngr = new OWLManager().get();
-                File starwarsOwl = new File("ontologies/star-wars.owl.ttl");
-                OWLOntology ont = mngr.loadOntologyFromOntologyDocument(starwarsOwl);
-                Configuration conf = new Configuration();
-                long start = System.currentTimeMillis();
-                r = new Reasoner(conf, ont);
-                t = System.currentTimeMillis() - start;
-                System.out.println("Classified in " + t + "ms");
-
-            }
-            protected void tearDown(  ) throws Exception {
-                // do your one-time tear down here!
-            }
-        };
-        return setup;
+    // One time load
+    public static Test suite() throws OWLOntologyCreationException {
+        helper = new TestHelper(new TestSuite(ConsistencyTest.class), TestHelper.BASE + "/all");
+        helper.classify();
+        return helper;
     }
 
     public void testOntologyConsistent() {
-        assertTrue(r.isConsistent());
+        assertTrue(helper.r.isConsistent());
     }
 
     public void testClassificationInLessThan1s() {
-        assertTrue(t < 700);
+        assertTrue(helper.timeToClassify < 700);
     }
 
     public void testMurderedSpeed() {
-        OWLClass murder = r.getDataFactory().getOWLClass(BASE+"Murder");
-        OWLObjectProperty killedIn = r.getDataFactory().getOWLObjectProperty(BASE+"killedIn");
+        OWLClass murder = helper.df.getOWLClass(TestHelper.BASE + "#Murder");
+        OWLObjectProperty killedIn = helper.df.getOWLObjectProperty(TestHelper.BASE + "#killedIn");
 
-        OWLClassExpression murdered = r.getDataFactory().getOWLObjectSomeValuesFrom(killedIn, murder);
+        OWLClassExpression murdered = helper.df.getOWLObjectSomeValuesFrom(killedIn, murder);
         long start = System.currentTimeMillis();
-        NodeSet<OWLNamedIndividual> results = r.getInstances(murdered);
+        NodeSet<OWLNamedIndividual> results = helper.r.getInstances(murdered);
         long d = System.currentTimeMillis() - start;
 
         System.out.println("Murder inference = " + d + "ms");

@@ -51,7 +51,9 @@ The ontology covers major characters, events and places in the canon films and T
 ## Todo
 
 * Can we easily query/infer a timeline for a given character?
-* update tests to work with imports
+  * we can clearly query for the events, but how do we put them in some order?
+  
+* Check all events have dates and are not orphaned - see Sparql test
 
 * Series
     * Rebels - 4 series eps(15, 22, 22, 16)

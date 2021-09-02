@@ -5,9 +5,10 @@
 * Start Mongo - C:\Program Files\MongoDB\Server\4.4\bin
 * Start ontology browser - jetty:run
 * localhost:8080
-* Point it at local file: file:///C:/Users/nickd/Documents/starwarsontology/star-wars.owl.ttl
+* Point it at local file: file:///C:/Users/nickd/Documents/starwarsontology/ontologies/all.owl.ttl
 
 ## Thoughts
+* re-enable links to clouds - eg clouds/individuals
 * Try to re-enable reasoner
 * Can we add axioms (at least to the in-memory ont)?
 * Can we then export/save changes?

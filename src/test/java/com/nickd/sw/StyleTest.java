@@ -16,7 +16,7 @@ public class StyleTest extends TestCase {
 
     // One time load
     public static Test suite() throws OWLOntologyCreationException {
-        helper = new TestHelper(new TestSuite(StyleTest.class), TestHelper.BASE + "/all");
+        helper = new TestHelper(new TestSuite(StyleTest.class), TestHelper.BASE + "/all.owl.ttl");
         return helper;
     }
 

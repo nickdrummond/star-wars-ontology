@@ -3106,6 +3106,12 @@
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Imanuel_Doza"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Imperial_Academy
+:Imperial_Academy rdf:type owl:NamedIndividual ,
+                           :Building ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Academy_for_Young_Imperials"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Imperial_Remnant
 :Imperial_Remnant rdf:type owl:NamedIndividual ,
                            :Cell ;
@@ -3191,6 +3197,37 @@
                         :Cell ;
                :memberOf :Resistance ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Jade_Squadron"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Jai_Kell
+:Jai_Kell rdf:type owl:NamedIndividual ,
+                   :Human ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :gender ;
+                     owl:someValuesFrom :Male
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :hadRole ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Cadet
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :inOrganisation ;
+                                                                 owl:hasValue :Galactic_Empire
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :born ;
+                     owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                          owl:onDatatype xsd:int ;
+                                          owl:withRestrictions ( [ xsd:maxExclusive "-18"^^xsd:int
+                                                                 ]
+                                                               )
+                                        ]
+                   ] ;
+          :from :Lothal ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Jai_Kell"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Jakku
@@ -6928,6 +6965,11 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Trade_Federation"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Training_Ezra_as_a_Jedi
+:Training_Ezra_as_a_Jedi rdf:type owl:NamedIndividual ;
+                         :location :Lothal .
+
+
 ###  http://null.com/star-wars#Trask
 :Trask rdf:type owl:NamedIndividual ,
                 :Moon ,
@@ -7571,6 +7613,28 @@
                      ] ;
             :employedBy :Jango_Fett ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Zam_Wesell"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Zare_Leonis
+:Zare_Leonis rdf:type owl:NamedIndividual ,
+                      :Human ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :gender ;
+                        owl:someValuesFrom :Male
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Cadet
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :Galactic_Empire
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             :born -20 ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Zare_Leonis"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ziro

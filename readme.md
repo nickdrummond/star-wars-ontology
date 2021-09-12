@@ -53,6 +53,13 @@ The ontology covers major characters, events and places in the canon films and T
 * Can we easily query/infer a timeline for a given character?
   * we can clearly query for the events, but how do we put them in some order?
   
+* If we want to get the events and subevents for a character, we either query this or we have
+a subchain (the subchain is great as it brings the named events in to the inferred props but what is the cost?)
+
+  
+    included o participant -> participant
+
+
 * Check all events have dates and are not orphaned - see Sparql test
 
 * Series

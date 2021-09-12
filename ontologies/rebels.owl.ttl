@@ -217,6 +217,51 @@
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Droids_in_Distress#Delivery"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Search_for_Meiloorun
+:Search_for_Meiloorun rdf:type owl:NamedIndividual ,
+                               :Mission ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :destructionOf ;
+                                 owl:someValuesFrom :Troop_Transporter
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:someValuesFrom :Farmer
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :hadRole ;
+                                                      owl:someValuesFrom :StormTrooper
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :stole ;
+                                 owl:someValuesFrom :Meiloorun_fruit
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :stole ;
+                                 owl:someValuesFrom :Tie_Fighter
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :traded ;
+                                 owl:someValuesFrom :Food
+                               ] ;
+                      :after :Returning_Droids_to_Bail ;
+                      :location :Lothal ;
+                      :participant :Ezra_Bridger ,
+                                   :Garazeb_Orrelios ;
+                      :year -5 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Fighter_Flight"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Selling_Rifles_to_Vizago
 :Selling_Rifles_to_Vizago rdf:type owl:NamedIndividual ,
                                    :Fight ,

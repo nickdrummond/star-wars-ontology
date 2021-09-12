@@ -1,8 +1,18 @@
 # Events
 
 ## Questions to answer:
-*  what events was X involved in? eg Event and location value Anakin_Skywalker
-*  what events happened in X? eg Event and location value Outer_Rim
+### What events was X involved in?
+    Event and participant value Anakin_Skywalker
+
+Or also capture sub-events:
+
+    Event and (
+        (participant value Ahsoka_Tano) or
+        (included some (participant value Ahsoka_Tano)))
+
+### What events happened in X?
+
+    Event and location value Outer_Rim
 
 ## Options:
 1. Simple property assertions on individuals

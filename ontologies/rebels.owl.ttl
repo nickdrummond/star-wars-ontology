@@ -196,6 +196,75 @@
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#An_alliance_of_convenience"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Returning_Droids_to_Bail
+:Returning_Droids_to_Bail rdf:type owl:NamedIndividual ,
+                                   :Meeting ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :traded ;
+                                     owl:someValuesFrom :Droid
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :traded ;
+                                     owl:someValuesFrom :Money
+                                   ] ;
+                          :after :Selling_Rifles_to_Vizago ;
+                          :location :Tantive_IV ;
+                          :participant :Bail_Organa ,
+                                       :C-3PO ,
+                                       :R2-D2 ,
+                                       :Spectres ;
+                          :year -5 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Droids_in_Distress#Delivery"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Selling_Rifles_to_Vizago
+:Selling_Rifles_to_Vizago rdf:type owl:NamedIndividual ,
+                                   :Fight ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :destructionOf ;
+                                     owl:someValuesFrom :AT-DP
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :destructionOf ;
+                                     owl:someValuesFrom :Weapon
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :participant ;
+                                                                                 owl:hasValue :C-3PO
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :participant ;
+                                                                                 owl:hasValue :Kallus
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hadRole ;
+                                                          owl:someValuesFrom :StormTrooper
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :traded ;
+                                     owl:someValuesFrom :Weapon
+                                   ] ;
+                          :after :Stealing_Rifles ;
+                          :escapeOf :C-3PO ,
+                                    :Cikatro_Vizago ,
+                                    :R2-D2 ,
+                                    :Spectres ;
+                          :location :Lothal ;
+                          :participant :Kallus ;
+                          :year -5 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Droids_in_Distress#Showdown"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Stealing_Kanans_Lightsaber
 :Stealing_Kanans_Lightsaber rdf:type owl:NamedIndividual ,
                                      :Confrontation ,
@@ -220,6 +289,51 @@
                                          :Kanan_Jarrus ;
                             :witnessedBy :C1-10P ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Heist_in_Capital_City"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Stealing_Rifles
+:Stealing_Rifles rdf:type owl:NamedIndividual ,
+                          :Heist ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :location ;
+                                                                        owl:someValuesFrom :Star_Commuter_2000
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Amda_Wabo
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Maketh_Tua
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :witnessedBy ;
+                                                                        owl:hasValue :Spectres
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :hadRole ;
+                                                 owl:someValuesFrom :StormTrooper
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :stole ;
+                            owl:someValuesFrom :Weapon
+                          ] ;
+                 :after :Wookie_Rescue ;
+                 :location :Garel ;
+                 :participant :C-3PO ,
+                              :R2-D2 ,
+                              :Spectres ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Droids_in_Distress"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Twilight_of_the_Apprentice

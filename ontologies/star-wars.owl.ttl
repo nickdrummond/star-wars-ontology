@@ -7,8 +7,8 @@
 @base <http://null.com/star-wars#> .
 
 <http://null.com/star-wars.owl.ttl> rdf:type owl:Ontology ;
-                             owl:imports <http://null.com/star-wars/base.owl.ttl> ;
-                             rdfs:comment "asdas"^^xsd:string .
+                                     owl:imports <http://null.com/star-wars/base.owl.ttl> ;
+                                     rdfs:comment "Characters, places and objects - instances"^^xsd:string .
 
 #################################################################
 #    Individuals
@@ -250,7 +250,8 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :hadRole ;
-                             owl:someValuesFrom [ owl:intersectionOf ( :Slave
+                             owl:someValuesFrom [ owl:intersectionOf ( :Child
+                                                                       :Slave
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :ownedBy ;
                                                                          owl:hasValue :Watto
@@ -1059,6 +1060,13 @@
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Cantonica"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Capital_City
+:Capital_City rdf:type owl:NamedIndividual ,
+                       :City ;
+              :on :Lothal ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Capital_City"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Cara_Dune
 :Cara_Dune rdf:type owl:NamedIndividual ,
                     :Human ,
@@ -1145,7 +1153,7 @@
 
 ###  http://null.com/star-wars#Cave_of_Evil
 :Cave_of_Evil rdf:type owl:NamedIndividual ,
-                       :Place ,
+                       :Place_in_the_Force ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :connectedTo ;
                          owl:someValuesFrom :Dark_Side
@@ -1558,6 +1566,39 @@
                     :Clone ;
            :memberOf :Bad_Batch ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-9904"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Cumberlayne_Aresko
+:Cumberlayne_Aresko rdf:type owl:NamedIndividual ,
+                             :Human ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :gender ;
+                               owl:someValuesFrom :Male
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Commandant
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :inOrganisation ;
+                                                                           owl:hasValue :Galactic_Empire
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :born ;
+                               owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                    owl:onDatatype xsd:int ;
+                                                    owl:withRestrictions ( [ xsd:minExclusive "-44"^^xsd:int
+                                                                           ]
+                                                                           [ xsd:maxExclusive "-42"^^xsd:int
+                                                                           ]
+                                                                         )
+                                                  ]
+                             ] ;
+                    :from :Lothal ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Cumberlayne_Aresko"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Cut
@@ -3553,6 +3594,27 @@
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Kit_Fisto"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Kitwarr
+:Kitwarr rdf:type owl:NamedIndividual ,
+                  :Wookie ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hadRole ;
+                    owl:someValuesFrom [ owl:intersectionOf ( :Slave
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :inOrganisation ;
+                                                                owl:hasValue :Galactic_Empire
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ]
+                  ] ;
+         :father :Wullffwarro ;
+         :from :Kashyyyk ;
+         :savedBy :Ezra_Bridger ;
+         :born "-15"^^xsd:int ;
+         rdfs:seeAlso "https://starwars.fandom.com/wiki/Kitwarr"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Knights_of_Ren
 :Knights_of_Ren rdf:type owl:NamedIndividual ,
                          :Gang ;
@@ -3859,6 +3921,13 @@
                     :builtBy :Jedi_Order ;
                     :on :Lothal ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Lothal_Jedi_Temple"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Lothal_re-settlement_camp_43
+:Lothal_re-settlement_camp_43 rdf:type owl:NamedIndividual ,
+                                       :Town ;
+                              :on :Lothal ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Lothal_re-settlement_camp_43"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Lotho_Minor
@@ -4221,7 +4290,7 @@
 
 ###  http://null.com/star-wars#Mirror_cave
 :Mirror_cave rdf:type owl:NamedIndividual ,
-                      :Place ,
+                      :Place_in_the_Force ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :connectedTo ;
                         owl:someValuesFrom :Dark_Side
@@ -4325,7 +4394,7 @@
 
 ###  http://null.com/star-wars#Mortis
 :Mortis rdf:type owl:NamedIndividual ,
-                 :Place ;
+                 :Place_in_the_Force ;
         :location :Wild_Space ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Mortis"^^xsd:anyURI .
 
@@ -4371,6 +4440,39 @@
                    ] ;
           :location :Outer_Rim ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Mustafar"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Myles_Grint
+:Myles_Grint rdf:type owl:NamedIndividual ,
+                      :Human ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :gender ;
+                        owl:someValuesFrom :Male
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Taskmaster
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :Galactic_Empire
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :born ;
+                        owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                             owl:onDatatype xsd:int ;
+                                             owl:withRestrictions ( [ xsd:minExclusive "-44"^^xsd:int
+                                                                    ]
+                                                                    [ xsd:maxExclusive "-42"^^xsd:int
+                                                                    ]
+                                                                  )
+                                           ]
+                      ] ;
+             :from :Lothal ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Myles_Grint"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Naboo
@@ -7184,8 +7286,7 @@
 
 
 ###  http://null.com/star-wars#World_Between_Worlds
-:World_Between_Worlds rdf:type owl:NamedIndividual ,
-                               :Place ;
+:World_Between_Worlds rdf:type owl:NamedIndividual ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/World_Between_Worlds"^^xsd:anyURI .
 
 
@@ -7227,6 +7328,32 @@
                         ] ;
                :from :Coruscant ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Wullf_Yularen"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Wullffwarro
+:Wullffwarro rdf:type owl:NamedIndividual ,
+                      :Wookie ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :gender ;
+                        owl:someValuesFrom :Male
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom :Leader
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Slave
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :Galactic_Empire
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             :from :Kashyyyk ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Wullffwarro"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Yavin_4
@@ -7298,6 +7425,28 @@
            :builtBy :Yoda ;
            :on :Dagobah ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda%27s_Hut"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Yoffar
+:Yoffar rdf:type owl:NamedIndividual ,
+                 :Gotal ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :gender ;
+                   owl:someValuesFrom :Male
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom [ owl:intersectionOf ( :Trader
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :of ;
+                                                               owl:someValuesFrom :Food
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
+                 ] ;
+        :livedIn :Capital_City ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoffar"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Zam_Wesell

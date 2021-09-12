@@ -4,99 +4,345 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://null.com/star-wars> .
+@base <http://null.com/star-wars#> .
 
-<http://null.com/star-wars/rebels.owl.ttl> a owl:Ontology ;
-                                   owl:imports <http://null.com/star-wars.owl.ttl> ;
-                                   rdfs:comment "Events and characters primarily from \"Star Wars: Rebels\"" .
+<http://null.com/star-wars/rebels.owl.ttl> rdf:type owl:Ontology ;
+                                            owl:imports <http://null.com/star-wars.owl.ttl> ;
+                                            rdfs:comment "Events and characters primarily from \"Star Wars: Rebels\""^^xsd:string .
 
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://null.com/star-wars#Ahsoka_vs_Vader
-:Ahsoka_vs_Vader a owl:NamedIndividual ,
-                   :Duel ;
+:Ahsoka_vs_Vader rdf:type owl:NamedIndividual ,
+                          :Duel ;
                  :after :Maul_vs_Inquisitors ;
                  :during :Twilight_of_the_Apprentice ;
                  :injuryOf :Ahsoka_Tano ,
-                 :Darth_Vader ;
+                           :Darth_Vader ;
                  :location :Malachor_Sith_Temple ;
                  :witnessedBy :Ezra_Bridger ;
                  :year -3 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#A_dark_showdown"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Darth_Vader_tasks_the_Inquisitor
+:Darth_Vader_tasks_the_Inquisitor rdf:type owl:NamedIndividual ,
+                                           :Communication ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :about ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                         owl:unionOf ( :Capture
+                                                                                                       :Murder
+                                                                                                     )
+                                                                                       ]
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :participant ;
+                                                                                         owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty :connectedTo ;
+                                                                                                                                     owl:someValuesFrom :The_Force
+                                                                                                                                   ]
+                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty :hadRole ;
+                                                                                                                                     owl:someValuesFrom :Child
+                                                                                                                                   ]
+                                                                                                                                 ) ;
+                                                                                                              rdf:type owl:Class
+                                                                                                            ]
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :location ;
+                                             owl:someValuesFrom :Star_Destroyer
+                                           ] ;
+                                  :orderedBy :Darth_Sidious ;
+                                  :participant :Darth_Vader ,
+                                               :The_Grand_Inquisitor ;
+                                  :year -5 ;
+                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Grand_Inquisitor#The_children_of_the_Force"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Escape_of_Ezra
+:Escape_of_Ezra rdf:type owl:NamedIndividual ,
+                         :Escape ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Wookiee_rescue"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Ezra_vs_Thrawn
-:Ezra_vs_Thrawn a owl:NamedIndividual ,
-                  :Fight ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :participant ;
-                    owl:someValuesFrom :Purrgil
-                  ] ;
+:Ezra_vs_Thrawn rdf:type owl:NamedIndividual ,
+                         :Fight ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :participant ;
+                           owl:someValuesFrom :Purrgil
+                         ] ;
                 :during :Liberation_of_Lothal ;
                 :location :Chimaera ;
                 :participant :Ezra_Bridger ,
-                :Thrawn ;
+                             :Thrawn ;
                 :year 0 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal#Back-up_plans"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Heist_in_Capital_City
+:Heist_in_Capital_City rdf:type owl:NamedIndividual ,
+                                :Mission ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :destructionOf ;
+                                                                              owl:someValuesFrom :Tie_Fighter
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Ghost
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :traded ;
+                                                                              owl:someValuesFrom :Food
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :traded ;
+                                                                              owl:someValuesFrom [ owl:intersectionOf ( :Information
+                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                          owl:onProperty :about ;
+                                                                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Wookie
+                                                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                                                      owl:onProperty :hadRole ;
+                                                                                                                                                                      owl:someValuesFrom :Slave
+                                                                                                                                                                    ]
+                                                                                                                                                                  ) ;
+                                                                                                                                               rdf:type owl:Class
+                                                                                                                                             ]
+                                                                                                                        ]
+                                                                                                                      ) ;
+                                                                                                   rdf:type owl:Class
+                                                                                                 ]
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :location ;
+                                                                              owl:hasValue :Lothal_re-settlement_camp_43
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Cikatro_Vizago
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:someValuesFrom :Speeder
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :stole ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Supplies
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :ownedBy ;
+                                                                              owl:hasValue :Galactic_Empire
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       :after :Darth_Vader_tasks_the_Inquisitor ;
+                       :location :Capital_City ;
+                       :participant :Ezra_Bridger ,
+                                    :Garazeb_Orrelios ,
+                                    :Kanan_Jarrus ,
+                                    :Sabine_Wren ;
+                       :year "-5"^^xsd:int ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Heist_in_Capital_City"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Liberation_of_Lothal
-:Liberation_of_Lothal a owl:NamedIndividual ,
-                        :Battle ,
-                        [ a owl:Restriction ;
-                          owl:onProperty :participant ;
-                          owl:someValuesFrom :Loth-wolf
-                        ] ;
+:Liberation_of_Lothal rdf:type owl:NamedIndividual ,
+                               :Battle ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Loth-wolf
+                               ] ;
                       :deathOf :Arihnda_Pryce ;
                       :location :Lothal ;
                       :participant :Galactic_Empire ,
-                      :Rex ;
+                                   :Rex ;
                       :victoryOf :Spectres ;
                       :year 0 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Maul_vs_Inquisitors
-:Maul_vs_Inquisitors a owl:NamedIndividual ,
-                       :Duel ;
+:Maul_vs_Inquisitors rdf:type owl:NamedIndividual ,
+                              :Duel ;
                      :deathOf :Eighth_Brother ;
                      :during :Twilight_of_the_Apprentice ;
                      :killingOf :Fifth_Brother ,
-                     :Seventh_Sister ;
+                                :Seventh_Sister ;
                      :location :Malachor_Sith_Temple ;
                      :victoryOf :Maul ;
                      :year -3 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#An_alliance_of_convenience"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Stealing_Kanans_Lightsaber
+:Stealing_Kanans_Lightsaber rdf:type owl:NamedIndividual ,
+                                     :Confrontation ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :stole ;
+                                       owl:someValuesFrom :Holocron
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :stole ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Lightsaber
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :ownedBy ;
+                                                                                   owl:hasValue :Kanan_Jarrus
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                            :after :Heist_in_Capital_City ;
+                            :location :Ghost ;
+                            :participant :Ezra_Bridger ,
+                                         :Kanan_Jarrus ;
+                            :witnessedBy :C1-10P ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Heist_in_Capital_City"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Twilight_of_the_Apprentice
-:Twilight_of_the_Apprentice a owl:NamedIndividual ,
-                              :Fight ,
-                              [ a owl:Restriction ;
-                                owl:onProperty :found ;
-                                owl:someValuesFrom [ owl:intersectionOf ( :Holocron
-                                                                          [ a owl:Restriction ;
-                                                                            owl:onProperty :builtBy ;
-                                                                            owl:hasValue :Sith_Order
-                                                                          ]
-                                                                        ) ;
-                                                     a owl:Class
-                                  ]
-                              ] ;
+:Twilight_of_the_Apprentice rdf:type owl:NamedIndividual ,
+                                     :Fight ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :found ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Holocron
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :builtBy ;
+                                                                                   owl:hasValue :Sith_Order
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
                             :injuryOf :Kanan_Jarrus ;
                             :location :Malachor_Sith_Temple ;
                             :participant :C1-10P ,
-                            :Ezra_Bridger ;
+                                         :Ezra_Bridger ;
                             :survivedBy :Maul ;
                             :year -3 ;
                             rdfs:comment """Inquisitors killed by Maul
 LOts of different people fight
 Kanan blinded
  by Maul - not modelled
-Ahsoka and Vader injured""" ;
+Ahsoka and Vader injured"""^^xsd:string ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  http://null.com/star-wars#Wookie_Rescue
+:Wookie_Rescue rdf:type owl:NamedIndividual ,
+                        :Rescue ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :included ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :participant ;
+                                                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty :hadRole ;
+                                                                                           owl:someValuesFrom :StormTrooper
+                                                                                         ]
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :location ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Spice_Mine
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :location ;
+                                                                      owl:hasValue :Kessel
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :participant ;
+                          owl:someValuesFrom :Tie_Fighter
+                        ] ;
+               :after :Wookie_Rescue_Trap ;
+               :escapeOf :Kitwarr ,
+                         :Wullffwarro ;
+               :participant :Ezra_Bridger ,
+                            :Garazeb_Orrelios ,
+                            :Kanan_Jarrus ,
+                            :Sabine_Wren ;
+               :year "-5"^^xsd:int ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Wookiee_rescue"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Wookie_Rescue_Trap
+:Wookie_Rescue_Trap rdf:type owl:NamedIndividual ,
+                             :Trap ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :about ;
+                                                                           owl:someValuesFrom :Wookie
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :participant ;
+                                                    owl:someValuesFrom [ owl:intersectionOf ( :Holocron
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :connectedTo ;
+                                                                                                owl:hasValue :Ezra_Bridger
+                                                                                              ]
+                                                                                            ) ;
+                                                                         rdf:type owl:Class
+                                                                       ]
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :location ;
+                               owl:someValuesFrom :Gozanti-class_cruiser
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom :Imperial-class_Star_Destroyer
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hadRole ;
+                                                    owl:someValuesFrom :StormTrooper
+                                                  ]
+                             ] ;
+                    :after :Heist_in_Capital_City ;
+                    :captureOf :Ezra_Bridger ;
+                    :escapeOf :Ezra_Bridger ,
+                              :Ghost ;
+                    :participant :Kallus ;
+                    :year "-5"^^xsd:int ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Wookiee_rescue"^^xsd:anyURI .
+
+
+###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

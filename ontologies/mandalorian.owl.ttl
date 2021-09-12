@@ -4,49 +4,46 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://null.com/star-wars> .
+@base <http://null.com/star-wars#> .
 
-<http://null.com/star-wars/mandalorian.owl.ttl> a owl:Ontology ;
-                                        owl:imports <http://null.com/star-wars.owl.ttl> .
-
-
+<http://null.com/star-wars/mandalorian.owl.ttl> rdf:type owl:Ontology ;
+                                                 owl:imports <http://null.com/star-wars.owl.ttl> .
 
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://null.com/star-wars#An_off_the_books_job
-:An_off_the_books_job a owl:NamedIndividual ,
-                        :Job ,
-                        [ a owl:Restriction ;
-                          owl:onProperty :participant ;
-                          owl:someValuesFrom :TT-8L_Gatekeeper_Droid
-                        ] ,
-                        [ a owl:Restriction ;
-                          owl:onProperty :participant ;
-                          owl:someValuesFrom [ a owl:Restriction ;
-                                               owl:onProperty :hadRole ;
-                                               owl:someValuesFrom :StormTrooper
-                            ]
-                        ] ,
-                        [ a owl:Restriction ;
-                          owl:onProperty :traded ;
-                          owl:someValuesFrom :Beskar
-                        ] ;
+:An_off_the_books_job rdf:type owl:NamedIndividual ,
+                               :Job ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :TT-8L_Gatekeeper_Droid
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :hadRole ;
+                                                      owl:someValuesFrom :StormTrooper
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :traded ;
+                                 owl:someValuesFrom :Beskar
+                               ] ;
                       :after :Capture_the_Mythrol ;
                       :location :Navarro ;
                       :orderedBy :The_Client ;
                       :participant :Din_Djarin ,
-                      :Pershing ,
-                      :The_Armorer ;
+                                   :Pershing ,
+                                   :The_Armorer ;
                       :year 9 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin#The_new_job"^^xsd:anyURI .
 
 
-
 ###  http://null.com/star-wars#Boba_vs_Bib
-:Boba_vs_Bib a owl:NamedIndividual ,
-               :Murder ;
+:Boba_vs_Bib rdf:type owl:NamedIndividual ,
+                      :Murder ;
              :after :Rescue_the_Child ;
              :killingOf :Bib_Fortuna ;
              :location <http://null.com/star-wars#Jabba's_Palace> ;
@@ -57,174 +54,174 @@
 
 
 ###  http://null.com/star-wars#Calling_to_the_Jedi
-:Calling_to_the_Jedi a owl:NamedIndividual ,
-                       :Mission ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :killingOf ;
-                         owl:someValuesFrom [ a owl:Restriction ;
-                                              owl:onProperty :hadRole ;
-                                              owl:someValuesFrom :StormTrooper
-                           ]
-                       ] ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :participant ;
-                         owl:someValuesFrom :Dark_Trooper_3rd_gen
-                       ] ;
+:Calling_to_the_Jedi rdf:type owl:NamedIndividual ,
+                              :Mission ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :killingOf ;
+                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hadRole ;
+                                                     owl:someValuesFrom :StormTrooper
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :participant ;
+                                owl:someValuesFrom :Dark_Trooper_3rd_gen
+                              ] ;
                      :after :Fight_for_Calodan ;
                      :captureOf :Grogu ;
                      :destructionOf :Razor_Crest ;
                      :location :Seeing_stone ;
                      :participant :Boba_Fett ,
-                     :Din_Djarin ,
-                     :Fennec_Shand ;
+                                  :Din_Djarin ,
+                                  :Fennec_Shand ;
                      :year 9 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_14:_The_Tragedy"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Capture_the_Mythrol
-:Capture_the_Mythrol a owl:NamedIndividual ,
-                       :Job ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :destructionOf ;
-                         owl:someValuesFrom [ owl:intersectionOf ( :Speeder
-                                                                   [ a owl:Class ;
-                                                                     owl:complementOf [ a owl:Restriction ;
-                                                                                        owl:onProperty :ownedBy ;
-                                                                                        owl:someValuesFrom :Droid
-                                                                       ]
-                                                                   ]
-                                                                 ) ;
-                                              a owl:Class
-                           ]
-                       ] ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :killingOf ;
-                         owl:someValuesFrom :Quarren
-                       ] ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :participant ;
-                         owl:someValuesFrom :Ravinak
-                       ] ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :traded ;
-                         owl:someValuesFrom [ owl:intersectionOf ( :Money
-                                                                   [ a owl:Restriction ;
-                                                                     owl:onProperty :ownedBy ;
-                                                                     owl:hasValue :Greef_Karga
-                                                                   ]
-                                                                 ) ;
-                                              a owl:Class
-                           ]
-                       ] ;
+:Capture_the_Mythrol rdf:type owl:NamedIndividual ,
+                              :Job ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :destructionOf ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Speeder
+                                                                          [ rdf:type owl:Class ;
+                                                                            owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :ownedBy ;
+                                                                                               owl:someValuesFrom :Droid
+                                                                                             ]
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :killingOf ;
+                                owl:someValuesFrom :Quarren
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :participant ;
+                                owl:someValuesFrom :Ravinak
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :traded ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Money
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :ownedBy ;
+                                                                            owl:hasValue :Greef_Karga
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
                      :captureOf :The_Mythrol ;
                      :location :Maldo_Kreis ;
                      :participant :Din_Djarin ,
-                     :Razor_Crest ;
+                                  :Razor_Crest ;
                      :sometimeAfter :Great_Purge ;
                      :year 9 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin#Hunting_a_Mythrol"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Fight_for_Calodan
-:Fight_for_Calodan a owl:NamedIndividual ,
-                     :Fight ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :traded ;
-                       owl:someValuesFrom [ owl:intersectionOf ( :Weapon
-                                                                 [ a owl:Restriction ;
-                                                                   owl:onProperty :madeOf ;
-                                                                   owl:someValuesFrom :Beskar
-                                                                 ]
-                                                               ) ;
-                                            a owl:Class
-                         ]
-                     ] ;
+:Fight_for_Calodan rdf:type owl:NamedIndividual ,
+                            :Fight ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :traded ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Weapon
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :madeOf ;
+                                                                          owl:someValuesFrom :Beskar
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
                    :after :Heist_on_Trask ;
                    :deathOf :Lang ;
                    :location :Calodan ;
                    :participant :Morgan_Elsbeth ,
-                   :Slave_I ;
+                                :Slave_I ;
                    :victoryOf :Ahsoka_Tano ,
-                   :Din_Djarin ;
+                              :Din_Djarin ;
                    :year 9 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_13:_The_Jedi"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Fight_on_Sorgan
-:Fight_on_Sorgan a owl:NamedIndividual ,
-                   :Fight ,
-                   [ a owl:Restriction ;
-                     owl:onProperty :killingOf ;
-                     owl:someValuesFrom [ owl:intersectionOf ( :Kubaz
-                                                               [ a owl:Restriction ;
-                                                                 owl:onProperty :hadRole ;
-                                                                 owl:someValuesFrom :Bounty_Hunter
-                                                               ]
-                                                             ) ;
-                                          a owl:Class
-                       ]
-                   ] ,
-                   [ a owl:Restriction ;
-                     owl:onProperty :participant ;
-                     owl:someValuesFrom :AT-ST
-                   ] ,
-                   [ a owl:Restriction ;
-                     owl:onProperty :participant ;
-                     owl:someValuesFrom :Klatooinian
-                   ] ,
-                   [ a owl:Restriction ;
-                     owl:onProperty :participant ;
-                     owl:someValuesFrom [ owl:intersectionOf ( [ a owl:Restriction ;
-                                                                 owl:onProperty :hadRole ;
-                                                                 owl:someValuesFrom :Farmer
-                                                               ]
-                                                               [ a owl:Restriction ;
-                                                                 owl:onProperty :livedIn ;
-                                                                 owl:someValuesFrom :Village
-                                                               ]
-                                                               [ a owl:Restriction ;
-                                                                 owl:onProperty :trainedBy ;
-                                                                 owl:someValuesFrom [ a owl:Class ;
-                                                                                      owl:oneOf ( :Cara_Dune
-                                                                                                  :Din_Djarin
-                                                                                        )
-                                                                   ]
-                                                               ]
-                                                             ) ;
-                                          a owl:Class
-                       ]
-                   ] ;
+:Fight_on_Sorgan rdf:type owl:NamedIndividual ,
+                          :Fight ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :killingOf ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Kubaz
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hadRole ;
+                                                                        owl:someValuesFrom :Bounty_Hunter
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom :AT-ST
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom :Klatooinian
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hadRole ;
+                                                                        owl:someValuesFrom :Farmer
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :livedIn ;
+                                                                        owl:someValuesFrom :Village
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :trainedBy ;
+                                                                        owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                             owl:oneOf ( :Cara_Dune
+                                                                                                         :Din_Djarin
+                                                                                                       )
+                                                                                           ]
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
                  :after :Trading_the_Child ;
                  :location :Sorgan ;
                  :participant :Cara_Dune ,
-                 :Din_Djarin ,
-                 :Grogu ;
+                              :Din_Djarin ,
+                              :Grogu ;
                  :year 9 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_4:_Sanctuary"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Finding_a_Mandalorian
-:Finding_a_Mandalorian a owl:NamedIndividual ,
-                         :Mission ,
-                         [ a owl:Restriction ;
-                           owl:onProperty :included ;
-                           owl:someValuesFrom [ owl:intersectionOf ( :Fight
-                                                                     [ a owl:Restriction ;
-                                                                       owl:onProperty :participant ;
-                                                                       owl:someValuesFrom :Gamorrean
-                                                                     ]
-                                                                   ) ;
-                                                a owl:Class
-                             ]
-                         ] ,
-                         [ a owl:Restriction ;
-                           owl:onProperty :killingOf ;
-                           owl:someValuesFrom :Zabrak
-                         ] ,
-                         [ a owl:Restriction ;
-                           owl:onProperty :killingOf ;
-                           owl:someValuesFrom <http://null.com/star-wars#Twi'Lek>
-                         ] ;
+:Finding_a_Mandalorian rdf:type owl:NamedIndividual ,
+                                :Mission ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:someValuesFrom :Gamorrean
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :killingOf ;
+                                  owl:someValuesFrom :Zabrak
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :killingOf ;
+                                  owl:someValuesFrom <http://null.com/star-wars#Twi'Lek>
+                                ] ;
                        :after :Showdown_on_Navarro ;
                        :killingOf :Gor_Koresh ;
                        :participant :Din_Djarin ;
@@ -234,615 +231,615 @@
 
 
 ###  http://null.com/star-wars#Finding_the_Child
-:Finding_the_Child a owl:NamedIndividual ,
-                     :Rescue ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :killingOf ;
-                       owl:someValuesFrom [ owl:intersectionOf ( :Nikto
-                                                                 [ a owl:Restriction ;
-                                                                   owl:onProperty :hadRole ;
-                                                                   owl:someValuesFrom :Mercenary
-                                                                 ]
-                                                               ) ;
-                                            a owl:Class
-                         ]
-                     ] ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :participant ;
-                       owl:someValuesFrom [ owl:intersectionOf ( :Bluurg
-                                                                 [ a owl:Restriction ;
-                                                                   owl:onProperty :trainedBy ;
-                                                                   owl:hasValue :Kuiil
-                                                                 ]
-                                                               ) ;
-                                            a owl:Class
-                         ]
-                     ] ;
+:Finding_the_Child rdf:type owl:NamedIndividual ,
+                            :Rescue ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :killingOf ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Nikto
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :hadRole ;
+                                                                          owl:someValuesFrom :Mercenary
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :participant ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Bluurg
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :trainedBy ;
+                                                                          owl:hasValue :Kuiil
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
                    :after :An_off_the_books_job ;
                    :killingOf :IG-11 ;
                    :location :Arvala-7 ;
                    :participant :Din_Djarin ,
-                   :Grogu ,
-                   :Kuiil ;
+                                :Grogu ,
+                                :Kuiil ;
                    :year 9 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin#Finding_the_Child"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Great_Purge
-:Great_Purge a owl:NamedIndividual ,
-               :Event ,
-               [ a owl:Restriction ;
-                 owl:onProperty :included ;
-                 owl:someValuesFrom [ owl:intersectionOf ( :Event
-                                                           [ a owl:Restriction ;
-                                                             owl:onProperty :participant ;
-                                                             owl:hasValue :Gideon
-                                                           ]
-                                                           [ a owl:Restriction ;
-                                                             owl:onProperty :stole ;
-                                                             owl:hasValue :Darksaber
-                                                           ]
-                                                         ) ;
-                                      a owl:Class
-                   ]
-               ] ,
-               [ a owl:Restriction ;
-                 owl:onProperty :killingOf ;
-                 owl:someValuesFrom [ a owl:Restriction ;
-                                      owl:onProperty :hadRole ;
-                                      owl:someValuesFrom :Mandalorian
-                   ]
-               ] ,
-               [ a owl:Restriction ;
-                 owl:onProperty :stole ;
-                 owl:someValuesFrom :Beskar
-               ] ;
+:Great_Purge rdf:type owl:NamedIndividual ,
+                      :Event ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Event
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:hasValue :Gideon
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :stole ;
+                                                                    owl:hasValue :Darksaber
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :killingOf ;
+                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                             owl:onProperty :hadRole ;
+                                             owl:someValuesFrom :Mandalorian
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :stole ;
+                        owl:someValuesFrom :Beskar
+                      ] ;
              :participant :Galactic_Empire ,
-             :Mandalore ;
+                          :Mandalore ;
              :sometimeAfter :Mandalorean_Civil_War ;
              :survivedBy :Bo-Katan_Kryze ,
-             :The_Tribe ;
+                         :The_Tribe ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Great_Purge"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Heist_on_Trask
-:Heist_on_Trask a owl:NamedIndividual ,
-                  :Job ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :killingOf ;
-                    owl:someValuesFrom [ a owl:Restriction ;
-                                         owl:onProperty :hadRole ;
-                                         owl:someValuesFrom :StormTrooper
-                      ]
-                  ] ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :stole ;
-                    owl:someValuesFrom [ owl:intersectionOf ( :Freighter
-                                                              [ a owl:Restriction ;
-                                                                owl:onProperty :ownedBy ;
-                                                                owl:hasValue :Imperial_Remnant
-                                                              ]
-                                                            ) ;
-                                         a owl:Class
-                      ]
-                  ] ;
+:Heist_on_Trask rdf:type owl:NamedIndividual ,
+                         :Heist ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :killingOf ;
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hadRole ;
+                                                owl:someValuesFrom :StormTrooper
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :stole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Freighter
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :ownedBy ;
+                                                                       owl:hasValue :Imperial_Remnant
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
                 :after :Mamacores_Lunch ;
                 :location :Trask ;
                 :participant :Clan_Kryze ,
-                :Din_Djarin ;
+                             :Din_Djarin ;
                 :year 9 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_11:_The_Heiress#The_heist"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Hunting_Fennec_Shand
-:Hunting_Fennec_Shand a owl:NamedIndividual ,
-                        :Job ,
-                        [ a owl:Restriction ;
-                          owl:onProperty :participant ;
-                          owl:someValuesFrom :Pit_Droid
-                        ] ,
-                        [ a owl:Restriction ;
-                          owl:onProperty :participant ;
-                          owl:someValuesFrom :Tusken_Raider
-                        ] ;
+:Hunting_Fennec_Shand rdf:type owl:NamedIndividual ,
+                               :Job ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Pit_Droid
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Tusken_Raider
+                               ] ;
                       :after :Fight_on_Sorgan ;
                       :deathOf :Toro_Calican ;
                       :injuryOf :Fennec_Shand ;
                       :location :Mos_Eisley ;
                       :participant :Din_Djarin ,
-                      :Grogu ,
-                      :Peli_Motto ;
+                                   :Grogu ,
+                                   :Peli_Motto ;
                       :year 9 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_5:_The_Gunslinger"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Infiltrating_the_Refinery
-:Infiltrating_the_Refinery a owl:NamedIndividual ,
-                             :Mission ,
-                             [ a owl:Restriction ;
-                               owl:onProperty :destructionOf ;
-                               owl:someValuesFrom :Tie_Fighter
-                             ] ,
-                             [ a owl:Restriction ;
-                               owl:onProperty :killingOf ;
-                               owl:someValuesFrom [ a owl:Restriction ;
-                                                    owl:onProperty :hadRole ;
-                                                    owl:someValuesFrom :Pirate
-                                 ]
-                             ] ,
-                             [ a owl:Restriction ;
-                               owl:onProperty :killingOf ;
-                               owl:someValuesFrom [ a owl:Restriction ;
-                                                    owl:onProperty :hadRole ;
-                                                    owl:someValuesFrom :StormTrooper
-                                 ]
-                             ] ,
-                             [ a owl:Restriction ;
-                               owl:onProperty :stole ;
-                               owl:someValuesFrom :Transport
-                             ] ;
+:Infiltrating_the_Refinery rdf:type owl:NamedIndividual ,
+                                    :Mission ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :destructionOf ;
+                                      owl:someValuesFrom :Tie_Fighter
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :killingOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hadRole ;
+                                                           owl:someValuesFrom :Pirate
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :killingOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hadRole ;
+                                                           owl:someValuesFrom :StormTrooper
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :stole ;
+                                      owl:someValuesFrom :Transport
+                                    ] ;
                            :after :Calling_to_the_Jedi ;
                            :killingOf :Valin_Hess ;
                            :location :Morak ;
                            :participant :Boba_Fett ,
-                           :Cara_Dune ,
-                           :Din_Djarin ,
-                           :Fennec_Shand ,
-                           :Migs_Mayfeld ;
+                                        :Cara_Dune ,
+                                        :Din_Djarin ,
+                                        :Fennec_Shand ,
+                                        :Migs_Mayfeld ;
                            :year 9 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_15:_The_Believer"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Kill_Ahsoka_Tano
-:Kill_Ahsoka_Tano a owl:NamedIndividual ,
-                    :Job ;
+:Kill_Ahsoka_Tano rdf:type owl:NamedIndividual ,
+                           :Job ;
                   :during :Fight_for_Calodan ;
                   :location :Corvus ;
                   :participant :Ahsoka_Tano ,
-                  :Din_Djarin ,
-                  :Grogu ;
+                               :Din_Djarin ,
+                               :Grogu ;
                   :year 9 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_13:_The_Jedi#Meeting_the_Magistrate"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Killing_a_Krayt_Dragon
-:Killing_a_Krayt_Dragon a owl:NamedIndividual ,
-                          :Mission ,
-                          [ a owl:Restriction ;
-                            owl:onProperty :found ;
-                            owl:someValuesFrom :Armour
-                          ] ,
-                          [ a owl:Restriction ;
-                            owl:onProperty :killingOf ;
-                            owl:someValuesFrom :Bantha
-                          ] ,
-                          [ a owl:Restriction ;
-                            owl:onProperty :killingOf ;
-                            owl:someValuesFrom :Greater_Krayt_Dragon
-                          ] ,
-                          [ a owl:Restriction ;
-                            owl:onProperty :participant ;
-                            owl:someValuesFrom :Tusken_Raider
-                          ] ,
-                          [ a owl:Restriction ;
-                            owl:onProperty :participant ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :Human
-                                                                      [ a owl:Restriction ;
-                                                                        owl:onProperty :from ;
-                                                                        owl:hasValue :Mos_Pelgo
-                                                                      ]
-                                                                    ) ;
-                                                 a owl:Class
-                              ]
-                          ] ;
+:Killing_a_Krayt_Dragon rdf:type owl:NamedIndividual ,
+                                 :Mission ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :found ;
+                                   owl:someValuesFrom :Armour
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :killingOf ;
+                                   owl:someValuesFrom :Bantha
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :killingOf ;
+                                   owl:someValuesFrom :Greater_Krayt_Dragon
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :participant ;
+                                   owl:someValuesFrom :Tusken_Raider
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :participant ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Human
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :from ;
+                                                                               owl:hasValue :Mos_Pelgo
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
                         :after :Finding_a_Mandalorian ;
                         :location :Mos_Pelgo ;
                         :participant :Cobb_Vanth ,
-                        :Din_Djarin ;
+                                     :Din_Djarin ;
                         :witnessedBy :Boba_Fett ,
-                        :Grogu ;
+                                     :Grogu ;
                         :year 9 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_9:_The_Marshal"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Leaving_Arvala-7
-:Leaving_Arvala-7 a owl:NamedIndividual ,
-                    :Mission ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :killingOf ;
-                      owl:someValuesFrom :Mudhorn
-                    ] ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :killingOf ;
-                      owl:someValuesFrom [ owl:intersectionOf ( :Jawa
-                                                                [ a owl:Restriction ;
-                                                                  owl:onProperty :stole ;
-                                                                  owl:someValuesFrom [ owl:intersectionOf ( :Parts
-                                                                                                            [ a owl:Restriction ;
-                                                                                                              owl:onProperty :of ;
-                                                                                                              owl:hasValue :Razor_Crest
-                                                                                                            ]
-                                                                                                          ) ;
-                                                                                       a owl:Class
-                                                                    ]
-                                                                ]
-                                                              ) ;
-                                           a owl:Class
-                        ]
-                    ] ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :killingOf ;
-                      owl:someValuesFrom [ owl:intersectionOf ( :Trandoshan
-                                                                [ a owl:Restriction ;
-                                                                  owl:onProperty :hadRole ;
-                                                                  owl:someValuesFrom :Bounty_Hunter
-                                                                ]
-                                                              ) ;
-                                           a owl:Class
-                        ]
-                    ] ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :participant ;
-                      owl:someValuesFrom :Bluurg
-                    ] ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :participant ;
-                      owl:someValuesFrom :Sandcrawler
-                    ] ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :stole ;
-                      owl:someValuesFrom [ owl:intersectionOf ( :Egg
-                                                                [ a owl:Restriction ;
-                                                                  owl:onProperty :ownedBy ;
-                                                                  owl:someValuesFrom :Mudhorn
-                                                                ]
-                                                              ) ;
-                                           a owl:Class
-                        ]
-                    ] ;
+:Leaving_Arvala-7 rdf:type owl:NamedIndividual ,
+                           :Mission ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :killingOf ;
+                             owl:someValuesFrom :Mudhorn
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :killingOf ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Jawa
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :stole ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Parts
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :of ;
+                                                                                                                     owl:hasValue :Razor_Crest
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :killingOf ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Trandoshan
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :hadRole ;
+                                                                         owl:someValuesFrom :Bounty_Hunter
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :Bluurg
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :Sandcrawler
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :stole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Egg
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :ownedBy ;
+                                                                         owl:someValuesFrom :Mudhorn
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
                   :after :Finding_the_Child ;
                   :location :Arvala-7 ;
                   :participant :Din_Djarin ,
-                  :Grogu ,
-                  :Kuiil ,
-                  :Razor_Crest ;
+                               :Grogu ,
+                               :Kuiil ,
+                               :Razor_Crest ;
                   :year 9 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_2:_The_Child"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Mamacores_Lunch
-:Mamacores_Lunch a owl:NamedIndividual ,
-                   :Rescue ,
-                   [ a owl:Restriction ;
-                     owl:onProperty :included ;
-                     owl:someValuesFrom [ owl:intersectionOf ( :Event
-                                                               [ a owl:Restriction ;
-                                                                 owl:onProperty :participant ;
-                                                                 owl:someValuesFrom :Mamacore
-                                                               ]
-                                                               [ a owl:Restriction ;
-                                                                 owl:onProperty :eatingOf ;
-                                                                 owl:hasValue :Grogu
-                                                               ]
-                                                             ) ;
-                                          a owl:Class
-                       ]
-                   ] ,
-                   [ a owl:Restriction ;
-                     owl:onProperty :killingOf ;
-                     owl:someValuesFrom :Mamacore
-                   ] ,
-                   [ a owl:Restriction ;
-                     owl:onProperty :participant ;
-                     owl:someValuesFrom :Quarren
-                   ] ;
+:Mamacores_Lunch rdf:type owl:NamedIndividual ,
+                          :Rescue ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Event
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:someValuesFrom :Mamacore
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :eatingOf ;
+                                                                        owl:hasValue :Grogu
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :killingOf ;
+                            owl:someValuesFrom :Mamacore
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom :Quarren
+                          ] ;
                  :after :Transporting_Eggs ;
                  :escapeOf :Din_Djarin ,
-                 :Grogu ;
+                           :Grogu ;
                  :location :Trask ;
                  :participant :Axe_Woves ,
-                 :Bo-Katan_Kryze ,
-                 :Koska_Reeves ;
+                              :Bo-Katan_Kryze ,
+                              :Koska_Reeves ;
                  :year 9 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_11:_The_Heiress#A_perilous_cruise"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Removing_Imperials_from_Nevarro
-:Removing_Imperials_from_Nevarro a owl:NamedIndividual ,
-                                   :Attack ,
-                                   [ a owl:Restriction ;
-                                     owl:onProperty :destructionOf ;
-                                     owl:someValuesFrom :Tie_Fighter
-                                   ] ,
-                                   [ a owl:Restriction ;
-                                     owl:onProperty :destructionOf ;
-                                     owl:someValuesFrom [ owl:intersectionOf ( :Base
-                                                                               [ a owl:Restriction ;
-                                                                                 owl:onProperty :ownedBy ;
-                                                                                 owl:hasValue :Imperial_Remnant
-                                                                               ]
-                                                                             ) ;
-                                                          a owl:Class
-                                       ]
-                                   ] ,
-                                   [ a owl:Restriction ;
-                                     owl:onProperty :found ;
-                                     owl:someValuesFrom :Plans
-                                   ] ,
-                                   [ a owl:Restriction ;
-                                     owl:onProperty :killingOf ;
-                                     owl:someValuesFrom [ a owl:Restriction ;
-                                                          owl:onProperty :hadRole ;
-                                                          owl:someValuesFrom :Scientist
-                                       ]
-                                   ] ,
-                                   [ a owl:Restriction ;
-                                     owl:onProperty :killingOf ;
-                                     owl:someValuesFrom [ a owl:Restriction ;
-                                                          owl:onProperty :hadRole ;
-                                                          owl:someValuesFrom :StormTrooper
-                                       ]
-                                   ] ,
-                                   [ a owl:Restriction ;
-                                     owl:onProperty :stole ;
-                                     owl:someValuesFrom [ owl:intersectionOf ( :Marauder
-                                                                               [ a owl:Restriction ;
-                                                                                 owl:onProperty :ownedBy ;
-                                                                                 owl:hasValue :Imperial_Remnant
-                                                                               ]
-                                                                             ) ;
-                                                          a owl:Class
-                                       ]
-                                   ] ;
+:Removing_Imperials_from_Nevarro rdf:type owl:NamedIndividual ,
+                                          :Attack ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :destructionOf ;
+                                            owl:someValuesFrom :Tie_Fighter
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :destructionOf ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Base
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :ownedBy ;
+                                                                                        owl:hasValue :Imperial_Remnant
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :found ;
+                                            owl:someValuesFrom :Plans
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :killingOf ;
+                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :hadRole ;
+                                                                 owl:someValuesFrom :Scientist
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :killingOf ;
+                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :hadRole ;
+                                                                 owl:someValuesFrom :StormTrooper
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :stole ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Marauder
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :ownedBy ;
+                                                                                        owl:hasValue :Imperial_Remnant
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ;
                                  :after :Heist_on_Trask ;
                                  :location :Navarro ;
                                  :participant :Cara_Dune ,
-                                 :Din_Djarin ,
-                                 :Greef_Karga ,
-                                 :The_Mythrol ;
+                                              :Din_Djarin ,
+                                              :Greef_Karga ,
+                                              :The_Mythrol ;
                                  :year 9 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_12:_The_Siege"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rescue_of_Qin
-:Rescue_of_Qin a owl:NamedIndividual ,
-                 :Rescue ,
-                 [ a owl:Restriction ;
-                   owl:onProperty :destructionOf ;
-                   owl:someValuesFrom :Droid
-                 ] ,
-                 [ a owl:Restriction ;
-                   owl:onProperty :participant ;
-                   owl:someValuesFrom [ owl:intersectionOf ( :X-Wing
-                                                             [ a owl:Restriction ;
-                                                               owl:onProperty :memberOf ;
-                                                               owl:hasValue :New_Republic
-                                                             ]
-                                                           ) ;
-                                        a owl:Class
-                     ]
-                 ] ;
+:Rescue_of_Qin rdf:type owl:NamedIndividual ,
+                        :Rescue ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :destructionOf ;
+                          owl:someValuesFrom :Droid
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :participant ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :X-Wing
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :memberOf ;
+                                                                      owl:hasValue :New_Republic
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
                :after :Hunting_Fennec_Shand ;
                :captureOf :Burg ,
-               :Migs_Mayfeld ,
-               <http://null.com/star-wars#Xi'an> ;
+                          :Migs_Mayfeld ,
+                          <http://null.com/star-wars#Xi'an> ;
                :deathOf :Q9-0 ,
-               :Qin ;
+                        :Qin ;
                :location :Bothan-Five ;
                :participant :Din_Djarin ,
-               :Grogu ,
-               :Ranzar_Malk ;
+                            :Grogu ,
+                            :Ranzar_Malk ;
                :year 9 ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_6:_The_Prisoner"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rescue_the_Child
-:Rescue_the_Child a owl:NamedIndividual ,
-                    :Rescue ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :destructionOf ;
-                      owl:someValuesFrom :Dark_Trooper_3rd_gen
-                    ] ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :killingOf ;
-                      owl:someValuesFrom [ a owl:Restriction ;
-                                           owl:onProperty :hadRole ;
-                                           owl:someValuesFrom :StormTrooper
-                        ]
-                    ] ;
+:Rescue_the_Child rdf:type owl:NamedIndividual ,
+                           :Rescue ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :destructionOf ;
+                             owl:someValuesFrom :Dark_Trooper_3rd_gen
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :killingOf ;
+                             owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hadRole ;
+                                                  owl:someValuesFrom :StormTrooper
+                                                ]
+                           ] ;
                   :after :Infiltrating_the_Refinery ;
                   :captureOf :Pershing ;
                   :escapeOf :Grogu ;
                   :location :Gideons_Cruiser ;
                   :participant :Bo-Katan_Kryze ,
-                  :Boba_Fett ,
-                  :Cara_Dune ,
-                  :Din_Djarin ,
-                  :Fennec_Shand ,
-                  :Gideon ,
-                  :Koska_Reeves ,
-                  :Luke_Skywalker ,
-                  :R2-D2 ;
+                               :Boba_Fett ,
+                               :Cara_Dune ,
+                               :Din_Djarin ,
+                               :Fennec_Shand ,
+                               :Gideon ,
+                               :Koska_Reeves ,
+                               :Luke_Skywalker ,
+                               :R2-D2 ;
                   :year 9 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_16:_The_Rescue"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Showdown_on_Navarro
-:Showdown_on_Navarro a owl:NamedIndividual ,
-                       :Confrontation ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :destructionOf ;
-                         owl:someValuesFrom [ owl:intersectionOf ( :Tie_Fighter
-                                                                   [ a owl:Restriction ;
-                                                                     owl:onProperty :ownedBy ;
-                                                                     owl:hasValue :Gideon
-                                                                   ]
-                                                                 ) ;
-                                              a owl:Class
-                           ]
-                       ] ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :included ;
-                         owl:someValuesFrom [ owl:intersectionOf ( :Rescue
-                                                                   [ a owl:Restriction ;
-                                                                     owl:onProperty :escapeOf ;
-                                                                     owl:hasValue :Grogu
-                                                                   ]
-                                                                   [ a owl:Restriction ;
-                                                                     owl:onProperty :participant ;
-                                                                     owl:hasValue :IG-11
-                                                                   ]
-                                                                 ) ;
-                                              a owl:Class
-                           ]
-                       ] ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :killingOf ;
-                         owl:someValuesFrom :Bluurg
-                       ] ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :killingOf ;
-                         owl:someValuesFrom [ a owl:Restriction ;
-                                              owl:onProperty :hadRole ;
-                                              owl:someValuesFrom :Bounty_Hunter
-                           ]
-                       ] ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :killingOf ;
-                         owl:someValuesFrom [ a owl:Restriction ;
-                                              owl:onProperty :hadRole ;
-                                              owl:someValuesFrom :StormTrooper
-                           ]
-                       ] ,
-                       [ a owl:Restriction ;
-                         owl:onProperty :participant ;
-                         owl:someValuesFrom :Reptavian
-                       ] ;
+:Showdown_on_Navarro rdf:type owl:NamedIndividual ,
+                              :Confrontation ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :destructionOf ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Tie_Fighter
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :ownedBy ;
+                                                                            owl:hasValue :Gideon
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :escapeOf ;
+                                                                            owl:hasValue :Grogu
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :participant ;
+                                                                            owl:hasValue :IG-11
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :killingOf ;
+                                owl:someValuesFrom :Bluurg
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :killingOf ;
+                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hadRole ;
+                                                     owl:someValuesFrom :Bounty_Hunter
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :killingOf ;
+                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hadRole ;
+                                                     owl:someValuesFrom :StormTrooper
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :participant ;
+                                owl:someValuesFrom :Reptavian
+                              ] ;
                      :after :Rescue_of_Qin ;
                      :captureOf :Grogu ;
                      :deathOf :IG-11 ;
                      :healingOf :Greef_Karga ;
                      :injuryOf :Din_Djarin ,
-                     :Greef_Karga ;
+                               :Greef_Karga ;
                      :killingOf :Kuiil ,
-                     :The_Client ;
+                                :The_Client ;
                      :location :Navarro ;
                      :participant :Cara_Dune ,
-                     :Gideon ,
-                     :The_Armorer ;
+                                  :Gideon ,
+                                  :The_Armorer ;
                      :year 9 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_The_Reckoning"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Trading_the_Child
-:Trading_the_Child a owl:NamedIndividual ,
-                     :Mission ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :destructionOf ;
-                       owl:someValuesFrom :TT-8L_Gatekeeper_Droid
-                     ] ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :killingOf ;
-                       owl:someValuesFrom [ a owl:Restriction ;
-                                            owl:onProperty :hadRole ;
-                                            owl:someValuesFrom :Bounty_Hunter
-                         ]
-                     ] ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :killingOf ;
-                       owl:someValuesFrom [ a owl:Restriction ;
-                                            owl:onProperty :hadRole ;
-                                            owl:someValuesFrom :StormTrooper
-                         ]
-                     ] ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :traded ;
-                       owl:someValuesFrom :Beskar
-                     ] ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :participant ;
-                       owl:hasValue :The_Tribe
-                     ] ;
+:Trading_the_Child rdf:type owl:NamedIndividual ,
+                            :Mission ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :destructionOf ;
+                              owl:someValuesFrom :TT-8L_Gatekeeper_Droid
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :killingOf ;
+                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hadRole ;
+                                                   owl:someValuesFrom :Bounty_Hunter
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :killingOf ;
+                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hadRole ;
+                                                   owl:someValuesFrom :StormTrooper
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :traded ;
+                              owl:someValuesFrom :Beskar
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :participant ;
+                              owl:hasValue :The_Tribe
+                            ] ;
                    :after :Leaving_Arvala-7 ;
                    :escapeOf :Grogu ;
                    :location :Navarro ;
                    :participant :Greef_Karga ,
-                   :Paz_Vizsla ,
-                   :Pershing ,
-                   :The_Armorer ,
-                   :The_Client ;
+                                :Paz_Vizsla ,
+                                :Pershing ,
+                                :The_Armorer ,
+                                :The_Client ;
                    :traded :Grogu ;
                    :year 9 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_3:_The_Sin"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Transporting_Eggs
-:Transporting_Eggs a owl:NamedIndividual ,
-                     :Job ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :eatingOf ;
-                       owl:someValuesFrom [ owl:intersectionOf ( :Egg
-                                                                 [ a owl:Restriction ;
-                                                                   owl:onProperty :ownedBy ;
-                                                                   owl:hasValue :Frog_Lady
-                                                                 ]
-                                                               ) ;
-                                            a owl:Class
-                         ]
-                     ] ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :included ;
-                       owl:someValuesFrom [ owl:intersectionOf ( :Crash
-                                                                 [ a owl:Restriction ;
-                                                                   owl:onProperty :location ;
-                                                                   owl:hasValue :Maldo_Kreis
-                                                                 ]
-                                                                 [ a owl:Restriction ;
-                                                                   owl:onProperty :participant ;
-                                                                   owl:hasValue :Razor_Crest
-                                                                 ]
-                                                               ) ;
-                                            a owl:Class
-                         ]
-                     ] ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :included ;
-                       owl:someValuesFrom [ owl:intersectionOf ( :Crash
-                                                                 [ a owl:Restriction ;
-                                                                   owl:onProperty :location ;
-                                                                   owl:hasValue :Trask
-                                                                 ]
-                                                                 [ a owl:Restriction ;
-                                                                   owl:onProperty :participant ;
-                                                                   owl:hasValue :Razor_Crest
-                                                                 ]
-                                                               ) ;
-                                            a owl:Class
-                         ]
-                     ] ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :participant ;
-                       owl:someValuesFrom :Knobby_white_ice_spider
-                     ] ,
-                     [ a owl:Restriction ;
-                       owl:onProperty :participant ;
-                       owl:someValuesFrom [ owl:intersectionOf ( :X-Wing
-                                                                 [ a owl:Restriction ;
-                                                                   owl:onProperty :ownedBy ;
-                                                                   owl:hasValue :New_Republic
-                                                                 ]
-                                                               ) ;
-                                            a owl:Class
-                         ]
-                     ] ;
+:Transporting_Eggs rdf:type owl:NamedIndividual ,
+                            :Job ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :eatingOf ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Egg
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :ownedBy ;
+                                                                          owl:hasValue :Frog_Lady
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :location ;
+                                                                          owl:hasValue :Maldo_Kreis
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :Razor_Crest
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :location ;
+                                                                          owl:hasValue :Trask
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :Razor_Crest
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :participant ;
+                              owl:someValuesFrom :Knobby_white_ice_spider
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :participant ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :X-Wing
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :ownedBy ;
+                                                                          owl:hasValue :New_Republic
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
                    :after :Killing_a_Krayt_Dragon ;
                    :location :Maldo_Kreis ,
-                   :Razor_Crest ;
+                             :Razor_Crest ;
                    :participant :Din_Djarin ,
-                   :Frog_Lady ,
-                   :Grogu ;
+                                :Frog_Lady ,
+                                :Grogu ;
                    :year 9 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_10:_The_Passenger"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

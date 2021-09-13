@@ -66,10 +66,66 @@
                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Grand_Inquisitor#The_children_of_the_Force"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Destroying_the_new_Tie_Advanced
+:Destroying_the_new_Tie_Advanced rdf:type owl:NamedIndividual ,
+                                          :Attack ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :destructionOf ;
+                                            owl:someValuesFrom :Tie_Fighter
+                                          ] ;
+                                 :during :Search_for_Tseebo ;
+                                 :location :Capital_City ;
+                                 :participant :Spectres ;
+                                 :witnessedBy :Cumberlayne_Aresko ,
+                                              :Kallus ,
+                                              :Maketh_Tua ,
+                                              :Myles_Grint ,
+                                              :The_Grand_Inquisitor ,
+                                              :Valen_Rudor ;
+                                 :year -4 ;
+                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Empire_Day_(episode)#Gatecrashing_Empire_Day"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Escape_of_Ezra
 :Escape_of_Ezra rdf:type owl:NamedIndividual ,
                          :Escape ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Wookiee_rescue"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Escape_with_Tseebo
+:Escape_with_Tseebo rdf:type owl:NamedIndividual ,
+                             :Escape ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom :AT-DP
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom :Speeder_Bike
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom :Tie_Fighter
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom :Transport
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hadRole ;
+                                                    owl:someValuesFrom :StormTrooper
+                                                  ]
+                             ] ;
+                    :after :Search_for_Tseebo ;
+                    :escapeOf :Spectres ,
+                              :Tseebo ;
+                    :location :Capital_City ;
+                    :participant :Ghost ,
+                                 :Kallus ,
+                                 :The_Grand_Inquisitor ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Empire_Day_(episode)#Escaping_with_Tseebo"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ezra_vs_Thrawn
@@ -379,6 +435,47 @@
                                    :Garazeb_Orrelios ;
                       :year -5 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Fighter_Flight"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Search_for_Tseebo
+:Search_for_Tseebo rdf:type owl:NamedIndividual ,
+                            :Mission ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :found ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Information
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :about ;
+                                                                          owl:hasValue :Galactic_Empire
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :location ;
+                                                                          owl:hasValue :Bridger_Household
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :Spectres
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :Tseebo
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
+                   :after :Mission_to_Fort_Anaxes ;
+                   :location :Lothal ;
+                   :participant :Galactic_Empire ,
+                                :Spectres ;
+                   :year -4 ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Empire_Day_(episode)"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Selling_Rifles_to_Vizago

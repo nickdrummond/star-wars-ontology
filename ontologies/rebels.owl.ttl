@@ -66,6 +66,50 @@
                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Grand_Inquisitor#The_children_of_the_Force"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Decoy
+:Decoy rdf:type owl:NamedIndividual ,
+                :Mission ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :included ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Duel
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :participant ;
+                                                              owl:hasValue :The_Grand_Inquisitor
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :participant ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Force_Bond
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :connectedTo ;
+                                                              owl:someValuesFrom :Fyrnock
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :connectedTo ;
+                                                              owl:hasValue :Ezra_Bridger
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :participant ;
+                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hadRole ;
+                                       owl:someValuesFrom :StormTrooper
+                                     ]
+                ] ;
+       :during :Escape_with_Tseebo ;
+       :escapeOf :Ezra_Bridger ,
+                 :Kanan_Jarrus ;
+       :location :PM-1203 ;
+       :year -4 ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Gathering_Forces"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Destroying_the_new_Tie_Advanced
 :Destroying_the_new_Tie_Advanced rdf:type owl:NamedIndividual ,
                                           :Attack ,
@@ -96,6 +140,32 @@
 :Escape_with_Tseebo rdf:type owl:NamedIndividual ,
                              :Escape ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :location ;
+                                                                           owl:someValuesFrom :Space
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :hadRole ;
+                                                                                                owl:someValuesFrom :Fulcrum
+                                                                                              ]
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Tantive_IV
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Tseebo
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :participant ;
                                owl:someValuesFrom :AT-DP
                              ] ,
@@ -121,10 +191,12 @@
                     :after :Search_for_Tseebo ;
                     :escapeOf :Spectres ,
                               :Tseebo ;
+                    :injuryOf :C1-10P ;
                     :location :Capital_City ;
                     :participant :Ghost ,
                                  :Kallus ,
                                  :The_Grand_Inquisitor ;
+                    :year -4 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Empire_Day_(episode)#Escaping_with_Tseebo"^^xsd:anyURI .
 
 

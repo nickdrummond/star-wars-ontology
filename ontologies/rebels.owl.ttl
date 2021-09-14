@@ -27,6 +27,26 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#A_dark_showdown"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Conflict_with_Azmorigan
+:Conflict_with_Azmorigan rdf:type owl:NamedIndividual ,
+                                  :Fight ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :participant ;
+                                    owl:someValuesFrom :Puffer_pig
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :stole ;
+                                    owl:someValuesFrom :Fuel
+                                  ] ;
+                         :after :Running_the_blockade ;
+                         :during :Working_for_Lando ;
+                         :escapeOf :Azmorigan ;
+                         :location :Lothal ;
+                         :victoryOf :Spectres ;
+                         :year -4 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Idiot%27s_Array_(episode)#Trouble_with_Azmorigan"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Darth_Vader_tasks_the_Inquisitor
 :Darth_Vader_tasks_the_Inquisitor rdf:type owl:NamedIndividual ,
                                            :Communication ,
@@ -365,6 +385,18 @@
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Losing_to_Lando_at_Sabacc
+:Losing_to_Lando_at_Sabacc rdf:type owl:NamedIndividual ,
+                                    :Sabacc ;
+                           :after :Testing_Ezra ;
+                           :location <http://null.com/star-wars#Old_Jho's_Pit_Stop> ;
+                           :participant :Garazeb_Orrelios ;
+                           :traded :C1-10P ;
+                           :victoryOf :Lando_Calrissian ;
+                           :year -4 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Idiot%27s_Array_(episode)"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Maul_vs_Inquisitors
 :Maul_vs_Inquisitors rdf:type owl:NamedIndividual ,
                               :Duel ;
@@ -488,6 +520,24 @@
                                        :Spectres ;
                           :year -5 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Droids_in_Distress#Delivery"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Running_the_blockade
+:Running_the_blockade rdf:type owl:NamedIndividual ,
+                               :Fight ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :destructionOf ;
+                                 owl:someValuesFrom :Tie_Fighter
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Puffer_pig
+                               ] ;
+                      :during :Working_for_Lando ;
+                      :location :Lothal ;
+                      :participant :Ghost ,
+                                   :Relentless ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Idiot%27s_Array_(episode)#The_puffer_pig_and_Imperial_entanglements"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Search_for_Meiloorun
@@ -732,6 +782,7 @@
               :location :Lothal_Jedi_Temple ;
               :participant :Ezra_Bridger ,
                            :Kanan_Jarrus ;
+              :year -4 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Path_of_the_Jedi"^^xsd:anyURI .
 
 
@@ -891,6 +942,45 @@ Ahsoka and Vader injured"""^^xsd:string ;
                     :participant :Kallus ;
                     :year "-5"^^xsd:int ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Wookiee_rescue"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Working_for_Lando
+:Working_for_Lando rdf:type owl:NamedIndividual ,
+                            :Job ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:someValuesFrom :Escape_Pod
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :Hera_Syndulla
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :traded ;
+                                                                          owl:someValuesFrom :Puffer_pig
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :traded ;
+                                                                          owl:hasValue :Hera_Syndulla
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
+                   :after :Losing_to_Lando_at_Sabacc ;
+                   :location :Merchant_One ;
+                   :participant :Azmorigan ,
+                                :Lando_Calrissian ;
+                   :year -4 .
 
 
 ###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

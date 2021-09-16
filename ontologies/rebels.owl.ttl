@@ -14,6 +14,39 @@
 #    Individuals
 #################################################################
 
+###  http://null.com/star-wars#A_message_of_rebellion
+:A_message_of_rebellion rdf:type owl:NamedIndividual ,
+                                 :Communication ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :about ;
+                                   owl:someValuesFrom :Rebellion
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :destructionOf ;
+                                                                               owl:someValuesFrom :Communication_tower
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:someValuesFrom :Gunship
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :orderedBy ;
+                                                                               owl:hasValue :Wilhuff_Tarkin
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        :after :Infiltrating_the_Communication_Centre ;
+                        :location :Bridger_Household ;
+                        :participant :Ezra_Bridger ;
+                        :year -4 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Call_to_Action#Hope_amidst_defeat"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Ahsoka_vs_Vader
 :Ahsoka_vs_Vader rdf:type owl:NamedIndividual ,
                           :Duel ;
@@ -246,6 +279,19 @@
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Empire_Day_(episode)#Escaping_with_Tseebo"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Execution_of_Aresko_and_Grint
+:Execution_of_Aresko_and_Grint rdf:type owl:NamedIndividual ,
+                                        :Execution ;
+                               :after :Mission_to_save_Gall_Trayvis ;
+                               :deathOf :Cumberlayne_Aresko ,
+                                        :Myles_Grint ;
+                               :location :Capital_City ;
+                               :orderedBy :Wilhuff_Tarkin ;
+                               :participant :The_Grand_Inquisitor ;
+                               :year -4 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Call_to_Action#Rising_stakes"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Ezra_vs_Thrawn
 :Ezra_vs_Thrawn rdf:type owl:NamedIndividual ,
                          :Fight ,
@@ -339,6 +385,48 @@
                                     :Sabine_Wren ;
                        :year "-5"^^xsd:int ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Heist_in_Capital_City"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Infiltrating_the_Communication_Centre
+:Infiltrating_the_Communication_Centre rdf:type owl:NamedIndividual ,
+                                                :Trap ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :included ;
+                                                  owl:someValuesFrom [ owl:intersectionOf ( :Duel
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :participant ;
+                                                                                              owl:hasValue :Kanan_Jarrus
+                                                                                            ]
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :participant ;
+                                                                                              owl:hasValue :The_Grand_Inquisitor
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ]
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :participant ;
+                                                  owl:someValuesFrom :Probe_Droid
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :participant ;
+                                                  owl:someValuesFrom [ owl:intersectionOf ( :Loth_Cat
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :connectedTo ;
+                                                                                              owl:hasValue :Ezra_Bridger
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ]
+                                                ] ;
+                                       :after :Execution_of_Aresko_and_Grint ;
+                                       :captureOf :Kanan_Jarrus ;
+                                       :escapeOf :Spectres ;
+                                       :location :Lothal ;
+                                       :participant :Kallus ;
+                                       :year -4 ;
+                                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Call_to_Action"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Intercepting_the_Kyber

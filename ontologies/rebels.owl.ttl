@@ -60,6 +60,59 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#A_dark_showdown"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Chopper_locates_Kanan
+:Chopper_locates_Kanan rdf:type owl:NamedIndividual ,
+                                :Mission ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :found ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Information
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :about ;
+                                                                              owl:hasValue :Kanan_Jarrus
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :escapeOf ;
+                                                                              owl:hasValue :C1-10P
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Ghost
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :killingOf ;
+                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hadRole ;
+                                                       owl:someValuesFrom :StormTrooper
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :location ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Light_Cruiser
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :hadRole ;
+                                                                              owl:someValuesFrom :Communication
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       :during :Preparing_to_rescue_Kanan ;
+                       :participant :C1-10P ;
+                       :year -4 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Rebel_Resolve"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Conflict_with_Azmorigan
 :Conflict_with_Azmorigan rdf:type owl:NamedIndividual ,
                                   :Fight ,
@@ -305,6 +358,18 @@
                              :Thrawn ;
                 :year 0 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal#Back-up_plans"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Grand_Inquisitor_vs_Kanan_and_Ezra
+:Grand_Inquisitor_vs_Kanan_and_Ezra rdf:type owl:NamedIndividual ,
+                                             :Duel ;
+                                    :during :Rescue_of_Kanan ;
+                                    :killingOf :The_Grand_Inquisitor ;
+                                    :location :Sovereign ;
+                                    :participant :Ezra_Bridger ;
+                                    :victoryOf :Kanan_Jarrus ;
+                                    :year -4 ;
+                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Fire_Across_the_Galaxy"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Heist_in_Capital_City
@@ -638,6 +703,133 @@
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Vision_of_Hope"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Preparing_to_rescue_Kanan
+:Preparing_to_rescue_Kanan rdf:type owl:NamedIndividual ,
+                                    :Mission ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :destructionOf ;
+                                      owl:someValuesFrom :Tie_Fighter
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :about ;
+                                                                                  owl:someValuesFrom :Astromech
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :about ;
+                                                                                  owl:someValuesFrom :Communication
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Cikatro_Vizago
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :participant ;
+                                      owl:someValuesFrom :AT-DP
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :stole ;
+                                      owl:someValuesFrom :AT-DP
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :stole ;
+                                      owl:someValuesFrom :Gozanti-class_cruiser
+                                    ] ;
+                           :after :A_message_of_rebellion ;
+                           :location :Lothal ;
+                           :participant :Phantom ,
+                                        :Spectres ;
+                           :year -4 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Rebel_Resolve"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rescue_of_Kanan
+:Rescue_of_Kanan rdf:type owl:NamedIndividual ,
+                          :Rescue ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty :hadRole ;
+                                                                                             owl:someValuesFrom :Fulcrum
+                                                                                           ]
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Ahsoka_Tano
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:someValuesFrom :Corvette
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:someValuesFrom :Gozanti-class_cruiser
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :C1-10P
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Ghost
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom :Gozanti-class_cruiser
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :hadRole ;
+                                                 owl:someValuesFrom :StormTrooper
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :stole ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Tie_Fighter
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :ownedBy ;
+                                                                        owl:hasValue :The_Grand_Inquisitor
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
+                 :after :Preparing_to_rescue_Kanan ;
+                 :destructionOf :Sovereign ;
+                 :escapeOf :Spectres ;
+                 :location :Sovereign ;
+                 :year -4 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Fire_Across_the_Galaxy"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Returning_Droids_to_Bail
 :Returning_Droids_to_Bail rdf:type owl:NamedIndividual ,
                                    :Meeting ,
@@ -689,7 +881,10 @@
                                  owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                            [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :participant ;
-                                                                             owl:someValuesFrom :Farmer
+                                                                             owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty :hadRole ;
+                                                                                                  owl:someValuesFrom :Farmer
+                                                                                                ]
                                                                            ]
                                                                          ) ;
                                                       rdf:type owl:Class
@@ -921,6 +1116,21 @@
                            :Kanan_Jarrus ;
               :year -4 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Path_of_the_Jedi"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Torture_of_Kanan
+:Torture_of_Kanan rdf:type owl:NamedIndividual ,
+                           :Torture ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :about ;
+                             owl:hasValue :Rebel_Alliance
+                           ] ;
+                  :during :Preparing_to_rescue_Kanan ;
+                  :location :Sovereign ;
+                  :participant :Kanan_Jarrus ,
+                               :Wilhuff_Tarkin ;
+                  :year -4 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Rebel_Resolve"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Training_Ezra_as_a_Jedi

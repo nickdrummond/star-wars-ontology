@@ -60,6 +60,46 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#A_dark_showdown"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Attack_on_Phoenix_Squadron
+:Attack_on_Phoenix_Squadron rdf:type owl:NamedIndividual ,
+                                     :Fight ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :destructionOf ;
+                                       owl:someValuesFrom :A-Wing
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:someValuesFrom :Star_Destroyer
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Force_Bond
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :connectedTo ;
+                                                                                   owl:hasValue :Ahsoka_Tano
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :connectedTo ;
+                                                                                   owl:hasValue :Darth_Vader
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :Tie_Fighter
+                                     ] ;
+                            :after :Escape_from_Lothal ;
+                            :damageOf :Phoenix_Home ;
+                            :participant :Darth_Vader ,
+                                         :Ghost ,
+                                         :Phoenix_Cell ;
+                            :year -4 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_Phoenix_Squadron_(4_BBY)"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Chopper_locates_Kanan
 :Chopper_locates_Kanan rdf:type owl:NamedIndividual ,
                                 :Mission ,
@@ -260,6 +300,28 @@
                                               :Valen_Rudor ;
                                  :year -4 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Empire_Day_(episode)#Gatecrashing_Empire_Day"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Destruction_of_Tarkintown
+:Destruction_of_Tarkintown rdf:type owl:NamedIndividual ,
+                                    :Attack ;
+                           :after :Rescue_of_Tau ;
+                           :destructionOf :Lothal_re-settlement_camp_43 ;
+                           :location :Lothal ;
+                           :orderedBy :Darth_Vader ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Getting_off_of_Lothal"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Escape_from_Lothal
+:Escape_from_Lothal rdf:type owl:NamedIndividual ,
+                             :Escape ;
+                    :after :Destruction_of_Tarkintown ;
+                    :escapeOf :Ghost ;
+                    :location :Lothal ;
+                    :participant :Relentless ,
+                                 :W1-LE ;
+                    :year -4 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Getting_off_of_Lothal"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Escape_of_Ezra
@@ -703,6 +765,22 @@
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Vision_of_Hope"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Murder_of_Tau
+:Murder_of_Tau rdf:type owl:NamedIndividual ,
+                        :Murder ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :destructionOf ;
+                          owl:someValuesFrom :Star_Commuter_2000
+                        ] ;
+               :during :Rescue_of_Tau ;
+               :killingOf :Maketh_Tua ;
+               :orderedBy :Darth_Vader ;
+               :witnessedBy :Kallus ,
+                            :Spectres ;
+               :year -4 ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Return_to_Lothal"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Preparing_to_rescue_Kanan
 :Preparing_to_rescue_Kanan rdf:type owl:NamedIndividual ,
                                     :Mission ,
@@ -782,11 +860,18 @@
                             owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :participant ;
-                                                                        owl:someValuesFrom :Corvette
+                                                                        owl:someValuesFrom :Gozanti-class_cruiser
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :participant ;
-                                                                        owl:someValuesFrom :Gozanti-class_cruiser
+                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Corvette
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty :memberOf ;
+                                                                                                                    owl:hasValue :Phoenix_Cell
+                                                                                                                  ]
+                                                                                                                ) ;
+                                                                                             rdf:type owl:Class
+                                                                                           ]
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :participant ;
@@ -825,9 +910,52 @@
                  :after :Preparing_to_rescue_Kanan ;
                  :destructionOf :Sovereign ;
                  :escapeOf :Spectres ;
-                 :location :Sovereign ;
+                 :location :Mustafar ,
+                           :Sovereign ;
                  :year -4 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Fire_Across_the_Galaxy"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rescue_of_Tau
+:Rescue_of_Tau rdf:type owl:NamedIndividual ,
+                        :Trap ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :included ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :destructionOf ;
+                                                                      owl:someValuesFrom :Star_Commuter_2000
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :participant ;
+                                                                      owl:someValuesFrom :AT-DP
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :stole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Armour
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :ownedBy ;
+                                                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty :hadRole ;
+                                                                                           owl:someValuesFrom :StormTrooper
+                                                                                         ]
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :destructionOf ;
+                          owl:hasValue :Bridger_Household
+                        ] ;
+               :after :Tua_asks_for_help ;
+               :location :Capital_City ;
+               :year -4 ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Return_to_Lothal"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Returning_Droids_to_Bail
@@ -1077,6 +1205,31 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Droids_in_Distress"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Stealing_shield_generators
+:Stealing_shield_generators rdf:type owl:NamedIndividual ,
+                                     :Mission ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Freighter
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :ownedBy ;
+                                                                                   owl:hasValue :Galactic_Empire
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :stole ;
+                                       owl:someValuesFrom :Supplies
+                                     ] ;
+                            :after :Rescue_of_Kanan ;
+                            :participant :Phoenix_Cell ,
+                                         :Spectres ;
+                            :year -4 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Rebel_operations"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Testing_Ezra
 :Testing_Ezra rdf:type owl:NamedIndividual ,
                        :Training ,
@@ -1180,6 +1333,20 @@
                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Vision_of_Hope#Ezra.27s_vision"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Tua_asks_for_help
+:Tua_asks_for_help rdf:type owl:NamedIndividual ,
+                            :Communication ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :about ;
+                              owl:someValuesFrom :Defection
+                            ] ;
+                   :after :Stealing_shield_generators ;
+                   :participant :Maketh_Tua ,
+                                :Old_Jho ,
+                                :Phoenix_Cell ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Plan_to_draw_the_Rebels_back"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Twilight_of_the_Apprentice
 :Twilight_of_the_Apprentice rdf:type owl:NamedIndividual ,
                                      :Fight ,
@@ -1229,6 +1396,31 @@ Ahsoka and Vader injured"""^^xsd:string ;
                                         :Myles_Grint ;
                            :year -5 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Breaking_Ranks"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Vader_vs_Spectres
+:Vader_vs_Spectres rdf:type owl:NamedIndividual ,
+                            :Escape ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :destructionOf ;
+                              owl:someValuesFrom :AT-DP
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :stole ;
+                              owl:someValuesFrom :Shield_Generator
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :stole ;
+                              owl:someValuesFrom :Shuttle
+                            ] ;
+                   :after :Murder_of_Tau ;
+                   :during :Rescue_of_Tau ;
+                   :escapeOf :Spectres ;
+                   :injuryOf :Kanan_Jarrus ;
+                   :location :Capital_City ;
+                   :participant :Darth_Vader ,
+                                :Ezra_Bridger ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Duel_with_the_Dark_Lord"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Wookie_Rescue

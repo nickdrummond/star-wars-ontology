@@ -27,23 +27,23 @@ The ontology covers major characters, events and places in the canon films and T
 
 |Type |Count |
 --- | ---
-|Events                 |221
-|Characters             |250
-|Species                |121
-|Planets and Moons      |80
-|Built locations        |39
+|Events                 |257
+|Characters             |266
+|Species                |129
+|Planets and Moons      |82
+|Built locations        |48
 |Organisations or units |56
-|Named vehicles         |46
+|Named vehicles         |50
 
 |Structure |Count |
 --- | ---
-|Axiom                  |6839
-|Logical axioms         |4637
-|Declaration axioms	    |1193
-|Classes	            |386
-|Object properties	    |81
+|Axiom                  |7544
+|Logical axioms         |5146
+|Declaration axioms	    |1301
+|Classes	            |421
+|Object properties	    |85
 |Data properties    	|4
-|Individuals	        |721
+|Individuals	        |790
 |Annotation Properties	|5
 
 ---
@@ -51,9 +51,8 @@ The ontology covers major characters, events and places in the canon films and T
 ## Todo
 
 * Can we easily query/infer a timeline for a given character?
-  * we can clearly query for the events, but how do we put them in some order?
-  
-* If we want to get the events and subevents for a character, we either query this or we have
+  * we can easily [query for the events](docs/events.md) using simple DL query, but how do we put them in some order?
+  * If we want to get the events and subevents for a character, we either query this or we have
 a subchain (the subchain is great as it brings the named events in to the inferred props but what is the cost?)
 
   
@@ -63,11 +62,9 @@ a subchain (the subchain is great as it brings the named events in to the inferr
 * Check all events have dates and are not orphaned - see Sparql test
 
 * Series
-    * Rebels - 4 series eps(15, 22, 22, 16)
+    * Rebels - series 2(22) 3(22), 4(16)
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Bad Batch - 1 series eps(incomplete)
-
-* Changes to base cannot be saved if other ontologies loaded - https://github.com/protegeproject/protege/pull/1025
 
 * Review property "of" - is it even defined properly?
 
@@ -80,3 +77,6 @@ a subchain (the subchain is great as it brings the named events in to the inferr
 * is "on" really helping? It's just a nice bit of syntactic sugar
 
 * Can we have ABY/BBY instead of int as custom datatype?
+
+
+* Changes to base cannot be saved if other ontologies loaded - https://github.com/protegeproject/protege/pull/1025

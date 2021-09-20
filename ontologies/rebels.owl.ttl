@@ -668,6 +668,10 @@
 :Mission_to_Seelos rdf:type owl:NamedIndividual ,
                             :Mission ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :destructionOf ;
+                              owl:someValuesFrom :AT-AT
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :included ;
                               owl:someValuesFrom [ owl:intersectionOf ( :Communication
                                                                         [ rdf:type owl:Restriction ;
@@ -722,7 +726,14 @@
                                                    owl:someValuesFrom [ owl:intersectionOf ( :Information
                                                                                              [ rdf:type owl:Restriction ;
                                                                                                owl:onProperty :about ;
-                                                                                               owl:someValuesFrom :Base
+                                                                                               owl:someValuesFrom [ owl:intersectionOf ( :Base
+                                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                                           owl:onProperty :builtBy ;
+                                                                                                                                           owl:hasValue :Galactic_Republic
+                                                                                                                                         ]
+                                                                                                                                       ) ;
+                                                                                                                    rdf:type owl:Class
+                                                                                                                  ]
                                                                                              ]
                                                                                            ) ;
                                                                         rdf:type owl:Class
@@ -735,9 +746,11 @@
                             ] ;
                    :after :Attack_on_Phoenix_Squadron ;
                    :damageOf :Phantom ;
+                   :escapeOf :Kallus ;
                    :location :Clone_Commanders_Retirement_Home ;
                    :orderedBy :Ahsoka_Tano ;
                    :participant :Gregor ,
+                                :Relentless ,
                                 :Rex ,
                                 :Spectres ,
                                 :Wolffe ;

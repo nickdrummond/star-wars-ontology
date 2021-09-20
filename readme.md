@@ -50,6 +50,10 @@ The ontology covers major characters, events and places in the canon films and T
 
 ## Todo
 
+* Spend some time in the Individual Hierarchy Tab (Protege)
+  * Requires the reasoner for inv property tree
+  * Remove `Transitive(location)` and navigate through this hierarchy - nice
+
 * Can we easily query/infer a timeline for a given character?
   * we can easily [query for the events](docs/events.md) using simple DL query, but how do we put them in some order?
   * If we want to get the events and subevents for a character, we either query this or we have
@@ -73,8 +77,6 @@ a subchain (the subchain is great as it brings the named events in to the inferr
 * "healed" also only used once
 
 * "surrenderOf" - anywhere else to use this?
-
-* is "on" really helping? It's just a nice bit of syntactic sugar
 
 * Can we have ABY/BBY instead of int as custom datatype?
 

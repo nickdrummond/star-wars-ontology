@@ -100,6 +100,107 @@
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_Phoenix_Squadron_(4_BBY)"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#B-Wing_test_flight
+:B-Wing_test_flight rdf:type owl:NamedIndividual ,
+                             :Mission ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Repair
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :fitted ;
+                                                                           owl:someValuesFrom :Hyperdrive
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Phantom
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    :damageOf :Phantom ;
+                    :during :Blockade_of_Ibaar ;
+                    :location :Shantipole ;
+                    :participant :Blade_Wing ,
+                                 :Hera_Syndulla ,
+                                 :Quarrie ;
+                    :year -4 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Wings_of_the_Master"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Blockade_of_Ibaar
+:Blockade_of_Ibaar rdf:type owl:NamedIndividual ,
+                            :Battle ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :delivered ;
+                              owl:someValuesFrom :Supplies
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :destructionOf ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Transport
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :memberOf ;
+                                                                          owl:hasValue :Phoenix_Cell
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :destructionOf ;
+                                                                          owl:someValuesFrom :Arquitens-class_command_cruiser
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :victoryOf ;
+                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Crew
+                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty :hadMember ;
+                                                                                                                      owl:hasValue :Hera_Syndulla
+                                                                                                                    ]
+                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty :ofShip ;
+                                                                                                                      owl:hasValue :Blade_Wing
+                                                                                                                    ]
+                                                                                                                  ) ;
+                                                                                               rdf:type owl:Class
+                                                                                             ]
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :killingOf ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Leader
+                                                                        :Pilot
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :inOrganisation ;
+                                                                          owl:hasValue :Phoenix_Cell
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :participant ;
+                              owl:someValuesFrom :A-Wing
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :participant ;
+                              owl:someValuesFrom :Tie_Fighter
+                            ] ;
+                   :after :Finding_Vizago ;
+                   :location :Ibaar ;
+                   :participant :Kallus ,
+                                :Phoenix_Cell ;
+                   :year -4 ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Blockade_of_Ibaar"^^xsd:anyURI ,
+                                "https://starwars.fandom.com/wiki/Wings_of_the_Master"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Chopper_locates_Kanan
 :Chopper_locates_Kanan rdf:type owl:NamedIndividual ,
                                 :Mission ,
@@ -342,7 +443,11 @@
 
 ###  http://null.com/star-wars#Escape_from_Lothal
 :Escape_from_Lothal rdf:type owl:NamedIndividual ,
-                             :Escape ;
+                             :Escape ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :fitted ;
+                               owl:someValuesFrom :Tracker
+                             ] ;
                     :after :Destruction_of_Tarkintown ;
                     :escapeOf :Ghost ;
                     :location :Lothal ;

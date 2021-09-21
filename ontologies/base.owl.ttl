@@ -119,6 +119,10 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
          owl:inverseOf :diedIn .
 
 
+###  http://null.com/star-wars#delivered
+:delivered rdf:type owl:ObjectProperty .
+
+
 ###  http://null.com/star-wars#destroyedDuring
 :destroyedDuring rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :participatedIn ;
@@ -165,6 +169,10 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 ###  http://null.com/star-wars#father
 :father rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :parent .
+
+
+###  http://null.com/star-wars#fitted
+:fitted rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#found
@@ -657,6 +665,18 @@ or minus is BBY"""^^xsd:string .
       owl:disjointWith :Cell .
 
 
+###  http://null.com/star-wars#Arquitens-class_command_cruiser
+:Arquitens-class_command_cruiser rdf:type owl:Class ;
+                                 rdfs:subClassOf :Light_Cruiser ;
+                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Arquitens-class_command_cruiser"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Arquitens-class_light_cruiser
+:Arquitens-class_light_cruiser rdf:type owl:Class ;
+                               rdfs:subClassOf :Light_Cruiser ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Arquitens-class_light_cruiser"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Artist
 :Artist rdf:type owl:Class ;
         rdfs:subClassOf :Role .
@@ -1050,6 +1070,15 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Crash
 :Crash rdf:type owl:Class ;
        rdfs:subClassOf :Event .
+
+
+###  http://null.com/star-wars#Crew
+:Crew rdf:type owl:Class ;
+      rdfs:subClassOf :Organisation ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :ofShip ;
+                        owl:someValuesFrom :Ship
+                      ] .
 
 
 ###  http://null.com/star-wars#Crime_Syndicate
@@ -1654,6 +1683,12 @@ or minus is BBY"""^^xsd:string .
                         owl:someValuesFrom :Sentient
                       ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Hutt"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hyperdrive
+:Hyperdrive rdf:type owl:Class ;
+            rdfs:subClassOf :Parts ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Hyperdrive"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Hyperspace
@@ -2304,7 +2339,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Organisation
 :Organisation rdf:type owl:Class ;
-              rdfs:subClassOf :Actor .
+              rdfs:subClassOf :Actor ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hadMember ;
+                                owl:someValuesFrom :Actor
+                              ] .
 
 
 ###  http://null.com/star-wars#Ovissian
@@ -2981,6 +3020,11 @@ or minus is BBY"""^^xsd:string .
 :Toydarian rdf:type owl:Class ;
            rdfs:subClassOf :Humanoid ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Toydarian"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Tracker
+:Tracker rdf:type owl:Class ;
+         rdfs:subClassOf :Object .
 
 
 ###  http://null.com/star-wars#Trader

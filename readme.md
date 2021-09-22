@@ -48,6 +48,17 @@ The ontology covers major characters, events and places in the canon films and T
 
 ---
 
+## Declaration
+
+This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it's affiliates.
+It is an unpaid experiment in representing an interesting, complex domain of storytelling.
+Copyright of all names and references remain with their respective owners or creators.
+There is no assertion of correctness or completeness by myself - content has been
+created using publically available, free content created by fans (ie Wookipedia).
+
+That said, I would love to talk to Leland Chee about the possibilities of using RDF/OWL
+as a way of helping the continuity and story group within the Star Wars teams.
+
 ## Todo
 
 * Spend some time in the Individual Hierarchy Tab (Protege)

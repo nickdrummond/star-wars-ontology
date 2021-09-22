@@ -296,12 +296,12 @@
                                                 ]
                            ] ;
                   owl:sameAs :Darth_Vader ;
-                  :daughter :Leia_Organa ;
                   :from :Mos_Espa ;
+                  :hadDaughter :Leia_Organa ;
+                  :hadSon :Luke_Skywalker ;
                   :married :Padme_Amidala ;
                   :saved :Ahsoka_Tano ,
                          :Luke_Skywalker ;
-                  :son :Luke_Skywalker ;
                   :trainedBy :Obi-Wan_Kenobi ;
                   :born -41 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Anakin_Skywalker"^^xsd:anyURI .
@@ -690,9 +690,9 @@
                      owl:someValuesFrom :Male
                    ] ;
           owl:sameAs :Kylo_Ren ;
-          :father :Han_Solo ;
+          :hadFather :Han_Solo ;
+          :hadMother :Leia_Organa ;
           :loved :Rey ;
-          :mother :Leia_Organa ;
           :owned :Skywalker_Lightsaber ;
           :saved :Rey ;
           :trainedBy :Luke_Skywalker ;
@@ -901,9 +901,9 @@
                                            rdf:type owl:Class
                                          ]
                     ] ;
-           :cloneOf :Jango_Fett ;
            :from :Kamino ;
            :trainedBy :Aurra_Sing ;
+           :wasCloneOf :Jango_Fett ;
            :born -32 ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Boba_Fett"^^xsd:anyURI .
 
@@ -1277,8 +1277,8 @@
                           owl:onProperty :gender ;
                           owl:someValuesFrom :Male
                         ] ;
-               :daughter :Hera_Syndulla ;
                :from :Ryloth ;
+               :hadDaughter :Hera_Syndulla ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Cham_Syndulla"^^xsd:anyURI .
 
 
@@ -2152,8 +2152,8 @@
                  owl:onProperty :gender ;
                  owl:someValuesFrom :Female
                ] ;
-      :brother :Kel ;
       :from :Tehar ;
+      :hadBrother :Kel ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Eila"^^xsd:anyURI .
 
 
@@ -2295,19 +2295,7 @@
 :Ezra_Bridger rdf:type owl:NamedIndividual ,
                        :Human ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :connectedTo ;
-                         owl:someValuesFrom :The_Force
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :gender ;
-                         owl:someValuesFrom :Male
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hadRole ;
-                         owl:someValuesFrom :Padawan
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :parent ;
+                         owl:onProperty :childOf ;
                          owl:someValuesFrom [ rdf:type owl:Restriction ;
                                               owl:onProperty :killedIn ;
                                               owl:someValuesFrom [ owl:intersectionOf ( :Escape
@@ -2319,6 +2307,18 @@
                                                                    rdf:type owl:Class
                                                                  ]
                                             ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :connectedTo ;
+                         owl:someValuesFrom :The_Force
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :gender ;
+                         owl:someValuesFrom :Male
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom :Padawan
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :participatedIn ;
@@ -3302,6 +3302,13 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Gideon%27s_Imperial_remnant"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Imperial_Security_Bureau
+:Imperial_Security_Bureau rdf:type owl:NamedIndividual ,
+                                   :Security_Force ;
+                          :memberOf :Galactic_Empire ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Imperial_Security_Bureau"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Inner_Rim
 :Inner_Rim rdf:type owl:NamedIndividual ,
                     :Region ;
@@ -3670,8 +3677,8 @@
                                           rdf:type owl:Class
                                         ]
                    ] ;
-          :father :Galen_Erso ;
           :from :Vallt ;
+          :hadFather :Galen_Erso ;
           :raisedBy :Saw_Gerrera ;
           :born -21 ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso"^^xsd:anyURI .
@@ -3696,6 +3703,17 @@
                  [ rdf:type owl:Restriction ;
                    owl:onProperty :hadRole ;
                    owl:someValuesFrom :Fulcrum
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom [ owl:intersectionOf ( :Agent
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :inOrganisation ;
+                                                               owl:hasValue :Imperial_Security_Bureau
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
                  ] ;
         :friendsWith :Garazeb_Orrelios ;
         :trainedBy :Wullf_Yularen ;
@@ -3813,9 +3831,9 @@
                                               rdf:type owl:Class
                                             ]
                        ] ;
-              :father :Hamato_Xiono ;
               :friendsWith :Tamara_Ryvora ;
               :from :Hosnian_Prime ;
+              :hadFather :Hamato_Xiono ;
               :livedIn :Colossus ;
               :memberOf :Citizens_Fleet ;
               :trainedBy :Jarek_Yeager ,
@@ -3950,8 +3968,8 @@
                                          rdf:type owl:Class
                                        ]
                   ] ;
-         :father :Wullffwarro ;
          :from :Kashyyyk ;
+         :hadFather :Wullffwarro ;
          :savedBy :Ezra_Bridger ;
          :born "-15"^^xsd:int ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Kitwarr"^^xsd:anyURI .
@@ -4205,8 +4223,8 @@
                                              rdf:type owl:Class
                                            ]
                       ] ;
-             :brother :Luke_Skywalker ;
              :from :Alderaan ;
+             :hadBrother :Luke_Skywalker ;
              :married :Han_Solo ;
              :raisedBy :Bail_Organa ;
              :trainedBy :Luke_Skywalker ;
@@ -4526,7 +4544,7 @@
                              owl:onProperty :hadRole ;
                              owl:someValuesFrom :Pilot
                            ] ;
-                  :brother :Jarek_Yeager ;
+                  :hadBrother :Jarek_Yeager ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Marcus_Speedstar"^^xsd:anyURI .
 
 
@@ -4586,8 +4604,8 @@
                                     ]
                ] ;
       :from :Dathomir ;
+      :hadMother :Talzin ;
       :livedIn :Lotho_Minor ;
-      :mother :Talzin ;
       :trainedBy :Darth_Sidious ;
       :born -54 ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Maul"^^xsd:anyURI .
@@ -5173,7 +5191,7 @@
                                                              owl:onProperty :deathOf ;
                                                              owl:someValuesFrom [ owl:intersectionOf ( :Human
                                                                                                        [ rdf:type owl:Restriction ;
-                                                                                                         owl:onProperty :child ;
+                                                                                                         owl:onProperty :parentOf ;
                                                                                                          owl:hasValue :Rey
                                                                                                        ]
                                                                                                      ) ;
@@ -5245,11 +5263,11 @@
                   owl:onProperty :gender ;
                   owl:someValuesFrom :Female
                 ] ;
-       :cloneOf :Jango_Fett ;
        :friendsWith :Wrecker ;
        :from :Kamino ;
        :memberOf :Bad_Batch ;
        :trainedBy :Lama_Su ;
+       :wasCloneOf :Jango_Fett ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Omega"^^xsd:anyURI .
 
 
@@ -5385,10 +5403,10 @@
                                                rdf:type owl:Class
                                              ]
                         ] ;
-               :daughter :Leia_Organa ;
                :from :Naboo ;
+               :hadDaughter :Leia_Organa ;
+               :hadSon :Luke_Skywalker ;
                :knew :Sheev_Palpatine ;
-               :son :Luke_Skywalker ;
                :born -46 ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Padm%C3%A9_Amidala"^^xsd:anyURI .
 
@@ -5783,7 +5801,7 @@
                 owl:onProperty :hadRole ;
                 owl:someValuesFrom :Criminal
               ] ;
-     :sister <http://null.com/star-wars#Xi'an> ;
+     :hadSister <http://null.com/star-wars#Xi'an> ;
      rdfs:seeAlso "https://starwars.fandom.com/wiki/Qin"^^xsd:anyURI .
 
 
@@ -5916,8 +5934,8 @@
                         owl:someValuesFrom :Criminal
                       ] ;
              :friendsWith :Ahsoka_Tano ;
+             :hadSister :Trace_Martez ;
              :livedIn :Coruscant ;
-             :sister :Trace_Martez ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Rafa_Martez"^^xsd:anyURI .
 
 
@@ -6051,19 +6069,19 @@
 :Rey rdf:type owl:NamedIndividual ,
               :Human ,
               [ rdf:type owl:Restriction ;
-                owl:onProperty :daughter ;
+                owl:onProperty :gender ;
+                owl:someValuesFrom :Female
+              ] ,
+              [ rdf:type owl:Restriction ;
+                owl:onProperty :hadDaughter ;
                 owl:someValuesFrom [ owl:intersectionOf ( :Human
                                                           [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :cloneOf ;
+                                                            owl:onProperty :wasCloneOf ;
                                                             owl:hasValue :Darth_Sidious
                                                           ]
                                                         ) ;
                                      rdf:type owl:Class
                                    ]
-              ] ,
-              [ rdf:type owl:Restriction ;
-                owl:onProperty :gender ;
-                owl:someValuesFrom :Female
               ] ,
               [ rdf:type owl:Restriction ;
                 owl:onProperty :hadRole ;
@@ -6158,7 +6176,7 @@
                   owl:onProperty :gender ;
                   owl:someValuesFrom :Male
                 ] ;
-       :father :Jabba ;
+       :hadFather :Jabba ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Rotta"^^xsd:anyURI .
 
 
@@ -6278,10 +6296,10 @@
                                               rdf:type owl:Class
                                             ]
                        ] ;
+              :hadSister :Bo-Katan_Kryze ;
               :livedIn :Mandalore ;
               :loved :Obi-Wan_Kenobi ;
               :memberOf :Clan_Kryze ;
-              :sister :Bo-Katan_Kryze ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Satine_Kryze"^^xsd:anyURI .
 
 
@@ -6304,8 +6322,8 @@
                                              ]
                         ] ;
                :alliedWith :Asajj_Ventress ;
-               :brother :Maul ;
                :from :Dathomir ;
+               :hadBrother :Maul ;
                :trainedBy :Count_Dooku ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Savage_Opress"^^xsd:anyURI .
 
@@ -6516,9 +6534,9 @@
                                                 rdf:type owl:Class
                                               ]
                          ] ;
+                :hadSon :Anakin_Skywalker ;
                 :livedIn :Mos_Espa ;
                 :raised :Owen_Lars ;
-                :son :Anakin_Skywalker ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars"^^xsd:anyURI .
 
 
@@ -7116,7 +7134,7 @@
                          owl:onProperty :sentience ;
                          owl:someValuesFrom :Sentient
                        ] ;
-              :father :The_Father ;
+              :hadFather :The_Father ;
               :livedIn :Mortis ;
               :diedInYear -20 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Daughter"^^xsd:anyURI .
@@ -7204,7 +7222,7 @@
                     owl:onProperty :sentience ;
                     owl:someValuesFrom :Sentient
                   ] ;
-         :father :The_Father ;
+         :hadFather :The_Father ;
          :livedIn :Mortis ;
          :diedInYear -20 ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Son"^^xsd:anyURI .
@@ -7345,11 +7363,11 @@
                                             rdf:type owl:Class
                                           ]
                      ] ;
-            :father :Imanuel_Doza ;
             :friendsWith :Buggles ,
                          :Kazuda_Xiono ;
+            :hadFather :Imanuel_Doza ;
+            :hadMother :Venisa_Doza ;
             :livedIn :Colossus ;
-            :mother :Venisa_Doza ;
             :born 18 ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Torra_Doza"^^xsd:anyURI .
 
@@ -7804,6 +7822,14 @@
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Wedge_Antilles"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#White_Loth_Cat
+:White_Loth_Cat rdf:type owl:NamedIndividual ,
+                         :Loth_Cat ;
+                :connectedTo :Ezra_Bridger ;
+                :from :Lothal ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/White_Loth-cat"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#White_Worms
 :White_Worms rdf:type owl:NamedIndividual ,
                       :Crime_Syndicate ;
@@ -7926,6 +7952,17 @@
                                                                     [ rdf:type owl:Restriction ;
                                                                       owl:onProperty :inOrganisation ;
                                                                       owl:hasValue :Republic_Navy
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Colonel
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :inOrganisation ;
+                                                                      owl:hasValue :Imperial_Security_Bureau
                                                                     ]
                                                                   ) ;
                                                rdf:type owl:Class

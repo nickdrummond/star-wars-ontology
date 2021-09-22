@@ -7,8 +7,8 @@
 @base <http://null.com/star-wars#> .
 
 <http://null.com/star-wars/resistance.owl.ttl> rdf:type owl:Ontology ;
-                                        owl:imports <http://null.com/star-wars.owl.ttl> ;
-                                        rdfs:comment "Characters and events primarily from \"Star Wars: Resistance\""^^xsd:string .
+                                                owl:imports <http://null.com/star-wars.owl.ttl> ;
+                                                rdfs:comment "Characters and events primarily from \"Star Wars: Resistance\""^^xsd:string .
 
 #################################################################
 #    Individuals
@@ -220,7 +220,7 @@
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :participant ;
                          owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                              owl:onProperty :mother ;
+                                              owl:onProperty :hadMother ;
                                               owl:hasValue :Bibo
                                             ]
                        ] ;
@@ -1911,14 +1911,11 @@
                                             owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                                       [ rdf:type owl:Restriction ;
                                                                                         owl:onProperty :location ;
-                                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Gravity_Well
-                                                                                                                                  [ rdf:type owl:Restriction ;
-                                                                                                                                    owl:onProperty :location ;
-                                                                                                                                    owl:hasValue :Najra-Va
-                                                                                                                                  ]
-                                                                                                                                ) ;
-                                                                                                             rdf:type owl:Class
-                                                                                                           ]
+                                                                                        owl:someValuesFrom :Freighter
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:hasValue :Fireball
                                                                                       ]
                                                                                     ) ;
                                                                  rdf:type owl:Class
@@ -1929,11 +1926,14 @@
                                             owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                                       [ rdf:type owl:Restriction ;
                                                                                         owl:onProperty :location ;
-                                                                                        owl:someValuesFrom :Freighter
-                                                                                      ]
-                                                                                      [ rdf:type owl:Restriction ;
-                                                                                        owl:onProperty :participant ;
-                                                                                        owl:hasValue :Fireball
+                                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Gravity_Well
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty :location ;
+                                                                                                                                    owl:hasValue :Najra-Va
+                                                                                                                                  ]
+                                                                                                                                ) ;
+                                                                                                             rdf:type owl:Class
+                                                                                                           ]
                                                                                       ]
                                                                                     ) ;
                                                                  rdf:type owl:Class

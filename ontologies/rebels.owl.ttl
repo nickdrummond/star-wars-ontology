@@ -52,7 +52,10 @@
                              :Capture ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :killingOf ;
-                               owl:someValuesFrom :Sentient
+                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hadRole ;
+                                                    owl:someValuesFrom :Passenger
+                                                  ]
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :location ;
@@ -66,7 +69,7 @@
                     :captureOf :Alora ;
                     :participant :Fifth_Brother ,
                                  :Seventh_Sister ;
-                    :year -4 ;
+                    :year -3 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Future_of_the_Force#Abduction"^^xsd:anyURI .
 
 
@@ -714,7 +717,14 @@
                                     owl:onProperty :included ;
                                     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :found ;
-                                                                                owl:someValuesFrom :Mother
+                                                                                owl:someValuesFrom [ owl:intersectionOf ( :Ithorian
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty :parentOf ;
+                                                                                                                            owl:hasValue :Pypey
+                                                                                                                          ]
+                                                                                                                        ) ;
+                                                                                                     rdf:type owl:Class
+                                                                                                   ]
                                                                               ]
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :participant ;
@@ -756,7 +766,7 @@
                          :after :Abduction_of_Alora ;
                          :location :Hammertown ;
                          :participant :Phantom ;
-                         :year -4 ;
+                         :year -3 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Future_of_the_Force"^^xsd:anyURI .
 
 
@@ -975,6 +985,39 @@
                                                :Jun_Sato ;
                                     :year -4 ;
                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Stealth_Strike"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Looking_for_Ezras_parents
+:Looking_for_Ezras_parents rdf:type owl:NamedIndividual ,
+                                    :Mission ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:someValuesFrom [ owl:intersectionOf ( :Force_Vision
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty :about ;
+                                                                                                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                                   owl:onProperty :parentOf ;
+                                                                                                                                                   owl:hasValue :Ezra_Bridger
+                                                                                                                                                 ]
+                                                                                                                            ]
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty :about ;
+                                                                                                                              owl:hasValue :White_Loth_Cat
+                                                                                                                            ]
+                                                                                                                          ) ;
+                                                                                                       rdf:type owl:Class
+                                                                                                     ]
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Ezra_Bridger
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] .
 
 
 ###  http://null.com/star-wars#Losing_to_Lando_at_Sabacc

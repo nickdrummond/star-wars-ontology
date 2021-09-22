@@ -174,14 +174,17 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :killingOf ;
-                              owl:someValuesFrom [ owl:intersectionOf ( :Leader
-                                                                        :Pilot
-                                                                        [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :inOrganisation ;
-                                                                          owl:hasValue :Phoenix_Cell
-                                                                        ]
-                                                                      ) ;
-                                                   rdf:type owl:Class
+                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hadRole ;
+                                                   owl:someValuesFrom [ owl:intersectionOf ( :Leader
+                                                                                             :Pilot
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :inOrganisation ;
+                                                                                               owl:hasValue :Phoenix_Cell
+                                                                                             ]
+                                                                                           ) ;
+                                                                        rdf:type owl:Class
+                                                                      ]
                                                  ]
                             ] ,
                             [ rdf:type owl:Restriction ;
@@ -1268,6 +1271,45 @@
                                         :Spectres ;
                            :year -4 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Rebel_Resolve"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Pulled_out_of_Hyperspace
+:Pulled_out_of_Hyperspace rdf:type owl:NamedIndividual ,
+                                   :Capture ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty :location ;
+                                                                                                        owl:someValuesFrom :Hyperspace
+                                                                                                      ]
+                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty :participant ;
+                                                                                                        owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                                             owl:oneOf ( :Liberator
+                                                                                                                                       )
+                                                                                                                           ]
+                                                                                                      ]
+                                                                                                    ) ;
+                                                                                 rdf:type owl:Class
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :location ;
+                                     owl:someValuesFrom :Space
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:someValuesFrom :Interdictor_Vessel
+                                   ] ;
+                          :after :Mission_to_Havoc_Outpost ;
+                          :captureOf :Ezra_Bridger ,
+                                     :Jun_Sato ;
+                          :year -4 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Stealth_Strike"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rescue_of_Kanan

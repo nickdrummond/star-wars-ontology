@@ -61,6 +61,16 @@ as a way of helping the continuity and story group within the Star Wars teams.
 
 ## Todo
 
+* How do we infer that specific people were participants in `Evacuation_of_Garel` - we're using `Spectres` a lot?
+  Should we say that all members of an organisation or crew were at that event? What about Battles - Rebel Alliance vs Empire?
+  Not all members of a group are a member at that time.
+  
+*  Where we use oneofs, there needs to be specified cardinality instead of `some` 
+  or else the inference does not work - ie a given member cannot be inferred to be related
+  BUT - cannot do this with hadMember as it is transitive which makes it non-simple
+  Actually, it doesn't work with the Crew in between  
+an example where it does work is `Escape from Death Star` both Solo and Skywalker are inferred participants
+
 * Spend some time in the Individual Hierarchy Tab (Protege)
   * Requires the reasoner for inv property tree
   * Remove `Transitive(location)` and navigate through this hierarchy - nice

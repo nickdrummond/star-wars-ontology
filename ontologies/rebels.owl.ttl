@@ -11,6 +11,15 @@
                                             rdfs:comment "Events and characters primarily from \"Star Wars: Rebels\""^^xsd:string .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://null.com/star-wars#hadMember
+:hadMember rdf:type owl:ObjectProperty ,
+                    owl:TransitiveProperty .
+
+
+#################################################################
 #    Individuals
 #################################################################
 
@@ -440,6 +449,60 @@
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Gathering_Forces"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Delivery_of_Corvettes
+:Delivery_of_Corvettes rdf:type owl:NamedIndividual ,
+                                :Mission ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom :Sentinel-class_landing_craft
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:someValuesFrom :AT-AT
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hadRole ;
+                                                       owl:someValuesFrom :StormTrooper
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                  owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                       owl:oneOf ( :Ezra_Bridger
+                                                                                   :Kanan_Jarrus
+                                                                                 )
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :disguisedAs ;
+                                                                       owl:someValuesFrom :StormTrooper
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                  owl:onClass [ owl:intersectionOf ( :Hammerhead_corvette
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :trappedBy ;
+                                                                       owl:someValuesFrom :Gravity_lock
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                                ] ;
+                       :after :Search_for_Ezras_parents ;
+                       :location :Jalath ;
+                       :participant :Leia_Organa ,
+                                    :Yogar_Lyste ;
+                       :year -3 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Princess_on_Lothal"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Destroying_the_new_Tie_Advanced
 :Destroying_the_new_Tie_Advanced rdf:type owl:NamedIndividual ,
                                           :Attack ,
@@ -646,7 +709,7 @@
                                                                                                ]
                                                                           ]
                                                                           [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :participant ;
+                                                                            owl:onProperty :connectedTo ;
                                                                             owl:hasValue :Ezra_Bridger
                                                                           ]
                                                                         ) ;
@@ -1060,6 +1123,64 @@
                                      :Phantom ;
                         :year -5 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Breaking_Ranks"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Kidnapping_of_Leia
+:Kidnapping_of_Leia rdf:type owl:NamedIndividual ,
+                             :Capture ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :damageOf ;
+                               owl:someValuesFrom :Troop_Transporter
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :destructionOf ;
+                               owl:someValuesFrom :Sentinel-class_landing_craft
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom :Fight
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :hadRole ;
+                                                                                                owl:someValuesFrom :StormTrooper
+                                                                                              ]
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :escapeOf ;
+                                                                           owl:hasValue :Ryder_Azadi
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Crew
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :hadMember ;
+                                                                           owl:hasValue :C1-10P
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :ofShip ;
+                                                                           owl:hasValue :Phantom
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    :after :Delivery_of_Corvettes ;
+                    :escapeOf :Leia_Organa ,
+                              :Ryder_Azadi ,
+                              :Spectres ;
+                    :location :Lothal ;
+                    :year -3 ;
+                    rdfs:comment "A staged kidnap"^^xsd:string ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Princess_on_Lothal#.22Kidnapping.22"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Liberation_of_Lothal
@@ -1732,6 +1853,17 @@
                                     owl:onProperty :included ;
                                     owl:someValuesFrom [ owl:intersectionOf ( :Sabotage
                                                                               [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:someValuesFrom [ owl:intersectionOf ( :Projector
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty :of ;
+                                                                                                                            owl:someValuesFrom :Gravity_Well
+                                                                                                                          ]
+                                                                                                                        ) ;
+                                                                                                     rdf:type owl:Class
+                                                                                                   ]
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :participant ;
                                                                                 owl:hasValue :C1-10P
                                                                               ]
@@ -1748,18 +1880,7 @@
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :stole ;
-                                    owl:someValuesFrom [ owl:intersectionOf ( :Shuttle
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :ownedBy ;
-                                                                                owl:hasValue :Galactic_Empire
-                                                                              ]
-                                                                            ) ;
-                                                         rdf:type owl:Class
-                                                       ]
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :stole ;
-                                    owl:someValuesFrom [ owl:intersectionOf ( :Uniform
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Armour
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :ownedBy ;
                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
@@ -1770,15 +1891,40 @@
                                                                             ) ;
                                                          rdf:type owl:Class
                                                        ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :stole ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Shuttle
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :ownedBy ;
+                                                                                owl:hasValue :Galactic_Empire
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :participant ;
+                                    owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                    owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                         owl:oneOf ( :Kanan_Jarrus
+                                                                                     :Rex
+                                                                                   )
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :disguisedAs ;
+                                                                         owl:someValuesFrom :StormTrooper
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
                                   ] ;
                          :after :Liberator_pulled_out_of_Hyperspace ;
                          :escapeOf :Ezra_Bridger ,
                                    :Jun_Sato ,
                                    :Liberator ;
                          :location :Del_Zennis_system ;
-                         :participant :C1-10P ,
-                                      :Kanan_Jarrus ,
-                                      :Rex ;
+                         :participant :C1-10P ;
                          :year -4 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Stealth_Strike"^^xsd:anyURI .
 
@@ -1818,6 +1964,21 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :destructionOf ;
                           owl:hasValue :Bridger_Household
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :participant ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                               owl:oneOf ( :Kanan_Jarrus
+                                                                         )
+                                                             ]
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :disguisedAs ;
+                                                               owl:someValuesFrom :StormTrooper
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
                         ] ;
                :after :Tua_asks_for_help ;
                :location :Capital_City ;
@@ -1894,7 +2055,7 @@
                             owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Sabotage
                                                                       [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :damageOf ;
+                                                                        owl:onProperty :of ;
                                                                         owl:hasValue :Shadow_Caster
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
@@ -2206,6 +2367,58 @@
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Rebel_operations"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Stealing_the_Corvettes
+:Stealing_the_Corvettes rdf:type owl:NamedIndividual ,
+                                 :Heist ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :damageOf ;
+                                   owl:someValuesFrom :AT-AT
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty :hadRole ;
+                                                                                                    owl:someValuesFrom :StormTrooper
+                                                                                                  ]
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Sabotage
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:someValuesFrom :Gravity_lock
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:hasValue :Ryder_Azadi
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :stole ;
+                                   owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Hammerhead_corvette
+                                 ] ;
+                        :after :Kidnapping_of_Leia ;
+                        :escapeOf :Ryder_Azadi ,
+                                  :Spectres ;
+                        :location :Jalath ;
+                        :participant :Ghost ;
+                        :stunningOf :Leia_Organa ;
+                        :year -3 ;
+                        rdfs:comment "A staged heist"^^xsd:string ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Princess_on_Lothal#Raid"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Testing_Ezra
 :Testing_Ezra rdf:type owl:NamedIndividual ,
                        :Training ,
@@ -2292,7 +2505,7 @@
                                                                                                                  ]
                                                                                             ]
                                                                                             [ rdf:type owl:Restriction ;
-                                                                                              owl:onProperty :participant ;
+                                                                                              owl:onProperty :connectedTo ;
                                                                                               owl:hasValue :Ezra_Bridger
                                                                                             ]
                                                                                           ) ;

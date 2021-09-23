@@ -126,6 +126,10 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
         :todo "Do we need this as its not used directly"^^xsd:string .
 
 
+###  http://null.com/star-wars#disguisedAs
+:disguisedAs rdf:type owl:ObjectProperty .
+
+
 ###  http://null.com/star-wars#during
 :during rdf:type owl:ObjectProperty ;
         owl:inverseOf :included ;
@@ -408,6 +412,17 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 ###  http://null.com/star-wars#stole
 :stole rdf:type owl:ObjectProperty .
+
+
+###  http://null.com/star-wars#stunnedDuring
+:stunnedDuring rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :survivorOf ;
+               owl:inverseOf :stunningOf .
+
+
+###  http://null.com/star-wars#stunningOf
+:stunningOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :survivedBy .
 
 
 ###  http://null.com/star-wars#surrenderOf
@@ -1310,6 +1325,11 @@ or minus is BBY"""^^xsd:string .
           rdfs:subClassOf :Vocation .
 
 
+###  http://null.com/star-wars#Equipment
+:Equipment rdf:type owl:Class ;
+           rdfs:subClassOf :Object .
+
+
 ###  http://null.com/star-wars#Escape
 :Escape rdf:type owl:Class ;
         rdfs:subClassOf :Event .
@@ -1596,6 +1616,12 @@ or minus is BBY"""^^xsd:string .
 :Gravity_Well rdf:type owl:Class ;
               rdfs:subClassOf :Celestial_Location ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Gravity_well"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Gravity_lock
+:Gravity_lock rdf:type owl:Class ;
+              rdfs:subClassOf :Equipment ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Gravity_lock"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Greater_Krayt_Dragon
@@ -2488,7 +2514,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Power_generators
 :Power_generators rdf:type owl:Class ;
-                  rdfs:subClassOf :Parts .
+                  rdfs:subClassOf :Equipment .
 
 
 ###  http://null.com/star-wars#Prison
@@ -2784,6 +2810,12 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Sentient
 :Sentient rdf:type owl:Class ;
           rdfs:subClassOf :Sentience .
+
+
+###  http://null.com/star-wars#Sentinel-class_landing_craft
+:Sentinel-class_landing_craft rdf:type owl:Class ;
+                              rdfs:subClassOf :Shuttle ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Sentinel-class_landing_craft"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Sewer
@@ -3082,7 +3114,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Tracker
 :Tracker rdf:type owl:Class ;
-         rdfs:subClassOf :Object .
+         rdfs:subClassOf :Equipment .
 
 
 ###  http://null.com/star-wars#Tractor_Beam
@@ -3284,7 +3316,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Weapon
 :Weapon rdf:type owl:Class ;
-        rdfs:subClassOf :Object .
+        rdfs:subClassOf :Equipment .
 
 
 ###  http://null.com/star-wars#Wedding
@@ -3495,30 +3527,6 @@ or minus is BBY"""^^xsd:string .
                 :Region
                 :Sector
                 :System
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Attack
-                :Birth
-                :Capture
-                :Communication
-                :Confrontation
-                :Crash
-                :Escape
-                :Fight
-                :Game
-                :Job
-                :Meeting
-                :Mission
-                :Murder
-                :Race
-                :Repair
-                :Rescue
-                :Training
-                :Trap
-                :Wedding
               )
 ] .
 

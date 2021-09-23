@@ -11,6 +11,16 @@
                                      rdfs:comment "Characters, places and objects - instances"^^xsd:string .
 
 #################################################################
+#    Classes
+#################################################################
+
+###  http://null.com/star-wars#Hammerhead_corvette
+:Hammerhead_corvette rdf:type owl:Class ;
+                     rdfs:subClassOf :Corvette ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Sphyrna-class_Hammerhead_corvette"^^xsd:anyURI .
+
+
+#################################################################
 #    Individuals
 #################################################################
 
@@ -3442,6 +3452,13 @@
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Jakku"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Jalath
+:Jalath rdf:type owl:NamedIndividual ,
+                 :City ;
+        :location :Lothal ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Jalath"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Jan_Dodonna
 :Jan_Dodonna rdf:type owl:NamedIndividual ,
                       :Human ,
@@ -6233,15 +6250,11 @@
                                                                 ) ;
                                              rdf:type owl:Class
                                            ]
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :knew ;
-                        owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                             owl:onProperty :parentOf ;
-                                             owl:hasValue :Ezra_Bridger
-                                           ]
                       ] ;
+             :alliedWith :Phoenix_Cell ;
              :from :Lothal ;
+             :knew :Ephraim_Bridger ,
+                   :Mira_Bridger ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Ryder_Azadi"^^xsd:anyURI .
 
 
@@ -8167,6 +8180,28 @@
                  ] ;
         :livedIn :Capital_City ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoffar"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Yogar_Lyste
+:Yogar_Lyste rdf:type owl:NamedIndividual ,
+                      :Human ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :gender ;
+                        owl:someValuesFrom :Male
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Lieutenant
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :Galactic_Empire
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             :from :Garel ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Yogar_Lyste"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Zam_Wesell

@@ -28,7 +28,7 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 * [ontologies](ontologies/) - Ontologies of Star Wars Universe characters, events and places from the major canon film and TV series. Start with [all.owl.ttl](ontologies/all.owl.ttl)
 * [src/test](src/test/) - A set of Java tests against the ontology for quality checking etc
 * [sparql](sparql/) - A set of Sparql queries to summarise or infer things about our ontology
-* [docs](docs/) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
+* [docs](docs/index.md) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
 
 
 ## Metrics

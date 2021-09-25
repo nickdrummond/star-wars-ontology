@@ -1,5 +1,7 @@
 # Performance
 
+[back to index](index.md)
+
 ## Speed Tests
 We have some basic metrics being checked - see [ConsistencyTest](../src/test/java/com/nickd/sw/ConsistencyTest.java)
 

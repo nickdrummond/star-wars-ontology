@@ -1,6 +1,9 @@
-# Star Wars Ontology
+# Project Convor
+## Star Wars Ontology
 
-An OWL ontology covering major characters, events and places in the canon films and TV series.
+Convor, as in OWL in Star Wars.
+
+An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and places in the canon films and TV series.
 
 ## Scope
 
@@ -30,7 +33,7 @@ An OWL ontology covering major characters, events and places in the canon films 
 
 ## Metrics
 
-|Type |Count |
+|Content |Count |
 --- | ---
 |Events                 |257
 |Characters             |266

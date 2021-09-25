@@ -1,5 +1,7 @@
 # General modelling principles
 
+[back to index](index.md)
+
 ## References
 - all individuals should have an appropriate "seeAlso" reference to Wookipedia
 - all non-obvious Classes should also reference Wookipedia

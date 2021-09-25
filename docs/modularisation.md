@@ -1,5 +1,14 @@
 # Modularisation
 
+[back to index](index.md)
+
+## Options for modules
+
+* Events/content by series/film
+* QA - eg domain/range checks
+* out-of-universe metadata (actors, directors, creators)
+* print/game/toy canon content
+
 
 ## Issues
 

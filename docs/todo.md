@@ -1,5 +1,6 @@
+# Todo
 
-## Todo
+[back to index](index.md)
 
 * How do we infer that specific people were participants in `Evacuation_of_Garel` - we're using `Spectres` a lot?
   Should we say that all members of an organisation or crew were at that event? What about Battles - Rebel Alliance vs Empire?
@@ -10,10 +11,6 @@
    BUT - cannot do this with hadMember as it is transitive which makes it non-simple
    Actually, it doesn't work with the Crew in between  
    an example where it does work is `Escape from Death Star` both Solo and Skywalker are inferred participants
-
-* Spend some time in the Individual Hierarchy Tab (Protege)
-    * Requires the reasoner for inv property tree
-    * Remove `Transitive(location)` and navigate through this hierarchy - nice
 
 * Can we easily query/infer a timeline for a given character?
     * we can easily [query for the events](docs/events.md) using simple DL query, but how do we put them in some order?

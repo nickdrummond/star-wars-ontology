@@ -34,23 +34,23 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 
 |Content |Count |
 --- | ---
-|Events                 |257
-|Characters             |266
-|Species                |129
-|Planets and Moons      |82
-|Built locations        |48
-|Organisations or units |56
-|Named vehicles         |50
+|Events                 |290
+|Characters             |283
+|Species                |132
+|Planets and Moons      |88
+|Built locations        |53
+|Organisations or units |63
+|Named vehicles         |57
 
 |Structure |Count |
 --- | ---
-|Axiom                  |7544
-|Logical axioms         |5146
-|Declaration axioms	    |1301
-|Classes	            |421
-|Object properties	    |85
+|Axiom                  |8326
+|Logical axioms         |5699
+|Declaration axioms	    |1425
+|Classes	            |462
+|Object properties	    |91
 |Data properties    	|4
-|Individuals	        |790
+|Individuals	        |867
 |Annotation Properties	|5
 
 

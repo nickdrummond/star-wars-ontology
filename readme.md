@@ -1,7 +1,6 @@
-# Project Convor
-## Star Wars Ontology
+# Project Convor - Star Wars Ontology
 
-Convor, as in OWL in Star Wars.
+Convor, as in "OWL in Star Wars".
 
 An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and places in the canon films and TV series.
 

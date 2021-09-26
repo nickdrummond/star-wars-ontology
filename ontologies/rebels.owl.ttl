@@ -1836,6 +1836,20 @@
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Return_to_Lothal"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Numa
+:Numa rdf:type [ rdf:type owl:Restriction ;
+                 owl:onProperty :hadRole ;
+                 owl:someValuesFrom [ owl:intersectionOf ( :Fighter
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :inOrganisation ;
+                                                             owl:hasValue :Free_Ryloth_Movement
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ]
+               ] .
+
+
 ###  http://null.com/star-wars#Preparing_to_rescue_Kanan
 :Preparing_to_rescue_Kanan rdf:type owl:NamedIndividual ,
                                     :Mission ,
@@ -2538,6 +2552,115 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Droids_in_Distress"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Stealing_an_Imperial_Carrier
+:Stealing_an_Imperial_Carrier rdf:type owl:NamedIndividual ,
+                                       :Heist ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :destructionOf ;
+                                         owl:someValuesFrom :Arquitens-class_command_cruiser
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :destructionOf ;
+                                         owl:someValuesFrom :TIE_bomber
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:someValuesFrom :TIE_bomber
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Doublecross
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :killingOf ;
+                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty :hadRole ;
+                                                                                                          owl:someValuesFrom :StormTrooper
+                                                                                                        ]
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Free_Ryloth_Movement
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :stunningOf ;
+                                                                                     owl:hasValue :Spectres
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Evacuation
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :used ;
+                                                                                     owl:someValuesFrom :Mind_trick
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :orderedBy ;
+                                                                                     owl:hasValue :Ezra_Bridger
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Repair
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :C1-10P
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Sabotage
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:someValuesFrom :Hyperdrive
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Cham_Syndulla
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :location ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Quasar_Fire-class_cruiser-carrier
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :location ;
+                                                                                     owl:hasValue :Ryloth
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :stole ;
+                                         owl:someValuesFrom :Quasar_Fire-class_cruiser-carrier
+                                       ] ;
+                              :after :Stealing_fuel_from_the_Mining_Guild ;
+                              :escapeOf :Spectres ;
+                              :participant :Cham_Syndulla ,
+                                           :Gobi_Glie ,
+                                           :Numa ;
+                              :year -3 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Homecoming"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Stealing_fuel_from_the_Mining_Guild
 :Stealing_fuel_from_the_Mining_Guild rdf:type owl:NamedIndividual ,
                                               :Heist ,
@@ -2555,6 +2678,10 @@
                                                                                           [ rdf:type owl:Restriction ;
                                                                                             owl:onProperty :destructionOf ;
                                                                                             owl:hasValue :Gas_Refinery
+                                                                                          ]
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty :killingOf ;
+                                                                                            owl:hasValue :Yushyn
                                                                                           ]
                                                                                           [ rdf:type owl:Restriction ;
                                                                                             owl:onProperty :victoryOf ;

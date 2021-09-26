@@ -24,10 +24,10 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 
 ## Contents
 
-* [ontologies](ontologies/) - Ontologies of Star Wars Universe characters, events and places from the major canon film and TV series. Start with [all.owl.ttl](ontologies/all.owl.ttl)
+* [docs](docs/index.md) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
+* [ontologies](ontologies/) - Ontologies in ttl (Turtle) OWL format. Start with [all.owl.ttl](ontologies/all.owl.ttl)
 * [src/test](src/test/) - A set of Java tests against the ontology for quality checking etc
 * [sparql](sparql/) - A set of Sparql queries to summarise or infer things about our ontology
-* [docs](docs/index.md) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
 
 
 ## Metrics
@@ -59,6 +59,7 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 * Open [all.owl.ttl](ontologies/all.owl.ttl) with open-source OWL editor, [Protege](https://protege.stanford.edu/) or another semantic
   web editor/browser
 * Set the default reasoner to classify/reason with as `HermiT`
+* See [tools](docs/tools.md) for other tool related discussion
 
 ---
 
@@ -66,9 +67,11 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 
 This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it's affiliates.
 It is an unpaid experiment in representing an interesting, complex domain of storytelling.
-Copyright of all names and references remain with their respective owners or creators.
+
+All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
+
 There is no assertion of correctness or completeness by myself - content has been
-created using publically available, free content created by fans (ie Wookipedia).
+created referencing publicly available, free content created by fans (ie Wookipedia).
 
 That said, I would love to talk to Leland Chee about the possibilities of using RDF/OWL
 as a way of helping the continuity and story group within the Star Wars teams.

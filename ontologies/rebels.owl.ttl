@@ -135,6 +135,41 @@
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_Phoenix_Squadron_(4_BBY)"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Attack_on_the_Rebel_Cruiser
+:Attack_on_the_Rebel_Cruiser rdf:type owl:NamedIndividual ,
+                                      :Attack ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :destructionOf ;
+                                        owl:someValuesFrom :Tie_Fighter
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :about ;
+                                                                                    owl:hasValue :Atollon
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :C1-10P
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :participant ;
+                                        owl:someValuesFrom :Imperial-class_Star_Destroyer
+                                      ] ;
+                             :during :Escape_of_Chopper_and_AP-5 ;
+                             :escapeOf :Phoenix_Cell ;
+                             :participant :Ghost ,
+                                          :Kassius_Konstantine ,
+                                          :Ketsu_Onyo ;
+                             :year -3 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Forgotten_Droid#Finding_a_new_base"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#B-Wing_test_flight
 :B-Wing_test_flight rdf:type owl:NamedIndividual ,
                              :Mission ,
@@ -672,6 +707,67 @@
                                  :W1-LE ;
                     :year -4 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Getting_off_of_Lothal"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Escape_of_Chopper_and_AP-5
+:Escape_of_Chopper_and_AP-5 rdf:type owl:NamedIndividual ,
+                                     :Escape ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :about ;
+                                                                                   owl:hasValue :Atollon
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:someValuesFrom :Captain
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Sabotage
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :of ;
+                                                                                   owl:someValuesFrom :Restraining_bolt
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :found ;
+                                                            owl:someValuesFrom :Base
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :location ;
+                                       owl:someValuesFrom :Class_4_Container_Transport
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :stole ;
+                                       owl:someValuesFrom :Class_4_Container_Transport
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :stunningOf ;
+                                       owl:someValuesFrom :Captain
+                                     ] ;
+                            :after :Mission_to_Horizon_Base ;
+                            :injuryOf :AP-5 ;
+                            :participant :C1-10P ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Forgotten_Droid#Two_unlikely_friends"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Escape_of_Ezra
@@ -1694,6 +1790,66 @@
                           :witnessedBy :Ezra_Bridger ;
                           :year -4 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Blood_Sisters"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Mission_to_Horizon_Base
+:Mission_to_Horizon_Base rdf:type owl:NamedIndividual ,
+                                  :Heist ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                              [ rdf:type owl:Class ;
+                                                                                owl:complementOf [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :participant ;
+                                                                                                   owl:hasValue :C1-10P
+                                                                                                 ]
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:hasValue :Ghost
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:someValuesFrom :Class_4_Container_Transport
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:hasValue :C1-10P
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :stole ;
+                                                                                owl:someValuesFrom :Parts
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:hasValue :C1-10P
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :stole ;
+                                    owl:someValuesFrom :Fuel
+                                  ] ;
+                         :after :Searching_for_answers ;
+                         :escapeOf :Spectres ;
+                         :location :Horizon_Base ;
+                         :year -3 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Forgotten_Droid"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Mission_to_Seelos

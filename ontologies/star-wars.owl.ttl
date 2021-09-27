@@ -24,6 +24,18 @@
 #    Individuals
 #################################################################
 
+###  http://null.com/star-wars#AP-5
+:AP-5 rdf:type owl:NamedIndividual ,
+               :RA-7_Protocol_Droid ,
+               [ rdf:type owl:Restriction ;
+                 owl:onProperty :gender ;
+                 owl:someValuesFrom :Male
+               ] ;
+      :memberOf :Galactic_Empire ,
+                :Phoenix_Cell ;
+      rdfs:seeAlso "https://starwars.fandom.com/wiki/AP-5"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Aayla_Secura
 :Aayla_Secura rdf:type owl:NamedIndividual ,
                        <http://null.com/star-wars#Twi'Lek> ,
@@ -3282,6 +3294,23 @@
                        ] ;
               :friendsWith :Ezra_Bridger ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Hondo_Ohnaka"^^xsd:string .
+
+
+###  http://null.com/star-wars#Horizon_Base
+:Horizon_Base rdf:type owl:NamedIndividual ,
+                       :Base ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :location ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Planet
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :location ;
+                                                                     owl:hasValue :Outer_Rim
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Horizon_Base"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Hosnian_Cataclysm

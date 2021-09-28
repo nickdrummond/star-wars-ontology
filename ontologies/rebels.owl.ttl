@@ -85,14 +85,64 @@
 ###  http://null.com/star-wars#Ahsoka_vs_Vader
 :Ahsoka_vs_Vader rdf:type owl:NamedIndividual ,
                           :Duel ;
-                 :after :Maul_vs_Inquisitors ;
+                 :after :Doublecross_of_Maul ;
                  :during :Twilight_of_the_Apprentice ;
                  :injuryOf :Ahsoka_Tano ,
                            :Darth_Vader ;
-                 :location :Malachor_Sith_Temple ;
+                 :location :Malachor_Superweapon ;
                  :witnessedBy :Ezra_Bridger ;
                  :year -3 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#A_dark_showdown"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Alliance_with_the_Old_Master
+:Alliance_with_the_Old_Master rdf:type owl:NamedIndividual ,
+                                       :Mission ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :found ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Holocron
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :builtBy ;
+                                                                                     owl:hasValue :Sith_Order
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :about ;
+                                                                                     owl:someValuesFrom :Knowledge
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :about ;
+                                                                                     owl:hasValue :Sith_Order
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ;
+                              :after :Attack_by_the_Eighth_Brother ;
+                              :during :Twilight_of_the_Apprentice ;
+                              :participant :Ezra_Bridger ,
+                                           :Maul ;
+                              :year -3 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Attack_by_the_Eighth_Brother
+:Attack_by_the_Eighth_Brother rdf:type owl:NamedIndividual ,
+                                       :Attack ;
+                              :during :Twilight_of_the_Apprentice ;
+                              :location :Malachor_Sith_Temple ;
+                              :participant :Eighth_Brother ;
+                              :survivedBy :Ahsoka_Tano ,
+                                          :Ezra_Bridger ,
+                                          :Kanan_Jarrus ;
+                              :year -3 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#Journey_to_Malachor"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Attack_on_Phoenix_Squadron
@@ -161,7 +211,7 @@
                                         owl:onProperty :participant ;
                                         owl:someValuesFrom :Imperial-class_Star_Destroyer
                                       ] ;
-                             :during :Escape_of_Chopper_and_AP-5 ;
+                             :after :Mission_to_Horizon_Base ;
                              :escapeOf :Phoenix_Cell ;
                              :participant :Ghost ,
                                           :Kassius_Konstantine ,
@@ -272,6 +322,41 @@
                    :year -4 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Blockade_of_Ibaar"^^xsd:anyURI ,
                                 "https://starwars.fandom.com/wiki/Wings_of_the_Master"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Capture_of_the_Eighth_Brother
+:Capture_of_the_Eighth_Brother rdf:type owl:NamedIndividual ,
+                                        :Capture ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :escapeOf ;
+                                                                                      owl:hasValue :Eighth_Brother
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                      owl:onClass [ rdf:type owl:Class ;
+                                                                                                    owl:oneOf ( :Fifth_Brother
+                                                                                                                :Seventh_Sister
+                                                                                                              )
+                                                                                                  ]
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :used ;
+                                          owl:someValuesFrom :Tie_Fighter
+                                        ] ;
+                               :after :Attack_by_the_Eighth_Brother ;
+                               :captureOf :Eighth_Brother ;
+                               :during :Twilight_of_the_Apprentice ;
+                               :location :Malachor_Sith_Temple ;
+                               :victoryOf :C1-10P ;
+                               :year -3 .
 
 
 ###  http://null.com/star-wars#Chopper_locates_Kanan
@@ -693,6 +778,19 @@
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Protector_of_Concord_Dawn#Dogfight_over_Concord_Dawn"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Doublecross_of_Maul
+:Doublecross_of_Maul rdf:type owl:NamedIndividual ,
+                              :Fight ;
+                     :after :Maul_vs_Inquisitors ;
+                     :during :Twilight_of_the_Apprentice ;
+                     :injuryOf :Kanan_Jarrus ;
+                     :location :Malachor_Superweapon ;
+                     :participant :Ahsoka_Tano ;
+                     :survivedBy :Maul ;
+                     :year -3 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#Maul.27s_betrayal"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Escape_from_Lothal
 :Escape_from_Lothal rdf:type owl:NamedIndividual ,
                              :Escape ,
@@ -728,7 +826,10 @@
                                        owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                                  [ rdf:type owl:Restriction ;
                                                                                    owl:onProperty :participant ;
-                                                                                   owl:someValuesFrom :Captain
+                                                                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty :hadRole ;
+                                                                                                        owl:someValuesFrom :Captain
+                                                                                                      ]
                                                                                  ]
                                                                                ) ;
                                                             rdf:type owl:Class
@@ -762,7 +863,10 @@
                                      ] ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :stunningOf ;
-                                       owl:someValuesFrom :Captain
+                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :hadRole ;
+                                                            owl:someValuesFrom :Captain
+                                                          ]
                                      ] ;
                             :after :Mission_to_Horizon_Base ;
                             :injuryOf :AP-5 ;
@@ -1469,6 +1573,23 @@
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Shroud_of_Darkness#Duel_with_the_Inquisitors"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Keeping_Inquisitors_at_bay
+:Keeping_Inquisitors_at_bay rdf:type owl:NamedIndividual ,
+                                     :Fight ;
+                            :after :Alliance_with_the_Old_Master ,
+                                   :Capture_of_the_Eighth_Brother ;
+                            :during :Twilight_of_the_Apprentice ;
+                            :escapeOf :Eighth_Brother ,
+                                      :Fifth_Brother ,
+                                      :Seventh_Sister ;
+                            :location :Malachor_Sith_Temple ;
+                            :participant :Ahsoka_Tano ,
+                                         :Kanan_Jarrus ,
+                                         :Maul ;
+                            :year -3 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#The_Sith_temple"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Kidnapping_of_Leia
 :Kidnapping_of_Leia rdf:type owl:NamedIndividual ,
                              :Capture ,
@@ -1597,11 +1718,12 @@
 ###  http://null.com/star-wars#Maul_vs_Inquisitors
 :Maul_vs_Inquisitors rdf:type owl:NamedIndividual ,
                               :Duel ;
+                     :after :Keeping_Inquisitors_at_bay ;
                      :deathOf :Eighth_Brother ;
                      :during :Twilight_of_the_Apprentice ;
                      :killingOf :Fifth_Brother ,
                                 :Seventh_Sister ;
-                     :location :Malachor_Sith_Temple ;
+                     :location :Malachor_Superweapon ;
                      :victoryOf :Maul ;
                      :year -3 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#An_alliance_of_convenience"^^xsd:anyURI .
@@ -3442,23 +3564,10 @@
 
 ###  http://null.com/star-wars#Twilight_of_the_Apprentice
 :Twilight_of_the_Apprentice rdf:type owl:NamedIndividual ,
-                                     :Fight ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :found ;
-                                       owl:someValuesFrom [ owl:intersectionOf ( :Holocron
-                                                                                 [ rdf:type owl:Restriction ;
-                                                                                   owl:onProperty :builtBy ;
-                                                                                   owl:hasValue :Sith_Order
-                                                                                 ]
-                                                                               ) ;
-                                                            rdf:type owl:Class
-                                                          ]
-                                     ] ;
-                            :injuryOf :Kanan_Jarrus ;
-                            :location :Malachor_Sith_Temple ;
-                            :participant :C1-10P ,
-                                         :Ezra_Bridger ;
-                            :survivedBy :Maul ;
+                                     :Mission ;
+                            :after :Rescue_of_Dicer ;
+                            :location :Malachor ;
+                            :participant :Phantom ;
                             :year -3 ;
                             rdfs:comment """Inquisitors killed by Maul
 LOts of different people fight

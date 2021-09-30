@@ -84,7 +84,21 @@
 
 ###  http://null.com/star-wars#Ahsoka_vs_Vader
 :Ahsoka_vs_Vader rdf:type owl:NamedIndividual ,
-                          :Duel ;
+                          :Duel ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Ezra_Bridger
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :used ;
+                                                                        owl:hasValue :Holocron_from_Malachor
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
                  :after :Doublecross_of_Maul ;
                  :during :Twilight_of_the_Apprentice ;
                  :injuryOf :Ahsoka_Tano ,
@@ -99,17 +113,6 @@
 :Alliance_with_the_Old_Master rdf:type owl:NamedIndividual ,
                                        :Mission ,
                                        [ rdf:type owl:Restriction ;
-                                         owl:onProperty :found ;
-                                         owl:someValuesFrom [ owl:intersectionOf ( :Holocron
-                                                                                   [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty :builtBy ;
-                                                                                     owl:hasValue :Sith_Order
-                                                                                   ]
-                                                                                 ) ;
-                                                              rdf:type owl:Class
-                                                            ]
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
                                          owl:onProperty :included ;
                                          owl:someValuesFrom [ owl:intersectionOf ( :Conversation
                                                                                    [ rdf:type owl:Restriction ;
@@ -123,6 +126,10 @@
                                                                                  ) ;
                                                               rdf:type owl:Class
                                                             ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :found ;
+                                         owl:hasValue :Holocron_from_Malachor
                                        ] ;
                               :after :Attack_by_the_Eighth_Brother ;
                               :during :Twilight_of_the_Apprentice ;
@@ -1573,6 +1580,31 @@
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Shroud_of_Darkness#Duel_with_the_Inquisitors"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Kanan_meets_Bendu
+:Kanan_meets_Bendu rdf:type owl:NamedIndividual ,
+                            :Conversation ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :about ;
+                              owl:someValuesFrom :The_Force
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :about ;
+                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :connectedTo ;
+                                                   owl:someValuesFrom :Krykna
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :about ;
+                              owl:hasValue :Holocron_from_Malachor
+                            ] ;
+                   :after :Rescue_of_Hondo ;
+                   :location :Atollon ;
+                   :participant :Bendu ,
+                                :Kanan_Jarrus ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Steps_Into_Shadow#Separate_journeys"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Keeping_Inquisitors_at_bay
 :Keeping_Inquisitors_at_bay rdf:type owl:NamedIndividual ,
                                      :Fight ;
@@ -1974,6 +2006,131 @@
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Forgotten_Droid"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Mission_to_Reklam_Station
+:Mission_to_Reklam_Station rdf:type owl:NamedIndividual ,
+                                    :Heist ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :destructionOf ;
+                                      owl:someValuesFrom :Dismantler_Droid
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :escapeOf ;
+                                      owl:someValuesFrom :Ugnaught
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Evacuation
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:hasValue :Reklam_Station
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :destructionOf ;
+                                                                                  owl:someValuesFrom [ owl:intersectionOf ( :Tie_Fighter
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty :ownedBy ;
+                                                                                                                              owl:hasValue :Mining_guild
+                                                                                                                            ]
+                                                                                                                          ) ;
+                                                                                                       rdf:type owl:Class
+                                                                                                     ]
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :escapeOf ;
+                                                                                  owl:hasValue :Phantom
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :location ;
+                                                                                  owl:hasValue :Sereeda_Waypoint
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:someValuesFrom :Imperial-class_Star_Destroyer
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:someValuesFrom :Tie_Fighter
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:someValuesFrom :Y-Wing
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Phoenix_Nest
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :escapeOf ;
+                                                                                  owl:hasValue :Ezra_Bridger
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Ghost
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Hera_Syndulla
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Kanan_Jarrus
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :killingOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hadRole ;
+                                                           owl:someValuesFrom :StormTrooper
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :stole ;
+                                      owl:someValuesFrom :Sentinel-class_landing_craft
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :stole ;
+                                      owl:someValuesFrom :Y-Wing
+                                    ] ;
+                           :after :Rescue_of_Hondo ;
+                           :destructionOf :Phantom ,
+                                          :Reklam_Station ;
+                           :escapeOf :Hondo_Ohnaka ,
+                                     :Melch ;
+                           :location :Reklam_Station ;
+                           :participant :Brom_Titus ,
+                                        :C1-10P ,
+                                        :Ezra_Bridger ,
+                                        :Garazeb_Orrelios ,
+                                        :Rex ,
+                                        :Sabine_Wren ;
+                           :year -2 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Mission_to_Reklam_Station"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Mission_to_Seelos
 :Mission_to_Seelos rdf:type owl:NamedIndividual ,
                             :Mission ,
@@ -2369,6 +2526,49 @@
                  :participant :Spectres ;
                  :year -3 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mystery_of_Chopper_Base"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rescue_of_Hondo
+:Rescue_of_Hondo rdf:type owl:NamedIndividual ,
+                          :Rescue ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :destructionOf ;
+                                                                        owl:someValuesFrom :AT-DP
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Mind_trick
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty :connectedTo ;
+                                                                                                                    owl:hasValue :Ezra_Bridger
+                                                                                                                  ]
+                                                                                                                ) ;
+                                                                                             rdf:type owl:Class
+                                                                                           ]
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :killingOf ;
+                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :hadRole ;
+                                                 owl:someValuesFrom :StormTrooper
+                                               ]
+                          ] ;
+                 :escapeOf :Hondo_Ohnaka ;
+                 :killingOf :Terba ;
+                 :location :Naraka_Prison ;
+                 :participant :C1-10P ,
+                              :Ezra_Bridger ,
+                              :Garazeb_Orrelios ,
+                              :Sabine_Wren ;
+                 :sometimeAfter :Twilight_of_the_Apprentice ;
+                 :year -2 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Steps_Into_Shadow#Prison_break"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rescue_of_Kanan

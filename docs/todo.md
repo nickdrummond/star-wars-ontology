@@ -24,7 +24,7 @@
 * Check all events have dates and are not orphaned - see Sparql test
 
 * Series
-    * Rebels - series 2(22) 3(22), 4(16)
+    * Rebels - series 3(22), 4(16)
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Bad Batch - 1 series eps(incomplete)
 

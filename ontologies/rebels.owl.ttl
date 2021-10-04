@@ -192,6 +192,39 @@
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_Phoenix_Squadron_(4_BBY)"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Attack_on_Relief_Vessels
+:Attack_on_Relief_Vessels rdf:type owl:NamedIndividual ,
+                                   :Attack ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :destructionOf ;
+                                     owl:someValuesFrom :A-Wing
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :destructionOf ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :GR-75_medium_transport
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :ownedBy ;
+                                                                                 owl:hasValue :Phoenix_Cell
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:someValuesFrom :Arquitens-class_command_cruiser
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:someValuesFrom :Tie_Fighter
+                                   ] ;
+                          :after :Two_Holocrons_and_Maul ;
+                          :location :Teralov ;
+                          :participant :Vult_Skerris ;
+                          :year -2 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Massacre_near_Teralov"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Attack_on_the_Rebel_Cruiser
 :Attack_on_the_Rebel_Cruiser rdf:type owl:NamedIndividual ,
                                       :Attack ,
@@ -264,7 +297,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :destructionOf ;
-                              owl:someValuesFrom [ owl:intersectionOf ( :Transport
+                              owl:someValuesFrom [ owl:intersectionOf ( :Corvette
                                                                         [ rdf:type owl:Restriction ;
                                                                           owl:onProperty :memberOf ;
                                                                           owl:hasValue :Phoenix_Cell
@@ -576,6 +609,54 @@
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Gathering_Forces"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Defecting_pilots
+:Defecting_pilots rdf:type owl:NamedIndividual ,
+                           :Trap ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :escapeOf ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Crew
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :ofShip ;
+                                                                         owl:someValuesFrom :Blockade_Runner
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :C1-10P
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Ezra_Bridger
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Kanan_Jarrus
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :killingOf ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Cadet
+                                                                       :Pilot
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :ofShip ;
+                                                                         owl:someValuesFrom :Tie_Fighter
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  :after :Undercover_at_Skystrike_Academy ;
+                  :captureOf :Hobbie ,
+                             :Sabine_Wren ,
+                             :Wedge_Antilles ;
+                  :orderedBy :Arihnda_Pryce ;
+                  :participant :Vult_Skerris ;
+                  :year -2 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Antilles_Extraction#Flying_into_a_trap"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Delivery_of_Corvettes
 :Delivery_of_Corvettes rdf:type owl:NamedIndividual ,
                                 :Mission ,
@@ -814,6 +895,66 @@
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Getting_off_of_Lothal"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Escape_from_Skystrike
+:Escape_from_Skystrike rdf:type owl:NamedIndividual ,
+                                :Escape ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :injuryOf ;
+                                                                              owl:hasValue :Arihnda_Pryce
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Sabine_Wren
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:someValuesFrom :Blockade_Runner
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :escapeOf ;
+                                                                              owl:hasValue :Hobbie
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :escapeOf ;
+                                                                              owl:hasValue :Wedge_Antilles
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Sabine_Wren
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :stole ;
+                                  owl:someValuesFrom :TIE_bomber
+                                ] ;
+                       :after :Defecting_pilots ;
+                       :escapeOf :Sabine_Wren ;
+                       :location :Skystrike_Academy_Montross ;
+                       :participant :Vult_Skerris ;
+                       :year -2 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Antilles_Extraction#Second_attempt"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Escape_of_Chopper_and_AP-5
 :Escape_of_Chopper_and_AP-5 rdf:type owl:NamedIndividual ,
                                      :Escape ,
@@ -930,7 +1071,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :participant ;
-                               owl:someValuesFrom :Transport
+                               owl:someValuesFrom :Troop_Transporter
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :participant ;
@@ -3931,6 +4072,34 @@ Ahsoka and Vader injured"""^^xsd:string ;
                         :location :Vizsla_Keep_09 ;
                         :year -2 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Holocrons_of_Fate#Confronting_Maul"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Undercover_at_Skystrike_Academy
+:Undercover_at_Skystrike_Academy rdf:type owl:NamedIndividual ,
+                                          :Mission ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Mission
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:hasValue :Arihnda_Pryce
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:hasValue :Kallus
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ;
+                                 :after :Attack_on_Relief_Vessels ;
+                                 :location :Skystrike_Academy_Montross ;
+                                 :participant :Hobbie ,
+                                              :Sabine_Wren ,
+                                              :Skystrike_Academy ,
+                                              :Wedge_Antilles ;
+                                 :year -2 ;
+                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Antilles_Extraction#Undercover_at_Skystrike_Academy"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Undercover_in_the_Academy

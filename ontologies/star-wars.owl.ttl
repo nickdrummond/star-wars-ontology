@@ -14,6 +14,10 @@
 #    Classes
 #################################################################
 
+###  http://null.com/star-wars#Academy
+:Academy rdf:type owl:Class .
+
+
 ###  http://null.com/star-wars#Hammerhead_corvette
 :Hammerhead_corvette rdf:type owl:Class ;
                      rdfs:subClassOf :Corvette ;
@@ -2474,6 +2478,7 @@
               :visited :Lothal_Jedi_Temple ,
                        :World_Between_Worlds ;
               :born -19 ;
+              :callsign "Spectre 6"^^xsd:string ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Ezra_Bridger"^^xsd:anyURI .
 
 
@@ -3336,6 +3341,43 @@
                :memberOf :Spectres ;
                :born -29 ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera_Syndulla"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hobbie
+:Hobbie rdf:type owl:NamedIndividual ,
+                 :Human ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :gender ;
+                   owl:someValuesFrom :Male
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom [ owl:intersectionOf ( :Cadet
+                                                             :Pilot
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :ofShip ;
+                                                               owl:someValuesFrom :Tie_Fighter
+                                                             ]
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :inOrganisation ;
+                                                               owl:hasValue :Skystrike_Academy
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :inOrganisation ;
+                                                               owl:hasValue :Rebel_Alliance
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
+                 ] ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Derek_Klivian"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Holocron_from_Malachor
@@ -6647,11 +6689,24 @@
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hadRole ;
                         owl:someValuesFrom :Mandalorian
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Cadet
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :Galactic_Empire
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
                       ] ;
              :from :Krownest ;
              :memberOf :Spectres ;
              :owned :Darksaber ;
              :born -21 ;
+             :aka "Ria Talla"^^xsd:string ;
+             :callsign "Spectre 5"^^xsd:string ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Sabine_Wren"^^xsd:anyURI .
 
 
@@ -7071,6 +7126,20 @@
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Skreek"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Skystrike_Academy
+:Skystrike_Academy rdf:type owl:NamedIndividual ,
+                            :Academy ;
+                   :location :Skystrike_Academy_Montross ;
+                   :memberOf :Galactic_Empire ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Skystrike_Academy"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Skystrike_Academy_Montross
+:Skystrike_Academy_Montross rdf:type owl:NamedIndividual ,
+                                     :Space_Station ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Skystrike_Academy"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Skywalker_Dyad
 :Skywalker_Dyad rdf:type owl:NamedIndividual ,
                          :Dyad ,
@@ -7480,6 +7549,12 @@
                 :Planet ;
        :location :Unknown_Regions ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Tehar"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Teralov
+:Teralov rdf:type owl:NamedIndividual ,
+                  :Planet ;
+         rdfs:seeAlso "https://starwars.fandom.com/wiki/Teralov"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Terba
@@ -8193,6 +8268,28 @@
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Vranki%27s_Hotel_and_Casino"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Vult_Skerris
+:Vult_Skerris rdf:type owl:NamedIndividual ,
+                       :Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :gender ;
+                         owl:someValuesFrom :Male
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Captain
+                                                                   :Pilot
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :inOrganisation ;
+                                                                     owl:hasValue :Galactic_Empire
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Vult_Skerris"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Vuutun_Palaa
 :Vuutun_Palaa rdf:type owl:NamedIndividual ,
                        :Lucrehulk_Freighter ;
@@ -8252,14 +8349,15 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :hadRole ;
-                           owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                           owl:someValuesFrom [ owl:intersectionOf ( :Cadet
+                                                                     :Pilot
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :ofShip ;
                                                                        owl:someValuesFrom :Tie_Fighter
                                                                      ]
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :inOrganisation ;
-                                                                       owl:hasValue :Galactic_Empire
+                                                                       owl:hasValue :Skystrike_Academy
                                                                      ]
                                                                    ) ;
                                                 rdf:type owl:Class

@@ -399,6 +399,43 @@
                                :year -3 .
 
 
+###  http://null.com/star-wars#Chase_on_Ryloth
+:Chase_on_Ryloth rdf:type owl:NamedIndividual ,
+                          :Escape ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :destructionOf ;
+                            owl:someValuesFrom :Speeder_Bike
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :destructionOf ;
+                            owl:someValuesFrom :Troop_Transporter
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :escapeOf ;
+                            owl:someValuesFrom :Bluurg
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :stole ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Armour
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :ownedBy ;
+                                                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty :hadRole ;
+                                                                                             owl:someValuesFrom :StormTrooper
+                                                                                           ]
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
+                 :after :Escape_from_Skystrike ;
+                 :escapeOf :Cham_Syndulla ,
+                           :Numa ;
+                 :location :Ryloth ;
+                 :participant :Ghost ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera%27s_Heroes#Rendezvous"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Chopper_locates_Kanan
 :Chopper_locates_Kanan rdf:type owl:NamedIndividual ,
                                 :Mission ,
@@ -637,14 +674,17 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :killingOf ;
-                             owl:someValuesFrom [ owl:intersectionOf ( :Cadet
-                                                                       :Pilot
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :ofShip ;
-                                                                         owl:someValuesFrom :Tie_Fighter
-                                                                       ]
-                                                                     ) ;
-                                                  rdf:type owl:Class
+                             owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hadRole ;
+                                                  owl:someValuesFrom [ owl:intersectionOf ( :Cadet
+                                                                                            :Pilot
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :ofShip ;
+                                                                                              owl:someValuesFrom :Tie_Fighter
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ]
                                                 ]
                            ] ;
                   :after :Undercover_at_Skystrike_Academy ;
@@ -844,6 +884,30 @@
                            :location :Lothal ;
                            :orderedBy :Darth_Vader ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Getting_off_of_Lothal"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Diversion_on_Ryloth
+:Diversion_on_Ryloth rdf:type owl:NamedIndividual ,
+                              :Fight ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :destructionOf ;
+                                owl:someValuesFrom :AT-DP
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :destructionOf ;
+                                owl:someValuesFrom :Troop_Transporter
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :killingOf ;
+                                owl:someValuesFrom :Bluurg
+                              ] ;
+                     :after :Chase_on_Ryloth ;
+                     :location :Ryloth ;
+                     :participant :Cham_Syndulla ,
+                                  :Gobi_Glie ,
+                                  :Spectres ;
+                     :year -2 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera%27s_Heroes#Homeward_Bound"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Dogfight_over_Concord_Dawn
@@ -2723,6 +2787,37 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mystery_of_Chopper_Base"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Rescue_of_Hera
+:Rescue_of_Hera rdf:type owl:NamedIndividual ,
+                         :Rescue ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :destructionOf ;
+                           owl:someValuesFrom :AT-DP
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :destructionOf ;
+                                                                       owl:hasValue :Syndulla_residence
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :C1-10P
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                :after :Retrieving_the_Kalikori ;
+                :escapeOf :Cham_Syndulla ,
+                          :Spectres ;
+                :location :Syndulla_residence ;
+                :participant :Ghost ;
+                :witnessedBy :Cham_Syndulla ;
+                :year -2 ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera%27s_Heroes#The_prisoner_exchange"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Rescue_of_Hondo
 :Rescue_of_Hondo rdf:type owl:NamedIndividual ,
                           :Rescue ,
@@ -3052,6 +3147,52 @@
                                                    :Kanan_Jarrus ;
                                       :year -2 ;
                                       rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Holocrons_of_Fate#Bendu.27s_lair"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Retrieving_the_Kalikori
+:Retrieving_the_Kalikori rdf:type owl:NamedIndividual ,
+                                  :Mission ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :participant ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                         owl:oneOf ( :C1-10P
+                                                                                   )
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :disguisedAs ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :inOrganisation ;
+                                                                                              owl:hasValue :Galactic_Empire
+                                                                                            ]
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :participant ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                         owl:oneOf ( :Ezra_Bridger
+                                                                                   )
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :disguisedAs ;
+                                                                         owl:someValuesFrom :StormTrooper
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                                  ] ;
+                         :during :Diversion_on_Ryloth ;
+                         :found :Syndulla_Kalikori ;
+                         :location :Syndulla_residence ;
+                         :participant :Hera_Syndulla ,
+                                      :Slavin ,
+                                      :Thrawn ;
+                         :year -2 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera%27s_Heroes#Homeward_Bound"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Returning_Droids_to_Bail

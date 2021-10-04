@@ -2807,12 +2807,20 @@
                                                                    ) ;
                                                 rdf:type owl:Class
                                               ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :participant ;
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hadRole ;
+                                                owl:someValuesFrom :StormTrooper
+                                              ]
                          ] ;
                 :after :Retrieving_the_Kalikori ;
                 :escapeOf :Cham_Syndulla ,
                           :Spectres ;
                 :location :Syndulla_residence ;
-                :participant :Ghost ;
+                :participant :Ghost ,
+                             :Slavin ;
                 :witnessedBy :Cham_Syndulla ;
                 :year -2 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera%27s_Heroes#The_prisoner_exchange"^^xsd:anyURI .
@@ -4289,6 +4297,91 @@ Ahsoka and Vader injured"""^^xsd:string ;
                    :participant :Darth_Vader ,
                                 :Ezra_Bridger ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Duel_with_the_Dark_Lord"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Wargames_with_the_Droid_Army
+:Wargames_with_the_Droid_Army rdf:type owl:NamedIndividual ,
+                                       :Fight ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :destructionOf ;
+                                         owl:someValuesFrom :Destroyer_Droid
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :C1-10P
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :destructionOf ;
+                                                                                     owl:someValuesFrom :Shuttle
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :escapeOf ;
+                                                                                     owl:someValuesFrom :Battle_Droid
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:someValuesFrom :AT-AT
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:someValuesFrom :AT-DP
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty :hadRole ;
+                                                                                                          owl:someValuesFrom :StormTrooper
+                                                                                                        ]
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :escapeOf ;
+                                                                                     owl:hasValue :Spectres
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :killingOf ;
+                                         owl:someValuesFrom :B1_Battle_Droid
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :location ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :DH-Omni_Support_Vessel
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :location ;
+                                                                                     owl:hasValue :Agamar
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :captureOf ;
+                                         owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                         owl:onClass [ rdf:type owl:Class ;
+                                                       owl:oneOf ( :Ezra_Bridger
+                                                                   :Garazeb_Orrelios
+                                                                   :Kanan_Jarrus
+                                                                   :Rex
+                                                                 )
+                                                     ]
+                                       ] ;
+                              :after :Rescue_of_Hera ;
+                              :found :Phantom_II ;
+                              :participant :Kalani ;
+                              :year -2 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Last_Battle"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Wookie_Rescue

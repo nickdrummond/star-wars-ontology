@@ -18,10 +18,84 @@
 :Academy rdf:type owl:Class .
 
 
+###  http://null.com/star-wars#Clone
+:Clone rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :ownedBy ;
+                         owl:hasValue :Galactic_Republic
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :wasCloneOf ;
+                         owl:hasValue :Jango_Fett
+                       ] .
+
+
+###  http://null.com/star-wars#Dark_Lord
+:Dark_Lord rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :inOrganisation ;
+                             owl:hasValue :Sith_Order
+                           ] .
+
+
+###  http://null.com/star-wars#Fulcrum
+:Fulcrum rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :inOrganisation ;
+                           owl:hasValue :Rebel_Alliance
+                         ] .
+
+
+###  http://null.com/star-wars#Grand_Moff
+:Grand_Moff rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :inOrganisation ;
+                              owl:hasValue :Galactic_Empire
+                            ] .
+
+
 ###  http://null.com/star-wars#Hammerhead_corvette
 :Hammerhead_corvette rdf:type owl:Class ;
                      rdfs:subClassOf :Corvette ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Sphyrna-class_Hammerhead_corvette"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Imperial-class_Star_Destroyer
+:Imperial-class_Star_Destroyer rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :ownedBy ;
+                                                 owl:hasValue :Galactic_Empire
+                                               ] .
+
+
+###  http://null.com/star-wars#Inquisitor
+:Inquisitor rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :inOrganisation ;
+                              owl:hasValue :Galactic_Empire
+                            ] .
+
+
+###  http://null.com/star-wars#Loth-wolf
+:Loth-wolf rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :connectedTo ;
+                             owl:hasValue :World_Between_Worlds
+                           ] .
+
+
+###  http://null.com/star-wars#Resurgent-class_Star_Destroyer
+:Resurgent-class_Star_Destroyer rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :ownedBy ;
+                                                  owl:hasValue :First_Order
+                                                ] .
+
+
+###  http://null.com/star-wars#Venator-class_Star_Destroyer
+:Venator-class_Star_Destroyer rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                owl:onProperty :ownedBy ;
+                                                owl:hasValue :Galactic_Republic
+                                              ] .
+
+
+###  http://null.com/star-wars#Xyston-class_Star_Destroyer
+:Xyston-class_Star_Destroyer rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                               owl:onProperty :ownedBy ;
+                                               owl:hasValue :Final_Order
+                                             ] .
 
 
 #################################################################
@@ -3075,6 +3149,18 @@
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Gonky_(Clone_Force_99)"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Gooti_Terez
+:Gooti_Terez rdf:type owl:NamedIndividual ,
+                      :Theelin ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :gender ;
+                        owl:someValuesFrom :Female
+                      ] ;
+             :from :Mykapo ;
+             :memberOf :Iron_Squadron ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Gooti_Terez"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Gor_Koresh
 :Gor_Koresh rdf:type owl:NamedIndividual ,
                      :Abyssin ,
@@ -4073,6 +4159,18 @@
             :from :Coruscant ;
             :memberOf :Jedi_High_Council ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Jocasta_Nu"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Jonner_Jin
+:Jonner_Jin rdf:type owl:NamedIndividual ,
+                     :Human ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :gender ;
+                       owl:someValuesFrom :Male
+                     ] ;
+            :from :Mykapo ;
+            :memberOf :Iron_Squadron ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Jonner_Jin"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Jun_Sato
@@ -6576,6 +6674,13 @@
        rdfs:seeAlso "https://starwars.fandom.com/wiki/R2-D2"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#R3-A3
+:R3-A3 rdf:type owl:NamedIndividual ,
+                :Astromech ;
+       :memberOf :Iron_Squadron ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/R3-A3"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#R4-P17
 :R4-P17 rdf:type owl:NamedIndividual ,
                  :Astromech ;
@@ -7063,6 +7168,7 @@
 :Satos_Hammer rdf:type owl:NamedIndividual ,
                        :YT-2400_light_freighter ;
               :memberOf :Iron_Squadron ;
+              :ownedBy :Mart_Mattin ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Sato%27s_Hammer"^^xsd:anyURI .
 
 
@@ -8804,7 +8910,12 @@
 
 
 ###  http://null.com/star-wars#World_Between_Worlds
-:World_Between_Worlds rdf:type owl:NamedIndividual ;
+:World_Between_Worlds rdf:type owl:NamedIndividual ,
+                               :Place_in_the_Force ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :connectedTo ;
+                                 owl:someValuesFrom :The_Force
+                               ] ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/World_Between_Worlds"^^xsd:anyURI .
 
 

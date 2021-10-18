@@ -1,0 +1,212 @@
+@prefix : <http://null.com/star-wars#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://null.com/star-wars#> .
+
+<http://null.com/star-wars/test.owl.ttl> rdf:type owl:Ontology ;
+                                          owl:imports <http://null.com/star-wars/all.owl.ttl> ;
+                                          rdfs:comment """A set of domains/disjoints etc that will help quality assurance by catching inconsistencies while the ontologies are being built but keeping these separate for the sake of performance.
+
+see performance.md"""^^xsd:string .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://null.com/star-wars#about
+:about rdfs:domain [ rdf:type owl:Class ;
+                     owl:unionOf ( :Communication
+                                   :Force_Vision
+                                   :Information
+                                 )
+                   ] .
+
+
+###  http://null.com/star-wars#after
+:after rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#before
+:before rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#builtBy
+:builtBy rdfs:range :Actor .
+
+
+###  http://null.com/star-wars#connectedTo
+:connectedTo rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Actor
+                                         :Object
+                                         :Place
+                                       )
+                         ] ;
+             rdfs:range [ rdf:type owl:Class ;
+                          owl:unionOf ( :Actor
+                                        :Object
+                                        :Place
+                                      )
+                        ] .
+
+
+###  http://null.com/star-wars#delivered
+:delivered rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#disguisedAs
+:disguisedAs rdfs:domain :Being ;
+             rdfs:range :Role .
+
+
+###  http://null.com/star-wars#during
+:during rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#eatingOf
+:eatingOf rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#fitted
+:fitted rdfs:range [ rdf:type owl:Class ;
+                     owl:unionOf ( :Equipment
+                                   :Parts
+                                 )
+                   ] .
+
+
+###  http://null.com/star-wars#found
+:found rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#gender
+:gender rdfs:domain :Being ;
+        rdfs:range :Gender .
+
+
+###  http://null.com/star-wars#hadMember
+:hadMember rdfs:domain :Organisation .
+
+
+###  http://null.com/star-wars#hadRole
+:hadRole rdfs:domain :Being ;
+         rdfs:range :Role .
+
+
+###  http://null.com/star-wars#hasTerrain
+:hasTerrain rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :Asteroid
+                                        :Moon
+                                        :Planet
+                                      )
+                        ] ;
+            rdfs:range :Habitat .
+
+
+###  http://null.com/star-wars#homeworldOf
+:homeworldOf rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Moon
+                                         :Planet
+                                       )
+                         ] .
+
+
+###  http://null.com/star-wars#inConflictWith
+:inConflictWith rdfs:domain :Actor ;
+                rdfs:range :Actor .
+
+
+###  http://null.com/star-wars#inOrganisation
+:inOrganisation rdfs:domain :Role ;
+                rdfs:range :Organisation .
+
+
+###  http://null.com/star-wars#included
+:included rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#knew
+:knew rdfs:domain :Actor ;
+      rdfs:range :Actor .
+
+
+###  http://null.com/star-wars#location
+:location rdfs:range :Place .
+
+
+###  http://null.com/star-wars#madeOf
+:madeOf rdfs:domain :Object ;
+        rdfs:range :Material .
+
+
+###  http://null.com/star-wars#memberOf
+:memberOf rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :Actor
+                                      :Vehicle
+                                    )
+                      ] .
+
+
+###  http://null.com/star-wars#ofShip
+:ofShip rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :Crew
+                                    :Role
+                                  )
+                    ] ;
+        rdfs:range :Ship .
+
+
+###  http://null.com/star-wars#ordered
+:ordered rdfs:domain :Actor .
+
+
+###  http://null.com/star-wars#orderedBy
+:orderedBy rdfs:domain :Event ;
+           rdfs:range :Actor .
+
+
+###  http://null.com/star-wars#owned
+:owned rdfs:domain :Actor .
+
+
+###  http://null.com/star-wars#ownedBy
+:ownedBy rdfs:range :Actor .
+
+
+###  http://null.com/star-wars#participant
+:participant rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#relatedTo
+:relatedTo rdfs:domain :Living_thing ;
+           rdfs:range :Living_thing .
+
+
+###  http://null.com/star-wars#sentience
+:sentience rdfs:domain :Being ;
+           rdfs:range :Sentience .
+
+
+###  http://null.com/star-wars#sometimeAfter
+:sometimeAfter rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#sometimeBefore
+:sometimeBefore rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#stole
+:stole rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#traded
+:traded rdfs:domain :Event .
+
+
+###  http://null.com/star-wars#visited
+:visited rdfs:range :Place .
+
+
+###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

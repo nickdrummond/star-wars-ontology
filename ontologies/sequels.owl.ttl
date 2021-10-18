@@ -220,6 +220,10 @@
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Takodana"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Confrontation_in_the_Emperors_Throne_Room
+:Confrontation_in_the_Emperors_Throne_Room rdf:type owl:NamedIndividual .
+
+
 ###  http://null.com/star-wars#Confronting_the_Phantom_Emperor
 :Confronting_the_Phantom_Emperor rdf:type owl:NamedIndividual ,
                                           :Confrontation ;
@@ -288,7 +292,6 @@
                    :after :Assault_on_Tuanul ;
                    :escapeOf :FN-2187 ,
                              :Poe_Dameron ;
-                   :friendsWith :Poe_Dameron ;
                    :location :Finalizer ;
                    :year 34 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Finn#Deserting_from_the_First_Order"^^xsd:anyURI .
@@ -341,10 +344,6 @@
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Destruction_of_the_Jedi_Temple"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Emperors_Throne_Room
-:Emperors_Throne_Room rdf:type owl:NamedIndividual .
-
-
 ###  http://null.com/star-wars#End_of_Sith_Eternal
 :End_of_Sith_Eternal rdf:type owl:NamedIndividual ,
                               :Confrontation ,
@@ -353,7 +352,10 @@
                                 owl:someValuesFrom [ owl:intersectionOf ( :The_Force
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :connectedTo ;
-                                                                            owl:someValuesFrom :Jedi
+                                                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hadRole ;
+                                                                                                 owl:someValuesFrom :Jedi
+                                                                                               ]
                                                                           ]
                                                                         ) ;
                                                      rdf:type owl:Class
@@ -461,8 +463,15 @@
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :included ;
                         owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty :connectedTo ;
-                                                                    owl:someValuesFrom :The_Force
+                                                                    owl:onProperty :participant ;
+                                                                    owl:someValuesFrom [ owl:intersectionOf ( :Force_Vision
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty :about ;
+                                                                                                                owl:hasValue :Luke_Skywalker
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ]
                                                                   ]
                                                                   [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :found ;
@@ -682,15 +691,33 @@
 :Retrieving_Palpatines_Wayfinder rdf:type owl:NamedIndividual ,
                                           :Mission ,
                                           [ rdf:type owl:Restriction ;
-                                            owl:onProperty :destructionOf ;
-                                            owl:someValuesFrom [ owl:intersectionOf ( :Wayfinder
+                                            owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
                                                                                       [ rdf:type owl:Restriction ;
-                                                                                        owl:onProperty :location ;
-                                                                                        owl:hasValue :Emperors_Throne_Room
+                                                                                        owl:onProperty :destructionOf ;
+                                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Wayfinder
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty :ownedBy ;
+                                                                                                                                    owl:hasValue :Darth_Sidious
+                                                                                                                                  ]
+                                                                                                                                ) ;
+                                                                                                             rdf:type owl:Class
+                                                                                                           ]
                                                                                       ]
                                                                                       [ rdf:type owl:Restriction ;
-                                                                                        owl:onProperty :ownedBy ;
-                                                                                        owl:hasValue :Darth_Sidious
+                                                                                        owl:onProperty :location ;
+                                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Throne_Room
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty :location ;
+                                                                                                                                    owl:hasValue :Death_Star_Ruins
+                                                                                                                                  ]
+                                                                                                                                ) ;
+                                                                                                             rdf:type owl:Class
+                                                                                                           ]
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:hasValue :Kylo_Ren
                                                                                       ]
                                                                                     ) ;
                                                                  rdf:type owl:Class
@@ -868,7 +895,7 @@
                                                                       owl:someValuesFrom [ owl:intersectionOf ( :Book
                                                                                                                 [ rdf:type owl:Restriction ;
                                                                                                                   owl:onProperty :ownedBy ;
-                                                                                                                  owl:someValuesFrom :Jedi
+                                                                                                                  owl:hasValue :Jedi_Order
                                                                                                                 ]
                                                                                                               ) ;
                                                                                            rdf:type owl:Class

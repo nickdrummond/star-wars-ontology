@@ -84,6 +84,10 @@
                                                 ] .
 
 
+###  http://null.com/star-wars#Throne_Room
+:Throne_Room rdf:type owl:Class .
+
+
 ###  http://null.com/star-wars#Venator-class_Star_Destroyer
 :Venator-class_Star_Destroyer rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                 owl:onProperty :ownedBy ;
@@ -293,7 +297,7 @@
                             :Religious_Order ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :alliedWith ;
-                              owl:someValuesFrom :Sith
+                              owl:hasValue :Sith_Order
                             ] ;
                    :location :Mustafar ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Alazmec_of_Winsit"^^xsd:anyURI .
@@ -571,7 +575,7 @@
                    owl:someValuesFrom :Bartender
                  ] ,
                  [ rdf:type owl:Restriction ;
-                   owl:onProperty :loved ;
+                   owl:onProperty :used ;
                    owl:someValuesFrom :Space_Waffles
                  ] ,
                  [ rdf:type owl:Restriction ;
@@ -1069,7 +1073,7 @@
                         owl:onProperty :hadRole ;
                         owl:someValuesFrom [ owl:intersectionOf ( :Trader
                                                                   [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty :traded ;
+                                                                    owl:onProperty :of ;
                                                                     owl:someValuesFrom :Gorg
                                                                   ]
                                                                 ) ;
@@ -1713,7 +1717,7 @@
                                           ]
                      ] ,
                      [ rdf:type owl:Restriction ;
-                       owl:onProperty :traded ;
+                       owl:onProperty :owned ;
                        owl:someValuesFrom [ owl:intersectionOf ( :Armour
                                                                  [ rdf:type owl:Restriction ;
                                                                    owl:onProperty :ownedBy ;
@@ -1868,6 +1872,7 @@
 :Crait_outpost rdf:type owl:NamedIndividual ,
                         :Base ;
                :builtBy :Rebel_Alliance ;
+               :location :Crait ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Crait_outpost"^^xsd:anyURI .
 
 
@@ -3204,8 +3209,8 @@
                    owl:onProperty :hadRole ;
                    owl:someValuesFrom [ owl:intersectionOf ( :Bounty_Hunter
                                                              [ rdf:type owl:Restriction ;
-                                                               owl:onProperty :employedBy ;
-                                                               owl:hasValue :Jabba
+                                                               owl:onProperty :inOrganisation ;
+                                                               owl:hasValue :Jabbas_Empire
                                                              ]
                                                            ) ;
                                         rdf:type owl:Class
@@ -4320,7 +4325,7 @@
 :Kanans_Jedi_Holocron rdf:type owl:NamedIndividual ,
                                :Holocron ;
                       :builtBy :Jedi_Order ;
-                      :owned :Kanan_Jarrus ;
+                      :ownedBy :Kanan_Jarrus ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Kanan_Jarrus%27_holocron"^^xsd:anyURI .
 
 
@@ -4639,7 +4644,6 @@
                   owl:onProperty :hadRole ;
                   owl:someValuesFrom :Pilot
                 ] ;
-       :alliedWith :Millenium_Falcon ;
        :builtBy :L3-37 ;
        :friendsWith :Lando_Calrissian ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/L3-37"^^xsd:anyURI .
@@ -8133,14 +8137,17 @@
 :The_Mythrol rdf:type owl:NamedIndividual ,
                       :Mythrol ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :stole ;
-                        owl:someValuesFrom [ owl:intersectionOf ( :Money
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty :ownedBy ;
-                                                                    owl:hasValue :Greef_Karga
-                                                                  ]
-                                                                ) ;
-                                             rdf:type owl:Class
+                        owl:onProperty :participatedIn ;
+                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                             owl:onProperty :stole ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( :Money
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :ownedBy ;
+                                                                                         owl:hasValue :Greef_Karga
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
                                            ]
                       ] ;
              :employedBy :Greef_Karga ;

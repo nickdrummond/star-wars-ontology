@@ -2,6 +2,12 @@
 
 [back to index](index.md)
 
+
+For the sake of performance, some assertions have been put in
+[test.owl.ttl](../ontologies/test.owl.ttl) so that inconsistencies can be
+caught during the engineering of these ontologies but not
+at the expense of classification times.
+
 ## Speed Tests
 We have some basic metrics being checked - see [ConsistencyTest](../src/test/java/com/nickd/sw/ConsistencyTest.java)
 

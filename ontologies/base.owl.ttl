@@ -54,6 +54,17 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
             rdfs:comment "A temporary join of two individuals or organisations"^^xsd:string .
 
 
+###  http://null.com/star-wars#assistedBy
+:assistedBy rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :participant ;
+            owl:inverseOf :assistedDuring .
+
+
+###  http://null.com/star-wars#assistedDuring
+:assistedDuring rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :participatedIn .
+
+
 ###  http://null.com/star-wars#before
 :before rdf:type owl:ObjectProperty .
 
@@ -81,7 +92,7 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 ###  http://null.com/star-wars#connectedTo
 :connectedTo rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :knew ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
              rdf:type owl:SymmetricProperty .
 
 
@@ -173,10 +184,6 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 ###  http://null.com/star-wars#failureOf
 :failureOf rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :participant .
-
-
-###  http://null.com/star-wars#fellInto
-:fellInto rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#fitted
@@ -842,6 +849,11 @@ or minus is BBY"""^^xsd:string .
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_droid"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Being
+:Being rdf:type owl:Class ;
+       rdfs:subClassOf :Actor .
+
+
 ###  http://null.com/star-wars#Besalisk
 :Besalisk rdf:type owl:Class ;
           rdfs:subClassOf :Humanoid ;
@@ -1339,7 +1351,8 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Droid
 :Droid rdf:type owl:Class ;
-       rdfs:subClassOf :Actor ;
+       rdfs:subClassOf :Being ;
+       owl:disjointWith :Living_thing ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Droid"^^xsd:anyURI .
 
 
@@ -2022,10 +2035,13 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Junk_Dealer
 :Junk_Dealer rdf:type owl:Class ;
-             rdfs:subClassOf :Trader ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :traded ;
-                               owl:someValuesFrom :Parts
+             rdfs:subClassOf [ owl:intersectionOf ( :Trader
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :of ;
+                                                      owl:someValuesFrom :Parts
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
                              ] .
 
 
@@ -2237,7 +2253,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Living_thing
 :Living_thing rdf:type owl:Class ;
-              rdfs:subClassOf :Actor .
+              rdfs:subClassOf :Being .
 
 
 ###  http://null.com/star-wars#Loth-wolf
@@ -3344,6 +3360,11 @@ or minus is BBY"""^^xsd:string .
        rdfs:subClassOf :Criminal .
 
 
+###  http://null.com/star-wars#Throne_Room
+:Throne_Room rdf:type owl:Class ;
+             rdfs:subClassOf :Facility .
+
+
 ###  http://null.com/star-wars#Tibidee
 :Tibidee rdf:type owl:Class ;
          rdfs:subClassOf :Flying_Creature ,
@@ -3785,6 +3806,14 @@ or minus is BBY"""^^xsd:string .
 
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Being
+                :Organisation
+                :The_Force
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Built_Location
                 :Celestial_Location
                 :Habitat
@@ -3846,15 +3875,6 @@ or minus is BBY"""^^xsd:string .
   owl:members ( :Dreadnought
                 :Star_Cruiser
                 :Star_Destroyer
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Droid
-                :Living_thing
-                :Organisation
-                :The_Force
               )
 ] .
 

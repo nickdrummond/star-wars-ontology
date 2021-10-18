@@ -1694,7 +1694,10 @@
                              owl:someValuesFrom [ owl:intersectionOf ( :StarFighter
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :ownedBy ;
-                                                                         owl:someValuesFrom :Pirate
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :hadRole ;
+                                                                                              owl:someValuesFrom :Pirate
+                                                                                            ]
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -1787,7 +1790,10 @@
                                         owl:someValuesFrom [ owl:intersectionOf ( :Armour
                                                                                   [ rdf:type owl:Restriction ;
                                                                                     owl:onProperty :ownedBy ;
-                                                                                    owl:someValuesFrom :StormTrooper
+                                                                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty :hadRole ;
+                                                                                                         owl:someValuesFrom :StormTrooper
+                                                                                                       ]
                                                                                   ]
                                                                                 ) ;
                                                              rdf:type owl:Class
@@ -2322,6 +2328,20 @@
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Relic_Raiders"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#TIE_Fighter_Training
+:TIE_Fighter_Training rdf:type owl:NamedIndividual ,
+                               :Training ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :location ;
+                                 owl:someValuesFrom :Space
+                               ] ;
+                      :after <http://null.com/star-wars#Skirmish_at_D'Qar> ;
+                      :participant :Tamara_Ryvora ;
+                      :survivedBy :Jace_Rucklin ;
+                      :year 34 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Live_Fire#A_live_fire_exercise"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Tam_calls_Home
 :Tam_calls_Home rdf:type owl:NamedIndividual ,
                          :Communication ,
@@ -2363,20 +2383,6 @@
                                         :Torra_Doza ;
                            :year 34 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/No_Escape:_Part_2#Tamara.27s_choice"^^xsd:anyURI .
-
-
-###  http://null.com/star-wars#TIE_Fighter_Training
-:TIE_Fighter_Training rdf:type owl:NamedIndividual ,
-                               :Training ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :location ;
-                                 owl:someValuesFrom :Space
-                               ] ;
-                      :after <http://null.com/star-wars#Skirmish_at_D'Qar> ;
-                      :participant :Tamara_Ryvora ;
-                      :survivedBy :Jace_Rucklin ;
-                      :year 34 ;
-                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Live_Fire#A_live_fire_exercise"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Triple_Dark_Pirate_Raid

@@ -43,7 +43,7 @@ Top level ontology importing all content
 
 ### base
 Should include all Properties and Classes
-Should avoid referencing instance data
+Avoids referencing instance data - no named individuals
 
 Which means we cannot make statements like the following
 
@@ -53,45 +53,71 @@ Instead, we can have the weaker
 
     Mon Cala is the homeworld of Mon Calamari
 
-Some statements require a type reference at the minimum
+### star-wars
+
+Instance level information about characters, places, objects and a
+small number of events that are widely referenced in the wider timeline.
+
+A very small number of class level statements are made here - where the
+axiom requires a reference to a named individual - eg:
 
     All Sith are inOrganisation Sith_Order
     All Clones are clones of Jango Fett
     All Imperial Star Destroyers are owned by the Empire
 
-### star-wars
-
-Characters, places and a small number of events in the wider Universe
 
 ### Event ontologies
 
 #### trilogy
 
-#### sequels
+Events from the original trilogy
+* chapter IV, A New Hope 
+* chapter V, The Empire Strikes Back
+* chapter VI, Return of the Jedi
 
 #### prequels
 
+Events from the prequel trilogy
+* chapter I, The Phantom Menace
+* chapter II, Attack of the Clones
+* chapter III, Revenge of the Sith
+
+#### sequels
+
+Events from the sequel trilogy
+* chapter VII, The Force Awakens
+* chapter VIII, The Last Jedi
+* chapter IX, The Rise of Skywalker
+
 #### rogue_one
+
+Events from the film
 
 #### solo
 
+Events from the film
+
 #### mandalorian
 
-Characters and events from the series.
+Events from the 2 seasons
 
 #### resistance
 
-Events from the series. The first season especially was challenging to model in the existing framework as there is less direct conflict and a lot of the story is relationship driven. We can use this experience to expand some of the more subtle plot points in the rest of the Universe.
+Events from the 2 seasons. The first season especially was challenging to model in the existing framework as there is less direct conflict and a lot of the story is relationship driven. We can use this experience to expand some of the more subtle plot points in the rest of the Universe.
 
 There are links to the timeline of the sequels as yet to be resolved. eg Hosnian Cataclysm.
 
 #### rebels
 
-Characters and events from the series.
+Events from the 4 seasons
 
 #### clone_wars
 
+Events from the 7 seasons
+
 #### bad_batch
+
+Events from the 1 season
 
 ### Eras
 
@@ -101,6 +127,15 @@ Grouping events by the timespan they occur during:
 * imperial-era
 * new-republic-era
 
+### test
+
+Restrictions on the base ontology that can help to check
+the consistency of the ontology as a whole:
+* domain/range on object properties
+
+See [performance](performance.md) for more details.
+
 ### questions
 
-Ontology containing 
+Ontology containing some example defined classes that help to
+classify individuals in the ontologies

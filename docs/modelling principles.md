@@ -14,23 +14,46 @@
 - should be asserted in one direction, inverses being inferred - eg "after"
 
 ## Event focussed
-- events within events using subX during X - not other way round
+- Named events should be placed in the timeline where possible using `eventB after eventA`
+- Named events within other events using `subX during X` - not other way round
+- Use `included` in subclass of event if its not worth naming
 - assertions about involvement attached to the Event, not the person (unless the event is not worth naming)
+- All named events should have a `year` if known
 
 ## People
- - property assertions between people on the one it affects most (eg the one who died in a fight) unless Event called for
- - should all have at least one Role (whether or not in an organisation)
+
+- property assertions between people on the one it affects most - eg `Luke trainedBy Obi-wan` 
+unless an Event is called for
+- should all have at least one Role (whether or not in an organisation)
+
 
 ## from (where born/grew up)
- - Asserting at instance level where people are from
- - Use homeworld on Planets/Moons for a weaker reference to species (also works with modularisation as species are Classes).
 
-## Force ghosts/connections
+- Use `from` at instance level where people originate
+- Use `homeworld` on Planets/Moons for a weaker reference to species (also works with modularisation as species are Classes).
+- Use `livedIn` for any other location someone spent their time 
 
-Force ghosts and connections are manifestations of the Force, not the individual.
+## The Force
 
-    participant some (Force_spirit and (connectedTo value Obi-Wan_Kenobi))
-    participant some (The_Force and (connectedTo value Leia_Organa))
+Force ghosts, bonds and connections are manifestations of the Force, not the individual.
+
+    participant some (Force_spirit
+        and (connectedTo value Obi-Wan_Kenobi))
+
+    participant some (Force_Bond
+        and (connectedTo value Ahsoka_Tano)
+        and (connectedTo value Darth_Vader))
+    
+    participant some (The_Force
+        and (connectedTo value Leia_Organa))
+
+Force visions are also manifestations of the force, connected to the individual experiencing
+them. The content of the vision is described using `about`
+
+    participant some (Force_Vision
+        and (connectedTo value Ezra_Bridger)
+        and (about some (parentOf value Ezra_Bridger))
+        and (about value White_Loth_Cat))
 
 ## Information
 
@@ -40,8 +63,8 @@ Information is treated as an object in the Universe, can have a subject and can 
 
 We might be interested in the form of the information
 
-    Plans and (about value Death_Star)    
+    stole some (Plans and (about value Death_Star))    
 
-Events like `Meeting` are not an object but may also have a subject
+`Communication` events are not an object but may also have a subject
 
     Meeting and (about value First_Order)

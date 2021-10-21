@@ -2649,7 +2649,14 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Place_in_the_Force
 :Place_in_the_Force rdf:type owl:Class ;
-                    rdfs:subClassOf :Place .
+                    owl:equivalentClass [ owl:intersectionOf ( :Place
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :connectedTo ;
+                                                                 owl:someValuesFrom :The_Force
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] .
 
 
 ###  http://null.com/star-wars#Plains

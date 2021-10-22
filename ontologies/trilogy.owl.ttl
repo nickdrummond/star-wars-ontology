@@ -36,6 +36,18 @@
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Lars_Homestead#Burning_homestead"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Bartering_for_Solo
+:Bartering_for_Solo rdf:type owl:NamedIndividual ,
+                             :Communication ;
+                    :about :Han_Solo ;
+                    :location <http://null.com/star-wars#Jabba's_Palace> ;
+                    :participant :Jabba ;
+                    :traded :C-3PO ,
+                            :R2-D2 ;
+                    :year 4 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Battle_of_Endor
 :Battle_of_Endor rdf:type owl:NamedIndividual ,
                           :Battle ;
@@ -87,6 +99,34 @@
                  :victoryOf :Luke_Skywalker ;
                  :year 0 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Boushh_trades_Chewbacca
+:Boushh_trades_Chewbacca rdf:type owl:NamedIndividual ,
+                                  :Confrontation ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :participant ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                owl:oneOf ( :Leia_Organa
+                                                                                          )
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :disguisedAs ;
+                                                                                owl:hasValue :Boushh
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :used ;
+                                    owl:someValuesFrom :Thermal_Detonator
+                                  ] ;
+                         :after :Murder_of_Oola ;
+                         :location <http://null.com/star-wars#Jabba's_Palace> ;
+                         :traded :Chewbacca ;
+                         :year 4 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Capture_of_Tantive_IV
@@ -230,9 +270,41 @@
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Garbage_masher_3263827"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Defrosting_Han
+:Defrosting_Han rdf:type owl:NamedIndividual ,
+                         :Rescue ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :assistedBy ;
+                           owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                       owl:oneOf ( :Lando_Calrissian
+                                                                                 )
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :disguisedAs ;
+                                                                       owl:someValuesFrom :Guard
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                :after :Boushh_trades_Chewbacca ;
+                :captureOf :Han_Solo ,
+                           :Leia_Organa ;
+                :location <http://null.com/star-wars#Jabba's_Palace> ;
+                :year 4 ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Saving_Han_Solo"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Escape_from_Carkoon
 :Escape_from_Carkoon rdf:type owl:NamedIndividual ,
                               :Escape ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :killingOf ;
+                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hadRole ;
+                                                     owl:someValuesFrom :Guard
+                                                   ]
+                              ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :participant ;
                                 owl:someValuesFrom :Sarlacc
@@ -311,6 +383,24 @@
 :Escape_from_Hoth rdf:type owl:NamedIndividual ,
                            :Escape ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:someValuesFrom :Mynock
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :eatingOf ;
+                                                                         owl:hasValue :Millenium_Falcon
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Sy-O
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :location ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Asteroid_field
                                                                        [ rdf:type owl:Restriction ;
@@ -327,17 +417,11 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :participant ;
-                             owl:someValuesFrom :Mynock
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :participant ;
                              owl:someValuesFrom :TIE_Fighter
                            ] ;
                   :after :Battle_of_Hoth ;
                   :escapeOf :Millenium_Falcon ;
-                  :location :Hoth ;
-                  :participant :Slave_I ,
-                               :Sy-O ;
+                  :participant :Slave_I ;
                   :year 3 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_Battle_of_Hoth"^^xsd:anyURI .
 
@@ -419,6 +503,17 @@
                          :Fight ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :deathOf ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Rancor
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :ownedBy ;
+                                                                       owl:hasValue :Jabba
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :eatingOf ;
                            owl:someValuesFrom [ owl:intersectionOf ( :Gamorrean
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :hadRole ;
@@ -427,9 +522,20 @@
                                                                    ) ;
                                                 rdf:type owl:Class
                                               ]
-                         ] ,
+                         ] ;
+                :after :Defrosting_Han ;
+                :location <http://null.com/star-wars#Jabba's_Palace> ;
+                :victoryOf :Luke_Skywalker ;
+                :witnessedBy :Jabba ;
+                :year 4 ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Luke_Skywalker_arrives_at_the_palace"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Murder_of_Oola
+:Murder_of_Oola rdf:type owl:NamedIndividual ,
+                         :Murder ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :deathOf ;
+                           owl:onProperty :participant ;
                            owl:someValuesFrom [ owl:intersectionOf ( :Rancor
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :ownedBy ;
@@ -439,10 +545,13 @@
                                                 rdf:type owl:Class
                                               ]
                          ] ;
+                :after :Bartering_for_Solo ;
+                :eatingOf :Oola ;
                 :location <http://null.com/star-wars#Jabba's_Palace> ;
-                :victoryOf :Luke_Skywalker ;
+                :orderedBy :Jabba ;
+                :witnessedBy :Max_Rebo_Band ;
                 :year 4 ;
-                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Luke_Skywalker_arrives_at_the_palace"^^xsd:anyURI .
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Obi-Wan_vs_Vader_DeathStar

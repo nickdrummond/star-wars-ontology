@@ -241,35 +241,6 @@
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Death_Star"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Death_Star_Garbage_Compactor
-:Death_Star_Garbage_Compactor rdf:type owl:NamedIndividual ,
-                                       :Escape ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :location ;
-                                         owl:someValuesFrom [ owl:intersectionOf ( :Garbage_Compactor
-                                                                                   [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty :location ;
-                                                                                     owl:hasValue :Death_Star_1
-                                                                                   ]
-                                                                                 ) ;
-                                                              rdf:type owl:Class
-                                                            ]
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :participant ;
-                                         owl:someValuesFrom :Dianoga
-                                       ] ;
-                              :during :Rescue_of_Leia ;
-                              :escapeOf :Chewbacca ,
-                                        :Han_Solo ,
-                                        :Leia_Organa ,
-                                        :Luke_Skywalker ;
-                              :location :Death_Star_1 ;
-                              :victoryOf :R2-D2 ;
-                              :year 0 ;
-                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Garbage_masher_3263827"^^xsd:anyURI .
-
-
 ###  http://null.com/star-wars#Defrosting_Han
 :Defrosting_Han rdf:type owl:NamedIndividual ,
                          :Rescue ,
@@ -424,6 +395,45 @@
                   :participant :Slave_I ;
                   :year 3 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_Battle_of_Hoth"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Escape_from_the_Garbage_Compactor
+:Escape_from_the_Garbage_Compactor rdf:type owl:NamedIndividual ,
+                                            :Escape ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :included ;
+                                              owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :participant ;
+                                                                                          owl:someValuesFrom :Dianoga
+                                                                                        ]
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :survivedBy ;
+                                                                                          owl:hasValue :Luke_Skywalker
+                                                                                        ]
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ]
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :location ;
+                                              owl:someValuesFrom [ owl:intersectionOf ( :Garbage_Compactor
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :location ;
+                                                                                          owl:hasValue :Death_Star_1
+                                                                                        ]
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ]
+                                            ] ;
+                                   :assistedBy :R2-D2 ;
+                                   :during :Rescue_of_Leia ;
+                                   :escapeOf :Chewbacca ,
+                                             :Han_Solo ,
+                                             :Leia_Organa ,
+                                             :Luke_Skywalker ;
+                                   :year 0 ;
+                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Garbage_masher_3263827"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ewok_Feast

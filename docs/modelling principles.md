@@ -3,35 +3,62 @@
 [back to index](index.md)
 
 ## References
-- all individuals should have an appropriate "seeAlso" reference to Wookipedia
-- all non-obvious Classes should also reference Wookipedia
 
-## Tense
-- properties should be in past tense "A long time ago..."
+- should use `seeAlso` to reference all Individuals in Wookipedia
+- should reference all non-obvious Classes in Wookipedia
 
 ## Properties
+
+- should name properties in past tense "A long time ago..."
 - should be used more than once otherwise they need reviewing
 - should be asserted in one direction, inverses being inferred - eg "after"
 
+## Disjoints/differentFrom
+
+- should have top level disjoints to assist clean modelling and aid property use consistency checking
+- should not use differentFrom because of its impact on [performance](performance.md)
+
+## Negation
+
+- should use negation sparingly as it is a strong assertion at risk of being wrong - eg "no survivors"
+
+
+    not (survivedBy some (Tusken_Raider and (from value Tusken_Raider_camp)))
+
 ## Event focussed
-- Named events should be placed in the timeline where possible using `eventB after eventA`
-- Named events within other events using `subX during X` - not other way round
-- Use `included` in subclass of event if its not worth naming
-- assertions about involvement attached to the Event, not the person (unless the event is not worth naming)
-- All named events should have a `year` if known
+
+* should provide a `year` for all named events, if known
+  * negative numbers are BBY, positive are ABY  
+- may attach involvement to an event to the `Actor`, if there is no natural named Event to use
+
+
+    Ochi -> participatedIn some (Murder 
+    and (deathOf some (parentOf value Rey)))
+
+###  Timeline
+
+- should place events in the timeline using `eventB after eventA`, if known
+- should use `someTimeAfter` when larger time gaps between events (eg between series)
+- should use `during` between named events - not its inverse
+- should use `included` in subclassOf restrictions on event if its not worth naming
+
+
+    Escape_from_the_Garbage_Compactor -> included some(Attack 
+    and (participant some Dianoga)
+    and (survivedBy value Luke_Skywalker))
 
 ## People
 
-- property assertions between people on the one it affects most - eg `Luke trainedBy Obi-wan` 
-unless an Event is called for
-- should all have at least one Role (whether or not in an organisation)
+- should assert relations between people on the one it affects most - eg `Luke trainedBy Obi-wan` 
+unless an `Event` is called for
+- should all have at least one `Role` (whether or not in an organisation)
 
 
 ## from (where born/grew up)
 
-- Use `from` at instance level where people originate
-- Use `homeworld` on Planets/Moons for a weaker reference to species (also works with modularisation as species are Classes).
-- Use `livedIn` for any other location someone spent their time 
+- should use `from` at instance level where people originate
+- should use `homeworld` on Planets/Moons for a weaker reference to species (also works with modularisation as species are Classes).
+- should use `livedIn` for any other location someone spent their time 
 
 ## The Force
 

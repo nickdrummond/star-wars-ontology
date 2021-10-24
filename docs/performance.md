@@ -27,13 +27,14 @@ Murder query goes from 10s to 112s
 
 ### Property Domain/Range
 
-Removing domain and range on all object properties dropped the query time from 28s to 10s
+Adding domain and range on all object properties increased the query time from 10s to 28s.
 
-However, we do lose helpful consistency checking.
-eg participants in Events must not include Roles - leaving this range on participant is not too bad.
-Whereas, adding a range back on "during" automatically adds a few seconds on.
+However, we do lose helpful consistency checking (as we have top level disjoints).
+eg `participants` in `Events` are `Actors`, not `Roles` - leaving this range on `participant` is not too bad.
+Whereas, adding a range to `during` automatically adds a few seconds on.
 
-We could add these domains/ranges into the questions or other optional top level ontology?
+Domains/ranges have been added to the top level `test` ontology that is used purely
+as a QA mechanism and does not need to be used at query time.
 
 ### Cardinality
-Cannot add participant min 14000 to the battle of Exegol - it breaks the reasoner
+Cannot add participant min 14000 to the battle of Exegol - it breaks the reasoner!

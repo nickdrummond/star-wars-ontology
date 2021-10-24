@@ -42,14 +42,18 @@ get a different "view" of them depending on which sub-modules we pull in.
 Top level ontology importing all content
 
 ### base
-Should include all Properties and Classes
+
+Describes all Classes and Properties.
+There are quite a small number of restrictions on classes at this level
+as "Only a Sith deals in absolutes".
+
 Avoids referencing instance data - no named individuals
 
-Which means we cannot make statements like the following
+Which means we want to avoid making statements like the following:
 
     All Mon Calamari are from Mon Cala
 
-Instead, we can have the weaker
+Instead, we can have the weaker (but probably more accurate):
 
     Mon Cala is the homeworld of Mon Calamari
 
@@ -71,6 +75,7 @@ axiom requires a reference to a named individual - eg:
 #### trilogy
 
 Events from the original trilogy
+
 * chapter IV, A New Hope 
 * chapter V, The Empire Strikes Back
 * chapter VI, Return of the Jedi
@@ -78,6 +83,7 @@ Events from the original trilogy
 #### prequels
 
 Events from the prequel trilogy
+
 * chapter I, The Phantom Menace
 * chapter II, Attack of the Clones
 * chapter III, Revenge of the Sith
@@ -85,6 +91,7 @@ Events from the prequel trilogy
 #### sequels
 
 Events from the sequel trilogy
+
 * chapter VII, The Force Awakens
 * chapter VIII, The Last Jedi
 * chapter IX, The Rise of Skywalker
@@ -131,6 +138,7 @@ Grouping events by the timespan they occur during:
 
 Restrictions on the base ontology that can help to check
 the consistency of the ontology as a whole:
+
 * domain/range on object properties
 
 See [performance](performance.md) for more details.

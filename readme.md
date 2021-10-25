@@ -58,7 +58,7 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 
 * Open [all.owl.ttl](ontologies/all.owl.ttl) with open-source OWL editor, [Protege](https://protege.stanford.edu/) or another semantic
   web editor/browser
-* Set the default reasoner to classify/reason with as `HermiT`
+* Set the default reasoner to classify/reason with as `Pellet`
 * See [tools](docs/tools.md) for other tool related discussion
 
 ---

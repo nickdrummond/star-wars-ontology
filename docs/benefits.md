@@ -4,9 +4,19 @@
 
 This is an ongoing story with gaps being filled all the time.
 
-It's good to have statements about what we know to be true but allowing all sorts of additional facts to become true
+It's good to have statements about what we know to be true but allowing all sorts of additional facts to become true, eg:
 
-eg. Darth Vader sameAs Anakin Skywalker
+    Darth Vader sameAs Anakin Skywalker
+
+We can ask about who is Force sensitive:
+
+    Human and (connectedTo some The_Force)
+
+But, it also makes sense that we can't ask for those that aren't Force sensitive (it might just not be apparent, or intentionally hidden in the narrative):
+
+    Human and not (connectedTo some The_Force)
+
+It would be quite strong to assert someone was not force sensitive.
 
 ## Inference
 
@@ -14,6 +24,10 @@ Using property hierarchy to infer relationship neighbourhoods
 
     knew value Anakin_Skywalker
     knew some (knew value Anakin_Skywalker)
+
+    relatedTo value Anakin_Skywalker
+
+    Event and (participant some Flying_Creature)
 
 ## Graphs
 
@@ -35,20 +49,25 @@ eg. Shmi is related to Kylo Ren.
 
 ## Specificity
 
-We have ways of modelling that can leave out unknown details or keep our level of commitment low.
+We have ways of modelling that can leave out unknown details or 
+keep our level of commitment low.
 
-People born somewhere in a range of years
+Classification allows low-specificity:
 
-Classification allows low-specificity
 eg Role = Fighter or Trooper or Stormtrooper
 
-eg No need to name everything (parents etc) - we can talk about Ezra's parents without having to name them.
+There is no need to name everything
+
+eg - we can talk about Rey's parents without having to name them.
+
+eg People can be born in a range of years
 
 ## Modularity
 
 The ontology is modularised into each episode/series.
 
-As the ontology gets larger, modules help with focus, although there is a tradeoff with the fluidity of developing one ontology
+As the ontology gets larger, modules help with focus,
+although there is a tradeoff with the fluidity of developing one ontology
 
 ## Referencing
 

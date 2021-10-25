@@ -20,6 +20,10 @@
 
     included o participant -> participant
 
+* Pellet
+    * Switch tests to Pellet
+    * Review all performance decisions - now we've resolved the errors, we can get much faster classification/query times
+        * allDifferent?
 
 * Check all events have dates and are not orphaned - see Sparql test
 

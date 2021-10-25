@@ -10,10 +10,12 @@ We used [Protege](https://protege.stanford.edu) to build this ontology
 
 ### Reasoning
 
-Use the HermiT reasoner
+Use the Pellet reasoner
 
-* Select `HermiT` from the `Reasoner` menu.
+* Select `Pellet` from the `Reasoner` menu.
 * Select `Start Reasoner` to show inferences in the model
+
+Other reasoners are available, but each has different [performance](performance.md) issues
 
 ### Nice features of Protege
 

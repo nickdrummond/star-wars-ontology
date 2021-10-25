@@ -3,6 +3,7 @@
 [back to index](index.md)
 
 ## Questions to answer:
+
 ### What events was X involved in?
     Event and participant value Anakin_Skywalker
 
@@ -12,11 +13,13 @@ Or also capture sub-events:
         (participant value Ahsoka_Tano) or
         (included some (participant value Ahsoka_Tano)))
 
-### What events happened in X?
+### What events happened in a given location?
 
     Event and location value Outer_Rim
 
-## Options:
+
+## Experiments
+### Options:
 1. Simple property assertions on individuals
 2. SubClass axioms on individuals
 3. Named event individuals with property assertions
@@ -25,8 +28,6 @@ Or also capture sub-events:
 6. hadRole combination of 2 and 3
 7. Named event, oneOf groupings as subclass
 8. Use Team -> Organisation
-
-## Analysis
 
 ### 1. Simple property assertions on individuals
 A bit weak as it doesn't link the 2 things together or tell you how or where
@@ -168,9 +169,36 @@ All possible properties (injured, survived etc) would need property chains - a b
 
 Do we have to put a date on all sub-fights?
 
-
-
 ### No survivors
+
+We can use deathOf on an organisation to denote that all members died.
+This can be queried explicitly, keeping the classification light:
+
+    Bodhi_Rook memberOf Rogue_One
+
+    Battle_of_Scarrif -> killingOf Rogue_One
+
+    Being and (
+    (diedIn value Stealing_the_Death_Star_Plans) 
+    or memberOf  some (diedIn value Stealing_the_Death_Star_Plans))
+
+Its a bit clunky, especially if we want to include the super-event:
+
+    Being and (
+    (diedIn some (
+        {Battle_of_Scarif} or (during value Battle_of_Scarif))
+    or memberOf some (diedIn some (
+        {Battle_of_Scarif} or (during value Battle_of_Scarif))
+    )))
+
+and it won't show up as an inference on the individual Beings
+
+Feels expensive for a bit of shorthand modelling.
+
+It also means opening up the Range of `diedIn` to include `Organisation`
+
+#### Older attempts 
+
 
 Rather than enumerating all individual deaths, can we do -
 

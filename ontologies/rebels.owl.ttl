@@ -364,6 +364,63 @@
                                 "https://starwars.fandom.com/wiki/Wings_of_the_Master"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Briefing_the_factory_strike
+:Briefing_the_factory_strike rdf:type owl:NamedIndividual ,
+                                      :Meeting ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :about ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :location ;
+                                                                                    owl:hasValue :Imperial_Armory_Complex
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :survivedBy ;
+                                                                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty :hadRole ;
+                                                                                                         owl:someValuesFrom :Trooper
+                                                                                                       ]
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :Ezra_Bridger
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :participant ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Force_Bond
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :connectedTo ;
+                                                                                    owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                    owl:onClass [ rdf:type owl:Class ;
+                                                                                                  owl:oneOf ( :Ezra_Bridger
+                                                                                                              :Maul
+                                                                                                            )
+                                                                                                ]
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ;
+                             :after :Escape_from_the_Armoury ;
+                             :location :Chopper_Base ;
+                             :participant :Hera_Syndulla ,
+                                          :Rex ,
+                                          :Spectres ;
+                             :year -2 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Visions_and_Voices"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Capture_of_the_Eighth_Brother
 :Capture_of_the_Eighth_Brother rdf:type owl:NamedIndividual ,
                                         :Capture ,
@@ -500,6 +557,56 @@
                          :victoryOf :Spectres ;
                          :year -4 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Idiot%27s_Array_(episode)#Trouble_with_Azmorigan"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Conversation_with_Bendu_interrupted_by_Maul
+:Conversation_with_Bendu_interrupted_by_Maul rdf:type owl:NamedIndividual ,
+                                                      :Conversation ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :included ;
+                                                        owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty :participant ;
+                                                                                                                           owl:hasValue :Nightbrother_starfighter
+                                                                                                                         ]
+                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty :participant ;
+                                                                                                                           owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                                                           owl:onClass [ rdf:type owl:Class ;
+                                                                                                                                         owl:oneOf ( :Ezra_Bridger
+                                                                                                                                                     :Maul
+                                                                                                                                                   )
+                                                                                                                                       ]
+                                                                                                                         ]
+                                                                                                                       ) ;
+                                                                                                    rdf:type owl:Class
+                                                                                                  ]
+                                                                                                ) ;
+                                                                             rdf:type owl:Class
+                                                                           ]
+                                                      ] ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :included ;
+                                                        owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty :fitted ;
+                                                                                                    owl:someValuesFrom :Tracker
+                                                                                                  ]
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty :participant ;
+                                                                                                    owl:hasValue :Sabine_Wren
+                                                                                                  ]
+                                                                                                ) ;
+                                                                             rdf:type owl:Class
+                                                                           ]
+                                                      ] ;
+                                             :about :Maul ;
+                                             :after :Briefing_the_factory_strike ;
+                                             :participant :Bendu ,
+                                                          :Ezra_Bridger ,
+                                                          :Kanan_Jarrus ,
+                                                          :Maul ;
+                                             :year -2 ;
+                                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Visions_and_Voices#Meeting_with_Bendu"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Darth_Vader_tasks_the_Inquisitor
@@ -4597,6 +4704,79 @@ Ahsoka and Vader injured"""^^xsd:string ;
                                         :Myles_Grint ;
                            :year -5 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Breaking_Ranks"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Using_Magick
+:Using_Magick rdf:type owl:NamedIndividual ,
+                       :Confrontation ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :destructionOf ;
+                         owl:someValuesFrom :Altar
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :participant ;
+                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Magick
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty :connectedTo ;
+                                                                                                                 owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                                                 owl:onClass [ rdf:type owl:Class ;
+                                                                                                                               owl:oneOf ( :Kanan_Jarrus
+                                                                                                                                           :Sabine_Wren
+                                                                                                                                         )
+                                                                                                                             ]
+                                                                                                               ]
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty :connectedTo ;
+                                                                                                                 owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                                                 owl:onClass [ rdf:type owl:Restriction ;
+                                                                                                                               owl:onProperty :memberOf ;
+                                                                                                                               owl:hasValue :Night_Sisters
+                                                                                                                             ]
+                                                                                                               ]
+                                                                                                             ) ;
+                                                                                          rdf:type owl:Class
+                                                                                        ]
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :participant ;
+                                                                     owl:hasValue :Ezra_Bridger
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :participant ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Magick
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :about ;
+                                                                     owl:hasValue :Obi-Wan_Kenobi
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :connectedTo ;
+                                                                     owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                     owl:onClass [ rdf:type owl:Class ;
+                                                                                   owl:oneOf ( :Ezra_Bridger
+                                                                                               :Maul
+                                                                                             )
+                                                                                 ]
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              :after :Conversation_with_Bendu_interrupted_by_Maul ;
+              :escapeOf :Maul ;
+              :found :Darksaber ;
+              :location :Hidden_Cave ;
+              :participant :Ezra_Bridger ,
+                           :Kanan_Jarrus ,
+                           :Sabine_Wren ;
+              :year -2 ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Visions_and_Voices#Journey_to_Dathomir"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Vader_vs_Spectres

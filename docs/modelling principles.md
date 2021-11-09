@@ -47,9 +47,10 @@
     and (participant some Dianoga)
     and (survivedBy value Luke_Skywalker))
 
-## People
+## Beings
 
-- should assert relations between people on the one it affects most - eg `Luke trainedBy Obi-wan` 
+- primary classification is Species
+- should assert relations between beings on the one it affects most - eg `Luke trainedBy Obi-wan` 
 unless an `Event` is called for
 - should all have at least one `Role` (whether or not in an organisation)
 

@@ -29,6 +29,12 @@ Using property hierarchy to infer relationship neighbourhoods
 
     Event and (participant some Flying_Creature)
 
+## Consistency checking
+
+Assertions must be consistent with the rest of the model
+
+eg There can be no individual Female Crolute as all of the species are Male 
+
 ## Graphs
 
 Any property can be navigated as a graph

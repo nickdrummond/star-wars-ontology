@@ -255,8 +255,17 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
         rdfs:subPropertyOf :parentOf .
 
 
+###  http://null.com/star-wars#hasPart
+:hasPart rdf:type owl:ObjectProperty .
+
+
 ###  http://null.com/star-wars#hasTerrain
 :hasTerrain rdf:type owl:ObjectProperty .
+
+
+###  http://null.com/star-wars#hasTrait
+:hasTrait rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty .
 
 
 ###  http://null.com/star-wars#healingOf
@@ -342,6 +351,10 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
           owl:propertyChainAxiom ( :hadRole
                                    :inOrganisation
                                  ) .
+
+
+###  http://null.com/star-wars#movesWith
+:movesWith rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#of
@@ -607,6 +620,16 @@ or minus is BBY"""^^xsd:string .
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Eye
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Leg
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Abyssin"^^xsd:anyURI .
 
@@ -618,10 +641,27 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Acklay
 :Acklay rdf:type owl:Class ;
-        rdfs:subClassOf :Reptile ,
+        rdfs:subClassOf :Living_thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Carnivorous
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Crustacean
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Reptilian
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :sentience ;
                           owl:someValuesFrom :Non-sentient
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Claw
                         ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Acklay"^^xsd:anyURI .
 
@@ -643,7 +683,15 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Aeosian
 :Aeosian rdf:type owl:Class ;
-         rdfs:subClassOf :Humanoid ;
+         rdfs:subClassOf :Humanoid ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:someValuesFrom :Fin
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Aquatic
+                         ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Aeosian"^^xsd:anyURI .
 
 
@@ -654,16 +702,35 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Aki-Aki
 :Aki-Aki rdf:type owl:Class ;
-         rdfs:subClassOf :Humanoid ;
+         rdfs:subClassOf :Humanoid ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Trunk
+                         ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Aki-Aki"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Aleena
 :Aleena rdf:type owl:Class ;
-        rdfs:subClassOf :Reptile ,
+        rdfs:subClassOf :Living_thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Reptilian
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :sentience ;
                           owl:someValuesFrom :Sentient
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Arm
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Leg
                         ] ;
         rdfs:comment "https://starwars.fandom.com/wiki/Aleena"^^xsd:anyURI .
 
@@ -675,7 +742,12 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Amphibian
 :Amphibian rdf:type owl:Class ;
-           rdfs:subClassOf :Living_thing .
+           rdfs:subClassOf :Aquatic .
+
+
+###  http://null.com/star-wars#Antenna
+:Antenna rdf:type owl:Class ;
+         rdfs:subClassOf :BodyPart .
 
 
 ###  http://null.com/star-wars#Anzellan
@@ -684,20 +756,68 @@ or minus is BBY"""^^xsd:string .
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Arm
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Leg
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Anzellan"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Aqualish
 :Aqualish rdf:type owl:Class ;
-          rdfs:subClassOf :Humanoid ;
+          rdfs:subClassOf :Humanoid ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Furry
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Tusk
+                          ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Aqualish"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Arachnid
-:Arachnid rdf:type owl:Class ;
-          rdfs:subClassOf :Living_thing ;
-          rdfs:seeAlso "https://starwars.fandom.com/wiki/Spider"^^xsd:anyURI .
+###  http://null.com/star-wars#Aquatic
+:Aquatic rdf:type owl:Class ;
+         rdfs:subClassOf :Trait .
+
+
+###  http://null.com/star-wars#Aquatic_Creature
+:Aquatic_Creature rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( :Creature
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :hasTrait ;
+                                                               owl:someValuesFrom :Aquatic
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] .
+
+
+###  http://null.com/star-wars#Aquatic_Humanoid
+:Aquatic_Humanoid rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( :Humanoid
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :hasTrait ;
+                                                               owl:someValuesFrom :Aquatic
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] .
+
+
+###  http://null.com/star-wars#Arachnoid
+:Arachnoid rdf:type owl:Class ;
+           rdfs:subClassOf :Trait ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Spider"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Archaeologist
@@ -710,10 +830,29 @@ or minus is BBY"""^^xsd:string .
 :Ardennian rdf:type owl:Class ;
            rdfs:subClassOf :Living_thing ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Mammalian
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :sentience ;
                              owl:someValuesFrom :Sentient
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Leg
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Arm
                            ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Ardennian"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Arm
+:Arm rdf:type owl:Class ;
+     rdfs:subClassOf :Limb .
 
 
 ###  http://null.com/star-wars#Armour
@@ -777,7 +916,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Avian
 :Avian rdf:type owl:Class ;
-       rdfs:subClassOf :Living_thing ;
+       rdfs:subClassOf :Trait ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Bird"^^xsd:anyURI .
 
 
@@ -793,6 +932,11 @@ or minus is BBY"""^^xsd:string .
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :sentience ;
                                    owl:someValuesFrom :Sentient
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasPart ;
+                                   owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Leg
                                  ] ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/B1-series_battle_droid"^^xsd:anyURI .
 
@@ -803,6 +947,11 @@ or minus is BBY"""^^xsd:string .
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :sentience ;
                                          owl:someValuesFrom :Sentient
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasPart ;
+                                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :Leg
                                        ] ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/B2-series_super_battle_droid"^^xsd:anyURI .
 
@@ -819,10 +968,27 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Bantha
 :Bantha rdf:type owl:Class ;
-        rdfs:subClassOf :Mammal ,
+        rdfs:subClassOf :Living_thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Furry
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Herbivorous
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Mammalian
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :sentience ;
                           owl:someValuesFrom :Non-sentient
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Leg
                         ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Bantha"^^xsd:anyURI .
 
@@ -853,6 +1019,11 @@ or minus is BBY"""^^xsd:string .
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_droid"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Beak
+:Beak rdf:type owl:Class ;
+      rdfs:subClassOf :Mouth .
+
+
 ###  http://null.com/star-wars#Being
 :Being rdf:type owl:Class ;
        rdfs:subClassOf :Actor .
@@ -860,7 +1031,25 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Besalisk
 :Besalisk rdf:type owl:Class ;
-          rdfs:subClassOf :Humanoid ;
+          rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :movesWith ;
+                            owl:someValuesFrom :Walking
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :sentience ;
+                            owl:someValuesFrom :Sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Leg
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Arm
+                          ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Besalisk"^^xsd:anyURI .
 
 
@@ -868,6 +1057,32 @@ or minus is BBY"""^^xsd:string .
 :Beskar rdf:type owl:Class ;
         rdfs:subClassOf :Material ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Beskar"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Bi-ped
+:Bi-ped rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Being
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasPart ;
+                                                     owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                     owl:onClass :Leg
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://null.com/star-wars#Bi-pedal_droid
+:Bi-pedal_droid rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Droid
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasPart ;
+                                                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass :Leg
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
 
 
 ###  http://null.com/star-wars#Birth
@@ -893,10 +1108,28 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Bluurg
 :Bluurg rdf:type owl:Class ;
-        rdfs:subClassOf :Reptile ,
+        rdfs:subClassOf :Living_thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Omniverous
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Reptilian
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :sentience ;
                           owl:someValuesFrom :Non-sentient
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Arm
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Leg
                         ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Blurrg"^^xsd:anyURI .
 
@@ -905,6 +1138,11 @@ or minus is BBY"""^^xsd:string .
 :Bo-rifle rdf:type owl:Class ;
           rdfs:subClassOf :Weapon ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Bo-rifle"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#BodyPart
+:BodyPart rdf:type owl:Class ;
+          rdfs:subClassOf :Object .
 
 
 ###  http://null.com/star-wars#Bomb
@@ -921,8 +1159,21 @@ or minus is BBY"""^^xsd:string .
 :Bonzami rdf:type owl:Class ;
          rdfs:subClassOf :Living_thing ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:someValuesFrom :Horn
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:someValuesFrom :Tail
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Leg
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Bonzami"^^xsd:anyURI .
 
@@ -971,7 +1222,15 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Can-cell
 :Can-cell rdf:type owl:Class ;
-          rdfs:subClassOf :Flying_Creature ,
+          rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Insectoid
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :movesWith ;
+                            owl:someValuesFrom :Flight
+                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Non-sentient
@@ -1013,6 +1272,23 @@ or minus is BBY"""^^xsd:string .
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Carbonite"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Carnivore
+:Carnivore rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Living_thing
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasTrait ;
+                                                        owl:someValuesFrom :Carnivorous
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://null.com/star-wars#Carnivorous
+:Carnivorous rdf:type owl:Class ;
+             rdfs:subClassOf :Trait .
+
+
 ###  http://null.com/star-wars#Cave
 :Cave rdf:type owl:Class ;
       rdfs:subClassOf :Habitat .
@@ -1030,7 +1306,14 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Cephalopod
 :Cephalopod rdf:type owl:Class ;
-            rdfs:subClassOf :Living_thing ;
+            owl:equivalentClass [ owl:intersectionOf ( :Creature
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :hasTrait ;
+                                                         owl:someValuesFrom :Tentacled
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Cephalopod"^^xsd:anyURI .
 
 
@@ -1042,16 +1325,38 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Chadra-Fan
 :Chadra-Fan rdf:type owl:Class ;
-            rdfs:subClassOf :Humanoid ;
+            rdfs:subClassOf :Humanoid ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasTrait ;
+                              owl:someValuesFrom :Mammalian
+                            ] ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Chadra-Fan"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Chelidae
 :Chelidae rdf:type owl:Class ;
-          rdfs:subClassOf :Amphibian ,
+          rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:someValuesFrom :Shell
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Amphibian
+                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Arm
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Leg
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Chelidae"^^xsd:anyURI .
 
@@ -1090,9 +1395,18 @@ or minus is BBY"""^^xsd:string .
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Class_546_Cruiser"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Claw
+:Claw rdf:type owl:Class ;
+      rdfs:subClassOf :Limb .
+
+
 ###  http://null.com/star-wars#Clawdite
 :Clawdite rdf:type owl:Class ;
-          rdfs:subClassOf :Humanoid ;
+          rdfs:subClassOf :Humanoid ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Reptilian
+                          ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Clawdite"^^xsd:anyURI .
 
 
@@ -1115,6 +1429,24 @@ or minus is BBY"""^^xsd:string .
 :Coaxium rdf:type owl:Class ;
          rdfs:subClassOf :Fuel ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Coaxium"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Colo_claw_fish
+:Colo_claw_fish rdf:type owl:Class ;
+                rdfs:subClassOf :Living_thing ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasTrait ;
+                                  owl:someValuesFrom :Aquatic
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasTrait ;
+                                  owl:someValuesFrom :Carnivorous
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :sentience ;
+                                  owl:someValuesFrom :Non-sentient
+                                ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Colo_claw_fish"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Colonel
@@ -1162,10 +1494,23 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Convor
 :Convor rdf:type owl:Class ;
-        rdfs:subClassOf :Avian ,
+        rdfs:subClassOf :Living_thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Avian
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :movesWith ;
+                          owl:someValuesFrom :Flight
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :sentience ;
                           owl:someValuesFrom :Non-sentient
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Wing
                         ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Convor"^^xsd:anyURI .
 
@@ -1191,6 +1536,18 @@ or minus is BBY"""^^xsd:string .
        rdfs:subClassOf :Event .
 
 
+###  http://null.com/star-wars#Creature
+:Creature rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Living_thing
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :sentience ;
+                                                       owl:someValuesFrom :Non-sentient
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
 ###  http://null.com/star-wars#Crew
 :Crew rdf:type owl:Class ;
       rdfs:subClassOf :Organisation ,
@@ -1212,8 +1569,21 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Crolute
 :Crolute rdf:type owl:Class ;
-         rdfs:subClassOf :Humanoid ;
+         rdfs:subClassOf :Humanoid ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :gender ;
+                           owl:someValuesFrom :Male
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Aquatic
+                         ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Crolute"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Crustacean
+:Crustacean rdf:type owl:Class ;
+            rdfs:subClassOf :Trait .
 
 
 ###  http://null.com/star-wars#Crystalline
@@ -1235,7 +1605,12 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#DT-series_sentry_droid
 :DT-series_sentry_droid rdf:type owl:Class ;
-                        rdfs:subClassOf :Droid ;
+                        rdfs:subClassOf :Droid ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasPart ;
+                                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :Leg
+                                        ] ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/DT-series_sentry_droid"^^xsd:anyURI .
 
 
@@ -1314,7 +1689,15 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Dianoga
 :Dianoga rdf:type owl:Class ;
-         rdfs:subClassOf :Cephalopod ,
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Tentacled
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :movesWith ;
+                           owl:someValuesFrom :Swimming
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Sentient
@@ -1341,6 +1724,26 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Doctor
 :Doctor rdf:type owl:Class ;
         rdfs:subClassOf :Vocation .
+
+
+###  http://null.com/star-wars#Dokma
+:Dokma rdf:type owl:Class ;
+       rdfs:subClassOf :Living_thing ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :sentience ;
+                         owl:someValuesFrom :Non-sentient
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Shell
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Leg
+                       ] ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Dokma"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Doublecross
@@ -1383,6 +1786,11 @@ or minus is BBY"""^^xsd:string .
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :sentience ;
                        owl:someValuesFrom :Sentient
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasPart ;
+                       owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                       owl:onClass :Arm
                      ] ;
      rdfs:seeAlso "https://starwars.fandom.com/wiki/Dug"^^xsd:anyURI .
 
@@ -1476,7 +1884,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Ewok
 :Ewok rdf:type owl:Class ;
-      rdfs:subClassOf :Humanoid ;
+      rdfs:subClassOf :Humanoid ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Furry
+                      ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Ewok"^^xsd:anyURI .
 
 
@@ -1488,6 +1900,14 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Exogorth
 :Exogorth rdf:type owl:Class ;
           rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Silicon-based
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Wormlike
+                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :livedIn ;
                             owl:someValuesFrom :Asteroid
@@ -1503,6 +1923,11 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Explosive
 :Explosive rdf:type owl:Class ;
            rdfs:subClassOf :Weapon .
+
+
+###  http://null.com/star-wars#Eye
+:Eye rdf:type owl:Class ;
+     rdfs:subClassOf :BodyPart .
 
 
 ###  http://null.com/star-wars#Facility
@@ -1528,16 +1953,38 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Fathier
 :Fathier rdf:type owl:Class ;
-         rdfs:subClassOf :Mammal ,
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Furry
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Herbivorous
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Mammalian
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Leg
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Fathier"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Feature
 :Feature rdf:type owl:Class .
+
+
+###  http://null.com/star-wars#Feline
+:Feline rdf:type owl:Class ;
+        rdfs:subClassOf :Mammalian .
 
 
 ###  http://null.com/star-wars#Female
@@ -1556,19 +2003,48 @@ or minus is BBY"""^^xsd:string .
          rdfs:subClassOf :Vocation .
 
 
+###  http://null.com/star-wars#Fin
+:Fin rdf:type owl:Class ;
+     rdfs:subClassOf :BodyPart .
+
+
 ###  http://null.com/star-wars#Fleet
 :Fleet rdf:type owl:Class ;
        rdfs:subClassOf :Organisation .
 
 
+###  http://null.com/star-wars#Flight
+:Flight rdf:type owl:Class ;
+        rdfs:subClassOf :MovementType .
+
+
 ###  http://null.com/star-wars#Flying_Creature
 :Flying_Creature rdf:type owl:Class ;
-                 rdfs:subClassOf :Living_thing .
+                 owl:equivalentClass [ owl:intersectionOf ( :Creature
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :movesWith ;
+                                                              owl:someValuesFrom :Flight
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] .
 
 
 ###  http://null.com/star-wars#Food
 :Food rdf:type owl:Class ;
       rdfs:subClassOf :Consumable .
+
+
+###  http://null.com/star-wars#Force-Sensitive
+:Force-Sensitive rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( :Living_thing
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :connectedTo ;
+                                                              owl:someValuesFrom :The_Force
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] .
 
 
 ###  http://null.com/star-wars#Force_Bond
@@ -1627,12 +2103,42 @@ or minus is BBY"""^^xsd:string .
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Fulcrum"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Furry
+:Furry rdf:type owl:Class ;
+       rdfs:subClassOf :Trait .
+
+
+###  http://null.com/star-wars#Furry_Humanoid
+:Furry_Humanoid rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Humanoid
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasTrait ;
+                                                             owl:someValuesFrom :Furry
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
+
+
 ###  http://null.com/star-wars#Fyrnock
 :Fyrnock rdf:type owl:Class ;
          rdfs:subClassOf :Living_thing ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Carnivorous
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Silicon-based
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Leg
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Fyrnock"^^xsd:anyURI .
 
@@ -1643,6 +2149,11 @@ or minus is BBY"""^^xsd:string .
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :sentience ;
                              owl:someValuesFrom :Sentient
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Leg
                            ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/GNK_power_droid"^^xsd:anyURI .
 
@@ -1660,7 +2171,22 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Gamorrean
 :Gamorrean rdf:type owl:Class ;
-           rdfs:subClassOf :Humanoid ;
+           rdfs:subClassOf :Humanoid ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Snout
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Horn
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Tusk
+                           ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Gamorrean"^^xsd:anyURI .
 
 
@@ -1699,29 +2225,64 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Geonosian
 :Geonosian rdf:type owl:Class ;
-           rdfs:subClassOf :Humanoid ;
+           rdfs:subClassOf :Humanoid ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Insectoid
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :movesWith ;
+                             owl:someValuesFrom :Flight
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Wing
+                           ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Geonosian"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Gilliand
 :Gilliand rdf:type owl:Class ;
-          rdfs:subClassOf :Humanoid ;
+          rdfs:subClassOf :Humanoid ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :gender ;
+                            owl:someValuesFrom :Female
+                          ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Gilliand"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Gorg
 :Gorg rdf:type owl:Class ;
-      rdfs:subClassOf :Amphibian ,
+      rdfs:subClassOf :Living_thing ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Amphibian
+                      ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :sentience ;
                         owl:someValuesFrom :Non-sentient
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Leg
                       ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Gorg"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Gotal
 :Gotal rdf:type owl:Class ;
-       rdfs:subClassOf :Humanoid ;
+       rdfs:subClassOf :Humanoid ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Furry
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Horn
+                       ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Gotal"^^xsd:anyURI .
 
 
@@ -1739,17 +2300,44 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Gozzo
 :Gozzo rdf:type owl:Class ;
-       rdfs:subClassOf :Avian ,
+       rdfs:subClassOf :Living_thing ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:someValuesFrom :Beak
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Avian
+                       ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :sentience ;
                          owl:someValuesFrom :Sentient
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Arm
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Leg
                        ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Gozzo"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Gran
 :Gran rdf:type owl:Class ;
-      rdfs:subClassOf :Humanoid ;
+      rdfs:subClassOf :Humanoid ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:someValuesFrom :Antenna
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Eye
+                      ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Gran"^^xsd:anyURI .
 
 
@@ -1779,13 +2367,35 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Greater_Krayt_Dragon
 :Greater_Krayt_Dragon rdf:type owl:Class ;
-                      rdfs:subClassOf :Krayt_Dragon ;
+                      rdfs:subClassOf :Krayt_Dragon ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasPart ;
+                                        owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+                                        owl:onClass :Leg
+                                      ] ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Greater_krayt_dragon"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Green_Nikto
+:Green_Nikto rdf:type owl:Class ;
+             rdfs:subClassOf :Nikto ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasPart ;
+                               owl:someValuesFrom :Horn
+                             ] .
 
 
 ###  http://null.com/star-wars#Grindalid
 :Grindalid rdf:type owl:Class ;
            rdfs:subClassOf :Living_thing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:someValuesFrom :Arm
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Wormlike
+                           ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :sentience ;
                              owl:someValuesFrom :Sentient
@@ -1805,7 +2415,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Gungan
 :Gungan rdf:type owl:Class ;
-        rdfs:subClassOf :Humanoid ;
+        rdfs:subClassOf :Humanoid ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Amphibian
+                        ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Gungan"^^xsd:anyURI .
 
 
@@ -1820,9 +2434,40 @@ or minus is BBY"""^^xsd:string .
          rdfs:subClassOf :Place .
 
 
+###  http://null.com/star-wars#Hand
+:Hand rdf:type owl:Class ;
+      rdfs:subClassOf :BodyPart .
+
+
 ###  http://null.com/star-wars#Harch
 :Harch rdf:type owl:Class ;
-       rdfs:subClassOf :Humanoid ;
+       rdfs:subClassOf :Living_thing ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Arachnoid
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Furry
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :movesWith ;
+                         owl:someValuesFrom :Walking
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :sentience ;
+                         owl:someValuesFrom :Sentient
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Leg
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Arm
+                       ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Harch"^^xsd:anyURI .
 
 
@@ -1830,8 +2475,22 @@ or minus is BBY"""^^xsd:string .
 :Hassk rdf:type owl:Class ;
        rdfs:subClassOf :Living_thing ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Furry
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :sentience ;
                          owl:someValuesFrom :Sentient
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Arm
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Leg
                        ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Hassk"^^xsd:anyURI .
 
@@ -1842,9 +2501,31 @@ or minus is BBY"""^^xsd:string .
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Haven-class_medical_station"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Head
+:Head rdf:type owl:Class ;
+      rdfs:subClassOf :BodyPart .
+
+
 ###  http://null.com/star-wars#Heist
 :Heist rdf:type owl:Class ;
        rdfs:subClassOf :Event .
+
+
+###  http://null.com/star-wars#Herbivore
+:Herbivore rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Living_thing
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasTrait ;
+                                                        owl:someValuesFrom :Herbivorous
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://null.com/star-wars#Herbivorous
+:Herbivorous rdf:type owl:Class ;
+             rdfs:subClassOf :Trait .
 
 
 ###  http://null.com/star-wars#Hills
@@ -1869,6 +2550,23 @@ or minus is BBY"""^^xsd:string .
       rdfs:subClassOf :Place .
 
 
+###  http://null.com/star-wars#Horn
+:Horn rdf:type owl:Class ;
+      rdfs:subClassOf :BodyPart .
+
+
+###  http://null.com/star-wars#Horned_Humanoid
+:Horned_Humanoid rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( :Humanoid
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :hasPart ;
+                                                              owl:someValuesFrom :Horn
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] .
+
+
 ###  http://null.com/star-wars#House
 :House rdf:type owl:Class ;
        rdfs:subClassOf :Organisation ;
@@ -1885,8 +2583,22 @@ or minus is BBY"""^^xsd:string .
 :Humanoid rdf:type owl:Class ;
           rdfs:subClassOf :Living_thing ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :movesWith ;
+                            owl:someValuesFrom :Walking
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Arm
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Leg
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Humanoid"^^xsd:anyURI .
 
@@ -1895,8 +2607,21 @@ or minus is BBY"""^^xsd:string .
 :Hutt rdf:type owl:Class ;
       rdfs:subClassOf :Living_thing ,
                       [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:someValuesFrom :Tail
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Wormlike
+                      ] ,
+                      [ rdf:type owl:Restriction ;
                         owl:onProperty :sentience ;
                         owl:someValuesFrom :Sentient
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Arm
                       ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Hutt"^^xsd:anyURI .
 
@@ -1936,7 +2661,12 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Iktotchi
 :Iktotchi rdf:type owl:Class ;
-          rdfs:subClassOf :Humanoid ;
+          rdfs:subClassOf :Humanoid ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Horn
+                          ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Iktotchi"^^xsd:anyURI .
 
 
@@ -1968,6 +2698,11 @@ or minus is BBY"""^^xsd:string .
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Inquisitorius"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Insectoid
+:Insectoid rdf:type owl:Class ;
+           rdfs:subClassOf :Trait .
+
+
 ###  http://null.com/star-wars#Interdictor_Vessel
 :Interdictor_Vessel rdf:type owl:Class ;
                     rdfs:subClassOf :Capital_Ship ;
@@ -1980,6 +2715,21 @@ or minus is BBY"""^^xsd:string .
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Arm
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Leg
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Mouth
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Ithorian"^^xsd:anyURI .
 
@@ -1990,13 +2740,31 @@ or minus is BBY"""^^xsd:string .
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :sentience ;
                              owl:someValuesFrom :Sentient
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Arm
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Leg
                            ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Jablogian"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Jakoosk
 :Jakoosk rdf:type owl:Class ;
-         rdfs:subClassOf :Flying_Creature ,
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Carnivorous
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :movesWith ;
+                           owl:someValuesFrom :Flight
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
@@ -2049,6 +2817,18 @@ or minus is BBY"""^^xsd:string .
 :Joopa rdf:type owl:Class ;
        rdfs:subClassOf :Living_thing ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:someValuesFrom :Eye
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Carnivorous
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Wormlike
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :sentience ;
                          owl:someValuesFrom :Non-sentient
                        ] ;
@@ -2074,7 +2854,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Kaleesh
 :Kaleesh rdf:type owl:Class ;
-         rdfs:subClassOf :Humanoid ;
+         rdfs:subClassOf :Humanoid ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Reptilian
+                         ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Kaleesh"^^xsd:anyURI .
 
 
@@ -2086,26 +2870,52 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Kaminoan
 :Kaminoan rdf:type owl:Class ;
-          rdfs:subClassOf :Humanoid ;
+          rdfs:subClassOf :Humanoid ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Amphibian
+                          ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Kaminoan"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Karnex_dragon
 :Karnex_dragon rdf:type owl:Class ;
-               rdfs:subClassOf :Reptile ,
+               rdfs:subClassOf :Living_thing ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasTrait ;
+                                 owl:someValuesFrom :Reptilian
+                               ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :sentience ;
                                  owl:someValuesFrom :Non-sentient
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasPart ;
+                                 owl:minQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Leg
                                ] ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Karnex_dragon"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Keeradak
 :Keeradak rdf:type owl:Class ;
-          rdfs:subClassOf :Reptile ,
+          rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Reptilian
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :movesWith ;
+                            owl:someValuesFrom :Flight
+                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Non-sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Wing
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Keeradak"^^xsd:anyURI .
 
@@ -2118,7 +2928,12 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Kerkoiden
 :Kerkoiden rdf:type owl:Class ;
-           rdfs:subClassOf :Humanoid ;
+           rdfs:subClassOf :Humanoid ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Tusk
+                           ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Kerkoiden"^^xsd:anyURI .
 
 
@@ -2128,6 +2943,16 @@ or minus is BBY"""^^xsd:string .
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :sentience ;
                              owl:someValuesFrom :Sentient
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Arm
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Leg
                            ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Keteerian"^^xsd:anyURI .
 
@@ -2146,7 +2971,28 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Knobby_white_ice_spider
 :Knobby_white_ice_spider rdf:type owl:Class ;
-                         rdfs:subClassOf :Arachnid ,
+                         rdfs:subClassOf :Living_thing ,
+                                         [ rdf:type owl:Class ;
+                                           owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hasPart ;
+                                                           owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                                                           owl:onClass :Leg
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hasPart ;
+                                                           owl:qualifiedCardinality "8"^^xsd:nonNegativeInteger ;
+                                                           owl:onClass :Leg
+                                                         ]
+                                                       )
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :hasTrait ;
+                                           owl:someValuesFrom :Arachnoid
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :hasTrait ;
+                                           owl:someValuesFrom :Carnivorous
+                                         ] ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty :sentience ;
                                            owl:someValuesFrom :Non-sentient
@@ -2161,27 +3007,70 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Kowakian_monkey-lizard
 :Kowakian_monkey-lizard rdf:type owl:Class ;
-                        rdfs:subClassOf :Reptile ,
+                        rdfs:subClassOf :Living_thing ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasTrait ;
+                                          owl:someValuesFrom :Carnivorous
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasTrait ;
+                                          owl:someValuesFrom :Reptilian
+                                        ] ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :sentience ;
                                           owl:someValuesFrom :Semi-sentient
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasPart ;
+                                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :Arm
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasPart ;
+                                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :Leg
                                         ] ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Kowakian_monkey-lizard"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Krakavora
 :Krakavora rdf:type owl:Class ;
-           rdfs:subClassOf :Flying_Creature ,
+           rdfs:subClassOf :Living_thing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Aquatic
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Carnivorous
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :movesWith ;
+                             owl:someValuesFrom :Flight
+                           ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :sentience ;
                              owl:someValuesFrom :Non-sentient
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Wing
                            ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Krakavora"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Krayt_Dragon
 :Krayt_Dragon rdf:type owl:Class ;
-              rdfs:subClassOf :Reptile ,
+              rdfs:subClassOf :Living_thing ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasTrait ;
+                                owl:someValuesFrom :Carnivorous
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasTrait ;
+                                owl:someValuesFrom :Reptilian
+                              ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :sentience ;
                                 owl:someValuesFrom :Non-sentient
@@ -2191,17 +3080,34 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Krykna
 :Krykna rdf:type owl:Class ;
-        rdfs:subClassOf :Arachnid ,
+        rdfs:subClassOf :Living_thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Arachnoid
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Carnivorous
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :sentience ;
                           owl:someValuesFrom :Non-sentient
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Leg
                         ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Krykna"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Kubaz
 :Kubaz rdf:type owl:Class ;
-       rdfs:subClassOf :Humanoid ;
+       rdfs:subClassOf :Humanoid ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:someValuesFrom :Snout
+                       ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Kubaz"^^xsd:anyURI .
 
 
@@ -2219,10 +3125,24 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Lanai
 :Lanai rdf:type owl:Class ;
-       rdfs:subClassOf :Avian ,
+       rdfs:subClassOf :Living_thing ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Avian
+                       ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :sentience ;
                          owl:someValuesFrom :Sentient
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Arm
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Leg
                        ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Lanai"^^xsd:anyURI .
 
@@ -2234,7 +3154,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Lasat
 :Lasat rdf:type owl:Class ;
-       rdfs:subClassOf :Humanoid ;
+       rdfs:subClassOf :Humanoid ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Furry
+                       ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Lasat"^^xsd:anyURI .
 
 
@@ -2246,6 +3170,17 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Leader
 :Leader rdf:type owl:Class ;
         rdfs:subClassOf :Role .
+
+
+###  http://null.com/star-wars#Leg
+:Leg rdf:type owl:Class ;
+     rdfs:subClassOf :Limb .
+
+
+###  http://null.com/star-wars#Lekku
+:Lekku rdf:type owl:Class ;
+       rdfs:subClassOf :BodyPart ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Lekku"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Lieutenant
@@ -2273,6 +3208,23 @@ or minus is BBY"""^^xsd:string .
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Lightsaber"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Limb
+:Limb rdf:type owl:Class ;
+      rdfs:subClassOf :BodyPart .
+
+
+###  http://null.com/star-wars#Living_Sentient
+:Living_Sentient rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( :Living_thing
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :sentience ;
+                                                              owl:someValuesFrom :Sentient
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] .
+
+
 ###  http://null.com/star-wars#Living_thing
 :Living_thing rdf:type owl:Class ;
               rdfs:subClassOf :Being .
@@ -2280,24 +3232,58 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Loth-wolf
 :Loth-wolf rdf:type owl:Class ;
-           rdfs:subClassOf :Mammal ,
+           rdfs:subClassOf :Living_thing ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :connectedTo ;
                              owl:someValuesFrom :The_Force
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Furry
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Mammalian
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Omniverous
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :sentience ;
                              owl:someValuesFrom :Sentient
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Leg
                            ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Loth-wolf"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Loth_Cat
 :Loth_Cat rdf:type owl:Class ;
-          rdfs:subClassOf :Mammal ,
+          rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Carnivorous
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Feline
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Furry
+                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Non-sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Leg
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Loth-cat"^^xsd:anyURI .
 
@@ -2331,18 +3317,47 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Mamacore
 :Mamacore rdf:type owl:Class ;
-          rdfs:subClassOf :Cephalopod ,
+          rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Aquatic
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Carnivorous
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Tentacled
+                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Non-sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Mouth
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Mamacore"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Mammal
 :Mammal rdf:type owl:Class ;
-        rdfs:subClassOf :Living_thing ;
+        owl:equivalentClass [ owl:intersectionOf ( :Creature
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasTrait ;
+                                                     owl:someValuesFrom :Mammalian
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Mammal"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Mammalian
+:Mammalian rdf:type owl:Class ;
+           rdfs:subClassOf :Trait .
 
 
 ###  http://null.com/star-wars#Mandalorian
@@ -2451,7 +3466,15 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Mon_Calimari
 :Mon_Calimari rdf:type owl:Class ;
-              rdfs:subClassOf :Humanoid ;
+              rdfs:subClassOf :Humanoid ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasTrait ;
+                                owl:someValuesFrom :Amphibian
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :movesWith ;
+                                owl:someValuesFrom :Swimming
+                              ] ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Mon_Calamari"^^xsd:anyURI .
 
 
@@ -2465,6 +3488,12 @@ or minus is BBY"""^^xsd:string .
       rdfs:subClassOf :Vocation .
 
 
+###  http://null.com/star-wars#Montral
+:Montral rdf:type owl:Class ;
+         rdfs:subClassOf :BodyPart ;
+         rdfs:seeAlso "https://starwars.fandom.com/wiki/Montral"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Moon
 :Moon rdf:type owl:Class ;
       rdfs:subClassOf :Celestial_Location .
@@ -2474,6 +3503,15 @@ or minus is BBY"""^^xsd:string .
 :Mother rdf:type owl:Class ;
         rdfs:subClassOf :Leader ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Mother_(title)"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Mountain_Nikto
+:Mountain_Nikto rdf:type owl:Class ;
+                rdfs:subClassOf :Nikto ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasPart ;
+                                  owl:someValuesFrom :Fin
+                                ] .
 
 
 ###  http://null.com/star-wars#Mountains
@@ -2491,18 +3529,54 @@ or minus is BBY"""^^xsd:string .
              rdfs:seeAlso "https://starwars.fandom.com/wiki/MSE_series"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Mouth
+:Mouth rdf:type owl:Class ;
+       rdfs:subClassOf :BodyPart .
+
+
+###  http://null.com/star-wars#MovementType
+:MovementType rdf:type owl:Class ;
+              rdfs:subClassOf :Feature .
+
+
 ###  http://null.com/star-wars#Moyn
 :Moyn rdf:type owl:Class ;
-      rdfs:subClassOf :Humanoid ;
+      rdfs:subClassOf :Humanoid ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:someValuesFrom :Tentacle
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Furry
+                      ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Moyn"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Mudhorn
 :Mudhorn rdf:type owl:Class ;
-         rdfs:subClassOf :Mammal ,
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Furry
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Mammalian
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Horn
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Leg
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Mudhorn"^^xsd:anyURI .
 
@@ -2520,10 +3594,23 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Mynock
 :Mynock rdf:type owl:Class ;
-        rdfs:subClassOf :Flying_Creature ,
+        rdfs:subClassOf :Living_thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Silicon-based
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :movesWith ;
+                          owl:someValuesFrom :Flight
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :sentience ;
                           owl:someValuesFrom :Non-sentient
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Wing
                         ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Mynock"^^xsd:anyURI .
 
@@ -2535,7 +3622,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Mythosaur
 :Mythosaur rdf:type owl:Class ;
-           rdfs:subClassOf :Reptile ,
+           rdfs:subClassOf :Living_thing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Reptilian
+                           ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :sentience ;
                              owl:someValuesFrom :Non-sentient
@@ -2545,13 +3636,25 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Mythrol
 :Mythrol rdf:type owl:Class ;
-         rdfs:subClassOf :Humanoid ;
+         rdfs:subClassOf :Humanoid ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Amphibian
+                         ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Mythrol"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Nautolan
 :Nautolan rdf:type owl:Class ;
-          rdfs:subClassOf :Humanoid ;
+          rdfs:subClassOf :Humanoid ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:someValuesFrom :Tentacle
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Amphibian
+                          ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Nautolan"^^xsd:anyURI .
 
 
@@ -2569,23 +3672,79 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Nexu
 :Nexu rdf:type owl:Class ;
-      rdfs:subClassOf :Mammal ,
+      rdfs:subClassOf :Living_thing ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Carnivorous
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Feline
+                      ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :sentience ;
                         owl:someValuesFrom :Non-sentient
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Leg
                       ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Nexu"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Nikto
 :Nikto rdf:type owl:Class ;
-       rdfs:subClassOf :Humanoid ;
+       rdfs:subClassOf :Humanoid ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Reptilian
+                       ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Nikto"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Non-Sentient_Being
+:Non-Sentient_Being rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( :Being
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :sentience ;
+                                                                 owl:someValuesFrom :Non-sentient
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] .
+
+
+###  http://null.com/star-wars#Non-humanoid-sentient
+:Non-humanoid-sentient rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( :Living_thing
+                                                                  [ rdf:type owl:Class ;
+                                                                    owl:complementOf :Humanoid
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :sentience ;
+                                                                    owl:someValuesFrom :Sentient
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
 
 
 ###  http://null.com/star-wars#Non-sentient
 :Non-sentient rdf:type owl:Class ;
               rdfs:subClassOf :Sentience .
+
+
+###  http://null.com/star-wars#Non-sentient_droid
+:Non-sentient_droid rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( :Droid
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :sentience ;
+                                                                 owl:someValuesFrom :Non-sentient
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] .
 
 
 ###  http://null.com/star-wars#Nu-class_shuttle
@@ -2598,12 +3757,69 @@ or minus is BBY"""^^xsd:string .
 :Object rdf:type owl:Class .
 
 
+###  http://null.com/star-wars#Omniverous
+:Omniverous rdf:type owl:Class ;
+            rdfs:subClassOf :Trait .
+
+
+###  http://null.com/star-wars#Omnivore
+:Omnivore rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Living_thing
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasTrait ;
+                                                       owl:someValuesFrom :Omniverous
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://null.com/star-wars#Opee_sea_killer
+:Opee_sea_killer rdf:type owl:Class ;
+                 rdfs:subClassOf :Living_thing ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasPart ;
+                                   owl:someValuesFrom :Limb
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasTrait ;
+                                   owl:someValuesFrom :Aquatic
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasTrait ;
+                                   owl:someValuesFrom :Carnivorous
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :sentience ;
+                                   owl:someValuesFrom :Non-sentient
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasPart ;
+                                   owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Fin
+                                 ] ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Opee_sea_killer"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Orbak
 :Orbak rdf:type owl:Class ;
-       rdfs:subClassOf :Mammal ,
+       rdfs:subClassOf :Living_thing ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Herbivorous
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Mammalian
+                       ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :sentience ;
                          owl:someValuesFrom :Non-sentient
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Leg
                        ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Orbak"^^xsd:anyURI .
 
@@ -2619,7 +3835,12 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Ovissian
 :Ovissian rdf:type owl:Class ;
-          rdfs:subClassOf :Humanoid ;
+          rdfs:subClassOf :Humanoid ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Horn
+                          ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Ovissian"^^xsd:anyURI .
 
 
@@ -2667,6 +3888,11 @@ or minus is BBY"""^^xsd:string .
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :sentience ;
                              owl:someValuesFrom :Sentient
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Leg
                            ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/DUM-series_pit_droid"^^xsd:anyURI .
 
@@ -2725,10 +3951,27 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Porg
 :Porg rdf:type owl:Class ;
-      rdfs:subClassOf :Avian ,
+      rdfs:subClassOf :Living_thing ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Avian
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Carnivorous
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :movesWith ;
+                        owl:someValuesFrom :Flight
+                      ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :sentience ;
                         owl:someValuesFrom :Non-sentient
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Wing
                       ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Porg"^^xsd:anyURI .
 
@@ -2764,6 +4007,11 @@ or minus is BBY"""^^xsd:string .
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :sentience ;
                                   owl:someValuesFrom :Sentient
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasPart ;
+                                  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Leg
                                 ] ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Protocol_droid"^^xsd:anyURI .
 
@@ -2776,10 +4024,23 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Puffer_pig
 :Puffer_pig rdf:type owl:Class ;
-            rdfs:subClassOf :Mammal ,
+            rdfs:subClassOf :Living_thing ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasTrait ;
+                              owl:someValuesFrom :Herbivorous
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasTrait ;
+                              owl:someValuesFrom :Mammalian
+                            ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :sentience ;
                               owl:someValuesFrom :Non-sentient
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasPart ;
+                              owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Leg
                             ] ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Puffer_pig"^^xsd:anyURI .
 
@@ -2788,8 +4049,20 @@ or minus is BBY"""^^xsd:string .
 :Purrgil rdf:type owl:Class ;
          rdfs:subClassOf :Living_thing ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:someValuesFrom :Fin
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:someValuesFrom :Tentacle
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :livedIn ;
                            owl:someValuesFrom :Space
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :movesWith ;
+                           owl:someValuesFrom :Swimming
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
@@ -2804,9 +4077,34 @@ or minus is BBY"""^^xsd:string .
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Pyke"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Quadruped
+:Quadruped rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Being
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasPart ;
+                                                        owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                                        owl:onClass :Leg
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
 ###  http://null.com/star-wars#Quarren
 :Quarren rdf:type owl:Class ;
-         rdfs:subClassOf :Humanoid ;
+         rdfs:subClassOf :Humanoid ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:someValuesFrom :Tentacle
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Aquatic
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Tentacled
+                         ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Quarren"^^xsd:anyURI .
 
 
@@ -2834,6 +4132,11 @@ or minus is BBY"""^^xsd:string .
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Leg
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/RIC-1200"^^xsd:anyURI .
 
@@ -2845,30 +4148,82 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Rancor
 :Rancor rdf:type owl:Class ;
-        rdfs:subClassOf :Reptile ,
+        rdfs:subClassOf :Living_thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Carnivorous
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Reptilian
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :sentience ;
                           owl:someValuesFrom :Semi-sentient
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Arm
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Leg
                         ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Rancor"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rathtar
 :Rathtar rdf:type owl:Class ;
-         rdfs:subClassOf :Cephalopod ,
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Carnivorous
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Tentacled
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Mouth
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Rathtar"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ravinak
 :Ravinak rdf:type owl:Class ;
-         rdfs:subClassOf :Reptile ,
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:someValuesFrom :Tail
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Carnivorous
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Reptilian
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :movesWith ;
+                           owl:someValuesFrom :Swimming
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Arm
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Ravinak"^^xsd:anyURI .
 
@@ -2878,12 +4233,39 @@ or minus is BBY"""^^xsd:string .
            rdfs:subClassOf :Abstract_subject .
 
 
+###  http://null.com/star-wars#Red_Nikto
+:Red_Nikto rdf:type owl:Class ;
+           rdfs:subClassOf :Nikto ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:someValuesFrom :Horn
+                           ] .
+
+
 ###  http://null.com/star-wars#Reek
 :Reek rdf:type owl:Class ;
-      rdfs:subClassOf :Mammal ,
+      rdfs:subClassOf :Living_thing ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Mammalian
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Omniverous
+                      ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :sentience ;
                         owl:someValuesFrom :Non-sentient
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Horn
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Leg
                       ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Reek"^^xsd:anyURI .
 
@@ -2917,14 +4299,47 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Reptavian
 :Reptavian rdf:type owl:Class ;
-           rdfs:subClassOf :Living_thing ;
-           rdfs:seeAlso "https://starwars.fandom.com/wiki/Reptavian"^^xsd:anyURI .
+           owl:equivalentClass [ owl:intersectionOf ( :Creature
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasTrait ;
+                                                        owl:someValuesFrom :Avian
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasTrait ;
+                                                        owl:someValuesFrom :Reptilian
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
 
 
 ###  http://null.com/star-wars#Reptile
 :Reptile rdf:type owl:Class ;
-         rdfs:subClassOf :Living_thing ;
-         rdfs:seeAlso "https://starwars.fandom.com/wiki/Reptile"^^xsd:anyURI .
+         owl:equivalentClass [ owl:intersectionOf ( :Creature
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :hasTrait ;
+                                                      owl:someValuesFrom :Reptilian
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://null.com/star-wars#Reptilian
+:Reptilian rdf:type owl:Class ;
+           rdfs:subClassOf :Trait .
+
+
+###  http://null.com/star-wars#Reptilian_Humanoid
+:Reptilian_Humanoid rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( :Humanoid
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :hasTrait ;
+                                                                 owl:someValuesFrom :Reptilian
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] .
 
 
 ###  http://null.com/star-wars#Repulsorcraft
@@ -2957,7 +4372,16 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Rodian
 :Rodian rdf:type owl:Class ;
-        rdfs:subClassOf :Humanoid ;
+        rdfs:subClassOf :Humanoid ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Reptilian
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Antenna
+                        ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Rodian"^^xsd:anyURI .
 
 
@@ -2969,7 +4393,15 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Rokkna
 :Rokkna rdf:type owl:Class ;
-        rdfs:subClassOf :Cephalopod ,
+        rdfs:subClassOf :Living_thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Aquatic
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Tentacled
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :sentience ;
                           owl:someValuesFrom :Non-sentient
@@ -3005,12 +4437,53 @@ or minus is BBY"""^^xsd:string .
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Sandcrawler"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Sando_aqua_monster
+:Sando_aqua_monster rdf:type owl:Class ;
+                    rdfs:subClassOf :Living_thing ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasTrait ;
+                                      owl:someValuesFrom :Aquatic
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasTrait ;
+                                      owl:someValuesFrom :Carnivorous
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :sentience ;
+                                      owl:someValuesFrom :Non-sentient
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasPart ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Tail
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasPart ;
+                                      owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Leg
+                                    ] ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Sando_aqua_monster"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Sarlacc
 :Sarlacc rdf:type owl:Class ;
-         rdfs:subClassOf :Cephalopod ,
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Carnivorous
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Tentacled
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Mouth
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Sarlacc"^^xsd:anyURI .
 
@@ -3048,6 +4521,18 @@ or minus is BBY"""^^xsd:string .
                rdfs:subClassOf :Sentience .
 
 
+###  http://null.com/star-wars#Semi-sentient-creature
+:Semi-sentient-creature rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( :Living_thing
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :sentience ;
+                                                                     owl:someValuesFrom :Semi-sentient
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] .
+
+
 ###  http://null.com/star-wars#Senator
 :Senator rdf:type owl:Class ;
          rdfs:subClassOf :Politician .
@@ -3061,6 +4546,30 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Sentient
 :Sentient rdf:type owl:Class ;
           rdfs:subClassOf :Sentience .
+
+
+###  http://null.com/star-wars#Sentient_Being
+:Sentient_Being rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Being
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :sentience ;
+                                                             owl:someValuesFrom :Sentient
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
+
+
+###  http://null.com/star-wars#Sentient_droid
+:Sentient_droid rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Droid
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :sentience ;
+                                                             owl:someValuesFrom :Sentient
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
 
 
 ###  http://null.com/star-wars#Sentinel-class_landing_craft
@@ -3080,6 +4589,11 @@ or minus is BBY"""^^xsd:string .
                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Sheathipede-class_transport_shuttle"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Shell
+:Shell rdf:type owl:Class ;
+       rdfs:subClassOf :BodyPart .
+
+
 ###  http://null.com/star-wars#Shield_Generator
 :Shield_Generator rdf:type owl:Class ;
                   rdfs:subClassOf :Facility .
@@ -3095,6 +4609,11 @@ or minus is BBY"""^^xsd:string .
          rdfs:subClassOf :Ship .
 
 
+###  http://null.com/star-wars#Silicon-based
+:Silicon-based rdf:type owl:Class ;
+               rdfs:subClassOf :Trait .
+
+
 ###  http://null.com/star-wars#Singer
 :Singer rdf:type owl:Class ;
         rdfs:subClassOf :Vocation .
@@ -3107,11 +4626,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Skakoan
 :Skakoan rdf:type owl:Class ;
-         rdfs:subClassOf :Living_thing ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :sentience ;
-                           owl:someValuesFrom :Sentient
-                         ] ;
+         rdfs:subClassOf :Humanoid ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Skakoan"^^xsd:anyURI .
 
 
@@ -3136,9 +4651,19 @@ or minus is BBY"""^^xsd:string .
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Slicer"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Slithering
+:Slithering rdf:type owl:Class ;
+            rdfs:subClassOf :MovementType .
+
+
 ###  http://null.com/star-wars#Smuggler
 :Smuggler rdf:type owl:Class ;
           rdfs:subClassOf :Criminal .
+
+
+###  http://null.com/star-wars#Snout
+:Snout rdf:type owl:Class ;
+       rdfs:subClassOf :BodyPart .
 
 
 ###  http://null.com/star-wars#Snowspeeder
@@ -3241,7 +4766,15 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Summa-verminoth
 :Summa-verminoth rdf:type owl:Class ;
-                 rdfs:subClassOf :Cephalopod ,
+                 rdfs:subClassOf :Living_thing ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasPart ;
+                                   owl:someValuesFrom :Tentacle
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasTrait ;
+                                   owl:someValuesFrom :Tentacled
+                                 ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :livedIn ;
                                    owl:someValuesFrom :Space
@@ -3285,6 +4818,11 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Swamp
 :Swamp rdf:type owl:Class ;
        rdfs:subClassOf :Habitat .
+
+
+###  http://null.com/star-wars#Swimming
+:Swimming rdf:type owl:Class ;
+          rdfs:subClassOf :MovementType .
 
 
 ###  http://null.com/star-wars#System
@@ -3339,8 +4877,18 @@ or minus is BBY"""^^xsd:string .
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :sentience ;
                                   owl:someValuesFrom :Sentient
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasPart ;
+                                  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Leg
                                 ] ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Tactical_droid"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Tail
+:Tail rdf:type owl:Class ;
+      rdfs:subClassOf :BodyPart .
 
 
 ###  http://null.com/star-wars#Taskmaster
@@ -3351,14 +4899,46 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Tauntaun
 :Tauntaun rdf:type owl:Class ;
-          rdfs:subClassOf [ owl:intersectionOf ( :Mammal
-                                                 :Reptile
-                                               ) ;
-                            rdf:type owl:Class
+          rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Furry
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Mammalian
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Omniverous
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Reptilian
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Non-sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Tail
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Arm
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Horn
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Leg
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Tauntaun"^^xsd:anyURI .
 
@@ -3368,9 +4948,28 @@ or minus is BBY"""^^xsd:string .
         rdfs:subClassOf :Building .
 
 
+###  http://null.com/star-wars#Tentacle
+:Tentacle rdf:type owl:Class ;
+          rdfs:subClassOf :Limb .
+
+
+###  http://null.com/star-wars#Tentacled
+:Tentacled rdf:type owl:Class ;
+           rdfs:subClassOf :Trait ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Cephalopod"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Thala-siren
 :Thala-siren rdf:type owl:Class ;
-             rdfs:subClassOf :Mammal ,
+             rdfs:subClassOf :Living_thing ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasTrait ;
+                               owl:someValuesFrom :Mammalian
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :movesWith ;
+                               owl:someValuesFrom :Swimming
+                             ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :sentience ;
                                owl:someValuesFrom :Non-sentient
@@ -3386,7 +4985,12 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Theelin
 :Theelin rdf:type owl:Class ;
-         rdfs:subClassOf :Humanoid ;
+         rdfs:subClassOf :Humanoid ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Horn
+                         ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Theelin"^^xsd:anyURI .
 
 
@@ -3408,18 +5012,46 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Tibidee
 :Tibidee rdf:type owl:Class ;
-         rdfs:subClassOf :Flying_Creature ,
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Silicon-based
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :movesWith ;
+                           owl:someValuesFrom :Flight
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Wing
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Tibidee"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Togruta
 :Togruta rdf:type owl:Class ;
-         rdfs:subClassOf :Humanoid ;
+         rdfs:subClassOf :Humanoid ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Montral
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Lekku
+                         ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Togruta"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Torso
+:Torso rdf:type owl:Class ;
+       rdfs:subClassOf :BodyPart .
 
 
 ###  http://null.com/star-wars#Torture
@@ -3434,7 +5066,16 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Toydarian
 :Toydarian rdf:type owl:Class ;
-           rdfs:subClassOf :Humanoid ;
+           rdfs:subClassOf :Humanoid ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :movesWith ;
+                             owl:someValuesFrom :Flight
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Wing
+                           ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Toydarian"^^xsd:anyURI .
 
 
@@ -3463,9 +5104,18 @@ or minus is BBY"""^^xsd:string .
           rdfs:subClassOf :Event .
 
 
+###  http://null.com/star-wars#Trait
+:Trait rdf:type owl:Class ;
+       rdfs:subClassOf :Feature .
+
+
 ###  http://null.com/star-wars#Trandoshan
 :Trandoshan rdf:type owl:Class ;
-            rdfs:subClassOf :Humanoid ;
+            rdfs:subClassOf :Humanoid ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasTrait ;
+                              owl:someValuesFrom :Reptilian
+                            ] ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Trandoshan"^^xsd:anyURI .
 
 
@@ -3499,9 +5149,19 @@ or minus is BBY"""^^xsd:string .
           rdfs:subClassOf :Habitat .
 
 
+###  http://null.com/star-wars#Trunk
+:Trunk rdf:type owl:Class ;
+       rdfs:subClassOf :BodyPart .
+
+
 ###  http://null.com/star-wars#Tundra
 :Tundra rdf:type owl:Class ;
         rdfs:subClassOf :Habitat .
+
+
+###  http://null.com/star-wars#Tusk
+:Tusk rdf:type owl:Class ;
+      rdfs:subClassOf :BodyPart .
 
 
 ###  http://null.com/star-wars#Tusken_Raider
@@ -3541,10 +5201,32 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Varactyl
 :Varactyl rdf:type owl:Class ;
-          rdfs:subClassOf :Reptavian ,
+          rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Avian
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Herbivorous
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Reptilian
+                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Non-sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Tail
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Leg
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Varactyl"^^xsd:anyURI .
 
@@ -3562,10 +5244,27 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Vexis
 :Vexis rdf:type owl:Class ;
-       rdfs:subClassOf :Reptile ,
+       rdfs:subClassOf :Living_thing ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Carnivorous
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Reptilian
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :movesWith ;
+                         owl:someValuesFrom :Slithering
+                       ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :sentience ;
                          owl:someValuesFrom :Non-sentient
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Limb
                        ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Vexis"^^xsd:anyURI .
 
@@ -3589,18 +5288,44 @@ or minus is BBY"""^^xsd:string .
 :Voorpak rdf:type owl:Class ;
          rdfs:subClassOf :Living_thing ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Carnivorous
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Furry
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Leg
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Voorpak"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Vulptex
 :Vulptex rdf:type owl:Class ;
-         rdfs:subClassOf :Mammal ,
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Mammalian
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Omniverous
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :sentience ;
                            owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Leg
                          ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Vulptex"^^xsd:anyURI .
 
@@ -3621,12 +5346,39 @@ or minus is BBY"""^^xsd:string .
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Walker"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Walking
+:Walking rdf:type owl:Class ;
+         rdfs:subClassOf :MovementType .
+
+
 ###  http://null.com/star-wars#Wampa
 :Wampa rdf:type owl:Class ;
-       rdfs:subClassOf :Mammal ,
+       rdfs:subClassOf :Living_thing ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Carnivorous
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Furry
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTrait ;
+                         owl:someValuesFrom :Mammalian
+                       ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :sentience ;
                          owl:someValuesFrom :Semi-sentient
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Arm
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Leg
                        ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Wampa"^^xsd:anyURI .
 
@@ -3670,10 +5422,24 @@ or minus is BBY"""^^xsd:string .
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Whistling_bird"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Wing
+:Wing rdf:type owl:Class ;
+      rdfs:subClassOf :Limb .
+
+
 ###  http://null.com/star-wars#Wookie
 :Wookie rdf:type owl:Class ;
-        rdfs:subClassOf :Humanoid ;
+        rdfs:subClassOf :Humanoid ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Furry
+                        ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Wookie"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Wormlike
+:Wormlike rdf:type owl:Class ;
+          rdfs:subClassOf :Trait .
 
 
 ###  http://null.com/star-wars#X-Wing
@@ -3714,37 +5480,71 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Zabrak
 :Zabrak rdf:type owl:Class ;
-        rdfs:subClassOf :Near_Human ;
+        rdfs:subClassOf :Near_Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:someValuesFrom :Horn
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasTrait ;
+                          owl:someValuesFrom :Carnivorous
+                        ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Zabrak"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Zygerrian
 :Zygerrian rdf:type owl:Class ;
-           rdfs:subClassOf :Humanoid ;
+           rdfs:subClassOf :Humanoid ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Feline
+                           ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Zygerrian"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Pa'lowick
 <http://null.com/star-wars#Pa'lowick> rdf:type owl:Class ;
-                                      rdfs:subClassOf :Humanoid ;
+                                      rdfs:subClassOf :Humanoid ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasTrait ;
+                                                        owl:someValuesFrom :Reptilian
+                                                      ] ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasPart ;
+                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                        owl:onClass :Trunk
+                                                      ] ;
                                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Pa%27lowick"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Pau'an
 <http://null.com/star-wars#Pau'an> rdf:type owl:Class ;
-                                   rdfs:subClassOf :Humanoid ;
+                                   rdfs:subClassOf :Humanoid ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasTrait ;
+                                                     owl:someValuesFrom :Carnivorous
+                                                   ] ;
                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Pau%27an"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Twi'Lek
 <http://null.com/star-wars#Twi'Lek> rdf:type owl:Class ;
-                                    rdfs:subClassOf :Near_Human ;
+                                    rdfs:subClassOf :Near_Human ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :hasPart ;
+                                                      owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                      owl:onClass :Lekku
+                                                    ] ;
                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Twi%27lek"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Yoda's_Species
 <http://null.com/star-wars#Yoda's_Species> rdf:type owl:Class ;
-                                           rdfs:subClassOf :Humanoid ;
+                                           rdfs:subClassOf :Humanoid ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hasTrait ;
+                                                             owl:someValuesFrom :Carnivorous
+                                                           ] ;
                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda's_species"^^xsd:anyURI .
 
 
@@ -3783,6 +5583,74 @@ or minus is BBY"""^^xsd:string .
                 :AT-DP
                 :AT-ST
                 :AT-TE
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Abyssin
+                :Acklay
+                :Aleena
+                :Anzellan
+                :Ardennian
+                :Bantha
+                :Besalisk
+                :Bluurg
+                :Bonzami
+                :Can-cell
+                :Chelidae
+                :Convor
+                :Dianoga
+                :Dug
+                :Exogorth
+                :Fathier
+                :Fyrnock
+                :Gorg
+                :Gozzo
+                :Grindalid
+                :Harch
+                :Hassk
+                :Humanoid
+                :Hutt
+                :Ithorian
+                :Jablogian
+                :Jakoosk
+                :Joopa
+                :Karnex_dragon
+                :Keeradak
+                :Keteerian
+                :Knobby_white_ice_spider
+                :Kowakian_monkey-lizard
+                :Krakavora
+                :Krayt_Dragon
+                :Krykna
+                :Lanai
+                :Loth-wolf
+                :Loth_Cat
+                :Mamacore
+                :Mudhorn
+                :Mynock
+                :Mythosaur
+                :Nexu
+                :Orbak
+                :Porg
+                :Puffer_pig
+                :Purrgil
+                :Rancor
+                :Rathtar
+                :Ravinak
+                :Reek
+                :Rokkna
+                :Sarlacc
+                :Summa-verminoth
+                :Tauntaun
+                :Thala-siren
+                :Tibidee
+                :Varactyl
+                :Vexis
+                :Voorpak
+                :Vulptex
+                :Wampa
               )
 ] .
 
@@ -3861,6 +5729,21 @@ or minus is BBY"""^^xsd:string .
 
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BodyPart
+                :Clothing
+                :Consumable
+                :Information
+                :Material
+                :Medicine
+                :Money
+                :Parts
+                :Relic
+                :Weapon
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Built_Location
                 :Celestial_Location
                 :Habitat
@@ -3891,20 +5774,6 @@ or minus is BBY"""^^xsd:string .
                 :Tundra
                 :Volcanoes
                 :Water
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Clothing
-                :Consumable
-                :Information
-                :Material
-                :Medicine
-                :Money
-                :Parts
-                :Relic
-                :Weapon
               )
 ] .
 

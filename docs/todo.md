@@ -32,15 +32,12 @@
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Bad Batch - 1 series eps(incomplete)
 
-* Review property "of" - is it even defined properly?
-
-* "visited" only used once - is it useful?
-
-* "healed" also only used once
-
-* "surrenderOf" - anywhere else to use this?
+* Review properties
+    * "of" - is it even defined properly?
+    * "visited" only used once - is it useful?
+    * "healed" also only used once
+    * "surrenderOf" - anywhere else to use this?
 
 * Can we have ABY/BBY instead of int as custom datatype?
-
 
 * Changes to base cannot be saved if other ontologies loaded - https://github.com/protegeproject/protege/pull/1025

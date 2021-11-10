@@ -27,6 +27,20 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Dooku#Death"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Attack_on_the_Control_Ship
+:Attack_on_the_Control_Ship rdf:type owl:NamedIndividual ,
+                                     :Battle ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:someValuesFrom :N-1_starfighter
+                                     ] ;
+                            :destructionOf :Vuutun_Palaa ;
+                            :during :Battle_of_Naboo ;
+                            :participant :R2-D2 ;
+                            :victoryOf :Anakin_Skywalker ;
+                            :year -32 .
+
+
 ###  http://null.com/star-wars#Battle_of_Coruscant
 :Battle_of_Coruscant rdf:type owl:NamedIndividual ,
                               :Battle ,
@@ -81,16 +95,23 @@
                                                                     ) ;
                                                  rdf:type owl:Class
                                                ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Army
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :memberOf ;
+                                                                        owl:hasValue :Trade_Federation
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
                           ] ;
                  :after :Election_of_Supreme_Chancellor_32_BBY ;
-                 :captureOf :Nute_Gunray ;
-                 :destructionOf :Vuutun_Palaa ;
                  :during :Invasion_of_Naboo ;
                  :location :Naboo ;
-                 :participant :Anakin_Skywalker ,
-                              :Boss_Nass ,
+                 :participant :Boss_Nass ,
                               :Jar_Jar_Binks ,
-                              :Padme_Amidala ,
                               :Trade_Federation ;
                  :year -32 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Naboo"^^xsd:anyURI .
@@ -152,11 +173,48 @@
 
 ###  http://null.com/star-wars#Capture_of_Theed
 :Capture_of_Theed rdf:type owl:NamedIndividual ,
-                           :Battle ;
+                           :Battle ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :escapeOf ;
+                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                         owl:oneOf ( :Padme_Amidala
+                                                                                   )
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :disguisedAs ;
+                                                                         owl:someValuesFrom :Handmaiden
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :escapeOf ;
+                             owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hadRole ;
+                                                  owl:someValuesFrom :Handmaiden
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Repair
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :location ;
+                                                                         owl:hasValue :Naboo_Royal_Starship
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :R2-D2
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  :before :Traverse_the_Naboo_Core ;
                   :during :Invasion_of_Naboo ;
                   :escapeOf :Jar_Jar_Binks ,
                             :Obi-Wan_Kenobi ,
-                            :Padme_Amidala ,
+                            :Quarsh_Panaka ,
                             :Qui-Gon_Jinn ,
                             :R2-D2 ;
                   :location :Naboo ;
@@ -256,6 +314,32 @@
                                       :Padme_Amidala ;
                           :year -22 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/First_Battle_of_Geonosis"^^xsd:string .
+
+
+###  http://null.com/star-wars#Infiltrating_the_throne_room
+:Infiltrating_the_throne_room rdf:type owl:NamedIndividual ,
+                                       :Mission ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :participant ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                     owl:oneOf ( :Sabe
+                                                                                               )
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :disguisedAs ;
+                                                                                     owl:someValuesFrom :Queen
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ;
+                              :captureOf :Nute_Gunray ;
+                              :during :Battle_of_Naboo ;
+                              :location :Theed ;
+                              :participant :Padme_Amidala ,
+                                           :Quarsh_Panaka ;
+                              :year -32 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Naboo#Retaking_of_the_Palace"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Invasion_of_Naboo
@@ -490,6 +574,34 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars#Emancipation.2C_captivity.2C_and_death"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Traverse_the_Naboo_Core
+:Traverse_the_Naboo_Core rdf:type owl:NamedIndividual ,
+                                  :Mission ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :eatingOf ;
+                                    owl:someValuesFrom :Colo_claw_fish
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :eatingOf ;
+                                    owl:someValuesFrom :Opee_sea_killer
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :participant ;
+                                    owl:someValuesFrom :Gungan_bongo_submarine
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :participant ;
+                                    owl:someValuesFrom :Sando_aqua_monster
+                                  ] ;
+                         :after :Visiting_Otoh_Gunga ;
+                         :during :Invasion_of_Naboo ;
+                         :location :Naboo ;
+                         :participant :Jar_Jar_Binks ,
+                                      :Obi-Wan_Kenobi ,
+                                      :Qui-Gon_Jinn ;
+                         :year -32 .
+
+
 ###  http://null.com/star-wars#Vader_wipes_out_Seperatist_Leaders
 :Vader_wipes_out_Seperatist_Leaders rdf:type owl:NamedIndividual ,
                                              :Execution ;
@@ -501,6 +613,18 @@
                                     :victoryOf :Darth_Vader ;
                                     :year -19 ;
                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_Revenge_of_the_Sith#Birth_of_the_Empire"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Visiting_Otoh_Gunga
+:Visiting_Otoh_Gunga rdf:type owl:NamedIndividual ,
+                              :Meeting ;
+                     :captureOf :Jar_Jar_Binks ;
+                     :during :Invasion_of_Naboo ;
+                     :location :Otoh_Gunga ;
+                     :participant :Boss_Nass ,
+                                  :Obi-Wan_Kenobi ,
+                                  :Qui-Gon_Jinn ;
+                     :year -32 .
 
 
 ###  http://null.com/star-wars#Yoda_vs_Emperor

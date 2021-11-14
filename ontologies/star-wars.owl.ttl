@@ -882,6 +882,13 @@
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Bespin"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Bestoon_Legacy
+:Bestoon_Legacy rdf:type owl:NamedIndividual ,
+                         :Ship ;
+                :ownedBy :Ochi ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Bestoon_Legacy"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Bib_Fortuna
 :Bib_Fortuna rdf:type owl:NamedIndividual ,
                       <http://null.com/star-wars#Twi'Lek> ,
@@ -1657,6 +1664,48 @@
                     :Clan ;
            :memberOf :House_Vizsla ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Clan_Wren"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Cliegg_Lars
+:Cliegg_Lars rdf:type owl:NamedIndividual ,
+                      :Human ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :gender ;
+                        owl:someValuesFrom :Male
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom :Farmer
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :injuredIn ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:someValuesFrom :Tusken_Raider
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :captureOf ;
+                                                                    owl:hasValue :Shmi_Skywalker
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :location ;
+                                                                    owl:hasValue :Lars_Homestead
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :participatedIn ;
+                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                             owl:onProperty :freeingOf ;
+                                             owl:hasValue :Shmi_Skywalker
+                                           ]
+                      ] ;
+             :from :Tatooine ;
+             :married :Shmi_Skywalker ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Cliegg_Lars"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Clone_Commanders_Retirement_Home
@@ -4583,6 +4632,22 @@
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Kitwarr"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Klik-Klak
+:Klik-Klak rdf:type owl:NamedIndividual ,
+                    :Geonosian ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :gender ;
+                      owl:someValuesFrom :Male
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :owned ;
+                      owl:someValuesFrom :Egg
+                    ] ;
+           :livedIn :Geonosis ;
+           :survivorOf :Sterilization_of_Geonosis ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Klik-Klak"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Knights_of_Ren
 :Knights_of_Ren rdf:type owl:NamedIndividual ,
                          :Gang ;
@@ -4759,6 +4824,13 @@
                ] ;
       :employedBy :Morgan_Elsbeth ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Lang"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Lars_Homestead
+:Lars_Homestead rdf:type owl:NamedIndividual ,
+                         :Moisture_Farm ;
+                :location :Tatooine ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Lars_Homestead"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Lasan
@@ -6112,6 +6184,14 @@
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Onderon"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Onderon_rebels
+:Onderon_rebels rdf:type owl:NamedIndividual ,
+                         :Cell ;
+                :inConflictWith :Seperatist_Alliance ;
+                :location :Onderon ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Onderon_rebels"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Oola
 :Oola rdf:type owl:NamedIndividual ,
                <http://null.com/star-wars#Twi'Lek> ,
@@ -6244,6 +6324,7 @@
                       owl:someValuesFrom :Farmer
                     ] ;
            :from :Tatooine ;
+           :hadFather :Cliegg_Lars ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Owen_Lars"^^xsd:anyURI .
 
 
@@ -6283,6 +6364,13 @@
                :knew :Sheev_Palpatine ;
                :born -46 ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Padm%C3%A9_Amidala"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Partisans
+:Partisans rdf:type owl:NamedIndividual ,
+                    :Cell ;
+           :memberOf :Rebel_Alliance ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Partisans"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Pasaana
@@ -6490,10 +6578,6 @@
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :gender ;
                               owl:someValuesFrom :Male
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :hadRole ;
-                              owl:someValuesFrom :Leader
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :hadRole ;
@@ -7376,16 +7460,17 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hadRole ;
-                        owl:someValuesFrom [ owl:intersectionOf ( :Fighter
+                        owl:someValuesFrom [ owl:intersectionOf ( :Leader
                                                                   [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :inOrganisation ;
-                                                                    owl:hasValue :Rebel_Alliance
+                                                                    owl:hasValue :Partisans
                                                                   ]
                                                                 ) ;
                                              rdf:type owl:Class
                                            ]
                       ] ;
              :from :Onderon ;
+             :memberOf :Onderon_rebels ;
              :trainedBy :Ahsoka_Tano ,
                         :Rex ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Saw_Gerrera"^^xsd:anyURI .
@@ -7557,6 +7642,16 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Farmer
+                                                                     [ rdf:type owl:Class ;
+                                                                       owl:complementOf :Slave
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
                            owl:someValuesFrom [ owl:intersectionOf ( :Slave
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :ownedBy ;
@@ -7567,7 +7662,8 @@
                                               ]
                          ] ;
                 :hadSon :Anakin_Skywalker ;
-                :livedIn :Mos_Espa ;
+                :livedIn :Lars_Homestead ,
+                         :Mos_Espa ;
                 :raised :Owen_Lars ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars"^^xsd:anyURI .
 
@@ -7867,6 +7963,40 @@
                     :Resurgent-class_Star_Destroyer ;
            :ownedBy :First_Order ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Steadfast_(Resurgent-class)"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Steela_Gerrera
+:Steela_Gerrera rdf:type owl:NamedIndividual ,
+                         :Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :gender ;
+                           owl:someValuesFrom :Female
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Leader
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :inOrganisation ;
+                                                                       owl:hasValue :Onderon_rebels
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                :hadBrother :Saw_Gerrera ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Steela_Gerrera"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Sterilization_of_Geonosis
+:Sterilization_of_Geonosis rdf:type owl:NamedIndividual ,
+                                    :Event ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :killingOf ;
+                                      owl:someValuesFrom :Geonosian
+                                    ] ;
+                           :location :Geonosis ;
+                           :year -9 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Sterilization_of_Geonosis"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Stygeon_Prime

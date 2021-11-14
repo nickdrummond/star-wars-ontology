@@ -8,7 +8,7 @@
 
 <http://null.com/star-wars/rebels.owl.ttl> rdf:type owl:Ontology ;
                                             owl:imports <http://null.com/star-wars.owl.ttl> ;
-                                            rdfs:comment "Events and characters primarily from \"Star Wars: Rebels\""^^xsd:string .
+                                            rdfs:comment "Events primarily from \"Star Wars: Rebels\""^^xsd:string .
 
 #################################################################
 #    Object Properties
@@ -362,6 +362,21 @@
                    :year -4 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Blockade_of_Ibaar"^^xsd:anyURI ,
                                 "https://starwars.fandom.com/wiki/Wings_of_the_Master"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Bombers_on_Geonosis
+:Bombers_on_Geonosis rdf:type owl:NamedIndividual ,
+                              :Attack ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :destructionOf ;
+                                owl:someValuesFrom :TIE_bomber
+                              ] ;
+                     :after :Infiltrating_the_Geonosian_Hive ;
+                     :during :Return_to_Geonosis ;
+                     :location :Geonosis ;
+                     :participant :Ghost ;
+                     :year -2 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Ghosts_of_Geonosis#The_Empire_arrives"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Briefing_the_factory_strike
@@ -1786,6 +1801,46 @@
                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Call_to_Action"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Infiltrating_the_Geonosian_Hive
+:Infiltrating_the_Geonosian_Hive rdf:type owl:NamedIndividual ,
+                                          :Mission ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :destructionOf ;
+                                                                                        owl:someValuesFrom :Battle_Droid
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :location ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Hive
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :builtBy ;
+                                                                                        owl:someValuesFrom :Geonosian
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :location ;
+                                                                                        owl:hasValue :Geonosis
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ;
+                                 :during :Return_to_Geonosis ;
+                                 :found :Klik-Klak ,
+                                        :Saw_Gerrera ;
+                                 :participant :C1-10P ,
+                                              :Ezra_Bridger ,
+                                              :Kanan_Jarrus ,
+                                              :Rex ;
+                                 :year -2 ;
+                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Ghosts_of_Geonosis#Finding_Saw_Gerrera"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Infiltrating_the_Imperial_Armoury
 :Infiltrating_the_Imperial_Armoury rdf:type owl:NamedIndividual ,
                                             :Mission ,
@@ -2030,6 +2085,52 @@
                                   :Seventh_Sister ;
                      :year -3 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Shroud_of_Darkness#Duel_with_the_Inquisitors"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Jump_troopers_on_Geonosis
+:Jump_troopers_on_Geonosis rdf:type owl:NamedIndividual ,
+                                    :Escape ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :found ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Chemical_Weapons
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :ownedBy ;
+                                                                                  owl:hasValue :Galactic_Empire
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :damageOf ;
+                                                                                  owl:someValuesFrom :Arquitens-class_light_cruiser
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :killingOf ;
+                                                                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty :hadRole ;
+                                                                                                       owl:someValuesFrom :JumpTrooper
+                                                                                                     ]
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :escapeOf ;
+                                                                                  owl:hasValue :Ghost
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           :after :Saw_vs_Spectres ;
+                           :during :Return_to_Geonosis ;
+                           :freeingOf :Klik-Klak ;
+                           :location :Geonosis ;
+                           :participant :Rex ,
+                                        :Saw_Gerrera ,
+                                        :Spectres ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Ghosts_of_Geonosis#Imperial_entanglements"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Kanan_meets_Bendu
@@ -3581,6 +3682,25 @@
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera%27s_Heroes#Homeward_Bound"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Return_to_Geonosis
+:Return_to_Geonosis rdf:type owl:NamedIndividual ,
+                             :Mission ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :found ;
+                               owl:someValuesFrom :Destroyer_Droid
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :found ;
+                               owl:someValuesFrom :Shield_Generator
+                             ] ;
+                    :after :Using_Magick ;
+                    :location :Geonosis ;
+                    :participant :Rex ,
+                                 :Spectres ;
+                    :year -2 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Ghosts_of_Geonosis#Mission_to_Geonosis"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Returning_Droids_to_Bail
 :Returning_Droids_to_Bail rdf:type owl:NamedIndividual ,
                                    :Meeting ,
@@ -3697,6 +3817,20 @@
                  :escapeOf :Shadow_Caster ;
                  :year -4 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Blood_Sisters"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Saw_vs_Spectres
+:Saw_vs_Spectres rdf:type owl:NamedIndividual ,
+                          :Confrontation ;
+                 :after :Bombers_on_Geonosis ;
+                 :during :Return_to_Geonosis ;
+                 :location :Ghost ;
+                 :participant :Klik-Klak ,
+                              :Rex ,
+                              :Saw_Gerrera ,
+                              :Spectres ;
+                 :year -2 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Ghosts_of_Geonosis#Questioning_Saw.27s_methods"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Search_for_Ezras_parents

@@ -194,6 +194,17 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 :found rdf:type owl:ObjectProperty .
 
 
+###  http://null.com/star-wars#freedDuring
+:freedDuring rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :participatedIn ;
+             owl:inverseOf :freeingOf .
+
+
+###  http://null.com/star-wars#freeingOf
+:freeingOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :participant .
+
+
 ###  http://null.com/star-wars#friendsWith
 :friendsWith rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf :knew ;
@@ -1361,6 +1372,11 @@ or minus is BBY"""^^xsd:string .
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Chelidae"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Chemical_Weapons
+:Chemical_Weapons rdf:type owl:Class ;
+                  rdfs:subClassOf :Weapon .
+
+
 ###  http://null.com/star-wars#Child
 :Child rdf:type owl:Class ;
        rdfs:subClassOf :Role .
@@ -1564,7 +1580,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Criminal
 :Criminal rdf:type owl:Class ;
-          rdfs:subClassOf :Role .
+          rdfs:subClassOf :Vocation .
 
 
 ###  http://null.com/star-wars#Crolute
@@ -1944,6 +1960,11 @@ or minus is BBY"""^^xsd:string .
 :Fang-class_Starfighter rdf:type owl:Class ;
                         rdfs:subClassOf :StarFighter ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Fang-class"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Farm
+:Farm rdf:type owl:Class ;
+      rdfs:subClassOf :Built_Location .
 
 
 ###  http://null.com/star-wars#Farmer
@@ -2447,7 +2468,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Handmaiden
 :Handmaiden rdf:type owl:Class ;
-            rdfs:subClassOf :Role .
+            rdfs:subClassOf :Vocation .
 
 
 ###  http://null.com/star-wars#Harch
@@ -2542,6 +2563,11 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Hills
 :Hills rdf:type owl:Class ;
        rdfs:subClassOf :Habitat .
+
+
+###  http://null.com/star-wars#Hive
+:Hive rdf:type owl:Class ;
+      rdfs:subClassOf :Built_Location .
 
 
 ###  http://null.com/star-wars#Holo-darts
@@ -2791,7 +2817,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Jedi
 :Jedi rdf:type owl:Class ;
-      rdfs:subClassOf :Role ;
+      rdfs:subClassOf :Vocation ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi"^^xsd:anyURI .
 
 
@@ -2819,6 +2845,17 @@ or minus is BBY"""^^xsd:string .
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi_Initiate"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#JetTrooper
+:JetTrooper rdf:type owl:Class ;
+            rdfs:subClassOf :StormTrooper ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :movesWith ;
+                              owl:someValuesFrom :Flight
+                            ] ;
+            :quote "\"They fly now?\""^^xsd:string ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/First_Order_jet_trooper"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Job
 :Job rdf:type owl:Class ;
      rdfs:subClassOf :Event .
@@ -2844,6 +2881,16 @@ or minus is BBY"""^^xsd:string .
                          owl:someValuesFrom :Non-sentient
                        ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Joopa"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#JumpTrooper
+:JumpTrooper rdf:type owl:Class ;
+             rdfs:subClassOf :StormTrooper ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :movesWith ;
+                               owl:someValuesFrom :Flight
+                             ] ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Jumptrooper"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Junk_Dealer
@@ -3180,7 +3227,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Leader
 :Leader rdf:type owl:Class ;
-        rdfs:subClassOf :Role .
+        rdfs:subClassOf :Vocation .
 
 
 ###  http://null.com/star-wars#Leg
@@ -3433,7 +3480,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Military_Rank
 :Military_Rank rdf:type owl:Class ;
-               rdfs:subClassOf :Role ;
+               rdfs:subClassOf :Vocation ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Military_rank"^^xsd:anyURI .
 
 
@@ -3473,6 +3520,12 @@ or minus is BBY"""^^xsd:string .
 :Moff rdf:type owl:Class ;
       rdfs:subClassOf :Military_Rank ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Moff"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Moisture_Farm
+:Moisture_Farm rdf:type owl:Class ;
+               rdfs:subClassOf :Farm ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Moisture_farm"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Mon_Calimari
@@ -3628,7 +3681,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Mystic
 :Mystic rdf:type owl:Class ;
-        rdfs:subClassOf :Role .
+        rdfs:subClassOf :Vocation .
 
 
 ###  http://null.com/star-wars#Mythosaur
@@ -3953,7 +4006,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Police
 :Police rdf:type owl:Class ;
-        rdfs:subClassOf :Role .
+        rdfs:subClassOf :Vocation .
 
 
 ###  http://null.com/star-wars#Political_Organisation
@@ -3963,7 +4016,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Politician
 :Politician rdf:type owl:Class ;
-            rdfs:subClassOf :Role .
+            rdfs:subClassOf :Vocation .
 
 
 ###  http://null.com/star-wars#Porg
@@ -4638,7 +4691,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Sith
 :Sith rdf:type owl:Class ;
-      rdfs:subClassOf :Role .
+      rdfs:subClassOf :Vocation .
 
 
 ###  http://null.com/star-wars#Skakoan
@@ -4664,7 +4717,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Slicer
 :Slicer rdf:type owl:Class ;
-        rdfs:subClassOf :Role ;
+        rdfs:subClassOf :Criminal ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Slicer"^^xsd:anyURI .
 
 
@@ -4730,7 +4783,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Spy
 :Spy rdf:type owl:Class ;
-     rdfs:subClassOf :Role .
+     rdfs:subClassOf :Vocation .
 
 
 ###  http://null.com/star-wars#Squadron

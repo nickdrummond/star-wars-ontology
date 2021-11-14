@@ -1001,6 +1001,19 @@
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_The_Siege_of_Lothal#Getting_off_of_Lothal"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Discussing_the_Darksaber_with_Sabine
+:Discussing_the_Darksaber_with_Sabine rdf:type owl:NamedIndividual ,
+                                               :Meeting ;
+                                      :about :Darksaber ;
+                                      :after :Infiltrator_Droid_on_Atollon ;
+                                      :location :Chopper_Base ;
+                                      :participant :Fenn_Rau ,
+                                                   :Sabine_Wren ,
+                                                   :Spectres ;
+                                      :year -2 ;
+                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Trials_of_the_Darksaber#Return_of_the_Darksaber"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Diversion_on_Ryloth
 :Diversion_on_Ryloth rdf:type owl:NamedIndividual ,
                               :Fight ,
@@ -1948,7 +1961,10 @@
                                                                                    ]
                                                                                    [ rdf:type owl:Restriction ;
                                                                                      owl:onProperty :participant ;
-                                                                                     owl:someValuesFrom :Fulcrum
+                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty :hadRole ;
+                                                                                                          owl:someValuesFrom :Fulcrum
+                                                                                                        ]
                                                                                    ]
                                                                                  ) ;
                                                               rdf:type owl:Class
@@ -4775,6 +4791,35 @@
                                                     :Sabine_Wren ;
                                        :year -4 ;
                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Vision_of_Hope#Ezra.27s_vision"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Training_Sabine_with_the_Darksaber
+:Training_Sabine_with_the_Darksaber rdf:type owl:NamedIndividual ,
+                                             :Training ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :included ;
+                                               owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty :about ;
+                                                                                           owl:someValuesFrom :Family
+                                                                                         ]
+                                                                                       ) ;
+                                                                    rdf:type owl:Class
+                                                                  ]
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :used ;
+                                               owl:someValuesFrom :Vambraces
+                                             ] ;
+                                    :after :Discussing_the_Darksaber_with_Sabine ;
+                                    :location :Atollon ;
+                                    :participant :Ezra_Bridger ,
+                                                 :Kanan_Jarrus ,
+                                                 :Sabine_Wren ;
+                                    :used :Darksaber ;
+                                    :witnessedBy :Fenn_Rau ;
+                                    :year -2 ;
+                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Trials_of_the_Darksaber#Sabine.27s_training"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Tua_asks_for_help

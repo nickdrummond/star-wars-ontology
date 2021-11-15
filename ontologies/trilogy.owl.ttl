@@ -82,21 +82,19 @@
 
 ###  http://null.com/star-wars#Battle_of_Yavin
 :Battle_of_Yavin rdf:type owl:NamedIndividual ,
-                          :Battle ;
+                          :Battle ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom :TIE_Fighter
+                          ] ;
                  :after :Escape_from_Death_Star ;
                  :deathOf :Wilhuff_Tarkin ,
                           :Wullf_Yularen ;
                  :destructionOf :Death_Star_1 ;
-                 :escapeOf :Darth_Vader ;
-                 :injuryOf :R2-D2 ;
-                 :killingOf :Biggs_Darklighter ,
-                            :Porkins ;
+                 :killingOf :Porkins ;
                  :location :Yavin_4 ;
                  :participant :Galactic_Empire ,
-                              :Massassi_Group ,
-                              :Millenium_Falcon ;
-                 :survivedBy :Wedge_Antilles ;
-                 :victoryOf :Luke_Skywalker ;
+                              :Massassi_Group ;
                  :year 0 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin"^^xsd:anyURI .
 
@@ -577,6 +575,14 @@
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia#Duel_with_the_Dark_Lord"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Porkins
+:Porkins :callsign "Red Six"^^xsd:string .
+
+
+###  http://null.com/star-wars#Red_Squadron
+:Red_Squadron rdf:type owl:NamedIndividual .
+
+
 ###  http://null.com/star-wars#Rescue_of_Leia
 :Rescue_of_Leia rdf:type owl:NamedIndividual ,
                          :Rescue ,
@@ -709,6 +715,111 @@
                                  :Lando_Calrissian ;
                     :year 3 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_city_in_the_clouds"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Trench_Run_1
+:Trench_Run_1 rdf:type owl:NamedIndividual ,
+                       :Attack ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :participant ;
+                         owl:someValuesFrom :TIE_Fighter
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :destructionOf ;
+                         owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Y-Wing
+                       ] ;
+              :during :Battle_of_Yavin ;
+              :killingOf :Jon_Vander ;
+              :location :Death_Star_1 ;
+              :participant :Gold_Squadron ,
+                           :Vaders_TIE_Advanced_x1 ;
+              :victoryOf :Darth_Vader ;
+              :year 0 ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Trench_Run_2
+:Trench_Run_2 rdf:type owl:NamedIndividual ,
+                       :Attack ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :participant ;
+                         owl:someValuesFrom :TIE_Fighter
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :destructionOf ;
+                         owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                         owl:onClass :X-Wing
+                       ] ;
+              :after :Trench_Run_1 ;
+              :during :Battle_of_Yavin ;
+              :location :Death_Star_1 ;
+              :participant :Red_Squadron ,
+                           :Vaders_TIE_Advanced_x1 ;
+              :victoryOf :Darth_Vader ;
+              :year 0 ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Trench_Run_3
+:Trench_Run_3 rdf:type owl:NamedIndividual ,
+                       :Attack ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :damageOf ;
+                                                                     owl:hasValue :Vaders_TIE_Advanced_x1
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :victoryOf ;
+                                                                     owl:hasValue :Millenium_Falcon
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :destructionOf ;
+                                                                     owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                     owl:onClass :TIE_Fighter
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :participant ;
+                         owl:someValuesFrom :TIE_Fighter
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :participant ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Force_Bond
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :connectedTo ;
+                                                                     owl:hasValue :Luke_Skywalker
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :connectedTo ;
+                                                                     owl:hasValue :Obi-Wan_Kenobi
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :destructionOf ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :X-Wing
+                       ] ;
+              :after :Trench_Run_2 ;
+              :damageOf :R2-D2 ;
+              :during :Battle_of_Yavin ;
+              :escapeOf :Wedge_Antilles ;
+              :killingOf :Biggs_Darklighter ;
+              :location :Death_Star_1 ;
+              :participant :Millenium_Falcon ,
+                           :Red_Squadron ;
+              :survivedBy :Darth_Vader ;
+              :victoryOf :Luke_Skywalker ;
+              :year 0 ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Vader_is_Lukes_Father

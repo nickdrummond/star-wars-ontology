@@ -481,6 +481,19 @@
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Anaxes"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Archeon_Nebula
+:Archeon_Nebula rdf:type owl:NamedIndividual ,
+                         :Nebula ;
+                :location :Lothal_Sector ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Archeon_Nebula"^^xsd:anyURI .
+
+###  http://null.com/star-wars#Archeon_pass
+:Archeon_pass rdf:type owl:NamedIndividual ,
+                       :Hyperspace_route ;
+              :location :Archeon_Nebula ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Archeon_pass"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Arihnda_Pryce
 :Arihnda_Pryce rdf:type owl:NamedIndividual ,
                         :Human ,
@@ -1537,6 +1550,13 @@
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Chandrila"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Chandrila_Mistress
+:Chandrila_Mistress rdf:type owl:NamedIndividual ,
+                             :Shuttle ;
+                    :ownedBy :Mon_Mothma ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Chandrila_Mistress"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Chava
 :Chava rdf:type owl:NamedIndividual ,
                 :Lasat ,
@@ -2106,7 +2126,7 @@
                       owl:onProperty :hasTerrain ;
                       owl:someValuesFrom :Forest
                     ] ;
-           :location :Outer_Rim ;
+           :location :Raioballo_sector ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Dantooine"^^xsd:anyURI .
 
 
@@ -2648,6 +2668,28 @@
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Eravana"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Erskin_Semaj
+:Erskin_Semaj rdf:type owl:NamedIndividual ,
+                       :Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :gender ;
+                         owl:someValuesFrom :Male
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Aide
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :inOrganisation ;
+                                                                     owl:hasValue :Imperial_Senate
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              :employedBy :Mon_Mothma ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Erskin_Semaj"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Executor
 :Executor rdf:type owl:NamedIndividual ,
                    :Dreadnought ;
@@ -3025,9 +3067,15 @@
 
 ###  http://null.com/star-wars#Galactic_Senate
 :Galactic_Senate rdf:type owl:NamedIndividual ,
-                          :Building ;
-                 :location :Coruscant ;
-                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Galactic_Senate_Building"^^xsd:anyURI .
+                          :Political_Organisation ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Galactic_Senate"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Galactic_Senate_Building
+:Galactic_Senate_Building rdf:type owl:NamedIndividual ,
+                                   :Building ;
+                          :location :Coruscant ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Galactic_Senate_Building"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Galaxy
@@ -3955,6 +4003,12 @@
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Imperial_Security_Bureau"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Imperial_Senate
+:Imperial_Senate rdf:type owl:NamedIndividual ,
+                          :Political_Organisation ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Imperial_Senate"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Imperial_Super_Commandos
 :Imperial_Super_Commandos rdf:type owl:NamedIndividual ,
                                    :Military_Unit ,
@@ -4333,6 +4387,7 @@
                                             rdf:type owl:Class
                                           ]
                      ] ;
+            :from :Onderon ;
             :aka "Dutch"^^xsd:string ;
             :callsign "Gold Leader"^^xsd:string ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Jon_Vander"^^xsd:anyURI .
@@ -4627,6 +4682,13 @@
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Kessel"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Kessel_Run
+:Kessel_Run rdf:type owl:NamedIndividual ,
+                     :Hyperspace_route ;
+            :location :Akkadese_Maelstrom ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Kessel_Run"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Ketsu_Onyo
 :Ketsu_Onyo rdf:type owl:NamedIndividual ,
                      :Human ,
@@ -4844,7 +4906,7 @@
                    owl:onProperty :hasTerrain ;
                    owl:someValuesFrom :Mountains
                  ] ;
-        :location :Outer_Rim ;
+        :location :Raioballo_sector ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Lah%27mu"^^xsd:anyURI .
 
 
@@ -5662,12 +5724,13 @@
                        owl:someValuesFrom [ owl:intersectionOf ( :Senator
                                                                  [ rdf:type owl:Restriction ;
                                                                    owl:onProperty :inOrganisation ;
-                                                                   owl:hasValue :Galactic_Republic
+                                                                   owl:hasValue :Galactic_Senate
                                                                  ]
                                                                ) ;
                                             rdf:type owl:Class
                                           ]
                      ] ;
+            :from :Chandrila ;
             :born -46 ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Mon_Mothma"^^xsd:anyURI .
 
@@ -7042,6 +7105,13 @@
              :hadSister :Trace_Martez ;
              :livedIn :Coruscant ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Rafa_Martez"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Raioballo_sector
+:Raioballo_sector rdf:type owl:NamedIndividual ,
+                           :Sector ;
+                  :location :Outer_Rim ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Raioballo_sector"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ranzar_Malk
@@ -8941,6 +9011,32 @@
                           :Region ;
                  :location :Galaxy ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Unknown_Regions"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Unnamed_Pilot
+:Unnamed_Pilot rdf:type owl:NamedIndividual ,
+                        :Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :gender ;
+                          owl:someValuesFrom :Female
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :ofShip ;
+                                                                      owl:someValuesFrom :Y-Wing
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :inOrganisation ;
+                                                                      owl:hasValue :Gold_Squadron
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               :callsign "Gold Two"^^xsd:string ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Gold_Two_(rebellion)"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ursa_Wren

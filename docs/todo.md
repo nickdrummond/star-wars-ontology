@@ -38,6 +38,10 @@
     * "healed" also only used once
     * "surrenderOf" - anywhere else to use this?
 
+* callsign and aka should be data properties as they are in-world
+
+* More sectors/systems to make locations manageable?
+
 * Can we have ABY/BBY instead of int as custom datatype?
 
 * Changes to base cannot be saved if other ontologies loaded - https://github.com/protegeproject/protege/pull/1025

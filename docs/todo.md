@@ -40,7 +40,7 @@
 
 * callsign and aka should be data properties as they are in-world
 
-* More sectors/systems to make locations manageable?
+* More sectors/systems to make locations manageable? Most of the planets so far are in different sectors
 
 * Can we have ABY/BBY instead of int as custom datatype?
 

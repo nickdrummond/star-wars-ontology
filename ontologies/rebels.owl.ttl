@@ -1113,6 +1113,68 @@
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera%27s_Heroes#Homeward_Bound"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Dogfight_in_the_Archeon_Pass
+:Dogfight_in_the_Archeon_Pass rdf:type owl:NamedIndividual ,
+                                       :Fight ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :destructionOf ;
+                                         owl:someValuesFrom :TIE-Interceptor
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :destructionOf ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Y-Wing
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :memberOf ;
+                                                                                     owl:hasValue :Gold_Squadron
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
+                                                                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty :trappedBy ;
+                                                                                                            owl:someValuesFrom :Tractor_Beam
+                                                                                                          ]
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty :participant ;
+                                                                                                            owl:hasValue :Ghost
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                     owl:onClass :Star_Destroyer
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :damageOf ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :TIE-Defender
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :damageOf ;
+                                         owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :Star_Destroyer
+                                       ] ;
+                              :after :Attack_on_the_Chandrila_Mistress ;
+                              :escapeOf :Ezra_Bridger ,
+                                        :Ghost ,
+                                        :Jon_Vander ;
+                              :location :Archeon_Nebula ;
+                              :participant :Arihnda_Pryce ,
+                                           :Vult_Skerris ;
+                              :year -2 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Secret_Cargo#Dogfight_in_the_Archeon_pass"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Dogfight_over_Concord_Dawn
 :Dogfight_over_Concord_Dawn rdf:type owl:NamedIndividual ,
                                      :Fight ,
@@ -3397,6 +3459,43 @@
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Vision_of_Hope"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Mon_Mothma_calls_for_an_Alliance_against_the_Empire
+:Mon_Mothma_calls_for_an_Alliance_against_the_Empire rdf:type owl:NamedIndividual ,
+                                                              :Communication ,
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :about ;
+                                                                owl:someValuesFrom :Rebellion
+                                                              ] ,
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :included ;
+                                                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :creationOf ;
+                                                                                     owl:hasValue :Rebel_Alliance
+                                                                                   ]
+                                                              ] ,
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :witnessedBy ;
+                                                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :memberOf ;
+                                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Cell
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :inConflictWith ;
+                                                                                                                                 owl:hasValue :Galactic_Empire
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ]
+                                                                                   ]
+                                                              ] ;
+                                                     :after :Dogfight_in_the_Archeon_Pass ;
+                                                     :location :Dantooine ;
+                                                     :participant :Ghost ,
+                                                                  :Mon_Mothma ;
+                                                     :year -2 ;
+                                                     :quote "This is Senator Mon Mothma. I have been called a traitor for speaking out against a corrupt Galactic Senate. A Senate manipulated by the sinister tactics of the Emperor. For too long I have watched the heavy hand of the Empire strangle our liberties, stifling our freedoms in the name of ensuring our safety. No longer! Despite Imperial threats, despite the Emperor himself, I have no fear as I take new action. For I am not alone. Beginning today we stand together as allies. I hereby resign from the Senate to fight for you, not from the distant hall of politics but from the front lines. We will not rest until we bring an end to the Empire, until we restore our Republic! Are you with me?"^^xsd:string ;
+                                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Secret_Cargo#Mon_Mothma.27s_address"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Murder_of_Tau
 :Murder_of_Tau rdf:type owl:NamedIndividual ,
                         :Murder ,
@@ -5113,7 +5212,7 @@
                                owl:onProperty :about ;
                                owl:someValuesFrom :Fulcrum
                              ] ;
-                    :during :Extracting_Kallus ;
+                    :after :Extracting_Kallus ;
                     :location :Thrawns_Office ;
                     :participant :Kassius_Konstantine ,
                                  :Thrawn ,

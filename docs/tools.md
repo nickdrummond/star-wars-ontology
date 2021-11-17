@@ -17,20 +17,34 @@ Use the Pellet reasoner
 
 Other reasoners are available, but each has different [performance](performance.md) issues
 
-### Nice features of Protege
+### Protege Features
 
-#### 
+#### DL Query Tab
+
+For off the cuff queries as simple as `year value -22`
+
 
 #### Individual Hierarchy Tab
 
-Great for membership or temporal event relations
-  * Requires the reasoner to be active for inv property tree
+`after`
   * Select `hide orphans`
   * Navigate the `after` tree with `inverse property`
+  * ideally use `during` for children and `before` for sibling order
+
+`memberOf`
+
+`location`
   * Temporarily remove `Transitive(location)` and navigate through from `Galaxy`
     * ships make this messy
-    * lots of duplicate nodes in top level of tree - bug?
+
+Issues   
+* Requires the reasoner - would be nice to also see asserted tree
+    * eg transitivity makes the tree messy with individuals showing at all levels
+* lots of duplicate nodes in top level of tree - bug?
+* ideal if the nodes worked for selection, but they don't
+* we'd require a more advanced tree ideally that allows ordering of siblings by a property (eg after)
     
+
 ## Ontology Browser
 
 HTML rendering of an ontology can be run locally using the [ontology browser](https://github.com/nickdrummond/ontology-browser)

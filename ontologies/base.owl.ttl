@@ -272,7 +272,8 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  http://null.com/star-wars#hasPart
-:hasPart rdf:type owl:ObjectProperty .
+:hasPart rdf:type owl:ObjectProperty ;
+         owl:inverseOf :partOf .
 
 
 ###  http://null.com/star-wars#hasTerrain
@@ -402,6 +403,11 @@ Army and of value Gungan"""^^xsd:string .
 :ownedBy rdf:type owl:ObjectProperty .
 
 
+###  http://null.com/star-wars#partOf
+:partOf rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty .
+
+
 ###  http://null.com/star-wars#participant
 :participant rdf:type owl:ObjectProperty ;
              owl:inverseOf :participatedIn ;
@@ -498,6 +504,10 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 ###  http://null.com/star-wars#survivorOf
 :survivorOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :participatedIn .
+
+
+###  http://null.com/star-wars#target
+:target rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#traded
@@ -892,6 +902,11 @@ or minus is BBY"""^^xsd:string .
 :Arquitens-class_light_cruiser rdf:type owl:Class ;
                                rdfs:subClassOf :Light_Cruiser ;
                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Arquitens-class_light_cruiser"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Arrival
+:Arrival rdf:type owl:Class ;
+         rdfs:subClassOf :Event .
 
 
 ###  http://null.com/star-wars#Artist
@@ -1719,6 +1734,29 @@ or minus is BBY"""^^xsd:string .
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Devaronian"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Dewback
+:Dewback rdf:type owl:Class ;
+         rdfs:subClassOf :Living_thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Omniverous
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTrait ;
+                           owl:someValuesFrom :Reptilian
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :sentience ;
+                           owl:someValuesFrom :Non-sentient
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Leg
+                         ] ;
+         rdfs:seeAlso "https://starwars.fandom.com/wiki/Dewback"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Dianoga
 :Dianoga rdf:type owl:Class ;
          rdfs:subClassOf :Living_thing ,
@@ -2204,6 +2242,12 @@ or minus is BBY"""^^xsd:string .
 :GR-75_medium_transport rdf:type owl:Class ;
                         rdfs:subClassOf :Transport ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/GR-75_medium_transport"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Gaderffii_stick
+:Gaderffii_stick rdf:type owl:Class ;
+                 rdfs:subClassOf :Weapon ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Gaderffii_stick"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Game
@@ -4680,6 +4724,11 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Sea_skiff
 :Sea_skiff rdf:type owl:Class ;
            rdfs:subClassOf :Skiff .
+
+
+###  http://null.com/star-wars#Search
+:Search rdf:type owl:Class ;
+        rdfs:subClassOf :Event .
 
 
 ###  http://null.com/star-wars#Sector

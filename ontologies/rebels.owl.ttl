@@ -511,6 +511,23 @@
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Visions_and_Voices"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Bringing_Ezra_to_Tatooine
+:Bringing_Ezra_to_Tatooine rdf:type owl:NamedIndividual ,
+                                    :Trap ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :stole ;
+                                      owl:someValuesFrom :A-Wing
+                                    ] ;
+                           :during :Hunt_for_Kenobi_on_Tatooine ;
+                           :location :Chopper_Base ;
+                           :participant :Ezra_Bridger ;
+                           :used :Holocron_from_Malachor ,
+                                 :Kanans_Jedi_Holocron ;
+                           :witnessedBy :C1-10P ;
+                           :year -2 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Twin_Suns_(episode)#The_holocron.27s_messages"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Capture_of_the_Eighth_Brother
 :Capture_of_the_Eighth_Brother rdf:type owl:NamedIndividual ,
                                         :Capture ,
@@ -1791,6 +1808,35 @@
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Through_Imperial_Eyes#Helping_the_Rebels_escape"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Ezra_hunts_for_Maul_on_Tatooine
+:Ezra_hunts_for_Maul_on_Tatooine rdf:type owl:NamedIndividual ,
+                                          :Search ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :participant ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Force_Bond
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :connectedTo ;
+                                                                                        owl:hasValue :Ezra_Bridger
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :connectedTo ;
+                                                                                        owl:hasValue :Maul
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ;
+                                 :after :Ezra_vs_Tusken_Raiders ;
+                                 :during :Hunt_for_Kenobi_on_Tatooine ;
+                                 :failureOf :C1-10P ,
+                                            :Ezra_Bridger ;
+                                 :location :Tatooine ;
+                                 :used :Holocron_from_Malachor ,
+                                       :Kanans_Jedi_Holocron ;
+                                 :year -2 ;
+                                 rdfs:comment "https://starwars.fandom.com/wiki/Twin_Suns_(episode)#Trials_of_heat_and_sand"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Ezra_vs_Thrawn
 :Ezra_vs_Thrawn rdf:type owl:NamedIndividual ,
                          :Fight ,
@@ -1804,6 +1850,43 @@
                              :Thrawn ;
                 :year 0 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal#Back-up_plans"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Ezra_vs_Tusken_Raiders
+:Ezra_vs_Tusken_Raiders rdf:type owl:NamedIndividual ,
+                                 :Fight ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :found ;
+                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :partOf ;
+                                                        owl:hasValue :Holocron_from_Malachor
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :killingOf ;
+                                                                               owl:someValuesFrom :Tusken_Raider
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:hasValue :Maul
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :participant ;
+                                   owl:someValuesFrom :Tusken_Raider
+                                 ] ;
+                        :after :Bringing_Ezra_to_Tatooine ;
+                        :during :Hunt_for_Kenobi_on_Tatooine ;
+                        :location :Tatooine ;
+                        :participant :C1-10P ,
+                                     :Ezra_Bridger ;
+                        :year -2 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Twin_Suns_(episode)#Tusken_ambush"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Failing_to_take_down_Maul
@@ -2155,6 +2238,24 @@
                                     :Sabine_Wren ;
                        :year "-5"^^xsd:int ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels:_Spark_of_Rebellion#Heist_in_Capital_City"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Hunt_for_Kenobi_on_Tatooine
+:Hunt_for_Kenobi_on_Tatooine rdf:type owl:NamedIndividual ,
+                                      :Search ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :used ;
+                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :partOf ;
+                                                             owl:hasValue :Holocron_from_Malachor
+                                                           ]
+                                      ] ;
+                             :after :Chopper_takes_control_of_the_Ghost ;
+                             :location :Tatooine ;
+                             :participant :Maul ;
+                             :target :Obi-Wan_Kenobi ;
+                             :year -2 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Twin_Suns_(episode)"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Infiltrating_the_Communication_Centre
@@ -2922,6 +3023,18 @@
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice#An_alliance_of_convenience"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Maul_vs_Obi-Wan_final
+:Maul_vs_Obi-Wan_final rdf:type owl:NamedIndividual ,
+                                :Duel ;
+                       :after :Obi-Wan_and_Ezra ;
+                       :during :Hunt_for_Kenobi_on_Tatooine ;
+                       :killingOf :Maul ;
+                       :location :Tatooine ;
+                       :victoryOf :Obi-Wan_Kenobi ;
+                       :year -2 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Maul#Duel_on_Tatooine"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Medical_supply_run
 :Medical_supply_run rdf:type owl:NamedIndividual ,
                              :Mission ,
@@ -3672,6 +3785,60 @@
                ] .
 
 
+###  http://null.com/star-wars#Obi-Wan_and_Ezra
+:Obi-Wan_and_Ezra rdf:type owl:NamedIndividual ,
+                           :Conversation ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :about ;
+                             owl:someValuesFrom :Family
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Maul
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:someValuesFrom :Dewback
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :C1-10P
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Ezra_Bridger
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :about ;
+                             owl:hasValue :Maul
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :about ;
+                             owl:hasValue :Rebel_Alliance
+                           ] ;
+                  :after :Ezra_hunts_for_Maul_on_Tatooine ;
+                  :during :Hunt_for_Kenobi_on_Tatooine ;
+                  :location :Tatooine ;
+                  :participant :Ezra_Bridger ,
+                               :Obi-Wan_Kenobi ;
+                  :year -2 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Twin_Suns_(episode)#An_evening_with_Kenobi"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Preparing_to_rescue_Kanan
 :Preparing_to_rescue_Kanan rdf:type owl:NamedIndividual ,
                                     :Mission ,
@@ -4353,7 +4520,7 @@
 
 ###  http://null.com/star-wars#Return_to_Geonosis
 :Return_to_Geonosis rdf:type owl:NamedIndividual ,
-                             :Mission ,
+                             :Search ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :found ;
                                owl:someValuesFrom :Destroyer_Droid
@@ -4366,6 +4533,7 @@
                     :location :Geonosis ;
                     :participant :Rex ,
                                  :Spectres ;
+                    :target :Saw_Gerrera ;
                     :year -2 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Ghosts_of_Geonosis#Mission_to_Geonosis"^^xsd:anyURI .
 
@@ -4642,7 +4810,7 @@
 
 ###  http://null.com/star-wars#Search_for_Meiloorun
 :Search_for_Meiloorun rdf:type owl:NamedIndividual ,
-                               :Mission ,
+                               :Search ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :destructionOf ;
                                  owl:someValuesFrom :Troop_Transporter
@@ -4691,7 +4859,7 @@
 
 ###  http://null.com/star-wars#Search_for_Tseebo
 :Search_for_Tseebo rdf:type owl:NamedIndividual ,
-                            :Mission ,
+                            :Search ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :found ;
                               owl:someValuesFrom [ owl:intersectionOf ( :Information
@@ -4726,6 +4894,7 @@
                    :location :Lothal ;
                    :participant :Galactic_Empire ,
                                 :Spectres ;
+                   :target :Tseebo ;
                    :year -4 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Empire_Day_(episode)"^^xsd:anyURI .
 

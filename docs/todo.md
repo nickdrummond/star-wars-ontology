@@ -16,13 +16,9 @@
     * we can easily [query for the events](docs/events.md) using simple DL query, but how do we put them in some order?
     * If we want to get the events and subevents for a character, we either query this or we have
       a subchain (the subchain is great as it brings the named events in to the inferred props but what is the cost?)
-
+      
 
     included o participant -> participant
-
-
-* Can we ask which locations a character has been in? ie locs of events they participated in
-
 
 * Pellet
     * Switch tests to Pellet
@@ -32,7 +28,7 @@
 * Check all events have dates and are not orphaned - see Sparql test
 
 * Series
-    * Rebels - series 3(22), 4(16)
+    * Rebels - series 4(16)
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Bad Batch - 1 series eps(incomplete)
 

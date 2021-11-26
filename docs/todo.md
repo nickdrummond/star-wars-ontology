@@ -2,6 +2,10 @@
 
 [back to index](index.md)
 
+
+* ```from``` and ```to``` for transfer of ownership (eg darksaber) - can we then infer the ownedBy
+  * try the Falcon
+    
 * How do we infer that specific people were participants in `Evacuation_of_Garel` - we're using `Spectres` a lot?
   Should we say that all members of an organisation or crew were at that event? What about Battles - Rebel Alliance vs Empire?
   Not all members of a group are a member at that time.

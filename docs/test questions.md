@@ -15,10 +15,31 @@ We have the following mechanisms available to us:
     * Individuals matrix
     * Ontograf
 
+
+## Places
+Transitivity on locations allows for containment:
+
+    City and location value Outer_Rim = Cloud City etc
+
+And querying for things that happened in a place:
+
+    Event and location value Tatooine
+
+## Where has Ezra been?
+We can ask the locations of events at which Ezra (or the Spectres) were present:
+
+    inverse(location) some (Event and participant some {Ezra_Bridger, Spectres})
+
+Or planets that Ahsoka has been to:
+
+    Planet and inverse(location) some (Event and participant value Ahsoka_Tano)
+
+nb see [performance](performance.md) issues around making ```visited``` property chain
+
 ## Is Anakin from Tatooine?
-We have asserted he's from Mos Espa
-A property chain on "from" allows this to be inferred.
-But is Anakin from the Outer Rim? SHOULD BE YES
+Is Anakin from the Outer Rim? Get all beings from the Outer Rim:
+
+    from some (Place and location value Outer_Rim)
 
 ## Membership of Rebels/Resistance etc?
 Mixture of membership and roles
@@ -61,9 +82,6 @@ But, it is not compatible with the existing axiom:
 We could say the following but that would include an engineer for the Grand Army who defected to become a fighter for the Separatists
 
     Clone Trooper == (hadRole some Soldier) and (memberOf value GrandArmy...)
-
-## Places
-    City and location value Outer_Rim = Cloud City etc
 
 ## Born/died before an event?
 Can we do this relative to an event - ie better than "died some xsd:int[>0]"

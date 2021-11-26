@@ -31,6 +31,13 @@ We have some basic metrics being checked - see [ConsistencyTest](../src/test/jav
 
 There could be a lot of other queries testing
 
+## Expensive modelling (Pellet)
+
+### ```visited``` as a property chain
+Nice to have this to show where characters have been, but it can be used at query time instead as its slow:
+
+    participatedIn o location -> visited
+
 ## Expensive modelling (HermiT) - to revise using Pellet
 
 ### allDifferent

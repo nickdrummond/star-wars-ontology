@@ -20,6 +20,10 @@
 
     included o participant -> participant
 
+
+* Can we ask which locations a character has been in? ie locs of events they participated in
+
+
 * Pellet
     * Switch tests to Pellet
     * Review all performance decisions - now we've resolved the errors, we can get much faster classification/query times
@@ -41,6 +45,7 @@
 * callsign and aka should be data properties as they are in-world
 
 * More sectors/systems to make locations manageable? Most of the planets so far are in different sectors
+* Need a few top level places to make locations manageable
 
 * Can we have ABY/BBY instead of int as custom datatype?
 

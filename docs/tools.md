@@ -44,6 +44,12 @@ Issues
 * ideal if the nodes worked for selection, but they don't
 * we'd require a more advanced tree ideally that allows ordering of siblings by a property (eg after)
     
+#### OWLDoc
+
+Export HTML rendering of the ontology for browsing (read only/asserted only).
+Seems bugged now.
+* html frames not working (in Chrome at least)
+* entity pages contain lots of assertions about other entities!!?!?
 
 ## Ontology Browser
 
@@ -64,3 +70,12 @@ HTML rendering of an ontology can be run locally using the [ontology browser](ht
 
 ### Bugs
 * see ont browser
+
+## WebProtege
+
+https://webprotege.stanford.edu/
+
+More limited (eg cannot use a reasoner?)
+But can import multiple ontologies and looks to have good multi-user support now.
+
+https://protegewiki.stanford.edu/wiki/WebProtegeUsersGuide#Viewing_and_Editing_OWL_2_Ontologies

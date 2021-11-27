@@ -18,7 +18,7 @@
 :An_Audience_with_Dryden_Vos rdf:type owl:NamedIndividual ,
                                       :Confrontation ;
                              :after :Heist_on_Vandor ;
-                             :location :Fort_Ypso ;
+                             :locatedIn :Fort_Ypso ;
                              :participant :Chewbacca ,
                                           :Dryden_Vos ,
                                           :Han_Solo ,
@@ -34,7 +34,7 @@
                       :captureOf <http://null.com/star-wars#Qi'ra> ;
                       :escapeOf :Han_Solo ;
                       :injuryOf :Proxima ;
-                      :location :Corellia ;
+                      :locatedIn :Corellia ;
                       :year -13 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Han_Solo#Working_for_the_White_Worms"^^xsd:anyURI .
 
@@ -54,8 +54,8 @@
                             owl:onProperty :participant ;
                             owl:someValuesFrom :TIE_Fighter
                           ] ;
-                 :after :An_Audience_with_Dryden_Vos ;
-                 :location :Kessel_Run ;
+                 :after :Playing_Sabacc_for_the_Falcon ;
+                 :locatedIn :Kessel_Run ;
                  :participant :Millenium_Falcon ;
                  :year -10 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Finding_a_ship"^^xsd:anyURI .
@@ -85,7 +85,7 @@
                  :after :Mimban_Campaign ;
                  :killingOf :Rio_Durant ,
                             :Val ;
-                 :location :Vandor ;
+                 :locatedIn :Vandor ;
                  :participant :Becketts_crew ,
                               :Cloud-Riders ;
                  :year -10 ;
@@ -118,10 +118,10 @@
                                                          ]
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :location ;
+                                      owl:onProperty :locatedIn ;
                                       owl:someValuesFrom [ owl:intersectionOf ( :Spice_Mine
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :location ;
+                                                                                  owl:onProperty :locatedIn ;
                                                                                   owl:hasValue :Kessel
                                                                                 ]
                                                                               ) ;
@@ -149,7 +149,7 @@
                           :Battle ;
                  :escapeOf :Chewbacca ,
                            :Han_Solo ;
-                 :location :Mimban ;
+                 :locatedIn :Mimban ;
                  :participant :Rio_Durant ,
                               :Tobias_Beckett ,
                               :Val ;
@@ -157,16 +157,60 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Mimban_campaign"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Playing_Sabacc_for_the_Falcon
+:Playing_Sabacc_for_the_Falcon rdf:type owl:NamedIndividual ,
+                                        :Sabacc ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :traded ;
+                                          owl:hasValue :Millenium_Falcon
+                                        ] ;
+                               :after :An_Audience_with_Dryden_Vos ;
+                               :failureOf :Han_Solo ;
+                               :locatedIn :Fort_Ypso ;
+                               :victoryOf :Lando_Calrissian ;
+                               :year -10 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Finding_a_ship"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Qira_vs_Dryden
 :Qira_vs_Dryden rdf:type owl:NamedIndividual ,
                          :Duel ;
                 :during :Standoff_on_Savareen ;
                 :killingOf :Dryden_Vos ;
-                :location :First_Light ;
+                :locatedIn :First_Light ;
                 :participant :Han_Solo ;
                 :victoryOf <http://null.com/star-wars#Qi'ra> ;
                 :year -10 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Dryden_Vos#Coaxium_Heist"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rematch_for_the_Falcon
+:Rematch_for_the_Falcon rdf:type owl:NamedIndividual ,
+                                 :Sabacc ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :from ;
+                                                                               owl:hasValue :Lando_Calrissian
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :passed ;
+                                                                               owl:hasValue :Millenium_Falcon
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :to ;
+                                                                               owl:hasValue :Han_Solo
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        :after :Standoff_on_Savareen ;
+                        :failureOf :Lando_Calrissian ;
+                        :locatedIn :Numidian_Prime ;
+                        :victoryOf :Han_Solo ;
+                        :year -10 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Rematch_with_Lando_Calrissian"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Solo_vs_Beckett
@@ -175,7 +219,7 @@
                  :after :Qira_vs_Dryden ;
                  :during :Standoff_on_Savareen ;
                  :killingOf :Tobias_Beckett ;
-                 :location :Savareen ;
+                 :locatedIn :Savareen ;
                  :participant :Chewbacca ;
                  :victoryOf :Han_Solo ;
                  :year -10 ;
@@ -184,10 +228,24 @@
 
 ###  http://null.com/star-wars#Standoff_on_Savareen
 :Standoff_on_Savareen rdf:type owl:NamedIndividual ,
-                               :Confrontation ;
+                               :Confrontation ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Lando_Calrissian
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Millenium_Falcon
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
                       :after :Hans_Kessel_Run ;
-                      :escapeOf :Lando_Calrissian ;
-                      :location :Savareen ;
+                      :locatedIn :Savareen ;
                       :participant :Cloud-Riders ,
                                    :Crimson_Dawn ,
                                    :Enfys_Nest ,

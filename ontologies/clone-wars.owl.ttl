@@ -4,109 +4,112 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://null.com/star-wars> .
+@base <http://null.com/star-wars#> .
 
-<http://null.com/star-wars/clone-wars.owl.ttl> a owl:Ontology ;
-                                       owl:imports <http://null.com/star-wars.owl.ttl> ;
-                                       rdfs:comment "Events and characters primarily from the clone wars film and series" .
+<http://null.com/star-wars/clone-wars.owl.ttl> rdf:type owl:Ontology ;
+                                                owl:imports <http://null.com/star-wars.owl.ttl> ;
+                                                rdfs:comment "Events and characters primarily from the clone wars film and series"^^xsd:string .
 
+#################################################################
+#    Individuals
+#################################################################
 
 ###  http://null.com/star-wars#Battle_of_Anaxes
-:Battle_of_Anaxes a owl:NamedIndividual ,
-                    :Battle ;
+:Battle_of_Anaxes rdf:type owl:NamedIndividual ,
+                           :Battle ;
                   :deathOf :Trench ;
                   :during :Clone_Wars ;
-                  :location :Anaxes ;
+                  :locatedIn :Anaxes ;
                   :participant :Anakin_Skywalker ,
-                  :Galactic_Republic ,
-                  :Seperatist_Alliance ;
+                               :Galactic_Republic ,
+                               :Seperatist_Alliance ;
                   :year -19 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Anaxes"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Battle_of_Christophsis
-:Battle_of_Christophsis a owl:NamedIndividual ,
-                          :Battle ;
+:Battle_of_Christophsis rdf:type owl:NamedIndividual ,
+                                 :Battle ;
                         :captureOf :Whorm_Loathsom ;
                         :during :Clone_Wars ;
-                        :location :Christophsis ;
+                        :locatedIn :Christophsis ;
                         :participant :Ahsoka_Tano ,
-                        :Anakin_Skywalker ,
-                        :Cody ,
-                        :Droid_Army ,
-                        :Obi-Wan_Kenobi ,
-                        :Retail_Caucus ,
-                        :Rex ,
-                        :Slick ,
-                        :Wullf_Yularen ,
-                        <http://null.com/star-wars#501st> ;
+                                     :Anakin_Skywalker ,
+                                     :Cody ,
+                                     :Droid_Army ,
+                                     :Obi-Wan_Kenobi ,
+                                     :Retail_Caucus ,
+                                     :Rex ,
+                                     :Slick ,
+                                     :Wullf_Yularen ,
+                                     <http://null.com/star-wars#501st> ;
                         :victoryOf :Grand_Army_of_the_Republic ;
                         :year -22 ;
-                        :todo "Space Battle (not covered in film)" ;
+                        :todo "Space Battle (not covered in film)"^^xsd:string ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Christophsis"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Battle_of_Teth
-:Battle_of_Teth a owl:NamedIndividual ,
-                  :Battle ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :destructionOf ;
-                    owl:someValuesFrom :Battle_Droid
-                  ] ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :destructionOf ;
-                    owl:someValuesFrom :Dwarf_Spider_Droid
-                  ] ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :participant ;
-                    owl:someValuesFrom :AT-TE
-                  ] ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :participant ;
-                    owl:someValuesFrom :Can-cell
-                  ] ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :participant ;
-                    owl:someValuesFrom :Gunship
-                  ] ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :participant ;
-                    owl:someValuesFrom :Vulture_Droid
-                  ] ;
+:Battle_of_Teth rdf:type owl:NamedIndividual ,
+                         :Battle ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :destructionOf ;
+                           owl:someValuesFrom :Battle_Droid
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :destructionOf ;
+                           owl:someValuesFrom :Dwarf_Spider_Droid
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :participant ;
+                           owl:someValuesFrom :AT-TE
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :participant ;
+                           owl:someValuesFrom :Can-cell
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :participant ;
+                           owl:someValuesFrom :Gunship
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :participant ;
+                           owl:someValuesFrom :Vulture_Droid
+                         ] ;
                 :after :Kidnap_of_Stinky ;
                 :during :Clone_Wars ;
                 :escapeOf :Ahsoka_Tano ,
-                :Anakin_Skywalker ,
-                :R2-D2 ,
-                :Rotta ;
-                :location <http://null.com/star-wars#B'omarr_Order_Monastery> ;
+                          :Anakin_Skywalker ,
+                          :R2-D2 ,
+                          :Rotta ;
+                :locatedIn <http://null.com/star-wars#B'omarr_Order_Monastery> ;
                 :participant :Asajj_Ventress ,
-                :Cody ,
-                :Obi-Wan_Kenobi ,
-                :Rex ,
-                <http://null.com/star-wars#4-A7> ,
-                <http://null.com/star-wars#501st> ;
+                             :Cody ,
+                             :Obi-Wan_Kenobi ,
+                             :Rex ,
+                             <http://null.com/star-wars#4-A7> ,
+                             <http://null.com/star-wars#501st> ;
                 :year -22 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Teth"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Battle_of_Umbara
-:Battle_of_Umbara a owl:NamedIndividual ,
-                    :Battle ;
+:Battle_of_Umbara rdf:type owl:NamedIndividual ,
+                           :Battle ;
                   :deathOf :Pong_Krell ;
                   :during :Clone_Wars ;
-                  :location :Umbara ;
+                  :locatedIn :Umbara ;
                   :participant <http://null.com/star-wars#501st> ;
                   :year -20 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Umbara"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Death_of_Satine
-:Death_of_Satine a owl:NamedIndividual ,
-                   :Murder ;
+:Death_of_Satine rdf:type owl:NamedIndividual ,
+                          :Murder ;
                  :during :Siege_of_Mandalore ;
                  :killingOf :Satine_Kryze ;
-                 :location :Mandalore ;
+                 :locatedIn :Mandalore ;
                  :victoryOf :Maul ;
                  :witnessedBy :Obi-Wan_Kenobi ;
                  :year -19 ;
@@ -114,135 +117,137 @@
 
 
 ###  http://null.com/star-wars#Fives_Biochip
-:Fives_Biochip a owl:NamedIndividual ,
-                 :Confrontation ;
+:Fives_Biochip rdf:type owl:NamedIndividual ,
+                        :Confrontation ;
                :during :Clone_Wars ;
                :killingOf :Fives ;
-               :location :Coruscant ;
+               :locatedIn :Coruscant ;
                :participant :Coruscant_Guard ,
-               :Fox ;
+                            :Fox ;
                :witnessedBy :Anakin_Skywalker ,
-               :Rex ;
+                            :Rex ;
                :year -19 ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-5555#The_biochip_conspiracy"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Hutt_Treaty
-:Hutt_Treaty a owl:NamedIndividual ,
-               :Confrontation ;
+:Hutt_Treaty rdf:type owl:NamedIndividual ,
+                      :Confrontation ;
              :after :Battle_of_Teth ;
              :captureOf :Padme_Amidala ;
-             :location :Coruscant ;
+             :locatedIn :Coruscant ;
              :participant :C-3PO ,
-             :Ziro ;
+                          :Ziro ;
              :year -22 ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Teth#Aftermath"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Kidnap_of_Stinky
-:Kidnap_of_Stinky a owl:NamedIndividual ,
-                    :Capture ;
+:Kidnap_of_Stinky rdf:type owl:NamedIndividual ,
+                           :Capture ;
                   :captureOf :Rotta ;
                   :during :Battle_of_Christophsis ;
-                  :location :Khetanna ;
+                  :locatedIn :Khetanna ;
                   :orderedBy :Count_Dooku ;
                   :participant :Asajj_Ventress ,
-                  :Count_Dooku ,
-                  :Ziro ;
+                               :Count_Dooku ,
+                               :Ziro ;
                   :year -22 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Teth#Prelude"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Maul_vs_Vizsla
-:Maul_vs_Vizsla a owl:NamedIndividual ,
-                  :Duel ;
+:Maul_vs_Vizsla rdf:type owl:NamedIndividual ,
+                         :Duel ;
                 :during :Siege_of_Mandalore ;
                 :killingOf :Pre_Vizla ;
-                :location :Mandalore ;
+                :locatedIn :Mandalore ;
                 :victoryOf :Maul ;
                 :year -19 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Pre_Vizsla#Shadow_Collective_and_death"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Obi-Wan_vs_Asajj
-:Obi-Wan_vs_Asajj a owl:NamedIndividual ,
-                    :Duel ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :participant ;
-                      owl:someValuesFrom :Vulture_Droid
-                    ] ;
+:Obi-Wan_vs_Asajj rdf:type owl:NamedIndividual ,
+                           :Duel ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :Vulture_Droid
+                           ] ;
                   :during :Battle_of_Teth ;
                   :escapeOf :Asajj_Ventress ;
-                  :location <http://null.com/star-wars#B'omarr_Order_Monastery> ;
+                  :locatedIn <http://null.com/star-wars#B'omarr_Order_Monastery> ;
                   :participant :Obi-Wan_Kenobi ;
                   :year -22 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Teth#The_battle"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rescue_of_Echo
-:Rescue_of_Echo a owl:NamedIndividual ,
-                  :Rescue ,
-                  [ a owl:Restriction ;
-                    owl:onProperty :participant ;
-                    owl:someValuesFrom :Keeradak
-                  ] ;
+:Rescue_of_Echo rdf:type owl:NamedIndividual ,
+                         :Rescue ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :participant ;
+                           owl:someValuesFrom :Keeradak
+                         ] ;
                 :during :Battle_of_Anaxes ;
                 :escapeOf :Echo ;
-                :location :Skako_Minor ;
+                :locatedIn :Skako_Minor ;
                 :participant :Anakin_Skywalker ,
-                :Bad_Batch ,
-                :Rex ,
-                :Techno_Union ;
+                             :Bad_Batch ,
+                             :Rex ,
+                             :Techno_Union ;
                 :year -19 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Mission_to_Skako_Minor"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Reunion_of_Rotta
-:Reunion_of_Rotta a owl:NamedIndividual ,
-                    :Event ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :participant ;
-                      owl:someValuesFrom :IG-100_MagnaGuard
-                    ] ,
-                    [ a owl:Restriction ;
-                      owl:onProperty :participant ;
-                      owl:someValuesFrom :Rogue-class_Starfighter
-                    ] ;
+:Reunion_of_Rotta rdf:type owl:NamedIndividual ,
+                           :Event ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :IG-100_MagnaGuard
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :Rogue-class_Starfighter
+                           ] ;
                   :after :Battle_of_Teth ;
                   :during :Clone_Wars ;
-                  :location :Dune_Sea ;
+                  :locatedIn :Dune_Sea ;
                   :participant :Ahsoka_Tano ,
-                  :Anakin_Skywalker ,
-                  :Count_Dooku ,
-                  :Jabba ,
-                  :Padme_Amidala ,
-                  :R2-D2 ,
-                  :Rotta ;
+                               :Anakin_Skywalker ,
+                               :Count_Dooku ,
+                               :Jabba ,
+                               :Padme_Amidala ,
+                               :R2-D2 ,
+                               :Rotta ;
                   :year -22 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Teth#Aftermath"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Showdown_at_Toydaria
-:Showdown_at_Toydaria a owl:NamedIndividual ,
-                        :Fight ;
+:Showdown_at_Toydaria rdf:type owl:NamedIndividual ,
+                               :Fight ;
                       :during :Clone_Wars ;
-                      :location :Toydaria ;
+                      :locatedIn :Toydaria ;
                       :participant :Anakin_Skywalker ,
-                      :Asajj_Ventress ,
-                      :Count_Dooku ,
-                      :Obi-Wan_Kenobi ,
-                      :Savage_Opress ;
+                                   :Asajj_Ventress ,
+                                   :Count_Dooku ,
+                                   :Obi-Wan_Kenobi ,
+                                   :Savage_Opress ;
                       :year -20 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Showdown_at_Toydaria"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Siege_of_Mandalore
-:Siege_of_Mandalore a owl:NamedIndividual ,
-                      :Event ;
+:Siege_of_Mandalore rdf:type owl:NamedIndividual ,
+                             :Event ;
                     :during :Clone_Wars ;
-                    :location :Mandalore ;
+                    :locatedIn :Mandalore ;
                     :participant :Ahsoka_Tano ,
-                    :Maul ;
+                                 :Maul ;
                     :year -19 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Siege_of_Mandalore"^^xsd:anyURI .
 
+
+###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

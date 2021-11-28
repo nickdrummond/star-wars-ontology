@@ -2,13 +2,36 @@
 
 [back to index](index.md)
 
+* need to untangle ```of``` and ```transferOf``` and ```passes``` and ```participant```
+  * ```of``` overloaded to mean:
+    * Trader of Gorgs, Engineer of Weapons ```responsibleFor```
+    * Leader of some location - use new ```responsibleFor```
+    * Main subject of an event - more in line with new thinking? (Repair/Sabotage of objects)
+    * instead of ```partOf``` - just switch
+    * Projector of Tractor Beam - use ```created```
+    * Armour of a Stormtrooper - use ```ownedBy```
+    * Evacuation of location/ship - use ```locatedIn```?
+    * Mira and husband - cannot use Captive and inOrganisation - as this makes them members of the Empire
 
-* ```from``` and ```to``` for transfer of ownership (eg darksaber) - can we then infer the ownedBy
+* Transfer ```of``` object ```from``` personX ```to``` personY - ownership (eg darksaber) - can we then infer the ownedBy?
   * try the Falcon
+  * can we also use for TRANSFER of location (journey)?
+  * and TRANSFER of information (learning?)?
+    * TRANSFER of role (promotion?/defection)
+    * TRANSFER into the Force?
     
+* use ```target``` in every Attack to make the direction clear
+  
+* losing of limbs (Anakin + Luke)
+
 * How do we infer that specific people were participants in `Evacuation_of_Garel` - we're using `Spectres` a lot?
   Should we say that all members of an organisation or crew were at that event? What about Battles - Rebel Alliance vs Empire?
   Not all members of a group are a member at that time.
+
+* Can we query for the people someone has met? Probably not as just being at the same event or a member of a group
+  depends on the number of people in that event/group
+    - ie not everyone in the Empire knows each other
+    - not everyone at the Battle of Scariff knows each other
 
 *  Where we use oneofs, there needs to be specified cardinality instead of `some`
    or else the inference does not work - ie a given member cannot be inferred to be related

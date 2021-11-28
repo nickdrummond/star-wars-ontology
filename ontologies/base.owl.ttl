@@ -44,6 +44,7 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 ###  http://null.com/star-wars#after
 :after rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf :temporallyRelated ;
        owl:inverseOf :before .
 
 
@@ -66,11 +67,12 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  http://null.com/star-wars#before
-:before rdf:type owl:ObjectProperty .
+:before rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :temporallyRelated .
 
 
-###  http://null.com/star-wars#builtBy
-:builtBy rdf:type owl:ObjectProperty .
+###  http://null.com/star-wars#beingFeature
+:beingFeature rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#captureOf
@@ -88,6 +90,17 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 :connectedTo rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdf:type owl:SymmetricProperty .
+
+
+###  http://null.com/star-wars#created
+:created rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :ownershipRelated ;
+         owl:inverseOf :createdBy .
+
+
+###  http://null.com/star-wars#createdBy
+:createdBy rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :ownershipRelated .
 
 
 ###  http://null.com/star-wars#createdDuring
@@ -119,7 +132,8 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  http://null.com/star-wars#delivered
-:delivered rdf:type owl:ObjectProperty .
+:delivered rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :transferOf .
 
 
 ###  http://null.com/star-wars#destroyedDuring
@@ -140,17 +154,20 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  http://null.com/star-wars#disguisedAs
-:disguisedAs rdf:type owl:ObjectProperty .
+:disguisedAs rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :beingFeature .
 
 
 ###  http://null.com/star-wars#during
 :during rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :temporallyRelated ;
         owl:inverseOf :included ;
         rdf:type owl:TransitiveProperty .
 
 
 ###  http://null.com/star-wars#eatingOf
-:eatingOf rdf:type owl:ObjectProperty .
+:eatingOf rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :eventRelated .
 
 
 ###  http://null.com/star-wars#employedBy
@@ -169,6 +186,10 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
              rdfs:subPropertyOf :survivorOf .
 
 
+###  http://null.com/star-wars#eventRelated
+:eventRelated rdf:type owl:ObjectProperty .
+
+
 ###  http://null.com/star-wars#failedDuring
 :failedDuring rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :participatedIn ;
@@ -181,11 +202,13 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  http://null.com/star-wars#fitted
-:fitted rdf:type owl:ObjectProperty .
+:fitted rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :eventRelated .
 
 
 ###  http://null.com/star-wars#found
-:found rdf:type owl:ObjectProperty .
+:found rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf :eventRelated .
 
 
 ###  http://null.com/star-wars#freedDuring
@@ -206,11 +229,13 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  http://null.com/star-wars#from
-:from rdf:type owl:ObjectProperty .
+:from rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf :eventRelated .
 
 
 ###  http://null.com/star-wars#gender
-:gender rdf:type owl:ObjectProperty .
+:gender rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :beingFeature .
 
 
 ###  http://null.com/star-wars#hadBrother
@@ -236,6 +261,7 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 ###  http://null.com/star-wars#hadMember
 :hadMember rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :organisationallyRelated ;
            owl:inverseOf :memberOf ;
            rdf:type owl:TransitiveProperty .
 
@@ -251,7 +277,8 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  http://null.com/star-wars#hadRole
-:hadRole rdf:type owl:ObjectProperty .
+:hadRole rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :beingFeature .
 
 
 ###  http://null.com/star-wars#hadSibling
@@ -272,16 +299,18 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 ###  http://null.com/star-wars#hasPart
 :hasPart rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :structurallyRelated ;
          owl:inverseOf :partOf .
 
 
 ###  http://null.com/star-wars#hasTerrain
-:hasTerrain rdf:type owl:ObjectProperty .
+:hasTerrain rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :planetFeature .
 
 
 ###  http://null.com/star-wars#hasTrait
 :hasTrait rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf owl:topObjectProperty .
+          rdfs:subPropertyOf :beingFeature .
 
 
 ###  http://null.com/star-wars#healingOf
@@ -290,23 +319,27 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  http://null.com/star-wars#homeworldOf
-:homeworldOf rdf:type owl:ObjectProperty .
+:homeworldOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :planetFeature .
 
 
 ###  http://null.com/star-wars#inConflictWith
-:inConflictWith rdf:type owl:ObjectProperty ,
-                         owl:SymmetricProperty .
+:inConflictWith rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :organisationallyRelated ;
+                rdf:type owl:SymmetricProperty .
 
 
 ###  http://null.com/star-wars#inOrganisation
 :inOrganisation rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :organisationallyRelated ;
                 rdfs:comment """How rdf:type Role is associated with an Organisation
 eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#included
-:included rdf:type owl:ObjectProperty ,
-                   owl:TransitiveProperty .
+:included rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :eventRelated ;
+          rdf:type owl:TransitiveProperty .
 
 
 ###  http://null.com/star-wars#injuredIn
@@ -332,8 +365,9 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#knew
-:knew rdf:type owl:ObjectProperty ,
-               owl:SymmetricProperty .
+:knew rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf :beingFeature ;
+      rdf:type owl:SymmetricProperty .
 
 
 ###  http://null.com/star-wars#livedIn
@@ -343,8 +377,14 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 ###  http://null.com/star-wars#locatedIn
 :locatedIn rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:subPropertyOf :structurallyRelated ;
+           owl:inverseOf :locationOf ;
            rdf:type owl:TransitiveProperty .
+
+
+###  http://null.com/star-wars#locationOf
+:locationOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :structurallyRelated .
 
 
 ###  http://null.com/star-wars#loved
@@ -353,7 +393,8 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#madeOf
-:madeOf rdf:type owl:ObjectProperty .
+:madeOf rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :structurallyRelated .
 
 
 ###  http://null.com/star-wars#married
@@ -363,35 +404,42 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#memberOf
-:memberOf rdf:type owl:ObjectProperty ,
-                   owl:TransitiveProperty ;
+:memberOf rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :organisationallyRelated ;
+          rdf:type owl:TransitiveProperty ;
           owl:propertyChainAxiom ( :hadRole
                                    :inOrganisation
                                  ) .
 
 
 ###  http://null.com/star-wars#movesWith
-:movesWith rdf:type owl:ObjectProperty .
+:movesWith rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :beingFeature .
 
 
 ###  http://null.com/star-wars#of
 :of rdf:type owl:ObjectProperty ;
-    rdfs:comment """Used to denote the make up of something - eg Army
-Army and of value Naboo
-Army and of value Gungan"""^^xsd:string .
+    rdfs:subPropertyOf :eventRelated .
 
 
 ###  http://null.com/star-wars#ofShip
-:ofShip rdf:type owl:ObjectProperty .
+:ofShip rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :responsibleFor .
 
 
 ###  http://null.com/star-wars#ordered
 :ordered rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :eventRelated ;
          owl:inverseOf :orderedBy .
 
 
 ###  http://null.com/star-wars#orderedBy
-:orderedBy rdf:type owl:ObjectProperty .
+:orderedBy rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :eventRelated .
+
+
+###  http://null.com/star-wars#organisationallyRelated
+:organisationallyRelated rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#originallyFrom
@@ -401,20 +449,27 @@ Army and of value Gungan"""^^xsd:string .
 
 ###  http://null.com/star-wars#owned
 :owned rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf :ownershipRelated ;
        owl:inverseOf :ownedBy .
 
 
 ###  http://null.com/star-wars#ownedBy
-:ownedBy rdf:type owl:ObjectProperty .
+:ownedBy rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :ownershipRelated .
+
+
+###  http://null.com/star-wars#ownershipRelated
+:ownershipRelated rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#partOf
 :partOf rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf owl:topObjectProperty .
+        rdfs:subPropertyOf :structurallyRelated .
 
 
 ###  http://null.com/star-wars#participant
 :participant rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :eventRelated ;
              owl:inverseOf :participatedIn ;
              rdfs:range [ rdf:type owl:Class ;
                           owl:unionOf ( :Actor
@@ -429,12 +484,17 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#participatedIn
-:participatedIn rdf:type owl:ObjectProperty .
+:participatedIn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :eventRelated .
 
 
 ###  http://null.com/star-wars#passed
 :passed rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf owl:topObjectProperty .
+        rdfs:subPropertyOf :transferOf .
+
+
+###  http://null.com/star-wars#planetFeature
+:planetFeature rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#raised
@@ -449,9 +509,14 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#relatedTo
-:relatedTo rdf:type owl:ObjectProperty ,
-                    owl:SymmetricProperty ,
+:relatedTo rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :beingFeature ;
+           rdf:type owl:SymmetricProperty ,
                     owl:TransitiveProperty .
+
+
+###  http://null.com/star-wars#responsibleFor
+:responsibleFor rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#saved
@@ -466,21 +531,29 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#sentience
-:sentience rdf:type owl:ObjectProperty .
+:sentience rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :beingFeature .
 
 
 ###  http://null.com/star-wars#sometimeAfter
 :sometimeAfter rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :temporallyRelated ;
                owl:inverseOf :sometimeBefore ;
                rdfs:comment "Less directly following another event"^^xsd:string .
 
 
 ###  http://null.com/star-wars#sometimeBefore
-:sometimeBefore rdf:type owl:ObjectProperty .
+:sometimeBefore rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :temporallyRelated .
 
 
 ###  http://null.com/star-wars#stole
-:stole rdf:type owl:ObjectProperty .
+:stole rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf :transferOf .
+
+
+###  http://null.com/star-wars#structurallyRelated
+:structurallyRelated rdf:type owl:ObjectProperty .
 
 
 ###  http://null.com/star-wars#stunnedDuring
@@ -517,15 +590,23 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#target
-:target rdf:type owl:ObjectProperty .
+:target rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :eventRelated .
+
+
+###  http://null.com/star-wars#temporallyRelated
+:temporallyRelated rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :eventRelated .
 
 
 ###  http://null.com/star-wars#to
-:to rdf:type owl:ObjectProperty .
+:to rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf :eventRelated .
 
 
 ###  http://null.com/star-wars#traded
-:traded rdf:type owl:ObjectProperty .
+:traded rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :transferOf .
 
 
 ###  http://null.com/star-wars#trained
@@ -539,12 +620,19 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
            rdfs:subPropertyOf :knew .
 
 
+###  http://null.com/star-wars#transferOf
+:transferOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :eventRelated .
+
+
 ###  http://null.com/star-wars#trappedBy
-:trappedBy rdf:type owl:ObjectProperty .
+:trappedBy rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :structurallyRelated .
 
 
 ###  http://null.com/star-wars#used
-:used rdf:type owl:ObjectProperty .
+:used rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf :eventRelated .
 
 
 ###  http://null.com/star-wars#victorIn
@@ -559,7 +647,8 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#visited
-:visited rdf:type owl:ObjectProperty .
+:visited rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :beingFeature .
 
 
 ###  http://null.com/star-wars#wasCloneOf
@@ -1234,6 +1323,11 @@ or minus is BBY"""^^xsd:string .
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_hunter"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Broadcaster
+:Broadcaster rdf:type owl:Class ;
+             rdfs:subClassOf :Vocation .
+
+
 ###  http://null.com/star-wars#Building
 :Building rdf:type owl:Class ;
           rdfs:subClassOf :Built_Location .
@@ -1702,7 +1796,21 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Defection
 :Defection rdf:type owl:Class ;
-           rdfs:subClassOf :Abstract_subject .
+           rdfs:subClassOf :Transfer ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :from ;
+                             owl:someValuesFrom :Organisation
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :transferOf ;
+                             owl:someValuesFrom :Being
+                           ] ;
+           rdfs:comment """Cannot define this in OWL as we have no variables to bind to (can we use SWRL?:
+
+(from some Organisation:?a)
+and (to some Organisation ?b)
+
+and (?a inConflictWith ?b)"""^^xsd:string .
 
 
 ###  http://null.com/star-wars#Dejarik
@@ -2471,6 +2579,18 @@ or minus is BBY"""^^xsd:string .
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Gravity_well"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Gravity_Well_projector
+:Gravity_Well_projector rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( :Projector
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :created ;
+                                                                     owl:someValuesFrom :Gravity_Well
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] .
+
+
 ###  http://null.com/star-wars#Gravity_lock
 :Gravity_lock rdf:type owl:Class ;
               rdfs:subClassOf :Equipment ;
@@ -3018,6 +3138,22 @@ or minus is BBY"""^^xsd:string .
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Journalist"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Journey
+:Journey rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Transfer
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :from ;
+                                                      owl:someValuesFrom :Place
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :to ;
+                                                      owl:someValuesFrom :Place
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
 ###  http://null.com/star-wars#JumpTrooper
 :JumpTrooper rdf:type owl:Class ;
              rdfs:subClassOf :StormTrooper ,
@@ -3032,7 +3168,7 @@ or minus is BBY"""^^xsd:string .
 :Junk_Dealer rdf:type owl:Class ;
              rdfs:subClassOf [ owl:intersectionOf ( :Trader
                                                     [ rdf:type owl:Restriction ;
-                                                      owl:onProperty :of ;
+                                                      owl:onProperty :responsibleFor ;
                                                       owl:someValuesFrom :Parts
                                                     ]
                                                   ) ;
@@ -3363,6 +3499,22 @@ or minus is BBY"""^^xsd:string .
 ###  http://null.com/star-wars#Leader
 :Leader rdf:type owl:Class ;
         rdfs:subClassOf :Vocation .
+
+
+###  http://null.com/star-wars#Learning
+:Learning rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Transfer
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :to ;
+                                                       owl:someValuesFrom :Sentient_Being
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :transferOf ;
+                                                       owl:someValuesFrom :Information
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
 
 
 ###  http://null.com/star-wars#Leg
@@ -4537,7 +4689,16 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Repair
 :Repair rdf:type owl:Class ;
-        rdfs:subClassOf :Event .
+        rdfs:subClassOf :Event ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :of ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :Built_Location
+                                                            :Droid
+                                                            :Object
+                                                          )
+                                            ]
+                        ] .
 
 
 ###  http://null.com/star-wars#Reptavian
@@ -4670,7 +4831,16 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Sabotage
 :Sabotage rdf:type owl:Class ;
-          rdfs:subClassOf :Event .
+          rdfs:subClassOf :Event ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :of ;
+                            owl:allValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :Built_Location
+                                                              :Droid
+                                                              :Object
+                                                            )
+                                              ]
+                          ] .
 
 
 ###  http://null.com/star-wars#Sail_Barge
@@ -4766,7 +4936,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Search
 :Search rdf:type owl:Class ;
-        rdfs:subClassOf :Event .
+        rdfs:subClassOf :Event ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :target ;
+                          owl:someValuesFrom owl:Thing
+                        ] .
 
 
 ###  http://null.com/star-wars#Sector
@@ -5354,6 +5528,18 @@ or minus is BBY"""^^xsd:string .
               rdfs:subClassOf :Place .
 
 
+###  http://null.com/star-wars#Tractor_Beam_Projector
+:Tractor_Beam_Projector rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( :Projector
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :created ;
+                                                                     owl:someValuesFrom :Tractor_Beam
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] .
+
+
 ###  http://null.com/star-wars#Trader
 :Trader rdf:type owl:Class ;
         rdfs:subClassOf :Vocation .
@@ -5382,6 +5568,42 @@ or minus is BBY"""^^xsd:string .
                               owl:someValuesFrom :Reptilian
                             ] ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Trandoshan"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Transfer
+:Transfer rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Event
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :from ;
+                                                       owl:someValuesFrom owl:Thing
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :to ;
+                                                       owl:someValuesFrom owl:Thing
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :transferOf ;
+                                                       owl:someValuesFrom owl:Thing
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://null.com/star-wars#TransferOfOwnership
+:TransferOfOwnership rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( :Transfer
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :from ;
+                                                                  owl:someValuesFrom :Being
+                                                                ]
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :to ;
+                                                                  owl:someValuesFrom :Being
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] .
 
 
 ###  http://null.com/star-wars#Transport
@@ -5455,7 +5677,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Underwater_vehicle
 :Underwater_vehicle rdf:type owl:Class ;
-                    rdfs:subClassOf :Vehicle .
+                    rdfs:subClassOf :Vehicle ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :movesWith ;
+                                      owl:someValuesFrom :Swimming
+                                    ] .
 
 
 ###  http://null.com/star-wars#Uniform
@@ -5509,7 +5735,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Vehicle
 :Vehicle rdf:type owl:Class ;
-         rdfs:subClassOf :Place .
+         rdfs:subClassOf :Built_Location ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :movesWith ;
+                           owl:someValuesFrom :Flight
+                         ] .
 
 
 ###  http://null.com/star-wars#Venator-class_Star_Destroyer
@@ -5618,7 +5848,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  http://null.com/star-wars#Walker
 :Walker rdf:type owl:Class ;
-        rdfs:subClassOf :Land_Vehicle ;
+        rdfs:subClassOf :Land_Vehicle ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :movesWith ;
+                          owl:someValuesFrom :Walking
+                        ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Walker"^^xsd:anyURI .
 
 
@@ -6013,9 +6247,13 @@ or minus is BBY"""^^xsd:string .
   owl:members ( :Base
                 :Building
                 :City
+                :District
                 :Facility
+                :Farm
+                :Hive
                 :Mine
                 :Town
+                :Vehicle
                 :Village
               )
 ] .
@@ -6050,7 +6288,6 @@ or minus is BBY"""^^xsd:string .
                 :Habitat
                 :Hyperspace
                 :Space
-                :Vehicle
               )
 ] .
 

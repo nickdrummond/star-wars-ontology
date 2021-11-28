@@ -41,7 +41,7 @@ Is Anakin from the Outer Rim? Get all beings from the Outer Rim:
 
     from some (Place and location value Outer_Rim)
 
-## Membership of Rebels/Resistance etc?
+## Membership of Organisations?
 Mixture of membership and roles
 Handled by property chain on hadRole
 
@@ -50,38 +50,16 @@ Handled by property chain on hadRole
 Includes Holdo, who is not directly asserted to be a member
 Also includes Ezra, who is a member of Spectres
 
-But there are limitations. For example, we'd like to define Stormtroopers or CloneTroopers:
+If we want to ask about who holds a specific role in an org, the following is incomplete - should include ```3-9```:
 
-    hadRole some (Soldier and inOrganisation value Grand_Army_of_the_Republic)
+    hadRole some (Officer and inOrganisation value Galactic_Empire)
 
-Doesn't work for parts of org - ie doesn't catch Rex etc/ bad batch should include Rex, Hunter
+We need to query for the org and its parts:
 
-We would need to have:
+    hadRole some (Officer and( inOrganisation some ({Galactic_Empire} or memberOf value Galactic_Empire )))
 
-    (B) inOrganisation o memberOf -> inOrganisation
-
-But, it is not compatible with the existing axiom:
-
-    (A) hadRole o inOrganisation -> memberOf
-
-  memberOf is just shorthand for hadRole X inOrganisation Y - maybe get rid at person level? But nice to say
-
-  Someone has a role in an org and all its super-orgs
-
-    Person --hadRole--> (Role --inOrg--> OrgX --memberOf(trans)--> OrgY)
-
-  from (A)
-
-    Person --memberOf--> OrgX
-    Person --memberOf--> OrgY
-
-  from (B)
-  
-    Person --hadRole--> inOrg --> OrgY
-
-We could say the following but that would include an engineer for the Grand Army who defected to become a fighter for the Separatists
-
-    Clone Trooper == (hadRole some Soldier) and (memberOf value GrandArmy...)
+It makes sense to distinguish, as not all roles are equivalent when looking at the whole:
+A leader of a unit does not make a leader of the army.
 
 ## Born/died before an event?
 Can we do this relative to an event - ie better than "died some xsd:int[>0]"

@@ -139,6 +139,21 @@
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight_of_the_Apprentice"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Arrest_of_the_Bridgers
+:Arrest_of_the_Bridgers rdf:type owl:NamedIndividual ,
+                                 :Capture ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :participant ;
+                                   owl:hasValue :Galactic_Empire
+                                 ] ;
+                        :captureOf :Ephraim_Bridger ,
+                                   :Mira_Bridger ,
+                                   :Ryder_Azadi ;
+                        :locatedIn :Lothal ;
+                        :year -14 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Mira_Bridger#Biography"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Arrival_on_Krownest
 :Arrival_on_Krownest rdf:type owl:NamedIndividual ,
                               :Attack ,
@@ -485,7 +500,7 @@
                               owl:onProperty :included ;
                               owl:someValuesFrom [ owl:intersectionOf ( :Evacuation
                                                                         [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :of ;
+                                                                          owl:onProperty :locatedIn ;
                                                                           owl:hasValue :Phoenix_Nest
                                                                         ]
                                                                       ) ;
@@ -530,6 +545,8 @@
                             ] ;
                    :after :Thrawn_vs_Kallus ;
                    :destructionOf :Vanguard ;
+                   :escapeOf :Ghost ,
+                             :Liberator ;
                    :locatedIn :Atollon ;
                    :participant :Chimaera ,
                                 :Galactic_Empire ,
@@ -1467,16 +1484,19 @@
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :included ;
                                          owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
-                                                                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                                            owl:onProperty :trappedBy ;
-                                                                                                            owl:someValuesFrom :Tractor_Beam
-                                                                                                          ]
-                                                                                                          [ rdf:type owl:Restriction ;
-                                                                                                            owl:onProperty :participant ;
-                                                                                                            owl:hasValue :Ghost
-                                                                                                          ]
-                                                                                                        ) ;
-                                                                                     rdf:type owl:Class
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                                                 owl:oneOf ( :Ghost
+                                                                                                                                           )
+                                                                                                                               ]
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :trappedBy ;
+                                                                                                                                 owl:someValuesFrom :Tractor_Beam
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ]
                                                                                    ]
                                                                                    [ rdf:type owl:Restriction ;
                                                                                      owl:onProperty :participant ;
@@ -1896,16 +1916,9 @@
                                 owl:onProperty :included ;
                                 owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :damageOf ;
-                                                                            owl:someValuesFrom [ owl:intersectionOf ( [ owl:intersectionOf ( :Projector
-                                                                                                                                             [ rdf:type owl:Restriction ;
-                                                                                                                                               owl:onProperty :of ;
-                                                                                                                                               owl:someValuesFrom :Tractor_Beam
-                                                                                                                                             ]
-                                                                                                                                           ) ;
-                                                                                                                        rdf:type owl:Class
-                                                                                                                      ]
+                                                                            owl:someValuesFrom [ owl:intersectionOf ( :Tractor_Beam_Projector
                                                                                                                       [ rdf:type owl:Restriction ;
-                                                                                                                        owl:onProperty :of ;
+                                                                                                                        owl:onProperty :partOf ;
                                                                                                                         owl:hasValue :Relentless
                                                                                                                       ]
                                                                                                                     ) ;
@@ -1915,20 +1928,6 @@
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :participant ;
                                                                             owl:hasValue :Ghost
-                                                                          ]
-                                                                        ) ;
-                                                     rdf:type owl:Class
-                                                   ]
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :included ;
-                                owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :trappedBy ;
-                                                                            owl:someValuesFrom :Tractor_Beam
-                                                                          ]
-                                                                          [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :participant ;
-                                                                            owl:hasValue :Liberator
                                                                           ]
                                                                         ) ;
                                                      rdf:type owl:Class
@@ -1953,6 +1952,23 @@
                                                                                                [ rdf:type owl:Restriction ;
                                                                                                  owl:onProperty :connectedTo ;
                                                                                                  owl:hasValue :Ezra_Bridger
+                                                                                               ]
+                                                                                             ) ;
+                                                                          rdf:type owl:Class
+                                                                        ]
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :participant ;
+                                                     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                 owl:oneOf ( :Liberator
+                                                                                                           )
+                                                                                               ]
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :trappedBy ;
+                                                                                                 owl:someValuesFrom :Tractor_Beam
                                                                                                ]
                                                                                              ) ;
                                                                           rdf:type owl:Class
@@ -2765,7 +2781,7 @@
                                             owl:onProperty :locatedIn ;
                                             owl:someValuesFrom [ owl:intersectionOf ( :Hive
                                                                                       [ rdf:type owl:Restriction ;
-                                                                                        owl:onProperty :builtBy ;
+                                                                                        owl:onProperty :createdBy ;
                                                                                         owl:someValuesFrom :Geonosian
                                                                                       ]
                                                                                       [ rdf:type owl:Restriction ;
@@ -3847,7 +3863,7 @@
                                       owl:onProperty :included ;
                                       owl:someValuesFrom [ owl:intersectionOf ( :Evacuation
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :of ;
+                                                                                  owl:onProperty :locatedIn ;
                                                                                   owl:hasValue :Reklam_Station
                                                                                 ]
                                                                               ) ;
@@ -4021,7 +4037,7 @@
                                                                                                owl:onProperty :about ;
                                                                                                owl:someValuesFrom [ owl:intersectionOf ( :Base
                                                                                                                                          [ rdf:type owl:Restriction ;
-                                                                                                                                           owl:onProperty :builtBy ;
+                                                                                                                                           owl:onProperty :createdBy ;
                                                                                                                                            owl:hasValue :Galactic_Republic
                                                                                                                                          ]
                                                                                                                                        ) ;
@@ -4088,8 +4104,11 @@
                                                                                        owl:onProperty :target ;
                                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Armour
                                                                                                                                  [ rdf:type owl:Restriction ;
-                                                                                                                                   owl:onProperty :of ;
-                                                                                                                                   owl:someValuesFrom :StormTrooper
+                                                                                                                                   owl:onProperty :ownedBy ;
+                                                                                                                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                                        owl:onProperty :hadRole ;
+                                                                                                                                                        owl:someValuesFrom :StormTrooper
+                                                                                                                                                      ]
                                                                                                                                  ]
                                                                                                                                ) ;
                                                                                                             rdf:type owl:Class
@@ -4903,14 +4922,7 @@
                                     owl:someValuesFrom [ owl:intersectionOf ( :Sabotage
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :of ;
-                                                                                owl:someValuesFrom [ owl:intersectionOf ( :Projector
-                                                                                                                          [ rdf:type owl:Restriction ;
-                                                                                                                            owl:onProperty :of ;
-                                                                                                                            owl:someValuesFrom :Gravity_Well
-                                                                                                                          ]
-                                                                                                                        ) ;
-                                                                                                     rdf:type owl:Class
-                                                                                                   ]
+                                                                                owl:someValuesFrom :Gravity_Well_projector
                                                                               ]
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :participant ;
@@ -5688,7 +5700,7 @@
                                   owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :Evacuation
                                                                             [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :of ;
+                                                                              owl:onProperty :locatedIn ;
                                                                               owl:hasValue :Mykapo
                                                                             ]
                                                                           ) ;

@@ -3,15 +3,6 @@
 [back to index](index.md)
 
 * need to untangle ```of``` and ```transferOf``` and ```passes``` and ```participant```
-  * ```of``` overloaded to mean:
-    * Trader of Gorgs, Engineer of Weapons ```responsibleFor```
-    * Leader of some location - use new ```responsibleFor```
-    * Main subject of an event - more in line with new thinking? (Repair/Sabotage of objects)
-    * instead of ```partOf``` - just switch
-    * Projector of Tractor Beam - use ```created```
-    * Armour of a Stormtrooper - use ```ownedBy```
-    * Evacuation of location/ship - use ```locatedIn```?
-    * Mira and husband - cannot use Captive and inOrganisation - as this makes them members of the Empire
 
 * Transfer ```of``` object ```from``` personX ```to``` personY - ownership (eg darksaber) - can we then infer the ownedBy?
   * try the Falcon
@@ -60,13 +51,10 @@
     * Bad Batch - 1 series eps(incomplete)
 
 * Review properties
-    * "of" - is it even defined properly?
     * "visited" only used once - is it useful?
     * "healed" also only used once
     * "surrenderOf" - anywhere else to use this?
-
-* callsign and aka should be data properties as they are in-world
-
+    
 * More sectors/systems to make locations manageable? Most of the planets so far are in different sectors
 * Need a few top level places to make locations manageable
 

@@ -17,6 +17,14 @@ Use the Pellet reasoner
 
 Other reasoners are available, but each has different [performance](performance.md) issues
 
+### Protege Known Issues
+
+* Using Turtle as a file format means changes to base cannot be saved if other ontologies loaded 
+  * bug raised - https://github.com/protegeproject/protege/pull/1025
+* Selection model and entity focus is very buggy
+  * clicking/finding an entity frequently does not navigate to that entity
+  * sometimes the focus changes when adding relations/subclass axioms
+
 ### Protege Features
 
 #### DL Query Tab

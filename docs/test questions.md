@@ -61,8 +61,15 @@ We need to query for the org and its parts:
 It makes sense to distinguish, as not all roles are equivalent when looking at the whole:
 A leader of a unit does not make a leader of the army.
 
-## Born/died before an event?
-Can we do this relative to an event - ie better than "died some xsd:int[>0]"
+## Born/died before the Battle of Yavin
+Can we do this relative to an event? - ie more granular so we catch Scarif (the same year)
+
+    diedIn some ( year some xsd:int[< 0] )
+
+```sometimeBefore``` is transitive but we don't want to hold a complete timeline for all the story fragments,
+so we do have to use year aswell
+
+    diedIn some (((year some xsd:int[< 0] ) or ((sometimeBefore value Battle_of_Yavin) or (during some (sometimeBefore value Battle_of_Yavin)))))
 
 ## Who is related to Anakin Skywalker?
 - Should include Ben Solo.

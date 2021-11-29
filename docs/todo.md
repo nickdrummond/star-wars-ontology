@@ -11,8 +11,6 @@
     * TRANSFER of role (promotion?/defection)
     * TRANSFER into the Force?
     
-* use ```target``` in every Attack to make the direction clear
-  
 * losing of limbs (Anakin + Luke)
 
 * How do we infer that specific people were participants in `Evacuation_of_Garel` - we're using `Spectres` a lot?
@@ -42,9 +40,7 @@
     * Switch tests to Pellet
     * Review all performance decisions - now we've resolved the errors, we can get much faster classification/query times
         * allDifferent?
-
-* Check all events have dates and are not orphaned - see Sparql test
-
+    
 * Series
     * Rebels - series 4(16)
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
@@ -55,9 +51,3 @@
     * "healed" also only used once
     * "surrenderOf" - anywhere else to use this?
     
-* More sectors/systems to make locations manageable? Most of the planets so far are in different sectors
-* Need a few top level places to make locations manageable
-
-* Can we have ABY/BBY instead of int as custom datatype?
-
-* Changes to base cannot be saved if other ontologies loaded - https://github.com/protegeproject/protege/pull/1025

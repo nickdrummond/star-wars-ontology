@@ -2,6 +2,9 @@
 
 [back to index](index.md)
 
+* Add Cold War
+  
+
 * need to untangle ```of``` and ```transferOf``` and ```passes``` and ```participant```
 
 * Transfer ```of``` object ```from``` personX ```to``` personY - ownership (eg darksaber) - can we then infer the ownedBy?

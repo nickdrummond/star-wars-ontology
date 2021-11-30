@@ -1351,6 +1351,17 @@
                                                                ) ;
                                             rdf:type owl:Class
                                           ]
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hadRole ;
+                       owl:someValuesFrom [ owl:intersectionOf ( :Commander
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :responsibleFor ;
+                                                                   owl:hasValue :Marauder
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ]
                      ] ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Brom_Titus"^^xsd:anyURI .
 
@@ -1866,7 +1877,7 @@
 
 ###  http://null.com/star-wars#Clone_Wars
 :Clone_Wars rdf:type owl:NamedIndividual ,
-                     :Event ;
+                     :War ;
             :participant :Galactic_Republic ,
                          :Seperatist_Alliance ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Clone_Wars"^^xsd:anyURI .
@@ -2585,6 +2596,31 @@
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Echo_Base"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Edrio
+:Edrio rdf:type owl:NamedIndividual ,
+                :Tognath ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :gender ;
+                  owl:someValuesFrom :Male
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( [ owl:intersectionOf ( :Mercenary
+                                                                                   :Pilot
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :inOrganisation ;
+                                                              owl:hasValue :Partisans
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Edrio"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Eighth_Brother
 :Eighth_Brother rdf:type owl:NamedIndividual ,
                          :Humanoid ,
@@ -2998,6 +3034,14 @@
              rdfs:seeAlso "https://starwars.fandom.com/wiki/First_Order"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#First_Order-Resistance_War
+:First_Order-Resistance_War rdf:type owl:NamedIndividual ,
+                                     :War ;
+                            :participant :First_Order ,
+                                         :Resistance ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/First_Order-Resistance_War"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Fives
 :Fives rdf:type owl:NamedIndividual ,
                 :Clone ,
@@ -3134,6 +3178,14 @@
         :livedIn :Colossus ;
         rdfs:label "Glitch"^^xsd:string ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/G1-7CH"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Galactic_Civil_War
+:Galactic_Civil_War rdf:type owl:NamedIndividual ,
+                             :War ;
+                    :participant :Galactic_Empire ,
+                                 :Rebel_Alliance ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Galactic_Civil_War"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Galactic_Empire
@@ -3914,6 +3966,7 @@
 :Hosnian_Cataclysm rdf:type owl:NamedIndividual ,
                             :Attack ;
                    :destructionOf :Hosnian_Prime ;
+                   :during :First_Order-Resistance_War ;
                    :participant :Starkiller_Base ;
                    :year 34 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Hosnian_Cataclysm"^^xsd:anyURI .
@@ -4291,6 +4344,29 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                  :City ;
         :locatedIn :Lothal ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Jalath"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Jalindi
+:Jalindi rdf:type owl:NamedIndividual ,
+                  :Planet ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasTerrain ;
+                    owl:someValuesFrom :Mountains
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasTerrain ;
+                    owl:someValuesFrom :Rocky
+                  ] ;
+         :locatedIn :Galaxy ;
+         rdfs:seeAlso "https://starwars.fandom.com/wiki/Jalindi"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Jalindi_Station
+:Jalindi_Station rdf:type owl:NamedIndividual ,
+                          :Communication_relay ;
+                 :locatedIn :Jalindi ;
+                 :ownedBy :Galactic_Empire ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Jalindi_Station"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Jan_Dodonna
@@ -5619,6 +5695,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                      ]
                                  ] ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Mandalorian_Protectors"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Marauder
+:Marauder rdf:type owl:NamedIndividual ,
+                   :Arquitens-class_command_cruiser .
 
 
 ###  http://null.com/star-wars#Marcus_Speedstar

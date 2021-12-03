@@ -1716,6 +1716,11 @@ or minus is BBY"""^^xsd:string .
        rdfs:subClassOf :Event .
 
 
+###  http://null.com/star-wars#Crawler
+:Crawler rdf:type owl:Class ;
+         rdfs:subClassOf :Land_Vehicle .
+
+
 ###  http://null.com/star-wars#Creature
 :Creature rdf:type owl:Class ;
           owl:equivalentClass [ owl:intersectionOf ( :Living_thing
@@ -2320,6 +2325,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 :Force_spirit rdf:type owl:Class ;
               rdfs:subClassOf :Light_Side ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Force_spirit"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Foreman
+:Foreman rdf:type owl:Class ;
+         rdfs:subClassOf :Leader ;
+         rdfs:seeAlso "https://starwars.fandom.com/wiki/Foreman"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Forest
@@ -2952,18 +2963,34 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  http://null.com/star-wars#IG-100_MagnaGuard
 :IG-100_MagnaGuard rdf:type owl:Class ;
-                   rdfs:subClassOf :Battle_Droid ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :sentience ;
-                                     owl:someValuesFrom :Sentient
-                                   ] ;
+                   rdfs:subClassOf :IG_series_Droid ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/IG-100_MagnaGuard"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#IG-RM_bodyguard_and_enforcer_droid
+:IG-RM_bodyguard_and_enforcer_droid rdf:type owl:Class ;
+                                    rdfs:subClassOf :IG_series_Droid ;
+                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/IG-RM_bodyguard_and_enforcer_droid"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#IGV-55_surveillance_vessel
 :IGV-55_surveillance_vessel rdf:type owl:Class ;
                             rdfs:subClassOf :Gozanti-class_cruiser ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/IGV-55_surveillance_vessel"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#IG_series_Droid
+:IG_series_Droid rdf:type owl:Class ;
+                 rdfs:subClassOf :Droid ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hadRole ;
+                                   owl:someValuesFrom :Fighter
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :sentience ;
+                                   owl:someValuesFrom :Sentient
+                                 ] ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/IG-series"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ice
@@ -4271,6 +4298,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Orbak"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Ore_crawler
+:Ore_crawler rdf:type owl:Class ;
+             rdfs:subClassOf :Crawler ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Ore_crawler"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Organisation
 :Organisation rdf:type owl:Class ;
               rdfs:subClassOf :Actor ,
@@ -4932,7 +4965,7 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  http://null.com/star-wars#Sandcrawler
 :Sandcrawler rdf:type owl:Class ;
-             rdfs:subClassOf :Land_Vehicle ;
+             rdfs:subClassOf :Crawler ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Sandcrawler"^^xsd:anyURI .
 
 
@@ -5121,7 +5154,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  http://null.com/star-wars#Ship
 :Ship rdf:type owl:Class ;
-      rdfs:subClassOf :Vehicle .
+      rdfs:subClassOf :Vehicle ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :movesWith ;
+                        owl:someValuesFrom :Flight
+                      ] .
 
 
 ###  http://null.com/star-wars#Shuttle
@@ -5857,11 +5894,7 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  http://null.com/star-wars#Vehicle
 :Vehicle rdf:type owl:Class ;
-         rdfs:subClassOf :Built_Location ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :movesWith ;
-                           owl:someValuesFrom :Flight
-                         ] .
+         rdfs:subClassOf :Built_Location .
 
 
 ###  http://null.com/star-wars#Venator-class_Star_Destroyer

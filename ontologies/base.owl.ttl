@@ -1105,6 +1105,12 @@ or minus is BBY"""^^xsd:string .
       rdfs:subClassOf :Role .
 
 
+###  http://null.com/star-wars#Bacta
+:Bacta rdf:type owl:Class ;
+       rdfs:subClassOf :Medicine ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Bacta"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Band
 :Band rdf:type owl:Class ;
       rdfs:subClassOf :Organisation .
@@ -2365,6 +2371,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
       rdfs:subClassOf :Material .
 
 
+###  http://null.com/star-wars#Fuel_Depot
+:Fuel_Depot rdf:type owl:Class ;
+            rdfs:subClassOf :Facility .
+
+
 ###  http://null.com/star-wars#Fulcrum
 :Fulcrum rdf:type owl:Class ;
          rdfs:subClassOf :Spy ;
@@ -2524,6 +2535,16 @@ and (?a inConflictWith ?b)"""^^xsd:string .
                             owl:someValuesFrom :Female
                           ] ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Gilliand"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Glider
+:Glider rdf:type owl:Class ;
+        rdfs:subClassOf :Vehicle ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :movesWith ;
+                          owl:someValuesFrom :Flight
+                        ] ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Glider_(vehicle)"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Gorg
@@ -2852,6 +2873,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Holocron"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Hologram
+:Hologram rdf:type owl:Class ;
+          rdfs:subClassOf :Object ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Hologram"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Home
 :Home rdf:type owl:Class ;
       rdfs:subClassOf :Place .
@@ -2991,6 +3018,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
                                    owl:someValuesFrom :Sentient
                                  ] ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/IG-series"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#IT-O_Interrogator
+:IT-O_Interrogator rdf:type owl:Class ;
+                   rdfs:subClassOf :Droid ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/IT-O_Interrogator"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Ice
@@ -3658,6 +3691,29 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 ###  http://null.com/star-wars#Living_thing
 :Living_thing rdf:type owl:Class ;
               rdfs:subClassOf :Being .
+
+
+###  http://null.com/star-wars#Loth-Bat
+:Loth-Bat rdf:type owl:Class ;
+          rdfs:subClassOf :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTrait ;
+                            owl:someValuesFrom :Mammalian
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :movesWith ;
+                            owl:someValuesFrom :Flight
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :sentience ;
+                            owl:someValuesFrom :Non-sentient
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasPart ;
+                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Wing
+                          ] ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Loth-bat"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Loth-wolf
@@ -5800,6 +5856,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
        rdfs:subClassOf :BodyPart .
 
 
+###  http://null.com/star-wars#Truth_Serum
+:Truth_Serum rdf:type owl:Class ;
+             rdfs:subClassOf :Medicine ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Truth_serum"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Tundra
 :Tundra rdf:type owl:Class ;
         rdfs:subClassOf :Habitat .
@@ -6453,13 +6515,14 @@ and (?a inConflictWith ?b)"""^^xsd:string .
   owl:members ( :BodyPart
                 :Clothing
                 :Consumable
+                :Equipment
+                :Hologram
                 :Information
                 :Material
                 :Medicine
                 :Money
                 :Parts
                 :Relic
-                :Weapon
               )
 ] .
 

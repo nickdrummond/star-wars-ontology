@@ -5673,51 +5673,135 @@
                  :captureOf :Rex ;
                  :deathOf :Dicer ;
                  :during :Galactic_Civil_War ;
-                 :escapeOf :Rex ;
+                 :freeingOf :Rex ;
                  :locatedIn :Chopper_Base ;
                  :participant :Spectres ;
                  :year -3 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mystery_of_Chopper_Base"^^xsd:anyURI .
 
 
-###  http://null.com/star-wars#Rescue_of_Hera
-:Rescue_of_Hera rdf:type owl:NamedIndividual ,
-                         :Rescue ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :destructionOf ;
-                           owl:someValuesFrom :AT-DP
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :included ;
-                           owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :destructionOf ;
-                                                                       owl:hasValue :Syndulla_residence
-                                                                     ]
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :participant ;
-                                                                       owl:hasValue :C1-10P
-                                                                     ]
-                                                                   ) ;
-                                                rdf:type owl:Class
-                                              ]
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :participant ;
-                           owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                owl:onProperty :hadRole ;
-                                                owl:someValuesFrom :StormTrooper
-                                              ]
-                         ] ;
-                :after :Retrieving_the_Kalikori ;
-                :during :Galactic_Civil_War ;
-                :escapeOf :Cham_Syndulla ,
-                          :Spectres ;
-                :locatedIn :Syndulla_residence ;
-                :participant :Ghost ,
-                             :Slavin ;
-                :witnessedBy :Cham_Syndulla ;
-                :year -2 ;
-                rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera%27s_Heroes#The_prisoner_exchange"^^xsd:anyURI .
+###  http://null.com/star-wars#Rescue_of_Hera_on_Lothal
+:Rescue_of_Hera_on_Lothal rdf:type owl:NamedIndividual ,
+                                   :Rescue ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :participant ;
+                                                                                 owl:hasValue :Kanan_Jarrus
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :participant ;
+                                                                                 owl:hasValue :Rukh
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :killingOf ;
+                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hadRole ;
+                                                          owl:someValuesFrom :Death_trooper
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :killingOf ;
+                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hadRole ;
+                                                          owl:someValuesFrom :StormTrooper
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Glider
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :disguisedAs ;
+                                                                                 owl:someValuesFrom :Loth-Bat
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :stole ;
+                                     owl:someValuesFrom <http://null.com/star-wars#LAAT/le_patrol_gunship>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                     owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                          owl:oneOf ( :Ezra_Bridger
+                                                                                      :Sabine_Wren
+                                                                                    )
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :disguisedAs ;
+                                                                          owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hadRole ;
+                                                                                               owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                                           owl:onProperty :ofShip ;
+                                                                                                                                           owl:someValuesFrom :TIE_Fighter
+                                                                                                                                         ]
+                                                                                                                                       ) ;
+                                                                                                                    rdf:type owl:Class
+                                                                                                                  ]
+                                                                                             ]
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                                   ] ;
+                          :after :Torture_of_Hera ;
+                          :during :Galactic_Civil_War ;
+                          :found :Syndulla_Kalikori ;
+                          :freeingOf :Hera_Syndulla ;
+                          :locatedIn :Imperial_Complex_Lothal ;
+                          :participant :Arihnda_Pryce ,
+                                       :Kanan_Jarrus ;
+                          :year 0 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi_Night#Rescue_mission"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Rescue_of_Hera_on_Ryloth
+:Rescue_of_Hera_on_Ryloth rdf:type owl:NamedIndividual ,
+                                   :Rescue ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :destructionOf ;
+                                     owl:someValuesFrom :AT-DP
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :destructionOf ;
+                                                                                 owl:hasValue :Syndulla_residence
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :participant ;
+                                                                                 owl:hasValue :C1-10P
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hadRole ;
+                                                          owl:someValuesFrom :StormTrooper
+                                                        ]
+                                   ] ;
+                          :after :Retrieving_the_Kalikori ;
+                          :during :Galactic_Civil_War ;
+                          :escapeOf :Cham_Syndulla ,
+                                    :Spectres ;
+                          :locatedIn :Syndulla_residence ;
+                          :participant :Ghost ,
+                                       :Slavin ;
+                          :witnessedBy :Cham_Syndulla ;
+                          :year -2 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera%27s_Heroes#The_prisoner_exchange"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Rescue_of_Hondo
@@ -5752,7 +5836,7 @@
                                                ]
                           ] ;
                  :during :Galactic_Civil_War ;
-                 :escapeOf :Hondo_Ohnaka ;
+                 :freeingOf :Hondo_Ohnaka ;
                  :killingOf :Terba ;
                  :locatedIn :Naraka_Prison ;
                  :participant :C1-10P ,
@@ -5847,6 +5931,7 @@
                  :after :Preparing_to_rescue_Kanan ;
                  :destructionOf :Sovereign ;
                  :escapeOf :Spectres ;
+                 :freeingOf :Kanan_Jarrus ;
                  :locatedIn :Mustafar ,
                             :Sovereign ;
                  :year -4 ;
@@ -5865,8 +5950,8 @@
                            ] ;
                   :after :Destroying_the_Fang_Fighters ;
                   :during :Galactic_Civil_War ;
-                  :escapeOf :Chava ,
-                            :Gron ;
+                  :freeingOf :Chava ,
+                             :Gron ;
                   :locatedIn :Nixus_Hub_218 ;
                   :participant :Hondo_Ohnaka ,
                                :Spectres ;
@@ -5966,8 +6051,8 @@
                          :after :Liberator_pulled_out_of_Hyperspace ;
                          :during :Galactic_Civil_War ;
                          :escapeOf :Ezra_Bridger ,
-                                   :Jun_Sato ,
                                    :Liberator ;
+                         :freeingOf :Jun_Sato ;
                          :locatedIn :Del_Zennis_system ;
                          :participant :C1-10P ;
                          :year -4 ;
@@ -6953,6 +7038,81 @@
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Occupation"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Standoff_at_the_fuel_depot
+:Standoff_at_the_fuel_depot rdf:type owl:NamedIndividual ,
+                                     :Confrontation ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:someValuesFrom :AT-AT
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :destructionOf ;
+                                                                                   owl:hasValue :Lothal_City_fuel_depot
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :killingOf ;
+                                                                                   owl:hasValue :Kanan_Jarrus
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :orderedBy ;
+                                                                                   owl:hasValue :Arihnda_Pryce
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :of ;
+                                                                                   owl:someValuesFrom :Glider
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:hasValue :Hera_Syndulla
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:hasValue :Kanan_Jarrus
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Crew
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :of ;
+                                                                                   owl:someValuesFrom <http://null.com/star-wars#LAAT/le_patrol_gunship>
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hadMember ;
+                                                                                   owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                   owl:onClass [ rdf:type owl:Class ;
+                                                                                                 owl:oneOf ( :Ezra_Bridger
+                                                                                                             :Sabine_returns_home
+                                                                                                           )
+                                                                                               ]
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                            :after :Rescue_of_Hera_on_Lothal ;
+                            :during :Galactic_Civil_War ;
+                            :escapeOf :Ezra_Bridger ,
+                                      :Hera_Syndulla ,
+                                      :Sabine_Wren ;
+                            :locatedIn :Lothal_City_fuel_depot ;
+                            :year 0 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi_Night#Prison_break"^^xsd:anyURI .
+
+
 ###  http://null.com/star-wars#Stealing_Kanans_Lightsaber
 :Stealing_Kanans_Lightsaber rdf:type owl:NamedIndividual ,
                                      :Confrontation ,
@@ -7662,18 +7822,68 @@
                                                                                  ) ;
                                                               rdf:type owl:Class
                                                             ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :participant ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                              owl:oneOf ( :Bail_Organa
+                                                                                        )
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :used ;
+                                                                              owl:someValuesFrom :Hologram
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
                                        ] ;
                               :after :Escaping_with_the_flight_recorder ;
                               :during :Galactic_Civil_War ;
                               :locatedIn :Great_Temple ;
-                              :participant :Bail_Organa ,
-                                           :C1-10P ,
+                              :participant :C1-10P ,
                                            :Erskin_Semaj ,
                                            :Hera_Syndulla ,
                                            :Jan_Dodonna ,
                                            :Mon_Mothma ;
                               :year -1 ;
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Crawler_Commandeers#Attack_plans"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Torture_of_Hera
+:Torture_of_Hera rdf:type owl:NamedIndividual ,
+                          :Torture ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :about ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Fleet
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :memberOf ;
+                                                                        owl:hasValue :Rebel_Alliance
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :participant ;
+                            owl:someValuesFrom :IT-O_Interrogator
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :used ;
+                            owl:someValuesFrom :Truth_Serum
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :used ;
+                            owl:hasValue :Syndulla_Kalikori
+                          ] ;
+                 :after :Surviving_the_crash ;
+                 :during :Galactic_Civil_War ;
+                 :locatedIn :Imperial_Complex_Lothal ;
+                 :orderedBy :Arihnda_Pryce ;
+                 :participant :Hera_Syndulla ,
+                              :Thrawn ;
+                 :year 0 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi_Night#Hera.27s_captivity"^^xsd:anyURI .
 
 
 ###  http://null.com/star-wars#Torture_of_Kanan
@@ -8114,7 +8324,7 @@ Ahsoka and Vader injured"""^^xsd:string ;
                                                                  )
                                                      ]
                                        ] ;
-                              :after :Rescue_of_Hera ;
+                              :after :Rescue_of_Hera_on_Ryloth ;
                               :during :Galactic_Civil_War ;
                               :found :Phantom_II ;
                               :participant :Kalani ;
@@ -8155,8 +8365,8 @@ Ahsoka and Vader injured"""^^xsd:string ;
                           owl:someValuesFrom :TIE_Fighter
                         ] ;
                :after :Wookie_Rescue_Trap ;
-               :escapeOf :Kitwarr ,
-                         :Wullffwarro ;
+               :freeingOf :Kitwarr ,
+                          :Wullffwarro ;
                :participant :Ezra_Bridger ,
                             :Garazeb_Orrelios ,
                             :Kanan_Jarrus ,

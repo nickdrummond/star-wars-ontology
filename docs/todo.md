@@ -16,6 +16,13 @@
     
 * losing of limbs (Anakin + Luke)
 
+* change ```escapeOf``` to ```freeingOf``` in rescues as the former implies self-rescue
+  - done for Rebels
+
+* Hologram/projector - conversations with remote participants should be made clear
+  * use same pattern as disguise? makes it easy to have multiple
+  participant exactly 1 ({Bail_Organa} and (using some Holoprojector) and (location...))
+
 * How do we infer that specific people were participants in `Evacuation_of_Garel` - we're using `Spectres` a lot?
   Should we say that all members of an organisation or crew were at that event? What about Battles - Rebel Alliance vs Empire?
   Not all members of a group are a member at that time.

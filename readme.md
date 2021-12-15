@@ -10,7 +10,7 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 * Solo and Rogue One - first pass
 * The Mandalorian - first pass
 * Resistance - first pass
-* Rebels - in progress
+* Rebels - first pass
 * Clone Wars - skeleton
 * The Bad Batch - skeleton
 

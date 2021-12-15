@@ -52,7 +52,6 @@
         * allDifferent?
     
 * Series
-    * Rebels - series 4(16)
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)
     * Bad Batch - 1 series eps(incomplete)
 

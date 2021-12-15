@@ -472,6 +472,7 @@
                                          :Ryder_Azadi ,
                                          :Sabine_Wren ;
                               :destructionOf :Crawler_413-24 ;
+                              :during :Liberation_of_Lothal ;
                               :locatedIn :Lothal_Cliff_Dwelling ;
                               :orderedBy :Arihnda_Pryce ;
                               :participant :Rukh ;
@@ -1537,6 +1538,42 @@
                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Rebel_Assault#Strike"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Destroying_the_Dome
+:Destroying_the_Dome rdf:type owl:NamedIndividual ,
+                              :Mission ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Imperial_Complex_Lothal
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :used ;
+                                owl:someValuesFrom :Explosive
+                              ] ;
+                     :after :Ezra_vs_Thrawn ,
+                            :Mission_to_re-enable_shields ;
+                     :destructionOf :Imperial_Complex_Lothal ;
+                     :during :Liberation_of_Lothal ;
+                     :escapeOf :Ghost ,
+                               :Hondo_Ohnaka ,
+                               :Kallus ,
+                               :Melch ,
+                               :Rex ,
+                               :Ryder_Azadi ,
+                               :Spectres ,
+                               :Wolffe ;
+                     :killingOf :Arihnda_Pryce ;
+                     :locatedIn :Lothal ;
+                     :year 0 ;
+                     :todo "seeAlso"^^xsd:string .
+
+
 ###  http://null.com/star-wars#Destroying_the_Fang_Fighters
 :Destroying_the_Fang_Fighters rdf:type owl:NamedIndividual ,
                                        :Attack ,
@@ -2561,6 +2598,68 @@
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Through_Imperial_Eyes#Helping_the_Rebels_escape"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Ezra_Surrenders_to_Thrawn
+:Ezra_Surrenders_to_Thrawn rdf:type owl:NamedIndividual ,
+                                    :Confrontation ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :destructionOf ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :partOf ;
+                                                           owl:hasValue :Lothal_Jedi_Temple
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Darth_Sidious
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Force_Vision
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :connectedTo ;
+                                                                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty :partOf ;
+                                                                                                       owl:hasValue :Lothal_Jedi_Temple
+                                                                                                     ]
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :connectedTo ;
+                                                                                  owl:hasValue :Darth_Sidious
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :participant ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hadRole ;
+                                                           owl:someValuesFrom :Guard
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :participant ;
+                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hadRole ;
+                                                           owl:someValuesFrom :StormTrooper
+                                                         ]
+                                    ] ;
+                           :after :Infiltrating_the_Dome ;
+                           :captureOf :Ezra_Bridger ;
+                           :during :Liberation_of_Lothal ;
+                           :locatedIn :Chimaera ;
+                           :participant :Thrawn ;
+                           :year 0 ;
+                           :todo "seeAlso"^^xsd:string .
+
+
 ###  http://null.com/star-wars#Ezra_hunts_for_Maul_on_Tatooine
 :Ezra_hunts_for_Maul_on_Tatooine rdf:type owl:NamedIndividual ,
                                           :Search ,
@@ -2638,12 +2737,44 @@
 :Ezra_vs_Thrawn rdf:type owl:NamedIndividual ,
                          :Fight ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :destructionOf ;
+                           owl:someValuesFrom :Star_Destroyer
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :destructionOf ;
+                           owl:someValuesFrom :TIE_Fighter
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :to ;
+                                                                       owl:someValuesFrom :Hyperspace
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :Chimaera
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :killingOf ;
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hadRole ;
+                                                owl:someValuesFrom :StormTrooper
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :participant ;
                            owl:someValuesFrom :Purrgil
                          ] ;
+                :after :Ezra_Surrenders_to_Thrawn ;
                 :during :Liberation_of_Lothal ;
                 :locatedIn :Chimaera ;
                 :participant :Ezra_Bridger ,
+                             :Ghost ,
                              :Thrawn ;
                 :year 0 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal#Back-up_plans"^^xsd:anyURI .
@@ -3303,6 +3434,83 @@
                                        :participant :Kallus ;
                                        :year -4 ;
                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Call_to_Action"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Infiltrating_the_Dome
+:Infiltrating_the_Dome rdf:type owl:NamedIndividual ,
+                                :Mission ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :killingOf ;
+                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hadRole ;
+                                                       owl:someValuesFrom :StormTrooper
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                       owl:oneOf ( :Kallus
+                                                                                 )
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :disguisedAs ;
+                                                                       owl:someValuesFrom :Officer
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                       owl:oneOf ( :Rex
+                                                                                 )
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :disguisedAs ;
+                                                                       owl:someValuesFrom :StormTrooper
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                  owl:onClass <http://null.com/star-wars#LAAT/le_patrol_gunship>
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :participant ;
+                                  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                  owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                       owl:oneOf ( :Ezra_Bridger
+                                                                                   :Sabine_Wren
+                                                                                 )
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :disguisedAs ;
+                                                                       owl:someValuesFrom :Scout_trooper
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                                ] ;
+                       :after :Reinforcements_at_the_cliff_dwelling ;
+                       :during :Liberation_of_Lothal ;
+                       :locatedIn :Imperial_Complex_Lothal ;
+                       :participant :Arihnda_Pryce ,
+                                    :C1-10P ,
+                                    :Garazeb_Orrelios ,
+                                    :Gregor ,
+                                    :Hera_Syndulla ,
+                                    :Hondo_Ohnaka ,
+                                    :Ketsu_Onyo ,
+                                    :Melch ,
+                                    :Ryder_Azadi ;
+                       :year 0 ;
+                       :todo "seeAlso"^^xsd:string .
 
 
 ###  http://null.com/star-wars#Infiltrating_the_Geonosian_Hive
@@ -4259,17 +4467,13 @@
 
 ###  http://null.com/star-wars#Liberation_of_Lothal
 :Liberation_of_Lothal rdf:type owl:NamedIndividual ,
-                               :Battle ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :participant ;
-                                 owl:someValuesFrom :Loth-wolf
-                               ] ;
-                      :deathOf :Arihnda_Pryce ;
+                               :Battle ;
+                      :after :Closing_the_World_Between_Worlds ;
                       :during :Galactic_Civil_War ;
                       :locatedIn :Lothal ;
-                      :participant :Galactic_Empire ,
-                                   :Rex ;
-                      :victoryOf :Spectres ;
+                      :participant :Galactic_Empire ;
+                      :victoryOf :Lothal_resistance_group ,
+                                 :Spectres ;
                       :year 0 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberation_of_Lothal"^^xsd:anyURI .
 
@@ -5392,6 +5596,110 @@
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Rise_of_the_Old_Masters#Mission_to_Stygeon_Prime"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Mission_to_re-enable_shields
+:Mission_to_re-enable_shields rdf:type owl:NamedIndividual ,
+                                       :Mission ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :activated ;
+                                         owl:someValuesFrom :Shield_Generator
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :killingOf ;
+                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty :hadRole ;
+                                                                                                          owl:someValuesFrom :StormTrooper
+                                                                                                        ]
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Melch
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :killingOf ;
+                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty :hadRole ;
+                                                                                                          owl:someValuesFrom :Death_trooper
+                                                                                                        ]
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :killingOf ;
+                                                                                     owl:hasValue :Gregor
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Garazeb_Orrelios
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Kallus
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :killingOf ;
+                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty :hadRole ;
+                                                                                                          owl:someValuesFrom :StormTrooper
+                                                                                                        ]
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Hondo_Ohnaka
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Ketsu_Onyo
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Rex
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :stunningOf ;
+                                                                                     owl:hasValue :Melch
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :killingOf ;
+                                                                                     owl:hasValue :Rukh
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Garazeb_Orrelios
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ;
+                              :after :Infiltrating_the_Dome ;
+                              :during :Liberation_of_Lothal ;
+                              :locatedIn :Imperial_Complex_Lothal ;
+                              :stunningOf :C1-10P ;
+                              :year 0 ;
+                              :todo "seeAlso"^^xsd:string .
+
+
 ###  http://null.com/star-wars#Mission_to_save_Gall_Trayvis
 :Mission_to_save_Gall_Trayvis rdf:type owl:NamedIndividual ,
                                        :Trap ,
@@ -5669,6 +5977,22 @@
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Revolt_in_an_Imperial_prison"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Protocol_13
+:Protocol_13 rdf:type owl:NamedIndividual ,
+                      :Evacuation ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :captureOf ;
+                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                             owl:onProperty :memberOf ;
+                                             owl:hasValue :Galactic_Empire
+                                           ]
+                      ] ;
+             :during :Infiltrating_the_Dome ;
+             :locatedIn :Imperial_Complex_Lothal ;
+             :year 0 ;
+             :todo "seeAlso"^^xsd:string .
+
+
 ###  http://null.com/star-wars#Raid_on_an_Ore_Crawler
 :Raid_on_an_Ore_Crawler rdf:type owl:NamedIndividual ,
                                  :Mission ,
@@ -5900,6 +6224,7 @@
                                                ] ;
                                       :after :Attack_on_the_cliff_dwelling ;
                                       :captureOf :Arihnda_Pryce ;
+                                      :during :Liberation_of_Lothal ;
                                       :freeingOf :C1-10P ,
                                                  :Cikatro_Vizago ,
                                                  :Ezra_Bridger ,
@@ -6622,6 +6947,48 @@
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Kindred#Retrieving_the_hyperdrive"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Return_of_Rukh
+:Return_of_Rukh rdf:type owl:NamedIndividual ,
+                         :Attack ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :Rukh
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :Thrawn
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :stole ;
+                                                                       owl:someValuesFrom <http://null.com/star-wars#LAAT/le_patrol_gunship>
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :Rukh
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                :during :Infiltrating_the_Dome ;
+                :locatedIn :Lothal_Cliff_Dwelling ;
+                :participant :Cikatro_Vizago ,
+                             :Dume ,
+                             :Mart_Mattin ,
+                             :Wolffe ;
+                :year 0 ;
+                :todo "seeAlso"^^xsd:string .
+
+
 ###  http://null.com/star-wars#Return_to_Geonosis
 :Return_to_Geonosis rdf:type owl:NamedIndividual ,
                              :Search ,
@@ -6862,7 +7229,7 @@
                                                  owl:someValuesFrom :Rebellion
                                                ]
                           ] ;
-                 :after :Closing_the_World_Between_Worlds ;
+                 :during :Liberation_of_Lothal ;
                  :locatedIn :Lothal ;
                  :participant :Arihnda_Pryce ,
                               :Ryder_Azadi ;
@@ -7025,6 +7392,15 @@
                               :Spectres ;
                  :year -2 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Ghosts_of_Geonosis#Questioning_Saw.27s_methods"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Search_for_Ezra
+:Search_for_Ezra rdf:type owl:NamedIndividual ,
+                          :Search ;
+                 :participant :Ahsoka_Tano ,
+                              :Sabine_Wren ;
+                 :sometimeAfter :Liberation_of_Lothal ;
+                 :todo "seeAlso"^^xsd:string .
 
 
 ###  http://null.com/star-wars#Search_for_Ezras_parents
@@ -8109,6 +8485,62 @@
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Path_of_the_Jedi"^^xsd:anyURI .
 
 
+###  http://null.com/star-wars#Thrawn_returns_to_Lothal
+:Thrawn_returns_to_Lothal rdf:type owl:NamedIndividual ,
+                                   :Confrontation ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :destructionOf ;
+                                                                                 owl:someValuesFrom [ owl:intersectionOf ( :Building
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty :locatedIn ;
+                                                                                                                             owl:hasValue :Capital_City
+                                                                                                                           ]
+                                                                                                                         ) ;
+                                                                                                      rdf:type owl:Class
+                                                                                                    ]
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :killingOf ;
+                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :hadRole ;
+                                                                                                      owl:someValuesFrom :Civilian
+                                                                                                    ]
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :participant ;
+                                                                                 owl:hasValue :Chimaera
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Sabotage
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom :Shield_Generator
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :orderedBy ;
+                                                                                 owl:hasValue :Rukh
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ;
+                          :after :Infiltrating_the_Dome ;
+                          :during :Liberation_of_Lothal ;
+                          :locatedIn :Lothal ;
+                          :participant :Chimaera ;
+                          :surrenderOf :Ezra_Bridger ;
+                          :year 0 ;
+                          :todo "seeAlso"^^xsd:string .
+
+
 ###  http://null.com/star-wars#Thrawn_shares_the_Rebel_plans
 :Thrawn_shares_the_Rebel_plans rdf:type owl:NamedIndividual ,
                                         :Meeting ;
@@ -8404,6 +8836,22 @@
                                     :witnessedBy :Fenn_Rau ;
                                     :year -2 ;
                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Trials_of_the_Darksaber#Sabine.27s_training"^^xsd:anyURI .
+
+
+###  http://null.com/star-wars#Transmitting_on_frequency_Zero
+:Transmitting_on_frequency_Zero rdf:type owl:NamedIndividual ,
+                                         :Mission ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :included ;
+                                           owl:someValuesFrom :Communication
+                                         ] ;
+                                :during :Ezra_Surrenders_to_Thrawn ;
+                                :locatedIn :Ghost ;
+                                :participant :Cikatro_Vizago ,
+                                             :Mart_Mattin ,
+                                             :Wolffe ;
+                                :year 0 ;
+                                :todo "seeAlso"^^xsd:string .
 
 
 ###  http://null.com/star-wars#Travelling_with_Loth_Wolves

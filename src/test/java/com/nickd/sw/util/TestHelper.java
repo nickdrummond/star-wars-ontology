@@ -11,7 +11,7 @@ import java.util.Collections;
 
 public class TestHelper extends TestSetup {
 
-    public static String BASE = "http://null.com/star-wars";
+    public static String BASE = "https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies";
 
     public OWLOntologyManager mngr;
     public OWLOntology ont;

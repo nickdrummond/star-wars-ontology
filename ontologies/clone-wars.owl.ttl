@@ -7,12 +7,66 @@
 @base <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#> .
 
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/clone-wars.owl.ttl> rdf:type owl:Ontology ;
-                                                owl:imports <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/star-wars.owl.ttl> ;
-                                                rdfs:comment "Events and characters primarily from the clone wars film and series"^^xsd:string .
+                                                                                                        owl:imports <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/star-wars.owl.ttl> ;
+                                                                                                        rdfs:comment "Events and characters primarily from the clone wars film and series"^^xsd:string .
 
 #################################################################
 #    Individuals
 #################################################################
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Ambush_on_Rugosa
+:Ambush_on_Rugosa rdf:type owl:NamedIndividual ,
+                           :Battle ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :destructionOf ;
+                             owl:someValuesFrom :AAT_Mk_I
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :escapeOf ;
+                                                                         owl:someValuesFrom :Consular-class_cruiser
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :escapeOf ;
+                                                                         owl:someValuesFrom :Escape_Pod
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:someValuesFrom :Munificent-class_star_frigate
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :killingOf ;
+                             owl:someValuesFrom :B1_Battle_Droid
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :killingOf ;
+                             owl:someValuesFrom :B2_Super_Battle_Droid
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :killingOf ;
+                             owl:someValuesFrom :Destroyer_Droid
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Clone
+                           ] ;
+                  :damageOf :Thiefs_Eye ;
+                  :during :Clone_Wars ;
+                  :escapeOf :Asajj_Ventress ;
+                  :locatedIn :Rugosa ;
+                  :orderedBy :Count_Dooku ;
+                  :participant :Katuunko ;
+                  :victoryOf :Yoda ;
+                  :year -22 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Ambush_on_Rugosa"^^xsd:anyURI .
+
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Battle_of_Anaxes
 :Battle_of_Anaxes rdf:type owl:NamedIndividual ,
@@ -45,8 +99,8 @@
                                      <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#501st> ;
                         :victoryOf :Grand_Army_of_the_Republic ;
                         :year -22 ;
-                        :todo "Space Battle (not covered in film)"^^xsd:string ;
-                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Christophsis"^^xsd:anyURI .
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Christophsis"^^xsd:anyURI ;
+                        :todo "Space Battle (not covered in film)"^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Battle_of_Teth

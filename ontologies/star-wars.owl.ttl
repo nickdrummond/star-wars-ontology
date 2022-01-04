@@ -7,8 +7,8 @@
 @base <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#> .
 
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/star-wars.owl.ttl> rdf:type owl:Ontology ;
-                                     owl:imports <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/base.owl.ttl> ;
-                                     rdfs:comment "Characters, places and objects - instances"^^xsd:string .
+                                                                                                       owl:imports <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/base.owl.ttl> ;
+                                                                                                       rdfs:comment "Characters, places and objects - instances"^^xsd:string .
 
 #################################################################
 #    Classes
@@ -55,9 +55,7 @@
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Hammerhead_corvette
-:Hammerhead_corvette rdf:type owl:Class ;
-                     rdfs:subClassOf :Corvette ;
-                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Sphyrna-class_Hammerhead_corvette"^^xsd:anyURI .
+:Hammerhead_corvette rdf:type owl:Class .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Imperial-class_Star_Destroyer
@@ -672,6 +670,10 @@
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Atollon
 :Atollon rdf:type owl:NamedIndividual ,
                   :Planet ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasTerrain ;
+                    owl:someValuesFrom :Coral
+                  ] ,
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :hasTerrain ;
                     owl:someValuesFrom :Desert
@@ -1680,8 +1682,8 @@
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Children_of_the_Watch
 :Children_of_the_Watch rdf:type owl:NamedIndividual ,
                                 :Religious_Order ;
-                       :quote "This is the Way"^^xsd:string ;
-                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Children_of_the_Watch"^^xsd:anyURI .
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Children_of_the_Watch"^^xsd:anyURI ;
+                       :quote "This is the Way"^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Chimaera
@@ -2451,8 +2453,8 @@
                      ] ;
             :alliedWith :Ahsoka_Tano ;
             :memberOf :Mudhorn_Clan ;
-            :quote "Dank Farrik"^^xsd:string ;
-            rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin"^^xsd:anyURI .
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin"^^xsd:anyURI ;
+            :quote "Dank Farrik"^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Doctor_Mandible
@@ -3384,8 +3386,8 @@
                   :originallyFrom :Lasan ;
                   :visited :Lira_San ;
                   :born -44 ;
-                  :quote "Karabast!"^^xsd:string ;
-                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Garazeb_Orrelios"^^xsd:anyURI .
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Garazeb_Orrelios"^^xsd:anyURI ;
+                  :quote "Karabast!"^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Garel
@@ -4863,6 +4865,29 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Kassius_Konstantine"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Katuunko
+:Katuunko rdf:type owl:NamedIndividual ,
+                   :Toydarian ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :gender ;
+                     owl:someValuesFrom :Male
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :hadRole ;
+                     owl:someValuesFrom :King
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :born ;
+                     owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                          owl:onDatatype xsd:int ;
+                                          owl:withRestrictions ( [ xsd:maxExclusive "-54"^^xsd:int
+                                                                 ]
+                                                               )
+                                        ]
+                   ] ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Katuunko"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Kazuda_Xiono
 :Kazuda_Xiono rdf:type owl:NamedIndividual ,
                        :Human ,
@@ -5168,8 +5193,8 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                   owl:someValuesFrom :Farmer
                 ] ;
        :livedIn :Arvala-7 ;
-       :quote "I have spoken"^^xsd:string ;
-       rdfs:seeAlso "https://starwars.fandom.com/wiki/Kuiil"^^xsd:anyURI .
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Kuiil"^^xsd:anyURI ;
+       :quote "I have spoken"^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Kylo_Ren
@@ -5396,7 +5421,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Liberator
 :Liberator rdf:type owl:NamedIndividual ,
-                    :Blockade_Runner ;
+                    :CR90_corvette ;
            :ownedBy :Phoenix_Cell ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Liberator_(CR90_corvette)"^^xsd:anyURI .
 
@@ -7844,6 +7869,21 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Royal_House_of_Naboo"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rugosa
+:Rugosa rdf:type owl:NamedIndividual ,
+                 :Moon ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hasTerrain ;
+                   owl:someValuesFrom :Cave
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hasTerrain ;
+                   owl:someValuesFrom :Coral
+                 ] ;
+        :locatedIn :Outer_Rim ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Rugosa"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rukh
 :Rukh rdf:type owl:NamedIndividual ,
                :Noghri ,
@@ -8898,7 +8938,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Tantive_IV
 :Tantive_IV rdf:type owl:NamedIndividual ,
-                     :Blockade_Runner ;
+                     :CR90_corvette ;
             :ownedBy :Leia_Organa ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Tantive_IV"^^xsd:anyURI .
 
@@ -9208,6 +9248,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                 :City ;
        :locatedIn :Naboo ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Theed"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Thiefs_Eye
+:Thiefs_Eye rdf:type owl:NamedIndividual ,
+                     :Yacht ;
+            :ownedBy :Katuunko ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Thief%27s_Eye"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Third_moon_of_Concord_Dawn
@@ -9795,8 +9842,8 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                              rdf:type owl:Class
                                            ]
                       ] ;
-             :todo "Check this as it was done offline"^^xsd:string ;
-             rdfs:seeAlso "https://starwars.fandom.com/wiki/Veris_Hydan"^^xsd:anyURI .
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Veris_Hydan"^^xsd:anyURI ;
+             :todo "Check this as it was done offline"^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Vizsla_Keep_09
@@ -10241,8 +10288,8 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                :Yodas_Hut ;
       :memberOf :Jedi_High_Council ;
       :born -896 ;
-      :quote "Do, or do not. There is no try"^^xsd:string ;
-      rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda"^^xsd:anyURI .
+      rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda"^^xsd:anyURI ;
+      :quote "Do, or do not. There is no try"^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Yodas_Hut
@@ -10456,167 +10503,167 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#3-9
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#3-9> rdf:type owl:NamedIndividual ,
-                                         :Human ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :gender ;
-                                           owl:someValuesFrom :Male
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :hadRole ;
-                                           owl:someValuesFrom [ owl:intersectionOf ( :Officer
-                                                                                     [ rdf:type owl:Restriction ;
-                                                                                       owl:onProperty :inOrganisation ;
-                                                                                       owl:hasValue :Imperial_Information_Office
-                                                                                     ]
-                                                                                   ) ;
-                                                                rdf:type owl:Class
-                                                              ]
-                                         ] ;
-                                rdfs:seeAlso "https://starwars.fandom.com/wiki/3-9"^^xsd:anyURI .
+                                                                                                 :Human ,
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :gender ;
+                                                                                                   owl:someValuesFrom :Male
+                                                                                                 ] ,
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :hadRole ;
+                                                                                                   owl:someValuesFrom [ owl:intersectionOf ( :Officer
+                                                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                                                               owl:onProperty :inOrganisation ;
+                                                                                                                                               owl:hasValue :Imperial_Information_Office
+                                                                                                                                             ]
+                                                                                                                                           ) ;
+                                                                                                                        rdf:type owl:Class
+                                                                                                                      ]
+                                                                                                 ] ;
+                                                                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/3-9"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#4D-M1N
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#4D-M1N> rdf:type owl:NamedIndividual ,
-                                            :Droid ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty :gender ;
-                                              owl:someValuesFrom :Female
-                                            ] ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty :hadRole ;
-                                              owl:someValuesFrom :Guard
-                                            ] ;
-                                   :employedBy :Imanuel_Doza ;
-                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/4D-M1N"^^xsd:anyURI .
+                                                                                                    :Droid ,
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :gender ;
+                                                                                                      owl:someValuesFrom :Female
+                                                                                                    ] ,
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :hadRole ;
+                                                                                                      owl:someValuesFrom :Guard
+                                                                                                    ] ;
+                                                                                           :employedBy :Imanuel_Doza ;
+                                                                                           rdfs:seeAlso "https://starwars.fandom.com/wiki/4D-M1N"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#4-A7
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#4-A7> rdf:type owl:NamedIndividual ,
-                                          :Protocol_Droid ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :gender ;
-                                            owl:someValuesFrom :Male
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :hadRole ;
-                                            owl:someValuesFrom [ owl:intersectionOf ( :Spy
-                                                                                      [ rdf:type owl:Restriction ;
-                                                                                        owl:onProperty :inOrganisation ;
-                                                                                        owl:hasValue :Seperatist_Alliance
-                                                                                      ]
-                                                                                    ) ;
-                                                                 rdf:type owl:Class
-                                                               ]
-                                          ] ;
-                                 :employedBy :Asajj_Ventress ;
-                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/4-A7"^^xsd:anyURI .
+                                                                                                  :Protocol_Droid ,
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty :gender ;
+                                                                                                    owl:someValuesFrom :Male
+                                                                                                  ] ,
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty :hadRole ;
+                                                                                                    owl:someValuesFrom [ owl:intersectionOf ( :Spy
+                                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                                owl:onProperty :inOrganisation ;
+                                                                                                                                                owl:hasValue :Seperatist_Alliance
+                                                                                                                                              ]
+                                                                                                                                            ) ;
+                                                                                                                         rdf:type owl:Class
+                                                                                                                       ]
+                                                                                                  ] ;
+                                                                                         :employedBy :Asajj_Ventress ;
+                                                                                         rdfs:seeAlso "https://starwars.fandom.com/wiki/4-A7"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#501st
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#501st> rdf:type owl:NamedIndividual ,
-                                           :Military_Unit ;
-                                  :memberOf :Grand_Army_of_the_Republic ;
-                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/501st_Legion"^^xsd:anyURI .
+                                                                                                   :Military_Unit ;
+                                                                                          :memberOf :Grand_Army_of_the_Republic ;
+                                                                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/501st_Legion"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#7th_Sky_Corps
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#7th_Sky_Corps> rdf:type owl:NamedIndividual ,
-                                                   :Military_Unit ;
-                                          :memberOf :Grand_Army_of_the_Republic ;
-                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/7th_Sky_Corps"^^xsd:anyURI .
+                                                                                                           :Military_Unit ;
+                                                                                                  :memberOf :Grand_Army_of_the_Republic ;
+                                                                                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/7th_Sky_Corps"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Aunt_Z's_Tavern
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Aunt_Z's_Tavern> rdf:type owl:NamedIndividual ,
-                                                     :Facility ;
-                                            :locatedIn :Colossus ;
-                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Aunt_Z%27s_Tavern"^^xsd:anyURI .
+                                                                                                             :Facility ;
+                                                                                                    :locatedIn :Colossus ;
+                                                                                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Aunt_Z%27s_Tavern"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#B'omarr_Order_Monastery
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#B'omarr_Order_Monastery> rdf:type owl:NamedIndividual ,
-                                                             :Temple ;
-                                                    :locatedIn :Teth ;
-                                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/B%27omarr_Order_Monastery"^^xsd:anyURI .
+                                                                                                                     :Temple ;
+                                                                                                            :locatedIn :Teth ;
+                                                                                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/B%27omarr_Order_Monastery"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Chalmun's_Cantina
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Chalmun's_Cantina> rdf:type owl:NamedIndividual ,
-                                                       :Cantina ;
-                                              :locatedIn :Mos_Eisley ;
-                                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Chalmun%27s_Spaceport_Cantina"^^xsd:anyURI .
+                                                                                                               :Cantina ;
+                                                                                                      :locatedIn :Mos_Eisley ;
+                                                                                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Chalmun%27s_Spaceport_Cantina"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#D'Qar
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#D'Qar> rdf:type owl:NamedIndividual ,
-                                           :Planet ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :hasTerrain ;
-                                             owl:someValuesFrom :Forest
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :hasTerrain ;
-                                             owl:someValuesFrom :Plains
-                                           ] ;
-                                  :locatedIn :Outer_Rim ;
-                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/D%27Qar"^^xsd:anyURI .
+                                                                                                   :Planet ,
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :hasTerrain ;
+                                                                                                     owl:someValuesFrom :Forest
+                                                                                                   ] ,
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :hasTerrain ;
+                                                                                                     owl:someValuesFrom :Plains
+                                                                                                   ] ;
+                                                                                          :locatedIn :Outer_Rim ;
+                                                                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/D%27Qar"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Dex's_Diner
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Dex's_Diner> rdf:type owl:NamedIndividual ,
-                                                 :Building ;
-                                        :locatedIn :Coruscant ;
-                                        :ownedBy :Dexter_Jettster ;
-                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Dex%27s_Diner"^^xsd:anyURI .
+                                                                                                         :Building ;
+                                                                                                :locatedIn :Coruscant ;
+                                                                                                :ownedBy :Dexter_Jettster ;
+                                                                                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Dex%27s_Diner"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jabba's_Palace
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jabba's_Palace> rdf:type owl:NamedIndividual ,
-                                                    :Building ;
-                                           :locatedIn :Dune_Sea ;
-                                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Jabba%27s_Palace"^^xsd:anyURI .
+                                                                                                            :Building ;
+                                                                                                   :locatedIn :Dune_Sea ;
+                                                                                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Jabba%27s_Palace"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Qi'ra
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Qi'ra> rdf:type owl:NamedIndividual ,
-                                           :Human ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :gender ;
-                                             owl:someValuesFrom :Female
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :hadRole ;
-                                             owl:someValuesFrom [ owl:intersectionOf ( :Thief
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty :inOrganisation ;
-                                                                                         owl:hasValue :White_Worms
-                                                                                       ]
-                                                                                     ) ;
-                                                                  rdf:type owl:Class
-                                                                ]
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :memberOf ;
-                                             owl:hasValue :Crimson_Dawn
-                                           ] ;
-                                  :loved :Han_Solo ;
-                                  :originallyFrom :Corellia ;
-                                  :born -31 ;
-                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Qi%27ra"^^xsd:anyURI .
+                                                                                                   :Human ,
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :gender ;
+                                                                                                     owl:someValuesFrom :Female
+                                                                                                   ] ,
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :hadRole ;
+                                                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Thief
+                                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                                 owl:onProperty :inOrganisation ;
+                                                                                                                                                 owl:hasValue :White_Worms
+                                                                                                                                               ]
+                                                                                                                                             ) ;
+                                                                                                                          rdf:type owl:Class
+                                                                                                                        ]
+                                                                                                   ] ,
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :memberOf ;
+                                                                                                     owl:hasValue :Crimson_Dawn
+                                                                                                   ] ;
+                                                                                          :loved :Han_Solo ;
+                                                                                          :originallyFrom :Corellia ;
+                                                                                          :born -31 ;
+                                                                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Qi%27ra"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Xi'an
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Xi'an> rdf:type owl:NamedIndividual ,
-                                           <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Twi'Lek> ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :gender ;
-                                             owl:someValuesFrom :Female
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :hadRole ;
-                                             owl:someValuesFrom :Mercenary
-                                           ] ;
-                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Xi%27an"^^xsd:anyURI .
+                                                                                                   <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Twi'Lek> ,
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :gender ;
+                                                                                                     owl:someValuesFrom :Female
+                                                                                                   ] ,
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :hadRole ;
+                                                                                                     owl:someValuesFrom :Mercenary
+                                                                                                   ] ;
+                                                                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Xi%27an"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

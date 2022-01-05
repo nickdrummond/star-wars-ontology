@@ -51,21 +51,99 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :killingOf ;
                              owl:someValuesFrom :Destroyer_Droid
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :participant ;
-                             owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                             owl:onClass :Clone
                            ] ;
                   :damageOf :Thiefs_Eye ;
                   :during :Clone_Wars ;
                   :escapeOf :Asajj_Ventress ;
+                  :injuryOf :Thire ;
                   :locatedIn :Rugosa ;
                   :orderedBy :Count_Dooku ;
-                  :participant :Katuunko ;
+                  :participant :Jek ,
+                               :Katuunko ,
+                               :Rys ;
                   :victoryOf :Yoda ;
                   :year -22 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Ambush_on_Rugosa"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Battle_of_Abregado
+:Battle_of_Abregado rdf:type owl:NamedIndividual ,
+                             :Battle ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :used ;
+                                                                           owl:someValuesFrom :Ion_Cannon
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :used ;
+                                                                           owl:someValuesFrom :Escape_Pod
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Boost
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Plo_Koon
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Sinker
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Wolffe
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Ahsoka_Tano
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Anakin_Skywalker
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Twilight
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :killingOf ;
+                               owl:someValuesFrom :B1_Battle_Droid
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :destructionOf ;
+                               owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Venator-class_Star_Destroyer
+                             ] ;
+                    :during :Clone_Wars ;
+                    :locatedIn :Abregado_system ;
+                    :participant :Count_Dooku ,
+                                 :Grievous ,
+                                 :Malevolence ;
+                    :survivedBy :Plo_Koon ,
+                                :Wolffe ;
+                    :year -22 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Abregado"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Battle_of_Anaxes

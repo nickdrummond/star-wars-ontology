@@ -140,6 +140,13 @@
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Aayla_Secura"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Abregado_system
+:Abregado_system rdf:type owl:NamedIndividual ,
+                          :System ;
+                 :locatedIn :Core_Worlds ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Abregado_system"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Ace_Squadron
 :Ace_Squadron rdf:type owl:NamedIndividual ,
                        :Squadron ;
@@ -291,6 +298,17 @@
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hadRole ;
                         owl:someValuesFrom :Padawan
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Commander
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#501st>
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
                       ] ;
              :friendsWith :Rex ;
              :livedIn :Coruscant ;
@@ -492,6 +510,17 @@
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :ownedBy ;
                                                                          owl:hasValue :Watto
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :General
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :inOrganisation ;
+                                                                         owl:hasValue <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#501st>
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -1242,6 +1271,23 @@
         :alliedWith :Resistance ;
         :livedIn :Sinta_Glacier_Colony ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Boolio"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Boost
+:Boost rdf:type owl:NamedIndividual ,
+                :Clone ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Trooper
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :inOrganisation ;
+                                                              owl:hasValue <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#104th_Battalion>
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Boost"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Boss_Nass
@@ -4578,6 +4624,23 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi_Temple"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jek
+:Jek rdf:type owl:NamedIndividual ,
+              :Clone ,
+              [ rdf:type owl:Restriction ;
+                owl:onProperty :hadRole ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Trooper
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :inOrganisation ;
+                                                            owl:hasValue :Coruscant_Guard
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ]
+              ] ;
+     rdfs:seeAlso "https://starwars.fandom.com/wiki/Jek"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jesse
 :Jesse rdf:type owl:NamedIndividual ,
                 :Clone ,
@@ -5740,6 +5803,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                       ] ;
              :locatedIn :Outer_Rim ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Maldo_Kreis"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Malevolence
+:Malevolence rdf:type owl:NamedIndividual ,
+                      :Dreadnought ;
+             :ownedBy :Seperatist_Alliance ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Malevolence"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mandalore
@@ -7164,6 +7234,17 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                    [ rdf:type owl:Restriction ;
                      owl:onProperty :hadRole ;
                      owl:someValuesFrom :Jedi_Master
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :hadRole ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :General
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :inOrganisation ;
+                                                                 owl:hasValue <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#104th_Battalion>
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
                    ] ;
           :friendsWith :Ahsoka_Tano ;
           :memberOf :Jedi_High_Council ;
@@ -7729,7 +7810,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
               [ rdf:type owl:Restriction ;
                 owl:onProperty :hadRole ;
                 owl:someValuesFrom [ owl:intersectionOf ( :Captain
-                                                          :Trooper
                                                           [ rdf:type owl:Restriction ;
                                                             owl:onProperty :inOrganisation ;
                                                             owl:hasValue <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#501st>
@@ -7948,6 +8028,23 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                  ] ;
         :locatedIn :Outer_Rim ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Ryloth"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rys
+:Rys rdf:type owl:NamedIndividual ,
+              :Clone ,
+              [ rdf:type owl:Restriction ;
+                owl:onProperty :hadRole ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Trooper
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :inOrganisation ;
+                                                            owl:hasValue :Coruscant_Guard
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ]
+              ] ;
+     rdfs:seeAlso "https://starwars.fandom.com/wiki/Rys"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Saak_ak
@@ -8420,6 +8517,23 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
            :born -102 ;
            :diedInYear -32 ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Sifo-Dyas"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Sinker
+:Sinker rdf:type owl:NamedIndividual ,
+                 :Clone ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom [ owl:intersectionOf ( :Sergeant
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :inOrganisation ;
+                                                               owl:hasValue <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#104th_Battalion>
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
+                 ] ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Sinker"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Sinta_Glacier
@@ -9268,6 +9382,23 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Third_moon_of_Concord_Dawn"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Thire
+:Thire rdf:type owl:NamedIndividual ,
+                :Clone ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Commander
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :inOrganisation ;
+                                                              owl:hasValue :Coruscant_Guard
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/CC-4477"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Thrawn
 :Thrawn rdf:type owl:NamedIndividual ,
                  :Chiss ,
@@ -9540,6 +9671,12 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                              :Village ;
                     :locatedIn :Tatooine ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Tusken_Raider_camp"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Twilight
+:Twilight rdf:type owl:NamedIndividual ,
+                   :G9_Rigger-class_light_freighter ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Twilight"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Tython
@@ -10103,10 +10240,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                  :Clone ,
                  [ rdf:type owl:Restriction ;
                    owl:onProperty :hadRole ;
-                   owl:someValuesFrom [ owl:intersectionOf ( :Captain
+                   owl:someValuesFrom [ owl:intersectionOf ( :Commander
                                                              [ rdf:type owl:Restriction ;
                                                                owl:onProperty :inOrganisation ;
-                                                               owl:hasValue :Grand_Army_of_the_Republic
+                                                               owl:hasValue <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#104th_Battalion>
                                                              ]
                                                            ) ;
                                         rdf:type owl:Class
@@ -10499,6 +10636,14 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                    ] ;
           :locatedIn :Outer_Rim ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Zygerria"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#104th_Battalion
+<https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#104th_Battalion> rdf:type owl:NamedIndividual ,
+                                                                                                             :Military_Unit ;
+                                                                                                    :memberOf :Grand_Army_of_the_Republic ;
+                                                                                                    :aka "Wolf Pack"^^xsd:string ;
+                                                                                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/104th_Battalion"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#3-9

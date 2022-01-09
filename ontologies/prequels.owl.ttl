@@ -7,8 +7,8 @@
 @base <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#> .
 
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/prequels.owl.ttl> rdf:type owl:Ontology ;
-                                              owl:imports <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/star-wars.owl.ttl> ;
-                                              rdfs:comment "Events and characters primarily from the prequel films"^^xsd:string .
+                                                                                                      owl:imports <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/star-wars.owl.ttl> ;
+                                                                                                      rdfs:comment "Events and characters primarily from the prequel films"^^xsd:string .
 
 #################################################################
 #    Individuals
@@ -45,19 +45,26 @@
 :Battle_of_Coruscant rdf:type owl:NamedIndividual ,
                               :Battle ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :participant ;
-                                owl:someValuesFrom :Buzz_Droid
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :surrenderOf ;
-                                owl:someValuesFrom [ owl:intersectionOf ( :Ship
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Surrender
                                                                           [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :memberOf ;
-                                                                            owl:hasValue :Seperatist_Alliance
+                                                                            owl:onProperty :participant ;
+                                                                            owl:someValuesFrom [ owl:intersectionOf ( :Ship
+                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :memberOf ;
+                                                                                                                        owl:hasValue :Seperatist_Alliance
+                                                                                                                      ]
+                                                                                                                    ) ;
+                                                                                                 rdf:type owl:Class
+                                                                                               ]
                                                                           ]
                                                                         ) ;
                                                      rdf:type owl:Class
                                                    ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :participant ;
+                                owl:someValuesFrom :Buzz_Droid
                               ] ;
                      :deathOf :R4-P17 ;
                      :destructionOf :Invisible_Hand ;
@@ -571,8 +578,8 @@
                  :locatedIn :Tusken_Raider_camp ;
                  :participant :Anakin_Skywalker ;
                  :year -22 ;
-                 :todo "No survivors"^^xsd:string ;
-                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars#Emancipation.2C_captivity.2C_and_death"^^xsd:anyURI .
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars#Emancipation.2C_captivity.2C_and_death"^^xsd:anyURI ;
+                 :todo "No survivors"^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Traverse_the_Naboo_Core

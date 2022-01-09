@@ -58,5 +58,7 @@
 * Review properties
     * "visited" only used once - is it useful?
     * "healed" also only used once
-    * "surrenderOf" - anywhere else to use this?
-    
+      
+
+What distinguishes the participation properties from the Event type?
+  eg captureOf/Capture and escapeOf/Escape

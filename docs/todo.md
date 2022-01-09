@@ -3,7 +3,8 @@
 [back to index](index.md)
 
 * Add Cold War
-  
+    
+* 1 1/2 minutes to select Hera once classified on test.owl!
 
 * need to untangle ```of``` and ```transferOf``` and ```passes``` and ```participant```
 
@@ -58,7 +59,6 @@
 * Review properties
     * "visited" only used once - is it useful?
     * "healed" also only used once
-      
-
-What distinguishes the participation properties from the Event type?
+    
+* What distinguishes the participation properties from the Event type?
   eg captureOf/Capture and escapeOf/Escape

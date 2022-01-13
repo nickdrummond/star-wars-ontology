@@ -16,7 +16,7 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 
 ## Status
 
-* In progress - see [TO DO](docs/todo.md) list
+* In progress
 * First pass modelling of content completed up to Rebels
 * Many open modelling questions
 * Tests and queries still experimental

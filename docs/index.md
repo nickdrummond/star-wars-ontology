@@ -37,12 +37,6 @@ ontology?
 
 Here are [example test questions](test%20questions.md)
 
-## Status
-
-This is a work in progress and in order to keep the open modelling tasks and
-questions in the package we have a simple [TO DO list](todo.md) rather than rely
-on jira or another ticketing system more appropriate for production
-
 ## Tooling
 
 The benefit of using w3c standard languages for modelling is the tool support.

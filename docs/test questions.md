@@ -84,3 +84,12 @@ so we do have to use year aswell
 If we add an allDifferent (and remove Darths/Rens) what else can we assert / query?
 
 For a start, it grinds the reasoner to a halt
+
+## People meeting/knowing each other
+
+Can we query for the people someone has met?
+Probably not as just being at the same event or a member of a group
+
+It  depends on the number of people in that event/group
+  - ie not everyone in the Empire knows each other
+  - not everyone at the Battle of Scariff knows each other

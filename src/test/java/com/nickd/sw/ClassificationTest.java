@@ -1,13 +1,9 @@
 package com.nickd.sw;
 
 import com.nickd.sw.util.TestHelper;
-import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.semanticweb.HermiT.Configuration;
-import org.semanticweb.HermiT.Reasoner;
-import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 

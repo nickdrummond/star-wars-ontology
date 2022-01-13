@@ -47,10 +47,6 @@
 
     included o participant -> participant
 
-* Pellet
-    * Switch tests to Pellet
-    * Review all performance decisions - now we've resolved the errors, we can get much faster classification/query times
-        * allDifferent?
     
 * Series
     * The Clone Wars series 7 series eps(22, 22, 22, 22, 20, 13, 12)

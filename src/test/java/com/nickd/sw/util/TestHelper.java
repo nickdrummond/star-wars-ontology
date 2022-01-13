@@ -2,10 +2,12 @@ package com.nickd.sw.util;
 
 import junit.extensions.TestSetup;
 import junit.framework.Test;
-import org.semanticweb.HermiT.Configuration;
-import org.semanticweb.HermiT.Reasoner;
+import openllet.owlapi.OWLGenericTools;
+import openllet.owlapi.OWLHelper;
+import openllet.owlapi.OWLManagerGroup;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 import java.util.Collections;
 
@@ -16,7 +18,7 @@ public class TestHelper extends TestSetup {
     public OWLOntologyManager mngr;
     public OWLOntology ont;
     public OWLDataFactory df;
-    public Reasoner r;
+    public OWLReasoner r;
 
     public long timeToLoad;
     public long timeToClassify;
@@ -36,23 +38,28 @@ public class TestHelper extends TestSetup {
     }
 
     public OWLNamedIndividual ind(String s) {
-        return df.getOWLNamedIndividual(BASE + "#" + s);
+        return df.getOWLNamedIndividual(IRI.create(BASE + "#" + s));
     }
 
     public OWLObjectProperty prop(String s) {
-        return df.getOWLObjectProperty(BASE + "#" + s);
+        return df.getOWLObjectProperty(IRI.create(BASE + "#" + s));
     }
 
     public OWLClass cls(String s) {
-        return df.getOWLClass(BASE + "#" + s);
+        return df.getOWLClass(IRI.create(BASE + "#" + s));
     }
 
-    public void classify() {
-        Configuration conf = new Configuration();
+    public void classify() throws OWLOntologyCreationException {
+        try (final OWLManagerGroup group = new OWLManagerGroup()) {
+
         long start = System.currentTimeMillis();
-        r = new Reasoner(conf, ont);
+        final OWLHelper owl = new OWLGenericTools(group, ont.getOntologyID(), true);
+
+        r = owl.getReasoner();
+
         timeToClassify = System.currentTimeMillis() - start;
         System.out.println("Classified in " + timeToClassify + "ms");
+    }
     }
 }
 

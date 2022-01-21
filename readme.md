@@ -2,7 +2,7 @@
 
 Convor, as in "OWL in Star Wars".
 
-An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and places in the canon films and TV series.
+An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and places in the films and TV series.
 
 ## Scope
 
@@ -11,7 +11,7 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 * The Mandalorian - first pass
 * Resistance - first pass
 * Rebels - first pass
-* Clone Wars - skeleton
+* Clone Wars - in progress
 * The Bad Batch - skeleton
 
 ## Status

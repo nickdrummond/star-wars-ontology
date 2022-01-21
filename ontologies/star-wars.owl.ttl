@@ -553,6 +553,7 @@
                   :hadSon :Luke_Skywalker ;
                   :married :Padme_Amidala ;
                   :originallyFrom :Mos_Espa ;
+                  :responsibleFor :Resolute ;
                   :saved :Ahsoka_Tano ,
                          :Luke_Skywalker ;
                   :trainedBy :Obi-Wan_Kenobi ;
@@ -1352,9 +1353,23 @@
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Bothan-Five
 :Bothan-Five rdf:type owl:NamedIndividual ,
-                      :Ship ;
+                      :New_Republic_Correctional_Transport ;
              :ownedBy :New_Republic ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Bothan-Five"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Bothan_Space
+:Bothan_Space rdf:type owl:NamedIndividual ,
+                       :Sector ;
+              :locatedIn :Mid_Rim ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Bothan_Space"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Bothawui
+:Bothawui rdf:type owl:NamedIndividual ,
+                   :Planet ;
+          :locatedIn :Bothan_Space ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Bothawui"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Bounty_Hunters_Guild
@@ -1380,7 +1395,10 @@
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Bridger_Household
 :Bridger_Household rdf:type owl:NamedIndividual ,
                             :Building ,
-                            :Home ;
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hadPurpose ;
+                              owl:someValuesFrom :Home_purpose
+                            ] ;
                    :locatedIn :Capital_City ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Bridger_household"^^xsd:anyURI .
 
@@ -2862,8 +2880,15 @@
                   owl:onProperty :hasTerrain ;
                   owl:someValuesFrom :Forest
                 ] ;
-       :locatedIn :Outer_Rim ;
+       :locatedIn :Endor_System ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Endor"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Endor_System
+:Endor_System rdf:type owl:NamedIndividual ,
+                       :System ;
+              :locatedIn :Outer_Rim ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Endor_system"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Enfys_Nest
@@ -3593,9 +3618,27 @@
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Geonosis"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Gha_Nachkt
+:Gha_Nachkt rdf:type owl:NamedIndividual ,
+                     :Trandoshan ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :gender ;
+                       owl:someValuesFrom :Male
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hadRole ;
+                       owl:someValuesFrom :Captain
+                     ] ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Gha_Nachkt"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Ghost
 :Ghost rdf:type owl:NamedIndividual ,
-                :VCX-100_light_freighter ;
+                :VCX-100_light_freighter ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadPurpose ;
+                  owl:someValuesFrom :Home_purpose
+                ] ;
        :ownedBy :Hera_Syndulla ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Ghost"^^xsd:anyURI .
 
@@ -4015,7 +4058,10 @@
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Hellhound_Two
 :Hellhound_Two rdf:type owl:NamedIndividual ,
                         :AT-AT ,
-                        :Home ;
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadPurpose ;
+                          owl:someValuesFrom :Home_purpose
+                        ] ;
                :locatedIn :Jakku ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Hellhound_Two"^^xsd:anyURI .
 
@@ -5150,7 +5196,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                     owl:onProperty :homeworldOf ;
                     owl:someValuesFrom :Orbak
                   ] ;
-         :locatedIn :Outer_Rim ;
+         :locatedIn :Endor_System ;
          rdfs:comment "Also a moon of Endor (Gas Giant)"^^xsd:string ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Kef_Bir"^^xsd:anyURI .
 
@@ -5677,7 +5723,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#LothalNet_comm_tower_E-272
 :LothalNet_comm_tower_E-272 rdf:type owl:NamedIndividual ,
                                      :Communication_tower ,
-                                     :Home ;
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hadPurpose ;
+                                       owl:someValuesFrom :Home_purpose
+                                     ] ;
                             :locatedIn :Lothal ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/LothalNet_comm_tower_E-272"^^xsd:anyURI .
 
@@ -5691,7 +5740,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Lothal_Cliff_Dwelling
 :Lothal_Cliff_Dwelling rdf:type owl:NamedIndividual ,
-                                :Home ;
+                                :Base ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hadPurpose ;
+                                  owl:someValuesFrom :Home_purpose
+                                ] ;
                        :locatedIn :Lothal ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Lothal_cliff_dwelling"^^xsd:anyURI .
 
@@ -6795,7 +6848,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Nightsisters_Lair
 :Nightsisters_Lair rdf:type owl:NamedIndividual ,
-                            :Building ;
+                            :Building ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hadPurpose ;
+                              owl:someValuesFrom :Home_purpose
+                            ] ;
                    :createdBy :Night_Sisters ;
                    :locatedIn :Dathomir ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Nightsister_lair"^^xsd:anyURI .
@@ -7807,6 +7864,26 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/R3-A3"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#R3-S6
+:R3-S6 rdf:type owl:NamedIndividual ,
+                :Astromech ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Spy
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :inOrganisation ;
+                                                              owl:hasValue :Seperatist_Alliance
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
+       :employedBy :Anakin_Skywalker ;
+       :aka "Agent R3"^^xsd:string ,
+            "Goldie"^^xsd:string ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/R3-S6"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#R4-P17
 :R4-P17 rdf:type owl:NamedIndividual ,
                  :Astromech ;
@@ -7981,6 +8058,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Resistance_base_(Ajan_Kloss)"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Resolute
+:Resolute rdf:type owl:NamedIndividual ,
+                   :Venator-class_Star_Destroyer ;
+          :ownedBy :Galactic_Republic ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Resolute"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Retail_Caucus
 :Retail_Caucus rdf:type owl:NamedIndividual ,
                         :Political_Organisation ;
@@ -8075,7 +8159,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rishi_Station
 :Rishi_Station rdf:type owl:NamedIndividual ,
-                        :Base ;
+                        :Base ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadPurpose ;
+                          owl:someValuesFrom :Surveillance_purpose
+                        ] ;
                :createdBy :Galactic_Republic ;
                :locatedIn :Rishi_moon ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Rishi_Station"^^xsd:anyURI .
@@ -8183,6 +8271,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                ] ;
       :employedBy :Thrawn ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Rukh"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Ruusan
+:Ruusan rdf:type owl:NamedIndividual ,
+                 :Planet ;
+        :locatedIn :Mid_Rim ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Ruusan"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Ryder_Azadi
@@ -8836,6 +8931,28 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Skystrike_Academy"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Skytop_Station
+:Skytop_Station rdf:type owl:NamedIndividual ,
+                         :Battlesphere ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadPurpose ;
+                           owl:someValuesFrom :Surveillance_purpose
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :locatedIn ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Moon
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :locatedIn ;
+                                                                       owl:hasValue :Ruusan
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                :ownedBy :Seperatist_Alliance ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Skytop_Station"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Skywalker_Dyad
 :Skywalker_Dyad rdf:type owl:NamedIndividual ,
                          :Dyad ,
@@ -8977,6 +9094,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                  ] ;
         :locatedIn :Outer_Rim ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Sorgan"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Soulless_One
+:Soulless_One rdf:type owl:NamedIndividual ,
+                       :StarFighter ;
+              :ownedBy :Grievous ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Soulless_One"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Sovereign
@@ -9171,7 +9295,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Syndulla_residence
 :Syndulla_residence rdf:type owl:NamedIndividual ,
-                             :Home ;
+                             :Building ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hadPurpose ;
+                               owl:someValuesFrom :Home_purpose
+                             ] ;
                     :locatedIn :Ryloth ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Syndulla_residence"^^xsd:anyURI .
 
@@ -10516,7 +10644,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Wren_Stronghold
 :Wren_Stronghold rdf:type owl:NamedIndividual ,
-                          :Home ;
+                          :Building ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hadPurpose ;
+                            owl:someValuesFrom :Home_purpose
+                          ] ;
                  :createdBy :Clan_Wren ;
                  :locatedIn :Krownest ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Wren_Stronghold"^^xsd:anyURI .
@@ -10673,7 +10805,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Yodas_Hut
 :Yodas_Hut rdf:type owl:NamedIndividual ,
                     :Building ,
-                    :Home ;
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hadPurpose ;
+                      owl:someValuesFrom :Home_purpose
+                    ] ;
            :createdBy :Yoda ;
            :locatedIn :Dagobah ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda%27s_Hut"^^xsd:anyURI .
@@ -10961,7 +11096,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Aunt_Z's_Tavern
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Aunt_Z's_Tavern> rdf:type owl:NamedIndividual ,
-                                                                                                             :Facility ;
+                                                                                                             :Facility ,
+                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty :hadPurpose ;
+                                                                                                               owl:someValuesFrom :Entertainment_purpose
+                                                                                                             ] ;
                                                                                                     :locatedIn :Colossus ;
                                                                                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Aunt_Z%27s_Tavern"^^xsd:anyURI .
 
@@ -11005,7 +11144,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jabba's_Palace
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jabba's_Palace> rdf:type owl:NamedIndividual ,
-                                                                                                            :Building ;
+                                                                                                            :Building ,
+                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty :hadPurpose ;
+                                                                                                              owl:someValuesFrom :Home_purpose
+                                                                                                            ] ;
                                                                                                    :locatedIn :Dune_Sea ;
                                                                                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Jabba%27s_Palace"^^xsd:anyURI .
 

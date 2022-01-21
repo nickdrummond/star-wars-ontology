@@ -267,6 +267,10 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
            rdfs:subPropertyOf :relatedTo .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#hadPurpose
+:hadPurpose rdf:type owl:ObjectProperty .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#hadRole
 :hadRole rdf:type owl:ObjectProperty .
 
@@ -1120,6 +1124,12 @@ or minus is BBY"""^^xsd:string .
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_droid"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Battlesphere
+:Battlesphere rdf:type owl:Class ;
+              rdfs:subClassOf :Core_ship ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battlesphere"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Beak
 :Beak rdf:type owl:Class ;
       rdfs:subClassOf :Mouth .
@@ -1352,7 +1362,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Cantina
 :Cantina rdf:type owl:Class ;
-         rdfs:subClassOf :Building ;
+         rdfs:subClassOf :Building ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadPurpose ;
+                           owl:someValuesFrom :Entertainment_purpose
+                         ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Cantina"^^xsd:anyURI .
 
 
@@ -1604,15 +1618,28 @@ or minus is BBY"""^^xsd:string .
                rdfs:subClassOf :Event .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Communication_purpose
+:Communication_purpose rdf:type owl:Class ;
+                       rdfs:subClassOf :Purpose .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Communication_relay
 :Communication_relay rdf:type owl:Class ;
-                     rdfs:subClassOf :Building ;
+                     rdfs:subClassOf :Building ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hadPurpose ;
+                                       owl:someValuesFrom :Communication_purpose
+                                     ] ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Communications_relay"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Communication_tower
 :Communication_tower rdf:type owl:Class ;
-                     rdfs:subClassOf :Building .
+                     rdfs:subClassOf :Building ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hadPurpose ;
+                                       owl:someValuesFrom :Communication_purpose
+                                     ] .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Confrontation
@@ -1662,6 +1689,12 @@ or minus is BBY"""^^xsd:string .
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Coral
 :Coral rdf:type owl:Class ;
        rdfs:subClassOf :Habitat .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Core_ship
+:Core_ship rdf:type owl:Class ;
+           rdfs:subClassOf :Capital_Ship ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Core_ship"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Corporation
@@ -1864,7 +1897,16 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Detention_Block
 :Detention_Block rdf:type owl:Class ;
-                 rdfs:subClassOf :Facility .
+                 rdfs:subClassOf :Facility ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hadPurpose ;
+                                   owl:someValuesFrom :Detention_purpose
+                                 ] .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Detention_purpose
+:Detention_purpose rdf:type owl:Class ;
+                   rdfs:subClassOf :Purpose .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Devaronian
@@ -2059,6 +2101,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
           rdfs:subClassOf :Vocation .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Entertainment_purpose
+:Entertainment_purpose rdf:type owl:Class ;
+                       rdfs:subClassOf :Purpose .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Equipment
 :Equipment rdf:type owl:Class ;
            rdfs:subClassOf :Object .
@@ -2152,7 +2199,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Factory
 :Factory rdf:type owl:Class ;
-         rdfs:subClassOf :Building .
+         rdfs:subClassOf :Building ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom :Manufacturing_purpose
+                         ] .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Family
@@ -2314,7 +2365,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Freighter
 :Freighter rdf:type owl:Class ;
-           rdfs:subClassOf :Transport ;
+           rdfs:subClassOf :Ship ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom :Transport_purpose
+                           ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Freighter"^^xsd:anyURI .
 
 
@@ -2795,7 +2850,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Haven-class_medical_station
 :Haven-class_medical_station rdf:type owl:Class ;
-                             rdfs:subClassOf :Medical_station ;
+                             rdfs:subClassOf :Space_Station ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hadPurpose ;
+                                               owl:someValuesFrom :Medical_purpose
+                                             ] ;
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Haven-class_medical_station"^^xsd:anyURI .
 
 
@@ -2859,9 +2918,9 @@ and (?a inConflictWith ?b)"""^^xsd:string .
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Hologram"^^xsd:anyURI .
 
 
-###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Home
-:Home rdf:type owl:Class ;
-      rdfs:subClassOf :Place .
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Home_purpose
+:Home_purpose rdf:type owl:Class ;
+              rdfs:subClassOf :Purpose .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Horn
@@ -2974,6 +3033,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/IG-100_MagnaGuard"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#IG-86_sentinel_droid
+:IG-86_sentinel_droid rdf:type owl:Class ;
+                      rdfs:subClassOf :IG_series_Droid ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/IG-86_sentinel_droid"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#IG-RM_bodyguard_and_enforcer_droid
 :IG-RM_bodyguard_and_enforcer_droid rdf:type owl:Class ;
                                     rdfs:subClassOf :IG_series_Droid ;
@@ -2982,7 +3047,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#IGV-55_surveillance_vessel
 :IGV-55_surveillance_vessel rdf:type owl:Class ;
-                            rdfs:subClassOf :Gozanti-class_cruiser ;
+                            rdfs:subClassOf :Gozanti-class_cruiser ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hadRole ;
+                                              owl:someValuesFrom :Surveillance_purpose
+                                            ] ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/IGV-55_surveillance_vessel"^^xsd:anyURI .
 
 
@@ -3844,6 +3913,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Mandalorian"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Manufacturing_purpose
+:Manufacturing_purpose rdf:type owl:Class ;
+                       rdfs:subClassOf :Purpose .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Map
 :Map rdf:type owl:Class ;
      rdfs:subClassOf :Information .
@@ -3870,9 +3944,9 @@ and (?a inConflictWith ?b)"""^^xsd:string .
           rdfs:subClassOf :Engineer .
 
 
-###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Medical_station
-:Medical_station rdf:type owl:Class ;
-                 rdfs:subClassOf :Space_Station .
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Medical_purpose
+:Medical_purpose rdf:type owl:Class ;
+                 rdfs:subClassOf :Purpose .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Medicine
@@ -4203,6 +4277,20 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 :Nemoidian rdf:type owl:Class ;
            rdfs:subClassOf :Humanoid ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Neimoidian"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#New_Republic_Correctional_Transport
+:New_Republic_Correctional_Transport rdf:type owl:Class ;
+                                     rdfs:subClassOf :Transport ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hadPurpose ;
+                                                       owl:someValuesFrom :Detention_purpose
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hadPurpose ;
+                                                       owl:someValuesFrom :Transport_purpose
+                                                     ] ;
+                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/New_Republic_Correctional_Transport"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Nexu
@@ -4550,7 +4638,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Prison
 :Prison rdf:type owl:Class ;
-        rdfs:subClassOf :Building .
+        rdfs:subClassOf :Building ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadPurpose ;
+                          owl:someValuesFrom :Detention_purpose
+                        ] .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Probe_Droid
@@ -4622,6 +4714,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
                               owl:onClass :Leg
                             ] ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Puffer_pig"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Purpose
+:Purpose rdf:type owl:Class ;
+         rdfs:subClassOf :Feature .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Purrgil
@@ -5357,6 +5454,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Space_waffle"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Space_port_purpose
+:Space_port_purpose rdf:type owl:Class ;
+                    rdfs:subClassOf :Transport_purpose .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Speeder
 :Speeder rdf:type owl:Class ;
          rdfs:subClassOf :Repulsorcraft ;
@@ -5481,6 +5583,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Surrender
 :Surrender rdf:type owl:Class ;
            rdfs:subClassOf :Event .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Surveillance_purpose
+:Surveillance_purpose rdf:type owl:Class ;
+                      rdfs:subClassOf :Communication_purpose .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Swamp
@@ -5876,6 +5983,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
            rdfs:subClassOf :Ship .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Transport_purpose
+:Transport_purpose rdf:type owl:Class ;
+                   rdfs:subClassOf :Purpose .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Trap
 :Trap rdf:type owl:Class ;
       rdfs:subClassOf :Event .
@@ -5974,6 +6086,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 :Upsilon-class_command_shuttle rdf:type owl:Class ;
                                rdfs:subClassOf :Shuttle ;
                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Upsilon-class_command_shuttle"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#V-19_Torrent_starfighter
+:V-19_Torrent_starfighter rdf:type owl:Class ;
+                          rdfs:subClassOf :StarFighter ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/V-19_Torrent_starfighter"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#VCX-100_light_freighter

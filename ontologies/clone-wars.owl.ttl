@@ -487,6 +487,40 @@
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Shadow_of_Malevolence"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Capture_of_Dooku_by_Pirates
+:Capture_of_Dooku_by_Pirates rdf:type owl:NamedIndividual ,
+                                      :Capture ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Journey
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :from ;
+                                                                                    owl:hasValue :Vanqor
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :to ;
+                                                                                    owl:hasValue :Florrum
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :participant ;
+                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :hadRole ;
+                                                             owl:someValuesFrom :Pirate
+                                                           ]
+                                      ] ;
+                             :after :Mission_to_Capture_Dooku ;
+                             :captureOf :Count_Dooku ;
+                             :locatedIn :Hondos_complex ;
+                             :participant :Hondo_Ohnaka ,
+                                          :Obi-Wan_Kenobi ;
+                             :year -21 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Dooku_Captured"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Death_of_Satine
 :Death_of_Satine rdf:type owl:NamedIndividual ,
                           :Murder ;
@@ -568,6 +602,113 @@
                 :victoryOf :Maul ;
                 :year -19 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Pre_Vizsla#Shadow_Collective_and_death"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Meeting_Hondo_and_Dooku
+:Meeting_Hondo_and_Dooku rdf:type owl:NamedIndividual ,
+                                  :Meeting ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Doublecross
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :used ;
+                                                                                owl:someValuesFrom :Drink
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         :after :Capture_of_Dooku_by_Pirates ,
+                                :Surviving_the_caves_of_Vanqor ;
+                         :during :Clone_Wars ;
+                         :locatedIn :Hondos_complex ;
+                         :participant :Anakin_Skywalker ,
+                                      :Count_Dooku ,
+                                      :Hondo_Ohnaka ,
+                                      :Obi-Wan_Kenobi ,
+                                      :Twilight ;
+                         :year -21 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Dooku_Captured"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mission_to_Capture_Dooku
+:Mission_to_Capture_Dooku rdf:type owl:NamedIndividual ,
+                                   :Mission ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :after ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:hasValue :Anakin_Skywalker
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :deathOf ;
+                                                                                 owl:someValuesFrom :FA-4_pilot_droid
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom :Punworcca_116-class_interstellar_sloop
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom :Sheathipede-class_transport_shuttle
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :locatedIn ;
+                                                                                 owl:hasValue :Vanqor
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :participant ;
+                                                                                 owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                                             owl:oneOf ( :Obi-Wan_Kenobi
+                                                                                                                                       )
+                                                                                                                           ]
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty :used ;
+                                                                                                                             owl:someValuesFrom :EVA_suit
+                                                                                                                           ]
+                                                                                                                         ) ;
+                                                                                                      rdf:type owl:Class
+                                                                                                    ]
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :locatedIn ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Munificent-class_star_frigate
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :locatedIn ;
+                                                                                 owl:hasValue :Vanqor
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:someValuesFrom :Vulture_Droid
+                                   ] ;
+                          :during :Clone_Wars ;
+                          :escapeOf :Count_Dooku ;
+                          :participant :Resolute ;
+                          :year -21 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Skirmish_at_Vanqor"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mission_to_Rodia
@@ -1185,6 +1326,90 @@
                                  :Maul ;
                     :year -19 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Siege_of_Mandalore"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Surviving_the_caves_of_Vanqor
+:Surviving_the_caves_of_Vanqor rdf:type owl:NamedIndividual ,
+                                        :Confrontation ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :included ;
+                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Count_Dooku
+                                                                                    ]
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :stole ;
+                                                                 owl:someValuesFrom [ owl:intersectionOf ( :Lightsaber
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty :ownedBy ;
+                                                                                                             owl:hasValue :Anakin_Skywalker
+                                                                                                           ]
+                                                                                                         ) ;
+                                                                                      rdf:type owl:Class
+                                                                                    ]
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :stunningOf ;
+                                                                                      owl:someValuesFrom :Gundark
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :used ;
+                                                                                      owl:someValuesFrom :Rock
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Ahsoka_Tano
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :found ;
+                                                                                      owl:someValuesFrom :Gas
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :stunningOf ;
+                                                                                      owl:hasValue :Anakin_Skywalker
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :stunningOf ;
+                                                                                      owl:hasValue :Obi-Wan_Kenobi
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :trappedBy ;
+                                                               owl:someValuesFrom :Rock
+                                                             ]
+                                        ] ;
+                               :during :Mission_to_Capture_Dooku ;
+                               :escapeOf :Count_Dooku ;
+                               :locatedIn :Vanqor ;
+                               :participant :Anakin_Skywalker ,
+                                            :Obi-Wan_Kenobi ;
+                               :year -21 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Skirmish_at_Vanqor#Crash_on_Vanqor"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

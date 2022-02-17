@@ -1382,6 +1382,11 @@ or minus is BBY"""^^xsd:string .
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Cantina"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Canyon
+:Canyon rdf:type owl:Class ;
+        rdfs:subClassOf :Habitat .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Capital_Ship
 :Capital_Ship rdf:type owl:Class ;
               rdfs:subClassOf :Ship ;
@@ -4494,6 +4499,29 @@ and (?a inConflictWith ?b)"""^^xsd:string .
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/N-1_starfighter"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Narglatch
+:Narglatch rdf:type owl:Class ;
+           rdfs:subClassOf :Living_thing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Carnivorous
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasTrait ;
+                             owl:someValuesFrom :Feline
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :sentience ;
+                             owl:someValuesFrom :Non-sentient
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasPart ;
+                             owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Leg
+                           ] ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Narglatch"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Nautolan
 :Nautolan rdf:type owl:Class ;
           rdfs:subClassOf :Humanoid ,
@@ -4769,6 +4797,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 :Palliduvan rdf:type owl:Class ;
             rdfs:subClassOf :Near_Human ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Palliduvan"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Pantoran
+:Pantoran rdf:type owl:Class ;
+          rdfs:subClassOf :Near_Human ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Pantoran"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Parts
@@ -5792,6 +5826,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Solar_sailer"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Sovereignty
+:Sovereignty rdf:type owl:Class ;
+             rdfs:subClassOf :Abstract_subject .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Space
 :Space rdf:type owl:Class ;
        rdfs:subClassOf :Place .
@@ -6041,6 +6080,35 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Tail
 :Tail rdf:type owl:Class ;
       rdfs:subClassOf :BodyPart .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Talz
+:Talz rdf:type owl:Class ;
+      rdfs:subClassOf :Living_thing ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasTrait ;
+                        owl:someValuesFrom :Furry
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :sentience ;
+                        owl:someValuesFrom :Sentient
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Arm
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Leg
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Eye
+                      ] ;
+      rdfs:seeAlso "https://starwars.fandom.com/wiki/Talz"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Tank
@@ -7090,7 +7158,8 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Cave
+  owl:members ( :Canyon
+                :Cave
                 :Coral
                 :Crystalline
                 :Desert

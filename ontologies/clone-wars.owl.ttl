@@ -66,6 +66,42 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Ambush_on_Rugosa"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Asajj_vs_Obi-Wan_and_Anakin
+:Asajj_vs_Obi-Wan_and_Anakin rdf:type owl:NamedIndividual ,
+                                      :Duel ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :destructionOf ;
+                                        owl:someValuesFrom :Octuptarra_tri-droid
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :escapeOf ;
+                                                                                    owl:hasValue :Asajj_Ventress
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :Trident
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :participant ;
+                                        owl:someValuesFrom :Single_Trooper_Aerial_Platform
+                                      ] ;
+                             :after :Failed_Ambush_on_Christophsis ;
+                             :during :Battle_of_Christophsis ;
+                             :locatedIn :Separatist_headquarters_Christophsis ;
+                             :participant :Anakin_Skywalker ,
+                                          :Asajj_Ventress ,
+                                          :Obi-Wan_Kenobi ;
+                             :year -22 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Christophsis#Revealed_deception"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Attack_on_Rishi_Station
 :Attack_on_Rishi_Station rdf:type owl:NamedIndividual ,
                                   :Attack ,
@@ -241,7 +277,7 @@
                   :locatedIn :Anaxes ;
                   :participant :Anakin_Skywalker ,
                                :Galactic_Republic ,
-                               :Seperatist_Alliance ;
+                               :Separatist_Alliance ;
                   :year -19 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Anaxes"^^xsd:anyURI .
 
@@ -737,6 +773,71 @@
                                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Shadow_of_Malevolence"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Failed_Ambush_on_Christophsis
+:Failed_Ambush_on_Christophsis rdf:type owl:NamedIndividual ,
+                                        :Fight ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:someValuesFrom :Gunship
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Hawk
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :stole ;
+                                                                                      owl:someValuesFrom [ owl:intersectionOf ( :Head
+                                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                                  owl:onProperty :partOf ;
+                                                                                                                                  owl:hasValue :TJ-55
+                                                                                                                                ]
+                                                                                                                              ) ;
+                                                                                                           rdf:type owl:Class
+                                                                                                         ]
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Gus
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :locatedIn ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Tower
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :locatedIn ;
+                                                                                      owl:hasValue :Christophsis
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :participant ;
+                                          owl:someValuesFrom :B1_Battle_Droid
+                                        ] ;
+                               :during :Battle_of_Christophsis ;
+                               :escapeOf :Anakin_Skywalker ,
+                                         :Cody ,
+                                         :Obi-Wan_Kenobi ,
+                                         :Rex ,
+                                         :Slicks_Squad ;
+                               :killingOf :TJ-55 ;
+                               :year -22 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Christophsis#Failed_ambush"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Fives_Biochip
 :Fives_Biochip rdf:type owl:NamedIndividual ,
                         :Confrontation ;
@@ -767,6 +868,7 @@
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Kidnap_of_Stinky
 :Kidnap_of_Stinky rdf:type owl:NamedIndividual ,
                            :Capture ;
+                  :after :Asajj_vs_Obi-Wan_and_Anakin ;
                   :captureOf :Rotta ;
                   :during :Battle_of_Christophsis ;
                   :locatedIn :Khetanna ;
@@ -1598,6 +1700,62 @@
                                :R3-S6 ;
                   :year -22 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Downfall_of_a_Droid"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Search_for_a_traitor
+:Search_for_a_traitor rdf:type owl:NamedIndividual ,
+                               :Search ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Chase
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :escapeOf ;
+                                                                             owl:hasValue :Slick
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Trap
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :captureOf ;
+                                                                             owl:hasValue :Slick
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :destructionOf ;
+                                                                             owl:someValuesFrom :AT-TE
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :destructionOf ;
+                                                                             owl:someValuesFrom :Gunship
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :used ;
+                                                                             owl:someValuesFrom :Explosive
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Slick
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      :after :Failed_Ambush_on_Christophsis ;
+                      :during :Battle_of_Christophsis ;
+                      :locatedIn :Christophsis ;
+                      :participant :Cody ,
+                                   :Rex ;
+                      :year -22 ;
+                      rdfs:seeAlso "hhttps://starwars.fandom.com/wiki/Battle_of_Christophsis#Revealed_deception"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Showdown_at_Toydaria

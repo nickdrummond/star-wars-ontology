@@ -1159,6 +1159,78 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Teth#The_battle"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#One_Day_War
+:One_Day_War rdf:type owl:NamedIndividual ,
+                      :Confrontation ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :killingOf ;
+                                                                    owl:hasValue :Chi_Cho
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :about ;
+                                                                    owl:someValuesFrom :Sovereignty
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:hasValue :Riyo_Chuchi
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:hasValue :Thi-Sen
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :about ;
+                                                                    owl:someValuesFrom :War
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :killingOf ;
+                                                                    owl:hasValue :Chi_Cho
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:hasValue :Thi-Sen
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :participant ;
+                        owl:someValuesFrom :Narglatch
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :participant ;
+                        owl:someValuesFrom :Talz
+                      ] ;
+             :after :Skirmish_on_Orto_Plutonia ;
+             :during :Clone_Wars ;
+             :locatedIn :Orto_Plutonia ;
+             :participant :Anakin_Skywalker ,
+                          :C-3PO ,
+                          :Obi-Wan_Kenobi ,
+                          :R2-D2 ,
+                          :Rex ;
+             :year -21 ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/One-Day_War"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Pursuing_the_Malevolence
 :Pursuing_the_Malevolence rdf:type owl:NamedIndividual ,
                                    :Fight ,
@@ -1788,55 +1860,6 @@
                                     :Attack ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :included ;
-                                      owl:someValuesFrom [ owl:intersectionOf ( :Fight
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :killingOf ;
-                                                                                  owl:hasValue :Chi_Cho
-                                                                                ]
-                                                                              ) ;
-                                                           rdf:type owl:Class
-                                                         ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :included ;
-                                      owl:someValuesFrom [ owl:intersectionOf ( :Meeting
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :about ;
-                                                                                  owl:someValuesFrom :Sovereignty
-                                                                                ]
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :participant ;
-                                                                                  owl:hasValue :Riyo_Chuchi
-                                                                                ]
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :participant ;
-                                                                                  owl:hasValue :Thi-Sen
-                                                                                ]
-                                                                              ) ;
-                                                           rdf:type owl:Class
-                                                         ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :included ;
-                                      owl:someValuesFrom [ owl:intersectionOf ( :Meeting
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :about ;
-                                                                                  owl:someValuesFrom :War
-                                                                                ]
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :killingOf ;
-                                                                                  owl:hasValue :Chi_Cho
-                                                                                ]
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :participant ;
-                                                                                  owl:hasValue :Thi-Sen
-                                                                                ]
-                                                                              ) ;
-                                                           rdf:type owl:Class
-                                                         ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :included ;
                                       owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty :killingOf ;
                                                                                   owl:someValuesFrom :Clone
@@ -1865,20 +1888,11 @@
                                     ] ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :participant ;
-                                      owl:someValuesFrom :Narglatch
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :participant ;
                                       owl:someValuesFrom :Talz
                                     ] ;
                            :after :Battle_of_Quell ;
                            :during :Clone_Wars ;
                            :locatedIn :Orto_Plutonia ;
-                           :participant :Anakin_Skywalker ,
-                                        :C-3PO ,
-                                        :Obi-Wan_Kenobi ,
-                                        :R2-D2 ,
-                                        :Rex ;
                            :year -21 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Skirmish_on_Orto_Plutonia"^^xsd:anyURI .
 

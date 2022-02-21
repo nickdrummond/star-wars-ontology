@@ -13,7 +13,7 @@ public class ConsistencyTest extends TestCase {
 
     // One time load
     public static Test suite() throws OWLOntologyCreationException {
-        helper = new TestHelper(new TestSuite(ConsistencyTest.class), TestHelper.BASE + "/all.owl.ttl");
+        helper = new TestHelper(new TestSuite(ConsistencyTest.class), TestHelper.BASE + "/test.owl.ttl");
         helper.classify();
         return helper;
     }

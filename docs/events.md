@@ -67,7 +67,8 @@ Events can have a date, location, participants etc - more flexible use for battl
 This will allow more storytelling and linking to other events
 
 Removes the event from Obi-Wan completely so need inference/usage to see
-Lots more individuals!! (scalable?)
+
+Lots more individuals!! (is it scalable?)
 
 Example
 

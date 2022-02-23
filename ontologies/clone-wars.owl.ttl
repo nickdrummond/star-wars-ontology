@@ -552,6 +552,7 @@
                  :participant :Cham_Syndulla ;
                  :victoryOf :Lightning_Squadron ,
                             <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Twi'lek_Resistance> ;
+                 :aka "The Hammer of Ryloth"^^xsd:string ;
                  :year -21 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Ryloth#Battle_of_Lessu"^^xsd:anyURI .
 
@@ -2519,6 +2520,133 @@
                     :found :Trade_Federation_laboratory ;
                     :year -21 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Raid_on_Nuvo_Vindi%27s_laboratory#Prelude"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Senate_hostage_crisis
+:Senate_hostage_crisis rdf:type owl:NamedIndividual ,
+                                :Confrontation ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :participant ;
+                                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                          owl:onProperty :hadRole ;
+                                                                                                                          owl:someValuesFrom :Senator
+                                                                                                                        ]
+                                                                                                   ]
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :killingOf ;
+                                                                                                     owl:hasValue :Philo
+                                                                                                   ]
+                                                                                                 ) ;
+                                                                              rdf:type owl:Class
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Padme_Amidala
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :about ;
+                                                                              owl:hasValue :Ziro
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Sheev_Palpatine
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :captureOf ;
+                                                                              owl:hasValue :Anakin_Skywalker
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :escapeOf ;
+                                                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :hadRole ;
+                                                                                                   owl:someValuesFrom :Senator
+                                                                                                 ]
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :used ;
+                                                                              owl:someValuesFrom :Explosive
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :used ;
+                                                                              owl:someValuesFrom :Lightsaber
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :escapeOf ;
+                                                                              owl:hasValue :Anakin_Skywalker
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :freeingOf ;
+                                                                              owl:hasValue :Ziro
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :HELIOS-3D
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Orn_Free_Taa
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :killingOf ;
+                                  owl:someValuesFrom :IG-86_sentinel_droid
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :killingOf ;
+                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :memberOf ;
+                                                       owl:hasValue :Senate_Commandoes
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :escapeOf ;
+                                  owl:minQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
+                                  owl:onClass [ rdf:type owl:Class ;
+                                                owl:oneOf ( :Aurra_Sing
+                                                            :Cad_Bane
+                                                            :HELIOS-3D
+                                                            :Robonino
+                                                            :Shahan_Alama
+                                                          )
+                                              ]
+                                ] ;
+                       :during :Clone_Wars ;
+                       :locatedIn :Galactic_Senate_Building ;
+                       :participant :Anakin_Skywalker ;
+                       :year -21 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Senate_hostage_crisis"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Showdown_at_Toydaria

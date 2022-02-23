@@ -84,9 +84,7 @@ public void testEvents() throws IOException {
         Query query = loadQuery("sparql/people.sparql");
 
         try (QueryExecution qexec = QueryExecutionFactory.create(query, rdfsInfModel)) {
-            qexec.execSelect().forEachRemaining(soln -> {
-                System.out.println("soln = " + soln);
-            });
+            ResultSetFormatter.outputAsCSV(qexec.execSelect());
         }
     }
 
@@ -95,9 +93,7 @@ public void testEvents() throws IOException {
         Query query = loadQuery("sparql/planets.sparql");
 
         try (QueryExecution qexec = QueryExecutionFactory.create(query, rdfsInfModel)) {
-            qexec.execSelect().forEachRemaining(soln -> {
-                System.out.println("soln = " + soln);
-            });
+            ResultSetFormatter.outputAsCSV(qexec.execSelect());
         }
     }
 

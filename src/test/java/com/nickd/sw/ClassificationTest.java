@@ -15,7 +15,7 @@ public class ClassificationTest extends TestCase {
 
     // One time load
     public static Test suite() throws OWLOntologyCreationException {
-        helper = new TestHelper(new TestSuite(ClassificationTest.class), TestHelper.BASE + "/all.owl.ttl");
+        helper = new TestHelper(new TestSuite(ClassificationTest.class), TestHelper.BASE + "/test.owl.ttl");
         helper.classify();
         return helper;
     }
@@ -51,7 +51,7 @@ public class ClassificationTest extends TestCase {
     // therefore he is from the Outer Rim
     public void testFromTransitivity() {
         NodeSet<OWLNamedIndividual> results = helper.r.getInstances(
-                helper.df.getOWLObjectHasValue(helper.prop("from"), helper.ind("Outer_Rim"))
+                helper.df.getOWLObjectHasValue(helper.prop("originallyFrom"), helper.ind("Outer_Rim"))
         );
 
         assertTrue(results.getFlattened().contains(helper.ind("Luke_Skywalker")));

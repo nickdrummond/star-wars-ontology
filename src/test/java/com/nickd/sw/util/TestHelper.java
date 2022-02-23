@@ -5,6 +5,7 @@ import junit.framework.Test;
 import openllet.owlapi.OWLGenericTools;
 import openllet.owlapi.OWLHelper;
 import openllet.owlapi.OWLManagerGroup;
+import openllet.owlapi.OpenlletReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
@@ -49,17 +50,16 @@ public class TestHelper extends TestSetup {
         return df.getOWLClass(IRI.create(BASE + "#" + s));
     }
 
-    public void classify() throws OWLOntologyCreationException {
-        try (final OWLManagerGroup group = new OWLManagerGroup()) {
+    public void classify() {
+
+        final OWLHelper h = OWLHelper.createLightHelper(OpenlletReasonerFactory.getInstance().createReasoner(ont));
 
         long start = System.currentTimeMillis();
-        final OWLHelper owl = new OWLGenericTools(group, ont.getOntologyID(), true);
 
-        r = owl.getReasoner();
+        r = h.getReasoner();
 
         timeToClassify = System.currentTimeMillis() - start;
         System.out.println("Classified in " + timeToClassify + "ms");
-    }
     }
 }
 

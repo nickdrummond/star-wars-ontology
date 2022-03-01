@@ -7,7 +7,7 @@
 @base <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#> .
 
 <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/base.owl.ttl> rdf:type owl:Ontology ;
-                                                                                                  rdfs:comment "Classes and properties"^^xsd:string .
+                                                                                                  rdfs:comment "Classes and Properties"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -86,7 +86,19 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#connectedTo
 :connectedTo rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             rdf:type owl:SymmetricProperty .
+             rdf:type owl:SymmetricProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Actor
+                                         :Object
+                                         :Place
+                                       )
+                         ] ;
+             rdfs:range [ rdf:type owl:Class ;
+                          owl:unionOf ( :Actor
+                                        :Object
+                                        :Place
+                                      )
+                        ] .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#created
@@ -157,7 +169,17 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#disguisedAs
-:disguisedAs rdf:type owl:ObjectProperty .
+:disguisedAs rdf:type owl:ObjectProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Being
+                                         :Vehicle
+                                       )
+                         ] ;
+             rdfs:range [ rdf:type owl:Class ;
+                          owl:unionOf ( :Being
+                                        :Role
+                                      )
+                        ] .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#during
@@ -198,7 +220,12 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#fitted
-:fitted rdf:type owl:ObjectProperty .
+:fitted rdf:type owl:ObjectProperty ;
+        rdfs:range [ rdf:type owl:Class ;
+                     owl:unionOf ( :Equipment
+                                   :Parts
+                                 )
+                   ] .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#found
@@ -227,7 +254,9 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#gender
-:gender rdf:type owl:ObjectProperty .
+:gender rdf:type owl:ObjectProperty ;
+        rdfs:domain :Being ;
+        rdfs:range :Gender .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#hadBrother
@@ -272,7 +301,9 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#hadRole
-:hadRole rdf:type owl:ObjectProperty .
+:hadRole rdf:type owl:ObjectProperty ;
+         rdfs:domain :Being ;
+         rdfs:range :Role .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#hadSibling
@@ -297,7 +328,14 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#hasTerrain
-:hasTerrain rdf:type owl:ObjectProperty .
+:hasTerrain rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :Asteroid
+                                        :Moon
+                                        :Planet
+                                      )
+                        ] ;
+            rdfs:range :Habitat .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#hasTrait
@@ -315,11 +353,15 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#inConflictWith
 :inConflictWith rdf:type owl:ObjectProperty ,
-                         owl:SymmetricProperty .
+                         owl:SymmetricProperty ;
+                rdfs:domain :Actor ;
+                rdfs:range :Actor .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#inOrganisation
 :inOrganisation rdf:type owl:ObjectProperty ;
+                rdfs:domain :Role ;
+                rdfs:range :Organisation ;
                 rdfs:comment """How rdf:type Role is associated with an Organisation
 eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
@@ -353,7 +395,9 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#knew
 :knew rdf:type owl:ObjectProperty ,
-               owl:SymmetricProperty .
+               owl:SymmetricProperty ;
+      rdfs:domain :Actor ;
+      rdfs:range :Actor .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#livedIn
@@ -364,7 +408,8 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#locatedIn
 :locatedIn rdf:type owl:ObjectProperty ;
            owl:inverseOf :locationOf ;
-           rdf:type owl:TransitiveProperty .
+           rdf:type owl:TransitiveProperty ;
+           rdfs:range :Place .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#locationOf
@@ -377,7 +422,9 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#madeOf
-:madeOf rdf:type owl:ObjectProperty .
+:madeOf rdf:type owl:ObjectProperty ;
+        rdfs:domain :Object ;
+        rdfs:range :Material .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#married
@@ -404,7 +451,13 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#ofShip
 :ofShip rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf :responsibleFor .
+        rdfs:subPropertyOf :responsibleFor ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :Crew
+                                    :Role
+                                  )
+                    ] ;
+        rdfs:range :Ship .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#ordered
@@ -413,7 +466,9 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#orderedBy
-:orderedBy rdf:type owl:ObjectProperty .
+:orderedBy rdf:type owl:ObjectProperty ;
+           rdfs:domain :Event ;
+           rdfs:range :Actor .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#originallyFrom
@@ -427,7 +482,8 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#ownedBy
-:ownedBy rdf:type owl:ObjectProperty .
+:ownedBy rdf:type owl:ObjectProperty ;
+         rdfs:range :Actor .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#partOf
@@ -472,7 +528,9 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#relatedTo
 :relatedTo rdf:type owl:ObjectProperty ,
                     owl:SymmetricProperty ,
-                    owl:TransitiveProperty .
+                    owl:TransitiveProperty ;
+           rdfs:domain :Living_thing ;
+           rdfs:range :Living_thing .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#responsibleFor
@@ -491,7 +549,9 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#sentience
-:sentience rdf:type owl:ObjectProperty .
+:sentience rdf:type owl:ObjectProperty ;
+           rdfs:domain :Being ;
+           rdfs:range :Sentience .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#size
@@ -584,7 +644,8 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#visited
-:visited rdf:type owl:ObjectProperty .
+:visited rdf:type owl:ObjectProperty ;
+         rdfs:range :Place .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#wasCloneOf

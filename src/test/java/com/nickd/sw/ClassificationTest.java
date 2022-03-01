@@ -15,7 +15,7 @@ public class ClassificationTest extends TestCase {
 
     // One time load
     public static Test suite() throws OWLOntologyCreationException {
-        helper = new TestHelper(new TestSuite(ClassificationTest.class), TestHelper.BASE + "/test.owl.ttl");
+        helper = new TestHelper(new TestSuite(ClassificationTest.class), TestHelper.BASE + "/all.owl.ttl");
         helper.classify();
         return helper;
     }

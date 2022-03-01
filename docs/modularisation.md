@@ -134,15 +134,6 @@ Grouping events by the timespan they occur during:
 * imperial-era
 * new-republic-era
 
-### test
-
-Restrictions on the base ontology that can help to check
-the consistency of the ontology as a whole:
-
-* domain/range on object properties
-
-See [performance](performance.md) for more details.
-
 ### questions
 
 Ontology containing some example defined classes that help to

@@ -4,8 +4,14 @@ import com.nickd.sw.util.TestHelper;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import openllet.core.utils.CollectionUtils;
+import openllet.core.utils.SetUtils;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.NodeSet;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ConsistencyTest extends TestCase {
 
@@ -13,7 +19,7 @@ public class ConsistencyTest extends TestCase {
 
     // One time load
     public static Test suite() throws OWLOntologyCreationException {
-        helper = new TestHelper(new TestSuite(ConsistencyTest.class), TestHelper.BASE + "/test.owl.ttl");
+        helper = new TestHelper(new TestSuite(ConsistencyTest.class), TestHelper.BASE + "/all.owl.ttl");
         helper.classify();
         return helper;
     }
@@ -38,5 +44,25 @@ public class ConsistencyTest extends TestCase {
         System.out.println("Murder inference = " + d + "ms");
         assertTrue(results.getFlattened().size() > 0);
         assertTrue("Murder inference too slow", d < 15000); // 15s
+    }
+
+    public void testDisjointLivingThings() {
+        OWLClass livingThing = helper.df.getOWLClass(TestHelper.BASE + "#Living_thing");
+        Set<OWLNamedIndividual> allLivingThingInstances = new HashSet<>(helper.r.getInstances(livingThing).getFlattened());
+
+        assertTrue(allLivingThingInstances.size() > 0);
+
+        // Living_thing and not{Luke_Skywalker}
+        OWLIndividual lukeSkywalker = helper.df.getOWLNamedIndividual(TestHelper.BASE + "#Luke_Skywalker");
+        Set<OWLNamedIndividual> notLuke = helper.r.getInstances(
+                helper.df.getOWLObjectIntersectionOf(
+                        livingThing,
+                        helper.df.getOWLObjectComplementOf(
+                                helper.df.getOWLObjectOneOf(lukeSkywalker)))
+            ).getFlattened();
+
+
+        // TODO generate an allDisjoint!
+        assertEquals(new HashSet<>(), SetUtils.difference(allLivingThingInstances, notLuke));
     }
 }

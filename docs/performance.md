@@ -38,6 +38,11 @@ Nice to have this to show where characters have been, but it can be used at quer
 
     participatedIn o location -> visited
 
+### Property Domain/Range
+Adding property domain/ranges base.owl
+Classification time of rebels.owl reduced from 23.5s to 18s
+
+
 ## Expensive modelling (HermiT) - to revise using Pellet
 
 ### allDifferent
@@ -56,8 +61,7 @@ However, we do lose helpful consistency checking (as we have top level disjoints
 eg `participants` in `Events` are `Actors`, not `Roles` - leaving this range on `participant` is not too bad.
 Whereas, adding a range to `during` automatically adds a few seconds on.
 
-Domains/ranges have been added to the top level `test` ontology that is used purely
-as a QA mechanism and does not need to be used at query time.
+Domains/ranges were added to a top level `test` ontology which has now been removed using pellet.
 
 ### Cardinality
 Cannot add participant min 14000 to the battle of Exegol - it breaks the reasoner!

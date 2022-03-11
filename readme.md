@@ -4,6 +4,9 @@ Convor, as in "OWL in Star Wars".
 
 An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and places in the films and TV series.
 
+![Star Wars Ontology (cloud view)](docs/cloud.png)
+
+
 ## Scope
 
 * Episodes 1-9 - first pass

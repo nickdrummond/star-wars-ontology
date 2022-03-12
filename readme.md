@@ -2,9 +2,9 @@
 
 Convor, as in "OWL in Star Wars".
 
-An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and places in the films and TV series.
+A hand-built [OWL](https://www.w3.org/OWL/) ontology covering characters, events and places in the films and TV series.
 
-![Star Wars Ontology (cloud view)](docs/cloud.png)
+[![Star Wars Ontology (cloud view)](docs/cloud.png)](docs/instances-usage-cloud.pdf)
 
 
 ## Scope
@@ -16,13 +16,13 @@ An [OWL](https://www.w3.org/OWL/) ontology covering major characters, events and
 * Rebels - first pass
 * Clone Wars - in progress
 * The Bad Batch - skeleton
+* The Book of Boba Fett - to do
 
 ## Status
 
-* In progress
-* First pass modelling of content completed up to Rebels
-* Many open modelling questions
-* Tests and queries still experimental
+* In progress - see scope
+* Open modelling questions
+* Tests and queries framework
 * Modularisation of events by film/series
 
 ## Contents

@@ -4,9 +4,300 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies> .
+@base <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#> .
 
-<https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/bad-batch.owl.ttl> a owl:Ontology ;
-                                      owl:imports <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/star-wars.owl.ttl> .
+<https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/bad-batch.owl.ttl> rdf:type owl:Ontology ;
+                                                                                                       owl:imports <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies/star-wars.owl.ttl> .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Battle_of_Kaller
+:Battle_of_Kaller rdf:type owl:NamedIndividual ,
+                           :Battle ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :killingOf ;
+                                                                         owl:someValuesFrom :Battle_Droid
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Bad_Batch
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Murder
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :during ;
+                                                                         owl:hasValue :Order_66
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :escapeOf ;
+                                                                         owl:hasValue :Caleb_Dume
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :killingOf ;
+                                                                         owl:hasValue :Depa_Billaba
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Grey
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Search
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Crosshair
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Hunter
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :target ;
+                                                                         owl:hasValue :Caleb_Dume
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :AAT_Mk_I
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :AT-TE
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :B1_Battle_Droid
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :Clone
+                           ] ;
+                  :during :Clone_Wars ,
+                          :Order_66 ;
+                  :escapeOf :Caleb_Dume ;
+                  :locatedIn :Kaller ;
+                  :participant :Depa_Billaba ,
+                               :Grey ;
+                  :year -19 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mission_to_Onderon
+:Mission_to_Onderon rdf:type owl:NamedIndividual ,
+                             :Mission ,
+                             [ rdf:type owl:Class ;
+                               owl:complementOf [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :included ;
+                                                  owl:someValuesFrom :Fight
+                                                ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :destructionOf ;
+                               owl:someValuesFrom :Probe_Droid
+                             ] ;
+                    :after :Testing_of_Clone_Force_99 ;
+                    :locatedIn :Onderon ;
+                    :orderedBy :Wilhuff_Tarkin ;
+                    :participant :Bad_Batch ,
+                                 :Saw_Gerrera ;
+                    :survivedBy :Onderon_rebels ;
+                    :year -19 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)#Mission_to_Onderon"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
+:Order_66 rdf:type _:genid35 .
+
+_:genid35 rdf:type owl:Restriction ;
+           owl:onProperty :included ;
+           owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :killingOf ;
+                                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hadRole ;
+                                                                            owl:someValuesFrom :Jedi
+                                                                          ]
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :locatedIn ;
+                                                       owl:hasValue :Tipoca_City
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :Order_66 ;
+   owl:annotatedProperty rdf:type ;
+   owl:annotatedTarget _:genid35 ;
+   rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
+ ] .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Proclamation_of_the_New_Order
+:Proclamation_of_the_New_Order rdf:type owl:NamedIndividual ;
+                               :witnessedBy :Bad_Batch .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_of_Omega
+:Rescue_of_Omega rdf:type owl:NamedIndividual ,
+                          :Rescue ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Defection
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Crosshair
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Bad_Batch
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Omega
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :used ;
+                                                                        owl:hasValue :Marauder
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :captureOf ;
+                                                                        owl:hasValue :Bad_Batch
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :orderedBy ;
+                                                                        owl:hasValue :Wilhuff_Tarkin
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
+                 :after :Mission_to_Onderon ;
+                 :assistedBy :Nala_Se ;
+                 :found :Lula ;
+                 :locatedIn :Tipoca_City ;
+                 :target :Omega ;
+                 :year -19 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)#Traitors_to_the_Empire"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Testing_of_Clone_Force_99
+:Testing_of_Clone_Force_99 rdf:type owl:NamedIndividual ,
+                                    :Event ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :used ;
+                                                                                  owl:someValuesFrom :Food
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :stunningOf ;
+                                                                                  owl:hasValue :Echo
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :about ;
+                                                                                  owl:someValuesFrom :Clone
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Lama_Su
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Wilhuff_Tarkin
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Bad_Batch
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Omega
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Training
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :killingOf ;
+                                                                                  owl:someValuesFrom :Droid
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :injuryOf ;
+                                                                                  owl:hasValue :Wrecker
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :orderedBy ;
+                                                                                  owl:hasValue :Wilhuff_Tarkin
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :survivedBy ;
+                                                                                  owl:hasValue :Bad_Batch
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :witnessedBy ;
+                                                                                  owl:hasValue :Lama_Su
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           :after :Battle_of_Kaller ,
+                                  :Proclamation_of_the_New_Order ;
+                           :during :Empire_Day ;
+                           :locatedIn :Tipoca_City ;
+                           :participant :AZI-3 ,
+                                        :Bad_Batch ;
+                           :year -19 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)#Homecoming"^^xsd:anyURI .
+
+
+###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

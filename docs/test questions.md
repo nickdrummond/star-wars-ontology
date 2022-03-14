@@ -93,3 +93,8 @@ Probably not as just being at the same event or a member of a group
 It  depends on the number of people in that event/group
   - ie not everyone in the Empire knows each other
   - not everyone at the Battle of Scariff knows each other
+
+## People that participated in the same Events
+
+    participatedIn some (participant value Asajj_Ventress)
+

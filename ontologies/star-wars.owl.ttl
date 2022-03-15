@@ -3214,22 +3214,26 @@
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Cumberlayne_Aresko"^^xsd:anyURI .
 
 
-###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Cut
-:Cut rdf:type owl:NamedIndividual ,
-              :Clone ,
-              [ rdf:type owl:Restriction ;
-                owl:onProperty :hadRole ;
-                owl:someValuesFrom [ owl:intersectionOf ( :Trooper
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :inOrganisation ;
-                                                            owl:hasValue :Grand_Army_of_the_Republic
-                                                          ]
-                                                        ) ;
-                                     rdf:type owl:Class
-                                   ]
-              ] ;
-     :livedIn :Saleucami ;
-     rdfs:seeAlso "https://starwars.fandom.com/wiki/Cut_Lawquane"^^xsd:anyURI .
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Cut_Lawquane
+:Cut_Lawquane rdf:type owl:NamedIndividual ,
+                       :Clone ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom :Farmer
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Trooper
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :inOrganisation ;
+                                                                     owl:hasValue :Grand_Army_of_the_Republic
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              :livedIn :Saleucami ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Cut_Lawquane"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Cutup
@@ -6168,6 +6172,20 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
      rdfs:seeAlso "https://starwars.fandom.com/wiki/Jek"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jek_Lawquane
+:Jek_Lawquane rdf:type owl:NamedIndividual ,
+                       :Human ,
+                       <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Twi'Lek> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :gender ;
+                         owl:someValuesFrom :Male
+                       ] ;
+              :hadMother :Suu_Lawquane ;
+              :raisedBy :Cut_Lawquane ;
+              :born -25 ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Jek_Lawquane"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jesse
 :Jesse rdf:type owl:NamedIndividual ,
                 :Clone ,
@@ -7068,6 +7086,15 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                    :Space_Station ;
                           :locatedIn :Iego ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/LaserWeb_Defense_Station"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Lawquane_Farm
+:Lawquane_Farm rdf:type owl:NamedIndividual ,
+                        :Farm ;
+               :locatedIn :Saleucami ;
+               :ownedBy :Cut_Lawquane ,
+                        :Suu_Lawquane ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Lawquane%27s_Farm"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Lechee
@@ -8920,8 +8947,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
 :Order_66 rdf:type owl:NamedIndividual ,
-                   :Event ;
+                   :Event ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :used ;
+                     owl:someValuesFrom :Inhibitor_chip
+                   ] ;
           :killingOf :Depa_Billaba ;
+          :orderedBy :Darth_Sidious ;
           :survivedBy :Ahsoka_Tano ,
                       :Caleb_Dume ,
                       :Jocasta_Nu ;
@@ -10801,6 +10833,21 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Shadow_Squadron"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Shaeeah_Lawquane
+:Shaeeah_Lawquane rdf:type owl:NamedIndividual ,
+                           :Human ,
+                           <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Twi'Lek> ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :gender ;
+                             owl:someValuesFrom :Female
+                           ] ;
+                  :hadMother :Suu_Lawquane ;
+                  :originallyFrom :Saleucami ;
+                  :raisedBy :Cut_Lawquane ;
+                  :born -26 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Shaeeah_Lawquane"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Shahan_Alama
 :Shahan_Alama rdf:type owl:NamedIndividual ,
                        :Weequay ,
@@ -11407,6 +11454,22 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :Surronian_Engineering rdf:type owl:NamedIndividual ,
                                 :Manufacturer ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Surronian_Engineering"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Suu_Lawquane
+:Suu_Lawquane rdf:type owl:NamedIndividual ,
+                       <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Twi'Lek> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :gender ;
+                         owl:someValuesFrom :Female
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom :Farmer
+                       ] ;
+              :livedIn :Saleucami ;
+              :married :Cut_Lawquane ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Suu_Lawquane"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Swoop
@@ -13849,7 +13912,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                         :Broadside
                         :Cody
                         :Crosshair
-                        :Cut
+                        :Cut_Lawquane
                         :Cutup
                         :Denal
                         :Droidbait

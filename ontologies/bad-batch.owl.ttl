@@ -99,6 +99,110 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Helping_the_Lawquanes_escape
+:Helping_the_Lawquanes_escape rdf:type owl:NamedIndividual ,
+                                       :Heist ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                                                                     owl:onClass [ rdf:type owl:Class ;
+                                                                                                   owl:oneOf ( :Cut_Lawquane
+                                                                                                               :Jek_Lawquane
+                                                                                                               :Shaeeah_Lawquane
+                                                                                                               :Suu_Lawquane
+                                                                                                             )
+                                                                                                 ]
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:someValuesFrom :Clone
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :escapeOf ;
+                                                                                     owl:hasValue :Bad_Batch
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :stole ;
+                                         owl:someValuesFrom :Chain_code
+                                       ] ;
+                              :after :Hiding_out_with_Cut ;
+                              :locatedIn :Saleucami ;
+                              :participant :Bad_Batch ;
+                              :year -19 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Cut_and_Run#The_chain_code_heist"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Hiding_out_with_Cut
+:Hiding_out_with_Cut rdf:type owl:NamedIndividual ,
+                              :Hiding ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :about ;
+                                                                            owl:someValuesFrom :Inhibitor_chip
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :about ;
+                                                                            owl:hasValue :Rex
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Game
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :included ;
+                                                                            owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :participant ;
+                                                                                                                        owl:someValuesFrom :Nexu
+                                                                                                                      ]
+                                                                                                                    ) ;
+                                                                                                 rdf:type owl:Class
+                                                                                               ]
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :participant ;
+                                                                            owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                                                            owl:onClass [ rdf:type owl:Class ;
+                                                                                          owl:oneOf ( :Jek_Lawquane
+                                                                                                      :Omega
+                                                                                                      :Shaeeah_Lawquane
+                                                                                                    )
+                                                                                        ]
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     :after :Rescue_of_Omega ;
+                     :locatedIn :Lawquane_Farm ;
+                     :participant :Bad_Batch ,
+                                  :Cut_Lawquane ,
+                                  :Jek_Lawquane ,
+                                  :Shaeeah_Lawquane ,
+                                  :Suu_Lawquane ;
+                     :year -19 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Cut_and_Run"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mission_to_Onderon
 :Mission_to_Onderon rdf:type owl:NamedIndividual ,
                              :Mission ,
@@ -123,9 +227,9 @@
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
-:Order_66 rdf:type _:genid35 .
+:Order_66 rdf:type _:genid75 .
 
-_:genid35 rdf:type owl:Restriction ;
+_:genid75 rdf:type owl:Restriction ;
            owl:onProperty :included ;
            owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                        owl:onProperty :killingOf ;
@@ -145,7 +249,7 @@ _:genid35 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid35 ;
+   owl:annotatedTarget _:genid75 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 

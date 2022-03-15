@@ -3170,9 +3170,28 @@
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Crosshair
 :Crosshair rdf:type owl:NamedIndividual ,
-                    :Clone ;
+                    :Clone ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hadRole ;
+                      owl:someValuesFrom [ owl:intersectionOf ( :Leader
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :inOrganisation ;
+                                                                  owl:hasValue :Crosshairs_Squad
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ]
+                    ] ;
            :memberOf :Bad_Batch ;
+           :callsign "CT-9904"^^xsd:string ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-9904"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Crosshairs_Squad
+:Crosshairs_Squad rdf:type owl:NamedIndividual ,
+                           :Squad ;
+                  :createdBy :Rampart ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-9904%27s_Elite_Squad"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Crumb_Bomber
@@ -3781,6 +3800,7 @@
                                     ]
                ] ;
       :memberOf :Bad_Batch ;
+      :callsign "CT-1409"^^xsd:string ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-1409"^^xsd:anyURI .
 
 
@@ -4333,6 +4353,7 @@
                                        rdf:type owl:Class
                                      ]
                 ] ;
+       :callsign "CT-5555"^^xsd:string ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-5555"^^xsd:anyURI .
 
 
@@ -4581,6 +4602,10 @@
                                                                ) ;
                                             rdf:type owl:Class
                                           ]
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :responsibleFor ;
+                       owl:hasValue :Project_Stardust
                      ] ;
             :livedIn :Eadu ,
                      :Lah_mu ;
@@ -8961,6 +8986,21 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Order_66"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Ordo_Moon
+:Ordo_Moon rdf:type owl:NamedIndividual ,
+                    :Moon ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasTerrain ;
+                      owl:someValuesFrom :Cave
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasTerrain ;
+                      owl:someValuesFrom :Rocky
+                    ] ;
+           :locatedIn :Galaxy ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Ordo_Moon"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Orka
 :Orka rdf:type owl:NamedIndividual ,
                :Chadra-Fan ,
@@ -9546,6 +9586,26 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Proach"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Project_Stardust
+:Project_Stardust rdf:type owl:NamedIndividual ,
+                           :Project ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :about ;
+                             owl:hasValue :Death_Star_1
+                           ] ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Project_Stardust"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Project_War-Mantle
+:Project_War-Mantle rdf:type owl:NamedIndividual ,
+                             :Project ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :about ;
+                               owl:someValuesFrom :Conscription
+                             ] ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Project_War-Mantle"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Protectors_Camp
 :Protectors_Camp rdf:type owl:NamedIndividual ,
                           :Base ;
@@ -9881,6 +9941,42 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                            :Sector ;
                   :locatedIn :Outer_Rim ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Raioballo_sector"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rampart
+:Rampart rdf:type owl:NamedIndividual ,
+                  :Human ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :gender ;
+                    owl:someValuesFrom :Male
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hadRole ;
+                    owl:someValuesFrom [ owl:intersectionOf ( :Admiral
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :inOrganisation ;
+                                                                owl:hasValue :Galactic_Empire
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ]
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :responsibleFor ;
+                    owl:someValuesFrom [ owl:intersectionOf ( :Project
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :about ;
+                                                                owl:someValuesFrom :Chain_code
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ]
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :responsibleFor ;
+                    owl:hasValue :Project_War-Mantle
+                  ] ;
+         rdfs:seeAlso "https://starwars.fandom.com/wiki/Rampart"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Ranzar_Malk

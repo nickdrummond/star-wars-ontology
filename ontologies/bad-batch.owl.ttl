@@ -99,6 +99,65 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Crash_on_Ordo_Moon
+:Crash_on_Ordo_Moon rdf:type owl:NamedIndividual ,
+                             :Crash ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Repair
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Marauder
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Search
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :found ;
+                                                                           owl:someValuesFrom :Ordo_Moon_Dragon
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :found ;
+                                                                           owl:someValuesFrom :Parts
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Omega
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :stunningOf ;
+                                                                           owl:hasValue :Hunter
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:someValuesFrom :Ordo_Moon_Dragon
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :stole ;
+                                                                           owl:someValuesFrom :Parts
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    :after :Helping_the_Lawquanes_escape ;
+                    :locatedIn :Ordo_Moon ;
+                    :of :Marauder ;
+                    :participant :Bad_Batch ;
+                    :year -19 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Replacements#Crash_landing"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Helping_the_Lawquanes_escape
 :Helping_the_Lawquanes_escape rdf:type owl:NamedIndividual ,
                                        :Heist ,
@@ -203,6 +262,31 @@
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Cut_and_Run"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Massacre_on_Onderon
+:Massacre_on_Onderon rdf:type owl:NamedIndividual ,
+                              :Attack ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :killingOf ;
+                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hadRole ;
+                                                     owl:someValuesFrom :Civilian
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :killingOf ;
+                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :memberOf ;
+                                                     owl:hasValue :Onderon_rebels
+                                                   ]
+                              ] ;
+                     :during :Crash_on_Ordo_Moon ;
+                     :locatedIn :Onderon ;
+                     :orderedBy :Wilhuff_Tarkin ;
+                     :participant :Crosshairs_Squad ;
+                     :year -19 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Replacements#A_test_of_loyalty"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mission_to_Onderon
 :Mission_to_Onderon rdf:type owl:NamedIndividual ,
                              :Mission ,
@@ -227,29 +311,29 @@
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
-:Order_66 rdf:type _:genid75 .
+:Order_66 rdf:type _:genid101 .
 
-_:genid75 rdf:type owl:Restriction ;
-           owl:onProperty :included ;
-           owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :killingOf ;
-                                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :hadRole ;
-                                                                            owl:someValuesFrom :Jedi
-                                                                          ]
-                                                     ]
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :locatedIn ;
-                                                       owl:hasValue :Tipoca_City
-                                                     ]
-                                                   ) ;
-                                rdf:type owl:Class
-                              ] .
+_:genid101 rdf:type owl:Restriction ;
+            owl:onProperty :included ;
+            owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :killingOf ;
+                                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hadRole ;
+                                                                             owl:someValuesFrom :Jedi
+                                                                           ]
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :locatedIn ;
+                                                        owl:hasValue :Tipoca_City
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid75 ;
+   owl:annotatedTarget _:genid101 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 

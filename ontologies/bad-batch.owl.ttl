@@ -287,6 +287,32 @@
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Replacements#A_test_of_loyalty"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Meeting_Cid
+:Meeting_Cid rdf:type owl:NamedIndividual ,
+                      :Meeting ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :traded ;
+                        owl:someValuesFrom :Job
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :traded ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Information
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :about ;
+                                                                    owl:hasValue :Fennec_Shand
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             :after :Supply_Run_to_Pantora ;
+             :locatedIn :Ord_Mantell ;
+             :participant :Bad_Batch ,
+                          :Cid ;
+             :year -19 ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Rampage_(episode)"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mission_to_Onderon
 :Mission_to_Onderon rdf:type owl:NamedIndividual ,
                              :Mission ,
@@ -311,9 +337,9 @@
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
-:Order_66 rdf:type _:genid101 .
+:Order_66 rdf:type _:genid107 .
 
-_:genid101 rdf:type owl:Restriction ;
+_:genid107 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                         owl:onProperty :killingOf ;
@@ -333,7 +359,7 @@ _:genid101 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid101 ;
+   owl:annotatedTarget _:genid107 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -341,6 +367,125 @@ _:genid101 rdf:type owl:Restriction ;
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Proclamation_of_the_New_Order
 :Proclamation_of_the_New_Order rdf:type owl:NamedIndividual ;
                                :witnessedBy :Bad_Batch .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_Muchi
+:Rescue_Muchi rdf:type owl:NamedIndividual ,
+                       :Job ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :found ;
+                         owl:someValuesFrom :Energy_bow
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :of ;
+                                                                     owl:hasValue :Muchi
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :participant ;
+                                                                     owl:hasValue :Bib_Fortuna
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :escapeOf ;
+                                                                     owl:someValuesFrom :Brezak
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :participant ;
+                                                                     owl:hasValue :Muchi
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :participant ;
+                                                                     owl:hasValue :Hunter
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :participant ;
+                                                                     owl:hasValue :Raney
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :stunningOf ;
+                                                                     owl:hasValue :Muchi
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :victoryOf ;
+                                                                     owl:hasValue :Wrecker
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :freeingOf ;
+                                                                     owl:someValuesFrom :Falleeen
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :escapeOf ;
+                                                                     owl:hasValue :Bad_Batch
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :freeingOf ;
+                                                                     owl:hasValue :Muchi
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :participant ;
+                                                                     owl:hasValue :Omega
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                              owl:onProperty :captureOf ;
+                                              owl:hasValue :Bad_Batch
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :participant ;
+                         owl:someValuesFrom :Brezak
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :participant ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Zygerrian
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hadRole ;
+                                                                     owl:someValuesFrom :Slaver
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              :after :Meeting_Cid ;
+              :locatedIn :Old_Ord_Mantell_City ;
+              :participant :Bad_Batch ,
+                           :Raney ;
+              :year -19 ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Rampage_(episode)#The_rescue_attempt"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_of_Omega

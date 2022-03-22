@@ -369,6 +369,84 @@ _:genid107 rdf:type owl:Restriction ;
                                :witnessedBy :Bad_Batch .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Removing_the_Inhibitor_chip
+:Removing_the_Inhibitor_chip rdf:type owl:NamedIndividual ,
+                                      :Mission ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :deactivated ;
+                                        owl:someValuesFrom :Inhibitor_chip
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :activated ;
+                                                                                    owl:someValuesFrom [ owl:intersectionOf ( :Inhibitor_chip
+                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty :locatedIn ;
+                                                                                                                                owl:hasValue :Wrecker
+                                                                                                                              ]
+                                                                                                                            ) ;
+                                                                                                         rdf:type owl:Class
+                                                                                                       ]
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:someValuesFrom :Dianoga
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :escapeOf ;
+                                                                                    owl:hasValue :Wrecker
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :eatingOf ;
+                                                                                    owl:someValuesFrom :Mantell_Mix
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                    owl:onClass [ rdf:type owl:Class ;
+                                                                                                  owl:oneOf ( :Omega
+                                                                                                              :Wrecker
+                                                                                                            )
+                                                                                                ]
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :locatedIn ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Venator-class_Star_Destroyer
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :locatedIn ;
+                                                                                    owl:hasValue :Bracca
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ;
+                             :after :Retrieve_Ruby ;
+                             :assistedBy :Rex ;
+                             :participant :Bad_Batch ,
+                                          :Scrapper_Guild ;
+                             :year -19 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_Scars#Rendezvous_on_Bracca"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_Muchi
 :Rescue_Muchi rdf:type owl:NamedIndividual ,
                        :Job ,
@@ -542,6 +620,17 @@ _:genid107 rdf:type owl:Restriction ;
                  :target :Omega ;
                  :year -19 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)#Traitors_to_the_Empire"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Retrieve_Ruby
+:Retrieve_Ruby rdf:type owl:NamedIndividual ,
+                        :Job ;
+               :after :Retrieve_a_tactical_droid ;
+               :participant :Bad_Batch ,
+                            :Rhokai_gang ;
+               :stole :Ruby ;
+               :year -19 ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_Scars"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Retrieve_a_tactical_droid

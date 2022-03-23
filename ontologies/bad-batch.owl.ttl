@@ -730,6 +730,87 @@ _:genid107 rdf:type owl:Restriction ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Decommissioned"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Salvaging_on_Bracca
+:Salvaging_on_Bracca rdf:type owl:NamedIndividual ,
+                              :Mission ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :found ;
+                                owl:someValuesFrom :Proton_Torpedo
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :killingOf ;
+                                                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hadRole ;
+                                                                                                 owl:someValuesFrom :Trooper
+                                                                                               ]
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :captureOf ;
+                                                                            owl:hasValue :Omega
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :injuryOf ;
+                                                                            owl:hasValue :Hunter
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :participant ;
+                                                                            owl:hasValue :Cad_Bane
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :destructionOf ;
+                                                                            owl:someValuesFrom :Engine
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :injuryOf ;
+                                                                            owl:hasValue :Crosshair
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :escapeOf ;
+                                                                            owl:hasValue :Bad_Batch
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :locatedIn ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Venator-class_Star_Destroyer
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :locatedIn ;
+                                                                            owl:hasValue :Bracca
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     :after :Removing_the_Inhibitor_chip ;
+                     :escapeOf :Echo ,
+                               :Hunter ,
+                               :Tech ,
+                               :Wrecker ;
+                     :participant :Crosshair ,
+                                  :Crosshairs_Squad ;
+                     :year -19 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Reunion"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Supply_Run_to_Pantora
 :Supply_Run_to_Pantora rdf:type owl:NamedIndividual ,
                                 :Mission ,

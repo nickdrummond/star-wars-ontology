@@ -13,6 +13,55 @@
 #    Individuals
 #################################################################
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Announcement_of_curfew_on_Raxus
+:Announcement_of_curfew_on_Raxus rdf:type owl:NamedIndividual ,
+                                          :Communication ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:hasValue :Cid
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:hasValue :GS-8
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:someValuesFrom :AT-TE
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:someValuesFrom :Clone
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :participant ;
+                                                                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty :hadRole ;
+                                                                                                             owl:someValuesFrom :Civilian
+                                                                                                           ]
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ;
+                                 :after :Escape_from_Bora_Vio ;
+                                 :captureOf :Avi_Singh ;
+                                 :locatedIn :Raxulon ;
+                                 :orderedBy :Bragg ;
+                                 :participant :Galactic_Empire ;
+                                 :year -19 ;
+                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Common_Ground#Curfew_on_Raxus"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Battle_of_Kaller
 :Battle_of_Kaller rdf:type owl:NamedIndividual ,
                            :Battle ,
@@ -156,6 +205,18 @@
                     :participant :Bad_Batch ;
                     :year -19 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Replacements#Crash_landing"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Dejarik_in_Cids_Parlour
+:Dejarik_in_Cids_Parlour rdf:type owl:NamedIndividual ,
+                                  :Dejarik ;
+                         :during :Rescue_of_Avi_Singh ;
+                         :participant :Bolo ,
+                                      :Cid ,
+                                      :Ketch ;
+                         :victoryOf :Omega ;
+                         :year -19 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Common_Ground#A_game_of_dejarik"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Escape_from_Bora_Vio
@@ -429,9 +490,9 @@
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
-:Order_66 rdf:type _:genid144 .
+:Order_66 rdf:type _:genid161 .
 
-_:genid144 rdf:type owl:Restriction ;
+_:genid161 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                         owl:onProperty :killingOf ;
@@ -451,7 +512,7 @@ _:genid144 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid144 ;
+   owl:annotatedTarget _:genid161 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -656,6 +717,40 @@ _:genid144 rdf:type owl:Restriction ;
                            :Raney ;
               :year -19 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Rampage_(episode)#The_rescue_attempt"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_of_Avi_Singh
+:Rescue_of_Avi_Singh rdf:type owl:NamedIndividual ,
+                              :Rescue ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :destructionOf ;
+                                owl:someValuesFrom :AT-TE
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :stole ;
+                                owl:someValuesFrom :AT-TE
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :stunningOf ;
+                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hadRole ;
+                                                     owl:someValuesFrom :Trooper
+                                                   ]
+                              ] ;
+                     :after :Announcement_of_curfew_on_Raxus ;
+                     :freeingOf :Avi_Singh ;
+                     :locatedIn :Raxulon ;
+                     :participant :GS-8 ;
+                     :stunningOf :Bragg ;
+                     :victoryOf :Bad_Batch ;
+                     :year -19 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Common_Ground#Meeting_with_GS-8"^^xsd:anyURI .
+
+[ rdf:type owl:NegativePropertyAssertion ;
+   owl:sourceIndividual :Rescue_of_Avi_Singh ;
+   owl:assertionProperty :participant ;
+   owl:targetIndividual :Omega
+ ] .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_of_Omega

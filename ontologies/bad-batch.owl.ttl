@@ -219,6 +219,30 @@
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Common_Ground#A_game_of_dejarik"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Demilitarising_Ryloth
+:Demilitarising_Ryloth rdf:type owl:NamedIndividual ,
+                                :Communication ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :about ;
+                                  owl:someValuesFrom :Propaganda
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :witnessedBy ;
+                                  owl:someValuesFrom <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Twi'Lek>
+                                ] ;
+                       :about :Imperial_doonium_refinery ;
+                       :after :Rescue_of_Avi_Singh ;
+                       :assistedBy :Cham_Syndulla ,
+                                   :Eleni_Syndulla ,
+                                   :Howzer ;
+                       :locatedIn :Lessu ;
+                       :participant :Orn_Free_Taa ;
+                       :witnessedBy :Crosshair ,
+                                    :Rampart ;
+                       :year -19 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Devil%27s_Deal"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Escape_from_Bora_Vio
 :Escape_from_Bora_Vio rdf:type owl:NamedIndividual ,
                                :Escape ,
@@ -490,9 +514,9 @@
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
-:Order_66 rdf:type _:genid161 .
+:Order_66 rdf:type _:genid163 .
 
-_:genid161 rdf:type owl:Restriction ;
+_:genid163 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                         owl:onProperty :killingOf ;
@@ -512,7 +536,7 @@ _:genid161 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid161 ;
+   owl:annotatedTarget _:genid163 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -598,6 +622,64 @@ _:genid161 rdf:type owl:Restriction ;
                                           :Scrapper_Guild ;
                              :year -19 ;
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_Scars#Rendezvous_on_Bracca"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_Hera_from_Orn
+:Rescue_Hera_from_Orn rdf:type owl:NamedIndividual ,
+                               :Doublecross ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :defeatOf ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Clone
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hadRole ;
+                                                                             owl:someValuesFrom :Trooper
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :destructionOf ;
+                                 owl:someValuesFrom :Speeder_Bike
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :injuryOf ;
+                                                                             owl:hasValue :Orn_Free_Taa
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Crosshair
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Bluurg
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :HCVw_A9_turbo_tank
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :LAAT_Gunship
+                               ] ;
+                      :after :Shooting_down_Ryloth_smugglers ;
+                      :captureOf :Cham_Syndulla ,
+                                 :Eleni_Syndulla ,
+                                 :Gobi_Glie ,
+                                 :Serin ;
+                      :escapeOf :C1-10P ,
+                                :Hera_Syndulla ;
+                      :locatedIn :Ryloth ;
+                      :participant :Howzer ,
+                                   :Rampart ;
+                      :year -19 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Devil%27s_Deal#Intercepting_the_transport"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_Muchi
@@ -1006,6 +1088,68 @@ _:genid161 rdf:type owl:Restriction ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Reunion"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Shooting_down_Ryloth_smugglers
+:Shooting_down_Ryloth_smugglers rdf:type owl:NamedIndividual ,
+                                         :Crash ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :of ;
+                                           owl:someValuesFrom [ owl:intersectionOf ( :Freighter
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty :ownedBy ;
+                                                                                       owl:hasValue :Gobi_Glie
+                                                                                     ]
+                                                                                   ) ;
+                                                                rdf:type owl:Class
+                                                              ]
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :participant ;
+                                           owl:someValuesFrom :LAAT_Gunship
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :witnessedBy ;
+                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :memberOf ;
+                                                                owl:hasValue :Free_Ryloth_Movement
+                                                              ]
+                                         ] ;
+                                :after :Weapon_smuggling_to_Ryloth ;
+                                :captureOf :Gobi_Glie ,
+                                           :Hera_Syndulla ,
+                                           :Serin ;
+                                :locatedIn :Ryloth ;
+                                :participant :Howzer ,
+                                             :Orn_Free_Taa ,
+                                             :Rampart ;
+                                :victoryOf :Crosshair ;
+                                :year -19 ;
+                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Devil%27s_Deal#Caught_by_the_Empire"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Spying_on_the_refinery
+:Spying_on_the_refinery rdf:type owl:NamedIndividual ,
+                                 :Mission ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :participant ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Clone
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hadRole ;
+                                                                               owl:someValuesFrom :Trooper
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        :after :Demilitarising_Ryloth ;
+                        :captureOf :C1-10P ,
+                                   :Hera_Syndulla ;
+                        :locatedIn :Ryloth ;
+                        :orderedBy :Gobi_Glie ;
+                        :target :Imperial_doonium_refinery ;
+                        :year -19 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Devil%27s_Deal#Spying_on_the_refinery"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Supply_Run_to_Pantora
 :Supply_Run_to_Pantora rdf:type owl:NamedIndividual ,
                                 :Mission ,
@@ -1231,6 +1375,83 @@ _:genid161 rdf:type owl:Restriction ;
                            :stunningOf :Todo_360 ;
                            :year -19 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_Lost#Tricking_Todo_360"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Weapon_smuggling_to_Ryloth
+:Weapon_smuggling_to_Ryloth rdf:type owl:NamedIndividual ,
+                                     :Job ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:hasValue :Hera_Syndulla
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:hasValue :Omega
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Transfer
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :transferOf ;
+                                                                                   owl:someValuesFrom :Weapon
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :from ;
+                                                                                   owl:hasValue :Bad_Batch
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :to ;
+                                                                                   owl:hasValue :Free_Ryloth_Movement
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :locatedIn ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Moon
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :locatedIn ;
+                                                                                   owl:hasValue :Ryloth
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                   owl:oneOf ( :Hera_Syndulla
+                                                                                             )
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hadRole ;
+                                                                                   owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                                               owl:onProperty :ofShip ;
+                                                                                                                               owl:someValuesFrom :Freighter
+                                                                                                                             ]
+                                                                                                                           ) ;
+                                                                                                        rdf:type owl:Class
+                                                                                                      ]
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                            :after :Spying_on_the_refinery ;
+                            :participant :Bad_Batch ,
+                                         :Gobi_Glie ,
+                                         :Serin ;
+                            :year -19 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Devil%27s_Deal#Building_an_arsenal"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

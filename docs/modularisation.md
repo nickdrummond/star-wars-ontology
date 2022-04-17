@@ -4,11 +4,10 @@
 
 ## Options for modules
 
-* Events/content by series/film
 * QA - eg domain/range checks
 * out-of-universe metadata (actors, directors, creators)
 * print/game/toy canon content
-
+* deep content (more in-depth descriptions of species/planets etc)
 
 ## Issues
 
@@ -39,7 +38,7 @@ get a different "view" of them depending on which sub-modules we pull in.
 
 ### all
 
-Top level ontology importing all content
+Top level ontology importing all content (except species)
 
 ### base
 
@@ -106,25 +105,25 @@ Events from the film
 
 #### mandalorian
 
-Events from the 2 seasons
+Events from 2 seasons
 
 #### resistance
 
-Events from the 2 seasons. The first season especially was challenging to model in the existing framework as there is less direct conflict and a lot of the story is relationship driven. We can use this experience to expand some of the more subtle plot points in the rest of the Universe.
+Events from 2 seasons. The first season especially was challenging to model in the existing framework as there is less direct conflict and a lot of the story is relationship driven. We can use this experience to expand some of the more subtle plot points in the rest of the Universe.
 
 There are links to the timeline of the sequels as yet to be resolved. eg Hosnian Cataclysm.
 
 #### rebels
 
-Events from the 4 seasons
+Events from 4 seasons
 
 #### clone_wars
 
-Events from the 7 seasons
+Events from 7 seasons
 
 #### bad_batch
 
-Events from the 1 season
+Events from 1 season
 
 ### Eras
 
@@ -138,3 +137,7 @@ Grouping events by the timespan they occur during:
 
 Ontology containing some example defined classes that help to
 classify individuals in the ontologies
+
+### species
+
+Deeper characterisation of species by physiology etc

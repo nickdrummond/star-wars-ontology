@@ -14,7 +14,7 @@ Initial testing on `all.owl` using `participatedIn some Murder`:
 
 |Reasoner |Works? | Notes
 --- | --- | --- 
-|Pellet                 |Yes       | Fast. Be notes on datatype restrs *
+|Pellet                 |Yes       | Fast. See notes on datatype restrs *
 |Pellet (Incremental)   |Yes-ish   | DL Query not working? see above for other issues
 |HermiT                 |Yes       | Slow. 66-72s
 |JFact                  |?         | Need to build from source?
@@ -32,6 +32,23 @@ We have some basic metrics being checked - see [ConsistencyTest](../src/test/jav
 There could be a lot of other queries testing
 
 ## Expensive modelling (Pellet)
+
+### Characterising species
+
+36-38s full classification in Protege of all.owl.ttl
+
+* Moving hasPart usage (heavy use of cardinality) to another ontology not directly imported
+= 26-27s classification for all.owl.ttl
+* Moving hasTrait usage only saves a second, but fits better in the new ontology
+* Moving sentience usage drops classification to 15s
+* Moving movesWith usage drops it all the way to 12s
+
+Assertions on individuals have been retained in star-wars.owl.ttl
+
+### Characterising vehicles/roles
+
+Leaving movesWith usage for 6 type of vehicles and troopers in base.owl.ttl
+adds 2/3s to classification
 
 ### ```visited``` as a property chain
 Nice to have this to show where characters have been, but it can be used at query time instead as its slow:

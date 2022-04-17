@@ -33,6 +33,12 @@ There could be a lot of other queries testing
 
 ## Expensive modelling (Pellet)
 
+### Cardinality
+
+In some specific cases, cardinality on oneOfs cause a large hit.
+They are normally used as a syntax shortcut and should be avoided.
+See [Issue #3](https://github.com/nickdrummond/starwarsontology/issues/3)
+
 ### Characterising species
 
 36-38s full classification in Protege of all.owl.ttl

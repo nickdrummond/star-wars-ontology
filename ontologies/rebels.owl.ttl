@@ -1268,7 +1268,7 @@
                                                                                                      )
                                                                                        ]
                                                                                        [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty :participant ;
+                                                                                         owl:onProperty :target ;
                                                                                          owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                                                                                      owl:onProperty :connectedTo ;
                                                                                                                                      owl:someValuesFrom :The_Force
@@ -2080,6 +2080,10 @@
 :Escape_of_Chopper_and_AP-5 rdf:type owl:NamedIndividual ,
                                      :Escape ,
                                      [ rdf:type owl:Restriction ;
+                                       owl:onProperty :found ;
+                                       owl:someValuesFrom :Base
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
                                        owl:onProperty :included ;
                                        owl:someValuesFrom [ owl:intersectionOf ( :Communication
                                                                                  [ rdf:type owl:Restriction ;
@@ -2113,13 +2117,6 @@
                                                                                  ]
                                                                                ) ;
                                                             rdf:type owl:Class
-                                                          ]
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :included ;
-                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :found ;
-                                                            owl:someValuesFrom :Base
                                                           ]
                                      ] ,
                                      [ rdf:type owl:Restriction ;
@@ -2786,7 +2783,7 @@
                                    owl:onProperty :included ;
                                    owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                                owl:onProperty :killingOf ;
-                                                                               owl:someValuesFrom :Tusken_Raider
+                                                                               owl:someValuesFrom :Tusken
                                                                              ]
                                                                              [ rdf:type owl:Restriction ;
                                                                                owl:onProperty :participant ;
@@ -2798,7 +2795,7 @@
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :participant ;
-                                   owl:someValuesFrom :Tusken_Raider
+                                   owl:someValuesFrom :Tusken
                                  ] ;
                         :after :Bringing_Ezra_to_Tatooine ;
                         :during :Hunt_for_Kenobi_on_Tatooine ;
@@ -2945,11 +2942,8 @@
                                               ]
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :included ;
-                           owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                owl:onProperty :traded ;
-                                                owl:someValuesFrom :Power_generators
-                                              ]
+                           owl:onProperty :traded ;
+                           owl:someValuesFrom :Power_generators
                          ] ;
                 :after :Dealing_with_Azmorigan ;
                 :during :Galactic_Civil_War ;
@@ -3341,13 +3335,6 @@
                                                                      ]
                                                 ] ,
                                                 [ rdf:type owl:Restriction ;
-                                                  owl:onProperty :included ;
-                                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :captureOf ;
-                                                                       owl:hasValue :Sabine_Wren
-                                                                     ]
-                                                ] ,
-                                                [ rdf:type owl:Restriction ;
                                                   owl:onProperty :participant ;
                                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :hadRole ;
@@ -3378,6 +3365,7 @@
                                                               ]
                                                 ] ;
                                        :after :Travelling_with_Loth_Wolves ;
+                                       :captureOf :Sabine_Wren ;
                                        :locatedIn :Lothal_Jedi_Temple ;
                                        :participant :Veris_Hydan ;
                                        :witnessedBy :Garazeb_Orrelios ,
@@ -5044,6 +5032,10 @@
 :Mission_to_Jalindi rdf:type owl:NamedIndividual ,
                              :Mission ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :fitted ;
+                               owl:someValuesFrom :Data_spike
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :included ;
                                owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                          [ rdf:type owl:Restriction ;
@@ -5070,13 +5062,6 @@
                                                                          ]
                                                                        ) ;
                                                     rdf:type owl:Class
-                                                  ]
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :included ;
-                               owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :fitted ;
-                                                    owl:someValuesFrom :Data_spike
                                                   ]
                              ] ;
                     :after :Reunion_of_Spectres_on_Yavin_4 ;
@@ -8844,11 +8829,7 @@
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Transmitting_on_frequency_Zero
 :Transmitting_on_frequency_Zero rdf:type owl:NamedIndividual ,
-                                         :Mission ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :included ;
-                                           owl:someValuesFrom :Communication
-                                         ] ;
+                                         :Communication ;
                                 :during :Ezra_Surrenders_to_Thrawn ;
                                 :locatedIn :Ghost ;
                                 :participant :Cikatro_Vizago ,

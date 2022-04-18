@@ -38,7 +38,7 @@ get a different "view" of them depending on which sub-modules we pull in.
 
 ### all
 
-Top level ontology importing all content (except species)
+Top level ontology importing all content.
 
 ### base
 
@@ -70,6 +70,10 @@ axiom requires a reference to a named individual - eg:
 
 
 ### Event ontologies
+
+#### events
+
+Groups all events by importing all eras
 
 #### trilogy
 
@@ -140,4 +144,12 @@ classify individuals in the ontologies
 
 ### species
 
-Deeper characterisation of species by physiology etc
+Deeper characterisation of species by physiology etc.
+
+Warning - loading this ontology slows classification quite substantially
+
+### manufacturers
+
+Characterisation of places/vehicles/droids and objects by who created them.
+
+Warning - loading this ontology slows classification quite substantially

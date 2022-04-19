@@ -566,10 +566,6 @@
 :Mission_to_Pasaana rdf:type owl:NamedIndividual ,
                              :Mission ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :healingOf ;
-                               owl:someValuesFrom :Vexis
-                             ] ,
-                             [ rdf:type owl:Restriction ;
                                owl:onProperty :included ;
                                owl:someValuesFrom [ owl:intersectionOf ( :Capture
                                                                          [ rdf:type owl:Restriction ;
@@ -651,6 +647,21 @@
                                                                                                 owl:onProperty :hadRole ;
                                                                                                 owl:someValuesFrom :JetTrooper
                                                                                               ]
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Healing
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:someValuesFrom :Vexis
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Rey
                                                                          ]
                                                                        ) ;
                                                     rdf:type owl:Class
@@ -921,6 +932,21 @@
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rey_vs_Kylo_DeathStar
 :Rey_vs_Kylo_DeathStar rdf:type owl:NamedIndividual ,
                                 :Duel ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Healing
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Kylo_Ren
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Rey
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :participant ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :The_Force

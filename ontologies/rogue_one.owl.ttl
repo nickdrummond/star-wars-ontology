@@ -86,10 +86,36 @@
                            :Capture ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :hadRole ;
+                                                                                              owl:someValuesFrom :Death_trooper
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :injuryOf ;
+                                                                         owl:hasValue :Orson_Krennic
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :killingOf ;
+                                                                         owl:hasValue :Lyra_Erso
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Hiding
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
                                                                          owl:hasValue :Jyn_Erso
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Saw_Gerrera
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -104,10 +130,8 @@
                            ] ;
                   :captureOf :Galen_Erso ;
                   :escapeOf :Jyn_Erso ;
-                  :killingOf :Lyra_Erso ;
                   :locatedIn :Lah_mu ;
-                  :participant :Orson_Krennic ,
-                               :Saw_Gerrera ;
+                  :participant :Orson_Krennic ;
                   :year -13 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Galen_Walton_Erso#Time_on_Lah.27mu"^^xsd:anyURI .
 

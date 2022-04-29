@@ -85,14 +85,26 @@
 :Capture_of_Galen rdf:type owl:NamedIndividual ,
                            :Capture ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :killingOf ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Hiding
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Jyn_Erso
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
                              owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                  owl:onProperty :hadDaughter ;
-                                                  owl:hasValue :Jyn_Erso
+                                                  owl:onProperty :hadRole ;
+                                                  owl:someValuesFrom :Death_trooper
                                                 ]
                            ] ;
                   :captureOf :Galen_Erso ;
                   :escapeOf :Jyn_Erso ;
+                  :killingOf :Lyra_Erso ;
                   :locatedIn :Lah_mu ;
                   :participant :Orson_Krennic ,
                                :Saw_Gerrera ;

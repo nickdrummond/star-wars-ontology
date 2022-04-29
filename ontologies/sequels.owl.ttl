@@ -710,7 +710,22 @@
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mutiny_on_the_Raddus
 :Mutiny_on_the_Raddus rdf:type owl:NamedIndividual ,
-                               :Confrontation ;
+                               :Confrontation ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Evacuation
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :used ;
+                                                                             owl:someValuesFrom :U-55_orbital_loadlifter
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :MC85_Raddus
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
                       :after :Attack_on_the_Raddus ;
                       :during :Attack_on_the_Resistance_fleet ;
                       :locatedIn :MC85_Raddus ;

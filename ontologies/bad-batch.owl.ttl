@@ -62,6 +62,64 @@
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Common_Ground#Curfew_on_Raxus"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Attack_on_the_Ryloth_Refinery
+:Attack_on_the_Ryloth_Refinery rdf:type owl:NamedIndividual ,
+                                        :Attack ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :used ;
+                                                                                      owl:someValuesFrom :Rho-class_transport_shuttle
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Hera_Syndulla
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Omega
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Tech
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Wrecker
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :used ;
+                                                                                      owl:hasValue :Marauder
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Sabotage
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :C1-10P
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ;
+                               :after :Hera_asks_Omega_for_help ;
+                               :locatedIn :Imperial_doonium_refinery ;
+                               :year -19 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_on_Ryloth#Attacking_the_refinery"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Battle_of_Kaller
 :Battle_of_Kaller rdf:type owl:NamedIndividual ,
                            :Battle ,
@@ -382,6 +440,21 @@
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Cut_and_Run#The_chain_code_heist"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Hera_asks_Omega_for_help
+:Hera_asks_Omega_for_help rdf:type owl:NamedIndividual ,
+                                   :Communication ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :about ;
+                                     owl:someValuesFrom :Rescue
+                                   ] ;
+                          :after :Rescue_Hera_from_Orn ;
+                          :locatedIn :Ryloth ;
+                          :participant :Bad_Batch ,
+                                       :Hera_Syndulla ;
+                          :year -19 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_on_Ryloth#A_call_for_help"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Hiding_out_with_Cut
 :Hiding_out_with_Cut rdf:type owl:NamedIndividual ,
                               :Hiding ,
@@ -514,9 +587,9 @@
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
-:Order_66 rdf:type _:genid163 .
+:Order_66 rdf:type _:genid187 .
 
-_:genid163 rdf:type owl:Restriction ;
+_:genid187 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                         owl:onProperty :killingOf ;
@@ -536,7 +609,7 @@ _:genid163 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid163 ;
+   owl:annotatedTarget _:genid187 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -893,6 +966,41 @@ _:genid163 rdf:type owl:Restriction ;
                  :target :Omega ;
                  :year -19 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)#Traitors_to_the_Empire"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_of_the_Syndullas
+:Rescue_of_the_Syndullas rdf:type owl:NamedIndividual ,
+                                  :Rescue ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :freeingOf ;
+                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :memberOf ;
+                                                         owl:hasValue :Free_Ryloth_Movement
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Defection
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Howzer
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         :captureOf :Howzer ;
+                         :during :Attack_on_the_Ryloth_Refinery ;
+                         :freeingOf :Cham_Syndulla ,
+                                    :Eleni_Syndulla ,
+                                    :Gobi_Glie ;
+                         :locatedIn :Lessu ;
+                         :participant :Crosshair ,
+                                      :Crosshairs_Squad ,
+                                      :Echo ,
+                                      :Hunter ;
+                         :year -19 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_on_Ryloth#Rescuing_the_Ryloth_resistance"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Retrieve_Ruby

@@ -3119,6 +3119,12 @@
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Dune_Sea"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Durand_family
+:Durand_family rdf:type owl:NamedIndividual ,
+                        :Crime_Syndicate ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Durand_crime_family"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#EV-A4-D
 :EV-A4-D rdf:type owl:NamedIndividual ,
                   :EV-series_medical_Droid ;
@@ -8400,6 +8406,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hasTerrain ;
                         owl:someValuesFrom :Water
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :homeworldOf ;
+                        owl:someValuesFrom :Irling
                       ] ;
              :locatedIn :Bright_Jewel_sector ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Ord_Mantell"^^xsd:anyURI .
@@ -9833,6 +9843,27 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                     :Cell ;
            :memberOf :Rebel_Alliance ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Rogue_One"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Roland_Durand
+:Roland_Durand rdf:type owl:NamedIndividual ,
+                        :Devaronian ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :gender ;
+                          owl:someValuesFrom :Male
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Criminal
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :inOrganisation ;
+                                                                      owl:hasValue :Durand_family
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Roland_Durand"^^xsd:string .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rose_Tico

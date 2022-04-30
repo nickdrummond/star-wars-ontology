@@ -15,7 +15,7 @@ A hand-built [OWL](https://www.w3.org/OWL/) ontology covering characters, events
 * Resistance - first pass
 * Rebels - first pass
 * Clone Wars - in progress
-* The Bad Batch - in progress
+* The Bad Batch - first pass
 * The Book of Boba Fett - to do
 
 ## Status
@@ -36,9 +36,9 @@ A hand-built [OWL](https://www.w3.org/OWL/) ontology covering characters, events
 
 | Content                | Count |
 |------------------------|-------|
-| Events                 | 508   |
+| Events                 | 509   |
 | Characters             | 424   |
-| Species                | 166   |
+| Species                | 167   |
 | Planets and Moons      | 121   |
 | Built locations        | 92    |
 | Organisations or units | 143   |
@@ -46,20 +46,20 @@ A hand-built [OWL](https://www.w3.org/OWL/) ontology covering characters, events
 
 | Structure             | Count  |
 |-----------------------|--------|
-| Axiom                 | 14,563 |
-| Logical axioms        | 10,289 |
-| Declaration axioms    | 2,346  |
-| Classes               | 784    |
+| Axiom                 | 14,589 |
+| Logical axioms        | 10,310 |
+| Declaration axioms    | 2,349  |
+| Classes               | 786    |
 | Object properties     | 112    |
 | Data properties       | 6      |
-| Individuals           | 1,444  |
+| Individuals           | 1,445  |
 | Annotation Properties | 5      |
 
 ## Usage
 
 * Open [all.owl.ttl](ontologies/all.owl.ttl) with open-source OWL editor, [Protege](https://protege.stanford.edu/) or
   another semantic web editor/browser
-* Set the default reasoner to classify/reason with as `Pellet`
+* Set the default reasoner to classify/reason with as `Pellet` on events.owl
 * See [tools](docs/tools.md) for other tool related discussion
 
 ---

@@ -62,6 +62,18 @@
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Common_Ground#Curfew_on_Raxus"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Arrest_of_Lama_Su
+:Arrest_of_Lama_Su rdf:type owl:NamedIndividual ,
+                            :Confrontation ;
+                   :after :Evacuation_of_Tipoca ;
+                   :captureOf :Lama_Su ,
+                              :Nala_Se ;
+                   :locatedIn :Tipoca_City ;
+                   :orderedBy :Rampart ;
+                   :year -19 ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/War-Mantle#Imperial_captivity"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Attack_on_the_Ryloth_Refinery
 :Attack_on_the_Ryloth_Refinery rdf:type owl:NamedIndividual ,
                                         :Attack ,
@@ -204,6 +216,53 @@
                                :Grey ;
                   :year -19 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Chase_of_CC-5576
+:Chase_of_CC-5576 rdf:type owl:NamedIndividual ,
+                           :Chase ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :about ;
+                                                                         owl:someValuesFrom :Rescue
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Rex
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :Massiff
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hadRole ;
+                                                  owl:someValuesFrom :Trooper
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :captureOf ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass [ owl:intersectionOf ( :Clone
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :callsign ;
+                                                                  owl:hasValue "CC-5576"^^xsd:string
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ]
+                           ] ;
+                  :after :Stealing_Spice_from_Roland_Durand ;
+                  :locatedIn :Daro ;
+                  :year -19 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/War-Mantle#Distress_call"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Crash_on_Ordo_Moon
@@ -391,6 +450,43 @@
                                    :Todo_360 ;
                       :year -19 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_Lost#Escape_attempt"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Evacuation_of_Tipoca
+:Evacuation_of_Tipoca rdf:type owl:NamedIndividual ,
+                               :Evacuation ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :about ;
+                                                                             owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                         owl:onProperty :of ;
+                                                                                                                         owl:someValuesFrom :Kaminoan
+                                                                                                                       ]
+                                                                                                                     ) ;
+                                                                                                  rdf:type owl:Class
+                                                                                                ]
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Lama_Su
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Nala_Se
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      :after :Chase_of_CC-5576 ;
+                      :of :Tipoca_City ;
+                      :orderedBy :Rampart ;
+                      :witnessedBy :Nala_Se ;
+                      :year -19 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/War-Mantle#A_looming_storm"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Helping_the_Lawquanes_escape
@@ -587,9 +683,9 @@
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
-:Order_66 rdf:type _:genid187 .
+:Order_66 rdf:type _:genid215 .
 
-_:genid187 rdf:type owl:Restriction ;
+_:genid215 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                         owl:onProperty :killingOf ;
@@ -609,7 +705,7 @@ _:genid187 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid187 ;
+   owl:annotatedTarget _:genid215 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -906,6 +1002,83 @@ _:genid187 rdf:type owl:Restriction ;
    owl:assertionProperty :participant ;
    owl:targetIndividual :Omega
  ] .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_of_Gregor
+:Rescue_of_Gregor rdf:type owl:NamedIndividual ,
+                           :Rescue ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :found ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Base
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :ownedBy ;
+                                                                         owl:hasValue :Galactic_Empire
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :hadRole ;
+                                                                                              owl:someValuesFrom :StormTrooper
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :injuryOf ;
+                                                                         owl:hasValue :Gregor
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :assistedBy ;
+                                                                         owl:hasValue :Gonky
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :captureOf ;
+                                                                         owl:hasValue :Hunter
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :damageOf ;
+                                                                         owl:hasValue :Marauder
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Omega
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Wrecker
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :LAAT_Gunship
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :participant ;
+                             owl:someValuesFrom :V-Wing
+                           ] ;
+                  :after :Chase_of_CC-5576 ;
+                  :locatedIn :Daro ;
+                  :of :Gregor ;
+                  :participant :Echo ,
+                               :Hunter ,
+                               :Tech ;
+                  :year -19 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/War-Mantle#Planet_fall"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_of_Omega
@@ -1289,8 +1462,11 @@ _:genid187 rdf:type owl:Restriction ;
                                               owl:someValuesFrom [ owl:intersectionOf ( :Journey
                                                                                         [ rdf:type owl:Restriction ;
                                                                                           owl:onProperty :locatedIn ;
-                                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Hive
-                                                                                                                                    :Mine
+                                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Mine
+                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty :locationOf ;
+                                                                                                                                      owl:someValuesFrom :Hive
+                                                                                                                                    ]
                                                                                                                                   ) ;
                                                                                                                rdf:type owl:Class
                                                                                                              ]

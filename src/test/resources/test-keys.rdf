@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://raw.githubusercontent.com/nickdrummond/test-keys/"
+     xml:base="https://raw.githubusercontent.com/nickdrummond/test-keys/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ontologies="https://raw.githubusercontent.com/nickdrummond/test-keys#">
+    <owl:Ontology rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys">
+        <rdfs:comment>This is to pull out the problem identified in issue #23
+
+https://github.com/nickdrummond/starwarsontology/issues/23
+
+This ontology solves the problem by covering all instances of Person.
+
+But this is bad modelling as the set of clones should not be closed and would also be a maintenance problem.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#attendedBy -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#attendedBy"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#ssid -->
+
+    <owl:DatatypeProperty rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#ssid">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment>Used as a key for Person
+
+I don&apos;t think its relevant that ssid is functional, but for this case we&apos;ll keep it as expected</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#Event -->
+
+    <owl:Class rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Event"/>
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#EventsAttendedByNick -->
+
+    <owl:Class rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#EventsAttendedByNick">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#attendedBy"/>
+                        <owl:hasValue rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#Nick-1"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>Given the SSID is a key, why is this behaving as if it isn&apos;t?
+
+We would expect it to be equiv to the Events attended by someone with SSID = 1?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#EventsAttendedBySomeoneWithSSID-1 -->
+
+    <owl:Class rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#EventsAttendedBySomeoneWithSSID-1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#attendedBy"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Person"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#ssid"/>
+                                        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:hasValue>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#Person -->
+
+    <owl:Class rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Person">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jo-2"/>
+                    <rdf:Description rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Nicholas-1"/>
+                    <rdf:Description rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Nick-1"/>
+                </owl:oneOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <owl:hasKey rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#ssid"/>
+        </owl:hasKey>
+        <rdfs:comment>People are identifiable by their SSID
+
+Not sure why the covering axiom is needed for our event inference.
+This would become quite a maintenance burden.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#PersonWithSSID-1 -->
+
+    <owl:Class rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#PersonWithSSID-1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#ssid"/>
+                        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jo-2 -->
+
+    <owl:NamedIndividual rdf:about="https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Jo-2">
+        <rdf:type rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#Person"/>
+        <ontologies:ssid rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</ontologies:ssid>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#Nicholas-1 -->
+
+    <owl:NamedIndividual rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Nicholas-1">
+        <rdf:type rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#Person"/>
+        <ontologies:ssid rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ontologies:ssid>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#Nick-1 -->
+
+    <owl:NamedIndividual rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Nick-1">
+        <rdf:type rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#Person"/>
+        <ontologies:ssid rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ontologies:ssid>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://raw.githubusercontent.com/nickdrummond/test-keys#e -->
+
+    <owl:NamedIndividual rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#e">
+        <rdf:type rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#Event"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#attendedBy"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://raw.githubusercontent.com/nickdrummond/test-keys#Person"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://raw.githubusercontent.com/nickdrummond/test-keys#ssid"/>
+                                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:hasValue>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdf:type>
+        <rdfs:comment>You would want to infer:
+e attendedBy Nick-1
+e attendedBy Nicholas-1
+
+You would also expect the following to be inconsistent:
+NOT(e attendedBy Nick-1)
+
+This only works if you close Person so that it covers all of the instances - if you take that out, you get nothing.</rdfs:comment>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

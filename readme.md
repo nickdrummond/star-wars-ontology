@@ -15,7 +15,7 @@ A hand-built [OWL](https://www.w3.org/OWL/) ontology covering characters, events
 * Resistance - first pass
 * Rebels - first pass
 * Clone Wars - in progress
-* The Bad Batch - skeleton
+* The Bad Batch - in progress
 * The Book of Boba Fett - to do
 
 ## Status
@@ -34,26 +34,26 @@ A hand-built [OWL](https://www.w3.org/OWL/) ontology covering characters, events
 
 ## Metrics
 
-| Content                |Count |
-|------------------------| -- |
-| Events                 |471|
-| Characters             |402|
-| Species                |176|
-| Planets and Moons      |115|
-| Built locations        |82 |
-| Organisations or units |136|
-| Named vehicles         |84 |
+| Content                | Count |
+|------------------------|-------|
+| Events                 | 508   |
+| Characters             | 424   |
+| Species                | 166   |
+| Planets and Moons      | 121   |
+| Built locations        | 92    |
+| Organisations or units | 143   |
+| Named vehicles         | 87    |
 
-| Structure             | Count   |
-|-----------------------|---------|
-| Axiom                 | 13,699  |
-| Logical axioms        | 9,651   |
-| Declaration axioms    | 2,225   |
-| Classes               | 752     |
-| Object properties     | 113     |
-| Data properties       | 6       |
-| Individuals           | 1,354   |
-| Annotation Properties | 5       |
+| Structure             | Count  |
+|-----------------------|--------|
+| Axiom                 | 14,563 |
+| Logical axioms        | 10,289 |
+| Declaration axioms    | 2,346  |
+| Classes               | 784    |
+| Object properties     | 112    |
+| Data properties       | 6      |
+| Individuals           | 1,444  |
+| Annotation Properties | 5      |
 
 ## Usage
 

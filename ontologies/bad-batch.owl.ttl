@@ -360,6 +360,22 @@
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Devil%27s_Deal"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Destruction_of_Tipoca_City
+:Destruction_of_Tipoca_City rdf:type owl:NamedIndividual ,
+                                     :Attack ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:someValuesFrom :Venator-class_Star_Destroyer
+                                     ] ;
+                            :after :Rescue_of_Hunter ;
+                            :destructionOf :Tipoca_City ;
+                            :locatedIn :Kamino ;
+                            :orderedBy :Wilhuff_Tarkin ;
+                            :participant :Rampart ;
+                            :year -19 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Return_to_Kamino#Devastation_of_Tipoca_City"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Escape_from_Bora_Vio
 :Escape_from_Bora_Vio rdf:type owl:NamedIndividual ,
                                :Escape ,
@@ -683,9 +699,9 @@
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Order_66
-:Order_66 rdf:type _:genid215 .
+:Order_66 rdf:type _:genid216 .
 
-_:genid215 rdf:type owl:Restriction ;
+_:genid216 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                         owl:onProperty :killingOf ;
@@ -705,7 +721,7 @@ _:genid215 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid215 ;
+   owl:annotatedTarget _:genid216 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -1079,6 +1095,93 @@ _:genid215 rdf:type owl:Restriction ;
                                :Tech ;
                   :year -19 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/War-Mantle#Planet_fall"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_of_Hunter
+:Rescue_of_Hunter rdf:type owl:NamedIndividual ,
+                           :Rescue ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :found ;
+                                                                         owl:someValuesFrom :Landing_Platform
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :found ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Tunnel
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :locatedIn ;
+                                                                                                                     owl:someValuesFrom :Water
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :assistedBy ;
+                                                                         owl:hasValue :Omega
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :killingOf ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :memberOf ;
+                                                                                              owl:hasValue :Crosshairs_Squad
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :freeingOf ;
+                                                                         owl:hasValue :Hunter
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Crosshair
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Droid
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :hadPurpose ;
+                                                                                                                     owl:someValuesFrom :Training_purpose
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :assistedBy ;
+                                                                         owl:hasValue :Omega
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  :after :Arrest_of_Lama_Su ,
+                         :Rescue_of_Gregor ;
+                  :escapeOf :ES-02 ;
+                  :locatedIn :Tipoca_City ;
+                  :participant :AZI-3 ,
+                               :Echo ,
+                               :Omega ,
+                               :Tech ,
+                               :Wrecker ;
+                  :stunningOf :Crosshair ;
+                  :year -19 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Return_to_Kamino"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Rescue_of_Omega

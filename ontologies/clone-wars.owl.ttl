@@ -1527,6 +1527,16 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Bombad_Jedi"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mission_to_Skako_Minor
+:Mission_to_Skako_Minor rdf:type owl:NamedIndividual ,
+                                 :Mission ;
+                        :after :Mission_to_uncover_seperatist_strategy ;
+                        :during :Battle_of_Anaxes ;
+                        :locatedIn :Skako_Minor ;
+                        :year -19 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Distant_Echo"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Mission_to_find_an_antidote
 :Mission_to_find_an_antidote rdf:type owl:NamedIndividual ,
                                       :Mission ,
@@ -2172,12 +2182,13 @@
 :Rescue_of_Echo rdf:type owl:NamedIndividual ,
                          :Rescue ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :participant ;
-                           owl:someValuesFrom :Keeradak
+                           owl:onProperty :killingOf ;
+                           owl:someValuesFrom :D1-series_aerial_battle_droid
                          ] ;
-                :during :Battle_of_Anaxes ;
-                :escapeOf :Echo ;
-                :locatedIn :Skako_Minor ;
+                :after :Run-in_with_Poletecs ;
+                :during :Mission_to_Skako_Minor ;
+                :freeingOf :Echo ;
+                :locatedIn :Purkoll ;
                 :participant :Anakin_Skywalker ,
                              :Bad_Batch ,
                              :Rex ,
@@ -2444,6 +2455,62 @@
                                :Rotta ;
                   :year -22 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Teth#Aftermath"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Run-in_with_Poletecs
+:Run-in_with_Poletecs rdf:type owl:NamedIndividual ,
+                               :Confrontation ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:someValuesFrom :Keeradak
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Anakin_Skywalker
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :about ;
+                                                                             owl:hasValue :Techno_Union
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :used ;
+                                                                             owl:someValuesFrom :Rock
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Anakin_Skywalker
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :participant ;
+                                 owl:someValuesFrom :Poletec
+                               ] ;
+                      :during :Mission_to_Skako_Minor ;
+                      :locatedIn :Poletec_village ;
+                      :participant :Bad_Batch ,
+                                   :Rex ;
+                      :year -19 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Distant_Echo"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Search_for_R2-D2

@@ -4,6 +4,8 @@ Convor, as in "OWL in Star Wars".
 
 A hand-built [OWL](https://www.w3.org/OWL/) ontology covering characters, events and places in the films and TV series.
 
+[Browse the ontology](https://star-wars-ontology.herokuapp.com/) on heroku. This currently only displays asserted content.
+
 [![Star Wars Ontology (cloud view)](docs/cloud.png)](docs/instances-usage-cloud.pdf)
 
 
@@ -57,6 +59,10 @@ A hand-built [OWL](https://www.w3.org/OWL/) ontology covering characters, events
 
 ## Usage
 
+### Browse
+* https://star-wars-ontology.herokuapp.com/
+
+### Edit/reason
 * Open [all.owl.ttl](ontologies/all.owl.ttl) with open-source OWL editor, [Protege](https://protege.stanford.edu/) or
   another semantic web editor/browser
 * Set the default reasoner to classify/reason with as `Pellet` on events.owl

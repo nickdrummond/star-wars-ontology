@@ -1,10 +1,12 @@
 # Project Convor - Star Wars Ontology
 
-Convor, as in "OWL in Star Wars".
+[Convor](http://star-wars-ontology.herokuapp.com/classes/1070940699/), as in "OWL in Star Wars".
 
 A hand-built [OWL](https://www.w3.org/OWL/) ontology covering characters, events and places in the films and TV series.
 
-[Browse the ontology](https://star-wars-ontology.herokuapp.com/) on heroku. This currently only displays asserted content.
+[Browse the ontology](https://star-wars-ontology.herokuapp.com/) on heroku
+(first page may take a second to load as its using free tier hosting).
+This currently only displays asserted content.
 
 [![Star Wars Ontology (cloud view)](docs/cloud.png)](docs/instances-usage-cloud.pdf)
 

@@ -3,10 +3,8 @@
 [back to index](index.md)
 
 
-For the sake of performance, some assertions have been put in
-[test.owl.ttl](../ontologies/test.owl.ttl) so that inconsistencies can be
-caught during the engineering of these ontologies but not
-at the expense of classification times.
+For the sake of performance, some peripheral assertions have been moved out of the
+event ontologies.
 
 ## Reasoners
 
@@ -20,7 +18,7 @@ Initial testing on `all.owl` using `participatedIn some Murder`:
 |JFact                  |?         | Need to build from source?
 |ELK                    |Partially | fast but v. incomplete - finds Ochi, Ziro but ignores all results from Events. Does not support DataPropertyAssertions, some DataHasValue, some Unions. Some tabs do not work
 
-* Pellet note - min/max Exclusive causing error in unknown circumstances:
+Pellet note - min/max Exclusive causing error in unknown circumstances:
   
 
     InternalReasonerException: Adding type to a pruned node "anon(222)" http://www.w3.org/2001/XMLSchema#int

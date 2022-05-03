@@ -3091,15 +3091,20 @@
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :included ;
-                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :captureOf ;
-                                                         owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                                                         owl:onClass [ rdf:type owl:Class ;
-                                                                       owl:oneOf ( :Anakin_Skywalker
-                                                                                   :Count_Dooku
-                                                                                   :Obi-Wan_Kenobi
-                                                                                 )
-                                                                     ]
+                                    owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :captureOf ;
+                                                                                owl:hasValue :Anakin_Skywalker
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :captureOf ;
+                                                                                owl:hasValue :Count_Dooku
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :captureOf ;
+                                                                                owl:hasValue :Obi-Wan_Kenobi
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
                                                        ]
                                   ] ,
                                   [ rdf:type owl:Restriction ;

@@ -2,6 +2,31 @@
 
 [back to index](index.md)
 
+## Ontology Browser
+
+A demo of the Star Wars Ontology is available to [browse](https://star-wars-ontology.herokuapp.com/).
+
+[Classes](http://star-wars-ontology.herokuapp.com/classes/-200689702),
+[properties](http://star-wars-ontology.herokuapp.com/objectproperties/-102535691),
+[individuals](http://star-wars-ontology.herokuapp.com/individuals/-379490876) etc can all be browsed to understand the structure of the ontologies.
+Cloud views can give a quick feel for where the detail is eg [instance usage](https://star-wars-ontology.herokuapp.com/clouds/individuals)
+
+This demo is a running on a custom built, paired down ontology browser, specifically
+loaded with [all.owl.ttl](http://star-wars-ontology.herokuapp.com/ontologies/1076521066).
+
+It is hosted on heroku using free-tier hardware so can take a moment to first start up if
+its not been used recently. Some upgrades are required to allow reasoning with Pellet (Openllet) such
+that the DL Query tab is running again. See [issue #24](https://github.com/nickdrummond/starwarsontology/issues/24)
+
+The default [ontology browser](https://github.com/nickdrummond/ontology-browser)
+implementation can also be used to load the ontology. There is no online demo running
+as it is reliant on mongo which is no longer supported on heroku:
+* Get the browser - `https://github.com/co-ode-owl-plugins/ontology-browser`
+* Start Mongo - `C:\Program Files\MongoDB\Server\4.4\bin`
+* Start ontology browser - `mvn jetty:run`
+* Navigate to `localhost:8080`
+* Point it at local file: `file:///C:/Users/nickd/Documents/starwarsontology/ontologies/all.owl.ttl`
+
 ## Protege
 
 We used [Protege](https://protege.stanford.edu) to build this ontology
@@ -56,28 +81,8 @@ Issues
 
 Export HTML rendering of the ontology for browsing (read only/asserted only).
 Seems bugged now.
-* html frames not working (in Chrome at least)
-* entity pages contain lots of assertions about other entities!!?!?
-
-## Ontology Browser
-
-HTML rendering of an ontology can be run locally using the [ontology browser](https://github.com/nickdrummond/ontology-browser)
-
-### Use
-
-* Get the browser - `https://github.com/co-ode-owl-plugins/ontology-browser`
-* Start Mongo - `C:\Program Files\MongoDB\Server\4.4\bin`
-* Start ontology browser - `mvn jetty:run`
-* Navigate to `localhost:8080`
-* Point it at local file: `file:///C:/Users/nickd/Documents/starwarsontology/ontologies/all.owl.ttl`
-
-### Thoughts
-* Nice to have cloud views - eg [instance usage](instances-usage-cloud.pdf)
-* Can we add axioms (at least to the in-memory ont)?
-* Can we then export/save changes?
-
-### Bugs
-* see ont browser
+* html frames not working (in Chrome at least).
+* entity pages contain lots of assertions about other entities - looks like this is due to the ontology being modularised.
 
 ## WebProtege
 

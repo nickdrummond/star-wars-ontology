@@ -60,24 +60,41 @@ keep our level of commitment low.
 
 Classification allows low-specificity:
 
-eg Role = Fighter or Trooper or Stormtrooper
+eg hadRole some [Fighter](http://star-wars-ontology.herokuapp.com/classes/-147972479/) /
+[Trooper](http://star-wars-ontology.herokuapp.com/classes/-342567613/) /
+[Stormtrooper](http://star-wars-ontology.herokuapp.com/classes/251660378/) /
+[Scout Trooper](http://star-wars-ontology.herokuapp.com/classes/-959023870/)
 
-There is no need to name everything
+There is no need to name everything:
 
-eg - we can talk about Rey's parents without having to name them.
+eg - we can talk about [Rey's](http://star-wars-ontology.herokuapp.com/individuals/-953035158/) parents without having to name them.
+    
+    hadFather some ( Human and wasCloneOf value Darth_Sidious)
 
-eg People can be born in a range of years
+eg People can be born in a range of years - eg [Din Djarin](http://star-wars-ontology.herokuapp.com/individuals/956466486/) was born before 19BBY
+
+    born some int [<="-19"(int)]
 
 ## Modularity
 
-The ontology is modularised into each episode/series.
+An ontology built in modules allows:
+* focused engineering - keep parts of each story together in one place -
+eg [rogue one](http://star-wars-ontology.herokuapp.com/ontologies/2022284490/)
+* optimisation - expensive modelling/reasoning can be separated off -
+eg [hasPart](http://star-wars-ontology.herokuapp.com/objectproperties/-256302191/),
+[hasTrait](http://star-wars-ontology.herokuapp.com/objectproperties/-822504072/)
+* layering of knowledge - detail can be moved into other modules - 
+eg [manufacturers](http://star-wars-ontology.herokuapp.com/objectproperties/-354745533/)
+* visibility - out of Universe or non-public knowledge can be in their own models - eg behind-the-scenes.owl.ttl
+* responsibility - ontologies could be extended by other fans
 
-As the ontology gets larger, modules help with focus,
-although there is a tradeoff with the fluidity of developing one ontology
+There is a tradeoff with the fluidity of developing one ontology
+
+See [modularisation](modularisation.md) for more details.
 
 ## Referencing
 
-We can reference any number of sources to our entities/assertions - eg Wookipedia
+We can reference any number of sources to our entities/assertions - currently [Wookipedia](https://starwars.fandom.com/)
 
-We could reference images/videos - many ontology tools recognise common formats eg jpg
-But, we would need to deal with permissions/hot linking etc so this is out of scope currently.
+We could reference images/videos - many ontology tools recognise common formats eg jpg.
+But, we would need permissions on images and hosting or hot linking etc so this is out of scope.

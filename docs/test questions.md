@@ -19,36 +19,43 @@ We have the following mechanisms available to us:
 ## Places
 Transitivity on locations allows for containment:
 
-    City and location value Outer_Rim = Cloud City etc
+    City and locatedIn value Outer_Rim = Cloud City, Canto Bight etc
 
 And querying for things that happened in a place:
 
-    Event and location value Tatooine
+    Event and location value Tatooine = Attack_on_Lars_Homestead, Boba_vs_Bib etc
 
 ## Where has Ezra been?
 We can ask the locations of events at which Ezra (or the Spectres) were present:
 
-    inverse(location) some (Event and participant some {Ezra_Bridger, Spectres})
+    locationOf some (Event and participant some {Ezra_Bridger, Spectres})
 
 Or planets that Ahsoka has been to:
 
-    Planet and inverse(location) some (Event and participant value Ahsoka_Tano)
+    Planet and locationOf some (Event and participant value Ahsoka_Tano)
 
-nb see [performance](performance.md) issues around making ```visited``` property chain
+nb. see [performance](performance.md) issues around making ```visited``` property chain
 
-## Is Anakin from Tatooine?
-Is Anakin from the Outer Rim? Get all beings from the Outer Rim:
+## Who is from the Outer Rim?
+Get all beings from the [```Outer Rim```](https://star-wars-ontology.herokuapp.com/individuals/-1386770186/):
 
-    from some (Place and location value Outer_Rim)
+    originallyFrom some (Place and locatedIn value Outer_Rim)
+
+[```Anakin```](https://star-wars-ontology.herokuapp.com/individuals/124477048/)
+is in the results as he is from  [```Mos Espa```](https://star-wars-ontology.herokuapp.com/individuals/-1084757583/)
+
 
 ## Membership of Organisations?
-Mixture of membership and roles
-Handled by property chain on hadRole
+We have a mixture of asserted membership and roles in organisations.
+
+This mixture is handled by property chain on [```memberOf```](https://star-wars-ontology.herokuapp.com/objectproperties/-1602556939/):
+
+    hadRole o inOrganisation -> memberOf    
 
     memberOf value Rebel_Alliance
 
-Includes Holdo, who is not directly asserted to be a member
-Also includes Ezra, who is a member of Spectres
+Includes [```Amilyn_Holdo```](https://star-wars-ontology.herokuapp.com/individuals/1514973977/), who is not directly asserted to be a member
+Also includes [```Ezra_Bridger```](https://star-wars-ontology.herokuapp.com/individuals/-1105472430/), who is a member of [```Spectres```](https://star-wars-ontology.herokuapp.com/individuals/1273958379/)
 
 If we want to ask about who holds a specific role in an org, the following is incomplete - should include ```3-9```:
 
@@ -62,39 +69,68 @@ It makes sense to distinguish, as not all roles are equivalent when looking at t
 A leader of a unit does not make a leader of the army.
 
 ## Born/died before the Battle of Yavin
-Can we do this relative to an event? - ie more granular so we catch Scarif (the same year)
+Can we do this relative to an event? 
+ie more granular so we catch Scarif (the same year)
 
     diedIn some ( year some xsd:int[< 0] )
 
-```sometimeBefore``` is transitive but we don't want to hold a complete timeline for all the story fragments,
+[```sometimeBefore```](https://star-wars-ontology.herokuapp.com/objectproperties/-1091741052/)
+is transitive but we don't want to hold a complete timeline for all the story fragments,
 so we do have to use year aswell
 
     diedIn some (((year some xsd:int[< 0] ) or ((sometimeBefore value Battle_of_Yavin) or (during some (sometimeBefore value Battle_of_Yavin)))))
 
 ## Who is related to Anakin Skywalker?
-- Should include Ben Solo.
-- Also includes Han Solo (as Ben's Father) as related is transitive. Should it?
-- Rex is related to Jango Fett
 
-## Who died during certain events?
-    killedDuring some (Fight and on value Death_Star_1)
+    relatedTo value Anakin_Skywalker
+
+- Should include [```Ben_Solo```](https://star-wars-ontology.herokuapp.com/individuals/791330359/).
+- Also includes [```Han_Solo```](https://star-wars-ontology.herokuapp.com/individuals/-891756947/) (as Ben's Father) as related is transitive. Should it?
+- [```Rex```](https://star-wars-ontology.herokuapp.com/individuals/-953035159/)
+is related to [```Jango Fett```](https://star-wars-ontology.herokuapp.com/individuals/1082292387/)
+
+## Who died in a certain place or by a given hand?
+
+    killedIn some (locatedIn value Death_Star_1)
+
+Included
+[```Obi-Wan_Kenobi```](https://star-wars-ontology.herokuapp.com/individuals/430816088/) and
+[```Biggs_Darklighter```](https://star-wars-ontology.herokuapp.com/individuals/-1217341474/)
+
+    killedIn some (Fight and participant value Darth_Vader)
+
+Included 
+[```Raymus_Antilles```](https://star-wars-ontology.herokuapp.com/individuals/-587033198/)
+
+## Who was in a fight in which StormTroopers were killed?
+
+    participatedIn some (Fight and killingOf some (hadRole some StormTrooper))
+
+Too many to mention
+
+## Any event in which a Star Destroyer was used
+
+    (participant some Star_Destroyer) or included some (participant some Star_Destroyer)
+
+## Any event in which explosives were used
+
+    (used some Explosive) or included some (used some Explosive)
+
+## People meeting/knowing each other
+
+Can we query for the people someone has met?
+Probably not as just being at the same event or a member of a group doesn't mean they've met.
+
+It  depends on the number of people in that event/group
+  - ie not everyone in the Empire knows each other
+  - not everyone at the Battle of Scariff knows each other
+
+### People that participated in the same Events
+
+    participatedIn some (participant value Asajj_Ventress)
 
 ## Different individuals
 
 If we add an allDifferent (and remove Darths/Rens) what else can we assert / query?
 
 For a start, it grinds the reasoner to a halt
-
-## People meeting/knowing each other
-
-Can we query for the people someone has met?
-Probably not as just being at the same event or a member of a group
-
-It  depends on the number of people in that event/group
-  - ie not everyone in the Empire knows each other
-  - not everyone at the Battle of Scariff knows each other
-
-## People that participated in the same Events
-
-    participatedIn some (participant value Asajj_Ventress)
-

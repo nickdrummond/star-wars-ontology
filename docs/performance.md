@@ -86,3 +86,10 @@ Domains/ranges were added to a top level `test` ontology which has now been remo
 
 ### Cardinality
 Cannot add participant min 14000 to the battle of Exegol - it breaks the reasoner!
+
+
+## Different individuals
+
+If we add an allDifferent (and remove Darths/Rens) what else can we assert / query?
+
+For a start, it grinds the reasoner to a halt

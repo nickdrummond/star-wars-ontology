@@ -17,13 +17,42 @@ We have the following mechanisms available to us:
 
 
 ## Places
-Transitivity on locations allows for containment:
 
-    City and locatedIn value Outer_Rim = Cloud City, Canto Bight etc
+### Transitivity on locations
 
-And querying for things that happened in a place:
+    City and locatedIn value Outer_Rim
 
-    Event and location value Tatooine = Attack_on_Lars_Homestead, Boba_vs_Bib etc
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=City+and+locatedIn+value+Outer_Rim&syntax=man)
+ = [```Cloud City```](http://localhost:8080/individuals/723710809/),
+[```Canto Bight```](http://localhost:8080/individuals/-1408061252/) etc
+
+### What events happened in a given location?
+
+    Event and locatedIn value Naboo
+
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28locatedIn+value+Naboo%29&syntax=man)
+
+### Events that happened in a mountainous place
+
+    Event and (locatedIn some (hasTerrain some Mountains))
+
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28locatedIn+some+%28hasTerrain+some+Mountains%29%29&syntax=man)
+ = [```B-Wing_test_flight```](http://localhost:8080/individuals/-533932360/),
+[```First_Battle_of_Geonosis```](http://localhost:8080/individuals/-1153681569/) etc
+
+### What events was Lando involved in?
+
+    Event and participant value Lando_Calrissian
+
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28participant+value+Lando_Calrissian%29&syntax=man)
+
+Or more complete if we also capture sub-events:
+
+    Event and (
+        (participant value Ahsoka_Tano) or
+        (included some (participant value Ahsoka_Tano)))
+
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28%28participant+value+Ahsoka_Tano%29+or+%28included+some+%28participant+value+Ahsoka_Tano%29%29%29&syntax=man)
 
 ## Where has Ezra been?
 We can ask the locations of events at which Ezra (or the Spectres) were present:
@@ -125,12 +154,6 @@ It  depends on the number of people in that event/group
   - ie not everyone in the Empire knows each other
   - not everyone at the Battle of Scariff knows each other
 
-### People that participated in the same Events
+People that participated in the same Events:
 
     participatedIn some (participant value Asajj_Ventress)
-
-## Different individuals
-
-If we add an allDifferent (and remove Darths/Rens) what else can we assert / query?
-
-For a start, it grinds the reasoner to a halt

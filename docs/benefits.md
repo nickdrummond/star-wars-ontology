@@ -57,19 +57,33 @@ This gives us some freedom in modelling - see Specificity below
 
 ### Property inference
 
-Using property hierarchy to infer relationship neighbourhoods
+#### Subproperties
 
-    knew value Anakin_Skywalker
-    knew some (knew value Anakin_Skywalker)
+Exactly the same as classes, properties are arranged in a hierarchy.
 
-    relatedTo value Anakin_Skywalker
+eg an event in which people have different outcomes:
 
-    Event and (participant some Flying_Creature)
+    Boba_vs_Bib:
+        killingOf Bib_Fortuna
+        victoryOf Boba_Fett
+        witnessedBy Fennec_Shand
 
-### Transitivity allows containment/inclusion
+We can ask who were the participants in this event:
+
+    participatedIn value Boba_vs_Bib
+
+[result](http://star-wars-ontology.herokuapp.com/dlquery/?expression=participatedIn+value+Boba_vs_Bib&syntax=man)
+includes all 3 because
+[```killingOf```](http://star-wars-ontology.herokuapp.com/objectproperties/1787688607/),
+[```victoryOf```](http://star-wars-ontology.herokuapp.com/objectproperties/-77329043/) and
+[```witnessedBy```](http://star-wars-ontology.herokuapp.com/objectproperties/-1426501645/) are
+all subproperties of [```participant```](http://star-wars-ontology.herokuapp.com/objectproperties/-185694953/)
+(and [```participatedIn```](http://star-wars-ontology.herokuapp.com/objectproperties/-782323217/) is the inverse of participant)
+
+#### Transitivity
 
 Transitivity is very useful for spatial, temporal and other
-properties
+properties.
 
 eg. Who was killed in the Mid Rim?
 
@@ -94,6 +108,7 @@ A reasoner lets us test this.
 eg There can be no individual Female [Crolute](http://star-wars-ontology.herokuapp.com/classes/1749654878/) 
 as all of the species are Male
 
+If we created a Female Crolute, it would make the ontology inconsistent.
 
 ## Open World
 
@@ -147,7 +162,8 @@ not knowing if they are force sensitive (maybe they don't know themselves)
 
 ## Properties create a network or graph
 
-Any property can be navigated as a graph
+Any property can be navigated as a graph, whether or not they are
+transitive.
 
 eg Event sequence (after/before) and containment (during)
 
@@ -192,7 +208,8 @@ eg [hasPart](http://star-wars-ontology.herokuapp.com/objectproperties/-256302191
 [hasTrait](http://star-wars-ontology.herokuapp.com/objectproperties/-822504072/)
 * layering of knowledge - detail can be moved into other modules - 
 eg [manufacturers](http://star-wars-ontology.herokuapp.com/objectproperties/-354745533/)
-* visibility - out of Universe or non-public knowledge can be in their own models - eg behind-the-scenes.owl.ttl
+* visibility - out of Universe or non-public knowledge can be in their own models - 
+eg [behind-the-scenes.owl.ttl](../ontologies/behind-the-scenes.owl.ttl)
 * extensibility - responsibility for content can be distributed to other fans
 
 There is a tradeoff with the fluidity of developing one ontology

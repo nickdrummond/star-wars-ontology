@@ -12,6 +12,7 @@ We model several aspects of an event:
 - location
 - participants
 
+## Example
 An extract of [Escape_from_Death_Star](https://star-wars-ontology.herokuapp.com/individuals/2106755960/):
 
     Escape_from_Death_Star:

@@ -2,7 +2,7 @@
 
 [Convor](http://star-wars-ontology.herokuapp.com/classes/1070940699/), as in "OWL in Star Wars".
 
-A hand-built [OWL ontology](docs/benefits.md) covering characters, events and places in the films and TV series.
+A hand-built [OWL ontology](docs/benefits.md) focused on events and covering characters, places and things in the films and TV series.
 
 [Browse the ontology](https://star-wars-ontology.herokuapp.com/) on heroku
 (first page may take a second to load as its using free tier hosting).
@@ -25,7 +25,7 @@ This currently only displays asserted content.
 ## Status
 
 * In progress - see scope
-* Open modelling questions
+* Open modelling questions - see [issues](issues)
 * Tests and queries framework
 * Modularisation of events by film/series
 
@@ -38,15 +38,15 @@ This currently only displays asserted content.
 
 ## Metrics
 
-| Content                | Count |
-|------------------------|-------|
-| Events                 | 509   |
-| Characters             | 424   |
-| Species                | 167   |
-| Planets and Moons      | 121   |
-| Built locations        | 92    |
-| Organisations or units | 143   |
-| Named vehicles         | 87    |
+| Content                                                                                                                  | Count |
+|--------------------------------------------------------------------------------------------------------------------------|-------|
+| [Events](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Event&syntax=man)                                   | 512   |
+| [Characters](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Being+or+Droid&syntax=man)                      | 424   |
+| Species                                                                                                                  | 168   |
+| [Planets and Moons](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Planet+or+Moon&syntax=man)               | 121   |
+| [Built locations](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 95    |
+| [Organisations or units](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Organisation&syntax=man)            | 143   |
+| [Named vehicles](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Vehicle&syntax=man)                         | 87    |
 
 | Structure             | Count  |
 |-----------------------|--------|
@@ -62,7 +62,13 @@ This currently only displays asserted content.
 ## Usage
 
 ### Browse
-* https://star-wars-ontology.herokuapp.com/
+
+https://star-wars-ontology.herokuapp.com/
+
+Please be patient - this is on a free-tier heroku stack for demo purposes only.
+
+Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure (not [behind-the-scenes.owl.ttl](ontologies/behind-the-scenes.owl.ttl))
+For efficiency, the query page only includes [event.owl.ttl](ontologies/events.owl.ttl) and its imports - see [docs/performance.md](docs/performance.md)
 
 ### Edit/reason
 * Open [all.owl.ttl](ontologies/all.owl.ttl) with open-source OWL editor, [Protege](https://protege.stanford.edu/) or

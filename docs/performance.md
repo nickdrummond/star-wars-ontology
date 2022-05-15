@@ -3,8 +3,13 @@
 [back to index](index.md)
 
 
-For the sake of performance, some peripheral assertions have been moved out of the
-event ontologies.
+For the sake of performance, some peripheral assertions have been moved into their own ontologies. These are still imported by all.owl.ttl
+
+* species.owl.ttl - traits, anatomy etc
+* manufacturers.owl.ttl - creation of ships/droids etc
+
+Although ```all.owl.ttl``` works with Pellet, it is significantly more responsive 
+reasoning and querying with ```events.owl.ttl```
 
 ## Reasoners
 

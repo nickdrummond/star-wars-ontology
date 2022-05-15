@@ -2,10 +2,15 @@
 
 [back to readme](../readme.md)
 
+## Why OWL? What is an Ontology?
+
+For a brief idea of what an OWL ontology is and discussion of the benefits of using OWL for modelling see
+[benefits.md](benefits.md).
+
 ## Content
 
-The ontology describes Classes and instances of things in the Universe and
-the properties that join these things together.
+The Star Wars Ontology describes things and events in the Universe and
+the properties that join them together.
 
 ### Characters, Places, Species, Objects
 [Sentient](https://star-wars-ontology.herokuapp.com/classes/374374782/) 

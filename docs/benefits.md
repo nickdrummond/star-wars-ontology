@@ -1,21 +1,21 @@
-# Advantages of modelling Star Wars in OWL
+# Why Star Wars in OWL?
 
 ## OWL
 
-OWL is the w3c standard for building ontologies for the Semantic Web.
+[OWL](https://www.w3.org/OWL/) is the w3c standard for building ontologies for the Semantic Web.
+
+An ontology is a knowledge model, containing classes, perhaps instances in
+a domain, and the properties that relate them.
 
 The idea of the Semantic Web is to have a Worldwide web of data, traversable
 and computable by computers. An alternative term is "Linked data".
 
-An ontology is a knowledge model, containing classes, perhaps instances in 
-a domain, and the properties that relate them.
-
-OWL was developed using "Description Logic"
+OWL was developed using "Description Logics"
 that can be computed over, giving us the benefits of inference and reasoning.
 In OWL DL, all assertions are logical axioms that have a well understood
 formal meaning.
 
-It brings with it many benefits, on top of being a well understood standard.
+It brings with it many other benefits, on top of being a well understood standard.
 
 
 ## Inference

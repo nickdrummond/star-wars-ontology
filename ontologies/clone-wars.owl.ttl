@@ -1586,12 +1586,63 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Teth#Prelude"^^xsd:anyURI .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Killing_of_Martez_sisters_parents
+:Killing_of_Martez_sisters_parents rdf:type owl:NamedIndividual ,
+                                            :Crash ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :destructionOf ;
+                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty [ owl:inverseOf :livedIn
+                                                                                  ] ;
+                                                                   owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                        owl:oneOf ( :Rafa_Martez
+                                                                                                    :Trace_Martez
+                                                                                                  )
+                                                                                      ]
+                                                                 ]
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :of ;
+                                              owl:someValuesFrom :Transport
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :participant ;
+                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :hadRole ;
+                                                                   owl:someValuesFrom :Jedi
+                                                                 ]
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :locatedIn ;
+                                              owl:hasValue :Level_1313
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :killingOf ;
+                                              owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                              owl:onClass [ owl:intersectionOf ( :Human
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hadChild ;
+                                                                                   owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                        owl:oneOf ( :Rafa_Martez
+                                                                                                                    :Trace_Martez
+                                                                                                                  )
+                                                                                                      ]
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                            ] ;
+                                   :during :Senate_hostage_crisis ;
+                                   :year -21 ;
+                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Martez_family#Orphans"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Martez_Kessel_Run
 :Martez_Kessel_Run rdf:type owl:NamedIndividual ,
                             :Job ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :included ;
-                              owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                              owl:someValuesFrom [ owl:intersectionOf ( :Argument
                                                                         [ rdf:type owl:Restriction ;
                                                                           owl:onProperty :about ;
                                                                           owl:someValuesFrom :Spice
@@ -1725,11 +1776,131 @@
                            :during :Clone_Wars ;
                            :locatedIn :Oba_Diah ;
                            :participant :Ahsoka_Tano ,
+                                        :Fife ,
                                         :Marg_Krim ,
                                         :Rafa_Martez ,
                                         :Trace_Martez ;
                            :year -19 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Deal_No_Deal#Unsatisfied_customers"^^xsd:anyURI .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Martez_escape_from_the_Pykes
+:Martez_escape_from_the_Pykes rdf:type owl:NamedIndividual ,
+                                       :Escape ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :escapeOf ;
+                                                                                     owl:hasValue :Ahsoka_Tano
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Rafa_Martez
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Trace_Martez
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :witnessedBy ;
+                                                                                     owl:hasValue :Bo-Katan_Kryze
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :about ;
+                                                                                     owl:hasValue :Killing_of_Martez_sisters_parents
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :freeingOf ;
+                                                                                     owl:someValuesFrom :Ithorian
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :freeingOf ;
+                                                                                     owl:someValuesFrom :Weequay
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Trace_Martez
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :used ;
+                                                                                     owl:someValuesFrom :The_Force
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Ahsoka_Tano
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Rafa_Martez
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Torture
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:someValuesFrom <https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#8D-series_smelter_droid>
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Rafa_Martez
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :killingOf ;
+                                         owl:someValuesFrom :Pyke
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :locatedIn ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Prison
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :ownedBy ;
+                                                                                     owl:hasValue :Pyke_Syndicate
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :used ;
+                                         owl:someValuesFrom :MSP80_Pteropter_hover_pod
+                                       ] ;
+                              :after :Martez_dealing_with_Pykes ;
+                              :captureOf :Ahsoka_Tano ,
+                                         :Rafa_Martez ,
+                                         :Trace_Martez ;
+                              :during :Clone_Wars ;
+                              :participant :Fife ;
+                              :year -19 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Dangerous_Debt#The_Martez_sisters'_past"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Martez_journey_to_Kessel

@@ -40,23 +40,23 @@ This currently only displays asserted content.
 
 | Content                                                                                                                  | Count |
 |--------------------------------------------------------------------------------------------------------------------------|-------|
-| [Events](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Event&syntax=man)                                   | 512   |
-| [Characters](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Being+or+Droid&syntax=man)                      | 424   |
+| [Events](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Event&syntax=man)                                   | 520   |
+| [Characters](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Being+or+Droid&syntax=man)                      | 431   |
 | Species                                                                                                                  | 168   |
 | [Planets and Moons](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Planet+or+Moon&syntax=man)               | 121   |
-| [Built locations](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 95    |
-| [Organisations or units](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Organisation&syntax=man)            | 143   |
-| [Named vehicles](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Vehicle&syntax=man)                         | 87    |
+| [Built locations](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 101   |
+| [Organisations or units](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Organisation&syntax=man)            | 147   |
+| [Named vehicles](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Vehicle&syntax=man)                         | 89    |
 
 | Structure             | Count  |
 |-----------------------|--------|
-| Axiom                 | 14,589 |
-| Logical axioms        | 10,310 |
-| Declaration axioms    | 2,349  |
-| Classes               | 786    |
+| Axiom                 | 14,877 |
+| Logical axioms        | 10,518 |
+| Declaration axioms    | 2,390  |
+| Classes               | 798    |
 | Object properties     | 112    |
 | Data properties       | 6      |
-| Individuals           | 1,445  |
+| Individuals           | 1,474  |
 | Annotation Properties | 5      |
 
 ## Usage

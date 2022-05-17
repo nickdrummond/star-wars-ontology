@@ -1348,7 +1348,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Clan
 :Clan rdf:type owl:Class ;
-      rdfs:subClassOf :Organisation ;
+      rdfs:subClassOf :Family ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :memberOf ;
+                        owl:someValuesFrom :House
+                      ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Mandalorian_clan"^^xsd:anyURI .
 
 
@@ -1882,6 +1886,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
      rdfs:subClassOf :Food .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Ejection
+:Ejection rdf:type owl:Class ;
+          rdfs:subClassOf :Event .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Electro-whip
 :Electro-whip rdf:type owl:Class ;
               rdfs:subClassOf :Weapon ;
@@ -2033,7 +2042,7 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Family
 :Family rdf:type owl:Class ;
-        rdfs:subClassOf :Abstract_subject .
+        rdfs:subClassOf :Organisation .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Fang-class_Starfighter
@@ -3185,6 +3194,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
             rdfs:subClassOf :Leader .
 
 
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Majordomo
+:Majordomo rdf:type owl:Class ;
+           rdfs:subClassOf :Vocation ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Majordomo"^^xsd:anyURI .
+
+
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Male
 :Male rdf:type owl:Class ;
       rdfs:subClassOf :Gender .
@@ -3665,6 +3680,12 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Passenger
 :Passenger rdf:type owl:Class ;
            rdfs:subClassOf :Role .
+
+
+###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Patrol_ship
+:Patrol_ship rdf:type owl:Class ;
+             rdfs:subClassOf :Ship ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Patrol_ship"^^xsd:anyURI .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Patrolian
@@ -4425,7 +4446,14 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Spice_Mine
 :Spice_Mine rdf:type owl:Class ;
-            rdfs:subClassOf :Mine .
+            owl:equivalentClass [ owl:intersectionOf ( :Mine
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :created ;
+                                                         owl:someValuesFrom :Spice
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
 
 
 ###  https://raw.githubusercontent.com/nickdrummond/starwarsontology/master/ontologies#Spy
@@ -5425,15 +5453,15 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Academy
                 :Band
-                :Clan
+                :Corporation
                 :Council
                 :Crew
                 :Crime_Syndicate
+                :Family
                 :Fleet
                 :Gang
                 :Guild
                 :House
-                :Manufacturer
                 :Military_Unit
                 :Political_Organisation
                 :Religious_Order

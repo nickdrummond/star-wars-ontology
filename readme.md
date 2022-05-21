@@ -42,7 +42,7 @@ This currently only displays asserted content.
 |--------------------------------------------------------------------------------------------------------------------------|-------|
 | [Events](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Event&syntax=man)                                   | 520   |
 | [Characters](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Being+or+Droid&syntax=man)                      | 431   |
-| Species                                                                                                                  | 168   |
+| [Species](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 168   |
 | [Planets and Moons](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Planet+or+Moon&syntax=man)               | 121   |
 | [Built locations](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 101   |
 | [Organisations or units](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Organisation&syntax=man)            | 147   |

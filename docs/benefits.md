@@ -83,11 +83,11 @@ We can ask who were the participants in this event:
 
 [result](http://star-wars-ontology.herokuapp.com/dlquery/?expression=participatedIn+value+Boba_vs_Bib&syntax=man)
 includes all 3 because
-[```killingOf```](http://star-wars-ontology.herokuapp.com/objectproperties/1787688607/),
-[```victoryOf```](http://star-wars-ontology.herokuapp.com/objectproperties/-77329043/) and
-[```witnessedBy```](http://star-wars-ontology.herokuapp.com/objectproperties/-1426501645/) are
-all subproperties of [```participant```](http://star-wars-ontology.herokuapp.com/objectproperties/-185694953/)
-(and [```participatedIn```](http://star-wars-ontology.herokuapp.com/objectproperties/-782323217/) is the inverse of participant)
+[```killingOf```](http://star-wars-ontology.herokuapp.com/objectproperties/-609369964/),
+[```victoryOf```](http://star-wars-ontology.herokuapp.com/objectproperties/1820579682/) and
+[```witnessedBy```](http://star-wars-ontology.herokuapp.com/objectproperties/471407080/) are
+all subproperties of [```participant```](http://star-wars-ontology.herokuapp.com/objectproperties/1712213772/)
+(and [```participatedIn```](http://star-wars-ontology.herokuapp.com/objectproperties/1115585508/) is the inverse of participant)
 
 #### Transitivity
 
@@ -213,10 +213,10 @@ An ontology built in modules allows:
 * focused engineering - keep parts of each story together in one place -
 eg [rogue one](http://star-wars-ontology.herokuapp.com/ontologies/2022284490/)
 * optimisation - expensive modelling/reasoning can be separated off -
-eg [hasPart](http://star-wars-ontology.herokuapp.com/objectproperties/-256302191/),
-[hasTrait](http://star-wars-ontology.herokuapp.com/objectproperties/-822504072/)
+eg [hasPart](http://star-wars-ontology.herokuapp.com/objectproperties/1641606534/),
+[hasTrait](http://star-wars-ontology.herokuapp.com/objectproperties/1075404653/)
 * layering of knowledge - detail can be moved into other modules - 
-eg [manufacturers](http://star-wars-ontology.herokuapp.com/objectproperties/-354745533/)
+eg [manufacturers](http://star-wars-ontology.herokuapp.com/objectproperties/1543163192/)
 * visibility - out of Universe or non-public knowledge can be in their own models - 
 eg [behind-the-scenes.owl.ttl](../ontologies/behind-the-scenes.owl.ttl)
 * extensibility - responsibility for content can be distributed to other fans

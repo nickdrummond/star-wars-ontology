@@ -1,6 +1,13 @@
-# Modularisation
+[docs](index.md) |
+[benefits](benefits.md) |
+modules |
+[events](events.md) |
+[modelling principles](modelling-principles.md) |
+[test questions](test-questions.md) |
+[performance](performance.md) |
+[tools](tools.md)
 
-[back to index](index.md)
+# Modularisation
 
 ## Options for modules
 

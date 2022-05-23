@@ -1,7 +1,13 @@
+[docs](index.md) |
+[benefits](benefits.md) |
+[modules](modularisation.md) |
+[events](events.md) |
+[modelling principles](modelling-principles.md) |
+[test questions](test-questions.md) |
+performance |
+[tools](tools.md)
+
 # Performance
-
-[back to index](index.md)
-
 
 For the sake of performance, some peripheral assertions have been moved into their own ontologies. These are still imported by all.owl.ttl
 

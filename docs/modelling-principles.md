@@ -1,6 +1,13 @@
-# General modelling principles
+[docs](index.md) |
+[benefits](benefits.md) |
+[modules](modularisation.md) |
+[events](events.md) |
+modelling principles |
+[test questions](test-questions.md) |
+[performance](performance.md) |
+[tools](tools.md)
 
-[back to index](index.md)
+# General modelling principles
 
 ## References
 

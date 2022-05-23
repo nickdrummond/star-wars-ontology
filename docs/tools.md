@@ -1,6 +1,13 @@
-# Tools
+[docs](index.md) |
+[benefits](benefits.md) |
+[modules](modularisation.md) |
+[events](events.md) |
+[modelling principles](modelling-principles.md) |
+[test questions](test-questions.md) |
+[performance](performance.md) |
+tools
 
-[back to index](index.md)
+# Tools
 
 ## Ontology Browser
 

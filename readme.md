@@ -1,3 +1,12 @@
+[docs](docs/) |
+[benefits](docs/benefits.md) |
+[modules](docs/modularisation.md) |
+[events](docs/events.md) |
+[modelling principles](docs/modelling-principles.md) |
+[test questions](docs/test-questions.md) |
+[performance](docs/performance.md) |
+[tools](docs/tools.md)
+
 # Project Convor - Star Wars Ontology
 
 [Convor](http://star-wars-ontology.herokuapp.com/classes/1070940699/), as in "OWL in Star Wars".
@@ -31,7 +40,7 @@ This currently only displays asserted content.
 
 ## Contents
 
-* [docs](docs/index.md) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
+* [docs](docs/) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
 * [ontologies](ontologies/) - Ontologies in ttl (Turtle) OWL format. Start with [all.owl.ttl](ontologies/all.owl.ttl)
 * [src/test](src/test/) - A set of Java tests against the ontology for quality checking etc
 * [sparql](sparql/) - A set of Sparql queries to summarise or infer things about our ontology

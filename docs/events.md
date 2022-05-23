@@ -1,6 +1,13 @@
-# Events
+[docs](index.md) |
+[benefits](benefits.md) |
+[modules](modularisation.md) |
+events |
+[modelling principles](modelling-principles.md) |
+[test questions](test-questions.md) |
+[performance](performance.md) |
+[tools](tools.md)
 
-[back to index](index.md)
+# Events
 
 Events are the storytelling piece that binds the people, places and things together (much like the Force).
 

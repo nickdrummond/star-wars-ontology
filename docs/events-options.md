@@ -1,8 +1,13 @@
+[docs](index.md) |
+[benefits](benefits.md) |
+[modules](modularisation.md) |
+[events](events.md) |
+[modelling principles](modelling-principles.md) |
+[test questions](test-questions.md) |
+[performance](performance.md) |
+[tools](tools.md)
+
 ## Event implementation experiments
-
-[back to events](events.md)
-
-[back to index](index.md)
 
 These were working notes as we worked out the patterns for representing
 events. There are advantages and disadvantages of each approach.

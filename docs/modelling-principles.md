@@ -39,7 +39,7 @@ eg [Torture_of_Shmi](http://star-wars-ontology.herokuapp.com/individuals/1765752
 
 ## Event focussed
 
-* should provide a [`year`](http://star-wars-ontology.herokuapp.com/dataproperties/-949412319/) for all named events, if known
+* should provide a [`year`](http://star-wars-ontology.herokuapp.com/dataproperties/948496406/) for all named events, if known
   * negative numbers are BBY, positive are ABY  
 - may attach involvement in an event to the [`Actor`](http://star-wars-ontology.herokuapp.com/classes/1007884718/), if there is no natural named Event to use
 

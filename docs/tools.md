@@ -13,9 +13,9 @@ tools
 
 A demo of the Star Wars Ontology is available to [browse](https://star-wars-ontology.herokuapp.com/).
 
-[Classes](http://star-wars-ontology.herokuapp.com/classes/-200689702),
-[properties](http://star-wars-ontology.herokuapp.com/objectproperties/-102535691),
-[individuals](http://star-wars-ontology.herokuapp.com/individuals/-379490876) etc can all be browsed to understand the structure of the ontologies.
+[Classes](http://star-wars-ontology.herokuapp.com/classes/),
+[properties](http://star-wars-ontology.herokuapp.com/objectproperties/),
+[individuals](http://star-wars-ontology.herokuapp.com/individuals/) etc can all be browsed to understand the structure of the ontologies.
 Cloud views can give a quick feel for where the detail is eg [instance usage](https://star-wars-ontology.herokuapp.com/clouds/individuals)
 
 This demo is a running on a custom built, paired down ontology browser, specifically

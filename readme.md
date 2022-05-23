@@ -9,7 +9,7 @@
 
 # Project Convor - Star Wars Ontology
 
-[Convor](http://star-wars-ontology.herokuapp.com/classes/1070940699/), as in "OWL in Star Wars".
+[Convor](http://star-wars-ontology.herokuapp.com/classes/-1326117872/), as in "OWL in Star Wars".
 
 A hand-built [OWL ontology](docs/benefits.md) focused on events and covering characters, places and things in the films and TV series.
 

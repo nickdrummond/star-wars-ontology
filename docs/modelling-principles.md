@@ -41,7 +41,7 @@ eg [Torture_of_Shmi](http://star-wars-ontology.herokuapp.com/individuals/1765752
 
 * should provide a [`year`](http://star-wars-ontology.herokuapp.com/dataproperties/-949412319/) for all named events, if known
   * negative numbers are BBY, positive are ABY  
-- may attach involvement in an event to the [`Actor`](http://star-wars-ontology.herokuapp.com/classes/-890024007/), if there is no natural named Event to use
+- may attach involvement in an event to the [`Actor`](http://star-wars-ontology.herokuapp.com/classes/1007884718/), if there is no natural named Event to use
 
 eg [Ochi](http://star-wars-ontology.herokuapp.com/individuals/-950665255/)
     
@@ -65,7 +65,7 @@ eg [Escape_from_the_Garbage_Compactor](http://star-wars-ontology.herokuapp.com/i
 
 - primary classification is species.
 - should assert relations between beings on the one it affects most - eg `Luke trainedBy Obi-wan` 
-unless an [`Event`](http://star-wars-ontology.herokuapp.com/classes/-885778338/) is called for
+unless an [`Event`](http://star-wars-ontology.herokuapp.com/classes/1012130387/) is called for
 - should all have at least one [`hadRole`](http://star-wars-ontology.herokuapp.com/objectproperties/-270082171/) (whether or not in an organisation)
 
 
@@ -77,10 +77,10 @@ unless an [`Event`](http://star-wars-ontology.herokuapp.com/classes/-885778338/)
 
 ## The Force
 
-[`Force_spirits`](http://star-wars-ontology.herokuapp.com/classes/-134719031/),
-[`Force_bonds`](http://star-wars-ontology.herokuapp.com/classes/1173645755/)
+[`Force_spirits`](http://star-wars-ontology.herokuapp.com/classes/1763189694/),
+[`Force_bonds`](http://star-wars-ontology.herokuapp.com/classes/-1223412816/)
 and [`connections`](http://star-wars-ontology.herokuapp.com/objectproperties/771355976/)
-are manifestations of [`The Force`](http://star-wars-ontology.herokuapp.com/classes/639605569/),
+are manifestations of [`The Force`](http://star-wars-ontology.herokuapp.com/classes/-1757453002/),
 not the individual.
 
 [Search_for_Luke](http://star-wars-ontology.herokuapp.com/individuals/-977991436/):
@@ -99,7 +99,7 @@ not the individual.
     participant some (The_Force
         and (connectedTo value Leia_Organa))
 
-[`Force visions`](http://star-wars-ontology.herokuapp.com/classes/-971139616/) are also manifestations of the force, connected to the individual experiencing
+[`Force visions`](http://star-wars-ontology.herokuapp.com/classes/926769109/) are also manifestations of the force, connected to the individual experiencing
 them. The content of the vision is described using [`about`](http://star-wars-ontology.herokuapp.com/objectproperties/-860505743/)
 
 eg [Evacuation_of_Garel](http://star-wars-ontology.herokuapp.com/individuals/-816060537/)
@@ -111,7 +111,7 @@ eg [Evacuation_of_Garel](http://star-wars-ontology.herokuapp.com/individuals/-81
 
 ## Information
 
-[`Information`](http://star-wars-ontology.herokuapp.com/classes/-1611615504/) is
+[`Information`](http://star-wars-ontology.herokuapp.com/classes/286293221/) is
 treated as an object in the Universe, can have a subject and can be 
 [`traded`](http://star-wars-ontology.herokuapp.com/objectproperties/-1818832540/) or
 [`found`](http://star-wars-ontology.herokuapp.com/objectproperties/-855495322/).
@@ -128,7 +128,7 @@ eg [Infiltrating_the_Imperial_Armoury ](http://star-wars-ontology.herokuapp.com/
     stole some (Plans and about some TIE-Interceptor) and
     participant value C1-10P)
 
-[`Communication`](http://star-wars-ontology.herokuapp.com/classes/-1189440102/) events are not an object but may also have a subject
+[`Communication`](http://star-wars-ontology.herokuapp.com/classes/708468623/) events are not an object but may also have a subject
 
 eg [Escape_of_the_Engineer](http://star-wars-ontology.herokuapp.com/individuals/39062091/):
 

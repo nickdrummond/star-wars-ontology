@@ -114,7 +114,7 @@ Assertions must be consistent with the rest of the model.
 
 A reasoner lets us test this.
 
-eg There can be no individual Female [Crolute](http://star-wars-ontology.herokuapp.com/classes/1749654878/) 
+eg There can be no individual Female [Crolute](http://star-wars-ontology.herokuapp.com/classes/-647403693/) 
 as all of the species are Male
 
 If we created a Female Crolute, it would make the ontology inconsistent.
@@ -188,10 +188,10 @@ keep our level of commitment low.
 
 Classification allows control over how specific we wish to be:
 
-eg killingOf some (hadRole some [Fighter](http://star-wars-ontology.herokuapp.com/classes/-147972479/) /
-[Trooper](http://star-wars-ontology.herokuapp.com/classes/-342567613/) /
-[Stormtrooper](http://star-wars-ontology.herokuapp.com/classes/251660378/) /
-[Scout Trooper](http://star-wars-ontology.herokuapp.com/classes/-959023870/))
+eg killingOf some (hadRole some [Fighter](http://star-wars-ontology.herokuapp.com/classes/1749936246/) /
+[Trooper](http://star-wars-ontology.herokuapp.com/classes/1555341112/) /
+[Stormtrooper](http://star-wars-ontology.herokuapp.com/classes/-2145398193/) /
+[Scout Trooper](http://star-wars-ontology.herokuapp.com/classes/938884855/))
 
 ### Naming
 

@@ -77,9 +77,9 @@ axiom requires a reference to a named individual - eg:
     All Clones are clones of Jango Fett
     All Imperial Star Destroyers are owned by the Empire
 
-see [Dark_Lord](http://star-wars-ontology.herokuapp.com/classes/-802425854/), 
-[Clone](http://star-wars-ontology.herokuapp.com/classes/-887913695/),
-[Imperial-class_Star_Destroyer](http://star-wars-ontology.herokuapp.com/classes/200918071/)
+see [Dark_Lord](http://star-wars-ontology.herokuapp.com/classes/1095482871/), 
+[Clone](http://star-wars-ontology.herokuapp.com/classes/1009995030/),
+[Imperial-class_Star_Destroyer](http://star-wars-ontology.herokuapp.com/classes/2098826796/)
 
 
 ### Event ontologies

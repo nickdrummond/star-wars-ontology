@@ -106,7 +106,7 @@ This is because [destructionOf](https://star-wars-ontology.herokuapp.com/objectp
 that are used with objects are subproperties of participant. We also see
 frequent [Sabotage](https://star-wars-ontology.herokuapp.com/classes/771483562/) of objects and the
 [of](https://star-wars-ontology.herokuapp.com/objectproperties/-953113669/) property also implies participation.
-See this [ticket about use of "of"](https://github.com/nickdrummond/starwarsontology/issues/15).
+See this [ticket about use of "of"](https://github.com/nickdrummond/star-wars-ontology/issues/15).
 
 Participants may be property assertions referencing named individuals
 

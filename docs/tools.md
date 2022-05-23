@@ -23,7 +23,7 @@ loaded with [all.owl.ttl](http://star-wars-ontology.herokuapp.com/ontologies/107
 
 It is hosted on heroku using free-tier hardware so can take a moment to first start up if
 its not been used recently. Some upgrades are required to allow reasoning with Pellet (Openllet) such
-that the DL Query tab is running again. See [issue #24](https://github.com/nickdrummond/starwarsontology/issues/24)
+that the DL Query tab is running again. See [issue #24](https://github.com/nickdrummond/star-wars-ontology/issues/24)
 
 The default [ontology browser](https://github.com/nickdrummond/ontology-browser)
 implementation can also be used to load the ontology. There is no online demo running
@@ -32,7 +32,7 @@ as it is reliant on mongo which is no longer supported on heroku:
 * Start Mongo - `C:\Program Files\MongoDB\Server\4.4\bin`
 * Start ontology browser - `mvn jetty:run`
 * Navigate to `localhost:8080`
-* Point it at local file: `file:///C:/Users/nickd/Documents/starwarsontology/ontologies/all.owl.ttl`
+* Point it at local file: `file:///C:/Users/nickd/Documents/star-wars-ontology/ontologies/all.owl.ttl`
 
 ## Protege
 

@@ -46,7 +46,7 @@ There could be a lot of other queries testing
 
 In some specific cases, cardinality on oneOfs cause a large hit.
 They are normally used as a syntax shortcut and should be avoided.
-See [Issue #3](https://github.com/nickdrummond/starwarsontology/issues/3)
+See [Issue #3](https://github.com/nickdrummond/star-wars-ontology/issues/3)
 
 ### Characterising species
 

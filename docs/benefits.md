@@ -46,7 +46,7 @@ Which we can use when reasoning about (querying) Vehicles,
 
     Vehicle and ownedBy value Han_Solo
 
-[result](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Vehicle+and+ownedBy+value+Han_Solo%0D%0A&syntax=man)
+[result](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Vehicle+and+ownedBy+value+Han_Solo%0D%0A&syntax=man&query=instances)
 includes the Millenium Falcon.
 
 
@@ -59,7 +59,7 @@ So we can ask for all Criminals
 
     hadRole some Criminal
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=hadRole+some+Criminal&syntax=man)
+[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=hadRole+some+Criminal&syntax=man&query=instances)
 include Beckett, thieves, smugglers, pirates and more
 
 This gives us some freedom in modelling - see Specificity below
@@ -81,7 +81,7 @@ We can ask who were the participants in this event:
 
     participatedIn value Boba_vs_Bib
 
-[result](http://star-wars-ontology.herokuapp.com/dlquery/?expression=participatedIn+value+Boba_vs_Bib&syntax=man)
+[result](http://star-wars-ontology.herokuapp.com/dlquery/?expression=participatedIn+value+Boba_vs_Bib&syntax=man&query=instances)
 includes all 3 because
 [```killingOf```](http://star-wars-ontology.herokuapp.com/objectproperties/-609369964/),
 [```victoryOf```](http://star-wars-ontology.herokuapp.com/objectproperties/1820579682/) and
@@ -98,14 +98,14 @@ eg. Who was killed in the Mid Rim?
 
     killedIn some (locatedIn value Mid_Rim)
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=killedIn+some+%28locatedIn+value+Mid_Rim%29&syntax=man)
+[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=killedIn+some+%28locatedIn+value+Mid_Rim%29&syntax=man&query=instances)
 includes Qui-Gon Jinn who was killed in Theed, on Naboo, in the Mid Rim
 
 eg. Who is related to Kylo Ren?
 
     relatedTo value Kylo_Ren
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=relatedTo+value+Kylo_Ren&syntax=man)
+[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=relatedTo+value+Kylo_Ren&syntax=man&query=instances)
 includes Shmi
 
 ### Consistency checking

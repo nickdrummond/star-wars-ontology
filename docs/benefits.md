@@ -197,13 +197,13 @@ eg killingOf some (hadRole some [Fighter](http://star-wars-ontology.herokuapp.co
 
 There is no need to name everything:
 
-eg - we can talk about [Rey's](http://star-wars-ontology.herokuapp.com/individuals/-953035158/) parents without having to name them.
+eg - we can talk about [Rey's](http://star-wars-ontology.herokuapp.com/individuals/944873567/) parents without having to name them.
     
     Rey -> hadFather some ( Human and wasCloneOf value Darth_Sidious)
 
 ### Ranges
 
-eg People can be born in a range of years - eg [Din Djarin](http://star-wars-ontology.herokuapp.com/individuals/956466486/) was born before 19BBY
+eg People can be born in a range of years - eg [Din Djarin](http://star-wars-ontology.herokuapp.com/individuals/-1440592085/) was born before 19BBY
 
     Din -> born some int [<="-19"(int)]
 

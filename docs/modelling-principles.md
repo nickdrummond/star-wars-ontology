@@ -33,7 +33,7 @@ eg [`after`](http://star-wars-ontology.herokuapp.com/objectproperties/1037526453
 
 - should use negation sparingly as it is a strong assertion at risk of being wrong - eg "no survivors"
 
-eg [Torture_of_Shmi](http://star-wars-ontology.herokuapp.com/individuals/1765752841/)
+eg [Torture_of_Shmi](http://star-wars-ontology.herokuapp.com/individuals/-631305730/)
 
     not (survivedBy some (Tusken and originallyFrom value Tusken_Raider_camp))
 
@@ -43,7 +43,7 @@ eg [Torture_of_Shmi](http://star-wars-ontology.herokuapp.com/individuals/1765752
   * negative numbers are BBY, positive are ABY  
 - may attach involvement in an event to the [`Actor`](http://star-wars-ontology.herokuapp.com/classes/1007884718/), if there is no natural named Event to use
 
-eg [Ochi](http://star-wars-ontology.herokuapp.com/individuals/-950665255/)
+eg [Ochi](http://star-wars-ontology.herokuapp.com/individuals/947243470/)
     
     participatedIn some (Murder and
     deathOf some (hadChild value Rey))
@@ -55,7 +55,7 @@ eg [Ochi](http://star-wars-ontology.herokuapp.com/individuals/-950665255/)
 - should use [`during`](http://star-wars-ontology.herokuapp.com/objectproperties/-375708134/) between named events - not its inverse
 - should use [`included`](http://star-wars-ontology.herokuapp.com/objectproperties/1035051157/) in subclassOf restrictions on event if its not worth naming
 
-eg [Escape_from_the_Garbage_Compactor](http://star-wars-ontology.herokuapp.com/individuals/733282715/):
+eg [Escape_from_the_Garbage_Compactor](http://star-wars-ontology.herokuapp.com/individuals/-1663775856/):
 
     included some(Attack 
     and (participant some Dianoga)
@@ -83,18 +83,18 @@ and [`connections`](http://star-wars-ontology.herokuapp.com/objectproperties/-16
 are manifestations of [`The Force`](http://star-wars-ontology.herokuapp.com/classes/-1757453002/),
 not the individual.
 
-[Search_for_Luke](http://star-wars-ontology.herokuapp.com/individuals/-977991436/):
+[Search_for_Luke](http://star-wars-ontology.herokuapp.com/individuals/919917289/):
 
     participant some (Force_spirit
         and (connectedTo value Obi-Wan_Kenobi))
 
-[Attack_on_Phoenix_Squadron](http://star-wars-ontology.herokuapp.com/individuals/140937268/):
+[Attack_on_Phoenix_Squadron](http://star-wars-ontology.herokuapp.com/individuals/2038845993/):
 
     participant some (Force_Bond
         and (connectedTo value Ahsoka_Tano)
         and (connectedTo value Darth_Vader))
     
-[Rey_vs_Kylo_DeathStar](http://star-wars-ontology.herokuapp.com/individuals/-934572091/):
+[Rey_vs_Kylo_DeathStar](http://star-wars-ontology.herokuapp.com/individuals/963336634/):
 
     participant some (The_Force
         and (connectedTo value Leia_Organa))
@@ -102,7 +102,7 @@ not the individual.
 [`Force visions`](http://star-wars-ontology.herokuapp.com/classes/926769109/) are also manifestations of the force, connected to the individual experiencing
 them. The content of the vision is described using [`about`](http://star-wars-ontology.herokuapp.com/objectproperties/1037402982/)
 
-eg [Evacuation_of_Garel](http://star-wars-ontology.herokuapp.com/individuals/-816060537/)
+eg [Evacuation_of_Garel](http://star-wars-ontology.herokuapp.com/individuals/1081848188/)
 
     participant some (Force_Vision
         and (connectedTo value Ezra_Bridger)
@@ -116,13 +116,13 @@ treated as an object in the Universe, can have a subject and can be
 [`traded`](http://star-wars-ontology.herokuapp.com/objectproperties/79076185/) or
 [`found`](http://star-wars-ontology.herokuapp.com/objectproperties/1042413403/).
 
-eg [Meeting_Cid ](http://star-wars-ontology.herokuapp.com/individuals/-168351138/):
+eg [Meeting_Cid ](http://star-wars-ontology.herokuapp.com/individuals/1729557587/):
 
     traded some (Information and about value Fennec_Shand)
 
 We might be interested in the form of the information
 
-eg [Infiltrating_the_Imperial_Armoury ](http://star-wars-ontology.herokuapp.com/individuals/1585959945/):
+eg [Infiltrating_the_Imperial_Armoury ](http://star-wars-ontology.herokuapp.com/individuals/-811098626/):
 
     included some (
     stole some (Plans and about some TIE-Interceptor) and
@@ -130,7 +130,7 @@ eg [Infiltrating_the_Imperial_Armoury ](http://star-wars-ontology.herokuapp.com/
 
 [`Communication`](http://star-wars-ontology.herokuapp.com/classes/708468623/) events are not an object but may also have a subject
 
-eg [Escape_of_the_Engineer](http://star-wars-ontology.herokuapp.com/individuals/39062091/):
+eg [Escape_of_the_Engineer](http://star-wars-ontology.herokuapp.com/individuals/1936970816/):
 
     included some ( Communication and
     about value Colossus and

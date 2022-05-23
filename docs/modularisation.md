@@ -31,7 +31,7 @@ this can defeat our modelling principles of turning relations around in order to
 
 Only events should be modelled outside the core modules? Even these are becoming
 more "mobile" as timelines are interlinked in the storytelling
-(eg The [`Hosnian Cataclysm`](http://star-wars-ontology.herokuapp.com/individuals/-580865096/)).
+(eg The [`Hosnian Cataclysm`](http://star-wars-ontology.herokuapp.com/individuals/1317043629/)).
 We will then assert their links in the timeline of each module.
 
 The only alternative is to accept constant moving or duplicating assertions in multiple places when characters cross over - but what level of duplication is ok?
@@ -61,7 +61,7 @@ Which means we want to avoid making statements like "Mon Calamari are all from M
 
     Mon_Calamari subclassOf (originallyFrom value Mon_Cala)
 
-Instead, we can have the weaker (but probably more accurate) definition of [Mon_Cala](http://star-wars-ontology.herokuapp.com/individuals/-1227980342/):
+Instead, we can have the weaker (but probably more accurate) definition of [Mon_Cala](http://star-wars-ontology.herokuapp.com/individuals/669928383/):
 
     Mon_Cala type (homeworldOf some Mon_Calamari)
 

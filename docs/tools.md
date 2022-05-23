@@ -19,7 +19,7 @@ A demo of the Star Wars Ontology is available to [browse](https://star-wars-onto
 Cloud views can give a quick feel for where the detail is eg [instance usage](https://star-wars-ontology.herokuapp.com/clouds/individuals)
 
 This demo is a running on a custom built, paired down ontology browser, specifically
-loaded with [all.owl.ttl](http://star-wars-ontology.herokuapp.com/ontologies/1076521066).
+loaded with [all.owl.ttl](http://star-wars-ontology.herokuapp.com/ontologies/-1715300141).
 
 It is hosted on heroku using free-tier hardware so can take a moment to first start up if
 its not been used recently. Some upgrades are required to allow reasoning with Pellet (Openllet) such

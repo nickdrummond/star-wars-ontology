@@ -45,11 +45,11 @@ get a different "view" of them depending on which sub-modules we pull in.
     
 ## Modules
 
-### [all](http://star-wars-ontology.herokuapp.com/ontologies/1076521066/)
+### [all](http://star-wars-ontology.herokuapp.com/ontologies/-1715300141/)
 
 Top level ontology importing all content.
 
-### [base](http://star-wars-ontology.herokuapp.com/ontologies/1600905306/)
+### [base](http://star-wars-ontology.herokuapp.com/ontologies/-1190915901/)
 
 Describes all Classes and Properties.
 There are quite a small number of restrictions on classes at this level
@@ -65,7 +65,7 @@ Instead, we can have the weaker (but probably more accurate) definition of [Mon_
 
     Mon_Cala type (homeworldOf some Mon_Calamari)
 
-### [star-wars](http://star-wars-ontology.herokuapp.com/ontologies/2046084515/)
+### [star-wars](http://star-wars-ontology.herokuapp.com/ontologies/-745736692/)
 
 Instance level information about characters, places, objects and a
 small number of events that are widely referenced in the wider timeline.
@@ -84,14 +84,14 @@ see [Dark_Lord](http://star-wars-ontology.herokuapp.com/classes/1095482871/),
 
 ### Event ontologies
 
-#### [events](http://star-wars-ontology.herokuapp.com/ontologies/-1519811390/)
+#### [events](http://star-wars-ontology.herokuapp.com/ontologies/-16665301/)
 
 Groups all events by importing all eras.
 
 This is the ontology to load if you want to reason over events as the peripheral
 ontologies with expensive modelling are not included.
 
-#### [trilogy](http://star-wars-ontology.herokuapp.com/ontologies/1219913349/)
+#### [trilogy](http://star-wars-ontology.herokuapp.com/ontologies/-1571907858/)
 
 Events from the original trilogy
 
@@ -99,7 +99,7 @@ Events from the original trilogy
 * chapter V, The Empire Strikes Back
 * chapter VI, Return of the Jedi
 
-#### [prequels](http://star-wars-ontology.herokuapp.com/ontologies/-477288162/)
+#### [prequels](http://star-wars-ontology.herokuapp.com/ontologies/1025857927/)
 
 Events from the prequel trilogy
 
@@ -107,7 +107,7 @@ Events from the prequel trilogy
 * chapter II, Attack of the Clones
 * chapter III, Revenge of the Sith
 
-#### [sequels](http://star-wars-ontology.herokuapp.com/ontologies/1997273779/)
+#### [sequels](http://star-wars-ontology.herokuapp.com/ontologies/-794547428/)
 
 Events from the sequel trilogy
 
@@ -115,33 +115,33 @@ Events from the sequel trilogy
 * chapter VIII, The Last Jedi
 * chapter IX, The Rise of Skywalker
 
-#### [rogue_one](http://star-wars-ontology.herokuapp.com/ontologies/2022284490/)
+#### [rogue_one](http://star-wars-ontology.herokuapp.com/ontologies/-769536717/)
 
 Events from the film
 
-#### [solo](http://star-wars-ontology.herokuapp.com/ontologies/-1304173984/)
+#### [solo](http://star-wars-ontology.herokuapp.com/ontologies/198972105/)
 
 Events from the film
 
-#### [mandalorian](http://star-wars-ontology.herokuapp.com/ontologies/-218785637/)
+#### [mandalorian](http://star-wars-ontology.herokuapp.com/ontologies/1284360452/)
 
 Events from 2 seasons
 
-#### [resistance](http://star-wars-ontology.herokuapp.com/ontologies/910433378/)
+#### [resistance](http://star-wars-ontology.herokuapp.com/ontologies/-1881387829/)
 
 Events from 2 seasons. The first season especially was challenging to model in the existing framework as there is less direct conflict and a lot of the story is relationship driven. We can use this experience to expand some of the more subtle plot points in the rest of the Universe.
 
 There are links to the timeline of the sequels as yet to be resolved. eg Hosnian Cataclysm.
 
-#### [rebels](http://star-wars-ontology.herokuapp.com/ontologies/-2033952650/)
+#### [rebels](http://star-wars-ontology.herokuapp.com/ontologies/-530806561/)
 
 Events from 4 seasons
 
-#### [clone_wars](http://star-wars-ontology.herokuapp.com/ontologies/-224584084/)
+#### [clone_wars](http://star-wars-ontology.herokuapp.com/ontologies/1278562005/)
 
 Events from 7 seasons
 
-#### [bad_batch](http://star-wars-ontology.herokuapp.com/ontologies/1898744479/)
+#### [bad_batch](http://star-wars-ontology.herokuapp.com/ontologies/-893076728/)
 
 Events from 1 season
 
@@ -149,19 +149,19 @@ Events from 1 season
 
 Grouping events by the timespan they occur during:
 
-* [republic-era](http://star-wars-ontology.herokuapp.com/ontologies/1290432116/)
-* [imperial-era](http://star-wars-ontology.herokuapp.com/ontologies/113414447/)
-* [new-republic-era](http://star-wars-ontology.herokuapp.com/ontologies/2022931029/)
+* [republic-era](http://star-wars-ontology.herokuapp.com/ontologies/-1501389091/)
+* [imperial-era](http://star-wars-ontology.herokuapp.com/ontologies/1616560536/)
+* [new-republic-era](http://star-wars-ontology.herokuapp.com/ontologies/-768890178/)
 
 ### Peripheral/deeper ontologies
 
-#### [species](http://star-wars-ontology.herokuapp.com/ontologies/-852890927/)
+#### [species](http://star-wars-ontology.herokuapp.com/ontologies/650255162/)
 
 Deeper characterisation of species by physiology/traits etc.
 
 **Warning** - loading this ontology slows classification quite substantially
 
-#### [manufacturers](http://star-wars-ontology.herokuapp.com/ontologies/-429733585/)
+#### [manufacturers](http://star-wars-ontology.herokuapp.com/ontologies/1073412504/)
 
 Characterisation of places/vehicles/droids and objects by who created them.
 
@@ -171,3 +171,8 @@ Characterisation of places/vehicles/droids and objects by who created them.
 
 Ontology containing some example defined classes that help to
 classify individuals in the ontologies
+
+#### behind-the-scenes
+
+Stub ontology demonstrating that we can model out of Universe knowledge, such as people involved in the making
+of the films/TV series and other aspects.

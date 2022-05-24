@@ -30,8 +30,8 @@ We have the following mechanisms available to us:
     City and locatedIn value Outer_Rim
 
 [result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=City+and+locatedIn+value+Outer_Rim&syntax=man)
- = [```Cloud City```](http://localhost:8080/individuals/723710809/),
-[```Canto Bight```](http://localhost:8080/individuals/-1408061252/) etc
+ = [```Cloud City```](https://star-wars-ontology.herokuapp.com/individuals/723710809/),
+[```Canto Bight```](https://star-wars-ontology.herokuapp.com/individuals/-1408061252/) etc
 
 ### What events happened in a given location?
 
@@ -44,8 +44,8 @@ We have the following mechanisms available to us:
     Event and (locatedIn some (hasTerrain some Mountains))
 
 [result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28locatedIn+some+%28hasTerrain+some+Mountains%29%29&syntax=man)
- = [```B-Wing_test_flight```](http://localhost:8080/individuals/-533932360/),
-[```First_Battle_of_Geonosis```](http://localhost:8080/individuals/-1153681569/) etc
+ = [```B-Wing_test_flight```](https://star-wars-ontology.herokuapp.com/individuals/-533932360/),
+[```First_Battle_of_Geonosis```](https://star-wars-ontology.herokuapp.com/individuals/-1153681569/) etc
 
 ### What events was Lando involved in?
 

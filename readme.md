@@ -34,7 +34,7 @@ This currently only displays asserted content.
 ## Status
 
 * In progress - see scope
-* Open modelling questions - see [issues](issues)
+* Open modelling questions - see [issues on github](https://github.com/nickdrummond/star-wars-ontology/issues)
 * Tests and queries framework
 * Modularisation of events by film/series
 
@@ -76,8 +76,11 @@ https://star-wars-ontology.herokuapp.com/
 
 Please be patient - this is on a free-tier heroku stack for demo purposes only.
 
-Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure (not [behind-the-scenes.owl.ttl](ontologies/behind-the-scenes.owl.ttl))
-For efficiency, the query page only includes [event.owl.ttl](ontologies/events.owl.ttl) and its imports - see [docs/performance.md](docs/performance.md)
+Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
+(not [behind-the-scenes.owl.ttl](ontologies/behind-the-scenes.owl.ttl))
+
+For efficiency, the query page only includes [event.owl.ttl](ontologies/events.owl.ttl) and
+its imports - see [docs/performance.md](docs/performance.md)
 
 ### Edit/reason
 * Open [all.owl.ttl](ontologies/all.owl.ttl) with open-source OWL editor, [Protege](https://protege.stanford.edu/) or

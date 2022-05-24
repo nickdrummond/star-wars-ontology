@@ -18,7 +18,7 @@ additional subclass assertions for sub-events and unnamed participants.
 We still don't model groups that were operating together in a given event.
 
 We also have open questions about the "no survivors" problem.
-See [Torture_of_Shmi](https://star-wars-ontology.herokuapp.com/individuals/1765752841/).
+See [Torture_of_Shmi](https://star-wars-ontology.herokuapp.com/individuals/-631305730/).
 
 ### Options:
 1. Simple property assertions on individuals

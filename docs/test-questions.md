@@ -30,8 +30,8 @@ We have the following mechanisms available to us:
     City and locatedIn value Outer_Rim
 
 [result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=City+and+locatedIn+value+Outer_Rim&syntax=man)
- = [```Cloud City```](https://star-wars-ontology.herokuapp.com/individuals/723710809/),
-[```Canto Bight```](https://star-wars-ontology.herokuapp.com/individuals/-1408061252/) etc
+ = [```Cloud City```](https://star-wars-ontology.herokuapp.com/individuals/-1673347762/),
+[```Canto Bight```](https://star-wars-ontology.herokuapp.com/individuals/489847473/) etc
 
 ### What events happened in a given location?
 
@@ -44,8 +44,8 @@ We have the following mechanisms available to us:
     Event and (locatedIn some (hasTerrain some Mountains))
 
 [result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28locatedIn+some+%28hasTerrain+some+Mountains%29%29&syntax=man)
- = [```B-Wing_test_flight```](https://star-wars-ontology.herokuapp.com/individuals/-533932360/),
-[```First_Battle_of_Geonosis```](https://star-wars-ontology.herokuapp.com/individuals/-1153681569/) etc
+ = [```B-Wing_test_flight```](https://star-wars-ontology.herokuapp.com/individuals/1363976365/),
+[```First_Battle_of_Geonosis```](https://star-wars-ontology.herokuapp.com/individuals/744227156/) etc
 
 ### What events was Lando involved in?
 
@@ -73,25 +73,25 @@ Or planets that Ahsoka has been to:
 nb. see [performance](performance.md) issues around making ```visited``` property chain
 
 ## Who is from the Outer Rim?
-Get all beings from the [```Outer Rim```](https://star-wars-ontology.herokuapp.com/individuals/-1386770186/):
+Get all beings from the [```Outer Rim```](https://star-wars-ontology.herokuapp.com/individuals/511138539/):
 
     originallyFrom some (Place and locatedIn value Outer_Rim)
 
-[```Anakin```](https://star-wars-ontology.herokuapp.com/individuals/124477048/)
-is in the results as he is from  [```Mos Espa```](https://star-wars-ontology.herokuapp.com/individuals/-1084757583/)
+[```Anakin```](https://star-wars-ontology.herokuapp.com/individuals/2022385773/)
+is in the results as he is from  [```Mos Espa```](https://star-wars-ontology.herokuapp.com/individuals/813151142/)
 
 
 ## Membership of Organisations?
 We have a mixture of asserted membership and roles in organisations.
 
-This mixture is handled by property chain on [```memberOf```](https://star-wars-ontology.herokuapp.com/objectproperties/-1602556939/):
+This mixture is handled by property chain on [```memberOf```](https://star-wars-ontology.herokuapp.com/objectproperties/295351786/):
 
     hadRole o inOrganisation -> memberOf    
 
     memberOf value Rebel_Alliance
 
-Includes [```Amilyn_Holdo```](https://star-wars-ontology.herokuapp.com/individuals/1514973977/), who is not directly asserted to be a member
-Also includes [```Ezra_Bridger```](https://star-wars-ontology.herokuapp.com/individuals/-1105472430/), who is a member of [```Spectres```](https://star-wars-ontology.herokuapp.com/individuals/1273958379/)
+Includes [```Amilyn_Holdo```](https://star-wars-ontology.herokuapp.com/individuals/-882084594/), who is not directly asserted to be a member
+Also includes [```Ezra_Bridger```](https://star-wars-ontology.herokuapp.com/individuals/792436295/), who is a member of [```Spectres```](https://star-wars-ontology.herokuapp.com/individuals/-1123100192/)
 
 If we want to ask about who holds a specific role in an org, the following is incomplete - should include ```3-9```:
 
@@ -110,7 +110,7 @@ ie more granular so we catch Scarif (the same year)
 
     diedIn some ( year some xsd:int[< 0] )
 
-[```sometimeBefore```](https://star-wars-ontology.herokuapp.com/objectproperties/-1091741052/)
+[```sometimeBefore```](https://star-wars-ontology.herokuapp.com/objectproperties/806167673/)
 is transitive but we don't want to hold a complete timeline for all the story fragments,
 so we do have to use year aswell
 
@@ -120,23 +120,23 @@ so we do have to use year aswell
 
     relatedTo value Anakin_Skywalker
 
-- Should include [```Ben_Solo```](https://star-wars-ontology.herokuapp.com/individuals/791330359/).
-- Also includes [```Han_Solo```](https://star-wars-ontology.herokuapp.com/individuals/-891756947/) (as Ben's Father) as related is transitive. Should it?
-- [```Rex```](https://star-wars-ontology.herokuapp.com/individuals/-953035159/)
-is related to [```Jango Fett```](https://star-wars-ontology.herokuapp.com/individuals/1082292387/)
+- Should include [```Ben_Solo```](https://star-wars-ontology.herokuapp.com/individuals/-1605728212/).
+- Also includes [```Han_Solo```](https://star-wars-ontology.herokuapp.com/individuals/1006151778/) (as Ben's Father) as related is transitive. Should it?
+- [```Rex```](https://star-wars-ontology.herokuapp.com/individuals/944873566/)
+is related to [```Jango Fett```](https://star-wars-ontology.herokuapp.com/individuals/-1314766184/)
 
 ## Who died in a certain place or by a given hand?
 
     killedIn some (locatedIn value Death_Star_1)
 
 Included
-[```Obi-Wan_Kenobi```](https://star-wars-ontology.herokuapp.com/individuals/430816088/) and
-[```Biggs_Darklighter```](https://star-wars-ontology.herokuapp.com/individuals/-1217341474/)
+[```Obi-Wan_Kenobi```](https://star-wars-ontology.herokuapp.com/individuals/-1966242483/) and
+[```Biggs_Darklighter```](https://star-wars-ontology.herokuapp.com/individuals/680567251/)
 
     killedIn some (Fight and participant value Darth_Vader)
 
 Included 
-[```Raymus_Antilles```](https://star-wars-ontology.herokuapp.com/individuals/-587033198/)
+[```Raymus_Antilles```](https://star-wars-ontology.herokuapp.com/individuals/1310875527/)
 
 ## Who was in a fight in which StormTroopers were killed?
 

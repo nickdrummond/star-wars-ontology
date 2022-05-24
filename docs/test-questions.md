@@ -37,13 +37,13 @@ We have the following mechanisms available to us:
 
     Event and locatedIn value Naboo
 
-[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28locatedIn+value+Naboo%29&syntax=man)
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28locatedIn+value+Naboo%29&syntax=man&query=instances)
 
 ### Events that happened in a mountainous place
 
     Event and (locatedIn some (hasTerrain some Mountains))
 
-[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28locatedIn+some+%28hasTerrain+some+Mountains%29%29&syntax=man)
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28locatedIn+some+%28hasTerrain+some+Mountains%29%29&syntax=man&query=instances)
  = [```B-Wing_test_flight```](https://star-wars-ontology.herokuapp.com/individuals/1363976365/),
 [```First_Battle_of_Geonosis```](https://star-wars-ontology.herokuapp.com/individuals/744227156/) etc
 
@@ -51,7 +51,7 @@ We have the following mechanisms available to us:
 
     Event and participant value Lando_Calrissian
 
-[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28participant+value+Lando_Calrissian%29&syntax=man)
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28participant+value+Lando_Calrissian%29&syntax=man&query=instances)
 
 Or more complete if we also capture sub-events:
 
@@ -59,7 +59,7 @@ Or more complete if we also capture sub-events:
         (participant value Ahsoka_Tano) or
         (included some (participant value Ahsoka_Tano)))
 
-[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28%28participant+value+Ahsoka_Tano%29+or+%28included+some+%28participant+value+Ahsoka_Tano%29%29%29&syntax=man)
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28%28participant+value+Ahsoka_Tano%29+or+%28included+some+%28participant+value+Ahsoka_Tano%29%29%29&syntax=man&query=instances)
 
 ## Where has Ezra been?
 We can ask the locations of events at which Ezra (or the Spectres) were present:
@@ -90,8 +90,11 @@ This mixture is handled by property chain on [```memberOf```](https://star-wars-
 
     memberOf value Rebel_Alliance
 
-Includes [```Amilyn_Holdo```](https://star-wars-ontology.herokuapp.com/individuals/-882084594/), who is not directly asserted to be a member
-Also includes [```Ezra_Bridger```](https://star-wars-ontology.herokuapp.com/individuals/792436295/), who is a member of [```Spectres```](https://star-wars-ontology.herokuapp.com/individuals/-1123100192/)
+Includes [```Amilyn_Holdo```](https://star-wars-ontology.herokuapp.com/individuals/-882084594/), 
+who is not directly asserted to be a member
+
+Also includes [```Ezra_Bridger```](https://star-wars-ontology.herokuapp.com/individuals/792436295/), 
+who is a member of [```Spectres```](https://star-wars-ontology.herokuapp.com/individuals/-1123100192/)
 
 If we want to ask about who holds a specific role in an org, the following is incomplete - should include ```3-9```:
 

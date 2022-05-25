@@ -18,17 +18,21 @@ Import or load directly from this directory - eg:
 
 ## Contents
 
+<div id="index">
+
+</div>
+
 <script>
   (async () => {
-    const response = await fetch('https://api.github.com/repos/nickdrummond/star-wars-ontology/contents/');
+    const response = await fetch('https://api.github.com/repos/nickdrummond/star-wars-ontology/contents/ontologies/');
     const data = await response.json();
     let htmlString = '<ul>';
     
     for (let file of data) {
-      htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
+      htmlString += `<li><a href="${file.name}">${file.name}</a></li>`;
     }
 
     htmlString += '</ul>';
-    document.getElementsByTagName('body')[0].innerHTML = htmlString;
+    document.getElementById('index').innerHTML = htmlString;
   })()
 </script>

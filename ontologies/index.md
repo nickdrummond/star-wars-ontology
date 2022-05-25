@@ -29,7 +29,9 @@ Import or load directly from this directory - eg:
     let htmlString = '<ul>';
     
     for (let file of data) {
-      htmlString += `<li><a href="${file.name}">${file.name}</a></li>`;
+      if (file.name.endswith(".ttl")) {
+        htmlString += `<li><a href="${file.name}">${file.name}</a> (${file.size}k)</li>`;
+      }
     }
 
     htmlString += '</ul>';

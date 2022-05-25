@@ -30,7 +30,7 @@ Import or load directly from this directory - eg:
     
     for (let file of data) {
       if (file.name.endsWith(".ttl")) {
-        htmlString += `<li><a href="${file.name}">${file.name}</a> (${file.size}k)</li>`;
+        htmlString += `<li><a href="${file.name}">${file.name}</a> (${file.size/1000.0}k)</li>`;
       }
     }
 

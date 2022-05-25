@@ -10,35 +10,7 @@ modules |
 
 # Modularisation
 
-## Options for modules
-
-* QA - eg domain/range checks
-* out-of-universe metadata (actors, directors, creators)
-* print/game/toy canon content
-* deep content (more in-depth descriptions of species/planets etc)
-
-## Issues
-
-This is a dynamic, large and forever changing domain.
-Some of the benefits of modularising increase as the domain gets larger.
-
-However, in order to keep things manageable, assertions should ideally not need to be retracted or moved once stated.
-
-Therefore, we would like a module scheme that allows for characters/places/objects to show up in multiple places in future without having to extract them back out to the more general ontologies. 
-
-Any character in a  sub-module is at risk of this as they are very "mobile" in the storytelling.
-In addition, they inevitably relate back to "main" individuals that must be in the core ontologies -
-this can defeat our modelling principles of turning relations around in order to allow the modules to work (eg parent/child)
-
-Only events should be modelled outside the core modules? Even these are becoming
-more "mobile" as timelines are interlinked in the storytelling
-(eg The [`Hosnian Cataclysm`](http://star-wars-ontology.herokuapp.com/individuals/1317043629/)).
-We will then assert their links in the timeline of each module.
-
-The only alternative is to accept constant moving or duplicating assertions in multiple places when characters cross over - but what level of duplication is ok?
-
-If we get this right, the characters will be in the main ontology and then we'll
-get a different "view" of them depending on which sub-modules we pull in.
+All ontology modules available in Turtle format in the [ontologies](../ontologies/) directory.
 
 ## Structure
 
@@ -177,3 +149,32 @@ classify individuals in the ontologies
 
 Stub ontology demonstrating that we can model out of Universe knowledge, such as people involved in the making
 of the films/TV series and other aspects.
+
+## Other options
+
+* QA - eg domain/range checks
+* print/game/toy canon content
+* more deep content (more in-depth descriptions of characters/planets etc)
+
+## Discussion
+
+This is a dynamic, large and forever changing domain.
+Some of the benefits of modularising increase as the domain gets larger.
+
+However, in order to keep things manageable, assertions should ideally not need to be retracted or moved once stated.
+
+Therefore, we would like a module scheme that allows for characters/places/objects to show up in multiple places in future without having to extract them back out to the more general ontologies.
+
+Any character in a  sub-module is at risk of this as they are very "mobile" in the storytelling.
+In addition, they inevitably relate back to "main" individuals that must be in the core ontologies -
+this can defeat our modelling principles of turning relations around in order to allow the modules to work (eg parent/child)
+
+Only events should be modelled outside the core modules? Even these are becoming
+more "mobile" as timelines are interlinked in the storytelling
+(eg The [`Hosnian Cataclysm`](http://star-wars-ontology.herokuapp.com/individuals/1317043629/)).
+We will then assert their links in the timeline of each module.
+
+The only alternative is to accept constant moving or duplicating assertions in multiple places when characters cross over - but what level of duplication is ok?
+
+If we get this right, the characters will be in the main ontology and then we'll
+get a different "view" of them depending on which sub-modules we pull in.

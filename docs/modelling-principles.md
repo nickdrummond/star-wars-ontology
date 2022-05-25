@@ -8,7 +8,7 @@ modelling principles |
 [performance](performance.md) |
 [tools](tools.md)
 
-# General modelling principles
+# Modelling principles
 
 ## References
 

@@ -66,7 +66,7 @@ Above is a snapshot - see [ontology metrics](http://star-wars-ontology.herokuapp
 
 * [docs](docs/) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
 * [ontologies](ontologies/) - Ontologies in ttl (Turtle) OWL format. Start with [all.owl.ttl](ontologies/all.owl.ttl)
-* [src/test](src/test/) - A set of Java tests against the ontology for quality checking etc
+* [src/test](https://github.com/nickdrummond/star-wars-ontology/tree/master/src/test) - A set of Java tests against the ontology for quality checking etc
 * [sparql](sparql/) - A set of Sparql queries to summarise or infer things about our ontology
 
 ## Usage

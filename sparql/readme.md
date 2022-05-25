@@ -1,6 +1,16 @@
+[home](../) |
+[docs](../docs/) |
+[benefits](../docs/benefits.md) |
+[modules](../docs/modularisation.md) |
+[events](../docs/events.md) |
+[modelling principles](../docs/modelling-principles.md) |
+[test questions](../docs/test-questions.md) |
+[performance](../docs/performance.md) |
+[tools](../docs/tools.md)
+
 # SPARQL
 
-## SPARQL resources
+## Resources
 [SPARQL by example](https://www.w3.org/2009/Talks/0615-qbe/)
 
 ## Querying for death year

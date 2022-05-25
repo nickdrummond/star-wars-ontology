@@ -19,32 +19,6 @@ This currently only displays asserted content.
 
 [![Star Wars Ontology (cloud view)](docs/cloud.png)](docs/instances-usage-cloud.pdf)
 
-
-## Scope
-
-* Episodes 1-9 - first pass
-* Solo and Rogue One - first pass
-* The Mandalorian - first pass
-* Resistance - first pass
-* Rebels - first pass
-* Clone Wars - in progress
-* The Bad Batch - first pass
-* The Book of Boba Fett - to do
-
-## Status
-
-* In progress - see scope
-* Open modelling questions - see [issues on github](https://github.com/nickdrummond/star-wars-ontology/issues)
-* Tests and queries framework
-* Modularisation of events by film/series
-
-## Contents
-
-* [docs](docs/) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
-* [ontologies](ontologies/) - Ontologies in ttl (Turtle) OWL format. Start with [all.owl.ttl](ontologies/all.owl.ttl)
-* [src/test](src/test/) - A set of Java tests against the ontology for quality checking etc
-* [sparql](sparql/) - A set of Sparql queries to summarise or infer things about our ontology
-
 ## Metrics
 
 | Content                                                                                                                  | Count |
@@ -59,20 +33,46 @@ This currently only displays asserted content.
 
 | Structure             | Count  |
 |-----------------------|--------|
-| Axiom                 | 14,877 |
-| Logical axioms        | 10,518 |
-| Declaration axioms    | 2,390  |
-| Classes               | 798    |
+| Axiom                 | 15,101 |
+| Logical axioms        | 10,686 |
+| Declaration axioms    | 2,420  |
+| Individuals           | 1,496  |
+| Classes               | 806    |
 | Object properties     | 112    |
 | Data properties       | 6      |
-| Individuals           | 1,474  |
-| Annotation Properties | 5      |
+
+Above is a snapshot - see [ontology metrics](http://star-wars-ontology.herokuapp.com/ontologies/) for current values.
+
+## Status
+
+* In progress - see scope below
+* Open modelling questions - see [issues on github](https://github.com/nickdrummond/star-wars-ontology/issues)
+* Tests and queries framework
+* Modularisation of events by film/series
+
+## Scope
+
+* Episodes 1-9 - first pass
+* Solo and Rogue One - first pass
+* The Mandalorian - first pass
+* Resistance - first pass
+* Rebels - first pass
+* Clone Wars - in progress
+* The Bad Batch - first pass
+* The Book of Boba Fett - to do
+
+## Contents
+
+* [docs](docs/) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
+* [ontologies](ontologies/) - Ontologies in ttl (Turtle) OWL format. Start with [all.owl.ttl](ontologies/all.owl.ttl)
+* [src/test](src/test/) - A set of Java tests against the ontology for quality checking etc
+* [sparql](sparql/) - A set of Sparql queries to summarise or infer things about our ontology
 
 ## Usage
 
 ### Browse
 
-https://star-wars-ontology.herokuapp.com/
+[https://star-wars-ontology.herokuapp.com/](https://star-wars-ontology.herokuapp.com/)
 
 Please be patient - this is on a free-tier heroku stack for demo purposes only.
 

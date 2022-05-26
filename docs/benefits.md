@@ -1,5 +1,5 @@
 [home](../) |
-[docs](index.md) |
+[docs](readme.md) |
 benefits |
 [modules](modularisation.md) |
 [events](events.md) |

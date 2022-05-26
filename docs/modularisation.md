@@ -1,5 +1,5 @@
 [home](../) |
-[docs](index.md) |
+[docs](readme.md) |
 [benefits](benefits.md) |
 modules |
 [events](events.md) |

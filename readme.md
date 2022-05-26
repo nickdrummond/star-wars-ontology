@@ -18,7 +18,7 @@ A hand-built [OWL ontology](docs/benefits.md) focused on events and covering cha
 (first page may take a second to load as its using free tier hosting).
 This currently only displays asserted content.
 
-[![Star Wars Ontology (cloud view)](docs/cloud.png)](docs/instances-usage-cloud.pdf)
+[![Investigating_the_World_Between_Worlds](docs/ontology-browser.png)](http://star-wars-ontology.herokuapp.com/individuals/1184063215/)
 
 ## Metrics
 
@@ -82,6 +82,9 @@ Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
 
 For efficiency, the query page only includes [event.owl.ttl](ontologies/events.owl.ttl) and
 its imports - see [docs/performance.md](docs/performance.md)
+
+[![Cloud view of individuals by usage](docs/cloud.png)](http://star-wars-ontology.herokuapp.com/clouds/individuals)
+
 
 ### Edit/reason
 * Open [all.owl.ttl](ontologies/all.owl.ttl) with open-source OWL editor, [Protege](https://protege.stanford.edu/) or

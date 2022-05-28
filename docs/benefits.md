@@ -154,7 +154,7 @@ But, there are also useful queries we might want to make that require disjoints 
 
     (hadRole some Jedi) and not(Human)
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=%28hadRole+some+Jedi%29+and+not%28Human%29&syntax=man&query=instances
+[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=%28hadRole+some+Jedi%29+and+not%28Human%29&syntax=man&query=instances)
 include [Aayla_Secura](http://star-wars-ontology.herokuapp.com/individuals/734701917/)
 
 This only works because there are disjoints between [Living_Things](http://star-wars-ontology.herokuapp.com/classes/-1864795183/) 

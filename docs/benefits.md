@@ -145,6 +145,21 @@ Then OWL allows us to state that Vader and Anakin are the same individual:
 
     Darth_Vader sameAs Anakin_Skywalker
 
+#### Disjoints
+
+By default, OWL allows individuals to be members of any number of Classes.
+Disjoints allow us to assert that members of one Class cannot be members of another Class.
+This can assist with consistency checking - helpful in catching modelling errors.
+But, there are also useful queries we might want to make that require disjoints to work, eg:
+
+    (hadRole some Jedi) and not(Human)
+
+[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=%28hadRole+some+Jedi%29+and+not%28Human%29&syntax=man&query=instances
+include [Aayla_Secura](http://star-wars-ontology.herokuapp.com/individuals/734701917/)
+
+This only works because there are disjoints between [Living_Things](http://star-wars-ontology.herokuapp.com/classes/-1864795183/) 
+(at each level below that including [Humanoids](http://star-wars-ontology.herokuapp.com/classes/1550378358/))
+
 ### Negative assertions
 
 We assert those that we know to be force sensitive so we can ask:
@@ -168,7 +183,6 @@ In this Universe, it would be quite strong to assert someone was not force sensi
 
 So, knowing someone is not force sensitive is not the same as
 not knowing if they are force sensitive (maybe they don't know themselves)
-
 
 ## Properties create a network or graph
 

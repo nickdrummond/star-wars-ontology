@@ -28,7 +28,6 @@ eg [`after`](http://star-wars-ontology.herokuapp.com/objectproperties/1037526453
 ## Disjoints/differentFrom
 
 - should have top level disjoints to assist clean modelling and aid property use consistency checking
-- should not use differentFrom because of its impact on [performance](performance.md)
 
 ## Negation
 
@@ -42,7 +41,7 @@ eg [Torture_of_Shmi](http://star-wars-ontology.herokuapp.com/individuals/-631305
 
 * should provide a [`year`](http://star-wars-ontology.herokuapp.com/dataproperties/948496406/) for all named events, if known
   * negative numbers are BBY, positive are ABY  
-- may attach involvement in an event to the [`Actor`](http://star-wars-ontology.herokuapp.com/classes/1007884718/), if there is no natural named Event to use
+* may attach involvement in an event to the [`Actor`](http://star-wars-ontology.herokuapp.com/classes/1007884718/), if there is no natural named Event to use
 
 eg [Ochi](http://star-wars-ontology.herokuapp.com/individuals/947243470/)
     

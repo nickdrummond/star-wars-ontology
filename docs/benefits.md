@@ -113,10 +113,14 @@ includes Shmi
 
 Assertions must be consistent with the rest of the model.
 
-A reasoner lets us test this.
-
 eg There can be no individual Female [Crolute](http://star-wars-ontology.herokuapp.com/classes/-647403693/) 
-as all of the species are Male
+as all of the species are Male.
+
+The reasoner lets us [prove this](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Crolute+and+%28gender+some+Female%29&syntax=man&query=equivalents).
+
+    Crolute and (gender some Female)
+
+Equivalent to owl:Nothing, which is the empty set - ie no individuals could be a member of this class.
 
 If we created a Female Crolute, it would make the ontology inconsistent.
 

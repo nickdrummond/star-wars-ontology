@@ -52,21 +52,21 @@ We have the following mechanisms available to us:
 
     participant value Lando_Calrissian
 
-[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=participant+value+Lando_Calrissian%29&syntax=man&query=instances)
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=participant+value+Lando_Calrissian&syntax=man&query=instances)
 
-Or more complete if we also capture sub-events is :
+Or more complete if we also capture sub-events:
 
-    included some (participant value Ahsoka_Tano)
+    included some (participant value Lando_Calrissian)
 
-[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=included+some+%28participant+value+Ahsoka_Tano%29&syntax=man&query=instances)
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=included+some+%28participant+value+Lando_Calrissian%29&syntax=man&query=instances)
 
 This is nice and compact because [```included```](http://star-wars-ontology.herokuapp.com/objectproperties/1035051157/) is reflexive. Otherwise
 it would look like this:
 
-    (participant value Ahsoka_Tano) or
-    (included some (participant value Ahsoka_Tano))
+    (participant value Lando_Calrissian) or
+    (included some (participant value Lando_Calrissian))
 
-[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=%28participant+value+Ahsoka_Tano%29+or+%28included+some+%28participant+value+Ahsoka_Tano%29%29&syntax=man&query=instances)
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=%28participant+value+Lando_Calrissian%29+or%0D%0A++++%28included+some+%28participant+value+Lando_Calrissian%29%29&syntax=man&query=instances)
 
 ## Where has Ezra been?
 We can ask the locations of events at which Ezra (or the Spectres) were present:

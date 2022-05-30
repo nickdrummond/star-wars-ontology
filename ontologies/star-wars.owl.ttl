@@ -14,9 +14,6 @@
 #    Classes
 #################################################################
 
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Academy
-:Academy rdf:type owl:Class .
-
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Clone
 :Clone rdfs:subClassOf [ rdf:type owl:Restriction ;
@@ -36,10 +33,6 @@
                            ] .
 
 
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Fuel_Depot
-:Fuel_Depot rdf:type owl:Class .
-
-
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Fulcrum
 :Fulcrum rdfs:subClassOf [ rdf:type owl:Restriction ;
                            owl:onProperty :inOrganisation ;
@@ -52,10 +45,6 @@
                               owl:onProperty :inOrganisation ;
                               owl:hasValue :Galactic_Empire
                             ] .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hammerhead_corvette
-:Hammerhead_corvette rdf:type owl:Class .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Imperial-class_Star_Destroyer
@@ -79,26 +68,11 @@
                            ] .
 
 
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#MTT
-:MTT rdfs:subClassOf [ rdf:type owl:Restriction ;
-                       owl:onProperty :hadPurpose ;
-                       owl:someValuesFrom :Transport_purpose
-                     ] .
-
-
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Resurgent-class_Star_Destroyer
 :Resurgent-class_Star_Destroyer rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                   owl:onProperty :ownedBy ;
                                                   owl:hasValue :First_Order
                                                 ] .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Sando_aqua_monster
-:Sando_aqua_monster rdf:type owl:Class .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Throne_Room
-:Throne_Room rdf:type owl:Class .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Venator-class_Star_Destroyer
@@ -427,6 +401,25 @@
                 ] ;
        :locatedIn :Bright_Jewel_sector ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Aleen"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Almec
+:Almec rdf:type owl:NamedIndividual ,
+                :Human ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :gender ;
+                  owl:someValuesFrom :Male
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Mandalorian
+                                                            :Prime_Minister
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
+       :alliedWith :Maul ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Almec"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Alora
@@ -6659,7 +6652,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                   ] ,
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :hadRole ;
-                    owl:someValuesFrom :Politician
+                    owl:someValuesFrom :Prime_Minister
                   ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Lama_Su"^^xsd:anyURI .
 
@@ -9091,6 +9084,12 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Philo"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Phlac-Arphocc_Automata_Industries
+:Phlac-Arphocc_Automata_Industries rdf:type owl:NamedIndividual ,
+                                            :Manufacturer ;
+                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Phlac-Arphocc_Automata_Industries"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Phoenix_Cell
 :Phoenix_Cell rdf:type owl:NamedIndividual ,
                        :Cell ;
@@ -10012,8 +10011,20 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                         ) ;
                                      rdf:type owl:Class
                                    ]
+              ] ,
+              [ rdf:type owl:Restriction ;
+                owl:onProperty :hadRole ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Commander
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :inOrganisation ;
+                                                            owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies#332nd_Company>
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ]
               ] ;
-     :friendsWith :Anakin_Skywalker ,
+     :friendsWith :Ahsoka_Tano ,
+                  :Anakin_Skywalker ,
                   :Gregor ,
                   :Wolffe ;
      :livedIn :Clone_Commanders_Retirement_Home ;
@@ -10215,6 +10226,24 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                              ]
                         ] ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Roland_Durand"^^xsd:string .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rook_Kast
+:Rook_Kast rdf:type owl:NamedIndividual ,
+                    :Human ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :gender ;
+                      owl:someValuesFrom :Female
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hadRole ;
+                      owl:someValuesFrom :Mandalorian
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :memberOf ;
+                      owl:hasValue :Death_Watch
+                    ] ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Rook_Kast"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rose_Tico
@@ -11496,6 +11525,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                   :City ;
          :locatedIn :Mandalore ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Sundari"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Sundari_Undercity
+:Sundari_Undercity rdf:type owl:NamedIndividual ,
+                            :District ;
+                   :locatedIn :Sundari ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Undercity"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Supremacy
@@ -12868,6 +12904,24 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Vassek_3"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Vaughn
+:Vaughn rdf:type owl:NamedIndividual ,
+                 :Clone ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom [ owl:intersectionOf ( :Captain
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :inOrganisation ;
+                                                               owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies#332nd_Company>
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
+                 ] ;
+        :callsign "CT-0292"^^xsd:string ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-0292"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Venisa_Doza
 :Venisa_Doza rdf:type owl:NamedIndividual ,
                       :Human ,
@@ -13407,6 +13461,21 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Yellow_Ace"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Yerbana
+:Yerbana rdf:type owl:NamedIndividual ,
+                  :Planet ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasTerrain ;
+                    owl:someValuesFrom :Canyon
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasTerrain ;
+                    owl:someValuesFrom :Mountains
+                  ] ;
+         :locatedIn :Savareen_sector ;
+         rdfs:seeAlso "https://starwars.fandom.com/wiki/Yerbana"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Yoda
 :Yoda rdf:type owl:NamedIndividual ,
                <https://nickdrummond.github.io/star-wars-ontology/ontologies#Yoda's_Species> ,
@@ -13720,6 +13789,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                                                          :Military_Unit ;
                                                                                 :memberOf :Grand_Army_of_the_Republic ;
                                                                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/327th_Star_Corps"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#332nd_Company
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#332nd_Company> rdf:type owl:NamedIndividual ,
+                                                                                      :Military_Unit ;
+                                                                             :memberOf <https://nickdrummond.github.io/star-wars-ontology/ontologies#501st> ;
+                                                                             rdfs:seeAlso "https://starwars.fandom.com/wiki/332nd_Company"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#4D-M1N

@@ -363,7 +363,19 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#included
 :included rdf:type owl:ObjectProperty ,
-                   owl:TransitiveProperty .
+                   owl:TransitiveProperty ,
+                   owl:ReflexiveProperty ;
+          rdfs:comment "For relating an Event to everything that happened during it (subevents)."^^xsd:string ,
+                       """This is reflexive to make querying of participation much simpler:
+
+We can ask:
+included some (participant value Ahsoka_Tano)
+
+Instead of the longwinded:
+(participant value Ahsoka_Tano) or
+(included some (participant value Ahsoka_Tano))
+
+See https://github.com/nickdrummond/star-wars-ontology/issues/29"""^^xsd:string .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#injuredIn
@@ -1801,15 +1813,15 @@ and (?a inConflictWith ?b)"""^^xsd:string .
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Droid"^^xsd:anyURI .
 
 
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Droid_starfighter
-:Droid_starfighter rdf:type owl:Class ;
-                   rdfs:subClassOf :StarFighter .
-
-
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Droid_Tri-Fighter
 :Droid_Tri-Fighter rdf:type owl:Class ;
                    rdfs:subClassOf :Droid_starfighter ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Droid_tri-fighter"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Droid_starfighter
+:Droid_starfighter rdf:type owl:Class ;
+                   rdfs:subClassOf :StarFighter .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Droideka
@@ -3200,8 +3212,8 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#MTT
 :MTT rdf:type owl:Class ;
-     rdfs:subClassOf :Repulsorcraft ;
-     rdfs:subClassOf [ rdf:type owl:Restriction ;
+     rdfs:subClassOf :Repulsorcraft ,
+                     [ rdf:type owl:Restriction ;
                        owl:onProperty :hadPurpose ;
                        owl:someValuesFrom :Transport_purpose
                      ] ;

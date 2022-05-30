@@ -50,17 +50,23 @@ We have the following mechanisms available to us:
 
 ### What events was Lando involved in?
 
-    Event and participant value Lando_Calrissian
+    participant value Lando_Calrissian
 
-[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28participant+value+Lando_Calrissian%29&syntax=man&query=instances)
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=participant+value+Lando_Calrissian%29&syntax=man&query=instances)
 
-Or more complete if we also capture sub-events:
+Or more complete if we also capture sub-events is :
 
-    Event and (
-        (participant value Ahsoka_Tano) or
-        (included some (participant value Ahsoka_Tano)))
+    included some (participant value Ahsoka_Tano)
 
-[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Event+and+%28%28participant+value+Ahsoka_Tano%29+or+%28included+some+%28participant+value+Ahsoka_Tano%29%29%29&syntax=man&query=instances)
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=included+some+%28participant+value+Ahsoka_Tano%29&syntax=man&query=instances)
+
+This is nice and compact because [```included```](http://star-wars-ontology.herokuapp.com/objectproperties/1035051157/) is reflexive. Otherwise
+it would look like this:
+
+    (participant value Ahsoka_Tano) or
+    (included some (participant value Ahsoka_Tano))
+
+[result](https://star-wars-ontology.herokuapp.com/dlquery/?expression=%28participant+value+Ahsoka_Tano%29+or+%28included+some+%28participant+value+Ahsoka_Tano%29%29&syntax=man&query=instances)
 
 ## Where has Ezra been?
 We can ask the locations of events at which Ezra (or the Spectres) were present:
@@ -150,11 +156,11 @@ Too many to mention
 
 ## Any event in which a Star Destroyer was used
 
-    (participant some Star_Destroyer) or included some (participant some Star_Destroyer)
+    included some (participant some Star_Destroyer)
 
 ## Any event in which explosives were used
 
-    (used some Explosive) or included some (used some Explosive)
+    included some (used some Explosive)
 
 ## People meeting/knowing each other
 

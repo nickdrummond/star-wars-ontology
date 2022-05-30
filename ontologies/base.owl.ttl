@@ -2048,6 +2048,16 @@ and (?a inConflictWith ?b)"""^^xsd:string .
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/FA-4_pilot_droid"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#FX-series_medical_assistant_droid
+:FX-series_medical_assistant_droid rdf:type owl:Class ;
+                                   rdfs:subClassOf :Droid ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hadPurpose ;
+                                                     owl:someValuesFrom :Medical_purpose
+                                                   ] ;
+                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/FX-series_medical_assistant_droid"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Facility
 :Facility rdf:type owl:Class ;
           rdfs:subClassOf :Built_Location .
@@ -3267,6 +3277,23 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 :Mandalorian rdf:type owl:Class ;
              rdfs:subClassOf :Role ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Mandalorian"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mandalorian_vault
+:Mandalorian_vault rdf:type owl:Class ;
+                   rdfs:subClassOf :Equipment ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :createdBy ;
+                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hadRole ;
+                                                          owl:someValuesFrom :Mandalorian
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hadPurpose ;
+                                     owl:someValuesFrom :Detention_purpose
+                                   ] ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Mandalorian_vault"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mantell_Mix

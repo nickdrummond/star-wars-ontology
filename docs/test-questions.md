@@ -71,13 +71,21 @@ it would look like this:
 ## Where has Ezra been?
 We can ask the locations of events at which Ezra (or the Spectres) were present:
 
-    locationOf some (Event and participant some {Ezra_Bridger, Spectres})
+    locationOf some (included some (participant some {Ezra_Bridger, Spectres}))
+
+[result](http://star-wars-ontology.herokuapp.com/dlquery?expression=locationOf+some+%28included+some+%28participant+some+%7BEzra_Bridger%2C+Spectres%7D%29%29&syntax=man&query=instances)
 
 Or planets that Ahsoka has been to:
 
-    Planet and locationOf some (Event and participant value Ahsoka_Tano)
+    Planet and locationOf some (included some (participant value Ahsoka_Tano))
 
-nb. see [performance](performance.md) issues around making ```visited``` property chain
+[result](http://star-wars-ontology.herokuapp.com/dlquery?expression=Planet+and+locationOf+some+%28included+some+%28participant+value+Ahsoka_Tano%29%29&syntax=man&query=instances)
+
+nb. this is incomplete - it should involve the planets that contain all locations of events Ahsoka was involved in - eg Coruscant
+This may need a SPARQL query as it requires variables?
+
+nb. also see [performance](performance.md) issues around making ```visited``` property chain
+
 
 ## Who is from the Outer Rim?
 Get all beings from the [```Outer Rim```](https://star-wars-ontology.herokuapp.com/individuals/511138539/):

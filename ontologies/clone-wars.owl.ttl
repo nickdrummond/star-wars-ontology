@@ -3601,6 +3601,32 @@
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mission_to_retrieve_the_Holocron
 :Mission_to_retrieve_the_Holocron rdf:type owl:NamedIndividual ,
                                            :Mission ,
+                                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :activated ;
+                                                                    owl:someValuesFrom :Holocron
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :included ;
+                                                                    owl:someValuesFrom [ owl:intersectionOf ( :Trap
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty :captureOf ;
+                                                                                                                owl:hasValue :Ahsoka_Tano
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty :participant ;
+                                                                                                                owl:hasValue :Anakin_Skywalker
+                                                                                                              ]
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty :participant ;
+                                                                                                                owl:hasValue :Cad_Bane
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ]
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ,
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty :destructionOf ;
                                              owl:someValuesFrom :Munificent-class_star_frigate
@@ -3680,21 +3706,6 @@
                                                                                        [ rdf:type owl:Restriction ;
                                                                                          owl:onProperty :participant ;
                                                                                          owl:someValuesFrom :AT-TE
-                                                                                       ]
-                                                                                     ) ;
-                                                                  rdf:type owl:Class
-                                                                ]
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :included ;
-                                             owl:someValuesFrom [ owl:intersectionOf ( :Trap
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty :captureOf ;
-                                                                                         owl:hasValue :Ahsoka_Tano
-                                                                                       ]
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty :participant ;
-                                                                                         owl:hasValue :Cad_Bane
                                                                                        ]
                                                                                      ) ;
                                                                   rdf:type owl:Class

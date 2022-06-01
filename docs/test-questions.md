@@ -81,9 +81,6 @@ Or planets that Ahsoka has been to:
 
 [result](http://star-wars-ontology.herokuapp.com/dlquery?expression=Planet+and+locationOf+some+%28included+some+%28participant+value+Ahsoka_Tano%29%29&syntax=man&query=instances)
 
-nb. this is incomplete - it should involve the planets that contain all locations of events Ahsoka was involved in - eg Coruscant
-This may need a SPARQL query as it requires variables?
-
 nb. also see [performance](performance.md) issues around making ```visited``` property chain
 
 

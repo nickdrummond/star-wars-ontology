@@ -7,9 +7,9 @@
 @base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/rebels.owl.ttl> rdf:type owl:Ontology ;
-                                                                                                    owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
-                                                                                                    rdfs:comment "Events from \"Star Wars: Rebels\""^^xsd:string ;
-                                                                                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels"^^xsd:anyURI .
+                                                                               owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
+                                                                               rdfs:comment "Events from \"Star Wars: Rebels\""^^xsd:string ;
+                                                                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels"^^xsd:anyURI .
 
 #################################################################
 #    Individuals
@@ -773,16 +773,16 @@
                                                [ rdf:type owl:Restriction ;
                                                  owl:onProperty :included ;
                                                  owl:someValuesFrom [ owl:intersectionOf ( :Attack
-                                                                                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                                                    owl:onProperty :destructionOf ;
-                                                                                                                    owl:someValuesFrom :Squadron
-                                                                                                                  ]
-                                                                                                                  [ rdf:type owl:Restriction ;
-                                                                                                                    owl:onProperty :memberOf ;
-                                                                                                                    owl:hasValue :Rebel_Alliance
-                                                                                                                  ]
-                                                                                                                ) ;
-                                                                                             rdf:type owl:Class
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty :destructionOf ;
+                                                                                             owl:someValuesFrom [ owl:intersectionOf ( :Squadron
+                                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                                         owl:onProperty :memberOf ;
+                                                                                                                                         owl:hasValue :Rebel_Alliance
+                                                                                                                                       ]
+                                                                                                                                     ) ;
+                                                                                                                  rdf:type owl:Class
+                                                                                                                ]
                                                                                            ]
                                                                                            [ rdf:type owl:Restriction ;
                                                                                              owl:onProperty :participant ;
@@ -2401,31 +2401,6 @@
                                 owl:onProperty :included ;
                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                      owl:onProperty :participant ;
-                                                     owl:someValuesFrom [ owl:intersectionOf ( :Force_Vision
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty :about ;
-                                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                                                      owl:onProperty :hadChild ;
-                                                                                                                      owl:hasValue :Ezra_Bridger
-                                                                                                                    ]
-                                                                                               ]
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty :about ;
-                                                                                                 owl:hasValue :White_Loth_Cat
-                                                                                               ]
-                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty :connectedTo ;
-                                                                                                 owl:hasValue :Ezra_Bridger
-                                                                                               ]
-                                                                                             ) ;
-                                                                          rdf:type owl:Class
-                                                                        ]
-                                                   ]
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :included ;
-                                owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                     owl:onProperty :participant ;
                                                      owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
                                                                                                  owl:oneOf ( :Liberator
                                                                                                            )
@@ -2442,6 +2417,28 @@
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :participant ;
                                 owl:someValuesFrom :TIE_Fighter
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :participant ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Force_Vision
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :about ;
+                                                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hadChild ;
+                                                                                                 owl:hasValue :Ezra_Bridger
+                                                                                               ]
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :about ;
+                                                                            owl:hasValue :White_Loth_Cat
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :connectedTo ;
+                                                                            owl:hasValue :Ezra_Bridger
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :participant ;

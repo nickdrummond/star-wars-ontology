@@ -7,11 +7,11 @@
 @base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/sequels.owl.ttl> rdf:type owl:Ontology ;
-                                                                                                     owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
-                                                                                                     rdfs:comment "Events from the sequel films"^^xsd:string ;
-                                                                                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker"^^xsd:anyURI ,
-                                                                                                                  "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VIII_The_Last_Jedi"^^xsd:anyURI ,
-                                                                                                                  "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VII_The_Force_Awakens"^^xsd:anyURI .
+                                                                                owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
+                                                                                rdfs:comment "Events from the sequel films"^^xsd:string ;
+                                                                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker"^^xsd:anyURI ,
+                                                                                             "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VIII_The_Last_Jedi"^^xsd:anyURI ,
+                                                                                             "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VII_The_Force_Awakens"^^xsd:anyURI .
 
 #################################################################
 #    Individuals
@@ -70,32 +70,12 @@
                                                                          ]
                                                     ]
                                ] ;
-                      :during :Attack_on_the_Resistance_fleet ;
+                      :during :Battle_of_Oetchi ;
                       :injuryOf :Leia_Organa ;
                       :killingOf :Ackbar ;
                       :locatedIn :MC85_Raddus ;
                       :year 34 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_the_Resistance_fleet#The_battle"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_on_the_Resistance_fleet
-:Attack_on_the_Resistance_fleet rdf:type owl:NamedIndividual ,
-                                         :Battle ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :destructionOf ;
-                                           owl:someValuesFrom [ owl:intersectionOf ( :Star_Cruiser
-                                                                                     [ rdf:type owl:Restriction ;
-                                                                                       owl:onProperty :ownedBy ;
-                                                                                       owl:hasValue :Resistance
-                                                                                     ]
-                                                                                   ) ;
-                                                                rdf:type owl:Class
-                                                              ]
-                                         ] ;
-                                :after <https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_D'Qar> ;
-                                :during :First_Order-Resistance_War ;
-                                :year 34 ;
-                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_the_Resistance_fleet"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Crait
@@ -139,7 +119,7 @@
                             owl:onProperty :participant ;
                             owl:someValuesFrom :Walker
                           ] ;
-                 :after :Attack_on_the_Resistance_fleet ;
+                 :after :Battle_of_Oetchi ;
                  :deathOf :Luke_Skywalker ;
                  :destructionOf :Crait_outpost ;
                  :during :First_Order-Resistance_War ;
@@ -199,6 +179,55 @@
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Exegol"^^xsd:anyURI ;
                   :quote """\"Where did they get all these fighter craft? They have no navy.\"
 \"It's not a navy, sir, it's just… people.\""""^^xsd:string .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Oetchi
+:Battle_of_Oetchi rdf:type owl:NamedIndividual ,
+                           :Battle ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :destructionOf ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Star_Cruiser
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :ownedBy ;
+                                                                         owl:hasValue :Resistance
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Evacuation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :escapeOf ;
+                                                                         owl:someValuesFrom :Crew
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :killingOf ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :hadRole ;
+                                                                                              owl:someValuesFrom :Captain
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :destructionOf ;
+                                                                         owl:hasValue :Anodyne
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Anodyne
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  :after <https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_D'Qar> ;
+                  :during :First_Order-Resistance_War ;
+                  :locatedIn :Crait_system ,
+                             :Oetchi_system ;
+                  :year 34 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_the_Resistance_fleet"^^xsd:anyURI ,
+                               "https://starwars.fandom.com/wiki/Battle_of_Oetchi"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Starkiller_Base
@@ -298,7 +327,7 @@
                                                            ]
                                       ] ;
                              :after :Three_Lessons ;
-                             :during :Attack_on_the_Resistance_fleet ;
+                             :during :Battle_of_Oetchi ;
                              :killingOf :Snoke ;
                              :locatedIn :Supremacy ;
                              :survivedBy :Rey ;
@@ -443,7 +472,7 @@
                        :captureOf :Finn ,
                                   :Rose_Tico ;
                        :deathOf :Phasma ;
-                       :during :Attack_on_the_Resistance_fleet ;
+                       :during :Battle_of_Oetchi ;
                        :escapeOf :Finn ,
                                  :Rose_Tico ;
                        :locatedIn :Supremacy ;
@@ -474,7 +503,7 @@
                 :after :Mutiny_on_the_Raddus ;
                 :destructionOf :MC85_Raddus ,
                                :Supremacy ;
-                :during :Attack_on_the_Resistance_fleet ,
+                :during :Battle_of_Oetchi ,
                         :First_Order-Resistance_War ;
                 :escapeOf :Resistance ;
                 :locatedIn :Crait ;
@@ -730,7 +759,7 @@
                                                     ]
                                ] ;
                       :after :Attack_on_the_Raddus ;
-                      :during :Attack_on_the_Resistance_fleet ;
+                      :during :Battle_of_Oetchi ;
                       :locatedIn :MC85_Raddus ;
                       :participant :Amilyn_Holdo ,
                                    :Poe_Dameron ;
@@ -782,7 +811,7 @@
                                             ] ;
                                    :captureOf :Finn ,
                                               :Rose_Tico ;
-                                   :during :Attack_on_the_Resistance_fleet ;
+                                   :during :Battle_of_Oetchi ;
                                    :escapeOf :Finn ,
                                              :Rose_Tico ;
                                    :locatedIn :Canto_Bight ;
@@ -1121,46 +1150,46 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_D'Qar
 <https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_D'Qar> rdf:type owl:NamedIndividual ,
-                                                                                                             :Battle ,
-                                                                                                             [ rdf:type owl:Restriction ;
-                                                                                                               owl:onProperty :deathOf ;
-                                                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                                                                    owl:onProperty :hadSister ;
-                                                                                                                                    owl:hasValue :Rose_Tico
-                                                                                                                                  ]
-                                                                                                             ] ,
-                                                                                                             [ rdf:type owl:Restriction ;
-                                                                                                               owl:onProperty :destructionOf ;
-                                                                                                               owl:someValuesFrom [ owl:intersectionOf ( :MG-100_StarFortress_SF-17
-                                                                                                                                                         [ rdf:type owl:Restriction ;
-                                                                                                                                                           owl:onProperty :memberOf ;
-                                                                                                                                                           owl:hasValue :Resistance
-                                                                                                                                                         ]
-                                                                                                                                                       ) ;
-                                                                                                                                    rdf:type owl:Class
-                                                                                                                                  ]
-                                                                                                             ] ,
-                                                                                                             [ rdf:type owl:Restriction ;
-                                                                                                               owl:onProperty :destructionOf ;
-                                                                                                               owl:someValuesFrom [ owl:intersectionOf ( :TIE_Fighter
-                                                                                                                                                         [ rdf:type owl:Restriction ;
-                                                                                                                                                           owl:onProperty :memberOf ;
-                                                                                                                                                           owl:hasValue :First_Order
-                                                                                                                                                         ]
-                                                                                                                                                       ) ;
-                                                                                                                                    rdf:type owl:Class
-                                                                                                                                  ]
-                                                                                                             ] ;
-                                                                                                    :after :Rey_meets_Luke ;
-                                                                                                    :destructionOf :Fulminatrix ,
-                                                                                                                   :Resistance_base ;
-                                                                                                    :during :First_Order-Resistance_War ;
-                                                                                                    :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#D'Qar> ;
-                                                                                                    :participant :First_Order ,
-                                                                                                                 :Poe_Dameron ,
-                                                                                                                 :Resistance ;
-                                                                                                    :year 34 ;
-                                                                                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_D%27Qar"^^xsd:anyURI .
+                                                                                        :Battle ,
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :deathOf ;
+                                                                                          owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty :hadSister ;
+                                                                                                               owl:hasValue :Rose_Tico
+                                                                                                             ]
+                                                                                        ] ,
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :destructionOf ;
+                                                                                          owl:someValuesFrom [ owl:intersectionOf ( :MG-100_StarFortress_SF-17
+                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty :memberOf ;
+                                                                                                                                      owl:hasValue :Resistance
+                                                                                                                                    ]
+                                                                                                                                  ) ;
+                                                                                                               rdf:type owl:Class
+                                                                                                             ]
+                                                                                        ] ,
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :destructionOf ;
+                                                                                          owl:someValuesFrom [ owl:intersectionOf ( :TIE_Fighter
+                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty :memberOf ;
+                                                                                                                                      owl:hasValue :First_Order
+                                                                                                                                    ]
+                                                                                                                                  ) ;
+                                                                                                               rdf:type owl:Class
+                                                                                                             ]
+                                                                                        ] ;
+                                                                               :after :Rey_meets_Luke ;
+                                                                               :destructionOf :Fulminatrix ,
+                                                                                              :Resistance_base ;
+                                                                               :during :First_Order-Resistance_War ;
+                                                                               :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#D'Qar> ;
+                                                                               :participant :First_Order ,
+                                                                                            :Poe_Dameron ,
+                                                                                            :Resistance ;
+                                                                               :year 34 ;
+                                                                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_D%27Qar"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

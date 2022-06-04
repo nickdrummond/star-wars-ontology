@@ -195,8 +195,7 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#during
 :during rdf:type owl:ObjectProperty ;
-        owl:inverseOf :included ;
-        rdf:type owl:TransitiveProperty .
+        owl:inverseOf :included .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#eatingOf
@@ -362,20 +361,10 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#included
-:included rdf:type owl:ObjectProperty ,
-                   owl:TransitiveProperty ,
-                   owl:ReflexiveProperty ;
-          rdfs:comment "For relating an Event to everything that happened during it (subevents)."^^xsd:string ,
-                       """This is reflexive to make querying of participation much simpler:
-
-We can ask:
-included some (participant value Ahsoka_Tano)
-
-Instead of the longwinded:
-(participant value Ahsoka_Tano) or
-(included some (participant value Ahsoka_Tano))
-
-See https://github.com/nickdrummond/star-wars-ontology/issues/29"""^^xsd:string .
+:included rdf:type owl:ObjectProperty ;
+          rdfs:domain :Event ;
+          rdfs:range :Event ;
+          rdfs:comment "For relating an Event to everything that happened during it (subevents)."^^xsd:string .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#injuredIn
@@ -2042,9 +2031,25 @@ and (?a inConflictWith ?b)"""^^xsd:string .
                          owl:someValuesFrom :Place
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:hasSelf "true"^^xsd:boolean
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :year ;
                          owl:someValuesFrom xsd:int
-                       ] .
+                       ] ;
+       rdfs:comment """Events include themselves.
+
+This is locally reflexive to make querying of participation much simpler:
+
+We can ask:
+included some (participant value Ahsoka_Tano)
+
+Instead of the longwinded:
+(participant value Ahsoka_Tano) or
+(included some (participant value Ahsoka_Tano))
+
+See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string"""^^xsd:string .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ewok

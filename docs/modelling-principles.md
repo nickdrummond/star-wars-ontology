@@ -24,6 +24,11 @@ modelling principles |
 eg [`after`](http://star-wars-ontology.herokuapp.com/objectproperties/1037526453/) shows usage but 
 [`before`](http://star-wars-ontology.herokuapp.com/objectproperties/-448094376/) has no assertions
 
+## Normalisation
+
+- all Classes should have a single primitive parent, creating a tree structure
+- all Individuals should have only 1 named type
+- defined classes may be created to produce a polyhierarchy based on refining characteristics (eg Biped = has 2 legs)
 
 ## Disjoints/differentFrom
 
@@ -63,7 +68,7 @@ eg [Escape_from_the_Garbage_Compactor](http://star-wars-ontology.herokuapp.com/i
 
 ## Beings
 
-- primary classification is species.
+- primary classification is species
 - should assert relations between beings on the one it affects most - eg `Luke trainedBy Obi-wan` 
 unless an [`Event`](http://star-wars-ontology.herokuapp.com/classes/1012130387/) is called for
 - should all have at least one [`hadRole`](http://star-wars-ontology.herokuapp.com/objectproperties/1627826554/) (whether or not in an organisation)

@@ -733,13 +733,14 @@ or minus is BBY"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#AAL
 :AAL rdf:type owl:Class ;
-     rdfs:subClassOf :Ship ;
+     rdfs:subClassOf :Transport ;
      rdfs:seeAlso "https://starwars.fandom.com/wiki/AAL-1971/9.1_Troop_Transport"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#AAT_Mk_I
 :AAT_Mk_I rdf:type owl:Class ;
           rdfs:subClassOf :HoverTank ;
+          owl:disjointWith :TX-225_GAVr_tank ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Armored_Assault_Tank_Mk_I"^^xsd:anyURI .
 
 
@@ -808,6 +809,7 @@ or minus is BBY"""^^xsd:string .
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Acclamator-class_transgalactic_military_assault_ship
 :Acclamator-class_transgalactic_military_assault_ship rdf:type owl:Class ;
                                                       rdfs:subClassOf :Star_Cruiser ;
+                                                      owl:disjointWith :Quasar_Fire-class_cruiser-carrier ;
                                                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Acclamator-class_transgalactic_military_assault_ship"^^xsd:anyURI .
 
 
@@ -971,7 +973,11 @@ or minus is BBY"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Astromech
 :Astromech rdf:type owl:Class ;
-           rdfs:subClassOf :Droid ;
+           rdfs:subClassOf :Droid ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom :Engineer
+                           ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Astromech_droid"^^xsd:anyURI .
 
 
@@ -1371,7 +1377,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#City
 :City rdf:type owl:Class ;
-      rdfs:subClassOf :Built_Location .
+      rdfs:subClassOf :Settlement .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Civilian
@@ -1556,7 +1562,7 @@ or minus is BBY"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Corvette
 :Corvette rdf:type owl:Class ;
-          rdfs:subClassOf :Ship ;
+          rdfs:subClassOf :Capital_Ship ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Corvette"^^xsd:anyURI .
 
 
@@ -1796,7 +1802,11 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#District
 :District rdf:type owl:Class ;
-          rdfs:subClassOf :Built_Location .
+          rdfs:subClassOf :Built_Location ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :locatedIn ;
+                            owl:someValuesFrom :City
+                          ] .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Doctor
@@ -2010,7 +2020,8 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_Pod
 :Escape_Pod rdf:type owl:Class ;
-            rdfs:subClassOf :Pod .
+            rdfs:subClassOf :Pod ;
+            owl:disjointWith :X3-13 .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_Pod_Transponder
@@ -2402,7 +2413,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Glider
 :Glider rdf:type owl:Class ;
-        rdfs:subClassOf :Vehicle ;
+        rdfs:subClassOf :Vehicle ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :movesWith ;
+                          owl:someValuesFrom :Flight
+                        ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Glider_(vehicle)"^^xsd:anyURI .
 
 
@@ -2542,7 +2557,8 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#H-type_Nubian_yacht
 :H-type_Nubian_yacht rdf:type owl:Class ;
-                     rdfs:subClassOf :Yacht .
+                     rdfs:subClassOf :Yacht ;
+                     owl:disjointWith :Solar_sailer .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#HAVw_A6_Juggernaut
@@ -2554,6 +2570,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#HCVw_A9_turbo_tank
 :HCVw_A9_turbo_tank rdf:type owl:Class ;
                     rdfs:subClassOf :Tank ;
+                    owl:disjointWith :NR-N99_Persuader-class_droid_enforcer ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/HCVw_A9_turbo_tank"^^xsd:anyURI .
 
 
@@ -2602,6 +2619,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
                                                owl:onProperty :hadPurpose ;
                                                owl:someValuesFrom :Medical_purpose
                                              ] ;
+                             owl:disjointWith :Imperial_Construction_Module ;
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Haven-class_medical_station"^^xsd:anyURI .
 
 
@@ -2637,7 +2655,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hive
 :Hive rdf:type owl:Class ;
-      rdfs:subClassOf :Built_Location .
+      rdfs:subClassOf :Settlement .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Holo-darts
@@ -3279,12 +3297,14 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#MG-100_StarFortress_SF-17
 :MG-100_StarFortress_SF-17 rdf:type owl:Class ;
                            rdfs:subClassOf :Bomber ;
+                           owl:disjointWith :TIE_bomber ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/MG-100_StarFortress_SF-17"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#MSP80_Pteropter_hover_pod
 :MSP80_Pteropter_hover_pod rdf:type owl:Class ;
-                           rdfs:subClassOf :Speeder .
+                           rdfs:subClassOf :Speeder ;
+                           owl:disjointWith :Speeder_Bike .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#MTT
@@ -3386,7 +3406,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Marksman-H_training_remote
 :Marksman-H_training_remote rdf:type owl:Class ;
-                            rdfs:subClassOf :Droid ;
+                            rdfs:subClassOf :Droid ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hadPurpose ;
+                                              owl:someValuesFrom :Training_purpose
+                                            ] ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Marksman-H_training_remote"^^xsd:anyURI .
 
 
@@ -3788,6 +3812,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ore_crawler
 :Ore_crawler rdf:type owl:Class ;
              rdfs:subClassOf :Crawler ;
+             owl:disjointWith :Sandcrawler ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Ore_crawler"^^xsd:anyURI .
 
 
@@ -3869,7 +3894,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Pit_Droid
 :Pit_Droid rdf:type owl:Class ;
-           rdfs:subClassOf :Droid ;
+           rdfs:subClassOf :Droid ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom :Engineer
+                           ] ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/DUM-series_pit_droid"^^xsd:anyURI .
 
 
@@ -3991,7 +4020,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Probe_Droid
 :Probe_Droid rdf:type owl:Class ;
-             rdfs:subClassOf :Droid ;
+             rdfs:subClassOf :Droid ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hadPurpose ;
+                               owl:someValuesFrom :Surveillance_purpose
+                             ] ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Viper_probe_droid"^^xsd:anyURI .
 
 
@@ -4139,6 +4172,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Recusant-class_light_destroyer
 :Recusant-class_light_destroyer rdf:type owl:Class ;
                                 rdfs:subClassOf :Destroyer ;
+                                owl:disjointWith :Star_Destroyer ;
                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Recusant-class_light_destroyer"^^xsd:anyURI .
 
 
@@ -4187,9 +4221,10 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :of ;
                           owl:allValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( :Built_Location
-                                                            :Droid
+                                              owl:unionOf ( :Droid
+                                                            :Facility
                                                             :Object
+                                                            :Vehicle
                                                           )
                                             ]
                         ] .
@@ -4316,9 +4351,10 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :of ;
                             owl:allValuesFrom [ rdf:type owl:Class ;
-                                                owl:unionOf ( :Built_Location
-                                                              :Droid
+                                                owl:unionOf ( :Droid
+                                                              :Facility
                                                               :Object
+                                                              :Vehicle
                                                             )
                                               ]
                           ] .
@@ -4439,6 +4475,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
           rdfs:subClassOf :Officer .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Settlement
+:Settlement rdf:type owl:Class ;
+            rdfs:subClassOf :Built_Location .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Sewer
 :Sewer rdf:type owl:Class ;
        rdfs:subClassOf :Facility .
@@ -4468,7 +4509,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ship
 :Ship rdf:type owl:Class ;
-      rdfs:subClassOf :Vehicle .
+      rdfs:subClassOf :Vehicle ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :movesWith ;
+                        owl:someValuesFrom :Flight
+                      ] .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Shuttle
@@ -4585,7 +4630,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Space_Port
 :Space_Port rdf:type owl:Class ;
-            rdfs:subClassOf :City ;
+            rdfs:subClassOf :Settlement ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Spaceport"^^xsd:anyURI .
 
 
@@ -4795,7 +4840,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#TT-8L_Gatekeeper_Droid
 :TT-8L_Gatekeeper_Droid rdf:type owl:Class ;
-                        rdfs:subClassOf :Droid ;
+                        rdfs:subClassOf :Droid ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hadPurpose ;
+                                          owl:someValuesFrom :Security_purpose
+                                        ] ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/TT-8L/Y7_gatekeeper_droid"^^xsd:anyURI .
 
 
@@ -4954,7 +5003,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Town
 :Town rdf:type owl:Class ;
-      rdfs:subClassOf :Built_Location .
+      rdfs:subClassOf :Settlement .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Toy
@@ -5184,7 +5233,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Underwater_vehicle
 :Underwater_vehicle rdf:type owl:Class ;
-                    rdfs:subClassOf :Vehicle .
+                    rdfs:subClassOf :Vehicle ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :movesWith ;
+                                      owl:someValuesFrom :Swimming
+                                    ] .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Underworld_portal
@@ -5250,7 +5303,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Vehicle
 :Vehicle rdf:type owl:Class ;
-         rdfs:subClassOf :Built_Location .
+         rdfs:subClassOf :Place .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Venator-class_Star_Destroyer
@@ -5273,7 +5326,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Village
 :Village rdf:type owl:Class ;
-         rdfs:subClassOf :Built_Location .
+         rdfs:subClassOf :Settlement .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Virus
@@ -5311,7 +5364,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Walker
 :Walker rdf:type owl:Class ;
-        rdfs:subClassOf :Land_Vehicle ;
+        rdfs:subClassOf :Land_Vehicle ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :movesWith ;
+                          owl:someValuesFrom :Walking
+                        ] ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Walker"^^xsd:anyURI .
 
 
@@ -5533,26 +5590,33 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :A-Wing
+                :ARC-170_starfighter
                 :B-Wing
+                :Delta-7B_Aethersprite-class_light_interceptor
+                :Droid_starfighter
+                :Fang-class_Starfighter
+                :Firespray-31
+                :Gauntlet_Starfighter
+                :N-1_starfighter
+                :Rogue-class_Starfighter
                 :TIE_Fighter
                 :U-Wing
+                :V-19_Torrent_starfighter
+                :V-Wing
                 :X-Wing
                 :Y-Wing
+                :Z-95_Headhunter
               )
 ] .
 
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :AAL
-                :Bomber
-                :Capital_Ship
-                :Corvette
-                :Freighter
-                :Gunship
-                :Refueling_Station
-                :Shuttle
-                :StarFighter
-                :Yacht
+                :C-9979_landing_craft
+                :DH-Omni_Support_Vessel
+                :GR-75_medium_transport
+                :New_Republic_Correctional_Transport
+                :U-55_orbital_loadlifter
               )
 ] .
 
@@ -5560,6 +5624,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :AT-AT
                 :AT-DP
+                :AT-RT
                 :AT-ST
                 :AT-TE
               )
@@ -5770,6 +5835,15 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Arquitens-class_command_cruiser
+                :Arquitens-class_light_cruiser
+                :Class_546_Cruiser
+                :Gozanti-class_cruiser
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Asteroid
                 :Asteroid_field
                 :Gravity_Well
@@ -5787,17 +5861,30 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Baleen-class_heavy_freighter
+                :Class_4_Container_Transport
+                :G9_Rigger-class_light_freighter
+                :Lucrehulk_Freighter
+                :Nebula-class_freighter
+                :VCX-100_light_freighter
+                :YT-1300f_Light_Freighter
+                :YT-2400_light_freighter
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Base
                 :Building
-                :City
                 :District
                 :Facility
                 :Farm
-                :Hive
+                :Grave
                 :Mine
-                :Town
-                :Vehicle
-                :Village
+                :Settlement
+                :Trench
+                :Tunnel
+                :Underworld_portal
               )
 ] .
 
@@ -5827,11 +5914,94 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Bomber
+                :Capital_Ship
+                :Droch-class_boarding_ship
+                :Freighter
+                :Frigate
+                :Gunship
+                :Patrol_ship
+                :Refueling_Station
+                :Shuttle
+                :StarFighter
+                :Transport
+                :Trident-class_assault_ship
+                :Yacht
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Bridge
+                :Detention_Block
+                :Engine
+                :Fuel_Depot
+                :Garbage_Compactor
+                :Hangar
+                :Landing_Platform
+                :Medical_bay
+                :Office
+                :Reactor_Core
+                :Repair_facility
+                :Sewer
+                :Shield_Generator
+                :Thermal_exhaust_port
+                :Throne_Room
+                :Trash_Incinerator
+                :Turret
+                :Vault
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Built_Location
                 :Celestial_Location
                 :Habitat
                 :Hyperspace
+                :Portal
+                :Route
                 :Space
+                :Tractor_Beam
+                :Vehicle
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CR90_corvette
+                :Consular-class_cruiser
+                :Hammerhead_corvette
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CSS-1_Corellian_Star_Shuttle
+                :Flarestar-class_attack_shuttle
+                :Lambda-class_T-4a_shuttle
+                :Nu-class_shuttle
+                :Rho-class_transport_shuttle
+                :Sentinel-class_landing_craft
+                :Sheathipede-class_transport_shuttle
+                :Star_Commuter_2000
+                :Taylander_shuttle
+                :Upsilon-class_command_shuttle
+                <https://starwars.fandom.com/wiki/Omicron-class_attack_shuttle>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cantina
+                :Communication_relay
+                :Communication_tower
+                :Factory
+                :Laboratory
+                :Library
+                :Prison
+                :Temple
+                :Tower
               )
 ] .
 
@@ -5863,28 +6033,53 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Detention_Block
-                :Garbage_Compactor
-                :Shield_Generator
-                :Trash_Incinerator
+  owl:members ( :City
+                :Hive
+                :Space_Port
+                :Town
+                :Village
               )
 ] .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Dreadnought
+  owl:members ( :Core_ship
+                :Corvette
+                :Destroyer
+                :Dreadnought
+                :Interdictor_Vessel
+                :Light_Cruiser
                 :Star_Cruiser
-                :Star_Destroyer
               )
 ] .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Escape_Pod
-                :Land_Vehicle
-                :Repulsorcraft
-                :Ship
-                :Space_Station
+  owl:members ( :Crawler
+                :HAVw_A6_Juggernaut
+                :Separatist_command_center
+                :Superlaser_siege_cannon
+                :Tank
+                :Train
+                :Troop_Transporter
+                :Walker
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Droid_Tri-Fighter
+                :Hyena-class_Droid_Fighter-Bomber
+                :Vulture_Droid
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :EF76_Nebulon-B_escort_frigate
+                :Munificent-class_star_frigate
+                :Nebulon-C_escort_frigate
+                :Pelta-class_frigate
               )
 ] .
 
@@ -5893,6 +6088,32 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
   owl:members ( :Gender
                 :Role
                 :Sentience
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Glider
+                :Land_Vehicle
+                :Pod
+                :Repulsorcraft
+                :Ship
+                :Space_Station
+                :Underwater_vehicle
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :HoverTank
+                :MTT
+                :Podracer
+                :Sail_Barge
+                :Single_Trooper_Aerial_Platform
+                :Skiff
+                :Snowspeeder
+                :Speeder
+                :Trexler_Marauder
               )
 ] .
 
@@ -5907,6 +6128,14 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :LAAT_Gunship
+                <https://nickdrummond.github.io/star-wars-ontology/ontologies#Braha'tok-class_gunship>
+                <https://nickdrummond.github.io/star-wars-ontology/ontologies#LAAT/le_patrol_gunship>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Non-sentient
                 :Semi-sentient
                 :Sentient
@@ -5915,20 +6144,9 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Podracer
-                :Sail_Barge
-                :Skiff
-                :Snowspeeder
-                :Speeder
-                :Trexler_Marauder
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Sandcrawler
-                :Superlaser_siege_cannon
-                :Walker
+  owl:members ( :TIE-Advanced
+                :TIE-Defender
+                :TIE-Interceptor
               )
 ] .
 

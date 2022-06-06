@@ -549,6 +549,61 @@
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_11:_The_Heiress#A_perilous_cruise"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mugged_by_raiders
+:Mugged_by_raiders rdf:type owl:NamedIndividual ,
+                            :Fight ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :destructionOf ;
+                              owl:someValuesFrom :Speeder_Bike
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :activated ;
+                                                                          owl:someValuesFrom :Jetpack
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :killingOf ;
+                                                                          owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hadRole ;
+                                                                                               owl:someValuesFrom :Thief
+                                                                                             ]
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :stole ;
+                                                                          owl:someValuesFrom :Jetpack
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :killingOf ;
+                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hadRole ;
+                                                   owl:someValuesFrom :Thief
+                                                 ]
+                            ] ;
+                   :after :Killing_a_Krayt_Dragon ;
+                   :freeingOf :Grogu ;
+                   :locatedIn :Tatooine ;
+                   :participant :Din_Djarin ;
+                   :year 9 ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_10:_The_Passenger#Ambush_on_Tatooine"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Peli_Motto_plays_Dr_Mandible_at_Sabacc
+:Peli_Motto_plays_Dr_Mandible_at_Sabacc rdf:type owl:NamedIndividual ,
+                                                 :Sabacc ;
+                                        :after :Mugged_by_raiders ;
+                                        :defeatOf :Doctor_Mandible ;
+                                        :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Chalmun's_Cantina> ;
+                                        :victoryOf :Peli_Motto ;
+                                        :witnessedBy :Din_Djarin ;
+                                        :year 9 ;
+                                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_10:_The_Passenger#Another_lead"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Removing_Imperials_from_Nevarro
 :Removing_Imperials_from_Nevarro rdf:type owl:NamedIndividual ,
                                           :Attack ,
@@ -853,7 +908,7 @@
                                                    rdf:type owl:Class
                                                  ]
                             ] ;
-                   :after :Killing_a_Krayt_Dragon ;
+                   :after :Peli_Motto_plays_Dr_Mandible_at_Sabacc ;
                    :locatedIn :Maldo_Kreis ,
                               :Razor_Crest ;
                    :participant :Din_Djarin ,

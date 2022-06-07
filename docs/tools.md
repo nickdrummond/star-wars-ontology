@@ -19,21 +19,18 @@ A demo of the Star Wars Ontology is available to [browse](https://star-wars-onto
 [individuals](http://star-wars-ontology.herokuapp.com/individuals/) etc can all be browsed to understand the structure of the ontologies.
 Cloud views can give a quick feel for where the detail is eg [instance usage](https://star-wars-ontology.herokuapp.com/clouds/individuals)
 
-This demo is a running on a custom built, paired down ontology browser, specifically
-loaded with [all.owl.ttl](http://star-wars-ontology.herokuapp.com/ontologies/-1715300141).
+This demo is a running on a [custom branch](https://github.com/nickdrummond/ontology-browser/tree/Star_Wars_Ontology_static),
+paired version of the ontology browser, specifically loaded with [all.owl.ttl](http://star-wars-ontology.herokuapp.com/ontologies/-1715300141).
 
-It is hosted on heroku using free-tier hardware so can take a moment to first start up if
-its not been used recently. Some upgrades are required to allow reasoning with Pellet (Openllet) such
-that the DL Query tab is running again. See [issue #24](https://github.com/nickdrummond/star-wars-ontology/issues/24)
+It is hosted on heroku using free-tier hardware so can take a moment to first start up. 
 
-The default [ontology browser](https://github.com/nickdrummond/ontology-browser)
-implementation can also be used to load the ontology. There is no online demo running
-as it is reliant on mongo which is no longer supported on heroku:
-* Get the browser - `https://github.com/co-ode-owl-plugins/ontology-browser`
-* Start Mongo - `C:\Program Files\MongoDB\Server\4.4\bin`
-* Start ontology browser - `mvn jetty:run`
-* Navigate to `localhost:8080`
-* Point it at local file: `file:///C:/Users/nickd/Documents/star-wars-ontology/ontologies/all.owl.ttl`
+Querying with Pellet (Openllet) reasoner is possible on the [DL Query page](http://star-wars-ontology.herokuapp.com/ontologies/-1715300141).
+
+![Ontology browser ](at-at.png)
+
+You can even switch to Aurebesh if you prefer.
+
+![Ontology browser in Aurebesh](aurebesh.png)
 
 ## Protege
 

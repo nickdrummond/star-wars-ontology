@@ -24,7 +24,7 @@ paired version of the ontology browser, specifically loaded with [all.owl.ttl](h
 
 It is hosted on heroku using free-tier hardware so can take a moment to first start up. 
 
-Querying with Pellet (Openllet) reasoner is possible on the [DL Query page](http://star-wars-ontology.herokuapp.com/ontologies/-1715300141).
+Querying with Pellet (Openllet) reasoner is possible on the [DL Query page](http://star-wars-ontology.herokuapp.com/dlquery/).
 
 ![Ontology browser ](at-at.png)
 

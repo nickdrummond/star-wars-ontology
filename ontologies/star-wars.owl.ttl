@@ -1035,6 +1035,12 @@
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Balmorra_Run"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Banking_Clan
+:Banking_Clan rdf:type owl:NamedIndividual ,
+                       :Guild ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/InterGalactic_Banking_Clan"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Barabesh_system
 :Barabesh_system rdf:type owl:NamedIndividual ,
                           :System ;
@@ -1997,6 +2003,29 @@
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Castilon"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Cato_Neimoidia
+:Cato_Neimoidia rdf:type owl:NamedIndividual ,
+                         :Planet ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTerrain ;
+                           owl:someValuesFrom :Canyon
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTerrain ;
+                           owl:someValuesFrom :Forest
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTerrain ;
+                           owl:someValuesFrom :Plains
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTerrain ;
+                           owl:someValuesFrom :Water
+                         ] ;
+                :locatedIn :Colonies ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Cato_Neimoidia"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Cato_Parasitti
 :Cato_Parasitti rdf:type owl:NamedIndividual ,
                          :Clawdite ,
@@ -2404,7 +2433,18 @@
                  ] ,
                  [ rdf:type owl:Restriction ;
                    owl:onProperty :hadRole ;
-                   owl:someValuesFrom :Politician
+                   owl:someValuesFrom [ owl:intersectionOf ( :Senator
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :inOrganisation ;
+                                                               owl:hasValue :Galactic_Senate
+                                                             ]
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :responsibleFor ;
+                                                               owl:hasValue :Banking_Clan
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
                  ] ,
                  [ rdf:type owl:Restriction ;
                    owl:onProperty :raisedBy ;
@@ -7128,6 +7168,31 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Lotho_Minor"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Lott_Dod
+:Lott_Dod rdf:type owl:NamedIndividual ,
+                   :Nemoidian ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :gender ;
+                     owl:someValuesFrom :Male
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :hadRole ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Senator
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :inOrganisation ;
+                                                                 owl:hasValue :Galactic_Senate
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :responsibleFor ;
+                                                                 owl:hasValue :Trade_Federation
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                   ] ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Lott_Dod"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Lucky
 :Lucky rdf:type owl:NamedIndividual ,
                 :Clone ,
@@ -7381,6 +7446,29 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                :Temple ;
                       :locatedIn :Malachor_Sith_Temple ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Malachor_superweapon"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Malastare
+:Malastare rdf:type owl:NamedIndividual ,
+                    :Planet ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasTerrain ;
+                      owl:someValuesFrom :Forest
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hasTerrain ;
+                      owl:someValuesFrom :Rocky
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :homeworldOf ;
+                      owl:someValuesFrom :Dug
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :homeworldOf ;
+                      owl:someValuesFrom :Zillo_Beast
+                    ] ;
+           :locatedIn :Mid_Rim ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Malastare"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Maldo_Kreis
@@ -9027,6 +9115,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                                     [ rdf:type owl:Restriction ;
                                                                       owl:onProperty :inOrganisation ;
                                                                       owl:hasValue :Galactic_Republic
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :responsibleFor ;
+                                                                      owl:hasValue :Naboo
                                                                     ]
                                                                   ) ;
                                                rdf:type owl:Class
@@ -12343,6 +12435,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Works"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Zillo_Beast
+:The_Zillo_Beast rdf:type owl:NamedIndividual ,
+                          :Zillo_Beast ;
+                 :livedIn :Malastare ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Zillo_Beast"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Theed
 :Theed rdf:type owl:NamedIndividual ,
                 :City ;
@@ -14450,6 +14549,15 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                         :Wolffe
                         :Wooley
                         :Wrecker
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Lok_Durd
+                        :Lott_Dod
+                        :Mar_Tuuk
+                        :Nute_Gunray
                       )
 ] .
 

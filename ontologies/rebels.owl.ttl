@@ -477,25 +477,53 @@
                              :Mission ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Phantom
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
                                owl:someValuesFrom [ owl:intersectionOf ( :Repair
                                                                          [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :fitted ;
                                                                            owl:someValuesFrom :Hyperdrive
                                                                          ]
                                                                          [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty :participant ;
+                                                                           owl:onProperty :of ;
                                                                            owl:hasValue :Phantom
                                                                          ]
                                                                        ) ;
                                                     rdf:type owl:Class
                                                   ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Trial
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Blade_Wing
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Hera_Syndulla
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
                              ] ;
+                    :after :First_run_on_the_Ibaar_blockade ;
                     :damageOf :Phantom ;
                     :during :Blockade_of_Ibaar ;
                     :locatedIn :Shantipole ;
-                    :participant :Blade_Wing ,
+                    :participant :Garazeb_Orrelios ,
                                  :Hera_Syndulla ,
-                                 :Quarrie ;
+                                 :Quarrie ,
+                                 :Sabine_Wren ;
                     :year -4 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Wings_of_the_Master"^^xsd:anyURI .
 
@@ -656,76 +684,30 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Blockade_of_Ibaar
 :Blockade_of_Ibaar rdf:type owl:NamedIndividual ,
-                            :Battle ,
+                            :Trap ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :delivered ;
-                              owl:someValuesFrom :Supplies
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :destructionOf ;
-                              owl:someValuesFrom [ owl:intersectionOf ( :Corvette
+                              owl:onProperty :participant ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Blockade
                                                                         [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :memberOf ;
-                                                                          owl:hasValue :Phoenix_Cell
-                                                                        ]
-                                                                      ) ;
-                                                   rdf:type owl:Class
-                                                 ]
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :included ;
-                              owl:someValuesFrom [ owl:intersectionOf ( :Attack
-                                                                        [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :destructionOf ;
+                                                                          owl:onProperty :hadMember ;
                                                                           owl:someValuesFrom :Arquitens-class_command_cruiser
                                                                         ]
                                                                         [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :victoryOf ;
-                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Crew
-                                                                                                                    [ rdf:type owl:Restriction ;
-                                                                                                                      owl:onProperty :hadMember ;
-                                                                                                                      owl:hasValue :Hera_Syndulla
-                                                                                                                    ]
-                                                                                                                    [ rdf:type owl:Restriction ;
-                                                                                                                      owl:onProperty :ofShip ;
-                                                                                                                      owl:hasValue :Blade_Wing
-                                                                                                                    ]
-                                                                                                                  ) ;
-                                                                                               rdf:type owl:Class
-                                                                                             ]
+                                                                          owl:onProperty :hadMember ;
+                                                                          owl:someValuesFrom :Gozanti-class_cruiser
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :hadMember ;
+                                                                          owl:someValuesFrom :TIE_Fighter
                                                                         ]
                                                                       ) ;
                                                    rdf:type owl:Class
                                                  ]
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :killingOf ;
-                              owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :hadRole ;
-                                                   owl:someValuesFrom [ owl:intersectionOf ( :Leader
-                                                                                             :Pilot
-                                                                                             [ rdf:type owl:Restriction ;
-                                                                                               owl:onProperty :inOrganisation ;
-                                                                                               owl:hasValue :Phoenix_Cell
-                                                                                             ]
-                                                                                           ) ;
-                                                                        rdf:type owl:Class
-                                                                      ]
-                                                 ]
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :participant ;
-                              owl:someValuesFrom :A-Wing
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :participant ;
-                              owl:someValuesFrom :TIE_Fighter
                             ] ;
                    :after :Finding_Vizago ;
                    :during :Galactic_Civil_War ;
                    :locatedIn :Ibaar ;
-                   :participant :Kallus ,
-                                :Phoenix_Cell ;
+                   :participant :Kallus ;
                    :year -4 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Blockade_of_Ibaar"^^xsd:anyURI ,
                                 "https://starwars.fandom.com/wiki/Wings_of_the_Master"^^xsd:anyURI .
@@ -2963,6 +2945,57 @@
                 :locatedIn :Broken_Horn ;
                 :year -4 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Brothers_of_the_Broken_Horn#Homeward_bound"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#First_run_on_the_Ibaar_blockade
+:First_run_on_the_Ibaar_blockade rdf:type owl:NamedIndividual ,
+                                          :Fight ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :destructionOf ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Corvette
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :memberOf ;
+                                                                                        owl:hasValue :Phoenix_Cell
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :killingOf ;
+                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :hadRole ;
+                                                                 owl:someValuesFrom [ owl:intersectionOf ( [ owl:intersectionOf ( :Leader
+                                                                                                                                  :Pilot
+                                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                                    owl:onProperty :ofShip ;
+                                                                                                                                    owl:someValuesFrom :A-Wing
+                                                                                                                                  ]
+                                                                                                                                ) ;
+                                                                                                             rdf:type owl:Class
+                                                                                                           ]
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty :inOrganisation ;
+                                                                                                             owl:hasValue :Phoenix_Cell
+                                                                                                           ]
+                                                                                                         ) ;
+                                                                                      rdf:type owl:Class
+                                                                                    ]
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :participant ;
+                                            owl:someValuesFrom :A-Wing
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :participant ;
+                                            owl:someValuesFrom :Corvette
+                                          ] ;
+                                 :defeatOf :Phoenix_Cell ;
+                                 :during :Blockade_of_Ibaar ;
+                                 :participant :Ghost ;
+                                 :year -4 ;
+                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Blockade_of_Ibaar"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Foiling_the_Inquisitors
@@ -7650,6 +7683,67 @@
                        :locatedIn :Lothal_Jedi_Temple ;
                        :year -3 ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Shroud_of_Darkness#Seeking_answers"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Second_run_on_the_Ibaar_blockade
+:Second_run_on_the_Ibaar_blockade rdf:type owl:NamedIndividual ,
+                                           :Fight ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :defeatOf ;
+                                             owl:someValuesFrom :Blockade
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :included ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :destructionOf ;
+                                                                                         owl:someValuesFrom :Arquitens-class_command_cruiser
+                                                                                       ]
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :victoryOf ;
+                                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Crew
+                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty :hadMember ;
+                                                                                                                                     owl:hasValue :Hera_Syndulla
+                                                                                                                                   ]
+                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty :ofShip ;
+                                                                                                                                     owl:hasValue :Blade_Wing
+                                                                                                                                   ]
+                                                                                                                                 ) ;
+                                                                                                              rdf:type owl:Class
+                                                                                                            ]
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :included ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :delivered ;
+                                                                                         owl:someValuesFrom :Supplies
+                                                                                       ]
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :participant ;
+                                                                                         owl:hasValue :Ghost
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :participant ;
+                                             owl:someValuesFrom :A-Wing
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :participant ;
+                                             owl:someValuesFrom :Corvette
+                                           ] ;
+                                  :after :First_run_on_the_Ibaar_blockade ;
+                                  :during :Blockade_of_Ibaar ;
+                                  :year -4 ;
+                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Blockade_of_Ibaar"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Selling_Rifles_to_Vizago

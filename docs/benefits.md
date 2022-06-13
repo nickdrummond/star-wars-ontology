@@ -188,6 +188,18 @@ In this Universe, it would be quite strong to assert someone was not force sensi
 So, knowing someone is not force sensitive is not the same as
 not knowing if they are force sensitive (maybe they don't know themselves)
 
+It can still be useful to ask "who is not known to be force sensitive?". Especially as a check during authoring.
+We can use set arithmetic to ask this question as 2 queries:
+
+1) instance of ```Living_thing```
+2) instances of ```connectedTo some The_Force```
+
+Then, we simply remove all results of query 2 from the results of query 1.
+
+[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Living_thing&minus=connectedTo+some+The_Force&syntax=man&query=instances)
+
+Or [Events C-3PO was without R2-D2](http://localhost:8080/dlquery/?expression=participant+value+C-3PO&minus=participant+value+R2-D2&syntax=man&query=instances)
+
 ## Properties create a network or graph
 
 Any property can be navigated as a graph, whether or not they are

@@ -26,6 +26,13 @@ It is hosted on heroku using free-tier hardware so can take a moment to first st
 
 Querying with Pellet (Openllet) reasoner is possible on the [DL Query page](http://star-wars-ontology.herokuapp.com/dlquery/).
 
+This also supports set subtraction between queries which is useful where closure is not available.
+Essentially mapping to "A is true but B is not known" (weaker than "A and not B").
+
+Who worked for the Jedi Order that was not a Jedi?
+[Cid, who was an informant](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Living_thing+and+%28memberOf+value+Jedi_Order%29&minus=hadRole+some+Jedi&syntax=man&query=instances)
+
+
 ![Ontology browser ](at-at.png)
 
 You can even switch to Aurebesh if you prefer.

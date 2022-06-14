@@ -195,6 +195,7 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#during
 :during rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :sometimeDuring ;
         owl:inverseOf :included .
 
 
@@ -362,9 +363,16 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#included
 :included rdf:type owl:ObjectProperty ;
-          rdfs:domain :Event ;
-          rdfs:range :Event ;
+          rdfs:subPropertyOf :includedTransitively ;
           rdfs:comment "For relating an Event to everything that happened during it (subevents)."^^xsd:string .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#includedTransitively
+:includedTransitively rdf:type owl:ObjectProperty ;
+                      owl:inverseOf :sometimeDuring ;
+                      rdf:type owl:TransitiveProperty ;
+                      rdfs:domain :Event ;
+                      rdfs:range :Event .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#injuredIn
@@ -585,6 +593,11 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#sometimeBefore
 :sometimeBefore rdf:type owl:ObjectProperty ,
+                         owl:TransitiveProperty .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#sometimeDuring
+:sometimeDuring rdf:type owl:ObjectProperty ,
                          owl:TransitiveProperty .
 
 

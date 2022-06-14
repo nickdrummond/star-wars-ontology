@@ -436,6 +436,10 @@
                   owl:someValuesFrom :The_Force
                 ] ,
                 [ rdf:type owl:Restriction ;
+                  owl:onProperty :gender ;
+                  owl:someValuesFrom :Female
+                ] ,
+                [ rdf:type owl:Restriction ;
                   owl:onProperty :hadRole ;
                   owl:someValuesFrom :Baby
                 ] ;
@@ -815,16 +819,16 @@
 :Aunt-Z rdf:type owl:NamedIndividual ,
                  :Gilliand ,
                  [ rdf:type owl:Restriction ;
+                   owl:onProperty :gender ;
+                   owl:someValuesFrom :Female
+                 ] ,
+                 [ rdf:type owl:Restriction ;
                    owl:onProperty :hadRole ;
                    owl:someValuesFrom :Bartender
                  ] ,
                  [ rdf:type owl:Restriction ;
                    owl:onProperty :used ;
                    owl:someValuesFrom :Space_Waffles
-                 ] ,
-                 [ rdf:type owl:Restriction ;
-                   owl:onProperty :gender ;
-                   owl:allValuesFrom :Female
                  ] ;
         :friendsWith :Maz_Kanata ;
         :livedIn :Colossus ;
@@ -1295,6 +1299,10 @@
                 [ rdf:type owl:Restriction ;
                   owl:onProperty :gender ;
                   owl:someValuesFrom :Male
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom :Pet
                 ] ;
        :livedIn :Colossus ;
        :ownedBy :Flix ,
@@ -1799,7 +1807,12 @@
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :gender ;
                     owl:someValuesFrom :Male
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hadRole ;
+                    owl:someValuesFrom :Pet
                   ] ;
+         :ownedBy :Torra_Doza ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Buggles"^^xsd:anyURI .
 
 
@@ -2159,6 +2172,26 @@
                     [ rdf:type owl:Restriction ;
                       owl:onProperty :gender ;
                       owl:someValuesFrom :Male
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hadRole ;
+                      owl:someValuesFrom :Fighter
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hadRole ;
+                      owl:someValuesFrom [ owl:intersectionOf ( [ owl:intersectionOf ( :Mechanic
+                                                                                       :Pilot
+                                                                                       :Smuggler
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :ofShip ;
+                                                                  owl:hasValue :Millenium_Falcon
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ]
                     ] ;
            :friendsWith :Han_Solo ;
            :originallyFrom :Kashyyyk ;
@@ -2266,6 +2299,13 @@
                        ] ;
               :locatedIn :Savareen_sector ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Christophsis"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Church_of_the_Force
+:Church_of_the_Force rdf:type owl:NamedIndividual ,
+                              :Religious_Order ;
+                     :alliedWith :Jedi_Order ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Church_of_the_Force"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Cid
@@ -2479,6 +2519,10 @@
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Cobb_Vanth
 :Cobb_Vanth rdf:type owl:NamedIndividual ,
                      :Human ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :gender ;
+                       owl:someValuesFrom :Male
+                     ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :hadRole ;
                        owl:someValuesFrom [ owl:intersectionOf ( :Leader
@@ -2731,8 +2775,18 @@
                                                               ) ;
                                            rdf:type owl:Class
                                          ]
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hadRole ;
+                      owl:someValuesFrom [ owl:intersectionOf ( :Trooper
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :inOrganisation ;
+                                                                  owl:hasValue :Bad_Batch
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ]
                     ] ;
-           :memberOf :Bad_Batch ;
            :callsign "CT-9904"^^xsd:string ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-9904"^^xsd:anyURI .
 
@@ -3144,14 +3198,27 @@
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Devastator"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dexs_Diner
+:Dexs_Diner rdf:type owl:NamedIndividual ,
+                     :Building ;
+            :locatedIn :Coruscant ;
+            :ownedBy :Dexter_Jettster ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Dex%27s_Diner"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dexter_Jettster
 :Dexter_Jettster rdf:type owl:NamedIndividual ,
                           :Besalisk ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :gender ;
                             owl:someValuesFrom :Male
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hadRole ;
+                            owl:someValuesFrom :Cook
                           ] ;
                  :friendsWith :Obi-Wan_Kenobi ;
+                 :livedIn :Coruscant ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Dexter_Jettster"^^xsd:anyURI .
 
 
@@ -3209,6 +3276,10 @@
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Doctor_Mandible
 :Doctor_Mandible rdf:type owl:NamedIndividual ,
                           :Living_thing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :gender ;
+                            owl:someValuesFrom :Male
+                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :sentience ;
                             owl:someValuesFrom :Sentient
@@ -3425,13 +3496,23 @@
                  owl:someValuesFrom [ owl:intersectionOf ( :Trooper
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :inOrganisation ;
+                                                             owl:hasValue :Bad_Batch
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ]
+               ] ,
+               [ rdf:type owl:Restriction ;
+                 owl:onProperty :hadRole ;
+                 owl:someValuesFrom [ owl:intersectionOf ( :Trooper
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :inOrganisation ;
                                                              owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies#501st>
                                                            ]
                                                          ) ;
                                       rdf:type owl:Class
                                     ]
                ] ;
-      :memberOf :Bad_Batch ;
       :callsign "CT-1409"^^xsd:string ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/CT-1409"^^xsd:anyURI .
 
@@ -3501,10 +3582,15 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Eleni_Syndulla
 :Eleni_Syndulla rdf:type owl:NamedIndividual ,
-                         <https://nickdrummond.github.io/star-wars-ontology/ontologies#Twi'Lek> ;
+                         <https://nickdrummond.github.io/star-wars-ontology/ontologies#Twi'Lek> ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :gender ;
+                           owl:someValuesFrom :Female
+                         ] ;
                 :hadDaughter :Hera_Syndulla ;
                 :livedIn :Syndulla_residence ;
                 :married :Cham_Syndulla ;
+                :memberOf :Free_Ryloth_Movement ;
                 :originallyFrom :Ryloth ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Eleni_Syndulla"^^xsd:anyURI .
 
@@ -3740,6 +3826,10 @@
               [ rdf:type owl:Restriction ;
                 owl:onProperty :gender ;
                 owl:someValuesFrom :Female
+              ] ,
+              [ rdf:type owl:Restriction ;
+                owl:onProperty :hadRole ;
+                owl:someValuesFrom :Waitress
               ] ;
      :employedBy :Dexter_Jettster ;
      rdfs:seeAlso "https://starwars.fandom.com/wiki/FLO"^^xsd:anyURI .
@@ -4575,6 +4665,10 @@
               [ rdf:type owl:Restriction ;
                 owl:onProperty :gender ;
                 owl:someValuesFrom :Male
+              ] ,
+              [ rdf:type owl:Restriction ;
+                owl:onProperty :hadRole ;
+                owl:someValuesFrom :Pet
               ] ;
      :livedIn :Grievous_fortress ;
      :ownedBy :Grievous ;
@@ -4584,6 +4678,10 @@
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Gor_Koresh
 :Gor_Koresh rdf:type owl:NamedIndividual ,
                      :Abyssin ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :gender ;
+                       owl:someValuesFrom :Male
+                     ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :hadRole ;
                        owl:someValuesFrom :Criminal
@@ -5092,6 +5190,21 @@
                :originallyFrom :Ryloth ;
                :born -29 ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Hera_Syndulla"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hermione_Bagwa
+:Hermione_Bagwa rdf:type owl:NamedIndividual ,
+                         :Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :gender ;
+                           owl:someValuesFrom :Female
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom :Waitress
+                         ] ;
+                :employedBy :Dexter_Jettster ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Hermione_Bagwa"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hevy
@@ -5817,6 +5930,21 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :gender ;
                           owl:someValuesFrom :Male
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom :Entertainer
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Politician
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :inOrganisation ;
+                                                                      owl:hasValue :Galactic_Senate
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
                         ] ;
                :friendsWith :Padme_Amidala ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Jar_Jar_Binks"^^xsd:anyURI .
@@ -6647,6 +6775,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :Kitwarr rdf:type owl:NamedIndividual ,
                   :Wookie ,
                   [ rdf:type owl:Restriction ;
+                    owl:onProperty :gender ;
+                    owl:someValuesFrom :Male
+                  ] ,
+                  [ rdf:type owl:Restriction ;
                     owl:onProperty :hadRole ;
                     owl:someValuesFrom [ owl:intersectionOf ( :Slave
                                                               [ rdf:type owl:Restriction ;
@@ -7140,8 +7272,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :gender ;
                           owl:someValuesFrom :Male
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom :Explorer
                         ] ;
                :livedIn :Tuanul ;
+               :memberOf :Church_of_the_Force ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Lor_San_Tekka"^^xsd:anyURI .
 
 
@@ -8221,6 +8358,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                 [ rdf:type owl:Restriction ;
                   owl:onProperty :gender ;
                   owl:someValuesFrom :Female
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom :Pet
                 ] ;
        :ownedBy :Jabba ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Muchi"^^xsd:anyURI .
@@ -9190,7 +9331,14 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :hadRole ;
-                          owl:someValuesFrom :Queen
+                          owl:someValuesFrom [ owl:intersectionOf ( :Queen
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :responsibleFor ;
+                                                                      owl:hasValue :Naboo
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :hadRole ;
@@ -9325,11 +9473,15 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :Pershing rdf:type owl:NamedIndividual ,
                    :Human ,
                    [ rdf:type owl:Restriction ;
+                     owl:onProperty :gender ;
+                     owl:someValuesFrom :Male
+                   ] ,
+                   [ rdf:type owl:Restriction ;
                      owl:onProperty :hadRole ;
                      owl:someValuesFrom [ owl:intersectionOf ( :Doctor
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :inOrganisation ;
-                                                                 owl:hasValue :Galactic_Empire
+                                                                 owl:hasValue :Imperial_Remnant
                                                                ]
                                                              ) ;
                                           rdf:type owl:Class
@@ -9662,6 +9814,14 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :Presence rdf:type owl:NamedIndividual ,
                    :Living_thing ,
                    [ rdf:type owl:Restriction ;
+                     owl:onProperty :connectedTo ;
+                     owl:someValuesFrom :The_Force
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :gender ;
+                     owl:someValuesFrom :Female
+                   ] ,
+                   [ rdf:type owl:Restriction ;
                      owl:onProperty :hadRole ;
                      owl:someValuesFrom :Sith
                    ] ;
@@ -9777,6 +9937,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                   owl:someValuesFrom :The_Force
                 ] ,
                 [ rdf:type owl:Restriction ;
+                  owl:onProperty :gender ;
+                  owl:someValuesFrom :Male
+                ] ,
+                [ rdf:type owl:Restriction ;
                   owl:onProperty :hadRole ;
                   owl:someValuesFrom :Child
                 ] ;
@@ -9860,6 +10024,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Quarrie
 :Quarrie rdf:type owl:NamedIndividual ,
                   :Mon_Calimari ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :gender ;
+                    owl:someValuesFrom :Male
+                  ] ,
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :hadRole ;
                     owl:someValuesFrom :Engineer
@@ -10687,6 +10855,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                  owl:someValuesFrom :Female
                ] ,
                [ rdf:type owl:Restriction ;
+                 owl:onProperty :hadRole ;
+                 owl:someValuesFrom :Pet
+               ] ,
+               [ rdf:type owl:Restriction ;
                  owl:onProperty :hasTrait ;
                  owl:someValuesFrom :Reptilian
                ] ,
@@ -10694,6 +10866,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                  owl:onProperty :sentience ;
                  owl:someValuesFrom :Non-sentient
                ] ;
+      :ownedBy :Roland_Durand ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Ruby_(lizard)"^^xsd:anyURI .
 
 
@@ -10915,6 +11088,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :gender ;
                                owl:someValuesFrom :Male
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hadRole ;
+                               owl:someValuesFrom :Entertainer
                              ] ;
                     :employedBy :Jabba ;
                     :livedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Jabba's_Palace> ;
@@ -11086,7 +11263,19 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :gender ;
                     owl:someValuesFrom :Male
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hadRole ;
+                    owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :ofShip ;
+                                                                owl:someValuesFrom :Podracer
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ]
                   ] ;
+         :originallyFrom :Malastare ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Sebulba"^^xsd:anyURI .
 
 
@@ -11529,8 +11718,18 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                  [ rdf:type owl:Restriction ;
                    owl:onProperty :gender ;
                    owl:someValuesFrom :Male
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom [ owl:intersectionOf ( :Pirate
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :inOrganisation ;
+                                                               owl:hasValue :Warbird_gang
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
                  ] ;
-        :memberOf :Warbird_gang ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Skreek"^^xsd:anyURI .
 
 
@@ -12297,8 +12496,18 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Tech
 :Tech rdf:type owl:NamedIndividual ,
-               :Clone ;
-      :memberOf :Bad_Batch ;
+               :Clone ,
+               [ rdf:type owl:Restriction ;
+                 owl:onProperty :hadRole ;
+                 owl:someValuesFrom [ owl:intersectionOf ( :Trooper
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :inOrganisation ;
+                                                             owl:hasValue :Bad_Batch
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ]
+               ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Tech"^^xsd:anyURI .
 
 
@@ -12342,6 +12551,17 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                 [ rdf:type owl:Restriction ;
                   owl:onProperty :gender ;
                   owl:someValuesFrom :Male
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Worker
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :locatedIn ;
+                                                              owl:hasValue :Reklam_Station
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
                 ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Terba"^^xsd:anyURI .
 
@@ -12406,6 +12626,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :The_Client rdf:type owl:NamedIndividual ,
                      :Human ,
                      [ rdf:type owl:Restriction ;
+                       owl:onProperty :gender ;
+                       owl:someValuesFrom :Male
+                     ] ,
+                     [ rdf:type owl:Restriction ;
                        owl:onProperty :hadRole ;
                        owl:someValuesFrom [ owl:intersectionOf ( :Agent
                                                                  [ rdf:type owl:Restriction ;
@@ -12422,7 +12646,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Daughter
 :The_Daughter rdf:type owl:NamedIndividual ,
-                       :Humanoid ,
+                       :Force_wielder ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :connectedTo ;
                          owl:someValuesFrom :Light_Side
@@ -12432,8 +12656,8 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                          owl:someValuesFrom :Female
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :sentience ;
-                         owl:someValuesFrom :Sentient
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom :Anchorite
                        ] ;
               :hadFather :The_Father ;
               :livedIn :Mortis ;
@@ -12443,18 +12667,14 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Father
 :The_Father rdf:type owl:NamedIndividual ,
-                     :Humanoid ,
-                     [ rdf:type owl:Restriction ;
-                       owl:onProperty :connectedTo ;
-                       owl:someValuesFrom :The_Force
-                     ] ,
+                     :Force_wielder ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :gender ;
                        owl:someValuesFrom :Male
                      ] ,
                      [ rdf:type owl:Restriction ;
-                       owl:onProperty :sentience ;
-                       owl:someValuesFrom :Sentient
+                       owl:onProperty :hadRole ;
+                       owl:someValuesFrom :Anchorite
                      ] ;
             :livedIn :Mortis ;
             :diedInYear -20 ;
@@ -12494,6 +12714,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :The_Mythrol rdf:type owl:NamedIndividual ,
                       :Mythrol ,
                       [ rdf:type owl:Restriction ;
+                        owl:onProperty :gender ;
+                        owl:someValuesFrom :Male
+                      ] ,
+                      [ rdf:type owl:Restriction ;
                         owl:onProperty :participatedIn ;
                         owl:someValuesFrom [ rdf:type owl:Restriction ;
                                              owl:onProperty :stole ;
@@ -12513,7 +12737,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Son
 :The_Son rdf:type owl:NamedIndividual ,
-                  :Humanoid ,
+                  :Force_wielder ,
                   [ rdf:type owl:Restriction ;
                     owl:onProperty :connectedTo ;
                     owl:someValuesFrom :Dark_Side
@@ -12523,8 +12747,8 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                     owl:someValuesFrom :Male
                   ] ,
                   [ rdf:type owl:Restriction ;
-                    owl:onProperty :sentience ;
-                    owl:someValuesFrom :Sentient
+                    owl:onProperty :hadRole ;
+                    owl:someValuesFrom :Anchorite
                   ] ;
          :hadFather :The_Father ;
          :livedIn :Mortis ;
@@ -12761,6 +12985,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :Toro_Calican rdf:type owl:NamedIndividual ,
                        :Human ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :gender ;
+                         owl:someValuesFrom :Male
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :hadRole ;
                          owl:someValuesFrom :Bounty_Hunter
                        ] ;
@@ -12785,8 +13013,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                             rdf:type owl:Class
                                           ]
                      ] ;
-            :friendsWith :Buggles ,
-                         :Kazuda_Xiono ;
+            :friendsWith :Kazuda_Xiono ;
             :hadFather :Imanuel_Doza ;
             :hadMother :Venisa_Doza ;
             :livedIn :Colossus ;
@@ -12970,7 +13197,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Tub
 :Tub rdf:type owl:NamedIndividual ,
-              :Lurmen ;
+              :Lurmen ,
+              [ rdf:type owl:Restriction ;
+                owl:onProperty :gender ;
+                owl:someValuesFrom :Male
+              ] ;
      :friendsWith :Wag_Too ;
      :livedIn :Lurmen_village ;
      rdfs:seeAlso "https://starwars.fandom.com/wiki/Tub"^^xsd:anyURI .
@@ -13690,6 +13921,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                  [ rdf:type owl:Restriction ;
                    owl:onProperty :gender ;
                    owl:someValuesFrom :Male
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom :Scout
                  ] ;
         :originallyFrom :Bright_Tree_Village ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Wicket_Wystri_Warrick"^^xsd:anyURI .
@@ -13782,8 +14017,18 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Wrecker
 :Wrecker rdf:type owl:NamedIndividual ,
-                  :Clone ;
-         :memberOf :Bad_Batch ;
+                  :Clone ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hadRole ;
+                    owl:someValuesFrom [ owl:intersectionOf ( :Trooper
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :inOrganisation ;
+                                                                owl:hasValue :Bad_Batch
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ]
+                  ] ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Wrecker"^^xsd:anyURI .
 
 
@@ -14414,14 +14659,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                                               ] ;
                                                                      :locatedIn :Outer_Rim ;
                                                                      rdfs:seeAlso "https://starwars.fandom.com/wiki/D%27Qar"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dex's_Diner
-<https://nickdrummond.github.io/star-wars-ontology/ontologies#Dex's_Diner> rdf:type owl:NamedIndividual ,
-                                                                                    :Building ;
-                                                                           :locatedIn :Coruscant ;
-                                                                           :ownedBy :Dexter_Jettster ;
-                                                                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Dex%27s_Diner"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Jabba's_Palace

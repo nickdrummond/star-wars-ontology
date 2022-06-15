@@ -505,13 +505,13 @@
 :Holdo_Maneuver rdf:type owl:NamedIndividual ,
                          :Attack ;
                 :after :Mutiny_on_the_Raddus ;
+                :deathOf :Amilyn_Holdo ;
                 :destructionOf :MC85_Raddus ,
                                :Supremacy ;
                 :during :Battle_of_Oetchi ,
                         :First_Order-Resistance_War ;
                 :escapeOf :Resistance ;
                 :locatedIn :Crait ;
-                :participant :Amilyn_Holdo ;
                 :year 34 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Holdo_maneuver"^^xsd:anyURI .
 
@@ -722,6 +722,27 @@
                                                                          [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :connectedTo ;
                                                                            owl:hasValue :Rey
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :sometimeAfter ;
+                               owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :locatedIn ;
+                                                                           owl:someValuesFrom [ owl:intersectionOf ( :Tunnel
+                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                       owl:onProperty :locatedIn ;
+                                                                                                                       owl:hasValue :Pasaana
+                                                                                                                     ]
+                                                                                                                   ) ;
+                                                                                                rdf:type owl:Class
+                                                                                              ]
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :deathOf ;
+                                                                           owl:hasValue :Ochi
                                                                          ]
                                                                        ) ;
                                                     rdf:type owl:Class
@@ -1000,6 +1021,20 @@
                                                      ]
                                 ] ,
                                 [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :deathOf ;
+                                                                              owl:hasValue :Leia_Organa
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :locatedIn ;
+                                                                              owl:hasValue :MC85_Raddus
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
                                   owl:onProperty :participant ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :The_Force
                                                                             [ rdf:type owl:Restriction ;
@@ -1013,7 +1048,6 @@
                        :deathOf :Kylo_Ren ;
                        :during :Retrieving_Palpatines_Wayfinder ;
                        :locatedIn :Death_Star_Ruins ;
-                       :participant :Leia_Organa ;
                        :survivedBy :Ben_Solo ;
                        :victoryOf :Rey ;
                        :witnessedBy :Finn ,

@@ -1,1116 +1,1536 @@
+@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
 @prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
-
-<https://nickdrummond.github.io/star-wars-ontology/ontologies/trilogy.owl.ttl> rdf:type owl:Ontology ;
-                                                                                owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
-                                                                                rdfs:comment "Events from the original trilogy films"^^xsd:string ;
-                                                                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope"^^xsd:anyURI ,
-                                                                                             "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi"^^xsd:anyURI ,
-                                                                                             "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back"^^xsd:anyURI .
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_on_Lars_Homestead
-:Attack_on_Lars_Homestead rdf:type owl:NamedIndividual ,
-                                   :Attack ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :included ;
-                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :of ;
-                                                                                 owl:someValuesFrom :Jawa
-                                                                               ]
-                                                                             ) ;
-                                                          rdf:type owl:Class
-                                                        ]
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :included ;
-                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :of ;
-                                                                                 owl:hasValue :Beru_Whitesun_Lars
-                                                                               ]
-                                                                             ) ;
-                                                          rdf:type owl:Class
-                                                        ]
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :included ;
-                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :of ;
-                                                                                 owl:hasValue :Owen_Lars
-                                                                               ]
-                                                                             ) ;
-                                                          rdf:type owl:Class
-                                                        ]
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :participant ;
-                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hadRole ;
-                                                          owl:someValuesFrom :StormTrooper
-                                                        ]
-                                   ] ;
-                          :after :Capture_of_Tantive_IV ;
-                          :during :Galactic_Civil_War ;
-                          :locatedIn :Lars_Homestead ;
-                          :year 0 ;
-                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Lars_Homestead#Burning_homestead"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bartering_for_Solo
-:Bartering_for_Solo rdf:type owl:NamedIndividual ,
-                             :Communication ;
-                    :about :Han_Solo ;
-                    :during :Rescue_of_Han_Solo ;
-                    :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Jabba's_Palace> ;
-                    :participant :Jabba ;
-                    :traded :C-3PO ,
-                            :R2-D2 ;
-                    :year 4 ;
-                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Endor
-:Battle_of_Endor rdf:type owl:NamedIndividual ,
-                          :Battle ;
-                 :after :Yoda_becomes_One_with_the_Force ;
-                 :creationOf :Death_Star_Ruins ;
-                 :destructionOf :Death_Star_2 ,
-                                :Executor ,
-                                :MC80A_Nautilian ,
-                                :MC80_Liberty ;
-                 :during :Galactic_Civil_War ;
-                 :locatedIn :Endor ;
-                 :participant :Galactic_Empire ,
-                              :Rebel_Alliance ;
-                 :survivedBy :MC80A_Home_One ;
-                 :year 4 ;
-                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Hoth
-:Battle_of_Hoth rdf:type owl:NamedIndividual ,
-                         :Battle ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :participant ;
-                           owl:someValuesFrom :AT-AT
-                         ] ;
-                :after :Search_for_Luke ;
-                :destructionOf :Echo_Base ;
-                :during :Galactic_Civil_War ;
-                :escapeOf :Rebel_Alliance ;
-                :locatedIn :Echo_Base ;
-                :participant :Galactic_Empire ;
-                :year 3 ;
-                rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Hoth"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Yavin
-:Battle_of_Yavin rdf:type owl:NamedIndividual ,
-                          :Battle ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :included ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :of ;
-                                                                        owl:hasValue :Wilhuff_Tarkin
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :included ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :of ;
-                                                                        owl:hasValue :Wullf_Yularen
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :included ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :of ;
-                                                                        owl:hasValue :Porkins
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :participant ;
-                            owl:someValuesFrom :TIE_Fighter
-                          ] ;
-                 :after :Escape_from_Death_Star ;
-                 :destructionOf :Death_Star_1 ;
-                 :during :Galactic_Civil_War ;
-                 :locatedIn :Yavin_4 ;
-                 :participant :Galactic_Empire ,
-                              :Massassi_Group ;
-                 :year 0 ;
-                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Boushh_trades_Chewbacca
-:Boushh_trades_Chewbacca rdf:type owl:NamedIndividual ,
-                                  :Confrontation ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :participant ;
-                                    owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                                owl:oneOf ( :Leia_Organa
-                                                                                          )
-                                                                              ]
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :disguisedAs ;
-                                                                                owl:hasValue :Boushh
-                                                                              ]
-                                                                            ) ;
-                                                         rdf:type owl:Class
-                                                       ]
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :used ;
-                                    owl:someValuesFrom :Thermal_Detonator
-                                  ] ;
-                         :after :Murder_of_Oola ;
-                         :during :Rescue_of_Han_Solo ;
-                         :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Jabba's_Palace> ;
-                         :traded :Chewbacca ;
-                         :year 4 ;
-                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Capture_of_Tantive_IV
-:Capture_of_Tantive_IV rdf:type owl:NamedIndividual ,
-                                :Fight ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :included ;
-                                  owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :of ;
-                                                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                                   owl:onProperty :hadRole ;
-                                                                                                   owl:someValuesFrom [ owl:intersectionOf ( :Trooper
-                                                                                                                                             [ rdf:type owl:Restriction ;
-                                                                                                                                               owl:onProperty :inOrganisation ;
-                                                                                                                                               owl:hasValue :Rebel_Alliance
-                                                                                                                                             ]
-                                                                                                                                           ) ;
-                                                                                                                        rdf:type owl:Class
-                                                                                                                      ]
-                                                                                                 ]
-                                                                            ]
-                                                                          ) ;
-                                                       rdf:type owl:Class
-                                                     ]
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :included ;
-                                  owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :of ;
-                                                                              owl:hasValue :Raymus_Antilles
-                                                                            ]
-                                                                          ) ;
-                                                       rdf:type owl:Class
-                                                     ]
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :participant ;
-                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :hadRole ;
-                                                       owl:someValuesFrom :StormTrooper
-                                                     ]
-                                ] ;
-                       :captureOf :Leia_Organa ;
-                       :during :Galactic_Civil_War ;
-                       :escapeOf :C-3PO ,
-                                 :R2-D2 ;
-                       :locatedIn :Tantive_IV ,
-                                  :Tatooine ;
-                       :participant :Darth_Vader ,
-                                    :Devastator ;
-                       :year 0 ;
-                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope#Assault_on_Tantive_IV"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Confrontation_in_the_Emperors_Throne_Room
-:Confrontation_in_the_Emperors_Throne_Room rdf:type owl:NamedIndividual ,
-                                                    :Duel ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty :included ;
-                                                      owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                                                [ rdf:type owl:Restriction ;
-                                                                                                  owl:onProperty :of ;
-                                                                                                  owl:hasValue :Darth_Vader
-                                                                                                ]
-                                                                                              ) ;
-                                                                           rdf:type owl:Class
-                                                                         ]
-                                                    ] ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty :included ;
-                                                      owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                                                [ rdf:type owl:Restriction ;
-                                                                                                  owl:onProperty :of ;
-                                                                                                  owl:hasValue :Darth_Sidious
-                                                                                                ]
-                                                                                              ) ;
-                                                                           rdf:type owl:Class
-                                                                         ]
-                                                    ] ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty :locatedIn ;
-                                                      owl:someValuesFrom [ owl:intersectionOf ( :Throne_Room
-                                                                                                [ rdf:type owl:Restriction ;
-                                                                                                  owl:onProperty :locatedIn ;
-                                                                                                  owl:hasValue :Death_Star_2
-                                                                                                ]
-                                                                                              ) ;
-                                                                           rdf:type owl:Class
-                                                                         ]
-                                                    ] ;
-                                           :during :Battle_of_Endor ;
-                                           :participant :Luke_Skywalker ;
-                                           :year 4 ;
-                                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#Meeting_Luke_Skywalker"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Deactivating_the_Shield_Generator_on_Endor
-:Deactivating_the_Shield_Generator_on_Endor rdf:type owl:NamedIndividual ,
-                                                     :Battle ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :destructionOf ;
-                                                       owl:someValuesFrom [ owl:intersectionOf ( :Shield_Generator
-                                                                                                 [ rdf:type owl:Restriction ;
-                                                                                                   owl:onProperty :partOf ;
-                                                                                                   owl:hasValue :Death_Star_2
-                                                                                                 ]
-                                                                                               ) ;
-                                                                            rdf:type owl:Class
-                                                                          ]
-                                                     ] ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :participant ;
-                                                       owl:someValuesFrom :AT-ST
-                                                     ] ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :participant ;
-                                                       owl:someValuesFrom :Speeder_Bike
-                                                     ] ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :participant ;
-                                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :hadRole ;
-                                                                            owl:someValuesFrom :StormTrooper
-                                                                          ]
-                                                     ] ,
-                                                     [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :victoryOf ;
-                                                       owl:someValuesFrom :Ewok
-                                                     ] ;
-                                            :after :Ewok_Feast ;
-                                            :during :Battle_of_Endor ;
-                                            :locatedIn :Endor ;
-                                            :participant :C-3PO ,
-                                                         :Chewbacca ,
-                                                         :Han_Solo ,
-                                                         :Leia_Organa ,
-                                                         :Luke_Skywalker ,
-                                                         :R2-D2 ,
-                                                         :Wicket ;
-                                            :year 4 ;
-                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Death_Star_2
-:Death_Star_2 rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Defrosting_Han
-:Defrosting_Han rdf:type owl:NamedIndividual ,
-                         :Rescue ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :assistedBy ;
-                           owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                       owl:oneOf ( :Lando_Calrissian
-                                                                                 )
-                                                                     ]
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :disguisedAs ;
-                                                                       owl:someValuesFrom :Guard
-                                                                     ]
-                                                                   ) ;
-                                                rdf:type owl:Class
-                                              ]
-                         ] ;
-                :after :Boushh_trades_Chewbacca ;
-                :captureOf :Han_Solo ,
-                           :Leia_Organa ;
-                :during :Rescue_of_Han_Solo ;
-                :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Jabba's_Palace> ;
-                :year 4 ;
-                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Saving_Han_Solo"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_Carkoon
-:Escape_from_Carkoon rdf:type owl:NamedIndividual ,
-                              :Escape ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :included ;
-                                owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                          [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :of ;
-                                                                            owl:hasValue :Salacious_B._Crumb
-                                                                          ]
-                                                                        ) ;
-                                                     rdf:type owl:Class
-                                                   ]
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :included ;
-                                owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                          [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :of ;
-                                                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                                 owl:onProperty :hadRole ;
-                                                                                                 owl:someValuesFrom :Guard
-                                                                                               ]
-                                                                          ]
-                                                                        ) ;
-                                                     rdf:type owl:Class
-                                                   ]
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :participant ;
-                                owl:someValuesFrom :Sarlacc
-                              ] ;
-                     :after :Luke_vs_Rancor ;
-                     :destructionOf :Khetanna ;
-                     :during :Rescue_of_Han_Solo ;
-                     :eatingOf :Boba_Fett ;
-                     :escapeOf :C-3PO ,
-                               :Chewbacca ,
-                               :Han_Solo ,
-                               :Lando_Calrissian ,
-                               :Leia_Organa ,
-                               :Luke_Skywalker ,
-                               :R2-D2 ;
-                     :locatedIn :Great_Pit_of_Carkoon ;
-                     :year 4 ;
-                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Skirmish_at_the_Great_Pit_of_Carkoon"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_Death_Star
-:Escape_from_Death_Star rdf:type owl:NamedIndividual ,
-                                 :Escape ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :destructionOf ;
-                                   owl:someValuesFrom :TIE_Fighter
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :included ;
-                                   owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                             [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :of ;
-                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                                    owl:onProperty :hadRole ;
-                                                                                                    owl:someValuesFrom :StormTrooper
-                                                                                                  ]
-                                                                             ]
-                                                                           ) ;
-                                                        rdf:type owl:Class
-                                                      ]
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :included ;
-                                   owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :deactivated ;
-                                                                               owl:someValuesFrom :Tractor_Beam_Projector
-                                                                             ]
-                                                                             [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :participant ;
-                                                                               owl:hasValue :Obi-Wan_Kenobi
-                                                                             ]
-                                                                           ) ;
-                                                        rdf:type owl:Class
-                                                      ]
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :participant ;
-                                   owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                               owl:oneOf ( :Chewbacca
-                                                                                         )
-                                                                             ]
-                                                                             [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :disguisedAs ;
-                                                                               owl:someValuesFrom :Captive
-                                                                             ]
-                                                                           ) ;
-                                                        rdf:type owl:Class
-                                                      ]
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :participant ;
-                                   owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                   owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                        owl:oneOf ( :Han_Solo
-                                                                                    :Luke_Skywalker
-                                                                                  )
-                                                                      ]
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :disguisedAs ;
-                                                                        owl:someValuesFrom :StormTrooper
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
-                                 ] ;
-                        :after :The_Disaster ;
-                        :during :Galactic_Civil_War ;
-                        :locatedIn :Death_Star_1 ;
-                        :participant :C-3PO ,
-                                     :Millenium_Falcon ,
-                                     :Obi-Wan_Kenobi ,
-                                     :R2-D2 ;
-                        :year 0 ;
-                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_Hoth
-:Escape_from_Hoth rdf:type owl:NamedIndividual ,
-                           :Escape ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :included ;
-                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :participant ;
-                                                                         owl:someValuesFrom :Mynock
-                                                                       ]
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :eatingOf ;
-                                                                         owl:hasValue :Millenium_Falcon
-                                                                       ]
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :participant ;
-                                                                         owl:hasValue :Sy-O
-                                                                       ]
-                                                                     ) ;
-                                                  rdf:type owl:Class
-                                                ]
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :locatedIn ;
-                             owl:someValuesFrom [ owl:intersectionOf ( :Asteroid_field
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :locatedIn ;
-                                                                         owl:hasValue :Hoth
-                                                                       ]
-                                                                     ) ;
-                                                  rdf:type owl:Class
-                                                ]
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :participant ;
-                             owl:someValuesFrom :Imperial-class_Star_Destroyer
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :participant ;
-                             owl:someValuesFrom :TIE_Fighter
-                           ] ;
-                  :after :Battle_of_Hoth ;
-                  :during :Galactic_Civil_War ;
-                  :escapeOf :Millenium_Falcon ;
-                  :participant :Slave_I ;
-                  :year 3 ;
-                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_Battle_of_Hoth"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_the_Garbage_Compactor
-:Escape_from_the_Garbage_Compactor rdf:type owl:NamedIndividual ,
-                                            :Escape ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty :included ;
-                                              owl:someValuesFrom [ owl:intersectionOf ( :Attack
-                                                                                        [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty :participant ;
-                                                                                          owl:someValuesFrom :Dianoga
-                                                                                        ]
-                                                                                        [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty :survivedBy ;
-                                                                                          owl:hasValue :Luke_Skywalker
-                                                                                        ]
-                                                                                      ) ;
-                                                                   rdf:type owl:Class
-                                                                 ]
-                                            ] ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty :locatedIn ;
-                                              owl:someValuesFrom [ owl:intersectionOf ( :Garbage_Compactor
-                                                                                        [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty :locatedIn ;
-                                                                                          owl:hasValue :Death_Star_1
-                                                                                        ]
-                                                                                      ) ;
-                                                                   rdf:type owl:Class
-                                                                 ]
-                                            ] ;
-                                   :assistedBy :R2-D2 ;
-                                   :during :Rescue_of_Leia ;
-                                   :escapeOf :Chewbacca ,
-                                             :Han_Solo ,
-                                             :Leia_Organa ,
-                                             :Luke_Skywalker ;
-                                   :year 0 ;
-                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Garbage_masher_3263827"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ewok_Feast
-:Ewok_Feast rdf:type owl:NamedIndividual ,
-                     :Capture ,
-                     [ rdf:type owl:Restriction ;
-                       owl:onProperty :participant ;
-                       owl:someValuesFrom [ owl:intersectionOf ( :Ewok
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty :livedIn ;
-                                                                   owl:hasValue :Bright_Tree_Village
-                                                                 ]
-                                                               ) ;
-                                            rdf:type owl:Class
-                                          ]
-                     ] ;
-            :after :Speeder_Fight ;
-            :captureOf :Chewbacca ,
-                       :Han_Solo ,
-                       :Luke_Skywalker ,
-                       :R2-D2 ;
-            :during :Battle_of_Endor ;
-            :locatedIn :Bright_Tree_Village ;
-            :participant :C-3PO ;
-            :year 4 ;
-            rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Han_vs_Greedo
-:Han_vs_Greedo rdf:type owl:NamedIndividual ,
-                        :Confrontation ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :included ;
-                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :of ;
-                                                                      owl:hasValue :Greedo
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
-                                             ]
-                        ] ;
-               :after :Attack_on_Lars_Homestead ;
-               :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Chalmun's_Cantina> ;
-               :victoryOf :Han_Solo ;
-               :year 0 ;
-               rdfs:seeAlso "https://starwars.fandom.com/wiki/Greedo#Death"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Leia_vs_Jabba
-:Leia_vs_Jabba rdf:type owl:NamedIndividual ,
-                        :Confrontation ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :included ;
-                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :of ;
-                                                                      owl:hasValue :Jabba
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
-                                             ]
-                        ] ;
-               :during :Escape_from_Carkoon ;
-               :locatedIn :Khetanna ;
-               :victoryOf :Leia_Organa ;
-               :year 4 ;
-               rdfs:seeAlso "https://starwars.fandom.com/wiki/Jabba_Desilijic_Tiure#Slaying_of_the_Hutt"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Luke_meets_Yoda
-:Luke_meets_Yoda rdf:type owl:NamedIndividual ,
-                          :Training ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :participant ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :X-Wing
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :locatedIn ;
-                                                                        owl:someValuesFrom :Swamp
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
-                          ] ;
-                 :after :Battle_of_Hoth ;
-                 :during :Galactic_Civil_War ;
-                 :locatedIn :Cave_of_Evil ,
-                            :Yodas_Hut ;
-                 :participant :Luke_Skywalker ,
-                              :Yoda ;
-                 :witnessedBy :R2-D2 ;
-                 :year 3 ;
-                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Searching_for_Yoda"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Luke_vs_Rancor
-:Luke_vs_Rancor rdf:type owl:NamedIndividual ,
-                         :Fight ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :eatingOf ;
-                           owl:someValuesFrom [ owl:intersectionOf ( :Gamorrean
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :hadRole ;
-                                                                       owl:someValuesFrom :Guard
-                                                                     ]
-                                                                   ) ;
-                                                rdf:type owl:Class
-                                              ]
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :included ;
-                           owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :of ;
-                                                                       owl:someValuesFrom [ owl:intersectionOf ( :Rancor
-                                                                                                                 [ rdf:type owl:Restriction ;
-                                                                                                                   owl:onProperty :ownedBy ;
-                                                                                                                   owl:hasValue :Jabba
-                                                                                                                 ]
-                                                                                                               ) ;
-                                                                                            rdf:type owl:Class
-                                                                                          ]
-                                                                     ]
-                                                                   ) ;
-                                                rdf:type owl:Class
-                                              ]
-                         ] ;
-                :after :Defrosting_Han ;
-                :during :Rescue_of_Han_Solo ;
-                :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Jabba's_Palace> ;
-                :victoryOf :Luke_Skywalker ;
-                :witnessedBy :Jabba ;
-                :year 4 ;
-                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Luke_Skywalker_arrives_at_the_palace"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Murder_of_Oola
-:Murder_of_Oola rdf:type owl:NamedIndividual ,
-                         :Murder ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :participant ;
-                           owl:someValuesFrom [ owl:intersectionOf ( :Rancor
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :ownedBy ;
-                                                                       owl:hasValue :Jabba
-                                                                     ]
-                                                                   ) ;
-                                                rdf:type owl:Class
-                                              ]
-                         ] ;
-                :after :Bartering_for_Solo ;
-                :during :Rescue_of_Han_Solo ;
-                :eatingOf :Oola ;
-                :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Jabba's_Palace> ;
-                :of :Oola ;
-                :orderedBy :Jabba ;
-                :witnessedBy :Max_Rebo_Band ;
-                :year 4 ;
-                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Obi-Wan_vs_Vader_DeathStar
-:Obi-Wan_vs_Vader_DeathStar rdf:type owl:NamedIndividual ,
-                                     :Duel ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :included ;
-                                       owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                                 [ rdf:type owl:Restriction ;
-                                                                                   owl:onProperty :of ;
-                                                                                   owl:hasValue :Obi-Wan_Kenobi
-                                                                                 ]
-                                                                               ) ;
-                                                            rdf:type owl:Class
-                                                          ]
-                                     ] ;
-                            :after :Rescue_of_Leia ;
-                            :during :Escape_from_Death_Star ;
-                            :locatedIn :Death_Star_1 ;
-                            :victoryOf :Darth_Vader ;
-                            :witnessedBy :Luke_Skywalker ;
-                            :year 0 ;
-                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia#Duel_with_the_Dark_Lord"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue_of_Han_Solo
-:Rescue_of_Han_Solo rdf:type owl:NamedIndividual ,
-                             :Rescue ;
-                    :during :Galactic_Civil_War ;
-                    :locatedIn :Tatooine ;
-                    :sometimeAfter :Trap_on_Cloud_City ;
-                    :target :Han_Solo ;
-                    :year 4 ;
-                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi?so=search#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue_of_Leia
-:Rescue_of_Leia rdf:type owl:NamedIndividual ,
-                         :Rescue ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :locatedIn ;
-                           owl:someValuesFrom [ owl:intersectionOf ( :Detention_Block
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :locatedIn ;
-                                                                       owl:hasValue :Death_Star_1
-                                                                     ]
-                                                                   ) ;
-                                                rdf:type owl:Class
-                                              ]
-                         ] ;
-                :during :Escape_from_Death_Star ;
-                :locatedIn :Death_Star_1 ;
-                :of :Leia_Organa ;
-                :participant :Chewbacca ,
-                             :Han_Solo ,
-                             :Luke_Skywalker ;
-                :year 0 ;
-                rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Run_on_Death_Star_2
-:Run_on_Death_Star_2 rdf:type owl:NamedIndividual ,
-                              :Attack ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :participant ;
-                                owl:someValuesFrom :X-Wing
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :target ;
-                                owl:someValuesFrom :Reactor_Core
-                              ] ;
-                     :during :Battle_of_Endor ;
-                     :locatedIn :Endor ;
-                     :participant :Millenium_Falcon ;
-                     :victoryOf :Lando_Calrissian ,
-                                :Nien_Nunb ,
-                                :Wedge_Antilles ;
-                     :year 4 ;
-                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_space_battle"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Search_for_Luke
-:Search_for_Luke rdf:type owl:NamedIndividual ,
-                          :Rescue ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :included ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :of ;
-                                                                        owl:someValuesFrom :Tauntaun
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :injuryOf ;
-                            owl:someValuesFrom :Wampa
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :participant ;
-                            owl:someValuesFrom :Probe_Droid
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :participant ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :Force_spirit
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :connectedTo ;
-                                                                        owl:hasValue :Obi-Wan_Kenobi
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
-                          ] ;
-                 :during :Galactic_Civil_War ;
-                 :injuryOf :Luke_Skywalker ;
-                 :locatedIn :Hoth ;
-                 :participant :Han_Solo ;
-                 :year 3 ;
-                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_search_for_Skywalker"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Speeder_Fight
-:Speeder_Fight rdf:type owl:NamedIndividual ,
-                        :Fight ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :destructionOf ;
-                          owl:someValuesFrom :Speeder_Bike
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :included ;
-                          owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :of ;
-                                                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                           owl:onProperty :hadRole ;
-                                                                                           owl:someValuesFrom :StormTrooper
-                                                                                         ]
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
-                                             ]
-                        ] ;
-               :during :Battle_of_Endor ;
-               :locatedIn :Endor ;
-               :participant :Leia_Organa ,
-                            :Luke_Skywalker ;
-               :witnessedBy :Wicket ;
-               :year 4 ;
-               rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Disaster
-:The_Disaster rdf:type owl:NamedIndividual ,
-                       :Attack ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :included ;
-                         owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :of ;
-                                                                     owl:hasValue :Bail_Organa
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ]
-                       ] ;
-              :after :Han_vs_Greedo ;
-              :destructionOf :Alderaan ;
-              :during :Galactic_Civil_War ;
-              :locatedIn :Alderaan ;
-              :orderedBy :Wilhuff_Tarkin ;
-              :participant :Death_Star_1 ;
-              :witnessedBy :Leia_Organa ;
-              :year 0 ;
-              rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Disaster"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trap_on_Cloud_City
-:Trap_on_Cloud_City rdf:type owl:NamedIndividual ,
-                             :Confrontation ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :participant ;
-                               owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hadRole ;
-                                                    owl:someValuesFrom :StormTrooper
-                                                  ]
-                             ] ;
-                    :after :Escape_from_Hoth ,
-                           :Luke_meets_Yoda ;
-                    :captureOf :Han_Solo ;
-                    :during :Galactic_Civil_War ;
-                    :escapeOf :Chewbacca ,
-                              :Leia_Organa ;
-                    :injuryOf :C-3PO ;
-                    :locatedIn :Cloud_City ;
-                    :participant :Boba_Fett ,
-                                 :Darth_Vader ,
-                                 :Lando_Calrissian ;
-                    :year 3 ;
-                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_city_in_the_clouds"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trench_Run_1
-:Trench_Run_1 rdf:type owl:NamedIndividual ,
-                       :Attack ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :included ;
-                         owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :of ;
-                                                                     owl:hasValue :Jon_Vander
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ]
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :participant ;
-                         owl:someValuesFrom :TIE_Fighter
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :destructionOf ;
-                         owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Y-Wing
-                       ] ;
-              :during :Battle_of_Yavin ;
-              :locatedIn :Meridian_Trench ;
-              :participant :Gold_Squadron ,
-                           :Vaders_TIE_Advanced_x1 ;
-              :target :Death_Star_thermal_exhaust_port ;
-              :victoryOf :Darth_Vader ;
-              :year 0 ;
-              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trench_Run_2
-:Trench_Run_2 rdf:type owl:NamedIndividual ,
-                       :Attack ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :participant ;
-                         owl:someValuesFrom :TIE_Fighter
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :destructionOf ;
-                         owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                         owl:onClass :X-Wing
-                       ] ;
-              :after :Trench_Run_1 ;
-              :during :Battle_of_Yavin ;
-              :locatedIn :Meridian_Trench ;
-              :participant :Red_Squadron ,
-                           :Vaders_TIE_Advanced_x1 ;
-              :target :Death_Star_thermal_exhaust_port ;
-              :victoryOf :Darth_Vader ;
-              :year 0 ;
-              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trench_Run_3
-:Trench_Run_3 rdf:type owl:NamedIndividual ,
-                       :Attack ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :included ;
-                         owl:someValuesFrom [ owl:intersectionOf ( :Attack
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :damageOf ;
-                                                                     owl:hasValue :Vaders_TIE_Advanced_x1
-                                                                   ]
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :victoryOf ;
-                                                                     owl:hasValue :Millenium_Falcon
-                                                                   ]
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :destructionOf ;
-                                                                     owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                                                     owl:onClass :TIE_Fighter
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ]
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :included ;
-                         owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :of ;
-                                                                     owl:hasValue :Biggs_Darklighter
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ]
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :participant ;
-                         owl:someValuesFrom :TIE_Fighter
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :participant ;
-                         owl:someValuesFrom [ owl:intersectionOf ( :Force_Bond
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :connectedTo ;
-                                                                     owl:hasValue :Luke_Skywalker
-                                                                   ]
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :connectedTo ;
-                                                                     owl:hasValue :Obi-Wan_Kenobi
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ]
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :used ;
-                         owl:someValuesFrom :Proton_Torpedo
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :destructionOf ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :X-Wing
-                       ] ;
-              :after :Trench_Run_2 ;
-              :damageOf :R2-D2 ;
-              :during :Battle_of_Yavin ;
-              :escapeOf :Wedge_Antilles ;
-              :locatedIn :Meridian_Trench ;
-              :participant :Millenium_Falcon ,
-                           :Red_Squadron ;
-              :survivedBy :Darth_Vader ;
-              :target :Death_Star_thermal_exhaust_port ;
-              :victoryOf :Luke_Skywalker ;
-              :year 0 ;
-              rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Vader_is_Lukes_Father
-:Vader_is_Lukes_Father rdf:type owl:NamedIndividual ,
-                                :Duel ;
-                       :during :Trap_on_Cloud_City ;
-                       :injuryOf :Luke_Skywalker ;
-                       :locatedIn :Cloud_City ;
-                       :participant :Darth_Vader ;
-                       :year 3 ;
-                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Vader.27s_trap"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Yoda_becomes_One_with_the_Force
-:Yoda_becomes_One_with_the_Force rdf:type owl:NamedIndividual ,
-                                          :Event ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :included ;
-                                            owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                                      [ rdf:type owl:Restriction ;
-                                                                                        owl:onProperty :of ;
-                                                                                        owl:hasValue :Yoda
-                                                                                      ]
-                                                                                    ) ;
-                                                                 rdf:type owl:Class
-                                                               ]
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :participant ;
-                                            owl:someValuesFrom [ owl:intersectionOf ( :Force_spirit
-                                                                                      [ rdf:type owl:Restriction ;
-                                                                                        owl:onProperty :connectedTo ;
-                                                                                        owl:hasValue :Obi-Wan_Kenobi
-                                                                                      ]
-                                                                                    ) ;
-                                                                 rdf:type owl:Class
-                                                               ]
-                                          ] ;
-                                 :after :Rescue_of_Han_Solo ;
-                                 :during :Galactic_Civil_War ;
-                                 :locatedIn :Yodas_Hut ;
-                                 :witnessedBy :Luke_Skywalker ;
-                                 :year 4 ;
-                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda#Death"^^xsd:anyURI .
-
-
-###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_on_Lars_Homestead
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Bartering_for_Solo
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Endor
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Hoth
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Yavin
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Boushh_trades_Chewbacca
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Capture_of_Tantive_IV
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Confrontation_in_the_Emperors_Throne_Room
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Deactivating_the_Shield_Generator_on_Endor
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Death_Star_2
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Defrosting_Han
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_Carkoon
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_Death_Star
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_Hoth
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_the_Garbage_Compactor
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Ewok_Feast
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Han_vs_Greedo
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Leia_vs_Jabba
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Luke_meets_Yoda
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Luke_vs_Rancor
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Murder_of_Oola
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Obi-Wan_vs_Vader_DeathStar
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue_of_Han_Solo
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue_of_Leia
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Run_on_Death_Star_2
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Search_for_Luke
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Speeder_Fight
+
+<ontologies/trilogy.owl.ttl> a owl:Ontology;
+  owl:imports <ontologies/star-wars.owl.ttl>;
+  rdfs:comment "Events from the original trilogy films";
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope"^^xsd:anyURI,
+    "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi"^^xsd:anyURI,
+    "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back"^^xsd:anyURI .
+
+:Attack_on_Lars_Homestead a owl:NamedIndividual, :Attack, _:genid1, _:genid6, _:genid11,
+    _:genid16;
+  :after :Capture_of_Tantive_IV;
+  :during :Galactic_Civil_War;
+  :locatedIn :Lars_Homestead;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Lars_Homestead#Burning_homestead"^^xsd:anyURI .
+
+_:genid1 a owl:Restriction;
+  owl:someValuesFrom _:genid2;
+  owl:onProperty :included .
+
+_:genid2 a owl:Class;
+  owl:intersectionOf _:genid5 .
+
+_:genid5 a rdf:List;
+  rdf:rest _:genid3;
+  rdf:first :Killing .
+
+_:genid3 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid4 .
+
+_:genid4 a owl:Restriction;
+  owl:someValuesFrom :Jawa;
+  owl:onProperty :of .
+
+_:genid6 a owl:Restriction;
+  owl:someValuesFrom _:genid7;
+  owl:onProperty :included .
+
+_:genid7 a owl:Class;
+  owl:intersectionOf _:genid10 .
+
+_:genid10 a rdf:List;
+  rdf:rest _:genid8;
+  rdf:first :Killing .
+
+_:genid8 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid9 .
+
+_:genid9 a owl:Restriction;
+  owl:hasValue :Beru_Whitesun_Lars;
+  owl:onProperty :of .
+
+_:genid11 a owl:Restriction;
+  owl:someValuesFrom _:genid12;
+  owl:onProperty :included .
+
+_:genid12 a owl:Class;
+  owl:intersectionOf _:genid15 .
+
+_:genid15 a rdf:List;
+  rdf:rest _:genid13;
+  rdf:first :Killing .
+
+_:genid13 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid14 .
+
+_:genid14 a owl:Restriction;
+  owl:hasValue :Owen_Lars;
+  owl:onProperty :of .
+
+_:genid16 a owl:Restriction;
+  owl:someValuesFrom _:genid17;
+  owl:onProperty :participant .
+
+_:genid17 a owl:Restriction;
+  owl:someValuesFrom :StormTrooper;
+  owl:onProperty :hadRole .
+
+:Bartering_for_Solo a owl:NamedIndividual, :Communication;
+  :about :Han_Solo;
+  :during :Rescue_of_Han_Solo;
+  :locatedIn <#Jabba's_Palace>;
+  :participant :Jabba;
+  :traded :C-3PO, :R2-D2;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
+
+:Battle_of_Endor a owl:NamedIndividual, :Battle;
+  :after :Yoda_becomes_One_with_the_Force;
+  :creationOf :Death_Star_Ruins;
+  :destructionOf :Death_Star_2, :Executor, :MC80A_Nautilian, :MC80_Liberty;
+  :during :Galactic_Civil_War;
+  :locatedIn :Endor;
+  :participant :Galactic_Empire, :Rebel_Alliance;
+  :survivedBy :MC80A_Home_One;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor"^^xsd:anyURI .
+
+:Battle_of_Hoth a owl:NamedIndividual, :Battle, _:genid18;
+  :after :Search_for_Luke;
+  :destructionOf :Echo_Base;
+  :during :Galactic_Civil_War;
+  :escapeOf :Rebel_Alliance;
+  :locatedIn :Echo_Base;
+  :participant :Galactic_Empire;
+  :year 3;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Hoth"^^xsd:anyURI .
+
+_:genid18 a owl:Restriction;
+  owl:someValuesFrom :AT-AT;
+  owl:onProperty :participant .
+
+:Battle_of_Yavin a owl:NamedIndividual, :Battle, _:genid19, _:genid24, _:genid29,
+    _:genid34;
+  :after :Escape_from_Death_Star;
+  :destructionOf :Death_Star_1;
+  :during :Galactic_Civil_War;
+  :locatedIn :Yavin_4;
+  :participant :Galactic_Empire, :Massassi_Group;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin"^^xsd:anyURI .
+
+_:genid19 a owl:Restriction;
+  owl:someValuesFrom _:genid20;
+  owl:onProperty :included .
+
+_:genid20 a owl:Class;
+  owl:intersectionOf _:genid23 .
+
+_:genid23 a rdf:List;
+  rdf:rest _:genid21;
+  rdf:first :Death .
+
+_:genid21 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid22 .
+
+_:genid22 a owl:Restriction;
+  owl:hasValue :Wilhuff_Tarkin;
+  owl:onProperty :of .
+
+_:genid24 a owl:Restriction;
+  owl:someValuesFrom _:genid25;
+  owl:onProperty :included .
+
+_:genid25 a owl:Class;
+  owl:intersectionOf _:genid28 .
+
+_:genid28 a rdf:List;
+  rdf:rest _:genid26;
+  rdf:first :Death .
+
+_:genid26 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid27 .
+
+_:genid27 a owl:Restriction;
+  owl:hasValue :Wullf_Yularen;
+  owl:onProperty :of .
+
+_:genid29 a owl:Restriction;
+  owl:someValuesFrom _:genid30;
+  owl:onProperty :included .
+
+_:genid30 a owl:Class;
+  owl:intersectionOf _:genid33 .
+
+_:genid33 a rdf:List;
+  rdf:rest _:genid31;
+  rdf:first :Killing .
+
+_:genid31 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid32 .
+
+_:genid32 a owl:Restriction;
+  owl:hasValue :Porkins;
+  owl:onProperty :of .
+
+_:genid34 a owl:Restriction;
+  owl:someValuesFrom :TIE_Fighter;
+  owl:onProperty :participant .
+
+:Boushh_trades_Chewbacca a owl:NamedIndividual, :Confrontation, _:genid35, _:genid42;
+  :after :Murder_of_Oola;
+  :during :Rescue_of_Han_Solo;
+  :locatedIn <#Jabba's_Palace>;
+  :traded :Chewbacca;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
+
+_:genid35 a owl:Restriction;
+  owl:someValuesFrom _:genid36;
+  owl:onProperty :participant .
+
+_:genid36 a owl:Class;
+  owl:intersectionOf _:genid39 .
+
+_:genid39 a rdf:List;
+  rdf:rest _:genid37;
+  rdf:first _:genid40 .
+
+_:genid37 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid38 .
+
+_:genid38 a owl:Restriction;
+  owl:hasValue :Boushh;
+  owl:onProperty :disguisedAs .
+
+_:genid40 a owl:Class;
+  owl:oneOf _:genid41 .
+
+_:genid41 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first :Leia_Organa .
+
+_:genid42 a owl:Restriction;
+  owl:someValuesFrom :Thermal_Detonator;
+  owl:onProperty :used .
+
+:Capture_of_Tantive_IV a owl:NamedIndividual, :Fight, _:genid43, _:genid48, _:genid58,
+    _:genid63;
+  :during :Galactic_Civil_War;
+  :escapeOf :C-3PO, :R2-D2;
+  :locatedIn :Tantive_IV, :Tatooine;
+  :participant :Darth_Vader, :Devastator;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope#Assault_on_Tantive_IV"^^xsd:anyURI .
+
+_:genid43 a owl:Restriction;
+  owl:someValuesFrom _:genid44;
+  owl:onProperty :included .
+
+_:genid44 a owl:Class;
+  owl:intersectionOf _:genid47 .
+
+_:genid47 a rdf:List;
+  rdf:rest _:genid45;
+  rdf:first :Capture .
+
+_:genid45 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid46 .
+
+_:genid46 a owl:Restriction;
+  owl:hasValue :Leia_Organa;
+  owl:onProperty :of .
+
+_:genid48 a owl:Restriction;
+  owl:someValuesFrom _:genid49;
+  owl:onProperty :included .
+
+_:genid49 a owl:Class;
+  owl:intersectionOf _:genid57 .
+
+_:genid57 a rdf:List;
+  rdf:rest _:genid50;
+  rdf:first :Killing .
+
+_:genid50 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid51 .
+
+_:genid51 a owl:Restriction;
+  owl:someValuesFrom _:genid52;
+  owl:onProperty :of .
+
+_:genid52 a owl:Restriction;
+  owl:someValuesFrom _:genid53;
+  owl:onProperty :hadRole .
+
+_:genid53 a owl:Class;
+  owl:intersectionOf _:genid56 .
+
+_:genid56 a rdf:List;
+  rdf:rest _:genid54;
+  rdf:first :Trooper .
+
+_:genid54 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid55 .
+
+_:genid55 a owl:Restriction;
+  owl:hasValue :Rebel_Alliance;
+  owl:onProperty :inOrganisation .
+
+_:genid58 a owl:Restriction;
+  owl:someValuesFrom _:genid59;
+  owl:onProperty :included .
+
+_:genid59 a owl:Class;
+  owl:intersectionOf _:genid62 .
+
+_:genid62 a rdf:List;
+  rdf:rest _:genid60;
+  rdf:first :Killing .
+
+_:genid60 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid61 .
+
+_:genid61 a owl:Restriction;
+  owl:hasValue :Raymus_Antilles;
+  owl:onProperty :of .
+
+_:genid63 a owl:Restriction;
+  owl:someValuesFrom _:genid64;
+  owl:onProperty :participant .
+
+_:genid64 a owl:Restriction;
+  owl:someValuesFrom :StormTrooper;
+  owl:onProperty :hadRole .
+
+:Confrontation_in_the_Emperors_Throne_Room a owl:NamedIndividual, :Duel, _:genid65,
+    _:genid70, _:genid75;
+  :during :Battle_of_Endor;
+  :participant :Luke_Skywalker;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#Meeting_Luke_Skywalker"^^xsd:anyURI .
+
+_:genid65 a owl:Restriction;
+  owl:someValuesFrom _:genid66;
+  owl:onProperty :included .
+
+_:genid66 a owl:Class;
+  owl:intersectionOf _:genid69 .
+
+_:genid69 a rdf:List;
+  rdf:rest _:genid67;
+  rdf:first :Death .
+
+_:genid67 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid68 .
+
+_:genid68 a owl:Restriction;
+  owl:hasValue :Darth_Vader;
+  owl:onProperty :of .
+
+_:genid70 a owl:Restriction;
+  owl:someValuesFrom _:genid71;
+  owl:onProperty :included .
+
+_:genid71 a owl:Class;
+  owl:intersectionOf _:genid74 .
+
+_:genid74 a rdf:List;
+  rdf:rest _:genid72;
+  rdf:first :Killing .
+
+_:genid72 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid73 .
+
+_:genid73 a owl:Restriction;
+  owl:hasValue :Darth_Sidious;
+  owl:onProperty :of .
+
+_:genid75 a owl:Restriction;
+  owl:someValuesFrom _:genid76;
+  owl:onProperty :locatedIn .
+
+_:genid76 a owl:Class;
+  owl:intersectionOf _:genid79 .
+
+_:genid79 a rdf:List;
+  rdf:rest _:genid77;
+  rdf:first :Throne_Room .
+
+_:genid77 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid78 .
+
+_:genid78 a owl:Restriction;
+  owl:hasValue :Death_Star_2;
+  owl:onProperty :locatedIn .
+
+:Deactivating_the_Shield_Generator_on_Endor a owl:NamedIndividual, :Battle, _:genid80,
+    _:genid85, _:genid86, _:genid87, _:genid89;
+  :after :Ewok_Feast;
+  :during :Battle_of_Endor;
+  :locatedIn :Endor;
+  :participant :C-3PO, :Chewbacca, :Han_Solo, :Leia_Organa, :Luke_Skywalker, :R2-D2,
+    :Wicket;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
+
+_:genid80 a owl:Restriction;
+  owl:someValuesFrom _:genid81;
+  owl:onProperty :destructionOf .
+
+_:genid81 a owl:Class;
+  owl:intersectionOf _:genid84 .
+
+_:genid84 a rdf:List;
+  rdf:rest _:genid82;
+  rdf:first :Shield_Generator .
+
+_:genid82 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid83 .
+
+_:genid83 a owl:Restriction;
+  owl:hasValue :Death_Star_2;
+  owl:onProperty :partOf .
+
+_:genid85 a owl:Restriction;
+  owl:someValuesFrom :AT-ST;
+  owl:onProperty :participant .
+
+_:genid86 a owl:Restriction;
+  owl:someValuesFrom :Speeder_Bike;
+  owl:onProperty :participant .
+
+_:genid87 a owl:Restriction;
+  owl:someValuesFrom _:genid88;
+  owl:onProperty :participant .
+
+_:genid88 a owl:Restriction;
+  owl:someValuesFrom :StormTrooper;
+  owl:onProperty :hadRole .
+
+_:genid89 a owl:Restriction;
+  owl:someValuesFrom :Ewok;
+  owl:onProperty :victoryOf .
+
+:Death_Star_2 a owl:NamedIndividual .
+
+:Defrosting_Han a owl:NamedIndividual, :Rescue, _:genid90, _:genid97, _:genid102;
+  :after :Boushh_trades_Chewbacca;
+  :during :Rescue_of_Han_Solo;
+  :locatedIn <#Jabba's_Palace>;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Saving_Han_Solo"^^xsd:anyURI .
+
+_:genid90 a owl:Restriction;
+  owl:someValuesFrom _:genid91;
+  owl:onProperty :assistedBy .
+
+_:genid91 a owl:Class;
+  owl:intersectionOf _:genid94 .
+
+_:genid94 a rdf:List;
+  rdf:rest _:genid92;
+  rdf:first _:genid95 .
+
+_:genid92 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid93 .
+
+_:genid93 a owl:Restriction;
+  owl:someValuesFrom :Guard;
+  owl:onProperty :disguisedAs .
+
+_:genid95 a owl:Class;
+  owl:oneOf _:genid96 .
+
+_:genid96 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first :Lando_Calrissian .
+
+_:genid97 a owl:Restriction;
+  owl:someValuesFrom _:genid98;
+  owl:onProperty :included .
+
+_:genid98 a owl:Class;
+  owl:intersectionOf _:genid101 .
+
+_:genid101 a rdf:List;
+  rdf:rest _:genid99;
+  rdf:first :Capture .
+
+_:genid99 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid100 .
+
+_:genid100 a owl:Restriction;
+  owl:hasValue :Han_Solo;
+  owl:onProperty :of .
+
+_:genid102 a owl:Restriction;
+  owl:someValuesFrom _:genid103;
+  owl:onProperty :included .
+
+_:genid103 a owl:Class;
+  owl:intersectionOf _:genid106 .
+
+_:genid106 a rdf:List;
+  rdf:rest _:genid104;
+  rdf:first :Capture .
+
+_:genid104 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid105 .
+
+_:genid105 a owl:Restriction;
+  owl:hasValue :Leia_Organa;
+  owl:onProperty :of .
+
+:Escape_from_Carkoon a owl:NamedIndividual, :Escape, _:genid107, _:genid112, _:genid118;
+  :after :Luke_vs_Rancor;
+  :destructionOf :Khetanna;
+  :during :Rescue_of_Han_Solo;
+  :eatingOf :Boba_Fett;
+  :escapeOf :C-3PO, :Chewbacca, :Han_Solo, :Lando_Calrissian, :Leia_Organa, :Luke_Skywalker,
+    :R2-D2;
+  :locatedIn :Great_Pit_of_Carkoon;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Skirmish_at_the_Great_Pit_of_Carkoon"^^xsd:anyURI .
+
+_:genid107 a owl:Restriction;
+  owl:someValuesFrom _:genid108;
+  owl:onProperty :included .
+
+_:genid108 a owl:Class;
+  owl:intersectionOf _:genid111 .
+
+_:genid111 a rdf:List;
+  rdf:rest _:genid109;
+  rdf:first :Death .
+
+_:genid109 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid110 .
+
+_:genid110 a owl:Restriction;
+  owl:hasValue :Salacious_B._Crumb;
+  owl:onProperty :of .
+
+_:genid112 a owl:Restriction;
+  owl:someValuesFrom _:genid113;
+  owl:onProperty :included .
+
+_:genid113 a owl:Class;
+  owl:intersectionOf _:genid117 .
+
+_:genid117 a rdf:List;
+  rdf:rest _:genid114;
+  rdf:first :Killing .
+
+_:genid114 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid115 .
+
+_:genid115 a owl:Restriction;
+  owl:someValuesFrom _:genid116;
+  owl:onProperty :of .
+
+_:genid116 a owl:Restriction;
+  owl:someValuesFrom :Guard;
+  owl:onProperty :hadRole .
+
+_:genid118 a owl:Restriction;
+  owl:someValuesFrom :Sarlacc;
+  owl:onProperty :participant .
+
+:Escape_from_Death_Star a owl:NamedIndividual, :Escape, _:genid119, _:genid120, _:genid126,
+    _:genid132, _:genid139;
+  :after :The_Disaster;
+  :during :Galactic_Civil_War;
+  :locatedIn :Death_Star_1;
+  :participant :C-3PO, :Millenium_Falcon, :Obi-Wan_Kenobi, :R2-D2;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia"^^xsd:anyURI .
+
+_:genid119 a owl:Restriction;
+  owl:someValuesFrom :TIE_Fighter;
+  owl:onProperty :destructionOf .
+
+_:genid120 a owl:Restriction;
+  owl:someValuesFrom _:genid121;
+  owl:onProperty :included .
+
+_:genid121 a owl:Class;
+  owl:intersectionOf _:genid125 .
+
+_:genid125 a rdf:List;
+  rdf:rest _:genid122;
+  rdf:first :Killing .
+
+_:genid122 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid123 .
+
+_:genid123 a owl:Restriction;
+  owl:someValuesFrom _:genid124;
+  owl:onProperty :of .
+
+_:genid124 a owl:Restriction;
+  owl:someValuesFrom :StormTrooper;
+  owl:onProperty :hadRole .
+
+_:genid126 a owl:Restriction;
+  owl:someValuesFrom _:genid127;
+  owl:onProperty :included .
+
+_:genid127 a owl:Class;
+  owl:intersectionOf _:genid130 .
+
+_:genid130 a rdf:List;
+  rdf:rest _:genid128;
+  rdf:first _:genid131 .
+
+_:genid128 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid129 .
+
+_:genid129 a owl:Restriction;
+  owl:hasValue :Obi-Wan_Kenobi;
+  owl:onProperty :participant .
+
+_:genid131 a owl:Restriction;
+  owl:someValuesFrom :Tractor_Beam_Projector;
+  owl:onProperty :deactivated .
+
+_:genid132 a owl:Restriction;
+  owl:someValuesFrom _:genid133;
+  owl:onProperty :participant .
+
+_:genid133 a owl:Class;
+  owl:intersectionOf _:genid136 .
+
+_:genid136 a rdf:List;
+  rdf:rest _:genid134;
+  rdf:first _:genid137 .
+
+_:genid134 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid135 .
+
+_:genid135 a owl:Restriction;
+  owl:someValuesFrom :Captive;
+  owl:onProperty :disguisedAs .
+
+_:genid137 a owl:Class;
+  owl:oneOf _:genid138 .
+
+_:genid138 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first :Chewbacca .
+
+_:genid139 a owl:Restriction;
+  owl:onClass _:genid140;
+  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger;
+  owl:onProperty :participant .
+
+_:genid140 a owl:Class;
+  owl:intersectionOf _:genid143 .
+
+_:genid143 a rdf:List;
+  rdf:rest _:genid141;
+  rdf:first _:genid144 .
+
+_:genid141 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid142 .
+
+_:genid142 a owl:Restriction;
+  owl:someValuesFrom :StormTrooper;
+  owl:onProperty :disguisedAs .
+
+_:genid144 a owl:Class;
+  owl:oneOf _:genid146 .
+
+_:genid146 a rdf:List;
+  rdf:rest _:genid145;
+  rdf:first :Han_Solo .
+
+_:genid145 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first :Luke_Skywalker .
+
+:Escape_from_Hoth a owl:NamedIndividual, :Escape, _:genid147, _:genid155, _:genid160,
+    _:genid161;
+  :after :Battle_of_Hoth;
+  :during :Galactic_Civil_War;
+  :escapeOf :Millenium_Falcon;
+  :participant :Slave_I;
+  :year 3;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_Battle_of_Hoth"^^xsd:anyURI .
+
+_:genid147 a owl:Restriction;
+  owl:someValuesFrom _:genid148;
+  owl:onProperty :included .
+
+_:genid148 a owl:Class;
+  owl:intersectionOf _:genid153 .
+
+_:genid153 a rdf:List;
+  rdf:rest _:genid151;
+  rdf:first _:genid154 .
+
+_:genid151 a rdf:List;
+  rdf:rest _:genid149;
+  rdf:first _:genid152 .
+
+_:genid149 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid150 .
+
+_:genid150 a owl:Restriction;
+  owl:hasValue :Sy-O;
+  owl:onProperty :participant .
+
+_:genid152 a owl:Restriction;
+  owl:hasValue :Millenium_Falcon;
+  owl:onProperty :eatingOf .
+
+_:genid154 a owl:Restriction;
+  owl:someValuesFrom :Mynock;
+  owl:onProperty :participant .
+
+_:genid155 a owl:Restriction;
+  owl:someValuesFrom _:genid156;
+  owl:onProperty :locatedIn .
+
+_:genid156 a owl:Class;
+  owl:intersectionOf _:genid159 .
+
+_:genid159 a rdf:List;
+  rdf:rest _:genid157;
+  rdf:first :Asteroid_field .
+
+_:genid157 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid158 .
+
+_:genid158 a owl:Restriction;
+  owl:hasValue :Hoth;
+  owl:onProperty :locatedIn .
+
+_:genid160 a owl:Restriction;
+  owl:someValuesFrom :Imperial-class_Star_Destroyer;
+  owl:onProperty :participant .
+
+_:genid161 a owl:Restriction;
+  owl:someValuesFrom :TIE_Fighter;
+  owl:onProperty :participant .
+
+:Escape_from_the_Garbage_Compactor a owl:NamedIndividual, :Escape, _:genid162, _:genid169;
+  :assistedBy :R2-D2;
+  :during :Rescue_of_Leia;
+  :escapeOf :Chewbacca, :Han_Solo, :Leia_Organa, :Luke_Skywalker;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Garbage_masher_3263827"^^xsd:anyURI .
+
+_:genid162 a owl:Restriction;
+  owl:someValuesFrom _:genid163;
+  owl:onProperty :included .
+
+_:genid163 a owl:Class;
+  owl:intersectionOf _:genid168 .
+
+_:genid168 a rdf:List;
+  rdf:rest _:genid166;
+  rdf:first :Attack .
+
+_:genid166 a rdf:List;
+  rdf:rest _:genid164;
+  rdf:first _:genid167 .
+
+_:genid164 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid165 .
+
+_:genid165 a owl:Restriction;
+  owl:hasValue :Luke_Skywalker;
+  owl:onProperty :survivedBy .
+
+_:genid167 a owl:Restriction;
+  owl:someValuesFrom :Dianoga;
+  owl:onProperty :participant .
+
+_:genid169 a owl:Restriction;
+  owl:someValuesFrom _:genid170;
+  owl:onProperty :locatedIn .
+
+_:genid170 a owl:Class;
+  owl:intersectionOf _:genid173 .
+
+_:genid173 a rdf:List;
+  rdf:rest _:genid171;
+  rdf:first :Garbage_Compactor .
+
+_:genid171 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid172 .
+
+_:genid172 a owl:Restriction;
+  owl:hasValue :Death_Star_1;
+  owl:onProperty :locatedIn .
+
+:Ewok_Feast a owl:NamedIndividual, :Capture, _:genid174;
+  :after :Speeder_Fight;
+  :during :Battle_of_Endor;
+  :locatedIn :Bright_Tree_Village;
+  :of :Chewbacca, :Han_Solo, :Luke_Skywalker, :R2-D2;
+  :participant :C-3PO;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
+
+_:genid174 a owl:Restriction;
+  owl:someValuesFrom _:genid175;
+  owl:onProperty :participant .
+
+_:genid175 a owl:Class;
+  owl:intersectionOf _:genid178 .
+
+_:genid178 a rdf:List;
+  rdf:rest _:genid176;
+  rdf:first :Ewok .
+
+_:genid176 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid177 .
+
+_:genid177 a owl:Restriction;
+  owl:hasValue :Bright_Tree_Village;
+  owl:onProperty :livedIn .
+
+:Han_vs_Greedo a owl:NamedIndividual, :Confrontation, _:genid179;
+  :after :Attack_on_Lars_Homestead;
+  :locatedIn <#Chalmun's_Cantina>;
+  :victoryOf :Han_Solo;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Greedo#Death"^^xsd:anyURI .
+
+_:genid179 a owl:Restriction;
+  owl:someValuesFrom _:genid180;
+  owl:onProperty :included .
+
+_:genid180 a owl:Class;
+  owl:intersectionOf _:genid183 .
+
+_:genid183 a rdf:List;
+  rdf:rest _:genid181;
+  rdf:first :Killing .
+
+_:genid181 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid182 .
+
+_:genid182 a owl:Restriction;
+  owl:hasValue :Greedo;
+  owl:onProperty :of .
+
+:Leia_vs_Jabba a owl:NamedIndividual, :Confrontation, _:genid184;
+  :during :Escape_from_Carkoon;
+  :locatedIn :Khetanna;
+  :victoryOf :Leia_Organa;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Jabba_Desilijic_Tiure#Slaying_of_the_Hutt"^^xsd:anyURI .
+
+_:genid184 a owl:Restriction;
+  owl:someValuesFrom _:genid185;
+  owl:onProperty :included .
+
+_:genid185 a owl:Class;
+  owl:intersectionOf _:genid188 .
+
+_:genid188 a rdf:List;
+  rdf:rest _:genid186;
+  rdf:first :Killing .
+
+_:genid186 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid187 .
+
+_:genid187 a owl:Restriction;
+  owl:hasValue :Jabba;
+  owl:onProperty :of .
+
+:Luke_meets_Yoda a owl:NamedIndividual, :Training, _:genid189;
+  :after :Battle_of_Hoth;
+  :during :Galactic_Civil_War;
+  :locatedIn :Cave_of_Evil, :Yodas_Hut;
+  :participant :Luke_Skywalker, :Yoda;
+  :witnessedBy :R2-D2;
+  :year 3;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Searching_for_Yoda"^^xsd:anyURI .
+
+_:genid189 a owl:Restriction;
+  owl:someValuesFrom _:genid190;
+  owl:onProperty :participant .
+
+_:genid190 a owl:Class;
+  owl:intersectionOf _:genid193 .
+
+_:genid193 a rdf:List;
+  rdf:rest _:genid191;
+  rdf:first :X-Wing .
+
+_:genid191 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid192 .
+
+_:genid192 a owl:Restriction;
+  owl:someValuesFrom :Swamp;
+  owl:onProperty :locatedIn .
+
+:Luke_vs_Rancor a owl:NamedIndividual, :Fight, _:genid194, _:genid199;
+  :after :Defrosting_Han;
+  :during :Rescue_of_Han_Solo;
+  :locatedIn <#Jabba's_Palace>;
+  :victoryOf :Luke_Skywalker;
+  :witnessedBy :Jabba;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Luke_Skywalker_arrives_at_the_palace"^^xsd:anyURI .
+
+_:genid194 a owl:Restriction;
+  owl:someValuesFrom _:genid195;
+  owl:onProperty :eatingOf .
+
+_:genid195 a owl:Class;
+  owl:intersectionOf _:genid198 .
+
+_:genid198 a rdf:List;
+  rdf:rest _:genid196;
+  rdf:first :Gamorrean .
+
+_:genid196 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid197 .
+
+_:genid197 a owl:Restriction;
+  owl:someValuesFrom :Guard;
+  owl:onProperty :hadRole .
+
+_:genid199 a owl:Restriction;
+  owl:someValuesFrom _:genid200;
+  owl:onProperty :included .
+
+_:genid200 a owl:Class;
+  owl:intersectionOf _:genid207 .
+
+_:genid207 a rdf:List;
+  rdf:rest _:genid201;
+  rdf:first :Death .
+
+_:genid201 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid202 .
+
+_:genid202 a owl:Restriction;
+  owl:someValuesFrom _:genid203;
+  owl:onProperty :of .
+
+_:genid203 a owl:Class;
+  owl:intersectionOf _:genid206 .
+
+_:genid206 a rdf:List;
+  rdf:rest _:genid204;
+  rdf:first :Rancor .
+
+_:genid204 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid205 .
+
+_:genid205 a owl:Restriction;
+  owl:hasValue :Jabba;
+  owl:onProperty :ownedBy .
+
+:Murder_of_Oola a owl:NamedIndividual, :Murder, _:genid208;
+  :after :Bartering_for_Solo;
+  :during :Rescue_of_Han_Solo;
+  :eatingOf :Oola;
+  :locatedIn <#Jabba's_Palace>;
+  :of :Oola;
+  :orderedBy :Jabba;
+  :witnessedBy :Max_Rebo_Band;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
+
+_:genid208 a owl:Restriction;
+  owl:someValuesFrom _:genid209;
+  owl:onProperty :participant .
+
+_:genid209 a owl:Class;
+  owl:intersectionOf _:genid212 .
+
+_:genid212 a rdf:List;
+  rdf:rest _:genid210;
+  rdf:first :Rancor .
+
+_:genid210 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid211 .
+
+_:genid211 a owl:Restriction;
+  owl:hasValue :Jabba;
+  owl:onProperty :ownedBy .
+
+:Obi-Wan_vs_Vader_DeathStar a owl:NamedIndividual, :Duel, _:genid213;
+  :after :Rescue_of_Leia;
+  :during :Escape_from_Death_Star;
+  :locatedIn :Death_Star_1;
+  :victoryOf :Darth_Vader;
+  :witnessedBy :Luke_Skywalker;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia#Duel_with_the_Dark_Lord"^^xsd:anyURI .
+
+_:genid213 a owl:Restriction;
+  owl:someValuesFrom _:genid214;
+  owl:onProperty :included .
+
+_:genid214 a owl:Class;
+  owl:intersectionOf _:genid217 .
+
+_:genid217 a rdf:List;
+  rdf:rest _:genid215;
+  rdf:first :Killing .
+
+_:genid215 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid216 .
+
+_:genid216 a owl:Restriction;
+  owl:hasValue :Obi-Wan_Kenobi;
+  owl:onProperty :of .
+
+:Rescue_of_Han_Solo a owl:NamedIndividual, :Rescue;
+  :during :Galactic_Civil_War;
+  :locatedIn :Tatooine;
+  :sometimeAfter :Trap_on_Cloud_City;
+  :target :Han_Solo;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi?so=search#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
+
+:Rescue_of_Leia a owl:NamedIndividual, :Rescue, _:genid218;
+  :during :Escape_from_Death_Star;
+  :locatedIn :Death_Star_1;
+  :of :Leia_Organa;
+  :participant :Chewbacca, :Han_Solo, :Luke_Skywalker;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia"^^xsd:anyURI .
+
+_:genid218 a owl:Restriction;
+  owl:someValuesFrom _:genid219;
+  owl:onProperty :locatedIn .
+
+_:genid219 a owl:Class;
+  owl:intersectionOf _:genid222 .
+
+_:genid222 a rdf:List;
+  rdf:rest _:genid220;
+  rdf:first :Detention_Block .
+
+_:genid220 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid221 .
+
+_:genid221 a owl:Restriction;
+  owl:hasValue :Death_Star_1;
+  owl:onProperty :locatedIn .
+
+:Run_on_Death_Star_2 a owl:NamedIndividual, :Attack, _:genid223, _:genid224;
+  :during :Battle_of_Endor;
+  :locatedIn :Endor;
+  :participant :Millenium_Falcon;
+  :victoryOf :Lando_Calrissian, :Nien_Nunb, :Wedge_Antilles;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_space_battle"^^xsd:anyURI .
+
+_:genid223 a owl:Restriction;
+  owl:someValuesFrom :X-Wing;
+  owl:onProperty :participant .
+
+_:genid224 a owl:Restriction;
+  owl:someValuesFrom :Reactor_Core;
+  owl:onProperty :target .
+
+:Search_for_Luke a owl:NamedIndividual, :Rescue, _:genid225, _:genid230, _:genid231,
+    _:genid232;
+  :during :Galactic_Civil_War;
+  :injuryOf :Luke_Skywalker;
+  :locatedIn :Hoth;
+  :participant :Han_Solo;
+  :year 3;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_search_for_Skywalker"^^xsd:anyURI .
+
+_:genid225 a owl:Restriction;
+  owl:someValuesFrom _:genid226;
+  owl:onProperty :included .
+
+_:genid226 a owl:Class;
+  owl:intersectionOf _:genid229 .
+
+_:genid229 a rdf:List;
+  rdf:rest _:genid227;
+  rdf:first :Death .
+
+_:genid227 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid228 .
+
+_:genid228 a owl:Restriction;
+  owl:someValuesFrom :Tauntaun;
+  owl:onProperty :of .
+
+_:genid230 a owl:Restriction;
+  owl:someValuesFrom :Wampa;
+  owl:onProperty :injuryOf .
+
+_:genid231 a owl:Restriction;
+  owl:someValuesFrom :Probe_Droid;
+  owl:onProperty :participant .
+
+_:genid232 a owl:Restriction;
+  owl:someValuesFrom _:genid233;
+  owl:onProperty :participant .
+
+_:genid233 a owl:Class;
+  owl:intersectionOf _:genid236 .
+
+_:genid236 a rdf:List;
+  rdf:rest _:genid234;
+  rdf:first :Force_spirit .
+
+_:genid234 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid235 .
+
+_:genid235 a owl:Restriction;
+  owl:hasValue :Obi-Wan_Kenobi;
+  owl:onProperty :connectedTo .
+
+:Speeder_Fight a owl:NamedIndividual, :Fight, _:genid237, _:genid238;
+  :during :Battle_of_Endor;
+  :locatedIn :Endor;
+  :participant :Leia_Organa, :Luke_Skywalker .
+
+_:genid237 a owl:Restriction;
+  owl:someValuesFrom :Speeder_Bike;
+  owl:onProperty :destructionOf .
+
+_:genid238 a owl:Restriction;
+  owl:someValuesFrom _:genid239;
+  owl:onProperty :included .
+
+_:genid239 a owl:Class;
+  owl:intersectionOf _:genid243 .
+
+_:genid243 a rdf:List;
+  rdf:rest _:genid240;
+  rdf:first :Death .
+
+_:genid240 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid241 .
+
+_:genid241 a owl:Restriction;
+  owl:someValuesFrom _:genid242;
+  owl:onProperty :of .
+
+_:genid242 a owl:Restriction;
+  owl:someValuesFrom :StormTrooper;
+  owl:onProperty :hadRole .
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Disaster
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Trap_on_Cloud_City
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Trench_Run_1
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Trench_Run_2
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Trench_Run_3
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Vader_is_Lukes_Father
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Yoda_becomes_One_with_the_Force
+# 
+# Generated by the OWL API (version 5.1.19.2021-07-31T19:16:32Z) https://github.com/owlcs/owlapi/
+
+:Speeder_Fight :witnessedBy :Wicket;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
+
+:The_Disaster a owl:NamedIndividual, :Attack, _:genid244;
+  :after :Han_vs_Greedo;
+  :destructionOf :Alderaan;
+  :during :Galactic_Civil_War;
+  :locatedIn :Alderaan;
+  :orderedBy :Wilhuff_Tarkin;
+  :participant :Death_Star_1;
+  :witnessedBy :Leia_Organa;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Disaster"^^xsd:anyURI .
+
+_:genid244 a owl:Restriction;
+  owl:someValuesFrom _:genid245;
+  owl:onProperty :included .
+
+_:genid245 a owl:Class;
+  owl:intersectionOf _:genid248 .
+
+_:genid248 a rdf:List;
+  rdf:rest _:genid246;
+  rdf:first :Death .
+
+_:genid246 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid247 .
+
+_:genid247 a owl:Restriction;
+  owl:hasValue :Bail_Organa;
+  owl:onProperty :of .
+
+:Trap_on_Cloud_City a owl:NamedIndividual, :Confrontation, _:genid249, _:genid254;
+  :after :Escape_from_Hoth, :Luke_meets_Yoda;
+  :during :Galactic_Civil_War;
+  :escapeOf :Chewbacca, :Leia_Organa;
+  :injuryOf :C-3PO;
+  :locatedIn :Cloud_City;
+  :participant :Boba_Fett, :Darth_Vader, :Lando_Calrissian;
+  :year 3;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_city_in_the_clouds"^^xsd:anyURI .
+
+_:genid249 a owl:Restriction;
+  owl:someValuesFrom _:genid250;
+  owl:onProperty :included .
+
+_:genid250 a owl:Class;
+  owl:intersectionOf _:genid253 .
+
+_:genid253 a rdf:List;
+  rdf:rest _:genid251;
+  rdf:first :Capture .
+
+_:genid251 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid252 .
+
+_:genid252 a owl:Restriction;
+  owl:hasValue :Han_Solo;
+  owl:onProperty :of .
+
+_:genid254 a owl:Restriction;
+  owl:someValuesFrom _:genid255;
+  owl:onProperty :participant .
+
+_:genid255 a owl:Restriction;
+  owl:someValuesFrom :StormTrooper;
+  owl:onProperty :hadRole .
+
+:Trench_Run_1 a owl:NamedIndividual, :Attack, _:genid256, _:genid261, _:genid262;
+  :during :Battle_of_Yavin;
+  :locatedIn :Meridian_Trench;
+  :participant :Gold_Squadron, :Vaders_TIE_Advanced_x1;
+  :target :Death_Star_thermal_exhaust_port;
+  :victoryOf :Darth_Vader;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
+
+_:genid256 a owl:Restriction;
+  owl:someValuesFrom _:genid257;
+  owl:onProperty :included .
+
+_:genid257 a owl:Class;
+  owl:intersectionOf _:genid260 .
+
+_:genid260 a rdf:List;
+  rdf:rest _:genid258;
+  rdf:first :Killing .
+
+_:genid258 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid259 .
+
+_:genid259 a owl:Restriction;
+  owl:hasValue :Jon_Vander;
+  owl:onProperty :of .
+
+_:genid261 a owl:Restriction;
+  owl:someValuesFrom :TIE_Fighter;
+  owl:onProperty :participant .
+
+_:genid262 a owl:Restriction;
+  owl:onClass :Y-Wing;
+  owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger;
+  owl:onProperty :destructionOf .
+
+:Trench_Run_2 a owl:NamedIndividual, :Attack, _:genid263, _:genid264;
+  :after :Trench_Run_1;
+  :during :Battle_of_Yavin;
+  :locatedIn :Meridian_Trench;
+  :participant :Red_Squadron, :Vaders_TIE_Advanced_x1;
+  :target :Death_Star_thermal_exhaust_port;
+  :victoryOf :Darth_Vader;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
+
+_:genid263 a owl:Restriction;
+  owl:someValuesFrom :TIE_Fighter;
+  owl:onProperty :participant .
+
+_:genid264 a owl:Restriction;
+  owl:onClass :X-Wing;
+  owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger;
+  owl:onProperty :destructionOf .
+
+:Trench_Run_3 a owl:NamedIndividual, :Attack, _:genid265, _:genid274, _:genid279,
+    _:genid280, _:genid287, _:genid288;
+  :after :Trench_Run_2;
+  :damageOf :R2-D2;
+  :during :Battle_of_Yavin;
+  :escapeOf :Wedge_Antilles;
+  :locatedIn :Meridian_Trench;
+  :participant :Millenium_Falcon, :Red_Squadron;
+  :survivedBy :Darth_Vader;
+  :target :Death_Star_thermal_exhaust_port;
+  :victoryOf :Luke_Skywalker;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
+
+_:genid265 a owl:Restriction;
+  owl:someValuesFrom _:genid266;
+  owl:onProperty :included .
+
+_:genid266 a owl:Class;
+  owl:intersectionOf _:genid273 .
+
+_:genid273 a rdf:List;
+  rdf:rest _:genid271;
+  rdf:first :Attack .
+
+_:genid271 a rdf:List;
+  rdf:rest _:genid269;
+  rdf:first _:genid272 .
+
+_:genid269 a rdf:List;
+  rdf:rest _:genid267;
+  rdf:first _:genid270 .
+
+_:genid267 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid268 .
+
+_:genid268 a owl:Restriction;
+  owl:onClass :TIE_Fighter;
+  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger;
+  owl:onProperty :destructionOf .
+
+_:genid270 a owl:Restriction;
+  owl:hasValue :Millenium_Falcon;
+  owl:onProperty :victoryOf .
+
+_:genid272 a owl:Restriction;
+  owl:hasValue :Vaders_TIE_Advanced_x1;
+  owl:onProperty :damageOf .
+
+_:genid274 a owl:Restriction;
+  owl:someValuesFrom _:genid275;
+  owl:onProperty :included .
+
+_:genid275 a owl:Class;
+  owl:intersectionOf _:genid278 .
+
+_:genid278 a rdf:List;
+  rdf:rest _:genid276;
+  rdf:first :Killing .
+
+_:genid276 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid277 .
+
+_:genid277 a owl:Restriction;
+  owl:hasValue :Biggs_Darklighter;
+  owl:onProperty :of .
+
+_:genid279 a owl:Restriction;
+  owl:someValuesFrom :TIE_Fighter;
+  owl:onProperty :participant .
+
+_:genid280 a owl:Restriction;
+  owl:someValuesFrom _:genid281;
+  owl:onProperty :participant .
+
+_:genid281 a owl:Class;
+  owl:intersectionOf _:genid286 .
+
+_:genid286 a rdf:List;
+  rdf:rest _:genid284;
+  rdf:first :Force_Bond .
+
+_:genid284 a rdf:List;
+  rdf:rest _:genid282;
+  rdf:first _:genid285 .
+
+_:genid282 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid283 .
+
+_:genid283 a owl:Restriction;
+  owl:hasValue :Obi-Wan_Kenobi;
+  owl:onProperty :connectedTo .
+
+_:genid285 a owl:Restriction;
+  owl:hasValue :Luke_Skywalker;
+  owl:onProperty :connectedTo .
+
+_:genid287 a owl:Restriction;
+  owl:someValuesFrom :Proton_Torpedo;
+  owl:onProperty :used .
+
+_:genid288 a owl:Restriction;
+  owl:onClass :X-Wing;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onProperty :destructionOf .
+
+:Vader_is_Lukes_Father a owl:NamedIndividual, :Duel;
+  :during :Trap_on_Cloud_City;
+  :injuryOf :Luke_Skywalker;
+  :locatedIn :Cloud_City;
+  :participant :Darth_Vader;
+  :year 3;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Vader.27s_trap"^^xsd:anyURI .
+
+:Yoda_becomes_One_with_the_Force a owl:NamedIndividual, :Event, _:genid289, _:genid294;
+  :after :Rescue_of_Han_Solo;
+  :during :Galactic_Civil_War;
+  :locatedIn :Yodas_Hut;
+  :witnessedBy :Luke_Skywalker;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda#Death"^^xsd:anyURI .
+
+_:genid289 a owl:Restriction;
+  owl:someValuesFrom _:genid290;
+  owl:onProperty :included .
+
+_:genid290 a owl:Class;
+  owl:intersectionOf _:genid293 .
+
+_:genid293 a rdf:List;
+  rdf:rest _:genid291;
+  rdf:first :Death .
+
+_:genid291 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid292 .
+
+_:genid292 a owl:Restriction;
+  owl:hasValue :Yoda;
+  owl:onProperty :of .
+
+_:genid294 a owl:Restriction;
+  owl:someValuesFrom _:genid295;
+  owl:onProperty :participant .
+
+_:genid295 a owl:Class;
+  owl:intersectionOf _:genid298 .
+
+_:genid298 a rdf:List;
+  rdf:rest _:genid296;
+  rdf:first :Force_spirit .
+
+_:genid296 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid297 .
+
+_:genid297 a owl:Restriction;
+  owl:hasValue :Obi-Wan_Kenobi;
+  owl:onProperty :connectedTo .

@@ -20,6 +20,17 @@
                                           :Communication ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :of ;
+                                                                                        owl:hasValue :Avi_Singh
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :included ;
                                             owl:someValuesFrom [ owl:intersectionOf ( :Communication
                                                                                       [ rdf:type owl:Restriction ;
                                                                                         owl:onProperty :participant ;
@@ -56,7 +67,6 @@
                                                                ]
                                           ] ;
                                  :after :Escape_from_Bora_Vio ;
-                                 :captureOf :Avi_Singh ;
                                  :locatedIn :Raxulon ;
                                  :orderedBy :Bragg ;
                                  :participant :Galactic_Empire ;
@@ -66,11 +76,11 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Arrest_of_Lama_Su
 :Arrest_of_Lama_Su rdf:type owl:NamedIndividual ,
-                            :Confrontation ;
+                            :Capture ;
                    :after :Evacuation_of_Tipoca ;
-                   :captureOf :Lama_Su ,
-                              :Nala_Se ;
                    :locatedIn :Tipoca_City ;
+                   :of :Lama_Su ,
+                       :Nala_Se ;
                    :orderedBy :Rampart ;
                    :year -19 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/War-Mantle#Imperial_captivity"^^xsd:anyURI .
@@ -232,6 +242,25 @@
                            :Chase ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                         owl:onClass [ owl:intersectionOf ( :Clone
+                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty :callsign ;
+                                                                                                              owl:hasValue "CC-5576"^^xsd:string
+                                                                                                            ]
+                                                                                                          ) ;
+                                                                                       rdf:type owl:Class
+                                                                                     ]
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Communication
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :about ;
@@ -255,18 +284,6 @@
                                                   owl:onProperty :hadRole ;
                                                   owl:someValuesFrom :Trooper
                                                 ]
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :captureOf ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass [ owl:intersectionOf ( :Clone
-                                                                [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty :callsign ;
-                                                                  owl:hasValue "CC-5576"^^xsd:string
-                                                                ]
-                                                              ) ;
-                                           rdf:type owl:Class
-                                         ]
                            ] ;
                   :after :Stealing_Spice_from_Roland_Durand ;
                   :locatedIn :Daro ;
@@ -809,9 +826,9 @@
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Order_66
-:Order_66 rdf:type _:genid259 .
+:Order_66 rdf:type _:genid268 .
 
-_:genid259 rdf:type owl:Restriction ;
+_:genid268 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                         owl:onProperty :included ;
@@ -838,7 +855,7 @@ _:genid259 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid259 ;
+   owl:annotatedTarget _:genid268 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -945,6 +962,29 @@ _:genid259 rdf:type owl:Restriction ;
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Cham_Syndulla
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Eleni_Syndulla
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Gobi_Glie
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Serin
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
                                  owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :injuryOf ;
                                                                              owl:hasValue :Orn_Free_Taa
@@ -970,10 +1010,6 @@ _:genid259 rdf:type owl:Restriction ;
                                  owl:someValuesFrom :LAAT_Gunship
                                ] ;
                       :after :Shooting_down_Ryloth_smugglers ;
-                      :captureOf :Cham_Syndulla ,
-                                 :Eleni_Syndulla ,
-                                 :Gobi_Glie ,
-                                 :Serin ;
                       :escapeOf :C1-10P ,
                                 :Hera_Syndulla ;
                       :locatedIn :Ryloth ;
@@ -1075,8 +1111,15 @@ _:genid259 rdf:type owl:Restriction ;
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :included ;
                          owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                              owl:onProperty :captureOf ;
-                                              owl:hasValue :Bad_Batch
+                                              owl:onProperty :included ;
+                                              owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :of ;
+                                                                                          owl:hasValue :Bad_Batch
+                                                                                        ]
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ]
                                             ]
                        ] ,
                        [ rdf:type owl:Restriction ;
@@ -1172,12 +1215,19 @@ _:genid259 rdf:type owl:Restriction ;
                              owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                        [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :assistedBy ;
-                                                                         owl:hasValue :Gonky
+                                                                         owl:onProperty :included ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :of ;
+                                                                                                                     owl:hasValue :Hunter
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :captureOf ;
-                                                                         owl:hasValue :Hunter
+                                                                         owl:onProperty :assistedBy ;
+                                                                         owl:hasValue :Gonky
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :damageOf ;
@@ -1312,6 +1362,21 @@ _:genid259 rdf:type owl:Restriction ;
                           :Rescue ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Bad_Batch
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :orderedBy ;
+                                                                        owl:hasValue :Wilhuff_Tarkin
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Defection
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :from ;
@@ -1343,20 +1408,6 @@ _:genid259 rdf:type owl:Restriction ;
                                                                     ) ;
                                                  rdf:type owl:Class
                                                ]
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :included ;
-                            owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :captureOf ;
-                                                                        owl:hasValue :Bad_Batch
-                                                                      ]
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :orderedBy ;
-                                                                        owl:hasValue :Wilhuff_Tarkin
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
                           ] ;
                  :after :Mission_to_Onderon ;
                  :assistedBy :Nala_Se ;
@@ -1379,6 +1430,17 @@ _:genid259 rdf:type owl:Restriction ;
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Howzer
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
                                     owl:someValuesFrom [ owl:intersectionOf ( :Defection
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :of ;
@@ -1388,7 +1450,6 @@ _:genid259 rdf:type owl:Restriction ;
                                                          rdf:type owl:Class
                                                        ]
                                   ] ;
-                         :captureOf :Howzer ;
                          :during :Attack_on_the_Ryloth_Refinery ;
                          :freeingOf :Cham_Syndulla ,
                                     :Eleni_Syndulla ,
@@ -1531,6 +1592,17 @@ _:genid259 rdf:type owl:Restriction ;
                                 owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :included ;
+                                                                            owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :of ;
+                                                                                                                        owl:hasValue :Omega
+                                                                                                                      ]
+                                                                                                                    ) ;
+                                                                                                 rdf:type owl:Class
+                                                                                               ]
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :included ;
                                                                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                                                                       [ rdf:type owl:Restriction ;
                                                                                                                         owl:onProperty :of ;
@@ -1542,10 +1614,6 @@ _:genid259 rdf:type owl:Restriction ;
                                                                                                                     ) ;
                                                                                                  rdf:type owl:Class
                                                                                                ]
-                                                                          ]
-                                                                          [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :captureOf ;
-                                                                            owl:hasValue :Omega
                                                                           ]
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :injuryOf ;
@@ -1619,6 +1687,25 @@ _:genid259 rdf:type owl:Restriction ;
 :Shooting_down_Ryloth_smugglers rdf:type owl:NamedIndividual ,
                                          :Crash ,
                                          [ rdf:type owl:Restriction ;
+                                           owl:onProperty :included ;
+                                           owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty :of ;
+                                                                                       owl:hasValue :Gobi_Glie
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty :of ;
+                                                                                       owl:hasValue :Hera_Syndulla
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty :of ;
+                                                                                       owl:hasValue :Serin
+                                                                                     ]
+                                                                                   ) ;
+                                                                rdf:type owl:Class
+                                                              ]
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
                                            owl:onProperty :of ;
                                            owl:someValuesFrom [ owl:intersectionOf ( :Freighter
                                                                                      [ rdf:type owl:Restriction ;
@@ -1641,9 +1728,6 @@ _:genid259 rdf:type owl:Restriction ;
                                                               ]
                                          ] ;
                                 :after :Weapon_smuggling_to_Ryloth ;
-                                :captureOf :Gobi_Glie ,
-                                           :Hera_Syndulla ,
-                                           :Serin ;
                                 :locatedIn :Ryloth ;
                                 :participant :Howzer ,
                                              :Orn_Free_Taa ,
@@ -1657,6 +1741,21 @@ _:genid259 rdf:type owl:Restriction ;
 :Spying_on_the_refinery rdf:type owl:NamedIndividual ,
                                  :Mission ,
                                  [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :C1-10P
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :Hera_Syndulla
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
                                    owl:onProperty :participant ;
                                    owl:someValuesFrom [ owl:intersectionOf ( :Clone
                                                                              [ rdf:type owl:Restriction ;
@@ -1668,8 +1767,6 @@ _:genid259 rdf:type owl:Restriction ;
                                                       ]
                                  ] ;
                         :after :Demilitarising_Ryloth ;
-                        :captureOf :C1-10P ,
-                                   :Hera_Syndulla ;
                         :locatedIn :Ryloth ;
                         :orderedBy :Gobi_Glie ;
                         :target :Imperial_doonium_refinery ;

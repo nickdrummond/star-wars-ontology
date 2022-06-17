@@ -144,6 +144,17 @@
 :Battle_at_the_Rendezvous rdf:type owl:NamedIndividual ,
                                    :Battle ,
                                    [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:hasValue :Venisa_Doza
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
                                      owl:onProperty :locatedIn ;
                                      owl:someValuesFrom :Space
                                    ] ,
@@ -152,7 +163,6 @@
                                      owl:someValuesFrom :TIE_Fighter
                                    ] ;
                           :after :Supply_run_on_Ashas_Ree ;
-                          :captureOf :Venisa_Doza ;
                           :during :Hunt_for_the_Colossus ;
                           :escapeOf :Colossus ;
                           :participant :Ace_Squadron ,
@@ -272,6 +282,25 @@
                                :Trap ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :CB-23
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Jarek_Yeager
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Synara_San
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
                                  owl:someValuesFrom [ owl:intersectionOf ( :Crash
                                                                            [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :injuryOf ;
@@ -313,9 +342,6 @@
                                  owl:someValuesFrom :Speeder_Bike
                                ] ;
                       :after :Finding_Norath_Kev ;
-                      :captureOf :CB-23 ,
-                                 :Jarek_Yeager ,
-                                 :Synara_San ;
                       :during :Hunt_for_the_Colossus ;
                       :escapeOf :Kazuda_Xiono ,
                                 :Norath_Kev ;
@@ -665,7 +691,7 @@
                                owl:onProperty :included ;
                                owl:someValuesFrom [ owl:intersectionOf ( :Capture
                                                                          [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty :captureOf ;
+                                                                           owl:onProperty :of ;
                                                                            owl:hasValue :Norath_Kev
                                                                          ]
                                                                          [ rdf:type owl:Restriction ;
@@ -1211,11 +1237,11 @@
                                           owl:onProperty :included ;
                                           owl:someValuesFrom [ owl:intersectionOf ( :Capture
                                                                                     [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty :participant ;
+                                                                                      owl:onProperty :of ;
                                                                                       owl:hasValue :Kazuda_Xiono
                                                                                     ]
                                                                                     [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty :participant ;
+                                                                                      owl:onProperty :of ;
                                                                                       owl:hasValue :Tamara_Ryvora
                                                                                     ]
                                                                                   ) ;
@@ -1330,10 +1356,10 @@
                                 owl:someValuesFrom :Speeder_Bike
                               ] ;
                      :after :Helping_at_the_Office_of_Acquisitions ;
-                     :captureOf :Torra_Doza ;
                      :during :Mission_on_the_Colossus ;
                      :locatedIn :Castillon ,
                                 :Colossus ;
+                     :of :Torra_Doza ;
                      :orderedBy :Pyre ;
                      :participant :Ace_Squadron ,
                                   :Drell ,
@@ -1437,8 +1463,15 @@
 :Mission_for_fuel_on_Drahgor_III rdf:type owl:NamedIndividual ,
                                           :Mission ,
                                           [ rdf:type owl:Restriction ;
-                                            owl:onProperty :captureOf ;
-                                            owl:someValuesFrom :Karnex_dragon
+                                            owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :of ;
+                                                                                        owl:someValuesFrom :Karnex_dragon
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
                                           ] ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty :included ;
@@ -1498,6 +1531,21 @@
                                             :Mission ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty :included ;
+                                              owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :of ;
+                                                                                          owl:hasValue :Jarek_Yeager
+                                                                                        ]
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :of ;
+                                                                                          owl:hasValue :Tamara_Ryvora
+                                                                                        ]
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ]
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :included ;
                                               owl:someValuesFrom [ owl:intersectionOf ( :Communication
                                                                                         [ rdf:type owl:Restriction ;
                                                                                           owl:onProperty :participant ;
@@ -1527,8 +1575,6 @@
                                               owl:someValuesFrom :Chelidae
                                             ] ;
                                    :after :Rescue_on_the_Colossus ;
-                                   :captureOf :Jarek_Yeager ,
-                                              :Tamara_Ryvora ;
                                    :during :Occupation_of_the_Colossus ;
                                    :escapeOf :CB-23 ,
                                              :Kazuda_Xiono ,
@@ -1556,8 +1602,27 @@
                                                                                owl:someValuesFrom :B2_Super_Battle_Droid
                                                                              ]
                                                                              [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :captureOf ;
+                                                                               owl:onProperty :of ;
                                                                                owl:hasValue :Warbird_gang
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :Kazuda_Xiono
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :Neeku_Vozo
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :Synara_San
                                                                              ]
                                                                            ) ;
                                                         rdf:type owl:Class
@@ -1583,9 +1648,6 @@
                                    owl:someValuesFrom :B2_Super_Battle_Droid
                                  ] ;
                         :after :Repairing_Battle_Droids ;
-                        :captureOf :Kazuda_Xiono ,
-                                   :Neeku_Vozo ,
-                                   :Synara_San ;
                         :during :Hunt_for_the_Colossus ;
                         :injuryOf <https://nickdrummond.github.io/star-wars-ontology/ontologies#4D-M1N> ;
                         :locatedIn :Colossus ;
@@ -1928,6 +1990,39 @@
                                  :Rescue ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :Aunt-Z
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :Grevel
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :Hype_Fazon
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
                                    owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                              [ rdf:type owl:Restriction ;
                                                                                owl:onProperty :locatedIn ;
@@ -1961,9 +2056,6 @@
                                                       ]
                                  ] ;
                         :after :Researching_the_Unknown_Regions ;
-                        :captureOf :Aunt-Z ,
-                                   :Grevel ,
-                                   :Hype_Fazon ;
                         :during :Occupation_of_the_Colossus ;
                         :locatedIn :Colossus ;
                         :participant :CB-23 ,
@@ -2082,6 +2174,17 @@
                                       owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty :included ;
+                                                                                  owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty :of ;
+                                                                                                                              owl:hasValue :Imanuel_Doza
+                                                                                                                            ]
+                                                                                                                          ) ;
+                                                                                                       rdf:type owl:Class
+                                                                                                     ]
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :included ;
                                                                                   owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                                                                             [ rdf:type owl:Restriction ;
                                                                                                                               owl:onProperty :of ;
@@ -2097,10 +2200,6 @@
                                                                                                        owl:onProperty :hadRole ;
                                                                                                        owl:someValuesFrom :StormTrooper
                                                                                                      ]
-                                                                                ]
-                                                                                [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :captureOf ;
-                                                                                  owl:hasValue :Imanuel_Doza
                                                                                 ]
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty :witnessedBy ;
@@ -2279,13 +2378,29 @@
                               owl:someValuesFrom :Village
                             ] ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :CB-23
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :Griff_Halloran
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :Kazuda_Xiono
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :participant ;
                               owl:someValuesFrom :Aeosian
                             ] ;
                    :after :Exile_of_the_Warbird_Gang ;
-                   :captureOf :CB-23 ,
-                              :Griff_Halloran ,
-                              :Kazuda_Xiono ;
                    :during :Hunt_for_the_Colossus ;
                    :locatedIn :Aeos_Prime ;
                    :participant :Ace_Squadron ;
@@ -2419,6 +2534,21 @@
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Freya_Fenris
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Torra_Doza
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :of ;
@@ -2454,8 +2584,6 @@
                                                        ]
                                   ] ;
                          :after :Mission_for_fuel_on_Drahgor_III ;
-                         :captureOf :Freya_Fenris ,
-                                    :Torra_Doza ;
                          :during :Hunt_for_the_Colossus ;
                          :escapeOf :Mika_Grey ;
                          :locatedIn :Ashas_Ree ;

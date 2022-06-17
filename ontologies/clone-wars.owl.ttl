@@ -137,8 +137,15 @@
                                                                        owl:someValuesFrom :Clone
                                                                      ]
                                                                      [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :captureOf ;
-                                                                       owl:hasValue :Maul
+                                                                       owl:onProperty :included ;
+                                                                       owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                                   owl:onProperty :of ;
+                                                                                                                   owl:hasValue :Maul
+                                                                                                                 ]
+                                                                                                               ) ;
+                                                                                            rdf:type owl:Class
+                                                                                          ]
                                                                      ]
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :victoryOf ;
@@ -222,6 +229,17 @@
                            :Attack ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Jesse
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
@@ -239,7 +257,6 @@
                                                 ]
                            ] ;
                   :after :Debriefing_on_the_siege ;
-                  :captureOf :Jesse ;
                   :during :Siege_of_Mandalore ;
                   :injuryOf :Sterling ;
                   :locatedIn :Sundari_Undercity ;
@@ -671,11 +688,24 @@
 :Battle_for_Sundari rdf:type owl:NamedIndividual ,
                              :Battle ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Gar_Saxon
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Rook_Kast
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :participant ;
                                owl:someValuesFrom :AT-TE
                              ] ;
-                    :captureOf :Gar_Saxon ,
-                               :Rook_Kast ;
                     :defeatOf :Clan_Saxon ;
                     :during :Ahsoka_vs_Maul ;
                     :locatedIn :Sundari ;
@@ -886,8 +916,18 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Christophsis
 :Battle_of_Christophsis rdf:type owl:NamedIndividual ,
-                                 :Battle ;
-                        :captureOf :Whorm_Loathsom ;
+                                 :Battle ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue :Whorm_Loathsom
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
                         :during :Clone_Wars ;
                         :locatedIn :Christophsis ;
                         :participant :Ahsoka_Tano ,
@@ -925,6 +965,17 @@
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :destructionOf ;
                             owl:someValuesFrom :Single_Trooper_Aerial_Platform
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Wat_Tambor
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
@@ -1006,7 +1057,6 @@
                                                ]
                           ] ;
                  :after <https://nickdrummond.github.io/star-wars-ontology/ontologies#Search_for_the_Twi'lek_rebels> ;
-                 :captureOf :Wat_Tambor ;
                  :during :Battle_of_Ryloth ;
                  :escapeOf :TA-175 ;
                  :locatedIn :Lessu ;
@@ -1032,10 +1082,6 @@
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Nabat
 :Battle_of_Nabat rdf:type owl:NamedIndividual ,
                           :Battle ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :captureOf ;
-                            owl:someValuesFrom :Gutkurr
-                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :destructionOf ;
                             owl:someValuesFrom :Proton_cannon
@@ -1076,6 +1122,17 @@
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :used ;
                                                                         owl:someValuesFrom :Proton_cannon
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:someValuesFrom :Gutkurr
                                                                       ]
                                                                     ) ;
                                                  rdf:type owl:Class
@@ -1756,8 +1813,15 @@
                             owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Chase
                                                                       [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :captureOf ;
-                                                                        owl:someValuesFrom :Type_II_loadlifter_droid
+                                                                        owl:onProperty :included ;
+                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty :of ;
+                                                                                                                    owl:someValuesFrom :Type_II_loadlifter_droid
+                                                                                                                  ]
+                                                                                                                ) ;
+                                                                                             rdf:type owl:Class
+                                                                                           ]
                                                                       ]
                                                                     ) ;
                                                  rdf:type owl:Class
@@ -1819,8 +1883,8 @@
                                                            ]
                                       ] ;
                              :after :Mission_to_Capture_Dooku ;
-                             :captureOf :Count_Dooku ;
                              :locatedIn :Hondos_complex ;
+                             :of :Count_Dooku ;
                              :participant :Hondo_Ohnaka ,
                                           :Obi-Wan_Kenobi ;
                              :year -21 ;
@@ -1830,6 +1894,17 @@
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Capturing_Almec
 :Capturing_Almec rdf:type owl:NamedIndividual ,
                           :Fight ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Almec
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
@@ -1856,7 +1931,6 @@
                                                ]
                           ] ;
                  :after :Entering_Sundari ;
-                 :captureOf :Almec ;
                  :during :Siege_of_Mandalore ;
                  :participant :Bo-Katan_Kryze ;
                  :year -19 ;
@@ -2268,15 +2342,22 @@
                                                                            owl:someValuesFrom :Shield_Generator
                                                                          ]
                                                                          [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :included ;
+                                                                           owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                       owl:onProperty :of ;
+                                                                                                                       owl:hasValue :Lok_Durd
+                                                                                                                     ]
+                                                                                                                   ) ;
+                                                                                                rdf:type owl:Class
+                                                                                              ]
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :participant ;
                                                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                                                                 owl:onProperty :livedIn ;
                                                                                                 owl:hasValue :Lurmen_village
                                                                                               ]
-                                                                         ]
-                                                                         [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty :captureOf ;
-                                                                           owl:hasValue :Lok_Durd
                                                                          ]
                                                                          [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :participant ;
@@ -2944,8 +3025,8 @@
                                                     ]
                                ] ;
                       :after :Kidnapping_of_Wee_Dunn ;
-                      :captureOf :Cad_Bane ;
                       :locatedIn :Jan-gwa_city ;
+                      :of :Cad_Bane ;
                       :participant :Ahsoka_Tano ,
                                    :Anakin_Skywalker ;
                       :witnessedBy :Roo-Roo_Page ;
@@ -2965,6 +3046,17 @@
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :disguisedAs ;
                                                                        owl:hasValue :Ord_Enisence
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Cato_Parasitti
                                                                      ]
                                                                    ) ;
                                                 rdf:type owl:Class
@@ -3068,7 +3160,6 @@
                                               ]
                          ] ;
                 :after :Evacuation_of_Felucia ;
-                :captureOf :Cato_Parasitti ;
                 :during :Clone_Wars ;
                 :escapeOf :Cad_Bane ;
                 :locatedIn :Jedi_Archives ;
@@ -3081,9 +3172,19 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hutt_Treaty
 :Hutt_Treaty rdf:type owl:NamedIndividual ,
-                      :Confrontation ;
+                      :Confrontation ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :of ;
+                                                                    owl:hasValue :Padme_Amidala
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
              :after :Battle_of_Teth ;
-             :captureOf :Padme_Amidala ;
              :during :Clone_Wars ;
              :locatedIn :Coruscant ;
              :participant :C-3PO ,
@@ -3095,6 +3196,17 @@
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Infiltration_of_Vindis_Lab
 :Infiltration_of_Vindis_Lab rdf:type owl:NamedIndividual ,
                                      :Mission ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :of ;
+                                                                                   owl:hasValue :Nuvo_Vindi
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :included ;
                                        owl:someValuesFrom [ owl:intersectionOf ( :Torture
@@ -3120,7 +3232,6 @@
                                      ] ;
                             :after :One_Day_War ,
                                    :Search_for_the_lab ;
-                            :captureOf :Nuvo_Vindi ;
                             :during :Clone_Wars ;
                             :escapeOf :LEP-86C8 ;
                             :locatedIn :Trade_Federation_laboratory ;
@@ -3188,9 +3299,9 @@
 :Kidnap_of_Stinky rdf:type owl:NamedIndividual ,
                            :Capture ;
                   :after :Asajj_vs_Obi-Wan_and_Anakin ;
-                  :captureOf :Rotta ;
                   :during :Battle_of_Christophsis ;
                   :locatedIn :Khetanna ;
+                  :of :Rotta ;
                   :orderedBy :Count_Dooku ;
                   :participant :Asajj_Ventress ,
                                :Count_Dooku ,
@@ -3221,10 +3332,10 @@
                                                       ]
                                  ] ;
                         :after :Finding_the_children_of_the_Force ;
-                        :captureOf :Wee_Dunn ;
                         :during :Clone_Wars ;
                         :escapeOf :Cad_Bane ;
                         :locatedIn :Rodia ;
+                        :of :Wee_Dunn ;
                         :witnessedBy :Obi-Wan_Kenobi ;
                         :year -21 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Children_of_the_Force"^^xsd:anyURI .
@@ -3479,7 +3590,7 @@
                                                                                   owl:someValuesFrom :Tractor_Beam
                                                                                 ]
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :participant ;
+                                                                                  owl:onProperty :of ;
                                                                                   owl:hasValue :Silver_Angel
                                                                                 ]
                                                                               ) ;
@@ -3541,6 +3652,32 @@
                                                                                    [ rdf:type owl:Restriction ;
                                                                                      owl:onProperty :witnessedBy ;
                                                                                      owl:hasValue :Bo-Katan_Kryze
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Ahsoka_Tano
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Rafa_Martez
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Trace_Martez
                                                                                    ]
                                                                                  ) ;
                                                               rdf:type owl:Class
@@ -3637,9 +3774,6 @@
                                          owl:someValuesFrom :MSP80_Pteropter_hover_pod
                                        ] ;
                               :after :Martez_dealing_with_Pykes ;
-                              :captureOf :Ahsoka_Tano ,
-                                         :Rafa_Martez ,
-                                         :Trace_Martez ;
                               :during :Clone_Wars ;
                               :participant :Fife ;
                               :year -19 ;
@@ -3721,6 +3855,21 @@
                                   :Meeting ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Anakin_Skywalker
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Obi-Wan_Kenobi
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
                                     owl:someValuesFrom [ owl:intersectionOf ( :Doublecross
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :used ;
@@ -3732,8 +3881,6 @@
                                   ] ;
                          :after :Capture_of_Dooku_by_Pirates ,
                                 :Surviving_the_caves_of_Vanqor ;
-                         :captureOf :Anakin_Skywalker ,
-                                    :Obi-Wan_Kenobi ;
                          :during :Clone_Wars ;
                          :locatedIn :Hondos_complex ;
                          :participant :Count_Dooku ,
@@ -4004,6 +4151,17 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Nute_Gunray
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :participant ;
@@ -4035,7 +4193,6 @@
                              owl:onProperty :participant ;
                              owl:someValuesFrom :Droideka
                            ] ;
-                  :captureOf :Nute_Gunray ;
                   :during :Clone_Wars ;
                   :locatedIn :Rodia ;
                   :participant :C-3PO ,
@@ -4400,8 +4557,15 @@
                                                                                          owl:someValuesFrom :Holocron
                                                                                        ]
                                                                                        [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty :captureOf ;
-                                                                                         owl:hasValue :Ahsoka_Tano
+                                                                                         owl:onProperty :included ;
+                                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                     owl:onProperty :of ;
+                                                                                                                                     owl:hasValue :Ahsoka_Tano
+                                                                                                                                   ]
+                                                                                                                                 ) ;
+                                                                                                              rdf:type owl:Class
+                                                                                                            ]
                                                                                        ]
                                                                                        [ rdf:type owl:Restriction ;
                                                                                          owl:onProperty :participant ;
@@ -5801,8 +5965,15 @@
                                  owl:onProperty :included ;
                                  owl:someValuesFrom [ owl:intersectionOf ( :Trap
                                                                            [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :captureOf ;
-                                                                             owl:hasValue :Slick
+                                                                             owl:onProperty :included ;
+                                                                             owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                         owl:onProperty :of ;
+                                                                                                                         owl:hasValue :Slick
+                                                                                                                       ]
+                                                                                                                     ) ;
+                                                                                                  rdf:type owl:Class
+                                                                                                ]
                                                                            ]
                                                                          ) ;
                                                       rdf:type owl:Class
@@ -5848,6 +6019,18 @@
                                                                          [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :participant ;
                                                                            owl:someValuesFrom :B1_Battle_Droid
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :C-3PO
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Jar_Jar_Binks
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Padme_Amidala
                                                                          ]
                                                                        ) ;
                                                     rdf:type owl:Class
@@ -5905,9 +6088,6 @@
                                                   ]
                              ] ;
                     :after :Padme_meets_with_the_Queen ;
-                    :captureOf :C-3PO ,
-                               :Jar_Jar_Binks ,
-                               :Padme_Amidala ;
                     :during :Clone_Wars ;
                     :found :Trade_Federation_laboratory ;
                     :year -21 ;
@@ -5975,7 +6155,7 @@
                                                                                                                         ]
                                                                                                    ]
                                                                                                    [ rdf:type owl:Restriction ;
-                                                                                                     owl:onProperty :participant ;
+                                                                                                     owl:onProperty :of ;
                                                                                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                                                                                           owl:onProperty :hadRole ;
                                                                                                                           owl:someValuesFrom :Senator
@@ -5985,7 +6165,7 @@
                                                                               rdf:type owl:Class
                                                                             ]
                                                                             [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :participant ;
+                                                                              owl:onProperty :of ;
                                                                               owl:hasValue :Padme_Amidala
                                                                             ]
                                                                           ) ;
@@ -6011,8 +6191,15 @@
                                   owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                             [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :captureOf ;
-                                                                              owl:hasValue :Anakin_Skywalker
+                                                                              owl:onProperty :included ;
+                                                                              owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                          owl:onProperty :of ;
+                                                                                                                          owl:hasValue :Anakin_Skywalker
+                                                                                                                        ]
+                                                                                                                      ) ;
+                                                                                                   rdf:type owl:Class
+                                                                                                 ]
                                                                             ]
                                                                           ) ;
                                                        rdf:type owl:Class
@@ -6628,6 +6815,25 @@
                                   :Escape ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Anakin_Skywalker
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Count_Dooku
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Obi-Wan_Kenobi
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
                                     owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :included ;
@@ -6662,24 +6868,6 @@
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :participant ;
                                                                                 owl:hasValue :Jar_Jar_Binks
-                                                                              ]
-                                                                            ) ;
-                                                         rdf:type owl:Class
-                                                       ]
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :included ;
-                                    owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :captureOf ;
-                                                                                owl:hasValue :Anakin_Skywalker
-                                                                              ]
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :captureOf ;
-                                                                                owl:hasValue :Count_Dooku
-                                                                              ]
-                                                                              [ rdf:type owl:Restriction ;
-                                                                                owl:onProperty :captureOf ;
-                                                                                owl:hasValue :Obi-Wan_Kenobi
                                                                               ]
                                                                             ) ;
                                                          rdf:type owl:Class

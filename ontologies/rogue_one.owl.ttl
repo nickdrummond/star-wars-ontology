@@ -146,9 +146,9 @@
                                                   owl:someValuesFrom :Death_trooper
                                                 ]
                            ] ;
-                  :captureOf :Galen_Erso ;
                   :escapeOf :Jyn_Erso ;
                   :locatedIn :Lah_mu ;
+                  :of :Galen_Erso ;
                   :participant :Orson_Krennic ;
                   :year -13 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Galen_Walton_Erso#Time_on_Lah.27mu"^^xsd:anyURI .
@@ -168,6 +168,29 @@
                          :Fight ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Baze_Malbus
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Cassian_Andor
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Chirrut_Îmwe
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Jyn_Erso
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :of ;
@@ -181,10 +204,6 @@
                                               ]
                          ] ;
                 :after :Freeing_of_Jyn ;
-                :captureOf :Baze_Malbus ,
-                           :Cassian_Andor ,
-                           :Chirrut_Îmwe ,
-                           :Jyn_Erso ;
                 :during :Galactic_Civil_War ;
                 :locatedIn :Jedha_City ;
                 :participant :K-2SO ,

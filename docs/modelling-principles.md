@@ -44,14 +44,12 @@ eg [Torture_of_Shmi](http://star-wars-ontology.herokuapp.com/individuals/-631305
 
 ## Event focussed
 
+* should include a location
+* should include at least one participant
 * should provide a [`year`](http://star-wars-ontology.herokuapp.com/dataproperties/948496406/) for all named events, if known
-  * negative numbers are BBY, positive are ABY  
-* may attach involvement in an event to the [`Actor`](http://star-wars-ontology.herokuapp.com/classes/1007884718/), if there is no natural named Event to use
+  * negative numbers are BBY, positive are ABY
+* may include sub-events with ```included```
 
-eg [Ochi](http://star-wars-ontology.herokuapp.com/individuals/947243470/)
-    
-    participatedIn some (Murder and
-    deathOf some (hadChild value Rey))
 
 ###  Timeline
 

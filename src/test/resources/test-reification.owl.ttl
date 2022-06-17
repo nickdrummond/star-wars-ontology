@@ -1,0 +1,100 @@
+@prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+
+<https://null.com/test-reification.owl.ttl> rdf:type owl:Ontology .
+
+:killingOf rdf:type owl:ObjectProperty .
+:participant rdf:type owl:ObjectProperty .
+:destructionOf rdf:type owl:ObjectProperty .
+:hadRole rdf:type owl:ObjectProperty .
+:locatedIn rdf:type owl:ObjectProperty .
+:of rdf:type owl:ObjectProperty .
+:included rdf:type owl:ObjectProperty .
+
+:year rdf:type owl:DatatypeProperty .
+
+:Battle rdf:type owl:Class .
+:Evacuation rdf:type owl:Class .
+:Crash rdf:type owl:Class .
+:Murder rdf:type owl:Class .
+:Jawa rdf:type owl:Class .
+:Captain rdf:type owl:Class .
+:StormTrooper rdf:type owl:Class .
+:Interdictor_Vessel rdf:type owl:Class .
+:Killing rdf:type owl:Class .
+
+:Beru_Whitesun_Lars rdf:type owl:NamedIndividual .
+:Owen_Lars rdf:type owl:NamedIndividual .
+:Phoenix_Nest rdf:type owl:NamedIndividual .
+:Jun_Sato rdf:type owl:NamedIndividual .
+:Kassius_Konstantine rdf:type owl:NamedIndividual .
+:Anodyne rdf:type owl:NamedIndividual .
+
+:Attack_on_Lars_Homestead rdf:type owl:NamedIndividual ,
+                                   :Murder ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :killingOf ;
+                                     owl:someValuesFrom :Jawa
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hadRole ;
+                                                          owl:someValuesFrom :StormTrooper
+                                                        ]
+                                   ] ;
+                          :killingOf :Beru_Whitesun_Lars ,
+                                     :Owen_Lars ;
+                          :locatedIn :Lars_Homestead ;
+                          :year 0 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Lars_Homestead#Burning_homestead"^^xsd:anyURI .
+
+:Battle_of_Atollon rdf:type owl:NamedIndividual ,
+                            :Battle ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :destructionOf ;
+                                                                          owl:hasValue :Phoenix_Nest
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :killingOf ;
+                                                                          owl:hasValue :Jun_Sato
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :killingOf ;
+                                                                          owl:hasValue :Kassius_Konstantine
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                       ]
+                            ] ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Atollon"^^xsd:anyURI .
+
+:Battle_of_Oetchi rdf:type owl:NamedIndividual ,
+                           :Battle ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Evacuation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :killingOf ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :hadRole ;
+                                                                                              owl:someValuesFrom :Captain
+                                                                                  ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Anodyne
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                      ]
+                           ] ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_the_Resistance_fleet"^^xsd:anyURI .

@@ -19,10 +19,20 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Anakin_vs_Dooku
 :Anakin_vs_Dooku rdf:type owl:NamedIndividual ,
-                          :Duel ;
+                          :Duel ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Count_Dooku
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
                  :after :Kidnap_of_Palpatine ;
                  :during :Battle_of_Coruscant ;
-                 :killingOf :Count_Dooku ;
                  :locatedIn :Invisible_Hand ;
                  :victoryOf :Anakin_Skywalker ;
                  :witnessedBy :Sheev_Palpatine ;
@@ -49,6 +59,17 @@
                               :Battle ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :R4-P17
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
                                 owl:someValuesFrom [ owl:intersectionOf ( :Surrender
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :participant ;
@@ -69,7 +90,6 @@
                                 owl:onProperty :participant ;
                                 owl:someValuesFrom :Buzz_Droid
                               ] ;
-                     :deathOf :R4-P17 ;
                      :destructionOf :Invisible_Hand ;
                      :during :Clone_Wars ;
                      :escapeOf :Grievous ;
@@ -99,7 +119,7 @@
                                                                           owl:hasValue :Order_66
                                                                         ]
                                                                         [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :killingOf ;
+                                                                          owl:onProperty :of ;
                                                                           owl:hasValue :Aayla_Secura
                                                                         ]
                                                                         [ rdf:type owl:Restriction ;
@@ -185,9 +205,19 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Birth_of_Hope
 :Birth_of_Hope rdf:type owl:NamedIndividual ,
-                        :Birth ;
+                        :Birth ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :included ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :of ;
+                                                                      owl:hasValue :Padme_Amidala
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
                :after :Battle_of_the_Heroes ;
-               :deathOf :Padme_Amidala ;
                :locatedIn :Polis_Massa ;
                :of :Leia_Organa ,
                    :Luke_Skywalker ;
@@ -303,6 +333,13 @@
                           :sometimeBefore :Clone_Wars .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Death_of_Sifo-Dyas
+:Death_of_Sifo-Dyas rdf:type owl:NamedIndividual ,
+                             :Death ;
+                    :of :Sifo-Dyas ;
+                    :year -32 .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dooku_vs_3_Jedi
 :Dooku_vs_3_Jedi rdf:type owl:NamedIndividual ,
                           :Duel ;
@@ -318,10 +355,20 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Duel_of_the_Fates
 :Duel_of_the_Fates rdf:type owl:NamedIndividual ,
-                            :Duel ;
+                            :Duel ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :Qui-Gon_Jinn
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
                    :during :Battle_of_Naboo ;
                    :injuryOf :Maul ;
-                   :killingOf :Qui-Gon_Jinn ;
                    :locatedIn :Theed ;
                    :participant :Obi-Wan_Kenobi ;
                    :year -32 ;
@@ -344,13 +391,30 @@
 :Failed_Assasination_of_Padme rdf:type owl:NamedIndividual ,
                                        :Attack ,
                                        [ rdf:type owl:Restriction ;
-                                         owl:onProperty :killingOf ;
-                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                              owl:onProperty :employedBy ;
-                                                              owl:hasValue :Padme_Amidala
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:hasValue :Zam_Wesell
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty :employedBy ;
+                                                                                                          owl:hasValue :Padme_Amidala
+                                                                                                        ]
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
                                                             ]
                                        ] ;
-                              :deathOf :Zam_Wesell ;
                               :locatedIn :Coruscant ;
                               :orderedBy :Nute_Gunray ;
                               :participant :Anakin_Skywalker ,
@@ -365,10 +429,17 @@
 :First_Battle_of_Geonosis rdf:type owl:NamedIndividual ,
                                    :Battle ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty :deathOf ;
-                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hadRole ;
-                                                          owl:someValuesFrom :Jedi
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :hadRole ;
+                                                                                                      owl:someValuesFrom :Jedi
+                                                                                                    ]
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
                                                         ]
                                    ] ,
                                    [ rdf:type owl:Restriction ;
@@ -436,12 +507,26 @@
 :Kidnap_of_Palpatine rdf:type owl:NamedIndividual ,
                               :Capture ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :killingOf ;
-                                owl:someValuesFrom :B2_Super_Battle_Droid
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:someValuesFrom :B2_Super_Battle_Droid
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :killingOf ;
-                                owl:someValuesFrom :IG-100_MagnaGuard
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:someValuesFrom :IG-100_MagnaGuard
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :participant ;
@@ -459,13 +544,53 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mace_vs_Emperor
 :Mace_vs_Emperor rdf:type owl:NamedIndividual ,
-                          :Duel ;
+                          :Duel ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Agen_Kolar
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Kit_Fisto
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Mace_Windu
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Saesee_Tiin
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
                  :after :Obi-Wan_vs_Grievous ;
                  :injuryOf :Darth_Sidious ;
-                 :killingOf :Agen_Kolar ,
-                            :Kit_Fisto ,
-                            :Mace_Windu ,
-                            :Saesee_Tiin ;
                  :locatedIn :Coruscant ;
                  :year -19 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#Duel_in_the_Chancellor.27s_Office"^^xsd:anyURI .
@@ -473,9 +598,19 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mace_vs_Jango
 :Mace_vs_Jango rdf:type owl:NamedIndividual ,
-                        :Duel ;
+                        :Duel ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :included ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :of ;
+                                                                      owl:hasValue :Jango_Fett
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
                :during :First_Battle_of_Geonosis ;
-               :killingOf :Jango_Fett ;
                :locatedIn :Geonosis ;
                :victoryOf :Mace_Windu ;
                :year -22 ;
@@ -517,11 +652,21 @@
 :Obi-Wan_vs_Grievous rdf:type owl:NamedIndividual ,
                               :Duel ,
                               [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Grievous
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
                                 owl:onProperty :participant ;
                                 owl:someValuesFrom :Varactyl
                               ] ;
                      :after :Battle_of_Coruscant ;
-                     :killingOf :Grievous ;
                      :locatedIn :Utapau ;
                      :victoryOf :Obi-Wan_Kenobi ;
                      :year -19 ;
@@ -548,10 +693,50 @@
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Order_66
 :Order_66 rdf:type owl:NamedIndividual ,
                    [ rdf:type owl:Restriction ;
-                     owl:onProperty :killingOf ;
-                     owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                          owl:onProperty :hadRole ;
-                                          owl:someValuesFrom :Jedi
+                     owl:onProperty :included ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :of ;
+                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :hadRole ;
+                                                                                      owl:someValuesFrom :Jedi
+                                                                                    ]
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :included ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :of ;
+                                                                 owl:hasValue :Ki-Adi-Mundi
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :included ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :of ;
+                                                                 owl:hasValue :Plo_Koon
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :included ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :of ;
+                                                                 owl:hasValue :Shaak_Ti
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
                                         ]
                    ] ,
                    [ rdf:type owl:Restriction ;
@@ -562,9 +747,6 @@
                                         ]
                    ] ;
           :after :Mace_vs_Emperor ;
-          :killingOf :Ki-Adi-Mundi ,
-                     :Plo_Koon ,
-                     :Shaak_Ti ;
           :locatedIn :Outer_Rim ;
           :survivedBy :Obi-Wan_Kenobi ,
                       :Yoda ;
@@ -629,15 +811,22 @@
 :Siege_of_the_Jedi_Temple rdf:type owl:NamedIndividual ,
                                    :Attack ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty :killingOf ;
-                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hadRole ;
-                                                          owl:someValuesFrom [ rdf:type owl:Class ;
-                                                                               owl:unionOf ( :Jedi_Knight
-                                                                                             :Jedi_Youngling
-                                                                                             :Padawan
-                                                                                           )
-                                                                             ]
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :hadRole ;
+                                                                                                      owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                                           owl:unionOf ( :Jedi_Knight
+                                                                                                                                         :Jedi_Youngling
+                                                                                                                                         :Padawan
+                                                                                                                                       )
+                                                                                                                         ]
+                                                                                                    ]
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
                                                         ]
                                    ] ;
                           :after :Mace_vs_Emperor ;
@@ -669,9 +858,19 @@
                                                                     rdf:type owl:Class
                                                                   ]
                                              ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Shmi_Skywalker
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
                           ] ;
                  :after :Obi-Wan_vs_Jango ;
-                 :deathOf :Shmi_Skywalker ;
                  :locatedIn :Tusken_Raider_camp ;
                  :participant :Anakin_Skywalker ;
                  :year -22 ;
@@ -710,10 +909,11 @@
 :Vader_wipes_out_Separatist_Leaders rdf:type owl:NamedIndividual ,
                                              :Execution ;
                                     :after :Order_66 ;
-                                    :killingOf :Nute_Gunray ,
-                                               :Poggle_the_Lesser ,
-                                               :Wat_Tambor ;
                                     :locatedIn :Klegger_Corp_Mining_Facility ;
+                                    :of :Nute_Gunray ,
+                                        :Poggle_the_Lesser ,
+                                        :Wat_Tambor ;
+                                    :orderedBy :Darth_Sidious ;
                                     :victoryOf :Darth_Vader ;
                                     :year -19 ;
                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_Revenge_of_the_Sith#Birth_of_the_Empire"^^xsd:anyURI .

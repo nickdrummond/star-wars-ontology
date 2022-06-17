@@ -32,7 +32,7 @@ public class SparqlTest extends TestCase {
                 Model model = RDFDataMgr.loadModel("ontologies/all.owl.ttl", Lang.TURTLE);
                 File onts = new File("ontologies/");
                 // load all ontologies/ - TODO use imports
-                Arrays.stream(Objects.requireNonNull(onts.listFiles())).forEach(f -> {
+                Arrays.stream(Objects.requireNonNull(onts.listFiles())).filter(f->f.toString().endsWith(".ttl")).forEach(f -> {
                     System.out.println("f = " + f);
                     Model m = RDFDataMgr.loadModel(f.getAbsolutePath(), Lang.TURTLE);
                     model.add(m);

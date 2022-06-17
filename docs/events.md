@@ -37,7 +37,7 @@ An extract of [Escape_from_Death_Star](https://star-wars-ontology.herokuapp.com/
                 (deactivated some Tractor_Beam_Projector) and
                 (participant value Obi-Wan_Kenobi))
             )
-            killingOf some (hadRole some StormTrooper)
+            included some ( Killing and (of some (hadRole some StormTrooper)))
         ...
 
 ## Event types
@@ -118,14 +118,13 @@ such as stormtroopers. We have to be remember that [StormTrooper](https://star-w
 is a role, fulfilled by a person. The range of participant requires an [Actor](https://star-wars-ontology.herokuapp.com/classes/1007884718/)
 such as a Human which is why we see the common pattern:
 
-    killingOf some (hadRole some StormTrooper)
+    included some (Killing and (of some (hadRole some StormTrooper)))
 
-[This happens a lot](https://star-wars-ontology.herokuapp.com/dlquery/?expression=killingOf+some+%28hadRole+some+StormTrooper%29&syntax=man&query=instances)
-or even more if you [include sub-events](https://star-wars-ontology.herokuapp.com/dlquery/?expression=%28killingOf+some+%28hadRole+some+StormTrooper%29%29+or+%28included+some+%28killingOf+some+%28hadRole+some+StormTrooper%29%29%29&syntax=man&query=instances)
+[This happens a lot](https://star-wars-ontology.herokuapp.com/dlquery/?expression=included+some+%28Killing+and+%28of+some+%28hadRole+some+StormTrooper%29%29%29&minus=&syntax=man&query=instances)
 
 The following would be too specific - are all StormTroopers human?
 
-    killingOf some (Human and hadRole some StormTrooper)
+    included some (Killing and (of some (Human and hadRole some StormTrooper)))
 
 
 ## Development

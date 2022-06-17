@@ -73,8 +73,8 @@ Exactly the same as classes, properties are arranged in a hierarchy.
 
 eg an event in which people have different outcomes:
 
-    Boba_vs_Bib:
-        killingOf Bib_Fortuna
+    Boba_vs_Bib: Murder
+        of Bib_Fortuna
         victoryOf Boba_Fett
         witnessedBy Fennec_Shand
 
@@ -84,7 +84,7 @@ We can ask who were the participants in this event:
 
 [result](http://star-wars-ontology.herokuapp.com/dlquery/?expression=participatedIn+value+Boba_vs_Bib&syntax=man&query=instances)
 includes all 3 because
-[```killingOf```](http://star-wars-ontology.herokuapp.com/objectproperties/-609369964/),
+[```of```](http://star-wars-ontology.herokuapp.com/objectproperties/944795056/),
 [```victoryOf```](http://star-wars-ontology.herokuapp.com/objectproperties/1820579682/) and
 [```witnessedBy```](http://star-wars-ontology.herokuapp.com/objectproperties/471407080/) are
 all subproperties of [```participant```](http://star-wars-ontology.herokuapp.com/objectproperties/1712213772/)
@@ -97,9 +97,9 @@ properties.
 
 eg. Who was killed in the Mid Rim?
 
-    killedIn some (locatedIn value Mid_Rim)
+    inverse(of) some (Killing and during some (locatedIn value Mid_Rim))
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=killedIn+some+%28locatedIn+value+Mid_Rim%29&syntax=man&query=instances)
+[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=inverse%28of%29+some+%28Killing+and+during+some+%28locatedIn+value+Mid_Rim%29%29&minus=&syntax=man&query=instances)
 includes Qui-Gon Jinn who was killed in Theed, on Naboo, in the Mid Rim
 
 eg. Who is related to Kylo Ren?
@@ -219,10 +219,10 @@ keep our level of commitment low.
 
 Classification allows control over how specific we wish to be:
 
-eg killingOf some (hadRole some [Fighter](http://star-wars-ontology.herokuapp.com/classes/1749936246/) /
+eg Killing and (of some (hadRole some [Fighter](http://star-wars-ontology.herokuapp.com/classes/1749936246/) /
 [Trooper](http://star-wars-ontology.herokuapp.com/classes/1555341112/) /
 [Stormtrooper](http://star-wars-ontology.herokuapp.com/classes/-2145398193/) /
-[Scout Trooper](http://star-wars-ontology.herokuapp.com/classes/938884855/))
+[Scout Trooper](http://star-wars-ontology.herokuapp.com/classes/938884855/)))
 
 ### Naming
 

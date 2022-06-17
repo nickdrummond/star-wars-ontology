@@ -123,13 +123,13 @@ A leader of a unit does not make a leader of the army.
 Can we do this relative to an event? 
 ie more granular so we catch Scarif (the same year)
 
-    diedIn some ( year some xsd:int[< 0] )
+    inverse(of) some (Death and during some ( year some xsd:int[< 0] ))
 
 [```sometimeBefore```](https://star-wars-ontology.herokuapp.com/objectproperties/806167673/)
 is transitive but we don't want to hold a complete timeline for all the story fragments,
 so we do have to use year aswell
 
-    diedIn some (((year some xsd:int[< 0] ) or ((sometimeBefore value Battle_of_Yavin) or (during some (sometimeBefore value Battle_of_Yavin)))))
+    inverse(of) some (Death and during some (( year some xsd:int[< 0] ) or (sometimeBefore value Battle_of_Yavin)))
 
 ## Who is related to Anakin Skywalker?
 
@@ -142,20 +142,20 @@ is related to [```Jango Fett```](https://star-wars-ontology.herokuapp.com/indivi
 
 ## Who died in a certain place or by a given hand?
 
-    killedIn some (locatedIn value Death_Star_1)
+    inverse(of) some (Killing and during some (locatedIn value Death_Star_1))
 
 Included
 [```Obi-Wan_Kenobi```](https://star-wars-ontology.herokuapp.com/individuals/-1966242483/) and
 [```Biggs_Darklighter```](https://star-wars-ontology.herokuapp.com/individuals/680567251/)
 
-    killedIn some (Fight and participant value Darth_Vader)
+    inverse(of) some (Killing and during some (Fight and participant value Darth_Vader))
 
 Included 
 [```Raymus_Antilles```](https://star-wars-ontology.herokuapp.com/individuals/1310875527/)
 
 ## Who was in a fight in which StormTroopers were killed?
 
-    participatedIn some (Fight and killingOf some (hadRole some StormTrooper))
+    participatedIn some (Fight and included some (Killing and (of some (hadRole some StormTrooper))))
 
 Too many to mention
 

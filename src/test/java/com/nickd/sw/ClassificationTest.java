@@ -7,15 +7,16 @@ import junit.framework.TestSuite;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 
-import java.io.File;
-
 public class ClassificationTest extends TestCase {
 
     private static TestHelper helper;
 
     // One time load
     public static Test suite() throws OWLOntologyCreationException {
-        helper = new TestHelper(new TestSuite(ClassificationTest.class), TestHelper.BASE + "/star-wars.owl.ttl");
+        helper = new TestHelper(
+                new TestSuite(ClassificationTest.class),
+                Helper.BASE + "/star-wars.owl.ttl",
+                new StarWarsOntologiesIRIMapper());
         helper.classify();
         return helper;
     }
@@ -28,10 +29,10 @@ public class ClassificationTest extends TestCase {
     // Even though pellet correctly infers he is a member of 7thSC, but does not follow the transitivity
     public void testMembershipTransitivity() {
 
-        OWLClassExpression expr = helper.df.getOWLObjectHasValue(
+        OWLClassExpression expr = helper.df().getOWLObjectHasValue(
                 helper.prop("memberOf"), helper.ind("Galactic_Republic"));
 
-        NodeSet<OWLNamedIndividual> results = helper.r.getInstances(expr);
+        NodeSet<OWLNamedIndividual> results = helper.r().getInstances(expr);
 
         assertTrue(results.getFlattened().contains(helper.ind("Cody")));
     }
@@ -45,14 +46,14 @@ public class ClassificationTest extends TestCase {
     // hadRole some (Officer and inOrganisation some (memberOf value Grand_Army_of_the_Republic))
     public void testRolesInOrganisation() {
         OWLClassExpression expr =
-                helper.df.getOWLObjectSomeValuesFrom(helper.prop("hadRole"),
-                        helper.df.getOWLObjectIntersectionOf(helper.cls("Officer"),
-                                helper.df.getOWLObjectSomeValuesFrom(helper.prop("inOrganisation"),
-                                        helper.df.getOWLObjectHasValue(helper.prop("memberOf"),
+                helper.df().getOWLObjectSomeValuesFrom(helper.prop("hadRole"),
+                        helper.df().getOWLObjectIntersectionOf(helper.cls("Officer"),
+                                helper.df().getOWLObjectSomeValuesFrom(helper.prop("inOrganisation"),
+                                        helper.df().getOWLObjectHasValue(helper.prop("memberOf"),
                                             helper.ind("Grand_Army_of_the_Republic"))
                     )));
 
-        NodeSet<OWLNamedIndividual> results = helper.r.getInstances(expr);
+        NodeSet<OWLNamedIndividual> results = helper.r().getInstances(expr);
 
         assertTrue(results.getFlattened().contains(helper.ind("Hunter")));
     }
@@ -60,9 +61,9 @@ public class ClassificationTest extends TestCase {
     // Luke is from Mos Eisely, therefore he is from a place in the Outer Rim
     // "originallyFrom some (locatedIn value Outer_Rim)"
     public void testLocationTransitivity() {
-        NodeSet<OWLNamedIndividual> results = helper.r.getInstances(
-                helper.df.getOWLObjectSomeValuesFrom(helper.prop("originallyFrom"),
-                    helper.df.getOWLObjectHasValue(helper.prop("locatedIn"),
+        NodeSet<OWLNamedIndividual> results = helper.r().getInstances(
+                helper.df().getOWLObjectSomeValuesFrom(helper.prop("originallyFrom"),
+                    helper.df().getOWLObjectHasValue(helper.prop("locatedIn"),
                             helper.ind("Outer_Rim"))
         ));
 

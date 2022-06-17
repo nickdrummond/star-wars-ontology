@@ -1,65 +1,77 @@
 package com.nickd.sw.util;
 
+import com.nickd.sw.Helper;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
-import openllet.owlapi.OWLGenericTools;
-import openllet.owlapi.OWLHelper;
-import openllet.owlapi.OWLManagerGroup;
-import openllet.owlapi.OpenlletReasonerFactory;
-import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.expression.ShortFormEntityChecker;
+import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
+import org.semanticweb.owlapi.util.*;
 
-import java.util.Collections;
+import java.util.Set;
 
 public class TestHelper extends TestSetup {
 
-    public static String BASE = "https://nickdrummond.github.io/star-wars-ontology/ontologies";
+    private final Helper helper;
 
-    public OWLOntologyManager mngr;
-    public OWLOntology ont;
-    public OWLDataFactory df;
-    public OWLReasoner r;
+    private final ManchesterOWLSyntaxClassExpressionParser mos;
+    private final SimpleShortFormProvider sfp;
+    private final ShortFormEntityChecker checker;
 
-    public long timeToLoad;
-    public long timeToClassify;
-
-
-    public TestHelper(Test test, String iri) throws OWLOntologyCreationException {
+    public TestHelper(Test test, String iri, OWLOntologyIRIMapper ontologyIRIMapper) throws OWLOntologyCreationException {
         super(test);
-        mngr = new OWLManager().get();
-        mngr.setIRIMappers(Collections.singleton(new TestIRIMapper()));
-        mngr.addOntologyLoaderListener(new LoadLogger());
-        df = mngr.getOWLDataFactory();
+        helper = new Helper(iri, ontologyIRIMapper);
+        sfp = new SimpleShortFormProvider();
+        BidirectionalShortFormProviderAdapter cache = new BidirectionalShortFormProviderAdapter(sfp);
+        helper.ont.getSignature(Imports.INCLUDED).forEach(cache::add);
+        checker = new ShortFormEntityChecker(cache);
+        mos = new ManchesterOWLSyntaxClassExpressionParser(df(), checker);
+    }
 
-        long start = System.currentTimeMillis();
-        ont = mngr.loadOntology(IRI.create(iri));
-        timeToLoad = System.currentTimeMillis() - start;
-        System.out.println("Loaded in " + timeToLoad + "ms");
+    public String render (OWLEntity entity) {
+        return sfp.getShortForm(entity);
+    }
+
+    public OWLEntity check(String name) {
+        return checker.getOWLObjectProperty(name);
+    }
+
+    public OWLClassExpression mos(String s) {
+        return mos.parse(s);
     }
 
     public OWLNamedIndividual ind(String s) {
-        return df.getOWLNamedIndividual(IRI.create(BASE + "#" + s));
+        return helper.ind(s);
     }
 
     public OWLObjectProperty prop(String s) {
-        return df.getOWLObjectProperty(IRI.create(BASE + "#" + s));
+        return helper.prop(s);
     }
 
-    public OWLClass cls(String s) {
-        return df.getOWLClass(IRI.create(BASE + "#" + s));
+    public OWLClass cls(String s) { return helper.cls(s);}
+
+    public void classify() { helper.classify(); }
+
+    public OWLDataFactory df() { return helper.df ;}
+
+    public OWLReasoner r() {return helper.r;}
+
+    public long timeToClassify() {
+        return helper.timeToClassify;
     }
 
-    public void classify() {
+    public long timeToLoad() {
+        return helper.timeToLoad;
+    }
 
-        final OWLHelper h = OWLHelper.createLightHelper(OpenlletReasonerFactory.getInstance().createReasoner(ont));
+    public OWLOntology ont() {
+        return helper.ont;
+    }
 
-        long start = System.currentTimeMillis();
-
-        r = h.getReasoner();
-
-        timeToClassify = System.currentTimeMillis() - start;
-        System.out.println("Classified in " + timeToClassify + "ms");
+    public Set<OWLOntology> onts() {
+        return helper.mngr.getOntologies();
     }
 }
 

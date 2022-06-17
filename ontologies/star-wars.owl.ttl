@@ -67,6 +67,10 @@
                       ] .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Killing
+:Killing rdf:type owl:Class .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Loth-wolf
 :Loth-wolf rdfs:subClassOf [ rdf:type owl:Restriction ;
                              owl:onProperty :connectedTo ;
@@ -349,7 +353,6 @@
              :trainedBy :Anakin_Skywalker ;
              :aka "Snips"^^xsd:string ;
              :born -36 ;
-             :diedInYear -20 ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Ahsoka_Tano"^^xsd:anyURI .
 
 
@@ -541,7 +544,6 @@
                                             ]
                        ] ;
               :friendsWith :Leia_Organa ;
-              :diedInYear 34 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Amilyn_Holdo"^^xsd:anyURI .
 
 
@@ -776,7 +778,6 @@
                 :originallyFrom :Dathomir ;
                 :trainedBy :Count_Dooku ;
                 :born -50 ;
-                :diedInYear -19 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Asajj_Ventress"^^xsd:anyURI .
 
 
@@ -6418,7 +6419,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
               :memberOf :Spectres ;
               :originallyFrom :Coruscant ;
               :born -33 ;
-              :diedInYear 0 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Kanan_Jarrus"^^xsd:anyURI .
 
 
@@ -7201,9 +7201,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
              :originallyFrom :Alderaan ;
              :raisedBy :Bail_Organa ;
              :trainedBy :Luke_Skywalker ;
-             :born -19 ;
-             :diedInYear 35 ;
-             :year 34 ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo"^^xsd:anyURI .
 
 
@@ -7470,7 +7467,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                           :Owen_Lars ;
                 :trainedBy :Obi-Wan_Kenobi ,
                            :Yoda ;
-                :born -19 ;
                 :callsign "Red Five"^^xsd:string ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker"^^xsd:anyURI .
 
@@ -7518,7 +7514,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                ]
                           ] ;
                  :responsibleFor :Tranquility ;
-                 :diedInYear -18 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Luminara_Unduli"^^xsd:anyURI .
 
 
@@ -8381,6 +8376,19 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Clan_Mudhorn"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Murder_of_Reys_parents
+:Murder_of_Reys_parents rdf:type owl:NamedIndividual ,
+                                 :Murder ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :of ;
+                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hadChild ;
+                                                        owl:hasValue :Rey
+                                                      ]
+                                 ] ;
+                        :participant :Ochi .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mustafar
 :Mustafar rdf:type owl:NamedIndividual ,
                    :Planet ,
@@ -8933,31 +8941,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                          ) ;
                                       rdf:type owl:Class
                                     ]
-               ] ,
-               [ rdf:type owl:Restriction ;
-                 owl:onProperty :participatedIn ;
-                 owl:someValuesFrom [ owl:intersectionOf ( :Murder
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :deathOf ;
-                                                             owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :hadChild ;
-                                                                                  owl:hasValue :Rey
-                                                                                ]
-                                                           ]
-                                                         ) ;
-                                      rdf:type owl:Class
-                                    ]
-               ] ,
-               [ rdf:type owl:Restriction ;
-                 owl:onProperty :diedInYear ;
-                 owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                      owl:onDatatype xsd:int ;
-                                      owl:withRestrictions ( [ xsd:minInclusive "21"^^xsd:int
-                                                             ]
-                                                             [ xsd:maxInclusive "35"^^xsd:int
-                                                             ]
-                                                           )
-                                    ]
                ] ;
       rdfs:seeAlso "https://starwars.fandom.com/wiki/Ochi"^^xsd:anyURI .
 
@@ -9162,10 +9145,20 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :Order_66 rdf:type owl:NamedIndividual ,
                    :Event ,
                    [ rdf:type owl:Restriction ;
+                     owl:onProperty :included ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :of ;
+                                                                 owl:hasValue :Depa_Billaba
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                   ] ,
+                   [ rdf:type owl:Restriction ;
                      owl:onProperty :used ;
                      owl:someValuesFrom :Inhibitor_chip
                    ] ;
-          :killingOf :Depa_Billaba ;
           :orderedBy :Darth_Sidious ;
           :survivedBy :Ahsoka_Tano ,
                       :Caleb_Dume ,
@@ -9547,7 +9540,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                         rdf:type owl:Class
                                       ]
                  ] ;
-        :diedInYear 34 ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Phasma"^^xsd:anyURI .
 
 
@@ -10600,7 +10592,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
      :trainedBy :Leia_Organa ,
                 :Luke_Skywalker ;
      :born 15 ;
-     :diedInYear 35 ;
      rdfs:seeAlso "https://starwars.fandom.com/wiki/Rey_Skywalker"^^xsd:anyURI .
 
 
@@ -11537,7 +11528,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                           ] ;
                  :originallyFrom :Naboo ;
                  :born -84 ;
-                 :diedInYear 35 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious"^^xsd:anyURI .
 
 
@@ -11620,7 +11610,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                       owl:someValuesFrom :Jedi_Master
                     ] ;
            :born -102 ;
-           :diedInYear -32 ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Sifo-Dyas"^^xsd:anyURI .
 
 
@@ -12050,8 +12039,15 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :Sterilization_of_Geonosis rdf:type owl:NamedIndividual ,
                                     :Event ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :killingOf ;
-                                      owl:someValuesFrom :Geonosian
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:someValuesFrom :Geonosian
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
                                     ] ;
                            :locatedIn :Geonosis ;
                            :year -9 ;
@@ -12668,7 +12664,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                        ] ;
               :hadFather :The_Father ;
               :livedIn :Mortis ;
-              :diedInYear -20 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Daughter"^^xsd:anyURI .
 
 
@@ -12684,7 +12679,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                        owl:someValuesFrom :Anchorite
                      ] ;
             :livedIn :Mortis ;
-            :diedInYear -20 ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Father_(Mortis)"^^xsd:anyURI .
 
 
@@ -12713,7 +12707,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                     ]
                                ] ;
                       :employedBy :Darth_Vader ;
-                      :diedInYear -4 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Grand_Inquisitor"^^xsd:anyURI .
 
 
@@ -12759,7 +12752,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                   ] ;
          :hadFather :The_Father ;
          :livedIn :Mortis ;
-         :diedInYear -20 ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Son"^^xsd:anyURI .
 
 
@@ -14412,21 +14404,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :inOrganisation ;
                                                              owl:hasValue :Hutt_Clan
-                                                           ]
-                                                         ) ;
-                                      rdf:type owl:Class
-                                    ]
-               ] ,
-               [ rdf:type owl:Restriction ;
-                 owl:onProperty :killedIn ;
-                 owl:someValuesFrom [ owl:intersectionOf ( :Murder
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :victoryOf ;
-                                                             owl:hasValue :Sy_Snootles
-                                                           ]
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :year ;
-                                                             owl:hasValue -21
                                                            ]
                                                          ) ;
                                       rdf:type owl:Class

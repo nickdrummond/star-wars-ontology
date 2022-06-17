@@ -1,4 +1,4 @@
-package com.nickd.sw.util;
+package com.nickd.sw;
 
 import org.semanticweb.owlapi.model.OWLOntologyLoaderListener;
 

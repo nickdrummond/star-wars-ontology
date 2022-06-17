@@ -4,16 +4,14 @@ import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 
 import javax.annotation.Nullable;
-import java.io.File;
+import java.util.Objects;
 
-public class TestIRIMapper implements OWLOntologyIRIMapper {
-    public static final String BASE = "ontologies/";
-
+public class TestOntologiesIRIMapper implements OWLOntologyIRIMapper {
     @Nullable
     @Override
     public IRI getDocumentIRI(IRI iri) {
         return iri.getRemainder().
-                map(rem -> IRI.create(new File(BASE + rem)))
+                map(rem -> IRI.create(Objects.requireNonNull(getClass().getClassLoader().getResource(rem))))
                 .orElseThrow(IllegalArgumentException::new);
     }
 }

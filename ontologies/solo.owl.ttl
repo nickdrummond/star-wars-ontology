@@ -44,8 +44,15 @@
 :Hans_Kessel_Run rdf:type owl:NamedIndividual ,
                           :Escape ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :deathOf ;
-                            owl:someValuesFrom :Summa-verminoth
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:someValuesFrom :Summa-verminoth
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :participant ;
@@ -66,6 +73,28 @@
 :Heist_on_Vandor rdf:type owl:NamedIndividual ,
                           :Heist ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Rio_Durant
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Val
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :participant ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Train
                                                                       [ rdf:type owl:Restriction ;
@@ -84,8 +113,6 @@
                                                ]
                           ] ;
                  :after :Mimban_Campaign ;
-                 :killingOf :Rio_Durant ,
-                            :Val ;
                  :locatedIn :Vandor ;
                  :participant :Becketts_crew ,
                               :Cloud-Riders ;
@@ -119,6 +146,17 @@
                                                          ]
                                     ] ,
                                     [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:hasValue :L3-37
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
                                       owl:onProperty :locatedIn ;
                                       owl:someValuesFrom [ owl:intersectionOf ( :Spice_Mine
                                                                                 [ rdf:type owl:Restriction ;
@@ -133,7 +171,6 @@
                                       owl:onProperty :stole ;
                                       owl:someValuesFrom :Coaxium
                                     ] ;
-                           :deathOf :L3-37 ;
                            :during :Hans_Kessel_Run ;
                            :injuryOf :Lando_Calrissian ;
                            :participant :Chewbacca ,
@@ -172,7 +209,7 @@
                                                                             )
                                                      ]
                                 ] ;
-                       :killingOf :Aurra_Sing ;
+                       :of :Aurra_Sing ;
                        :victoryOf :Tobias_Beckett .
 
 
@@ -193,9 +230,19 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Qira_vs_Dryden
 :Qira_vs_Dryden rdf:type owl:NamedIndividual ,
-                         :Duel ;
+                         :Duel ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Dryden_Vos
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
                 :during :Standoff_on_Savareen ;
-                :killingOf :Dryden_Vos ;
                 :locatedIn :First_Light ;
                 :participant :Han_Solo ;
                 :victoryOf <https://nickdrummond.github.io/star-wars-ontology/ontologies#Qi'ra> ;
@@ -235,10 +282,20 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Solo_vs_Beckett
 :Solo_vs_Beckett rdf:type owl:NamedIndividual ,
-                          :Confrontation ;
+                          :Confrontation ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Tobias_Beckett
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
                  :after :Qira_vs_Dryden ;
                  :during :Standoff_on_Savareen ;
-                 :killingOf :Tobias_Beckett ;
                  :locatedIn :Savareen ;
                  :participant :Chewbacca ;
                  :victoryOf :Han_Solo ;

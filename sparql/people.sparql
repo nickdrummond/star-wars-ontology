@@ -12,9 +12,11 @@ WHERE {
 		  		  owl:onProperty sw:gender ;
 				  owl:someValuesFrom ?gender}
 	  OPTIONAL { ?person sw:born ?born }
-	  OPTIONAL { ?event sw:deathOf ?person ;
-	      sw:year ?died }
-	  OPTIONAL { ?event sw:killingOf ?person ;
-   	      sw:year ?died }
+	  OPTIONAL { ?event rdf:type sw:Death ;
+	                    sw:of ?person ;
+	                    sw:year ?died }
+	  OPTIONAL { ?event rdf:type sw:Killing ;
+	                    sw:of ?person ;
+   	                    sw:year ?died }
    	  }
 ORDER BY ASC (?died)

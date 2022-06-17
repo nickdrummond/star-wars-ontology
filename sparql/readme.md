@@ -25,6 +25,8 @@ Sparql works fine using an RDFS Inference model.
 See [people.sparql](people.sparql) and [SparqlTest](../src/test/java/com/nickd/sw/SparqlTest.java)
 
 Neither of these queries is complete using just the basic graph.
+This does not deal with inclusion of a Death in an event.
+
 We need to find an engine that allows transitive + or does some inference (not supported in Protege SPARQL Tab)
 [Transitive SPARQL 1.1](https://stackoverflow.com/questions/8569810/sparql-querying-transitive)
 

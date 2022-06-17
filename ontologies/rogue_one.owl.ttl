@@ -56,6 +56,17 @@
                                                 ]
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Raddus
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :participant ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Corvette
                                                                        [ rdf:type owl:Restriction ;
@@ -67,7 +78,6 @@
                                                 ]
                            ] ;
                   :after :Krennic_meets_Vader ;
-                  :deathOf :Raddus ;
                   :destructionOf :Citadel_Tower ,
                                  :MC75_Profundity ,
                                  :Shield_Gate ;
@@ -89,6 +99,17 @@
                              owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
                                                                        [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :included ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :of ;
+                                                                                                                     owl:hasValue :Lyra_Erso
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :participant ;
                                                                          owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                                                               owl:onProperty :hadRole ;
@@ -98,10 +119,6 @@
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :injuryOf ;
                                                                          owl:hasValue :Orson_Krennic
-                                                                       ]
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :killingOf ;
-                                                                         owl:hasValue :Lyra_Erso
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -150,10 +167,17 @@
 :Fight_on_Jedha rdf:type owl:NamedIndividual ,
                          :Fight ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :killingOf ;
-                           owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                owl:onProperty :hadRole ;
-                                                owl:someValuesFrom :StormTrooper
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty :hadRole ;
+                                                                                            owl:someValuesFrom :StormTrooper
+                                                                                          ]
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
                                               ]
                          ] ;
                 :after :Freeing_of_Jyn ;
@@ -188,6 +212,28 @@
 :Holy_City_Destruction rdf:type owl:NamedIndividual ,
                                 :Attack ,
                                 [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Edrio
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Saw_Gerrera
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
                                   owl:onProperty :participant ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :U-Wing
                                                                             [ rdf:type owl:Restriction ;
@@ -207,8 +253,6 @@
                                  :Jyn_Erso ,
                                  :K-2SO ;
                        :freeingOf :Bodhi_Rook ;
-                       :killingOf :Edrio ,
-                                  :Saw_Gerrera ;
                        :locatedIn :Jedha ;
                        :participant :Death_Star_1 ;
                        :year 0 ;
@@ -235,17 +279,42 @@
                              owl:someValuesFrom :Shuttle
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :killingOf ;
-                             owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                  owl:onProperty :hadRole ;
-                                                  owl:someValuesFrom :Scientist
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :hadRole ;
+                                                                                              owl:someValuesFrom :Scientist
+                                                                                            ]
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
                                                 ]
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :killingOf ;
-                             owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                  owl:onProperty :hadRole ;
-                                                  owl:someValuesFrom :StormTrooper
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty :hadRole ;
+                                                                                              owl:someValuesFrom :StormTrooper
+                                                                                            ]
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Galen_Erso
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
                                                 ]
                            ] ,
                            [ rdf:type owl:Restriction ;
@@ -266,7 +335,6 @@
                   :after :Holy_City_Destruction ;
                   :during :Galactic_Civil_War ;
                   :escapeOf :Orson_Krennic ;
-                  :killingOf :Galen_Erso ;
                   :locatedIn :Eadu ;
                   :participant :Bodhi_Rook ,
                                :Cassian_Andor ,
@@ -278,15 +346,82 @@
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Stealing_the_Death_Star_Plans
 :Stealing_the_Death_Star_Plans rdf:type owl:NamedIndividual ,
-                                        :Mission ;
+                                        :Mission ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:hasValue :Baze_Malbus
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:hasValue :Bodhi_Rook
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:hasValue :Cassian_Andor
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:hasValue :Jyn_Erso
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Death_Star_1
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:hasValue :Chirrut_Îmwe
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:hasValue :K-2SO
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:hasValue :Orson_Krennic
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ;
                                :during :Battle_of_Scarif ;
-                               :killingOf :Baze_Malbus ,
-                                          :Bodhi_Rook ,
-                                          :Cassian_Andor ,
-                                          :Chirrut_Îmwe ,
-                                          :Jyn_Erso ,
-                                          :K-2SO ,
-                                          :Orson_Krennic ;
                                :locatedIn :Citadel_Tower ;
                                :participant :Rogue_One ;
                                :stole :Death_Star_Plans ;

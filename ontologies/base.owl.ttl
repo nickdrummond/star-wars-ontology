@@ -136,12 +136,6 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 :deactivated rdf:type owl:ObjectProperty .
 
 
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#deathOf
-:deathOf rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :participant ;
-         owl:inverseOf :diedIn .
-
-
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#defeatOf
 :defeatOf rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :participant ;
@@ -171,11 +165,6 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#destructionOf
 :destructionOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :participant .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#diedIn
-:diedIn rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf :participatedIn .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#disguisedAs
@@ -384,17 +373,6 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#injuryOf
 :injuryOf rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :survivedBy .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#killedIn
-:killedIn rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :diedIn ;
-          owl:inverseOf :killingOf .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#killingOf
-:killingOf rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :deathOf .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#knew
@@ -710,11 +688,6 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#callsign
 :callsign rdf:type owl:DatatypeProperty .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#diedInYear
-:diedInYear rdf:type owl:DatatypeProperty ;
-            rdfs:range xsd:int .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#starting
@@ -1697,6 +1670,11 @@ or minus is BBY"""^^xsd:string .
 :Data_spike rdf:type owl:Class ;
             rdfs:subClassOf :Equipment ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Computer_spike"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Death
+:Death rdf:type owl:Class ;
+       rdfs:subClassOf :Event .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Death_trooper
@@ -3114,6 +3092,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Kiffar"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Killing
+:Killing rdf:type owl:Class ;
+         rdfs:subClassOf :Death .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#King
 :King rdf:type owl:Class ;
       rdfs:subClassOf :Monarch ;
@@ -3670,7 +3653,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Murder
 :Murder rdf:type owl:Class ;
-        rdfs:subClassOf :Event .
+        rdfs:subClassOf :Killing .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Muun

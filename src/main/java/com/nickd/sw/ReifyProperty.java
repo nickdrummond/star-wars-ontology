@@ -21,8 +21,8 @@ public class ReifyProperty {
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
         Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
         ReifyProperty reifyProperty = new ReifyProperty(
-                helper.prop("captureOf"),
-                helper.cls("Capture"),
+                helper.prop("escapeOf"),
+                helper.cls("Escape"),
                 helper.prop("of"),
                 helper.prop("included"));
         List<OWLOntologyChange> changes = reifyProperty.run(helper.mngr.getOntologies(), helper.df);

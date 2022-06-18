@@ -48,9 +48,9 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                       rdf:type owl:Class
                                                     ]
                                ] ;
-                      :escapeOf :Han_Solo ;
                       :injuryOf :Proxima ;
                       :locatedIn :Corellia ;
+                      :of :Han_Solo ;
                       :year -13 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Han_Solo#Working_for_the_White_Worms"^^xsd:anyURI .
 
@@ -79,7 +79,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                           ] ;
                  :after :Playing_Sabacc_for_the_Falcon ;
                  :locatedIn :Kessel_Run ;
-                 :participant :Millenium_Falcon ;
+                 :of :Millenium_Falcon ;
                  :year -10 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Finding_a_ship"^^xsd:anyURI .
 
@@ -199,9 +199,22 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mimban_Campaign
 :Mimban_Campaign rdf:type owl:NamedIndividual ,
-                          :Battle ;
-                 :escapeOf :Chewbacca ,
-                           :Han_Solo ;
+                          :Battle ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Chewbacca
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Han_Solo
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
                  :locatedIn :Mimban ;
                  :participant :Rio_Durant ,
                               :Tobias_Beckett ,
@@ -325,11 +338,11 @@ There is no assertion of correctness or completeness by myself - content has bee
                                  owl:onProperty :included ;
                                  owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                            [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :participant ;
+                                                                             owl:onProperty :of ;
                                                                              owl:hasValue :Lando_Calrissian
                                                                            ]
                                                                            [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :participant ;
+                                                                             owl:onProperty :used ;
                                                                              owl:hasValue :Millenium_Falcon
                                                                            ]
                                                                          ) ;

@@ -75,6 +75,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Grievous
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
                                 owl:someValuesFrom [ owl:intersectionOf ( :Surrender
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :participant ;
@@ -97,7 +108,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                               ] ;
                      :destructionOf :Invisible_Hand ;
                      :during :Clone_Wars ;
-                     :escapeOf :Grievous ;
                      :locatedIn :Coruscant ;
                      :participant :Clone_Flight_Seven ,
                                   :Galactic_Republic ,
@@ -276,31 +286,61 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Capture_of_Theed rdf:type owl:NamedIndividual ,
                            :Battle ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :escapeOf ;
-                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                         owl:oneOf ( :Padme_Amidala
-                                                                                   )
-                                                                       ]
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :disguisedAs ;
-                                                                         owl:someValuesFrom :Handmaiden
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :of ;
+                                                                                                owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                                                            owl:oneOf ( :Padme_Amidala
+                                                                                                                                                      )
+                                                                                                                                          ]
+                                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                                            owl:onProperty :disguisedAs ;
+                                                                                                                                            owl:someValuesFrom :Handmaiden
+                                                                                                                                          ]
+                                                                                                                                        ) ;
+                                                                                                                     rdf:type owl:Class
+                                                                                                                   ]
+                                                                                              ]
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :of ;
+                                                                                                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :hadRole ;
+                                                                                                                     owl:someValuesFrom :Handmaiden
+                                                                                                                   ]
+                                                                                              ]
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :of ;
+                                                                                                owl:hasValue :Jar_Jar_Binks
+                                                                                              ]
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :of ;
+                                                                                                owl:hasValue :Obi-Wan_Kenobi
+                                                                                              ]
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :of ;
+                                                                                                owl:hasValue :Quarsh_Panaka
+                                                                                              ]
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :of ;
+                                                                                                owl:hasValue :Qui-Gon_Jinn
+                                                                                              ]
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :of ;
+                                                                                                owl:hasValue :R2-D2
+                                                                                              ]
+                                                                                            ) ;
+                                                                         rdf:type owl:Class
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
                                                 ]
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :escapeOf ;
-                             owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                  owl:onProperty :hadRole ;
-                                                  owl:someValuesFrom :Handmaiden
-                                                ]
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Repair
                                                                        [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :locatedIn ;
+                                                                         owl:onProperty :of ;
                                                                          owl:hasValue :Naboo_Royal_Starship
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;
@@ -313,11 +353,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                            ] ;
                   :after :Traverse_the_Naboo_Core ;
                   :during :Invasion_of_Naboo ;
-                  :escapeOf :Jar_Jar_Binks ,
-                            :Obi-Wan_Kenobi ,
-                            :Quarsh_Panaka ,
-                            :Qui-Gon_Jinn ,
-                            :R2-D2 ;
                   :locatedIn :Naboo ;
                   :participant :Trade_Federation ;
                   :year -32 ;
@@ -347,9 +382,19 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dooku_vs_3_Jedi
 :Dooku_vs_3_Jedi rdf:type owl:NamedIndividual ,
-                          :Duel ;
+                          :Duel ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Count_Dooku
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
                  :during :First_Battle_of_Geonosis ;
-                 :escapeOf :Count_Dooku ;
                  :injuryOf :Anakin_Skywalker ,
                            :Obi-Wan_Kenobi ;
                  :locatedIn :Geonosis ;
@@ -636,6 +681,25 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Negotiating_with_Trade_Federation rdf:type owl:NamedIndividual ,
                                             :Mission ,
                                             [ rdf:type owl:Restriction ;
+                                              owl:onProperty :included ;
+                                              owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :used ;
+                                                                                          owl:someValuesFrom :C-9979_landing_craft
+                                                                                        ]
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :of ;
+                                                                                          owl:hasValue :Obi-Wan_Kenobi
+                                                                                        ]
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty :of ;
+                                                                                          owl:hasValue :Qui-Gon_Jinn
+                                                                                        ]
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ]
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
                                               owl:onProperty :participant ;
                                               owl:someValuesFrom :B1_Battle_Droid
                                             ] ,
@@ -644,8 +708,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                               owl:someValuesFrom :Droideka
                                             ] ;
                                    :during :Blockade_of_Naboo ;
-                                   :escapeOf :Obi-Wan_Kenobi ,
-                                             :Qui-Gon_Jinn ;
                                    :locatedIn :Saak_ak ;
                                    :participant :Nute_Gunray ;
                                    :year -32 ;
@@ -694,11 +756,27 @@ There is no assertion of correctness or completeness by myself - content has bee
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :fitted ;
                              owl:someValuesFrom :Tracker
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Boba_Fett
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Jango_Fett
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :used ;
+                                                                         owl:hasValue :Slave_I
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
                            ] ;
                   :after :Obi-Wan_meets_the_Kaminoans ;
-                  :escapeOf :Boba_Fett ,
-                            :Jango_Fett ,
-                            :Slave_I ;
                   :locatedIn :Tipoca_City ;
                   :participant :Obi-Wan_Kenobi ;
                   :year -22 ;
@@ -794,17 +872,34 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Qui-Gon_vs_Maul rdf:type owl:NamedIndividual ,
                           :Duel ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Anakin_Skywalker
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Padme_Amidala
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Qui-Gon_Jinn
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :participant ;
                             owl:someValuesFrom :Speeder
                           ] ;
                  :after :Boonta_Eve_Classic_32BBY ;
                  :during :Invasion_of_Naboo ;
-                 :escapeOf :Anakin_Skywalker ,
-                           :Padme_Amidala ,
-                           :Qui-Gon_Jinn ;
                  :locatedIn :Tatooine ;
                  :participant :Maul ,
-                              :Naboo_Royal_Starship ;
+                              :Naboo_Royal_Starship ,
+                              :Qui-Gon_Jinn ;
                  :year -32 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Duel_on_Tatooine"^^xsd:anyURI .
 
@@ -958,9 +1053,19 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Yoda_vs_Emperor
 :Yoda_vs_Emperor rdf:type owl:NamedIndividual ,
-                          :Duel ;
+                          :Duel ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Yoda
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
                  :after :Proclamation_of_the_New_Order ;
-                 :escapeOf :Yoda ;
                  :locatedIn :Galactic_Senate_Building ;
                  :victoryOf :Darth_Sidious ;
                  :year -19 ;

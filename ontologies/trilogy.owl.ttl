@@ -107,13 +107,23 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Battle_of_Hoth rdf:type owl:NamedIndividual ,
                          :Battle ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Rebel_Alliance
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :participant ;
                            owl:someValuesFrom :AT-AT
                          ] ;
                 :after :Search_for_Luke ;
                 :destructionOf :Echo_Base ;
                 :during :Galactic_Civil_War ;
-                :escapeOf :Rebel_Alliance ;
                 :locatedIn :Echo_Base ;
                 :participant :Galactic_Empire ;
                 :year 3 ;
@@ -215,6 +225,25 @@ There is no assertion of correctness or completeness by myself - content has bee
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :used ;
+                                                                              owl:someValuesFrom :Escape_Pod
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :C-3PO
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :R2-D2
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                             [ rdf:type owl:Restriction ;
                                                                               owl:onProperty :of ;
@@ -253,8 +282,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                      ]
                                 ] ;
                        :during :Galactic_Civil_War ;
-                       :escapeOf :C-3PO ,
-                                 :R2-D2 ;
                        :locatedIn :Tantive_IV ,
                                   :Tatooine ;
                        :participant :Darth_Vader ,
@@ -438,14 +465,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                      :destructionOf :Khetanna ;
                      :during :Rescue_of_Han_Solo ;
                      :eatingOf :Boba_Fett ;
-                     :escapeOf :C-3PO ,
-                               :Chewbacca ,
-                               :Han_Solo ,
-                               :Lando_Calrissian ,
-                               :Leia_Organa ,
-                               :Luke_Skywalker ,
-                               :R2-D2 ;
                      :locatedIn :Great_Pit_of_Carkoon ;
+                     :of :C-3PO ,
+                         :Chewbacca ,
+                         :Han_Solo ,
+                         :Lando_Calrissian ,
+                         :Leia_Organa ,
+                         :Luke_Skywalker ,
+                         :R2-D2 ;
                      :year 4 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Skirmish_at_the_Great_Pit_of_Carkoon"^^xsd:anyURI .
 
@@ -568,7 +595,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                            ] ;
                   :after :Battle_of_Hoth ;
                   :during :Galactic_Civil_War ;
-                  :escapeOf :Millenium_Falcon ;
+                  :of :Millenium_Falcon ;
                   :participant :Slave_I ;
                   :year 3 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_Battle_of_Hoth"^^xsd:anyURI .
@@ -605,10 +632,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                             ] ;
                                    :assistedBy :R2-D2 ;
                                    :during :Rescue_of_Leia ;
-                                   :escapeOf :Chewbacca ,
-                                             :Han_Solo ,
-                                             :Leia_Organa ,
-                                             :Luke_Skywalker ;
+                                   :of :Chewbacca ,
+                                       :Han_Solo ,
+                                       :Leia_Organa ,
+                                       :Luke_Skywalker ;
                                    :year 0 ;
                                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Garbage_masher_3263827"^^xsd:anyURI .
 
@@ -962,6 +989,25 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                   ]
                              ] ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :assistedBy ;
+                                                                           owl:hasValue :Lando_Calrissian
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Chewbacca
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Leia_Organa
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :participant ;
                                owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                     owl:onProperty :hadRole ;
@@ -971,13 +1017,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                     :after :Escape_from_Hoth ,
                            :Luke_meets_Yoda ;
                     :during :Galactic_Civil_War ;
-                    :escapeOf :Chewbacca ,
-                              :Leia_Organa ;
                     :injuryOf :C-3PO ;
                     :locatedIn :Cloud_City ;
                     :participant :Boba_Fett ,
-                                 :Darth_Vader ,
-                                 :Lando_Calrissian ;
+                                 :Darth_Vader ;
                     :year 3 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_city_in_the_clouds"^^xsd:anyURI .
 
@@ -1063,6 +1106,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :of ;
+                                                                     owl:hasValue :Wedge_Antilles
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                    [ rdf:type owl:Restriction ;
                                                                      owl:onProperty :of ;
@@ -1103,7 +1157,6 @@ There is no assertion of correctness or completeness by myself - content has bee
               :after :Trench_Run_2 ;
               :damageOf :R2-D2 ;
               :during :Battle_of_Yavin ;
-              :escapeOf :Wedge_Antilles ;
               :locatedIn :Meridian_Trench ;
               :participant :Millenium_Falcon ,
                            :Red_Squadron ;

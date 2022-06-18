@@ -178,12 +178,19 @@ There is no assertion of correctness or completeness by myself - content has bee
                              owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Murder
                                                                        [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :during ;
-                                                                         owl:hasValue :Order_66
+                                                                         owl:onProperty :included ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :of ;
+                                                                                                                     owl:hasValue :Caleb_Dume
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :escapeOf ;
-                                                                         owl:hasValue :Caleb_Dume
+                                                                         owl:onProperty :during ;
+                                                                         owl:hasValue :Order_66
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
@@ -200,6 +207,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Search
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :included ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :of ;
+                                                                                                                     owl:hasValue :Caleb_Dume
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ]
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :participant ;
                                                                          owl:hasValue :Crosshair
@@ -234,7 +252,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                            ] ;
                   :during :Clone_Wars ,
                           :Order_66 ;
-                  :escapeOf :Caleb_Dume ;
                   :locatedIn :Kaller ;
                   :participant :Depa_Billaba ,
                                :Grey ;
@@ -427,25 +444,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :included ;
-                                 owl:someValuesFrom [ owl:intersectionOf ( :Escape
-                                                                           [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :used ;
-                                                                             owl:someValuesFrom :Escape_Pod
-                                                                           ]
-                                                                           [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :assistedBy ;
-                                                                             owl:hasValue :Bad_Batch
-                                                                           ]
-                                                                           [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :escapeOf ;
-                                                                             owl:hasValue :Omega
-                                                                           ]
-                                                                         ) ;
-                                                      rdf:type owl:Class
-                                                    ]
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :included ;
                                  owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                            [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :participant ;
@@ -499,9 +497,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                          ) ;
                                                       rdf:type owl:Class
                                                     ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :used ;
+                                 owl:someValuesFrom :Escape_Pod
                                ] ;
                       :after :Tricking_Todo_into_escape ;
+                      :assistedBy :Bad_Batch ;
                       :locatedIn :Bora_Vio_cloning_facility ;
+                      :of :Omega ;
                       :participant :Cad_Bane ,
                                    :Fennec_Shand ,
                                    :Todo_360 ;
@@ -571,9 +575,9 @@ There is no assertion of correctness or completeness by myself - content has bee
                                   ] ;
                          :after :Destruction_of_Tipoca_City ;
                          :assistedBy :AZI-3 ;
-                         :escapeOf :AZI-3 ,
-                                   :Bad_Batch ;
                          :locatedIn :Tipoca_City ;
+                         :of :AZI-3 ,
+                             :Bad_Batch ;
                          :survivedBy :Crosshair ;
                          :year -19 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Kamino_Lost"^^xsd:anyURI .
@@ -646,12 +650,19 @@ There is no assertion of correctness or completeness by myself - content has bee
                                          owl:onProperty :included ;
                                          owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                                    [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty :participant ;
-                                                                                     owl:someValuesFrom :Clone
+                                                                                     owl:onProperty :included ;
+                                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :of ;
+                                                                                                                                 owl:hasValue :Bad_Batch
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ]
                                                                                    ]
                                                                                    [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty :escapeOf ;
-                                                                                     owl:hasValue :Bad_Batch
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:someValuesFrom :Clone
                                                                                    ]
                                                                                  ) ;
                                                               rdf:type owl:Class
@@ -831,9 +842,9 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Order_66
-:Order_66 rdf:type _:genid268 .
+:Order_66 rdf:type _:genid274 .
 
-_:genid268 rdf:type owl:Restriction ;
+_:genid274 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                         owl:onProperty :included ;
@@ -860,7 +871,7 @@ _:genid268 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid268 ;
+   owl:annotatedTarget _:genid274 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -899,12 +910,19 @@ _:genid268 rdf:type owl:Restriction ;
                                         owl:onProperty :included ;
                                         owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                                   [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty :participant ;
-                                                                                    owl:someValuesFrom :Dianoga
+                                                                                    owl:onProperty :included ;
+                                                                                    owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty :of ;
+                                                                                                                                owl:hasValue :Wrecker
+                                                                                                                              ]
+                                                                                                                            ) ;
+                                                                                                         rdf:type owl:Class
+                                                                                                       ]
                                                                                   ]
                                                                                   [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty :escapeOf ;
-                                                                                    owl:hasValue :Wrecker
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:someValuesFrom :Dianoga
                                                                                   ]
                                                                                 ) ;
                                                              rdf:type owl:Class
@@ -990,6 +1008,21 @@ _:genid268 rdf:type owl:Restriction ;
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :C1-10P
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Hera_Syndulla
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
                                  owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :injuryOf ;
                                                                              owl:hasValue :Orn_Free_Taa
@@ -1015,8 +1048,6 @@ _:genid268 rdf:type owl:Restriction ;
                                  owl:someValuesFrom :LAAT_Gunship
                                ] ;
                       :after :Shooting_down_Ryloth_smugglers ;
-                      :escapeOf :C1-10P ,
-                                :Hera_Syndulla ;
                       :locatedIn :Ryloth ;
                       :participant :Howzer ,
                                    :Rampart ;
@@ -1050,8 +1081,15 @@ _:genid268 rdf:type owl:Restriction ;
                          owl:onProperty :included ;
                          owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                    [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :escapeOf ;
-                                                                     owl:someValuesFrom :Brezak
+                                                                     owl:onProperty :included ;
+                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty :of ;
+                                                                                                                 owl:someValuesFrom :Brezak
+                                                                                                               ]
+                                                                                                             ) ;
+                                                                                          rdf:type owl:Class
+                                                                                        ]
                                                                    ]
                                                                    [ rdf:type owl:Restriction ;
                                                                      owl:onProperty :participant ;
@@ -1098,8 +1136,15 @@ _:genid268 rdf:type owl:Restriction ;
                                                                      owl:someValuesFrom :Falleeen
                                                                    ]
                                                                    [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :escapeOf ;
-                                                                     owl:hasValue :Bad_Batch
+                                                                     owl:onProperty :included ;
+                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty :of ;
+                                                                                                                 owl:hasValue :Bad_Batch
+                                                                                                               ]
+                                                                                                             ) ;
+                                                                                          rdf:type owl:Class
+                                                                                        ]
                                                                    ]
                                                                    [ rdf:type owl:Restriction ;
                                                                      owl:onProperty :freeingOf ;
@@ -1328,6 +1373,17 @@ _:genid268 rdf:type owl:Restriction ;
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :ES-02
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :participant ;
@@ -1350,7 +1406,6 @@ _:genid268 rdf:type owl:Restriction ;
                            ] ;
                   :after :Arrest_of_Lama_Su ,
                          :Rescue_of_Gregor ;
-                  :escapeOf :ES-02 ;
                   :locatedIn :Tipoca_City ;
                   :participant :AZI-3 ,
                                :Echo ,
@@ -1399,11 +1454,11 @@ _:genid268 rdf:type owl:Restriction ;
                             owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                       [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :participant ;
+                                                                        owl:onProperty :of ;
                                                                         owl:hasValue :Bad_Batch
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :participant ;
+                                                                        owl:onProperty :of ;
                                                                         owl:hasValue :Omega
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
@@ -1418,7 +1473,7 @@ _:genid268 rdf:type owl:Restriction ;
                  :assistedBy :Nala_Se ;
                  :found :Lula ;
                  :locatedIn :Tipoca_City ;
-                 :target :Omega ;
+                 :of :Omega ;
                  :year -19 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Aftermath_(episode)#Traitors_to_the_Empire"^^xsd:anyURI .
 
@@ -1505,11 +1560,23 @@ _:genid268 rdf:type owl:Restriction ;
                                                                                   owl:someValuesFrom :Battle_Droid
                                                                                 ]
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :participant ;
+                                                                                  owl:onProperty :assistedBy ;
                                                                                   owl:hasValue :R7-A7
                                                                                 ]
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :participant ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:hasValue :Bad_Batch
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:hasValue :Rafa_Martez
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:hasValue :Trace_Martez
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :used ;
                                                                                   owl:hasValue :Silver_Angel
                                                                                 ]
                                                                               ) ;
@@ -1651,6 +1718,22 @@ _:genid268 rdf:type owl:Restriction ;
                                                                             owl:onProperty :injuryOf ;
                                                                             owl:hasValue :Crosshair
                                                                           ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Echo
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Hunter
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Tech
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Wrecker
+                                                                          ]
                                                                         ) ;
                                                      rdf:type owl:Class
                                                    ]
@@ -1659,8 +1742,15 @@ _:genid268 rdf:type owl:Restriction ;
                                 owl:onProperty :included ;
                                 owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                           [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :escapeOf ;
-                                                                            owl:hasValue :Bad_Batch
+                                                                            owl:onProperty :included ;
+                                                                            owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :of ;
+                                                                                                                        owl:hasValue :Bad_Batch
+                                                                                                                      ]
+                                                                                                                    ) ;
+                                                                                                 rdf:type owl:Class
+                                                                                               ]
                                                                           ]
                                                                         ) ;
                                                      rdf:type owl:Class
@@ -1678,10 +1768,6 @@ _:genid268 rdf:type owl:Restriction ;
                                                    ]
                               ] ;
                      :after :Removing_the_Inhibitor_chip ;
-                     :escapeOf :Echo ,
-                               :Hunter ,
-                               :Tech ,
-                               :Wrecker ;
                      :participant :Crosshair ,
                                   :Crosshairs_Squad ;
                      :year -19 ;
@@ -1894,6 +1980,17 @@ _:genid268 rdf:type owl:Restriction ;
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Bad_Batch
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                             [ rdf:type owl:Restriction ;
                                                                               owl:onProperty :freeingOf ;
@@ -1973,7 +2070,6 @@ _:genid268 rdf:type owl:Restriction ;
                                                      ]
                                 ] ;
                        :after :Crash_on_Ordo_Moon ;
-                       :escapeOf :Bad_Batch ;
                        :locatedIn :Ro_Station ;
                        :year -19 ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Cornered"^^xsd:anyURI .
@@ -2079,8 +2175,8 @@ _:genid268 rdf:type owl:Restriction ;
 :Tricking_Todo_into_escape rdf:type owl:NamedIndividual ,
                                     :Escape ;
                            :after :Salvaging_on_Bracca ;
-                           :escapeOf :Omega ;
                            :locatedIn :Justifier ;
+                           :of :Omega ;
                            :stunningOf :Todo_360 ;
                            :year -19 ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_Lost#Tricking_Todo_360"^^xsd:anyURI .

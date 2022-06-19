@@ -850,11 +850,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                         owl:someValuesFrom [ owl:intersectionOf ( :Meeting
                                                                   [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :traded ;
-                                                                    owl:someValuesFrom :Departure
-                                                                  ]
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty :participant ;
-                                                                    owl:hasValue :Finn
+                                                                    owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty :of ;
+                                                                                                                owl:hasValue :Finn
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ]
                                                                   ]
                                                                   [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :participant ;

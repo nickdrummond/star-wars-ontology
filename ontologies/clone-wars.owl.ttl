@@ -73,8 +73,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                     ]
                                ] ;
                       :during :Clone_Wars ;
-                      :participant :Ahsoka_Tano ,
-                                   :Trash ;
+                      :of :Trash ;
+                      :participant :Ahsoka_Tano ;
                       :year -19 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Gone_with_a_Trace"^^xsd:anyURI .
 
@@ -2151,6 +2151,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                 ] ;
                        :after :Escape_from_the_Tribunal ;
                        :destructionOf :Tribunal ;
+                       :of :Tribunal ;
                        :year -19 ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Victory_and_Death#Escape"^^xsd:anyURI .
 
@@ -2321,10 +2322,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :included ;
                                           owl:someValuesFrom [ owl:intersectionOf ( :Attack
-                                                                                    :Crash
-                                                                                    [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty :destructionOf ;
-                                                                                      owl:someValuesFrom :Lucrehulk_Freighter
+                                                                                    [ owl:intersectionOf ( :Crash
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty :of ;
+                                                                                                             owl:someValuesFrom :Lucrehulk_Freighter
+                                                                                                           ]
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty :of ;
+                                                                                                             owl:hasValue :Defender
+                                                                                                           ]
+                                                                                                         ) ;
+                                                                                      rdf:type owl:Class
                                                                                     ]
                                                                                     [ rdf:type owl:Restriction ;
                                                                                       owl:onProperty :included ;
@@ -2336,10 +2344,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                                                               ) ;
                                                                                                            rdf:type owl:Class
                                                                                                          ]
-                                                                                    ]
-                                                                                    [ rdf:type owl:Restriction ;
-                                                                                      owl:onProperty :participant ;
-                                                                                      owl:hasValue :Defender
                                                                                     ]
                                                                                   ) ;
                                                                rdf:type owl:Class
@@ -5275,10 +5279,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                    :Fight ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :included ;
-                                     owl:someValuesFrom :Crash
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :included ;
                                      owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty :participant ;
@@ -5311,6 +5311,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty :of ;
                                                                                  owl:hasValue :Padme_Amidala
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:hasValue :Malevolence
                                                                                ]
                                                                              ) ;
                                                           rdf:type owl:Class
@@ -6938,7 +6949,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                 owl:onProperty :included ;
                                 owl:someValuesFrom [ owl:intersectionOf ( :Crash
                                                                           [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :participant ;
+                                                                            owl:onProperty :of ;
                                                                             owl:someValuesFrom :Consular-class_cruiser
                                                                           ]
                                                                         ) ;

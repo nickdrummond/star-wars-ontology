@@ -541,10 +541,6 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
                          owl:TransitiveProperty .
 
 
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#stole
-:stole rdf:type owl:ObjectProperty .
-
-
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#stunnedDuring
 :stunnedDuring rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :survivorOf ;
@@ -1778,6 +1774,15 @@ and (?a inConflictWith ?b)"""^^xsd:string .
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Dokma"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Door
+:Door rdf:type owl:Class ;
+      rdfs:subClassOf :Equipment ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadPurpose ;
+                        owl:someValuesFrom :Security_purpose
+                      ] .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Doublecross
 :Doublecross rdf:type owl:Class ;
              rdfs:subClassOf :Event .
@@ -2612,7 +2617,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Heist
 :Heist rdf:type owl:Class ;
-       rdfs:subClassOf :Event .
+       rdfs:subClassOf :Stealing .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Herbivorous
@@ -4755,10 +4760,30 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_cluster"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Stealing
+:Stealing rdf:type owl:Class ;
+          rdfs:subClassOf :TransferOfOwnership .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#StormTrooper
 :StormTrooper rdf:type owl:Class ;
               rdfs:subClassOf :Trooper ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Stormtrooper"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Stormtrooper_armour
+:Stormtrooper_armour rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( :Armour
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :ownedBy ;
+                                                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty :hadRole ;
+                                                                                       owl:someValuesFrom :StormTrooper
+                                                                                     ]
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Sullustan

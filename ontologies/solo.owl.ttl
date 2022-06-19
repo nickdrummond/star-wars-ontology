@@ -86,7 +86,7 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Heist_on_Vandor
 :Heist_on_Vandor rdf:type owl:NamedIndividual ,
-                          :Heist ,
+                          :Job ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
@@ -126,12 +126,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                  owl:onProperty :hadRole ;
                                                  owl:someValuesFrom :StormTrooper
                                                ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :target ;
+                            owl:someValuesFrom :Coaxium
                           ] ;
                  :after :Mimban_Campaign ;
                  :locatedIn :Vandor ;
                  :participant :Becketts_crew ,
                               :Cloud-Riders ;
                  :year -10 ;
+                 rdfs:comment "Failed, therefore not a Heist"^^xsd:string ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story#Heist_on_Vandor"^^xsd:anyURI .
 
 
@@ -144,6 +149,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty :of ;
                                                                                   owl:hasValue :L3-37
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:someValuesFrom :Coaxium
                                                                                 ]
                                                                               ) ;
                                                            rdf:type owl:Class
@@ -181,10 +197,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                               ) ;
                                                            rdf:type owl:Class
                                                          ]
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :stole ;
-                                      owl:someValuesFrom :Coaxium
                                     ] ;
                            :during :Hans_Kessel_Run ;
                            :injuryOf :Lando_Calrissian ;

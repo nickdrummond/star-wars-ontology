@@ -90,6 +90,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                 ] .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Stealing
+:Stealing rdf:type owl:Class .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Venator-class_Star_Destroyer
 :Venator-class_Star_Destroyer rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                 owl:onProperty :ownedBy ;
@@ -1886,6 +1890,20 @@ There is no assertion of correctness or completeness by myself - content has bee
 :CH-33P rdf:type owl:NamedIndividual ,
                  :Astromech ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/CH-33P"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#CS-515
+:CS-515 rdf:type owl:NamedIndividual ,
+                 :Human ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :gender ;
+                   owl:someValuesFrom :Male
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom :StormTrooper
+                 ] ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/CS-515"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Cad_Bane
@@ -12753,20 +12771,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :gender ;
                         owl:someValuesFrom :Male
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :participatedIn ;
-                        owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                             owl:onProperty :stole ;
-                                             owl:someValuesFrom [ owl:intersectionOf ( :Money
-                                                                                       [ rdf:type owl:Restriction ;
-                                                                                         owl:onProperty :ownedBy ;
-                                                                                         owl:hasValue :Greef_Karga
-                                                                                       ]
-                                                                                     ) ;
-                                                                  rdf:type owl:Class
-                                                                ]
-                                           ]
                       ] ;
              :employedBy :Greef_Karga ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mythrol"^^xsd:anyURI .

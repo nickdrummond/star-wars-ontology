@@ -136,6 +136,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                             owl:onProperty :of ;
                                                                             owl:someValuesFrom :Quarren
                                                                           ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :used ;
+                                                                            owl:someValuesFrom :Door
+                                                                          ]
                                                                         ) ;
                                                      rdf:type owl:Class
                                                    ]
@@ -158,7 +162,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                      :locatedIn :Maldo_Kreis ;
                      :participant :Din_Djarin ,
                                   :Razor_Crest ;
-                     :sometimeAfter :Great_Purge ;
+                     :sometimeAfter :Great_Purge ,
+                                    :Stealing_from_Greef_Karga ;
                      :year 9 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin#Hunting_a_Mythrol"^^xsd:anyURI .
 
@@ -369,21 +374,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                       :Event ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :included ;
-                        owl:someValuesFrom [ owl:intersectionOf ( :Event
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty :participant ;
-                                                                    owl:hasValue :Gideon
-                                                                  ]
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty :stole ;
-                                                                    owl:hasValue :Darksaber
-                                                                  ]
-                                                                ) ;
-                                             rdf:type owl:Class
-                                           ]
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :included ;
                         owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                   [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :of ;
@@ -397,15 +387,45 @@ There is no assertion of correctness or completeness by myself - content has bee
                                            ]
                       ] ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :stole ;
-                        owl:someValuesFrom :Beskar
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :of ;
+                                                                    owl:someValuesFrom :Beskar
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:hasValue :Galactic_Empire
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :from ;
+                                                                    owl:hasValue :Bo-Katan_Kryze
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :of ;
+                                                                    owl:hasValue :Darksaber
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :participant ;
+                                                                    owl:hasValue :Gideon
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
                       ] ;
-             :participant :Galactic_Empire ,
-                          :Mandalore ;
+             :locatedIn :Mandalore ;
+             :participant :Galactic_Empire ;
              :sometimeAfter :Mandalorean_Civil_War ;
              :survivedBy :Bo-Katan_Kryze ,
                          :The_Tribe ;
-             rdfs:seeAlso "https://starwars.fandom.com/wiki/Great_Purge"^^xsd:anyURI .
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Great_Purge_of_Mandalore"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Heist_on_Trask
@@ -426,17 +446,11 @@ There is no assertion of correctness or completeness by myself - content has bee
                                               ]
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :stole ;
-                           owl:someValuesFrom [ owl:intersectionOf ( :Freighter
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :ownedBy ;
-                                                                       owl:hasValue :Imperial_Remnant
-                                                                     ]
-                                                                   ) ;
-                                                rdf:type owl:Class
-                                              ]
+                           owl:onProperty :of ;
+                           owl:someValuesFrom :Freighter
                          ] ;
                 :after :Mamacores_Lunch ;
+                :from :Imperial_Remnant ;
                 :locatedIn :Trask ;
                 :participant :Clan_Kryze ,
                              :Din_Djarin ;
@@ -523,8 +537,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                          ]
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :stole ;
-                                      owl:someValuesFrom :Transport
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:someValuesFrom :Transport
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
                                     ] ;
                            :after :Calling_to_the_Jedi ;
                            :locatedIn :Morak ;
@@ -611,7 +632,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                              owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
-                                                                         owl:someValuesFrom :Mudhorn
+                                                                         owl:someValuesFrom :Jawa
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -622,24 +643,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                              owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
-                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Jawa
-                                                                                                                   [ rdf:type owl:Restriction ;
-                                                                                                                     owl:onProperty :participatedIn ;
-                                                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                                                                          owl:onProperty :stole ;
-                                                                                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Parts
-                                                                                                                                                                                    [ rdf:type owl:Restriction ;
-                                                                                                                                                                                      owl:onProperty :partOf ;
-                                                                                                                                                                                      owl:hasValue :Razor_Crest
-                                                                                                                                                                                    ]
-                                                                                                                                                                                  ) ;
-                                                                                                                                                               rdf:type owl:Class
-                                                                                                                                                             ]
-                                                                                                                                        ]
-                                                                                                                   ]
-                                                                                                                 ) ;
-                                                                                              rdf:type owl:Class
-                                                                                            ]
+                                                                         owl:someValuesFrom :Mudhorn
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -664,23 +668,49 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                 ]
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:someValuesFrom :Parts
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:someValuesFrom :Jawa
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :from ;
+                                                                         owl:hasValue :Razor_Crest
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Egg
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :ownedBy ;
+                                                                                                                     owl:someValuesFrom :Mudhorn
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :participant ;
                              owl:someValuesFrom :Bluurg
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :participant ;
                              owl:someValuesFrom :Sandcrawler
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :stole ;
-                             owl:someValuesFrom [ owl:intersectionOf ( :Egg
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :ownedBy ;
-                                                                         owl:someValuesFrom :Mudhorn
-                                                                       ]
-                                                                     ) ;
-                                                  rdf:type owl:Class
-                                                ]
                            ] ;
                   :after :Finding_the_Child ;
                   :locatedIn :Arvala-7 ;
@@ -738,14 +768,36 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mugged_by_raiders
 :Mugged_by_raiders rdf:type owl:NamedIndividual ,
-                            :Fight ,
+                            :Stealing ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :destructionOf ;
                               owl:someValuesFrom :Speeder_Bike
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                        [ owl:intersectionOf ( :Killing
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :of ;
+                                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty :hadRole ;
+                                                                                                                      owl:someValuesFrom :Thief
+                                                                                                                    ]
+                                                                                               ]
+                                                                                             ) ;
+                                                                          rdf:type owl:Class
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
                               owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :activated ;
+                                                                          owl:someValuesFrom :Jetpack
+                                                                        ]
                                                                         [ rdf:type owl:Restriction ;
                                                                           owl:onProperty :of ;
                                                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
@@ -769,36 +821,12 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                  ]
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :included ;
-                              owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :activated ;
-                                                                          owl:someValuesFrom :Jetpack
-                                                                        ]
-                                                                        [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :included ;
-                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                                                                    [ rdf:type owl:Restriction ;
-                                                                                                                      owl:onProperty :of ;
-                                                                                                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                                                                           owl:onProperty :hadRole ;
-                                                                                                                                           owl:someValuesFrom :Thief
-                                                                                                                                         ]
-                                                                                                                    ]
-                                                                                                                  ) ;
-                                                                                               rdf:type owl:Class
-                                                                                             ]
-                                                                        ]
-                                                                        [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :stole ;
-                                                                          owl:someValuesFrom :Jetpack
-                                                                        ]
-                                                                      ) ;
-                                                   rdf:type owl:Class
-                                                 ]
+                              owl:onProperty :of ;
+                              owl:someValuesFrom :Jetpack
                             ] ;
                    :after :Killing_a_Krayt_Dragon ;
+                   :from :Din_Djarin ;
                    :locatedIn :Tatooine ;
-                   :participant :Din_Djarin ;
                    :year 9 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_10:_The_Passenger#Ambush_on_Tatooine"^^xsd:anyURI .
 
@@ -866,10 +894,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                ]
                                           ] ,
                                           [ rdf:type owl:Restriction ;
-                                            owl:onProperty :stole ;
-                                            owl:someValuesFrom [ owl:intersectionOf ( :Trexler_Marauder
+                                            owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Stealing
                                                                                       [ rdf:type owl:Restriction ;
-                                                                                        owl:onProperty :ownedBy ;
+                                                                                        owl:onProperty :of ;
+                                                                                        owl:someValuesFrom :Trexler_Marauder
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :from ;
                                                                                         owl:hasValue :Imperial_Remnant
                                                                                       ]
                                                                                     ) ;
@@ -1149,6 +1181,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                      :year 9 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_The_Reckoning"^^xsd:anyURI ,
                                   "https://starwars.fandom.com/wiki/Chapter_8:_Redemption"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Stealing_from_Greef_Karga
+:Stealing_from_Greef_Karga rdf:type owl:NamedIndividual ,
+                                    :Stealing ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :of ;
+                                      owl:someValuesFrom :Money
+                                    ] ;
+                           :from :Greef_Karga ;
+                           :participant :The_Mythrol .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trading_the_Child

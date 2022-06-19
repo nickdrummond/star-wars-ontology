@@ -3447,6 +3447,23 @@ There is no assertion of correctness or completeness by myself - content has bee
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Durand_crime_family"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#EG-86
+:EG-86 rdf:type owl:NamedIndividual ,
+                :GNK_Droid ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Agent
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :inOrganisation ;
+                                                              owl:hasValue :Rebel_Alliance
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/EG-86"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#ES-02
 :ES-02 rdf:type owl:NamedIndividual ,
                 :Human ,
@@ -13084,7 +13101,18 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trace_Martezs_repair_shop
 :Trace_Martezs_repair_shop rdf:type owl:NamedIndividual ,
-                                    :Repair_facility ;
+                                    :Repair_facility ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :locatedIn ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Underworld_portal
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :locatedIn ;
+                                                                                  owl:hasValue :The_Works
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
                            :locatedIn :Level_1313 ;
                            :ownedBy :Trace_Martez ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Trace_Martez%27s_repair_shop"^^xsd:anyURI .

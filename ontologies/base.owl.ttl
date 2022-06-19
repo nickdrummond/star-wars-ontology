@@ -141,11 +141,6 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
                 rdfs:subPropertyOf :participatedIn .
 
 
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#delivered
-:delivered rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :transferOf .
-
-
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#depicted
 :depicted rdf:type owl:ObjectProperty .
 
@@ -474,11 +469,6 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 :participatedIn rdf:type owl:ObjectProperty .
 
 
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#passed
-:passed rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf :transferOf .
-
-
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#raised
 :raised rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :knew ;
@@ -552,8 +542,7 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#stole
-:stole rdf:type owl:ObjectProperty ;
-       rdfs:subPropertyOf :transferOf .
+:stole rdf:type owl:ObjectProperty .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#stunnedDuring
@@ -587,8 +576,7 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#traded
-:traded rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf :transferOf .
+:traded rdf:type owl:ObjectProperty .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#trained
@@ -600,10 +588,6 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#trainedBy
 :trainedBy rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :knew .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#transferOf
-:transferOf rdf:type owl:ObjectProperty .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#trappedBy
@@ -1674,7 +1658,7 @@ or minus is BBY"""^^xsd:string .
                              owl:someValuesFrom :Organisation
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :transferOf ;
+                             owl:onProperty :of ;
                              owl:someValuesFrom :Being
                            ] ;
            rdfs:comment """Cannot define this in OWL as we have no variables to bind to (can we use SWRL?:
@@ -3197,12 +3181,12 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 :Learning rdf:type owl:Class ;
           owl:equivalentClass [ owl:intersectionOf ( :Transfer
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :to ;
-                                                       owl:someValuesFrom :Being
+                                                       owl:onProperty :of ;
+                                                       owl:someValuesFrom :Information
                                                      ]
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :transferOf ;
-                                                       owl:someValuesFrom :Information
+                                                       owl:onProperty :to ;
+                                                       owl:someValuesFrom :Being
                                                      ]
                                                    ) ;
                                 rdf:type owl:Class
@@ -5129,11 +5113,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
                                                        owl:someValuesFrom owl:Thing
                                                      ]
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :to ;
+                                                       owl:onProperty :of ;
                                                        owl:someValuesFrom owl:Thing
                                                      ]
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :transferOf ;
+                                                       owl:onProperty :to ;
                                                        owl:someValuesFrom owl:Thing
                                                      ]
                                                    ) ;

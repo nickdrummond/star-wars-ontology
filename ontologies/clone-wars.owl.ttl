@@ -161,6 +161,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                               ]
                          ] ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Jesse
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :locatedIn ;
                            owl:someValuesFrom [ owl:intersectionOf ( :Throne_Room
                                                                      [ rdf:type owl:Restriction ;
@@ -173,7 +184,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                          ] ;
                 :after :Shadow_Collective_orders ;
                 :during :Siege_of_Mandalore ;
-                :freeingOf :Jesse ;
                 :participant :Ahsoka_Tano ,
                              :Maul ;
                 :year -19 ;
@@ -830,6 +840,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                                owl:onProperty :included ;
                                owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                          [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:someValuesFrom :Clone
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Plo_Koon
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :participant ;
                                                                            owl:hasValue :Ahsoka_Tano
                                                                          ]
@@ -838,7 +856,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                            owl:hasValue :Anakin_Skywalker
                                                                          ]
                                                                          [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty :participant ;
+                                                                           owl:onProperty :used ;
                                                                            owl:hasValue :Twilight
                                                                          ]
                                                                        ) ;
@@ -1133,10 +1151,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                             owl:someValuesFrom :Proton_cannon
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :freeingOf ;
-                            owl:someValuesFrom <https://nickdrummond.github.io/star-wars-ontology/ontologies#Twi'Lek>
-                          ] ,
-                          [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                       [ rdf:type owl:Restriction ;
@@ -1232,6 +1246,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :participant ;
                                                                         owl:hasValue :Waxer
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:someValuesFrom <https://nickdrummond.github.io/star-wars-ontology/ontologies#Twi'Lek>
                                                                       ]
                                                                     ) ;
                                                  rdf:type owl:Class
@@ -1818,12 +1843,19 @@ There is no assertion of correctness or completeness by myself - content has bee
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :included ;
                                      owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :stunningOf ;
-                                                                                 owl:someValuesFrom :Clone
+                                                                                 owl:onProperty :included ;
+                                                                                 owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty :of ;
+                                                                                                                             owl:hasValue :Maul
+                                                                                                                           ]
+                                                                                                                         ) ;
+                                                                                                      rdf:type owl:Class
+                                                                                                    ]
                                                                                ]
                                                                                [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :freeingOf ;
-                                                                                 owl:hasValue :Maul
+                                                                                 owl:onProperty :stunningOf ;
+                                                                                 owl:someValuesFrom :Clone
                                                                                ]
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty :participant ;
@@ -2132,6 +2164,28 @@ There is no assertion of correctness or completeness by myself - content has bee
                                     ] ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:hasValue :Rafa_Martez
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:hasValue :Trace_Martez
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
                                       owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty :participant ;
                                                                                   owl:hasValue :Ahsoka_Tano
@@ -2150,8 +2204,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                     ] ;
                            :after :Martez_escape_from_the_Pykes ;
                            :during :Clone_Wars ;
-                           :freeingOf :Rafa_Martez ,
-                                      :Trace_Martez ;
                            :locatedIn :Oba_Diah ;
                            :participant :Ahsoka_Tano ,
                                         :Fife ,
@@ -3839,12 +3891,19 @@ There is no assertion of correctness or completeness by myself - content has bee
                                          owl:onProperty :included ;
                                          owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                                    [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty :freeingOf ;
-                                                                                     owl:someValuesFrom :Ithorian
-                                                                                   ]
-                                                                                   [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty :freeingOf ;
-                                                                                     owl:someValuesFrom :Weequay
+                                                                                     owl:onProperty :included ;
+                                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :of ;
+                                                                                                                                 owl:someValuesFrom :Ithorian
+                                                                                                                               ]
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :of ;
+                                                                                                                                 owl:someValuesFrom :Weequay
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ]
                                                                                    ]
                                                                                    [ rdf:type owl:Restriction ;
                                                                                      owl:onProperty :of ;
@@ -4172,6 +4231,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                                                          ) ;
                                                                                                       rdf:type owl:Class
                                                                                                     ]
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:hasValue :Anakin_Skywalker
                                                                                ]
                                                                              ) ;
                                                           rdf:type owl:Class
@@ -5268,6 +5331,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                                      owl:onProperty :included ;
                                      owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                                [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:hasValue :C-3PO
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:hasValue :Padme_Amidala
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty :participant ;
                                                                                  owl:hasValue :Anakin_Skywalker
                                                                                ]
@@ -5276,7 +5347,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                  owl:hasValue :Obi-Wan_Kenobi
                                                                                ]
                                                                                [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :participant ;
+                                                                                 owl:onProperty :used ;
                                                                                  owl:hasValue :Twilight
                                                                                ]
                                                                              ) ;
@@ -5613,8 +5684,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                          ] ;
                 :after :Run-in_with_Poletecs ;
                 :during :Mission_to_Skako_Minor ;
-                :freeingOf :Echo ;
                 :locatedIn :Purkoll ;
+                :of :Echo ;
                 :participant :Anakin_Skywalker ,
                              :Bad_Batch ,
                              :Rex ,
@@ -5654,8 +5725,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                                   owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :Doublecross
                                                                             [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :freeingOf ;
-                                                                              owl:hasValue :Nute_Gunray
+                                                                              owl:onProperty :included ;
+                                                                              owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                          owl:onProperty :of ;
+                                                                                                                          owl:hasValue :Nute_Gunray
+                                                                                                                        ]
+                                                                                                                      ) ;
+                                                                                                   rdf:type owl:Class
+                                                                                                 ]
                                                                             ]
                                                                             [ rdf:type owl:Restriction ;
                                                                               owl:onProperty :participant ;
@@ -5690,17 +5768,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                             [ rdf:type owl:Restriction ;
                                                                               owl:onProperty :participant ;
                                                                               owl:hasValue :Luminara_Unduli
-                                                                            ]
-                                                                          ) ;
-                                                       rdf:type owl:Class
-                                                     ]
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :included ;
-                                  owl:someValuesFrom [ owl:intersectionOf ( :Escape
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :of ;
-                                                                              owl:hasValue :Nute_Gunray
                                                                             ]
                                                                           ) ;
                                                        rdf:type owl:Class
@@ -5753,6 +5820,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                        :after :Mission_to_Rodia ;
                        :during :Clone_Wars ;
                        :locatedIn :Tranquility ;
+                       :of :Nute_Gunray ;
                        :participant :Ahsoka_Tano ,
                                     :Gree ,
                                     :Green_Company ,
@@ -5924,8 +5992,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                           ] ;
                  :after :Search_for_R2-D2 ;
                  :during :Clone_Wars ;
-                 :freeingOf :R2-D2 ;
                  :locatedIn :Skytop_Station ;
+                 :of :R2-D2 ;
                  :participant :Ahsoka_Tano ,
                               :Anakin_Skywalker ,
                               :R3-S6 ,
@@ -6057,6 +6125,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :included ;
                                        owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :of ;
+                                                                                   owl:hasValue :Ahsoka_Tano
+                                                                                 ]
                                                                                  [ rdf:type owl:Restriction ;
                                                                                    owl:onProperty :participant ;
                                                                                    owl:hasValue :Rex
@@ -6971,6 +7043,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :included ;
                                           owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:hasValue :Anakin_Skywalker
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:hasValue :Obi-Wan_Kenobi
+                                                                                    ]
                                                                                     [ rdf:type owl:Restriction ;
                                                                                       owl:onProperty :participant ;
                                                                                       owl:hasValue :Ahsoka_Tano

@@ -1058,6 +1058,36 @@ _:genid274 rdf:type owl:Restriction ;
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue_Muchi
 :Rescue_Muchi rdf:type owl:NamedIndividual ,
                        :Job ,
+                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                owl:onProperty :included ;
+                                                owl:someValuesFrom :Rescue
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :included ;
+                                                owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty :of ;
+                                                                                            owl:hasValue :Bad_Batch
+                                                                                          ]
+                                                                                        ) ;
+                                                                     rdf:type owl:Class
+                                                                   ]
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :of ;
+                                                owl:someValuesFrom :Falleeen
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :of ;
+                                                owl:hasValue :Muchi
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :participant ;
+                                                owl:hasValue :Omega
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :found ;
                          owl:someValuesFrom :Energy_bow
@@ -1131,35 +1161,6 @@ _:genid274 rdf:type owl:Restriction ;
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :included ;
-                         owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :freeingOf ;
-                                                                     owl:someValuesFrom :Falleeen
-                                                                   ]
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :included ;
-                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Escape
-                                                                                                               [ rdf:type owl:Restriction ;
-                                                                                                                 owl:onProperty :of ;
-                                                                                                                 owl:hasValue :Bad_Batch
-                                                                                                               ]
-                                                                                                             ) ;
-                                                                                          rdf:type owl:Class
-                                                                                        ]
-                                                                   ]
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :freeingOf ;
-                                                                     owl:hasValue :Muchi
-                                                                   ]
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :participant ;
-                                                                     owl:hasValue :Omega
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ]
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :included ;
                          owl:someValuesFrom [ rdf:type owl:Restriction ;
                                               owl:onProperty :included ;
                                               owl:someValuesFrom [ owl:intersectionOf ( :Capture
@@ -1214,8 +1215,8 @@ _:genid274 rdf:type owl:Restriction ;
                                                    ]
                               ] ;
                      :after :Announcement_of_curfew_on_Raxus ;
-                     :freeingOf :Avi_Singh ;
                      :locatedIn :Raxulon ;
+                     :of :Avi_Singh ;
                      :participant :GS-8 ;
                      :stunningOf :Bragg ;
                      :victoryOf :Bad_Batch ;
@@ -1360,8 +1361,15 @@ _:genid274 rdf:type owl:Restriction ;
                                                                                             ]
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :freeingOf ;
-                                                                         owl:hasValue :Hunter
+                                                                         owl:onProperty :included ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :of ;
+                                                                                                                     owl:hasValue :Hunter
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :participant ;
@@ -1482,13 +1490,6 @@ _:genid274 rdf:type owl:Restriction ;
 :Rescue_of_the_Syndullas rdf:type owl:NamedIndividual ,
                                   :Rescue ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :freeingOf ;
-                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :memberOf ;
-                                                         owl:hasValue :Free_Ryloth_Movement
-                                                       ]
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty :included ;
                                     owl:someValuesFrom [ owl:intersectionOf ( :Capture
                                                                               [ rdf:type owl:Restriction ;
@@ -1509,12 +1510,19 @@ _:genid274 rdf:type owl:Restriction ;
                                                                             ) ;
                                                          rdf:type owl:Class
                                                        ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :of ;
+                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :memberOf ;
+                                                         owl:hasValue :Free_Ryloth_Movement
+                                                       ]
                                   ] ;
                          :during :Attack_on_the_Ryloth_Refinery ;
-                         :freeingOf :Cham_Syndulla ,
-                                    :Eleni_Syndulla ,
-                                    :Gobi_Glie ;
                          :locatedIn :Lessu ;
+                         :of :Cham_Syndulla ,
+                             :Eleni_Syndulla ,
+                             :Gobi_Glie ;
                          :participant :Crosshair ,
                                       :Crosshairs_Squad ,
                                       :Echo ,
@@ -1993,8 +2001,15 @@ _:genid274 rdf:type owl:Restriction ;
                                   owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                             [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :freeingOf ;
-                                                                              owl:hasValue :Omega
+                                                                              owl:onProperty :included ;
+                                                                              owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                          owl:onProperty :of ;
+                                                                                                                          owl:hasValue :Omega
+                                                                                                                        ]
+                                                                                                                      ) ;
+                                                                                                   rdf:type owl:Class
+                                                                                                 ]
                                                                             ]
                                                                             [ rdf:type owl:Restriction ;
                                                                               owl:onProperty :participant ;
@@ -2021,6 +2036,33 @@ _:genid274 rdf:type owl:Restriction ;
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :CG-67
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Clink
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :DK-3
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies#225>
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Echo
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                               owl:onProperty :participant ;
                                                                               owl:someValuesFrom :Gran
@@ -2038,32 +2080,6 @@ _:genid274 rdf:type owl:Restriction ;
                                                                                                                       ) ;
                                                                                                    rdf:type owl:Class
                                                                                                  ]
-                                                                            ]
-                                                                          ) ;
-                                                       rdf:type owl:Class
-                                                     ]
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :included ;
-                                  owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :freeingOf ;
-                                                                              owl:hasValue :CG-67
-                                                                            ]
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :freeingOf ;
-                                                                              owl:hasValue :Clink
-                                                                            ]
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :freeingOf ;
-                                                                              owl:hasValue :DK-3
-                                                                            ]
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :freeingOf ;
-                                                                              owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies#225>
-                                                                            ]
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :participant ;
-                                                                              owl:hasValue :Echo
                                                                             ]
                                                                           ) ;
                                                        rdf:type owl:Class

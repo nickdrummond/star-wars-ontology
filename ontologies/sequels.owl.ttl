@@ -585,12 +585,22 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                  ]
                             ] ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :Poe_Dameron
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :participant ;
                               owl:someValuesFrom :TIE_Fighter
                             ] ;
                    :after :Assault_on_Tuanul ;
                    :during :Cold_War ;
-                   :freeingOf :Poe_Dameron ;
                    :locatedIn :Finalizer ;
                    :of :FN-2187 ;
                    :year 34 ;
@@ -1203,28 +1213,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                               :Rescue ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :included ;
-                                owl:someValuesFrom [ owl:intersectionOf ( :Escape
-                                                                          [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :of ;
-                                                                            owl:hasValue :Chewbacca
-                                                                          ]
-                                                                        ) ;
-                                                     rdf:type owl:Class
-                                                   ]
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :included ;
-                                owl:someValuesFrom [ owl:intersectionOf ( :Escape
-                                                                          [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :of ;
-                                                                            owl:hasValue :Millenium_Falcon
-                                                                          ]
-                                                                        ) ;
-                                                     rdf:type owl:Class
-                                                   ]
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :included ;
                                 owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :of ;
@@ -1242,10 +1230,12 @@ There is no assertion of correctness or completeness by myself - content has bee
                      :injuryOf :Armitage_Hux ,
                                :Poe_Dameron ;
                      :locatedIn :Steadfast ;
+                     :of :Chewbacca ;
                      :participant :BB-8 ,
                                   :C-3PO ,
                                   :D-0 ,
                                   :Finn ;
+                     :used :Millenium_Falcon ;
                      :year 35 ;
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker#Rescuing_Chewbacca"^^xsd:anyURI .
 

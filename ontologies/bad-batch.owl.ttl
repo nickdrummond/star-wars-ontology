@@ -17,6 +17,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_The_Bad_Batch"^^xsd:anyURI .
 
 #################################################################
+#    Classes
+#################################################################
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trading
+:Trading rdf:type owl:Class .
+
+
+#################################################################
 #    Individuals
 #################################################################
 
@@ -808,15 +816,22 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Meeting_Cid rdf:type owl:NamedIndividual ,
                       :Meeting ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :traded ;
-                        owl:someValuesFrom :Job
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :traded ;
-                        owl:someValuesFrom [ owl:intersectionOf ( :Information
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Trading
                                                                   [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty :about ;
-                                                                    owl:hasValue :Fennec_Shand
+                                                                    owl:onProperty :of ;
+                                                                    owl:someValuesFrom [ owl:intersectionOf ( :Information
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty :about ;
+                                                                                                                owl:hasValue :Fennec_Shand
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ]
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :from ;
+                                                                    owl:hasValue :Cid
                                                                   ]
                                                                 ) ;
                                              rdf:type owl:Class
@@ -854,9 +869,9 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Order_66
-:Order_66 rdf:type _:genid278 .
+:Order_66 rdf:type _:genid283 .
 
-_:genid278 rdf:type owl:Restriction ;
+_:genid283 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                         owl:onProperty :included ;
@@ -883,7 +898,7 @@ _:genid278 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid278 ;
+   owl:annotatedTarget _:genid283 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -2103,12 +2118,9 @@ _:genid278 rdf:type owl:Restriction ;
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :included ;
-                                  owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :participant ;
-                                                                              owl:someValuesFrom :Gran
-                                                                            ]
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Trading
                                                                             [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :traded ;
+                                                                              owl:onProperty :of ;
                                                                               owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
                                                                                                                           owl:oneOf ( :Echo
                                                                                                                                     )
@@ -2120,6 +2132,10 @@ _:genid278 rdf:type owl:Restriction ;
                                                                                                                       ) ;
                                                                                                    rdf:type owl:Class
                                                                                                  ]
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :to ;
+                                                                              owl:someValuesFrom :Gran
                                                                             ]
                                                                           ) ;
                                                        rdf:type owl:Class

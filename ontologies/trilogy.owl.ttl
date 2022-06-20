@@ -9,6 +9,17 @@
 # 
 # #################################################################
 # #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Trading
+# 
+# 
+# 
+# #################################################################
+# #
 # #    Individuals
 # #
 # #################################################################
@@ -63,8 +74,6 @@
 # https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue_of_Leia
 # 
 # https://nickdrummond.github.io/star-wars-ontology/ontologies#Run_on_Death_Star_2
-# 
-# https://nickdrummond.github.io/star-wars-ontology/ontologies#Search_for_Luke
 
 <ontologies/trilogy.owl.ttl> a owl:Ontology;
   owl:imports <ontologies/star-wars.owl.ttl>;
@@ -76,6 +85,8 @@ There is no assertion of correctness or completeness by myself - content has bee
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope"^^xsd:anyURI,
     "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi"^^xsd:anyURI,
     "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back"^^xsd:anyURI .
+
+:Trading a owl:Class .
 
 :Attack_on_Lars_Homestead a owl:NamedIndividual, :Attack, _:genid1, _:genid6, _:genid11,
     _:genid16;
@@ -150,14 +161,51 @@ _:genid17 a owl:Restriction;
   owl:someValuesFrom :StormTrooper;
   owl:onProperty :hadRole .
 
-:Bartering_for_Solo a owl:NamedIndividual, :Communication;
+:Bartering_for_Solo a owl:NamedIndividual, :Communication, _:genid18, _:genid23;
   :about :Han_Solo;
   :during :Rescue_of_Han_Solo;
   :locatedIn <#Jabba's_Palace>;
   :participant :Jabba;
-  :traded :C-3PO, :R2-D2;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
+
+_:genid18 a owl:Restriction;
+  owl:someValuesFrom _:genid19;
+  owl:onProperty :included .
+
+_:genid19 a owl:Class;
+  owl:intersectionOf _:genid22 .
+
+_:genid22 a rdf:List;
+  rdf:rest _:genid20;
+  rdf:first :Trading .
+
+_:genid20 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid21 .
+
+_:genid21 a owl:Restriction;
+  owl:hasValue :C-3PO;
+  owl:onProperty :of .
+
+_:genid23 a owl:Restriction;
+  owl:someValuesFrom _:genid24;
+  owl:onProperty :included .
+
+_:genid24 a owl:Class;
+  owl:intersectionOf _:genid27 .
+
+_:genid27 a rdf:List;
+  rdf:rest _:genid25;
+  rdf:first :Trading .
+
+_:genid25 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid26 .
+
+_:genid26 a owl:Restriction;
+  owl:hasValue :R2-D2;
+  owl:onProperty :of .
 
 :Battle_of_Endor a owl:NamedIndividual, :Battle;
   :after :Yoda_becomes_One_with_the_Force;
@@ -170,7 +218,7 @@ _:genid17 a owl:Restriction;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor"^^xsd:anyURI .
 
-:Battle_of_Hoth a owl:NamedIndividual, :Battle, _:genid18, _:genid23;
+:Battle_of_Hoth a owl:NamedIndividual, :Battle, _:genid28, _:genid33;
   :after :Search_for_Luke;
   :destructionOf :Echo_Base;
   :during :Galactic_Civil_War;
@@ -179,31 +227,31 @@ _:genid17 a owl:Restriction;
   :year 3;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Hoth"^^xsd:anyURI .
 
-_:genid18 a owl:Restriction;
-  owl:someValuesFrom _:genid19;
+_:genid28 a owl:Restriction;
+  owl:someValuesFrom _:genid29;
   owl:onProperty :included .
 
-_:genid19 a owl:Class;
-  owl:intersectionOf _:genid22 .
+_:genid29 a owl:Class;
+  owl:intersectionOf _:genid32 .
 
-_:genid22 a rdf:List;
-  rdf:rest _:genid20;
+_:genid32 a rdf:List;
+  rdf:rest _:genid30;
   rdf:first :Escape .
 
-_:genid20 a rdf:List;
+_:genid30 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid21 .
+  rdf:first _:genid31 .
 
-_:genid21 a owl:Restriction;
+_:genid31 a owl:Restriction;
   owl:hasValue :Rebel_Alliance;
   owl:onProperty :of .
 
-_:genid23 a owl:Restriction;
+_:genid33 a owl:Restriction;
   owl:someValuesFrom :AT-AT;
   owl:onProperty :participant .
 
-:Battle_of_Yavin a owl:NamedIndividual, :Battle, _:genid24, _:genid29, _:genid34,
-    _:genid39;
+:Battle_of_Yavin a owl:NamedIndividual, :Battle, _:genid34, _:genid39, _:genid44,
+    _:genid49;
   :after :Escape_from_Death_Star;
   :destructionOf :Death_Star_1;
   :during :Galactic_Civil_War;
@@ -211,44 +259,6 @@ _:genid23 a owl:Restriction;
   :participant :Galactic_Empire, :Massassi_Group;
   :year 0;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin"^^xsd:anyURI .
-
-_:genid24 a owl:Restriction;
-  owl:someValuesFrom _:genid25;
-  owl:onProperty :included .
-
-_:genid25 a owl:Class;
-  owl:intersectionOf _:genid28 .
-
-_:genid28 a rdf:List;
-  rdf:rest _:genid26;
-  rdf:first :Death .
-
-_:genid26 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid27 .
-
-_:genid27 a owl:Restriction;
-  owl:hasValue :Wilhuff_Tarkin;
-  owl:onProperty :of .
-
-_:genid29 a owl:Restriction;
-  owl:someValuesFrom _:genid30;
-  owl:onProperty :included .
-
-_:genid30 a owl:Class;
-  owl:intersectionOf _:genid33 .
-
-_:genid33 a rdf:List;
-  rdf:rest _:genid31;
-  rdf:first :Death .
-
-_:genid31 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid32 .
-
-_:genid32 a owl:Restriction;
-  owl:hasValue :Wullf_Yularen;
-  owl:onProperty :of .
 
 _:genid34 a owl:Restriction;
   owl:someValuesFrom _:genid35;
@@ -259,251 +269,308 @@ _:genid35 a owl:Class;
 
 _:genid38 a rdf:List;
   rdf:rest _:genid36;
-  rdf:first :Killing .
+  rdf:first :Death .
 
 _:genid36 a rdf:List;
   rdf:rest rdf:nil;
   rdf:first _:genid37 .
 
 _:genid37 a owl:Restriction;
-  owl:hasValue :Porkins;
+  owl:hasValue :Wilhuff_Tarkin;
   owl:onProperty :of .
 
 _:genid39 a owl:Restriction;
-  owl:someValuesFrom :TIE_Fighter;
-  owl:onProperty :participant .
+  owl:someValuesFrom _:genid40;
+  owl:onProperty :included .
 
-:Boushh_trades_Chewbacca a owl:NamedIndividual, :Confrontation, _:genid40, _:genid47;
-  :after :Murder_of_Oola;
-  :during :Rescue_of_Han_Solo;
-  :locatedIn <#Jabba's_Palace>;
-  :traded :Chewbacca;
-  :year 4;
-  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
+_:genid40 a owl:Class;
+  owl:intersectionOf _:genid43 .
 
-_:genid40 a owl:Restriction;
-  owl:someValuesFrom _:genid41;
-  owl:onProperty :participant .
+_:genid43 a rdf:List;
+  rdf:rest _:genid41;
+  rdf:first :Death .
 
-_:genid41 a owl:Class;
-  owl:intersectionOf _:genid44 .
-
-_:genid44 a rdf:List;
-  rdf:rest _:genid42;
-  rdf:first _:genid45 .
-
-_:genid42 a rdf:List;
+_:genid41 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid43 .
+  rdf:first _:genid42 .
 
-_:genid43 a owl:Restriction;
-  owl:hasValue :Boushh;
-  owl:onProperty :disguisedAs .
+_:genid42 a owl:Restriction;
+  owl:hasValue :Wullf_Yularen;
+  owl:onProperty :of .
+
+_:genid44 a owl:Restriction;
+  owl:someValuesFrom _:genid45;
+  owl:onProperty :included .
 
 _:genid45 a owl:Class;
-  owl:oneOf _:genid46 .
+  owl:intersectionOf _:genid48 .
+
+_:genid48 a rdf:List;
+  rdf:rest _:genid46;
+  rdf:first :Killing .
 
 _:genid46 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first :Leia_Organa .
+  rdf:first _:genid47 .
 
 _:genid47 a owl:Restriction;
-  owl:someValuesFrom :Thermal_Detonator;
-  owl:onProperty :used .
-
-:Capture_of_Tantive_IV a owl:NamedIndividual, :Fight, _:genid48, _:genid53, _:genid62,
-    _:genid72, _:genid77;
-  :during :Galactic_Civil_War;
-  :locatedIn :Tantive_IV, :Tatooine;
-  :participant :Darth_Vader, :Devastator;
-  :year 0;
-  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope#Assault_on_Tantive_IV"^^xsd:anyURI .
-
-_:genid48 a owl:Restriction;
-  owl:someValuesFrom _:genid49;
-  owl:onProperty :included .
-
-_:genid49 a owl:Class;
-  owl:intersectionOf _:genid52 .
-
-_:genid52 a rdf:List;
-  rdf:rest _:genid50;
-  rdf:first :Capture .
-
-_:genid50 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid51 .
-
-_:genid51 a owl:Restriction;
-  owl:hasValue :Leia_Organa;
+  owl:hasValue :Porkins;
   owl:onProperty :of .
 
-_:genid53 a owl:Restriction;
-  owl:someValuesFrom _:genid54;
+_:genid49 a owl:Restriction;
+  owl:someValuesFrom :TIE_Fighter;
+  owl:onProperty :participant .
+
+:Boushh_trades_Chewbacca a owl:NamedIndividual, :Confrontation, _:genid50, _:genid55,
+    _:genid62;
+  :after :Murder_of_Oola;
+  :during :Rescue_of_Han_Solo;
+  :locatedIn <#Jabba's_Palace>;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
+
+_:genid50 a owl:Restriction;
+  owl:someValuesFrom _:genid51;
   owl:onProperty :included .
 
-_:genid54 a owl:Class;
-  owl:intersectionOf _:genid61 .
+_:genid51 a owl:Class;
+  owl:intersectionOf _:genid54 .
 
-_:genid61 a rdf:List;
-  rdf:rest _:genid59;
-  rdf:first :Escape .
+_:genid54 a rdf:List;
+  rdf:rest _:genid52;
+  rdf:first :Trading .
+
+_:genid52 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid53 .
+
+_:genid53 a owl:Restriction;
+  owl:hasValue :Chewbacca;
+  owl:onProperty :of .
+
+_:genid55 a owl:Restriction;
+  owl:someValuesFrom _:genid56;
+  owl:onProperty :participant .
+
+_:genid56 a owl:Class;
+  owl:intersectionOf _:genid59 .
 
 _:genid59 a rdf:List;
   rdf:rest _:genid57;
   rdf:first _:genid60 .
 
 _:genid57 a rdf:List;
-  rdf:rest _:genid55;
+  rdf:rest rdf:nil;
   rdf:first _:genid58 .
 
-_:genid55 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid56 .
-
-_:genid56 a owl:Restriction;
-  owl:hasValue :R2-D2;
-  owl:onProperty :of .
-
 _:genid58 a owl:Restriction;
-  owl:hasValue :C-3PO;
-  owl:onProperty :of .
+  owl:hasValue :Boushh;
+  owl:onProperty :disguisedAs .
 
-_:genid60 a owl:Restriction;
-  owl:someValuesFrom :Escape_Pod;
-  owl:onProperty :used .
+_:genid60 a owl:Class;
+  owl:oneOf _:genid61 .
+
+_:genid61 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first :Leia_Organa .
 
 _:genid62 a owl:Restriction;
-  owl:someValuesFrom _:genid63;
+  owl:someValuesFrom :Thermal_Detonator;
+  owl:onProperty :used .
+
+:Capture_of_Tantive_IV a owl:NamedIndividual, :Fight, _:genid63, _:genid68, _:genid77,
+    _:genid87, _:genid92;
+  :during :Galactic_Civil_War;
+  :locatedIn :Tantive_IV, :Tatooine;
+  :participant :Darth_Vader, :Devastator;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope#Assault_on_Tantive_IV"^^xsd:anyURI .
+
+_:genid63 a owl:Restriction;
+  owl:someValuesFrom _:genid64;
   owl:onProperty :included .
 
-_:genid63 a owl:Class;
-  owl:intersectionOf _:genid71 .
+_:genid64 a owl:Class;
+  owl:intersectionOf _:genid67 .
 
-_:genid71 a rdf:List;
-  rdf:rest _:genid64;
-  rdf:first :Killing .
+_:genid67 a rdf:List;
+  rdf:rest _:genid65;
+  rdf:first :Capture .
 
-_:genid64 a rdf:List;
+_:genid65 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid65 .
-
-_:genid65 a owl:Restriction;
-  owl:someValuesFrom _:genid66;
-  owl:onProperty :of .
+  rdf:first _:genid66 .
 
 _:genid66 a owl:Restriction;
-  owl:someValuesFrom _:genid67;
-  owl:onProperty :hadRole .
+  owl:hasValue :Leia_Organa;
+  owl:onProperty :of .
 
-_:genid67 a owl:Class;
-  owl:intersectionOf _:genid70 .
-
-_:genid70 a rdf:List;
-  rdf:rest _:genid68;
-  rdf:first :Trooper .
-
-_:genid68 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid69 .
-
-_:genid69 a owl:Restriction;
-  owl:hasValue :Rebel_Alliance;
-  owl:onProperty :inOrganisation .
-
-_:genid72 a owl:Restriction;
-  owl:someValuesFrom _:genid73;
+_:genid68 a owl:Restriction;
+  owl:someValuesFrom _:genid69;
   owl:onProperty :included .
 
-_:genid73 a owl:Class;
+_:genid69 a owl:Class;
   owl:intersectionOf _:genid76 .
 
 _:genid76 a rdf:List;
   rdf:rest _:genid74;
-  rdf:first :Killing .
+  rdf:first :Escape .
 
 _:genid74 a rdf:List;
-  rdf:rest rdf:nil;
+  rdf:rest _:genid72;
   rdf:first _:genid75 .
 
-_:genid75 a owl:Restriction;
-  owl:hasValue :Raymus_Antilles;
+_:genid72 a rdf:List;
+  rdf:rest _:genid70;
+  rdf:first _:genid73 .
+
+_:genid70 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid71 .
+
+_:genid71 a owl:Restriction;
+  owl:hasValue :R2-D2;
   owl:onProperty :of .
+
+_:genid73 a owl:Restriction;
+  owl:hasValue :C-3PO;
+  owl:onProperty :of .
+
+_:genid75 a owl:Restriction;
+  owl:someValuesFrom :Escape_Pod;
+  owl:onProperty :used .
 
 _:genid77 a owl:Restriction;
   owl:someValuesFrom _:genid78;
+  owl:onProperty :included .
+
+_:genid78 a owl:Class;
+  owl:intersectionOf _:genid86 .
+
+_:genid86 a rdf:List;
+  rdf:rest _:genid79;
+  rdf:first :Killing .
+
+_:genid79 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid80 .
+
+_:genid80 a owl:Restriction;
+  owl:someValuesFrom _:genid81;
+  owl:onProperty :of .
+
+_:genid81 a owl:Restriction;
+  owl:someValuesFrom _:genid82;
+  owl:onProperty :hadRole .
+
+_:genid82 a owl:Class;
+  owl:intersectionOf _:genid85 .
+
+_:genid85 a rdf:List;
+  rdf:rest _:genid83;
+  rdf:first :Trooper .
+
+_:genid83 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid84 .
+
+_:genid84 a owl:Restriction;
+  owl:hasValue :Rebel_Alliance;
+  owl:onProperty :inOrganisation .
+
+_:genid87 a owl:Restriction;
+  owl:someValuesFrom _:genid88;
+  owl:onProperty :included .
+
+_:genid88 a owl:Class;
+  owl:intersectionOf _:genid91 .
+
+_:genid91 a rdf:List;
+  rdf:rest _:genid89;
+  rdf:first :Killing .
+
+_:genid89 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid90 .
+
+_:genid90 a owl:Restriction;
+  owl:hasValue :Raymus_Antilles;
+  owl:onProperty :of .
+
+_:genid92 a owl:Restriction;
+  owl:someValuesFrom _:genid93;
   owl:onProperty :participant .
 
-_:genid78 a owl:Restriction;
+_:genid93 a owl:Restriction;
   owl:someValuesFrom :StormTrooper;
   owl:onProperty :hadRole .
 
-:Confrontation_in_the_Emperors_Throne_Room a owl:NamedIndividual, :Duel, _:genid79,
-    _:genid84, _:genid89;
+:Confrontation_in_the_Emperors_Throne_Room a owl:NamedIndividual, :Duel, _:genid94,
+    _:genid99, _:genid104;
   :during :Battle_of_Endor;
   :participant :Luke_Skywalker;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#Meeting_Luke_Skywalker"^^xsd:anyURI .
 
-_:genid79 a owl:Restriction;
-  owl:someValuesFrom _:genid80;
+_:genid94 a owl:Restriction;
+  owl:someValuesFrom _:genid95;
   owl:onProperty :included .
 
-_:genid80 a owl:Class;
-  owl:intersectionOf _:genid83 .
+_:genid95 a owl:Class;
+  owl:intersectionOf _:genid98 .
 
-_:genid83 a rdf:List;
-  rdf:rest _:genid81;
+_:genid98 a rdf:List;
+  rdf:rest _:genid96;
   rdf:first :Death .
 
-_:genid81 a rdf:List;
+_:genid96 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid82 .
+  rdf:first _:genid97 .
 
-_:genid82 a owl:Restriction;
+_:genid97 a owl:Restriction;
   owl:hasValue :Darth_Vader;
   owl:onProperty :of .
 
-_:genid84 a owl:Restriction;
-  owl:someValuesFrom _:genid85;
+_:genid99 a owl:Restriction;
+  owl:someValuesFrom _:genid100;
   owl:onProperty :included .
 
-_:genid85 a owl:Class;
-  owl:intersectionOf _:genid88 .
+_:genid100 a owl:Class;
+  owl:intersectionOf _:genid103 .
 
-_:genid88 a rdf:List;
-  rdf:rest _:genid86;
+_:genid103 a rdf:List;
+  rdf:rest _:genid101;
   rdf:first :Killing .
 
-_:genid86 a rdf:List;
+_:genid101 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid87 .
+  rdf:first _:genid102 .
 
-_:genid87 a owl:Restriction;
+_:genid102 a owl:Restriction;
   owl:hasValue :Darth_Sidious;
   owl:onProperty :of .
 
-_:genid89 a owl:Restriction;
-  owl:someValuesFrom _:genid90;
+_:genid104 a owl:Restriction;
+  owl:someValuesFrom _:genid105;
   owl:onProperty :locatedIn .
 
-_:genid90 a owl:Class;
-  owl:intersectionOf _:genid93 .
+_:genid105 a owl:Class;
+  owl:intersectionOf _:genid108 .
 
-_:genid93 a rdf:List;
-  rdf:rest _:genid91;
+_:genid108 a rdf:List;
+  rdf:rest _:genid106;
   rdf:first :Throne_Room .
 
-_:genid91 a rdf:List;
+_:genid106 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid92 .
+  rdf:first _:genid107 .
 
-_:genid92 a owl:Restriction;
+_:genid107 a owl:Restriction;
   owl:hasValue :Death_Star_2;
   owl:onProperty :locatedIn .
 
-:Deactivating_the_Shield_Generator_on_Endor a owl:NamedIndividual, :Battle, _:genid94,
-    _:genid99, _:genid100, _:genid101, _:genid103;
+:Deactivating_the_Shield_Generator_on_Endor a owl:NamedIndividual, :Battle, _:genid109,
+    _:genid114, _:genid115, _:genid116, _:genid118;
   :after :Ewok_Feast;
   :during :Battle_of_Endor;
   :locatedIn :Endor;
@@ -512,108 +579,108 @@ _:genid92 a owl:Restriction;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
 
-_:genid94 a owl:Restriction;
-  owl:someValuesFrom _:genid95;
+_:genid109 a owl:Restriction;
+  owl:someValuesFrom _:genid110;
   owl:onProperty :destructionOf .
 
-_:genid95 a owl:Class;
-  owl:intersectionOf _:genid98 .
+_:genid110 a owl:Class;
+  owl:intersectionOf _:genid113 .
 
-_:genid98 a rdf:List;
-  rdf:rest _:genid96;
+_:genid113 a rdf:List;
+  rdf:rest _:genid111;
   rdf:first :Shield_Generator .
 
-_:genid96 a rdf:List;
+_:genid111 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid97 .
+  rdf:first _:genid112 .
 
-_:genid97 a owl:Restriction;
+_:genid112 a owl:Restriction;
   owl:hasValue :Death_Star_2;
   owl:onProperty :partOf .
 
-_:genid99 a owl:Restriction;
+_:genid114 a owl:Restriction;
   owl:someValuesFrom :AT-ST;
   owl:onProperty :participant .
 
-_:genid100 a owl:Restriction;
+_:genid115 a owl:Restriction;
   owl:someValuesFrom :Speeder_Bike;
   owl:onProperty :participant .
 
-_:genid101 a owl:Restriction;
-  owl:someValuesFrom _:genid102;
+_:genid116 a owl:Restriction;
+  owl:someValuesFrom _:genid117;
   owl:onProperty :participant .
 
-_:genid102 a owl:Restriction;
+_:genid117 a owl:Restriction;
   owl:someValuesFrom :StormTrooper;
   owl:onProperty :hadRole .
 
-_:genid103 a owl:Restriction;
+_:genid118 a owl:Restriction;
   owl:someValuesFrom :Ewok;
   owl:onProperty :victoryOf .
 
 :Death_Star_2 a owl:NamedIndividual .
 
-:Defrosting_Han a owl:NamedIndividual, :Rescue, _:genid104, _:genid111;
+:Defrosting_Han a owl:NamedIndividual, :Rescue, _:genid119, _:genid126;
   :after :Boushh_trades_Chewbacca;
   :during :Rescue_of_Han_Solo;
   :locatedIn <#Jabba's_Palace>;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Saving_Han_Solo"^^xsd:anyURI .
 
-_:genid104 a owl:Restriction;
-  owl:someValuesFrom _:genid105;
+_:genid119 a owl:Restriction;
+  owl:someValuesFrom _:genid120;
   owl:onProperty :assistedBy .
 
-_:genid105 a owl:Class;
-  owl:intersectionOf _:genid108 .
+_:genid120 a owl:Class;
+  owl:intersectionOf _:genid123 .
 
-_:genid108 a rdf:List;
-  rdf:rest _:genid106;
-  rdf:first _:genid109 .
+_:genid123 a rdf:List;
+  rdf:rest _:genid121;
+  rdf:first _:genid124 .
 
-_:genid106 a rdf:List;
+_:genid121 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid107 .
+  rdf:first _:genid122 .
 
-_:genid107 a owl:Restriction;
+_:genid122 a owl:Restriction;
   owl:someValuesFrom :Guard;
   owl:onProperty :disguisedAs .
 
-_:genid109 a owl:Class;
-  owl:oneOf _:genid110 .
+_:genid124 a owl:Class;
+  owl:oneOf _:genid125 .
 
-_:genid110 a rdf:List;
+_:genid125 a rdf:List;
   rdf:rest rdf:nil;
   rdf:first :Lando_Calrissian .
 
-_:genid111 a owl:Restriction;
-  owl:someValuesFrom _:genid112;
+_:genid126 a owl:Restriction;
+  owl:someValuesFrom _:genid127;
   owl:onProperty :included .
 
-_:genid112 a owl:Class;
-  owl:intersectionOf _:genid117 .
+_:genid127 a owl:Class;
+  owl:intersectionOf _:genid132 .
 
-_:genid117 a rdf:List;
-  rdf:rest _:genid115;
+_:genid132 a rdf:List;
+  rdf:rest _:genid130;
   rdf:first :Capture .
 
-_:genid115 a rdf:List;
-  rdf:rest _:genid113;
-  rdf:first _:genid116 .
+_:genid130 a rdf:List;
+  rdf:rest _:genid128;
+  rdf:first _:genid131 .
 
-_:genid113 a rdf:List;
+_:genid128 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid114 .
+  rdf:first _:genid129 .
 
-_:genid114 a owl:Restriction;
+_:genid129 a owl:Restriction;
   owl:hasValue :Leia_Organa;
   owl:onProperty :of .
 
-_:genid116 a owl:Restriction;
+_:genid131 a owl:Restriction;
   owl:hasValue :Han_Solo;
   owl:onProperty :of .
 
-:Escape_from_Carkoon a owl:NamedIndividual, :Escape, _:genid118, _:genid123, _:genid129;
+:Escape_from_Carkoon a owl:NamedIndividual, :Escape, _:genid133, _:genid138, _:genid144;
   :after :Luke_vs_Rancor;
   :destructionOf :Khetanna;
   :during :Rescue_of_Han_Solo;
@@ -624,54 +691,54 @@ _:genid116 a owl:Restriction;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Skirmish_at_the_Great_Pit_of_Carkoon"^^xsd:anyURI .
 
-_:genid118 a owl:Restriction;
-  owl:someValuesFrom _:genid119;
+_:genid133 a owl:Restriction;
+  owl:someValuesFrom _:genid134;
   owl:onProperty :included .
 
-_:genid119 a owl:Class;
-  owl:intersectionOf _:genid122 .
+_:genid134 a owl:Class;
+  owl:intersectionOf _:genid137 .
 
-_:genid122 a rdf:List;
-  rdf:rest _:genid120;
+_:genid137 a rdf:List;
+  rdf:rest _:genid135;
   rdf:first :Death .
 
-_:genid120 a rdf:List;
+_:genid135 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid121 .
+  rdf:first _:genid136 .
 
-_:genid121 a owl:Restriction;
+_:genid136 a owl:Restriction;
   owl:hasValue :Salacious_B._Crumb;
   owl:onProperty :of .
 
-_:genid123 a owl:Restriction;
-  owl:someValuesFrom _:genid124;
+_:genid138 a owl:Restriction;
+  owl:someValuesFrom _:genid139;
   owl:onProperty :included .
 
-_:genid124 a owl:Class;
-  owl:intersectionOf _:genid128 .
+_:genid139 a owl:Class;
+  owl:intersectionOf _:genid143 .
 
-_:genid128 a rdf:List;
-  rdf:rest _:genid125;
+_:genid143 a rdf:List;
+  rdf:rest _:genid140;
   rdf:first :Killing .
 
-_:genid125 a rdf:List;
+_:genid140 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid126 .
+  rdf:first _:genid141 .
 
-_:genid126 a owl:Restriction;
-  owl:someValuesFrom _:genid127;
+_:genid141 a owl:Restriction;
+  owl:someValuesFrom _:genid142;
   owl:onProperty :of .
 
-_:genid127 a owl:Restriction;
+_:genid142 a owl:Restriction;
   owl:someValuesFrom :Guard;
   owl:onProperty :hadRole .
 
-_:genid129 a owl:Restriction;
+_:genid144 a owl:Restriction;
   owl:someValuesFrom :Sarlacc;
   owl:onProperty :participant .
 
-:Escape_from_Death_Star a owl:NamedIndividual, :Escape, _:genid130, _:genid131, _:genid137,
-    _:genid143, _:genid150;
+:Escape_from_Death_Star a owl:NamedIndividual, :Escape, _:genid145, _:genid146, _:genid152,
+    _:genid158, _:genid165;
   :after :The_Disaster;
   :during :Galactic_Civil_War;
   :locatedIn :Death_Star_1;
@@ -679,132 +746,62 @@ _:genid129 a owl:Restriction;
   :year 0;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia"^^xsd:anyURI .
 
-_:genid130 a owl:Restriction;
+_:genid145 a owl:Restriction;
   owl:someValuesFrom :TIE_Fighter;
   owl:onProperty :destructionOf .
 
-_:genid131 a owl:Restriction;
-  owl:someValuesFrom _:genid132;
+_:genid146 a owl:Restriction;
+  owl:someValuesFrom _:genid147;
   owl:onProperty :included .
 
-_:genid132 a owl:Class;
-  owl:intersectionOf _:genid136 .
+_:genid147 a owl:Class;
+  owl:intersectionOf _:genid151 .
 
-_:genid136 a rdf:List;
-  rdf:rest _:genid133;
+_:genid151 a rdf:List;
+  rdf:rest _:genid148;
   rdf:first :Killing .
 
-_:genid133 a rdf:List;
+_:genid148 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid134 .
+  rdf:first _:genid149 .
 
-_:genid134 a owl:Restriction;
-  owl:someValuesFrom _:genid135;
+_:genid149 a owl:Restriction;
+  owl:someValuesFrom _:genid150;
   owl:onProperty :of .
 
-_:genid135 a owl:Restriction;
+_:genid150 a owl:Restriction;
   owl:someValuesFrom :StormTrooper;
   owl:onProperty :hadRole .
 
-_:genid137 a owl:Restriction;
-  owl:someValuesFrom _:genid138;
+_:genid152 a owl:Restriction;
+  owl:someValuesFrom _:genid153;
   owl:onProperty :included .
 
-_:genid138 a owl:Class;
-  owl:intersectionOf _:genid141 .
+_:genid153 a owl:Class;
+  owl:intersectionOf _:genid156 .
 
-_:genid141 a rdf:List;
-  rdf:rest _:genid139;
-  rdf:first _:genid142 .
+_:genid156 a rdf:List;
+  rdf:rest _:genid154;
+  rdf:first _:genid157 .
 
-_:genid139 a rdf:List;
+_:genid154 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid140 .
+  rdf:first _:genid155 .
 
-_:genid140 a owl:Restriction;
+_:genid155 a owl:Restriction;
   owl:hasValue :Obi-Wan_Kenobi;
   owl:onProperty :participant .
 
-_:genid142 a owl:Restriction;
+_:genid157 a owl:Restriction;
   owl:someValuesFrom :Tractor_Beam_Projector;
   owl:onProperty :deactivated .
 
-_:genid143 a owl:Restriction;
-  owl:someValuesFrom _:genid144;
-  owl:onProperty :participant .
-
-_:genid144 a owl:Class;
-  owl:intersectionOf _:genid147 .
-
-_:genid147 a rdf:List;
-  rdf:rest _:genid145;
-  rdf:first _:genid148 .
-
-_:genid145 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid146 .
-
-_:genid146 a owl:Restriction;
-  owl:someValuesFrom :Captive;
-  owl:onProperty :disguisedAs .
-
-_:genid148 a owl:Class;
-  owl:oneOf _:genid149 .
-
-_:genid149 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first :Chewbacca .
-
-_:genid150 a owl:Restriction;
-  owl:onClass _:genid151;
-  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger;
-  owl:onProperty :participant .
-
-_:genid151 a owl:Class;
-  owl:intersectionOf _:genid154 .
-
-_:genid154 a rdf:List;
-  rdf:rest _:genid152;
-  rdf:first _:genid155 .
-
-_:genid152 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid153 .
-
-_:genid153 a owl:Restriction;
-  owl:someValuesFrom :StormTrooper;
-  owl:onProperty :disguisedAs .
-
-_:genid155 a owl:Class;
-  owl:oneOf _:genid157 .
-
-_:genid157 a rdf:List;
-  rdf:rest _:genid156;
-  rdf:first :Han_Solo .
-
-_:genid156 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first :Luke_Skywalker .
-
-:Escape_from_Hoth a owl:NamedIndividual, :Escape, _:genid158, _:genid166, _:genid171,
-    _:genid172;
-  :after :Battle_of_Hoth;
-  :during :Galactic_Civil_War;
-  :of :Millenium_Falcon;
-  :participant :Slave_I;
-  :year 3;
-  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_Battle_of_Hoth"^^xsd:anyURI .
-
 _:genid158 a owl:Restriction;
   owl:someValuesFrom _:genid159;
-  owl:onProperty :included .
+  owl:onProperty :participant .
 
 _:genid159 a owl:Class;
-  owl:intersectionOf _:genid164 .
-
-_:genid164 a rdf:List;
-  rdf:rest _:genid162;
-  rdf:first _:genid165 .
+  owl:intersectionOf _:genid162 .
 
 _:genid162 a rdf:List;
   rdf:rest _:genid160;
@@ -815,50 +812,55 @@ _:genid160 a rdf:List;
   rdf:first _:genid161 .
 
 _:genid161 a owl:Restriction;
-  owl:hasValue :Sy-O;
-  owl:onProperty :participant .
+  owl:someValuesFrom :Captive;
+  owl:onProperty :disguisedAs .
 
-_:genid163 a owl:Restriction;
-  owl:hasValue :Millenium_Falcon;
-  owl:onProperty :eatingOf .
+_:genid163 a owl:Class;
+  owl:oneOf _:genid164 .
+
+_:genid164 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first :Chewbacca .
 
 _:genid165 a owl:Restriction;
-  owl:someValuesFrom :Mynock;
+  owl:onClass _:genid166;
+  owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger;
   owl:onProperty :participant .
 
-_:genid166 a owl:Restriction;
-  owl:someValuesFrom _:genid167;
-  owl:onProperty :locatedIn .
+_:genid166 a owl:Class;
+  owl:intersectionOf _:genid169 .
 
-_:genid167 a owl:Class;
-  owl:intersectionOf _:genid170 .
+_:genid169 a rdf:List;
+  rdf:rest _:genid167;
+  rdf:first _:genid170 .
 
-_:genid170 a rdf:List;
-  rdf:rest _:genid168;
-  rdf:first :Asteroid_field .
-
-_:genid168 a rdf:List;
+_:genid167 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid169 .
+  rdf:first _:genid168 .
 
-_:genid169 a owl:Restriction;
-  owl:hasValue :Hoth;
-  owl:onProperty :locatedIn .
+_:genid168 a owl:Restriction;
+  owl:someValuesFrom :StormTrooper;
+  owl:onProperty :disguisedAs .
 
-_:genid171 a owl:Restriction;
-  owl:someValuesFrom :Imperial-class_Star_Destroyer;
-  owl:onProperty :participant .
+_:genid170 a owl:Class;
+  owl:oneOf _:genid172 .
 
-_:genid172 a owl:Restriction;
-  owl:someValuesFrom :TIE_Fighter;
-  owl:onProperty :participant .
+_:genid172 a rdf:List;
+  rdf:rest _:genid171;
+  rdf:first :Han_Solo .
 
-:Escape_from_the_Garbage_Compactor a owl:NamedIndividual, :Escape, _:genid173, _:genid180;
-  :assistedBy :R2-D2;
-  :during :Rescue_of_Leia;
-  :of :Chewbacca, :Han_Solo, :Leia_Organa, :Luke_Skywalker;
-  :year 0;
-  rdfs:seeAlso "https://starwars.fandom.com/wiki/Garbage_masher_3263827"^^xsd:anyURI .
+_:genid171 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first :Luke_Skywalker .
+
+:Escape_from_Hoth a owl:NamedIndividual, :Escape, _:genid173, _:genid181, _:genid186,
+    _:genid187;
+  :after :Battle_of_Hoth;
+  :during :Galactic_Civil_War;
+  :of :Millenium_Falcon;
+  :participant :Slave_I;
+  :year 3;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_Battle_of_Hoth"^^xsd:anyURI .
 
 _:genid173 a owl:Restriction;
   owl:someValuesFrom _:genid174;
@@ -869,7 +871,7 @@ _:genid174 a owl:Class;
 
 _:genid179 a rdf:List;
   rdf:rest _:genid177;
-  rdf:first :Attack .
+  rdf:first _:genid180 .
 
 _:genid177 a rdf:List;
   rdf:rest _:genid175;
@@ -880,33 +882,98 @@ _:genid175 a rdf:List;
   rdf:first _:genid176 .
 
 _:genid176 a owl:Restriction;
+  owl:hasValue :Sy-O;
+  owl:onProperty :participant .
+
+_:genid178 a owl:Restriction;
+  owl:hasValue :Millenium_Falcon;
+  owl:onProperty :eatingOf .
+
+_:genid180 a owl:Restriction;
+  owl:someValuesFrom :Mynock;
+  owl:onProperty :participant .
+
+_:genid181 a owl:Restriction;
+  owl:someValuesFrom _:genid182;
+  owl:onProperty :locatedIn .
+
+_:genid182 a owl:Class;
+  owl:intersectionOf _:genid185 .
+
+_:genid185 a rdf:List;
+  rdf:rest _:genid183;
+  rdf:first :Asteroid_field .
+
+_:genid183 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid184 .
+
+_:genid184 a owl:Restriction;
+  owl:hasValue :Hoth;
+  owl:onProperty :locatedIn .
+
+_:genid186 a owl:Restriction;
+  owl:someValuesFrom :Imperial-class_Star_Destroyer;
+  owl:onProperty :participant .
+
+_:genid187 a owl:Restriction;
+  owl:someValuesFrom :TIE_Fighter;
+  owl:onProperty :participant .
+
+:Escape_from_the_Garbage_Compactor a owl:NamedIndividual, :Escape, _:genid188, _:genid195;
+  :assistedBy :R2-D2;
+  :during :Rescue_of_Leia;
+  :of :Chewbacca, :Han_Solo, :Leia_Organa, :Luke_Skywalker;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Garbage_masher_3263827"^^xsd:anyURI .
+
+_:genid188 a owl:Restriction;
+  owl:someValuesFrom _:genid189;
+  owl:onProperty :included .
+
+_:genid189 a owl:Class;
+  owl:intersectionOf _:genid194 .
+
+_:genid194 a rdf:List;
+  rdf:rest _:genid192;
+  rdf:first :Attack .
+
+_:genid192 a rdf:List;
+  rdf:rest _:genid190;
+  rdf:first _:genid193 .
+
+_:genid190 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid191 .
+
+_:genid191 a owl:Restriction;
   owl:hasValue :Luke_Skywalker;
   owl:onProperty :survivedBy .
 
-_:genid178 a owl:Restriction;
+_:genid193 a owl:Restriction;
   owl:someValuesFrom :Dianoga;
   owl:onProperty :participant .
 
-_:genid180 a owl:Restriction;
-  owl:someValuesFrom _:genid181;
+_:genid195 a owl:Restriction;
+  owl:someValuesFrom _:genid196;
   owl:onProperty :locatedIn .
 
-_:genid181 a owl:Class;
-  owl:intersectionOf _:genid184 .
+_:genid196 a owl:Class;
+  owl:intersectionOf _:genid199 .
 
-_:genid184 a rdf:List;
-  rdf:rest _:genid182;
+_:genid199 a rdf:List;
+  rdf:rest _:genid197;
   rdf:first :Garbage_Compactor .
 
-_:genid182 a rdf:List;
+_:genid197 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid183 .
+  rdf:first _:genid198 .
 
-_:genid183 a owl:Restriction;
+_:genid198 a owl:Restriction;
   owl:hasValue :Death_Star_1;
   owl:onProperty :locatedIn .
 
-:Ewok_Feast a owl:NamedIndividual, :Capture, _:genid185;
+:Ewok_Feast a owl:NamedIndividual, :Capture, _:genid200;
   :after :Speeder_Fight;
   :during :Battle_of_Endor;
   :locatedIn :Bright_Tree_Village;
@@ -914,86 +981,6 @@ _:genid183 a owl:Restriction;
   :participant :C-3PO;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
-
-_:genid185 a owl:Restriction;
-  owl:someValuesFrom _:genid186;
-  owl:onProperty :participant .
-
-_:genid186 a owl:Class;
-  owl:intersectionOf _:genid189 .
-
-_:genid189 a rdf:List;
-  rdf:rest _:genid187;
-  rdf:first :Ewok .
-
-_:genid187 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid188 .
-
-_:genid188 a owl:Restriction;
-  owl:hasValue :Bright_Tree_Village;
-  owl:onProperty :livedIn .
-
-:Han_vs_Greedo a owl:NamedIndividual, :Confrontation, _:genid190;
-  :after :Attack_on_Lars_Homestead;
-  :locatedIn <#Chalmun's_Cantina>;
-  :victoryOf :Han_Solo;
-  :year 0;
-  rdfs:seeAlso "https://starwars.fandom.com/wiki/Greedo#Death"^^xsd:anyURI .
-
-_:genid190 a owl:Restriction;
-  owl:someValuesFrom _:genid191;
-  owl:onProperty :included .
-
-_:genid191 a owl:Class;
-  owl:intersectionOf _:genid194 .
-
-_:genid194 a rdf:List;
-  rdf:rest _:genid192;
-  rdf:first :Killing .
-
-_:genid192 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid193 .
-
-_:genid193 a owl:Restriction;
-  owl:hasValue :Greedo;
-  owl:onProperty :of .
-
-:Leia_vs_Jabba a owl:NamedIndividual, :Confrontation, _:genid195;
-  :during :Escape_from_Carkoon;
-  :locatedIn :Khetanna;
-  :victoryOf :Leia_Organa;
-  :year 4;
-  rdfs:seeAlso "https://starwars.fandom.com/wiki/Jabba_Desilijic_Tiure#Slaying_of_the_Hutt"^^xsd:anyURI .
-
-_:genid195 a owl:Restriction;
-  owl:someValuesFrom _:genid196;
-  owl:onProperty :included .
-
-_:genid196 a owl:Class;
-  owl:intersectionOf _:genid199 .
-
-_:genid199 a rdf:List;
-  rdf:rest _:genid197;
-  rdf:first :Killing .
-
-_:genid197 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid198 .
-
-_:genid198 a owl:Restriction;
-  owl:hasValue :Jabba;
-  owl:onProperty :of .
-
-:Luke_meets_Yoda a owl:NamedIndividual, :Training, _:genid200;
-  :after :Battle_of_Hoth;
-  :during :Galactic_Civil_War;
-  :locatedIn :Cave_of_Evil, :Yodas_Hut;
-  :participant :Luke_Skywalker, :Yoda;
-  :witnessedBy :R2-D2;
-  :year 3;
-  rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Searching_for_Yoda"^^xsd:anyURI .
 
 _:genid200 a owl:Restriction;
   owl:someValuesFrom _:genid201;
@@ -1004,17 +991,97 @@ _:genid201 a owl:Class;
 
 _:genid204 a rdf:List;
   rdf:rest _:genid202;
-  rdf:first :X-Wing .
+  rdf:first :Ewok .
 
 _:genid202 a rdf:List;
   rdf:rest rdf:nil;
   rdf:first _:genid203 .
 
 _:genid203 a owl:Restriction;
+  owl:hasValue :Bright_Tree_Village;
+  owl:onProperty :livedIn .
+
+:Han_vs_Greedo a owl:NamedIndividual, :Confrontation, _:genid205;
+  :after :Attack_on_Lars_Homestead;
+  :locatedIn <#Chalmun's_Cantina>;
+  :victoryOf :Han_Solo;
+  :year 0;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Greedo#Death"^^xsd:anyURI .
+
+_:genid205 a owl:Restriction;
+  owl:someValuesFrom _:genid206;
+  owl:onProperty :included .
+
+_:genid206 a owl:Class;
+  owl:intersectionOf _:genid209 .
+
+_:genid209 a rdf:List;
+  rdf:rest _:genid207;
+  rdf:first :Killing .
+
+_:genid207 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid208 .
+
+_:genid208 a owl:Restriction;
+  owl:hasValue :Greedo;
+  owl:onProperty :of .
+
+:Leia_vs_Jabba a owl:NamedIndividual, :Confrontation, _:genid210;
+  :during :Escape_from_Carkoon;
+  :locatedIn :Khetanna;
+  :victoryOf :Leia_Organa;
+  :year 4;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Jabba_Desilijic_Tiure#Slaying_of_the_Hutt"^^xsd:anyURI .
+
+_:genid210 a owl:Restriction;
+  owl:someValuesFrom _:genid211;
+  owl:onProperty :included .
+
+_:genid211 a owl:Class;
+  owl:intersectionOf _:genid214 .
+
+_:genid214 a rdf:List;
+  rdf:rest _:genid212;
+  rdf:first :Killing .
+
+_:genid212 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid213 .
+
+_:genid213 a owl:Restriction;
+  owl:hasValue :Jabba;
+  owl:onProperty :of .
+
+:Luke_meets_Yoda a owl:NamedIndividual, :Training, _:genid215;
+  :after :Battle_of_Hoth;
+  :during :Galactic_Civil_War;
+  :locatedIn :Cave_of_Evil, :Yodas_Hut;
+  :participant :Luke_Skywalker, :Yoda;
+  :witnessedBy :R2-D2;
+  :year 3;
+  rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Searching_for_Yoda"^^xsd:anyURI .
+
+_:genid215 a owl:Restriction;
+  owl:someValuesFrom _:genid216;
+  owl:onProperty :participant .
+
+_:genid216 a owl:Class;
+  owl:intersectionOf _:genid219 .
+
+_:genid219 a rdf:List;
+  rdf:rest _:genid217;
+  rdf:first :X-Wing .
+
+_:genid217 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid218 .
+
+_:genid218 a owl:Restriction;
   owl:someValuesFrom :Swamp;
   owl:onProperty :locatedIn .
 
-:Luke_vs_Rancor a owl:NamedIndividual, :Fight, _:genid205, _:genid210;
+:Luke_vs_Rancor a owl:NamedIndividual, :Fight, _:genid220, _:genid225;
   :after :Defrosting_Han;
   :during :Rescue_of_Han_Solo;
   :locatedIn <#Jabba's_Palace>;
@@ -1023,60 +1090,60 @@ _:genid203 a owl:Restriction;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Luke_Skywalker_arrives_at_the_palace"^^xsd:anyURI .
 
-_:genid205 a owl:Restriction;
-  owl:someValuesFrom _:genid206;
+_:genid220 a owl:Restriction;
+  owl:someValuesFrom _:genid221;
   owl:onProperty :eatingOf .
 
-_:genid206 a owl:Class;
-  owl:intersectionOf _:genid209 .
+_:genid221 a owl:Class;
+  owl:intersectionOf _:genid224 .
 
-_:genid209 a rdf:List;
-  rdf:rest _:genid207;
+_:genid224 a rdf:List;
+  rdf:rest _:genid222;
   rdf:first :Gamorrean .
 
-_:genid207 a rdf:List;
+_:genid222 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid208 .
+  rdf:first _:genid223 .
 
-_:genid208 a owl:Restriction;
+_:genid223 a owl:Restriction;
   owl:someValuesFrom :Guard;
   owl:onProperty :hadRole .
 
-_:genid210 a owl:Restriction;
-  owl:someValuesFrom _:genid211;
+_:genid225 a owl:Restriction;
+  owl:someValuesFrom _:genid226;
   owl:onProperty :included .
 
-_:genid211 a owl:Class;
-  owl:intersectionOf _:genid218 .
+_:genid226 a owl:Class;
+  owl:intersectionOf _:genid233 .
 
-_:genid218 a rdf:List;
-  rdf:rest _:genid212;
+_:genid233 a rdf:List;
+  rdf:rest _:genid227;
   rdf:first :Death .
 
-_:genid212 a rdf:List;
+_:genid227 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid213 .
+  rdf:first _:genid228 .
 
-_:genid213 a owl:Restriction;
-  owl:someValuesFrom _:genid214;
+_:genid228 a owl:Restriction;
+  owl:someValuesFrom _:genid229;
   owl:onProperty :of .
 
-_:genid214 a owl:Class;
-  owl:intersectionOf _:genid217 .
+_:genid229 a owl:Class;
+  owl:intersectionOf _:genid232 .
 
-_:genid217 a rdf:List;
-  rdf:rest _:genid215;
+_:genid232 a rdf:List;
+  rdf:rest _:genid230;
   rdf:first :Rancor .
 
-_:genid215 a rdf:List;
+_:genid230 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid216 .
+  rdf:first _:genid231 .
 
-_:genid216 a owl:Restriction;
+_:genid231 a owl:Restriction;
   owl:hasValue :Jabba;
   owl:onProperty :ownedBy .
 
-:Murder_of_Oola a owl:NamedIndividual, :Murder, _:genid219;
+:Murder_of_Oola a owl:NamedIndividual, :Murder, _:genid234;
   :after :Bartering_for_Solo;
   :during :Rescue_of_Han_Solo;
   :eatingOf :Oola;
@@ -1087,26 +1154,26 @@ _:genid216 a owl:Restriction;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
 
-_:genid219 a owl:Restriction;
-  owl:someValuesFrom _:genid220;
+_:genid234 a owl:Restriction;
+  owl:someValuesFrom _:genid235;
   owl:onProperty :participant .
 
-_:genid220 a owl:Class;
-  owl:intersectionOf _:genid223 .
+_:genid235 a owl:Class;
+  owl:intersectionOf _:genid238 .
 
-_:genid223 a rdf:List;
-  rdf:rest _:genid221;
+_:genid238 a rdf:List;
+  rdf:rest _:genid236;
   rdf:first :Rancor .
 
-_:genid221 a rdf:List;
+_:genid236 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid222 .
+  rdf:first _:genid237 .
 
-_:genid222 a owl:Restriction;
+_:genid237 a owl:Restriction;
   owl:hasValue :Jabba;
   owl:onProperty :ownedBy .
 
-:Obi-Wan_vs_Vader_DeathStar a owl:NamedIndividual, :Duel, _:genid224;
+:Obi-Wan_vs_Vader_DeathStar a owl:NamedIndividual, :Duel, _:genid239;
   :after :Rescue_of_Leia;
   :during :Escape_from_Death_Star;
   :locatedIn :Death_Star_1;
@@ -1115,22 +1182,22 @@ _:genid222 a owl:Restriction;
   :year 0;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia#Duel_with_the_Dark_Lord"^^xsd:anyURI .
 
-_:genid224 a owl:Restriction;
-  owl:someValuesFrom _:genid225;
+_:genid239 a owl:Restriction;
+  owl:someValuesFrom _:genid240;
   owl:onProperty :included .
 
-_:genid225 a owl:Class;
-  owl:intersectionOf _:genid228 .
+_:genid240 a owl:Class;
+  owl:intersectionOf _:genid243 .
 
-_:genid228 a rdf:List;
-  rdf:rest _:genid226;
+_:genid243 a rdf:List;
+  rdf:rest _:genid241;
   rdf:first :Killing .
 
-_:genid226 a rdf:List;
+_:genid241 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid227 .
+  rdf:first _:genid242 .
 
-_:genid227 a owl:Restriction;
+_:genid242 a owl:Restriction;
   owl:hasValue :Obi-Wan_Kenobi;
   owl:onProperty :of .
 
@@ -1142,7 +1209,7 @@ _:genid227 a owl:Restriction;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi?so=search#Arriving_at_Jabba.27s_Palace"^^xsd:anyURI .
 
-:Rescue_of_Leia a owl:NamedIndividual, :Rescue, _:genid229;
+:Rescue_of_Leia a owl:NamedIndividual, :Rescue, _:genid244;
   :during :Escape_from_Death_Star;
   :locatedIn :Death_Star_1;
   :of :Leia_Organa;
@@ -1150,26 +1217,26 @@ _:genid227 a owl:Restriction;
   :year 0;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia"^^xsd:anyURI .
 
-_:genid229 a owl:Restriction;
-  owl:someValuesFrom _:genid230;
+_:genid244 a owl:Restriction;
+  owl:someValuesFrom _:genid245;
   owl:onProperty :locatedIn .
 
-_:genid230 a owl:Class;
-  owl:intersectionOf _:genid233 .
+_:genid245 a owl:Class;
+  owl:intersectionOf _:genid248 .
 
-_:genid233 a rdf:List;
-  rdf:rest _:genid231;
+_:genid248 a rdf:List;
+  rdf:rest _:genid246;
   rdf:first :Detention_Block .
 
-_:genid231 a rdf:List;
+_:genid246 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid232 .
+  rdf:first _:genid247 .
 
-_:genid232 a owl:Restriction;
+_:genid247 a owl:Restriction;
   owl:hasValue :Death_Star_1;
   owl:onProperty :locatedIn .
 
-:Run_on_Death_Star_2 a owl:NamedIndividual, :Attack, _:genid234, _:genid235;
+:Run_on_Death_Star_2 a owl:NamedIndividual, :Attack, _:genid249, _:genid250;
   :during :Battle_of_Endor;
   :locatedIn :Endor;
   :participant :Millenium_Falcon;
@@ -1177,65 +1244,15 @@ _:genid232 a owl:Restriction;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_space_battle"^^xsd:anyURI .
 
-_:genid234 a owl:Restriction;
+_:genid249 a owl:Restriction;
   owl:someValuesFrom :X-Wing;
   owl:onProperty :participant .
 
-_:genid235 a owl:Restriction;
+_:genid250 a owl:Restriction;
   owl:someValuesFrom :Reactor_Core;
   owl:onProperty :target .
-
-:Search_for_Luke a owl:NamedIndividual, :Rescue, _:genid236, _:genid241, _:genid242,
-    _:genid243;
-  :during :Galactic_Civil_War;
-  :locatedIn :Hoth;
-  :of :Luke_Skywalker .
-
-_:genid236 a owl:Restriction;
-  owl:someValuesFrom _:genid237;
-  owl:onProperty :included .
-
-_:genid237 a owl:Class;
-  owl:intersectionOf _:genid240 .
-
-_:genid240 a rdf:List;
-  rdf:rest _:genid238;
-  rdf:first :Death .
-
-_:genid238 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid239 .
-
-_:genid239 a owl:Restriction;
-  owl:someValuesFrom :Tauntaun;
-  owl:onProperty :of .
-
-_:genid241 a owl:Restriction;
-  owl:someValuesFrom :Wampa;
-  owl:onProperty :injuryOf .
-
-_:genid242 a owl:Restriction;
-  owl:someValuesFrom :Probe_Droid;
-  owl:onProperty :participant .
-
-_:genid243 a owl:Restriction;
-  owl:someValuesFrom _:genid244;
-  owl:onProperty :participant .
-
-_:genid244 a owl:Class;
-  owl:intersectionOf _:genid247 .
-
-_:genid247 a rdf:List;
-  rdf:rest _:genid245;
-  rdf:first :Force_spirit .
-
-_:genid245 a rdf:List;
-  rdf:rest rdf:nil;
-  rdf:first _:genid246 .
-
-_:genid246 a owl:Restriction;
-  owl:hasValue :Obi-Wan_Kenobi;
-  owl:onProperty :connectedTo .
+# 
+# https://nickdrummond.github.io/star-wars-ontology/ontologies#Search_for_Luke
 # 
 # https://nickdrummond.github.io/star-wars-ontology/ontologies#Speeder_Fight
 # 
@@ -1255,11 +1272,62 @@ _:genid246 a owl:Restriction;
 # 
 # Generated by the OWL API (version 5.1.19.2021-07-31T19:16:32Z) https://github.com/owlcs/owlapi/
 
-:Search_for_Luke :participant :Han_Solo;
+:Search_for_Luke a owl:NamedIndividual, :Rescue, _:genid251, _:genid256, _:genid257,
+    _:genid258;
+  :during :Galactic_Civil_War;
+  :locatedIn :Hoth;
+  :of :Luke_Skywalker;
+  :participant :Han_Solo;
   :year 3;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_search_for_Skywalker"^^xsd:anyURI .
 
-:Speeder_Fight a owl:NamedIndividual, :Fight, _:genid248, _:genid249;
+_:genid251 a owl:Restriction;
+  owl:someValuesFrom _:genid252;
+  owl:onProperty :included .
+
+_:genid252 a owl:Class;
+  owl:intersectionOf _:genid255 .
+
+_:genid255 a rdf:List;
+  rdf:rest _:genid253;
+  rdf:first :Death .
+
+_:genid253 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid254 .
+
+_:genid254 a owl:Restriction;
+  owl:someValuesFrom :Tauntaun;
+  owl:onProperty :of .
+
+_:genid256 a owl:Restriction;
+  owl:someValuesFrom :Wampa;
+  owl:onProperty :injuryOf .
+
+_:genid257 a owl:Restriction;
+  owl:someValuesFrom :Probe_Droid;
+  owl:onProperty :participant .
+
+_:genid258 a owl:Restriction;
+  owl:someValuesFrom _:genid259;
+  owl:onProperty :participant .
+
+_:genid259 a owl:Class;
+  owl:intersectionOf _:genid262 .
+
+_:genid262 a rdf:List;
+  rdf:rest _:genid260;
+  rdf:first :Force_spirit .
+
+_:genid260 a rdf:List;
+  rdf:rest rdf:nil;
+  rdf:first _:genid261 .
+
+_:genid261 a owl:Restriction;
+  owl:hasValue :Obi-Wan_Kenobi;
+  owl:onProperty :connectedTo .
+
+:Speeder_Fight a owl:NamedIndividual, :Fight, _:genid263, _:genid264;
   :during :Battle_of_Endor;
   :locatedIn :Endor;
   :participant :Leia_Organa, :Luke_Skywalker;
@@ -1267,34 +1335,34 @@ _:genid246 a owl:Restriction;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
 
-_:genid248 a owl:Restriction;
+_:genid263 a owl:Restriction;
   owl:someValuesFrom :Speeder_Bike;
   owl:onProperty :destructionOf .
 
-_:genid249 a owl:Restriction;
-  owl:someValuesFrom _:genid250;
+_:genid264 a owl:Restriction;
+  owl:someValuesFrom _:genid265;
   owl:onProperty :included .
 
-_:genid250 a owl:Class;
-  owl:intersectionOf _:genid254 .
+_:genid265 a owl:Class;
+  owl:intersectionOf _:genid269 .
 
-_:genid254 a rdf:List;
-  rdf:rest _:genid251;
+_:genid269 a rdf:List;
+  rdf:rest _:genid266;
   rdf:first :Death .
 
-_:genid251 a rdf:List;
+_:genid266 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid252 .
+  rdf:first _:genid267 .
 
-_:genid252 a owl:Restriction;
-  owl:someValuesFrom _:genid253;
+_:genid267 a owl:Restriction;
+  owl:someValuesFrom _:genid268;
   owl:onProperty :of .
 
-_:genid253 a owl:Restriction;
+_:genid268 a owl:Restriction;
   owl:someValuesFrom :StormTrooper;
   owl:onProperty :hadRole .
 
-:The_Disaster a owl:NamedIndividual, :Attack, _:genid255;
+:The_Disaster a owl:NamedIndividual, :Attack, _:genid270;
   :after :Han_vs_Greedo;
   :destructionOf :Alderaan;
   :during :Galactic_Civil_War;
@@ -1305,27 +1373,27 @@ _:genid253 a owl:Restriction;
   :year 0;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Disaster"^^xsd:anyURI .
 
-_:genid255 a owl:Restriction;
-  owl:someValuesFrom _:genid256;
+_:genid270 a owl:Restriction;
+  owl:someValuesFrom _:genid271;
   owl:onProperty :included .
 
-_:genid256 a owl:Class;
-  owl:intersectionOf _:genid259 .
+_:genid271 a owl:Class;
+  owl:intersectionOf _:genid274 .
 
-_:genid259 a rdf:List;
-  rdf:rest _:genid257;
+_:genid274 a rdf:List;
+  rdf:rest _:genid272;
   rdf:first :Death .
 
-_:genid257 a rdf:List;
+_:genid272 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid258 .
+  rdf:first _:genid273 .
 
-_:genid258 a owl:Restriction;
+_:genid273 a owl:Restriction;
   owl:hasValue :Bail_Organa;
   owl:onProperty :of .
 
-:Trap_on_Cloud_City a owl:NamedIndividual, :Confrontation, _:genid260, _:genid265,
-    _:genid274;
+:Trap_on_Cloud_City a owl:NamedIndividual, :Confrontation, _:genid275, _:genid280,
+    _:genid289;
   :after :Escape_from_Hoth, :Luke_meets_Yoda;
   :during :Galactic_Civil_War;
   :injuryOf :C-3PO;
@@ -1334,69 +1402,69 @@ _:genid258 a owl:Restriction;
   :year 3;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back#The_city_in_the_clouds"^^xsd:anyURI .
 
-_:genid260 a owl:Restriction;
-  owl:someValuesFrom _:genid261;
+_:genid275 a owl:Restriction;
+  owl:someValuesFrom _:genid276;
   owl:onProperty :included .
 
-_:genid261 a owl:Class;
-  owl:intersectionOf _:genid264 .
+_:genid276 a owl:Class;
+  owl:intersectionOf _:genid279 .
 
-_:genid264 a rdf:List;
-  rdf:rest _:genid262;
+_:genid279 a rdf:List;
+  rdf:rest _:genid277;
   rdf:first :Capture .
 
-_:genid262 a rdf:List;
+_:genid277 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid263 .
+  rdf:first _:genid278 .
 
-_:genid263 a owl:Restriction;
+_:genid278 a owl:Restriction;
   owl:hasValue :Han_Solo;
   owl:onProperty :of .
 
-_:genid265 a owl:Restriction;
-  owl:someValuesFrom _:genid266;
+_:genid280 a owl:Restriction;
+  owl:someValuesFrom _:genid281;
   owl:onProperty :included .
 
-_:genid266 a owl:Class;
-  owl:intersectionOf _:genid273 .
+_:genid281 a owl:Class;
+  owl:intersectionOf _:genid288 .
 
-_:genid273 a rdf:List;
-  rdf:rest _:genid271;
+_:genid288 a rdf:List;
+  rdf:rest _:genid286;
   rdf:first :Escape .
 
-_:genid271 a rdf:List;
-  rdf:rest _:genid269;
-  rdf:first _:genid272 .
+_:genid286 a rdf:List;
+  rdf:rest _:genid284;
+  rdf:first _:genid287 .
 
-_:genid269 a rdf:List;
-  rdf:rest _:genid267;
-  rdf:first _:genid270 .
+_:genid284 a rdf:List;
+  rdf:rest _:genid282;
+  rdf:first _:genid285 .
 
-_:genid267 a rdf:List;
+_:genid282 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid268 .
+  rdf:first _:genid283 .
 
-_:genid268 a owl:Restriction;
+_:genid283 a owl:Restriction;
   owl:hasValue :Leia_Organa;
   owl:onProperty :of .
 
-_:genid270 a owl:Restriction;
+_:genid285 a owl:Restriction;
   owl:hasValue :Chewbacca;
   owl:onProperty :of .
 
-_:genid272 a owl:Restriction;
+_:genid287 a owl:Restriction;
   owl:hasValue :Lando_Calrissian;
   owl:onProperty :assistedBy .
 
-_:genid274 a owl:Restriction;
-  owl:someValuesFrom _:genid275;
+_:genid289 a owl:Restriction;
+  owl:someValuesFrom _:genid290;
   owl:onProperty :participant .
 
-_:genid275 a owl:Restriction;
+_:genid290 a owl:Restriction;
   owl:someValuesFrom :StormTrooper;
   owl:onProperty :hadRole .
 
-:Trench_Run_1 a owl:NamedIndividual, :Attack, _:genid276, _:genid281, _:genid282;
+:Trench_Run_1 a owl:NamedIndividual, :Attack, _:genid291, _:genid296, _:genid297;
   :during :Battle_of_Yavin;
   :locatedIn :Meridian_Trench;
   :participant :Gold_Squadron, :Vaders_TIE_Advanced_x1;
@@ -1405,35 +1473,35 @@ _:genid275 a owl:Restriction;
   :year 0;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
 
-_:genid276 a owl:Restriction;
-  owl:someValuesFrom _:genid277;
+_:genid291 a owl:Restriction;
+  owl:someValuesFrom _:genid292;
   owl:onProperty :included .
 
-_:genid277 a owl:Class;
-  owl:intersectionOf _:genid280 .
+_:genid292 a owl:Class;
+  owl:intersectionOf _:genid295 .
 
-_:genid280 a rdf:List;
-  rdf:rest _:genid278;
+_:genid295 a rdf:List;
+  rdf:rest _:genid293;
   rdf:first :Killing .
 
-_:genid278 a rdf:List;
+_:genid293 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid279 .
+  rdf:first _:genid294 .
 
-_:genid279 a owl:Restriction;
+_:genid294 a owl:Restriction;
   owl:hasValue :Jon_Vander;
   owl:onProperty :of .
 
-_:genid281 a owl:Restriction;
+_:genid296 a owl:Restriction;
   owl:someValuesFrom :TIE_Fighter;
   owl:onProperty :participant .
 
-_:genid282 a owl:Restriction;
+_:genid297 a owl:Restriction;
   owl:onClass :Y-Wing;
   owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger;
   owl:onProperty :destructionOf .
 
-:Trench_Run_2 a owl:NamedIndividual, :Attack, _:genid283, _:genid284;
+:Trench_Run_2 a owl:NamedIndividual, :Attack, _:genid298, _:genid299;
   :after :Trench_Run_1;
   :during :Battle_of_Yavin;
   :locatedIn :Meridian_Trench;
@@ -1443,17 +1511,17 @@ _:genid282 a owl:Restriction;
   :year 0;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
 
-_:genid283 a owl:Restriction;
+_:genid298 a owl:Restriction;
   owl:someValuesFrom :TIE_Fighter;
   owl:onProperty :participant .
 
-_:genid284 a owl:Restriction;
+_:genid299 a owl:Restriction;
   owl:onClass :X-Wing;
   owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger;
   owl:onProperty :destructionOf .
 
-:Trench_Run_3 a owl:NamedIndividual, :Attack, _:genid285, _:genid294, _:genid299,
-    _:genid304, _:genid305, _:genid312, _:genid313;
+:Trench_Run_3 a owl:NamedIndividual, :Attack, _:genid300, _:genid309, _:genid314,
+    _:genid319, _:genid320, _:genid327, _:genid328;
   :after :Trench_Run_2;
   :damageOf :R2-D2;
   :during :Battle_of_Yavin;
@@ -1465,116 +1533,116 @@ _:genid284 a owl:Restriction;
   :year 0;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yavin#Trench_run"^^xsd:anyURI .
 
-_:genid285 a owl:Restriction;
-  owl:someValuesFrom _:genid286;
+_:genid300 a owl:Restriction;
+  owl:someValuesFrom _:genid301;
   owl:onProperty :included .
 
-_:genid286 a owl:Class;
-  owl:intersectionOf _:genid293 .
+_:genid301 a owl:Class;
+  owl:intersectionOf _:genid308 .
 
-_:genid293 a rdf:List;
-  rdf:rest _:genid291;
+_:genid308 a rdf:List;
+  rdf:rest _:genid306;
   rdf:first :Attack .
 
-_:genid291 a rdf:List;
-  rdf:rest _:genid289;
-  rdf:first _:genid292 .
+_:genid306 a rdf:List;
+  rdf:rest _:genid304;
+  rdf:first _:genid307 .
 
-_:genid289 a rdf:List;
-  rdf:rest _:genid287;
-  rdf:first _:genid290 .
+_:genid304 a rdf:List;
+  rdf:rest _:genid302;
+  rdf:first _:genid305 .
 
-_:genid287 a rdf:List;
+_:genid302 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid288 .
+  rdf:first _:genid303 .
 
-_:genid288 a owl:Restriction;
+_:genid303 a owl:Restriction;
   owl:onClass :TIE_Fighter;
   owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger;
   owl:onProperty :destructionOf .
 
-_:genid290 a owl:Restriction;
+_:genid305 a owl:Restriction;
   owl:hasValue :Millenium_Falcon;
   owl:onProperty :victoryOf .
 
-_:genid292 a owl:Restriction;
+_:genid307 a owl:Restriction;
   owl:hasValue :Vaders_TIE_Advanced_x1;
   owl:onProperty :damageOf .
 
-_:genid294 a owl:Restriction;
-  owl:someValuesFrom _:genid295;
+_:genid309 a owl:Restriction;
+  owl:someValuesFrom _:genid310;
   owl:onProperty :included .
 
-_:genid295 a owl:Class;
-  owl:intersectionOf _:genid298 .
+_:genid310 a owl:Class;
+  owl:intersectionOf _:genid313 .
 
-_:genid298 a rdf:List;
-  rdf:rest _:genid296;
+_:genid313 a rdf:List;
+  rdf:rest _:genid311;
   rdf:first :Escape .
 
-_:genid296 a rdf:List;
+_:genid311 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid297 .
+  rdf:first _:genid312 .
 
-_:genid297 a owl:Restriction;
+_:genid312 a owl:Restriction;
   owl:hasValue :Wedge_Antilles;
   owl:onProperty :of .
 
-_:genid299 a owl:Restriction;
-  owl:someValuesFrom _:genid300;
+_:genid314 a owl:Restriction;
+  owl:someValuesFrom _:genid315;
   owl:onProperty :included .
 
-_:genid300 a owl:Class;
-  owl:intersectionOf _:genid303 .
+_:genid315 a owl:Class;
+  owl:intersectionOf _:genid318 .
 
-_:genid303 a rdf:List;
-  rdf:rest _:genid301;
+_:genid318 a rdf:List;
+  rdf:rest _:genid316;
   rdf:first :Killing .
 
-_:genid301 a rdf:List;
+_:genid316 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid302 .
+  rdf:first _:genid317 .
 
-_:genid302 a owl:Restriction;
+_:genid317 a owl:Restriction;
   owl:hasValue :Biggs_Darklighter;
   owl:onProperty :of .
 
-_:genid304 a owl:Restriction;
+_:genid319 a owl:Restriction;
   owl:someValuesFrom :TIE_Fighter;
   owl:onProperty :participant .
 
-_:genid305 a owl:Restriction;
-  owl:someValuesFrom _:genid306;
+_:genid320 a owl:Restriction;
+  owl:someValuesFrom _:genid321;
   owl:onProperty :participant .
 
-_:genid306 a owl:Class;
-  owl:intersectionOf _:genid311 .
+_:genid321 a owl:Class;
+  owl:intersectionOf _:genid326 .
 
-_:genid311 a rdf:List;
-  rdf:rest _:genid309;
+_:genid326 a rdf:List;
+  rdf:rest _:genid324;
   rdf:first :Force_Bond .
 
-_:genid309 a rdf:List;
-  rdf:rest _:genid307;
-  rdf:first _:genid310 .
+_:genid324 a rdf:List;
+  rdf:rest _:genid322;
+  rdf:first _:genid325 .
 
-_:genid307 a rdf:List;
+_:genid322 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid308 .
+  rdf:first _:genid323 .
 
-_:genid308 a owl:Restriction;
+_:genid323 a owl:Restriction;
   owl:hasValue :Obi-Wan_Kenobi;
   owl:onProperty :connectedTo .
 
-_:genid310 a owl:Restriction;
+_:genid325 a owl:Restriction;
   owl:hasValue :Luke_Skywalker;
   owl:onProperty :connectedTo .
 
-_:genid312 a owl:Restriction;
+_:genid327 a owl:Restriction;
   owl:someValuesFrom :Proton_Torpedo;
   owl:onProperty :used .
 
-_:genid313 a owl:Restriction;
+_:genid328 a owl:Restriction;
   owl:onClass :X-Wing;
   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
   owl:onProperty :destructionOf .
@@ -1587,7 +1655,7 @@ _:genid313 a owl:Restriction;
   :year 3;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Vader.27s_trap"^^xsd:anyURI .
 
-:Yoda_becomes_One_with_the_Force a owl:NamedIndividual, :Event, _:genid314, _:genid319;
+:Yoda_becomes_One_with_the_Force a owl:NamedIndividual, :Event, _:genid329, _:genid334;
   :after :Rescue_of_Han_Solo;
   :during :Galactic_Civil_War;
   :locatedIn :Yodas_Hut;
@@ -1595,40 +1663,40 @@ _:genid313 a owl:Restriction;
   :year 4;
   rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda#Death"^^xsd:anyURI .
 
-_:genid314 a owl:Restriction;
-  owl:someValuesFrom _:genid315;
+_:genid329 a owl:Restriction;
+  owl:someValuesFrom _:genid330;
   owl:onProperty :included .
 
-_:genid315 a owl:Class;
-  owl:intersectionOf _:genid318 .
+_:genid330 a owl:Class;
+  owl:intersectionOf _:genid333 .
 
-_:genid318 a rdf:List;
-  rdf:rest _:genid316;
+_:genid333 a rdf:List;
+  rdf:rest _:genid331;
   rdf:first :Death .
 
-_:genid316 a rdf:List;
+_:genid331 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid317 .
+  rdf:first _:genid332 .
 
-_:genid317 a owl:Restriction;
+_:genid332 a owl:Restriction;
   owl:hasValue :Yoda;
   owl:onProperty :of .
 
-_:genid319 a owl:Restriction;
-  owl:someValuesFrom _:genid320;
+_:genid334 a owl:Restriction;
+  owl:someValuesFrom _:genid335;
   owl:onProperty :participant .
 
-_:genid320 a owl:Class;
-  owl:intersectionOf _:genid323 .
+_:genid335 a owl:Class;
+  owl:intersectionOf _:genid338 .
 
-_:genid323 a rdf:List;
-  rdf:rest _:genid321;
+_:genid338 a rdf:List;
+  rdf:rest _:genid336;
   rdf:first :Force_spirit .
 
-_:genid321 a rdf:List;
+_:genid336 a rdf:List;
   rdf:rest rdf:nil;
-  rdf:first _:genid322 .
+  rdf:first _:genid337 .
 
-_:genid322 a owl:Restriction;
+_:genid337 a owl:Restriction;
   owl:hasValue :Obi-Wan_Kenobi;
   owl:onProperty :connectedTo .

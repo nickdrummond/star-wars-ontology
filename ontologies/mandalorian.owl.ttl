@@ -17,12 +17,31 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mandalorian"^^xsd:anyURI .
 
 #################################################################
+#    Classes
+#################################################################
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trading
+:Trading rdf:type owl:Class .
+
+
+#################################################################
 #    Individuals
 #################################################################
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#An_off_the_books_job
 :An_off_the_books_job rdf:type owl:NamedIndividual ,
                                :Job ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Trading
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:someValuesFrom :Beskar
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :participant ;
                                  owl:someValuesFrom :TT-8L_Gatekeeper_Droid
@@ -33,10 +52,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                       owl:onProperty :hadRole ;
                                                       owl:someValuesFrom :StormTrooper
                                                     ]
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :traded ;
-                                 owl:someValuesFrom :Beskar
                                ] ;
                       :after :Capture_the_Mythrol ;
                       :locatedIn :Navarro ;
@@ -145,19 +160,26 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                    ]
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :participant ;
-                                owl:someValuesFrom :Ravinak
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :traded ;
-                                owl:someValuesFrom [ owl:intersectionOf ( :Money
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Trading
                                                                           [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :ownedBy ;
-                                                                            owl:hasValue :Greef_Karga
+                                                                            owl:onProperty :of ;
+                                                                            owl:someValuesFrom [ owl:intersectionOf ( :Money
+                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :ownedBy ;
+                                                                                                                        owl:hasValue :Greef_Karga
+                                                                                                                      ]
+                                                                                                                    ) ;
+                                                                                                 rdf:type owl:Class
+                                                                                               ]
                                                                           ]
                                                                         ) ;
                                                      rdf:type owl:Class
                                                    ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :participant ;
+                                owl:someValuesFrom :Ravinak
                               ] ;
                      :locatedIn :Maldo_Kreis ;
                      :participant :Din_Djarin ,
@@ -183,11 +205,18 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                  ]
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :traded ;
-                              owl:someValuesFrom [ owl:intersectionOf ( :Weapon
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Trading
                                                                         [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :madeOf ;
-                                                                          owl:someValuesFrom :Beskar
+                                                                          owl:onProperty :of ;
+                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Weapon
+                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty :madeOf ;
+                                                                                                                      owl:someValuesFrom :Beskar
+                                                                                                                    ]
+                                                                                                                  ) ;
+                                                                                               rdf:type owl:Class
+                                                                                             ]
                                                                         ]
                                                                       ) ;
                                                    rdf:type owl:Class
@@ -1211,13 +1240,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                                owl:someValuesFrom :Bounty_Hunter
                                                                                              ]
                                                                         ]
-                                                                      ) ;
-                                                   rdf:type owl:Class
-                                                 ]
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :included ;
-                              owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                         [ rdf:type owl:Restriction ;
                                                                           owl:onProperty :of ;
                                                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
@@ -1241,8 +1263,19 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                  ]
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :traded ;
-                              owl:someValuesFrom :Beskar
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Trading
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:someValuesFrom :Beskar
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :Grogu
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :participant ;
@@ -1255,7 +1288,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                 :Pershing ,
                                 :The_Armorer ,
                                 :The_Client ;
-                   :traded :Grogu ;
                    :year 9 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_3:_The_Sin"^^xsd:anyURI .
 

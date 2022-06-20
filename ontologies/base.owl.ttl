@@ -309,6 +309,11 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
                 rdfs:range :Actor .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#inExchangeFor
+:inExchangeFor rdf:type owl:ObjectProperty ;
+               rdfs:domain :Trading .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#inOrganisation
 :inOrganisation rdf:type owl:ObjectProperty ;
                 rdfs:domain :Role ;
@@ -5102,7 +5107,14 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trading
 :Trading rdf:type owl:Class ;
-         rdfs:subClassOf :TransferOfOwnership .
+         owl:equivalentClass [ owl:intersectionOf ( :TransferOfOwnership
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :inExchangeFor ;
+                                                      owl:someValuesFrom owl:Thing
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Train

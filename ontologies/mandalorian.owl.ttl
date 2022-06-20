@@ -33,10 +33,22 @@ There is no assertion of correctness or completeness by myself - content has bee
                                :Job ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :included ;
-                                 owl:someValuesFrom [ owl:intersectionOf ( :Trading
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Transfer
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :inExchangeFor ;
+                                                                             owl:someValuesFrom :Job
+                                                                           ]
                                                                            [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :of ;
                                                                              owl:someValuesFrom :Beskar
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :from ;
+                                                                             owl:hasValue :The_Client
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :to ;
+                                                                             owl:hasValue :Din_Djarin
                                                                            ]
                                                                          ) ;
                                                       rdf:type owl:Class
@@ -60,7 +72,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                                    :Pershing ,
                                    :The_Armorer ;
                       :year 9 ;
-                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin#The_new_job"^^xsd:anyURI .
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin#The_new_job"^^xsd:anyURI ;
+                      :todo "Seperate the visit to the Armourer"^^xsd:string .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Boba_vs_Bib
@@ -1266,12 +1279,20 @@ There is no assertion of correctness or completeness by myself - content has bee
                               owl:onProperty :included ;
                               owl:someValuesFrom [ owl:intersectionOf ( :Trading
                                                                         [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :of ;
+                                                                          owl:onProperty :inExchangeFor ;
                                                                           owl:someValuesFrom :Beskar
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :from ;
+                                                                          owl:hasValue :Din_Djarin
                                                                         ]
                                                                         [ rdf:type owl:Restriction ;
                                                                           owl:onProperty :of ;
                                                                           owl:hasValue :Grogu
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :to ;
+                                                                          owl:hasValue :The_Client
                                                                         ]
                                                                       ) ;
                                                    rdf:type owl:Class

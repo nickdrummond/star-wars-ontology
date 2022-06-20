@@ -402,6 +402,7 @@ eg Pilot and (inOrganisation value Rebel_Alliance)"""^^xsd:string .
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#of
 :of rdf:type owl:ObjectProperty ;
     rdfs:subPropertyOf :participant ;
+    owl:inverseOf :subjectOf ;
     rdfs:comment """Denotes the main subject of an event:
 
 Murder of X
@@ -555,6 +556,11 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan"""^^xsd:string .
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#stunningOf
 :stunningOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :survivedBy .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#subjectOf
+:subjectOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :participatedIn .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#survivedBy
@@ -1133,7 +1139,13 @@ or minus is BBY"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bridge
 :Bridge rdf:type owl:Class ;
-        rdfs:subClassOf :Facility .
+        rdfs:subClassOf :Facility ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Bridge_(starship)"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bridge_structure
+:Bridge_structure rdf:type owl:Class ;
+                  rdfs:subClassOf :Facility .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Briefing
@@ -3940,7 +3952,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Plasma_Bridge
 :Plasma_Bridge rdf:type owl:Class ;
-               rdfs:subClassOf :Bridge ;
+               rdfs:subClassOf :Bridge_structure ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Plasma_bridge"^^xsd:anyURI .
 
 
@@ -6042,6 +6054,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Bridge
+                :Bridge_structure
                 :Detention_Block
                 :Engine
                 :Fuel_Depot

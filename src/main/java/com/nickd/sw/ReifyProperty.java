@@ -29,7 +29,7 @@ public class ReifyProperty {
 
         helper.mngr.applyChanges(changes);
 
-        helper.saveAll();
+        helper.saveChanged();
     }
 
     public ReifyProperty(OWLObjectProperty targetProperty,

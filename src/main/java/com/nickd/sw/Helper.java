@@ -7,6 +7,8 @@ import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Helper {
 
@@ -20,14 +22,16 @@ public class Helper {
     public long timeToLoad;
     public long timeToClassify;
 
+    private Set<OWLOntology> changedOntologies = new HashSet<>();
+
     public Helper(String iri, OWLOntologyIRIMapper ontologyIRIMapper) throws OWLOntologyCreationException {
         mngr = new OWLManager().get();
         mngr.setIRIMappers(Collections.singleton(ontologyIRIMapper));
-        //mngr.addOntologyLoaderListener(new LoadLogger());
-        df = mngr.getOWLDataFactory();
+        mngr.addOntologyChangeListener(list -> list.forEach(c -> changedOntologies.add(c.getOntology())));
 
         long start = System.currentTimeMillis();
         ont = mngr.loadOntology(IRI.create(iri));
+        df = mngr.getOWLDataFactory();
         timeToLoad = System.currentTimeMillis() - start;
         System.out.println("Loaded in " + timeToLoad + "ms");
     }
@@ -38,6 +42,10 @@ public class Helper {
 
     public OWLObjectProperty prop(String s) {
         return df.getOWLObjectProperty(IRI.create(BASE + "#" + s));
+    }
+
+    public OWLDataProperty dataProp(String s) {
+        return df.getOWLDataProperty(IRI.create(BASE + "#" + s));
     }
 
     public OWLClass cls(String s) {
@@ -58,8 +66,8 @@ public class Helper {
         System.out.println("Classified in " + timeToClassify + "ms");
     }
 
-    public void saveAll() throws OWLOntologyStorageException {
-        for (OWLOntology o : mngr.getOntologies()) {
+    public void saveChanged() throws OWLOntologyStorageException {
+        for (OWLOntology o : changedOntologies) {
             mngr.saveOntology(o);
         }
     }

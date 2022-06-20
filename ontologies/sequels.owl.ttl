@@ -217,6 +217,48 @@ There is no assertion of correctness or completeness by myself - content has bee
                           :Battle ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:someValuesFrom :Superlaser_siege_cannon
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :destructionOf ;
+                                                                        owl:hasValue :Crait_outpost
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :used ;
+                                                                        owl:someValuesFrom :V-4X-D_ski_speeder
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :injuryOf ;
+                                                                        owl:hasValue :Rose_Tico
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Finn
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Rose_Tico
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :survivedBy ;
+                                                                        owl:hasValue :Finn
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Death
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :of ;
@@ -242,32 +284,39 @@ There is no assertion of correctness or completeness by myself - content has bee
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :of ;
-                                                                        owl:hasValue :Luke_Skywalker
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :of ;
                                                                         owl:someValuesFrom :Vulptex
                                                                       ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty :memberOf ;
+                                                                                             owl:hasValue :Resistance
+                                                                                           ]
+                                                                      ]
                                                                     ) ;
                                                  rdf:type owl:Class
                                                ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                            owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                       [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :of ;
-                                                                        owl:hasValue :Resistance
+                                                                        owl:onProperty :remoteParticipant ;
+                                                                        owl:someValuesFrom [ owl:intersectionOf ( :The_Force
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty :connectedTo ;
+                                                                                                                    owl:hasValue :Luke_Skywalker
+                                                                                                                  ]
+                                                                                                                ) ;
+                                                                                             rdf:type owl:Class
+                                                                                           ]
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Kylo_Ren
                                                                       ]
                                                                     ) ;
                                                  rdf:type owl:Class
@@ -275,11 +324,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :participant ;
-                            owl:someValuesFrom :Speeder
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :participant ;
-                            owl:someValuesFrom :Superlaser_siege_cannon
+                            owl:someValuesFrom :AT-M6
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :participant ;
@@ -287,19 +332,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :participant ;
-                            owl:someValuesFrom :Walker
+                            owl:someValuesFrom :V-4X-D_ski_speeder
                           ] ;
                  :after :Battle_of_Oetchi ;
-                 :destructionOf :Crait_outpost ;
                  :during :First_Order-Resistance_War ;
-                 :injuryOf :Rose_Tico ;
                  :locatedIn :Crait_outpost ;
                  :participant :First_Order ,
                               :Kylo_Ren ,
                               :Millenium_Falcon ;
-                 :survivedBy :Finn ;
                  :year 34 ;
-                 rdfs:comment "Luke is actually on Ahch-To, Force projecting to Crait."^^xsd:string ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Crait"^^xsd:anyURI .
 
 
@@ -918,6 +959,16 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hosnian_Cataclysm
 :Hosnian_Cataclysm rdf:type owl:NamedIndividual ;
                    :after :Battle_of_Takodana .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Luke_becomes_one_with_the_Force
+:Luke_becomes_one_with_the_Force rdf:type owl:NamedIndividual ,
+                                          :Death ;
+                                 :during :Battle_of_Crait ;
+                                 :locatedIn :First_Jedi_Temple ;
+                                 :of :Luke_Skywalker ;
+                                 :year 34 ;
+                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Finding_peace_and_purpose"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Meeting_Maz

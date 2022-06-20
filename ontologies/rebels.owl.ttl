@@ -6977,6 +6977,21 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Prison_Revolt rdf:type owl:NamedIndividual ,
                         :Escape ,
                         [ rdf:type owl:Restriction ;
+                          owl:onProperty :included ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :of ;
+                                                                      owl:hasValue :Ephraim_Bridger
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :of ;
+                                                                      owl:hasValue :Mira_Bridger
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
                           owl:onProperty :locatedIn ;
                           owl:someValuesFrom [ owl:intersectionOf ( :Prison
                                                                     [ rdf:type owl:Restriction ;
@@ -6996,9 +7011,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                         ] ;
                :after :A_message_of_rebellion ;
                :during :Galactic_Civil_War ;
-               :of :Ephraim_Bridger ,
-                   :Mira_Bridger ,
-                   :Ryder_Azadi ;
+               :of :Ryder_Azadi ;
                :year -3 ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Revolt_in_an_Imperial_prison"^^xsd:anyURI .
 

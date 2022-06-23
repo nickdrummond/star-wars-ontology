@@ -119,6 +119,11 @@ We need to query for the org and its parts:
 It makes sense to distinguish, as not all roles are equivalent when looking at the whole:
 A leader of a unit does not make a leader of the army.
 
+### Unknown membership
+
+A surprisingly large number of ```Bounty Hunters``` are
+[not know to be members of the guild](https://star-wars-ontology.herokuapp.com/dlquery/?expression=hadRole+some+Bounty_Hunter&minus=memberOf+value+Bounty_Hunters_Guild&syntax=man&query=instances)
+
 ## Born/died before the Battle of Yavin
 Can we do this relative to an event? 
 ie more granular so we catch Scarif (the same year)

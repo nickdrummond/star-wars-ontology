@@ -35,6 +35,20 @@ Pellet note - min/max Exclusive causing error in unknown circumstances:
 
     InternalReasonerException: Adding type to a pruned node "anon(222)" http://www.w3.org/2001/XMLSchema#int
 
+## Expressivity
+
+Currently [reported](http://star-wars-ontology.herokuapp.com/ontologies/-1715300141) as:
+* RRESTR role domain/range
+* C concept complex negation (disjoints, differentFrom)
+* U concept union
+* CINT concept intersection
+* UNIVRESTR universals
+* E full existential - (non Top fillers)
+* R role complex (refl chains, hierarchy, transitivive)
+* O nominals
+* I role inverses
+* Q = (N + F) cardinality and  functional roles
+* (D) datatypes/roles
 
 ## Speed Tests
 We have some basic metrics being checked - see [ConsistencyTest](../src/test/java/com/nickd/sw/ConsistencyTest.java)

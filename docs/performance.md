@@ -22,13 +22,13 @@ reasoning and querying with ```events.owl.ttl```
 
 Initial testing on `all.owl` using `participatedIn some Murder`:
 
-|Reasoner |Works? | Notes
---- | --- | --- 
-|Pellet                 |Yes       | Fast. See notes on datatype restrs *
-|Pellet (Incremental)   |Yes-ish   | DL Query not working? see above for other issues
-|HermiT                 |Yes       | Slow. 66-72s
-|JFact                  |?         | Need to build from source?
-|ELK                    |Partially | fast but v. incomplete - finds Ochi, Ziro but ignores all results from Events. Does not support DataPropertyAssertions, some DataHasValue, some Unions. Some tabs do not work
+| Reasoner             | Works?    | Notes                                                                                                                                                                         |
+|----------------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Pellet               | Yes       | Fast. See notes on datatype restrs *                                                                                                                                          |
+| Pellet (Incremental) | Yes-ish   | DL Query not working? see above for other issues                                                                                                                              |
+| HermiT               | Yes       | Slow. 66-72s                                                                                                                                                                  |
+| JFact                | ?         | Need to build from source?                                                                                                                                                    |
+| ELK                  | Partially | fast but v. incomplete - finds Ochi, Ziro but ignores all results from Events. Does not support DataPropertyAssertions, some DataHasValue, some Unions. Some tabs do not work |
 
 Pellet note - min/max Exclusive causing error in unknown circumstances:
   

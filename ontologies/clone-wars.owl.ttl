@@ -703,6 +703,48 @@ There is no assertion of correctness or completeness by myself - content has bee
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Rookies"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_on_a_Republic_cruiser
+:Attack_on_a_Republic_cruiser rdf:type owl:NamedIndividual ,
+                                       :Attack ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty :hadRole ;
+                                                                                                          owl:someValuesFrom :Mandalorian
+                                                                                                        ]
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :of ;
+                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :hadRole ;
+                                                              owl:someValuesFrom :Mandalorian
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :participant ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Ship
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :ownedBy ;
+                                                                                     owl:hasValue :Galactic_Republic
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ;
+                              :after :Battle_of_Saleucami ;
+                              :during :Clone_Wars ;
+                              :year -21 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Attack_on_a_Republic_cruiser"^^xsd:anyURI ,
+                                           "https://starwars.fandom.com/wiki/The_Mandalore_Plot"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_on_the_Assembly_plant
 :Attack_on_the_Assembly_plant rdf:type owl:NamedIndividual ,
                                        :Attack ,
@@ -4713,6 +4755,85 @@ There is no assertion of correctness or completeness by myself - content has bee
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Skirmish_at_Vanqor"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mission_to_Concordia
+:Mission_to_Concordia rdf:type owl:NamedIndividual ,
+                               :Mission ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Duel
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                                         owl:oneOf ( :Pre_Vizla
+                                                                                                                                   )
+                                                                                                                       ]
+                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                         owl:onProperty :used ;
+                                                                                                                         owl:hasValue :Darksaber
+                                                                                                                       ]
+                                                                                                                     ) ;
+                                                                                                  rdf:type owl:Class
+                                                                                                ]
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Obi-Wan_Kenobi
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                           [ owl:intersectionOf ( :Capture
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty :of ;
+                                                                                                    owl:hasValue :Obi-Wan_Kenobi
+                                                                                                  ]
+                                                                                                ) ;
+                                                                             rdf:type owl:Class
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :locatedIn ;
+                                                                             owl:someValuesFrom :Mine
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty :memberOf ;
+                                                                                                  owl:hasValue :Death_Watch
+                                                                                                ]
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Obi-Wan_Kenobi
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Satine_Kryze
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      :after :Obi-Wan_meets_the_Duchess ;
+                      :during :Clone_Wars ;
+                      :locatedIn :Concordia ;
+                      :participant :Obi-Wan_Kenobi ,
+                                   :Pre_Vizla ,
+                                   :Satine_Kryze ;
+                      :year -21 ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mandalore_Plot"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mission_to_Mortis
 :Mission_to_Mortis rdf:type owl:NamedIndividual ,
                             :Mission ,
@@ -5804,6 +5925,65 @@ There is no assertion of correctness or completeness by myself - content has bee
                 :of :Ziro ;
                 :participant :Sy_Snootles ;
                 :year -21 .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Obi-Wan_meets_the_Duchess
+:Obi-Wan_meets_the_Duchess rdf:type owl:NamedIndividual ,
+                                    :Meeting ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :injuryOf ;
+                                                                                  owl:someValuesFrom :Human
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :used ;
+                                                                                  owl:someValuesFrom :Explosive
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :destructionOf ;
+                                                                                  owl:hasValue :Memorial_Shrine
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:hasValue :Death_Watch_bomber
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
+                                                                                [ owl:intersectionOf ( :Death
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty :of ;
+                                                                                                         owl:hasValue :Death_Watch_bomber
+                                                                                                       ]
+                                                                                                     ) ;
+                                                                                  rdf:type owl:Class
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Obi-Wan_Kenobi
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           :about :Attack_on_a_Republic_cruiser ,
+                                  :Death_Watch ;
+                           :after :Attack_on_a_Republic_cruiser ;
+                           :during :Clone_Wars ;
+                           :locatedIn :Sundari ;
+                           :orderedBy :Jedi_High_Council ;
+                           :participant :Almec ,
+                                        :Obi-Wan_Kenobi ,
+                                        :Satine_Kryze ;
+                           :year -21 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Bombing_of_the_Memorial_Shrine"^^xsd:anyURI ,
+                                        "https://starwars.fandom.com/wiki/The_Mandalore_Plot"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Obi-Wan_vs_Asajj
@@ -6926,7 +7106,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                                             :Kix ,
                                             :Shaeeah_Lawquane ,
                                             :Suu_Lawquane ;
-                               :year -21 .
+                               :year -21 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Deserter"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Run-in_with_Poletecs
@@ -6991,6 +7172,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :included ;
                                           owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :locatedIn ;
+                                                                                      owl:someValuesFrom :Train
+                                                                                    ]
                                                                                     [ rdf:type owl:Restriction ;
                                                                                       owl:onProperty :of ;
                                                                                       owl:hasValue :Cassilyda_Cryar

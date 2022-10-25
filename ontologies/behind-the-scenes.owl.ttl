@@ -4,18 +4,16 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@base <https://nickdrummond.github.io/star-wars-ontology/ontologies/behind-the-scenes.owl.ttl> .
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/behind-the-scenes.owl.ttl> rdf:type owl:Ontology ;
-                                                                                         owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/all.owl.ttl> ;
-                                                                                         rdfs:comment "Out of Universe descriptions, including properties and Classes needed to describe them."^^xsd:string ;
-                                                                                         rdfs:comment """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
+                                                                                          owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/all.owl.ttl> ;
+                                                                                          rdfs:comment "Out of Universe descriptions, including properties and Classes needed to describe them."^^xsd:string ,
+                                                                                                       """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
 
 All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
 
 There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia)."""^^xsd:string .
-
-
 
 #################################################################
 #    Object Properties
@@ -42,9 +40,121 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Entertainer rdf:type owl:Class .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Puppeteer-Vocation
+:Puppeteer-Vocation rdf:type owl:Class ;
+                    rdfs:subClassOf :Actor-Vocation .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Voice-Actor-Vocation
+:Voice-Actor-Vocation rdf:type owl:Class ;
+                      rdfs:subClassOf :Actor-Vocation .
+
+
 #################################################################
 #    Individuals
 #################################################################
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Alec_Guinness
+:Alec_Guinness rdf:type owl:NamedIndividual ,
+                        :Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :depicted ;
+                                                                      owl:hasValue :Obi-Wan_Kenobi
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Alec_Guinness"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Alex_McCrindle
+:Alex_McCrindle rdf:type owl:NamedIndividual ,
+                         :Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :depicted ;
+                                                                       owl:hasValue :Jan_Dodonna
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Alex_McCrindle"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Anthony_Daniels
+:Anthony_Daniels rdf:type owl:NamedIndividual ,
+                          :Human ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hadRole ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :depicted ;
+                                                                        owl:hasValue :C-3PO
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Anthony_Daniels"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Billy_Dee_Williams
+:Billy_Dee_Williams rdf:type owl:NamedIndividual ,
+                             :Human ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :depicted ;
+                                                                           owl:hasValue :Lando_Calrissian
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Billy_Dee_Williams"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bonnie_Maree_Piesse
+:Bonnie_Maree_Piesse rdf:type owl:NamedIndividual ,
+                              :Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hadRole ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :depicted ;
+                                                                            owl:hasValue :Beru_Whitesun_Lars
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Bonnie_Maree_Piesse"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Caroline_Blakiston
+:Caroline_Blakiston rdf:type owl:NamedIndividual ,
+                             :Human ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :depicted ;
+                                                                           owl:hasValue :Mon_Mothma
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Caroline_Blakiston"^^xsd:anyURI .
+
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Carrie_Fisher
 :Carrie_Fisher rdf:type owl:NamedIndividual ,
@@ -61,6 +171,126 @@ There is no assertion of correctness or completeness by myself - content has bee
                                              ]
                         ] ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Carrie_Fisher"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#David_Prowse
+:David_Prowse rdf:type owl:NamedIndividual ,
+                       :Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :depicted ;
+                                                                     owl:hasValue :Darth_Vader
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/David_Prowse"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Denis_Lawson
+:Denis_Lawson rdf:type owl:NamedIndividual ,
+                       :Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :depicted ;
+                                                                     owl:hasValue :Wedge_Antilles
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Denis_Lawson"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ewan_McGregor
+:Ewan_McGregor rdf:type owl:NamedIndividual ,
+                        :Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadMother ;
+                          owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hadBrother ;
+                                               owl:hasValue :Denis_Lawson
+                                             ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :depicted ;
+                                                                      owl:hasValue :Obi-Wan_Kenobi
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Ewan_McGregor"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Frank_Oz
+:Frank_Oz rdf:type owl:NamedIndividual ,
+                   :Human ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :hadRole ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Puppeteer-Vocation
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :depicted ;
+                                                                 owl:hasValue :Yoda
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :hadRole ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :depicted ;
+                                                                 owl:hasValue :Yoda
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                   ] ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Frank_Oz"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Garrick_Hagon
+:Garrick_Hagon rdf:type owl:NamedIndividual ,
+                        :Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :depicted ;
+                                                                      owl:hasValue :Biggs_Darklighter
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Garrick_Hagon"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Genevieve_OReilly
+:Genevieve_OReilly rdf:type owl:NamedIndividual ,
+                            :Human ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hadRole ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :depicted ;
+                                                                          owl:hasValue :Mon_Mothma
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Genevieve_O%27Reilly"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Harrison_Ford
@@ -80,6 +310,215 @@ There is no assertion of correctness or completeness by myself - content has bee
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Harrison_Ford"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hayden_Christensen
+:Hayden_Christensen rdf:type owl:NamedIndividual ,
+                             :Human ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :depicted ;
+                                                                           owl:hasValue :Anakin_Skywalker
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hadRole ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :depicted ;
+                                                                           owl:hasValue :Darth_Vader
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Hayden_Christensen"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ian_McDiarmid
+:Ian_McDiarmid rdf:type owl:NamedIndividual ,
+                        :Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :depicted ;
+                                                                      owl:hasValue :Sheev_Palpatine
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Ian_McDiarmid"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ian_McElhinney
+:Ian_McElhinney rdf:type owl:NamedIndividual ,
+                         :Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :depicted ;
+                                                                       owl:hasValue :Jan_Dodonna
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Ian_McElhinney"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Jake_Lloyd
+:Jake_Lloyd rdf:type owl:NamedIndividual ,
+                     :Human ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hadRole ;
+                       owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :depicted ;
+                                                                   owl:hasValue :Anakin_Skywalker
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ]
+                     ] ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Jake_Lloyd"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#James_Earl_Jones
+:James_Earl_Jones rdf:type owl:NamedIndividual ,
+                           :Human ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :depicted ;
+                                                                         owl:hasValue :Darth_Vader
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/James_Earl_Jones"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Jason_Wingreen
+:Jason_Wingreen rdf:type owl:NamedIndividual ,
+                         :Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :depicted ;
+                                                                       owl:hasValue :Boba_Fett
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Jason_Wingreen"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Jeremy_Bulloch
+:Jeremy_Bulloch rdf:type owl:NamedIndividual ,
+                         :Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :depicted ;
+                                                                       owl:hasValue :Boba_Fett
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Jeremy_Bulloch"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Joel_Edgerton
+:Joel_Edgerton rdf:type owl:NamedIndividual ,
+                        :Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :depicted ;
+                                                                      owl:hasValue :Owen_Lars
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Joel_Edgerton"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#John_Morton
+:John_Morton rdf:type owl:NamedIndividual ,
+                      :Human ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :depicted ;
+                                                                    owl:hasValue :Boba_Fett
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :depicted ;
+                                                                    owl:hasValue :Dak_Ralter
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/John_Morton"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kenny_Baker
+:Kenny_Baker rdf:type owl:NamedIndividual ,
+                      :Human ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :depicted ;
+                                                                    owl:hasValue :R2-D2
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Kenny_Baker"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Marjorie_Eaton
+:Marjorie_Eaton rdf:type owl:NamedIndividual ,
+                         :Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :depicted ;
+                                                                       owl:hasValue :Sheev_Palpatine
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Marjorie_Eaton"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mark_Hamill
 :Mark_Hamill rdf:type owl:NamedIndividual ,
                       :Human ,
@@ -97,4 +536,139 @@ There is no assertion of correctness or completeness by myself - content has bee
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Mark_Hamill"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Peter_Cushing
+:Peter_Cushing rdf:type owl:NamedIndividual ,
+                        :Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :depicted ;
+                                                                      owl:hasValue :Wilhuff_Tarkin
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Peter_Cushing"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Peter_Mayhew
+:Peter_Mayhew rdf:type owl:NamedIndividual ,
+                       :Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :depicted ;
+                                                                     owl:hasValue :Chewbacca
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Peter_Mayhew"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Phil_Brown
+:Phil_Brown rdf:type owl:NamedIndividual ,
+                     :Human ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hadRole ;
+                       owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :depicted ;
+                                                                   owl:hasValue :Owen_Lars
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ]
+                     ] ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Phil_Brown"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Sebastian_Shaw
+:Sebastian_Shaw rdf:type owl:NamedIndividual ,
+                         :Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :depicted ;
+                                                                       owl:hasValue :Darth_Vader
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Sebastian_Shaw"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Shelagh_Fraser
+:Shelagh_Fraser rdf:type owl:NamedIndividual ,
+                         :Human ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :depicted ;
+                                                                       owl:hasValue :Beru_Whitesun_Lars
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Shelagh_Fraser"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Temuera_Morrison
+:Temuera_Morrison rdf:type owl:NamedIndividual ,
+                           :Human ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :depicted ;
+                                                                         owl:someValuesFrom :Clone
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :depicted ;
+                                                                         owl:hasValue :Boba_Fett
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :depicted ;
+                                                                         owl:hasValue :Jango_Fett
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :depicted ;
+                                                                         owl:hasValue :Boba_Fett
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Temuera_Morrison"^^xsd:anyURI .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

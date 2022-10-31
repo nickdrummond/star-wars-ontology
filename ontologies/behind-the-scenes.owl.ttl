@@ -4,7 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://nickdrummond.github.io/star-wars-ontology/ontologies/behind-the-scenes.owl.ttl> .
+@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/behind-the-scenes.owl.ttl> rdf:type owl:Ontology ;
                                                                                           owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/events.owl.ttl> ;
@@ -34,6 +34,11 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Actor-Vocation
 :Actor-Vocation rdf:type owl:Class ;
                 rdfs:subClassOf :Entertainer .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Composer
+:Composer rdf:type owl:Class ;
+          rdfs:subClassOf :Vocation .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Director
@@ -165,6 +170,24 @@ There is no assertion of correctness or completeness by myself - content has bee
                      :memberOf :Lucasfilm .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Billie_Lourd
+:Billie_Lourd rdf:type owl:NamedIndividual ,
+                       :Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :depicted ;
+                                                                     owl:hasValue :Kaydel_Ko_Connix
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              :hadMother :Carrie_Fisher ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Billie_Lourd"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Billy_Dee_Williams
 :Billy_Dee_Williams rdf:type owl:NamedIndividual ,
                              :Human ,
@@ -276,12 +299,46 @@ There is no assertion of correctness or completeness by myself - content has bee
                       :Human ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Director
+                                                                  :Producer
+                                                                  :Writer
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :Book_of_Boba_Fett_Film_Crew
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Director
+                                                                  :Producer
+                                                                  :Writer
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :The_Mandalorian_Film_Crew
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
                         owl:someValuesFrom [ owl:intersectionOf ( :Producer
                                                                   :Writer
                                                                   [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :inOrganisation ;
                                                                     owl:hasValue :Rebels_FIlm_Crew
                                                                   ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Producer
+                                                                  :Writer
                                                                   [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :inOrganisation ;
                                                                     owl:hasValue :The_Clone_Wars_Film_Crew
@@ -482,17 +539,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                    [ rdf:type owl:Restriction ;
                      owl:onProperty :hadRole ;
                      owl:someValuesFrom [ owl:intersectionOf ( :Puppeteer-Vocation
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :depicted ;
-                                                                 owl:hasValue :Yoda
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ]
-                   ] ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hadRole ;
-                     owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
+                                                               :Voice-Actor-Vocation
                                                                [ rdf:type owl:Restriction ;
                                                                  owl:onProperty :depicted ;
                                                                  owl:hasValue :Yoda
@@ -872,6 +919,87 @@ There is no assertion of correctness or completeness by myself - content has bee
              rdfs:seeAlso "https://starwars.fandom.com/wiki/John_Morton"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#John_Williams
+:John_Williams rdf:type owl:NamedIndividual ,
+                        :Human ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hadRole ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Composer
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :inOrganisation ;
+                                                                      owl:hasValue :Lucasfilm
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/John_Williams"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Jon_Favreau
+:Jon_Favreau rdf:type owl:NamedIndividual ,
+                      :Human ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Director
+                                                                  :Producer
+                                                                  :Writer
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :The_Mandalorian_Film_Crew
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :depicted ;
+                                                                    owl:hasValue :Paz_Vizsla
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :The_Mandalorian_Film_Crew
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :depicted ;
+                                                                    owl:hasValue :Pre_Vizla
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :The_Clone_Wars_Film_Crew
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :depicted ;
+                                                                    owl:hasValue :Rio_Durant
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :inOrganisation ;
+                                                                    owl:hasValue :Solo_Film_Crew
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Jon_Favreau"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kathleen_Kennedy
 :Kathleen_Kennedy rdf:type owl:NamedIndividual ,
                            :Human ,
@@ -882,21 +1010,60 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                          owl:onProperty :inOrganisation ;
                                                                          owl:hasValue :Andor_Film_Crew
                                                                        ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Producer
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :inOrganisation ;
                                                                          owl:hasValue :Force_Awakens_Film_Crew
                                                                        ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Producer
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :inOrganisation ;
                                                                          owl:hasValue :Last_Jedi_Film_Crew
                                                                        ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Producer
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :inOrganisation ;
                                                                          owl:hasValue :Rise_of_Skywalker_Film_Crew
                                                                        ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Producer
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :inOrganisation ;
                                                                          owl:hasValue :Rogue_One_Film_Crew
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hadRole ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Producer
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :inOrganisation ;
+                                                                         owl:hasValue :Solo_Film_Crew
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -958,6 +1125,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                     ) ;
                                                  rdf:type owl:Class
                                                ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hadRole ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Writer
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :inOrganisation ;
+                                                                        owl:hasValue :Solo_Film_Crew
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
                           ] ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Lawrence_Kasdan"^^xsd:anyURI .
 
@@ -998,6 +1176,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :depicted ;
                                                                        owl:hasValue :Sheev_Palpatine
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :inOrganisation ;
+                                                                       owl:hasValue :Empire_Strikes_Back_Film_Crew
                                                                      ]
                                                                    ) ;
                                                 rdf:type owl:Class
@@ -1240,6 +1422,23 @@ There is no assertion of correctness or completeness by myself - content has bee
                      :memberOf :Lucasfilm .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ron_Howard
+:Ron_Howard rdf:type owl:NamedIndividual ,
+                     :Human ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hadRole ;
+                       owl:someValuesFrom [ owl:intersectionOf ( :Director
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :inOrganisation ;
+                                                                   owl:hasValue :Solo_Film_Crew
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ]
+                     ] ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Ron_Howard"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Sebastian_Shaw
 :Sebastian_Shaw rdf:type owl:NamedIndividual ,
                          :Human ,
@@ -1297,9 +1496,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Solo_Film_Crew
+:Solo_Film_Crew rdf:type owl:NamedIndividual ,
+                         :Film_Crew .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Star_Wars-Obi-Wan_Kenobi
 :Star_Wars-Obi-Wan_Kenobi rdf:type owl:NamedIndividual ,
                                    :Series ;
+                          :createdBy :Kenobi_Film_Crew ;
                           :starting 2022 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi_(television_series)"^^xsd:anyURI .
 
@@ -1307,6 +1512,7 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Star_Wars-Rebels
 :Star_Wars-Rebels rdf:type owl:NamedIndividual ,
                            :Series ;
+                  :createdBy :Rebels_FIlm_Crew ;
                   :starting 2014 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels"^^xsd:anyURI .
 
@@ -1314,6 +1520,7 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Star_Wars-Resistance
 :Star_Wars-Resistance rdf:type owl:NamedIndividual ,
                                :Series ;
+                      :createdBy :Resistance_Film_Crew ;
                       :starting 2018 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Resistance"^^xsd:anyURI .
 
@@ -1321,6 +1528,7 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Star_Wars-The_Bad_Batch
 :Star_Wars-The_Bad_Batch rdf:type owl:NamedIndividual ,
                                   :Series ;
+                         :createdBy :Bad_Batch_Film_Crew ;
                          :starting 2021 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_The_Bad_Batch"^^xsd:anyURI .
 
@@ -1328,6 +1536,8 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Star_Wars-The_Clone_Wars
 :Star_Wars-The_Clone_Wars rdf:type owl:NamedIndividual ,
                                    :Series ;
+                          :createdBy :The_Clone_Wars_Film_Crew ;
+                          :depicted :Clone_Wars ;
                           :starting 2008 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars"^^xsd:anyURI .
 
@@ -1498,6 +1708,7 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Book_of_Boba_Fett
 :The_Book_of_Boba_Fett rdf:type owl:NamedIndividual ,
                                 :Series ;
+                       :createdBy :Book_of_Boba_Fett_Film_Crew ;
                        :starting 2021 ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Book_of_Boba_Fett"^^xsd:anyURI .
 
@@ -1511,6 +1722,7 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Mandalorian
 :The_Mandalorian rdf:type owl:NamedIndividual ,
                           :Series ;
+                 :createdBy :The_Mandalorian_Film_Crew ;
                  :starting 2019 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mandalorian"^^xsd:anyURI .
 

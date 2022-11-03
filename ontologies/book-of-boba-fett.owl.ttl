@@ -1,0 +1,317 @@
+@prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+
+<https://nickdrummond.github.io/star-wars-ontology/ontologies/book-of-boba-fett.owl.ttl> rdf:type owl:Ontology ;
+                                                                                          owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
+                                                                                          rdfs:comment "Events from the Book of Boba Fett TV series"^^xsd:string ,
+                                                                                                       """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
+
+All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
+
+There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia)."""^^xsd:string ;
+                                                                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Book_of_Boba_Fett"^^xsd:anyURI .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_of_the_Sand_Beast
+:Attack_of_the_Sand_Beast rdf:type owl:NamedIndividual ,
+                                   :Attack ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom :Rodian
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom :Sand_beast
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :victoryOf ;
+                                                                                 owl:hasValue :Boba_Fett
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Search
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :target ;
+                                                                                 owl:someValuesFrom :Black_Melon
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:someValuesFrom :Massiff
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :participant ;
+                                     owl:someValuesFrom :Sand_beast
+                                   ] ;
+                          :after :Capture_of_Boba_by_Tuskens ;
+                          :locatedIn :Dune_Sea ;
+                          :participant :Boba_Fett ,
+                                       :Unnamed_Tusken_Youngling ;
+                          :year 4 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_1:_Stranger_in_a_Strange_Land#Trials_of_the_past"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Capture_of_Boba_by_Tuskens
+:Capture_of_Boba_by_Tuskens rdf:type owl:NamedIndividual ,
+                                     :Capture ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:someValuesFrom :Massiff
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:someValuesFrom :Tusken
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :used ;
+                                                                                   owl:someValuesFrom :Gaderffii_stick
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :witnessedBy ;
+                                                                                   owl:someValuesFrom :Rodian
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:hasValue :Unnamed_Tusken_Warrior
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :stunningOf ;
+                                                                                   owl:hasValue :Boba_Fett
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:someValuesFrom :Bantha
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :participant ;
+                                       owl:someValuesFrom :Tusken
+                                     ] ;
+                            :after :Escape_from_the_Sarlacc ;
+                            :locatedIn :Dune_Sea ;
+                            :of :Boba_Fett ;
+                            :year 4 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_1:_Stranger_in_a_Strange_Land#Prisoner_of_the_Tusken_Raiders"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_the_Sarlacc
+:Escape_from_the_Sarlacc rdf:type owl:NamedIndividual ,
+                                  :Escape ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:someValuesFrom :Armour
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:someValuesFrom :Jetpack
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:someValuesFrom :Jawa
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :from ;
+                                                                                owl:hasValue :Boba_Fett
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :stunningOf ;
+                                                                                owl:hasValue :Boba_Fett
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :injuryOf ;
+                                    owl:someValuesFrom :Sarlacc
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :used ;
+                                    owl:someValuesFrom :Flamethrower
+                                  ] ;
+                         :locatedIn :Great_Pit_of_Carkoon ;
+                         :of :Boba_Fett ;
+                         :year 4 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_1:_Stranger_in_a_Strange_Land#Survivor"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#First_visit_to_the_Sanctuary
+:First_visit_to_the_Sanctuary rdf:type owl:NamedIndividual ,
+                                       :Mission ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :included ;
+                                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :of ;
+                                                                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                                      owl:onProperty :memberOf ;
+                                                                                                                                                      owl:hasValue :Order_of_the_Night_Wind
+                                                                                                                                                    ]
+                                                                                                                               ]
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :participant ;
+                                                                                                                                 owl:hasValue :Fennec_Shand
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ]
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:someValuesFrom :Gamorrean
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :used ;
+                                                                                     owl:someValuesFrom :Ray_shield
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :injuryOf ;
+                                                                                     owl:hasValue :Boba_Fett
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Fennec_Shand
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Order_of_the_Night_Wind
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Meeting
+                                                                                   :TransferOfOwnership
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:someValuesFrom :Money
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :from ;
+                                                                                     owl:hasValue :Garsa_Fwip
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :to ;
+                                                                                     owl:hasValue :Boba_Fett
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ;
+                              :after :Tributes_for_Boba ;
+                              :locatedIn :The_Sanctuary ;
+                              :participant :Boba_Fett ,
+                                           :Fennec_Shand ;
+                              :year 9 ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_1:_Stranger_in_a_Strange_Land#Trip_to_Mos_Espa"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Tributes_for_Boba
+:Tributes_for_Boba rdf:type owl:NamedIndividual ,
+                            :Meeting ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Defection
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:someValuesFrom :Gamorrean
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :assistedBy ;
+                                                                          owl:hasValue :UK2-B
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :to ;
+                                                                          owl:hasValue :Fett_gotra
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :TransferOfOwnership
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:someValuesFrom :Money
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :from ;
+                                                                          owl:hasValue :Dokk_Strassi
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :to ;
+                                                                          owl:hasValue :Boba_Fett
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :TransferOfOwnership
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:someValuesFrom :Money
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :from ;
+                                                                          owl:hasValue :Garfalaquox
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :to ;
+                                                                          owl:hasValue :Boba_Fett
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
+                   :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Jabba's_Palace> ;
+                   :participant :Boba_Fett ,
+                                :Fennec_Shand ,
+                                :Mayor_Shaiz_majordomo ,
+                                <https://nickdrummond.github.io/star-wars-ontology/ontologies#8D8> ;
+                   :year 9 ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_1:_Stranger_in_a_Strange_Land#Holding_court"^^xsd:anyURI .
+
+
+###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi

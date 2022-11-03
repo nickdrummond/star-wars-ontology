@@ -1264,6 +1264,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Daimyo
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :responsibleFor ;
+                                                                    owl:hasValue :Mos_Espa
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
                         owl:someValuesFrom [ owl:intersectionOf ( :Majordomo
                                                                   [ rdf:type owl:Restriction ;
                                                                     owl:onProperty :inOrganisation ;
@@ -2085,6 +2096,21 @@ There is no assertion of correctness or completeness by myself - content has bee
                     ] ,
                     [ rdf:type owl:Restriction ;
                       owl:onProperty :hadRole ;
+                      owl:someValuesFrom [ owl:intersectionOf ( :Daimyo
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :inOrganisation ;
+                                                                  owl:hasValue :Fett_gotra
+                                                                ]
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :responsibleFor ;
+                                                                  owl:hasValue :Mos_Espa
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ]
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hadRole ;
                       owl:someValuesFrom [ owl:intersectionOf ( :Pilot
                                                                 [ rdf:type owl:Restriction ;
                                                                   owl:onProperty :ofShip ;
@@ -2094,6 +2120,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                            rdf:type owl:Class
                                          ]
                     ] ;
+           :employedBy :Dokk_Strassi ;
            :originallyFrom :Tipoca_City ;
            :trainedBy :Aurra_Sing ;
            :wasCloneOf :Jango_Fett ;
@@ -4153,6 +4180,25 @@ There is no assertion of correctness or completeness by myself - content has bee
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Doctor_Mandible"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dokk_Strassi
+:Dokk_Strassi rdf:type owl:NamedIndividual ,
+                       :Trandoshan ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :gender ;
+                         owl:someValuesFrom :Male
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Criminal
+                                                                   :Leader
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              :livedIn :Mos_Espa ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Dokk_Strassi"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Domino_Squad
 :Domino_Squad rdf:type owl:NamedIndividual ,
                        :Military_Unit ;
@@ -4856,7 +4902,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                          owl:someValuesFrom :Bounty_Hunter
                        ] ;
               :alliedWith :Boba_Fett ;
+              :memberOf :Fett_gotra ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Fennec_Shand"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Fett_gotra
+:Fett_gotra rdf:type owl:NamedIndividual ,
+                     :Family ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Fett_gotra"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Fife
@@ -5400,6 +5453,37 @@ There is no assertion of correctness or completeness by myself - content has bee
                 ] ;
        :locatedIn :Lothal_Sector ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Garel"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Garfalaquox
+:Garfalaquox rdf:type owl:NamedIndividual ,
+                      :Aqualish ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :gender ;
+                        owl:someValuesFrom :Male
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hadRole ;
+                        owl:someValuesFrom [ owl:intersectionOf ( :Criminal
+                                                                  :Leader
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ]
+                      ] ;
+             :livedIn :Mos_Espa ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Garfalaquox"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Garsa_Fwip
+:Garsa_Fwip rdf:type owl:NamedIndividual ,
+                     <https://nickdrummond.github.io/star-wars-ontology/ontologies#Twi'Lek> ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :gender ;
+                       owl:someValuesFrom :Female
+                     ] ;
+            :livedIn :Mos_Espa ;
+            :owned :The_Sanctuary ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Garsa_Fwip"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Garven_Dreis
@@ -6688,7 +6772,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                 ] ,
                 [ rdf:type owl:Restriction ;
                   owl:onProperty :hadRole ;
-                  owl:someValuesFrom [ owl:intersectionOf ( :Leader
+                  owl:someValuesFrom [ owl:intersectionOf ( :Daimyo
                                                             [ rdf:type owl:Restriction ;
                                                               owl:onProperty :inOrganisation ;
                                                               owl:hasValue :Jabbas_Empire
@@ -7819,6 +7903,12 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                       ] ;
              :livedIn :Kessel ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Kinash_Lock"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kintan_Striders_Gang
+:Kintan_Striders_Gang rdf:type owl:NamedIndividual ,
+                               :Gang ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Kintan_Striders_Gang"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kit_Fisto
@@ -9084,6 +9174,22 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Max_Rebo_Band"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mayor_Shaiz_majordomo
+:Mayor_Shaiz_majordomo rdf:type owl:NamedIndividual ,
+                                <https://nickdrummond.github.io/star-wars-ontology/ontologies#Twi'Lek> ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :gender ;
+                                  owl:someValuesFrom :Male
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hadRole ;
+                                  owl:someValuesFrom :Majordomo
+                                ] ;
+                       :employedBy :Mok_Shaiz ;
+                       :livedIn :Mos_Espa ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Twi%27lek_majordomo"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Maz_Kanata
 :Maz_Kanata rdf:type owl:NamedIndividual ,
                      :Humanoid ,
@@ -9327,6 +9433,28 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                      ]
                 ] ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Mixer"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mok_Shaiz
+:Mok_Shaiz rdf:type owl:NamedIndividual ,
+                    :Ithorian ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :gender ;
+                      owl:someValuesFrom :Male
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :hadRole ;
+                      owl:someValuesFrom [ owl:intersectionOf ( :Mayor
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :responsibleFor ;
+                                                                  owl:hasValue :Mos_Espa
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ]
+                    ] ;
+           :livedIn :Mos_Espa ;
+           rdfs:seeAlso "https://starwars.fandom.com/wiki/Mok_Shaiz"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mon_Cala
@@ -10392,6 +10520,12 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                       :Jocasta_Nu ;
           :year -19 ;
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Order_66"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Order_of_the_Night_Wind
+:Order_of_the_Night_Wind rdf:type owl:NamedIndividual ,
+                                  :Organisation ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Order_of_the_Night_Wind"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ordo_Moon
@@ -13825,6 +13959,10 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                    ] ,
                    [ rdf:type owl:Restriction ;
                      owl:onProperty :homeworldOf ;
+                     owl:someValuesFrom :Sand_beast
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :homeworldOf ;
                      owl:someValuesFrom :Tusken
                    ] ;
           :locatedIn :Arkanis_sector ;
@@ -14096,6 +14234,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                       ] ;
              :employedBy :Greef_Karga ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mythrol"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Sanctuary
+:The_Sanctuary rdf:type owl:NamedIndividual ,
+                        :Cantina ;
+               :locatedIn :Mos_Espa ;
+               rdfs:seeAlso "https://starwars.fandom.com/wiki/Sanctuary_(cantina)"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Son
@@ -14664,6 +14809,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Tython"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#UK2-B
+:UK2-B rdf:type owl:NamedIndividual ,
+                :Droid ;
+       :memberOf :Fett_gotra ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/UK2-B"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Umbara
 :Umbara rdf:type owl:NamedIndividual ,
                  :Planet ,
@@ -14741,6 +14893,60 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                         ] ;
                :callsign "Gold Two"^^xsd:string ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Gold_Two_(rebellion)"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Unnamed_Tusken_Chief
+:Unnamed_Tusken_Chief rdf:type owl:NamedIndividual ,
+                               :Tusken ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :gender ;
+                                 owl:someValuesFrom :Male
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hadRole ;
+                                 owl:someValuesFrom :Chief
+                               ] ;
+                      :livedIn :Dune_Sea ;
+                      :memberOf :Unnamed_Tusken_Tribe ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Tusken_Raider_chieftain"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Unnamed_Tusken_Tribe
+:Unnamed_Tusken_Tribe rdf:type owl:NamedIndividual ,
+                               :Tribe ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Tusken_Raider_tribe"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Unnamed_Tusken_Warrior
+:Unnamed_Tusken_Warrior rdf:type owl:NamedIndividual ,
+                                 :Tusken ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :gender ;
+                                   owl:someValuesFrom :Female
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hadRole ;
+                                   owl:someValuesFrom :Fighter
+                                 ] ;
+                        :livedIn :Dune_Sea ;
+                        :memberOf :Unnamed_Tusken_Tribe ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Tusken_Raider_warrior_(Boba_Fett)"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Unnamed_Tusken_Youngling
+:Unnamed_Tusken_Youngling rdf:type owl:NamedIndividual ,
+                                   :Tusken ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :gender ;
+                                     owl:someValuesFrom :Male
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hadRole ;
+                                     owl:someValuesFrom :Child
+                                   ] ;
+                          :livedIn :Dune_Sea ;
+                          :memberOf :Unnamed_Tusken_Tribe ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Tusken_Raider_youngling"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ursa_Wren
@@ -15975,6 +16181,18 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                                                                                       :Military_Unit ;
                                                                              :memberOf :Grand_Army_of_the_Republic ;
                                                                              rdfs:seeAlso "https://starwars.fandom.com/wiki/7th_Sky_Corps"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#8D8
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#8D8> rdf:type owl:NamedIndividual ,
+                                                                            <https://nickdrummond.github.io/star-wars-ontology/ontologies#8D-series_smelter_droid> ,
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :gender ;
+                                                                              owl:someValuesFrom :Male
+                                                                            ] ;
+                                                                   :employedBy :Jabba ;
+                                                                   :memberOf :Fett_gotra ;
+                                                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/8D8"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Aunt_Z's_Tavern

@@ -47,7 +47,7 @@ Which we can use when reasoning about (querying) Vehicles,
 
     Vehicle and ownedBy value Han_Solo
 
-[result](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Vehicle+and+ownedBy+value+Han_Solo%0D%0A&syntax=man&query=instances)
+[result](http://star-wars-ontology.up.railway.app/dlquery/?expression=Vehicle+and+ownedBy+value+Han_Solo%0D%0A&syntax=man&query=instances)
 includes the Millenium Falcon.
 
 
@@ -60,7 +60,7 @@ So we can ask for all Criminals
 
     hadRole some Criminal
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=hadRole+some+Criminal&syntax=man&query=instances)
+[results](http://star-wars-ontology.up.railway.app/dlquery/?expression=hadRole+some+Criminal&syntax=man&query=instances)
 include Beckett, thieves, smugglers, pirates and more
 
 This gives us some freedom in modelling - see Specificity below
@@ -82,13 +82,13 @@ We can ask who were the participants in this event:
 
     participatedIn value Boba_vs_Bib
 
-[result](http://star-wars-ontology.herokuapp.com/dlquery/?expression=participatedIn+value+Boba_vs_Bib&syntax=man&query=instances)
+[result](http://star-wars-ontology.up.railway.app/dlquery/?expression=participatedIn+value+Boba_vs_Bib&syntax=man&query=instances)
 includes all 3 because
-[```of```](http://star-wars-ontology.herokuapp.com/objectproperties/944795056/),
-[```victoryOf```](http://star-wars-ontology.herokuapp.com/objectproperties/1820579682/) and
-[```witnessedBy```](http://star-wars-ontology.herokuapp.com/objectproperties/471407080/) are
-all subproperties of [```participant```](http://star-wars-ontology.herokuapp.com/objectproperties/1712213772/)
-(and [```participatedIn```](http://star-wars-ontology.herokuapp.com/objectproperties/1115585508/) is the inverse of participant)
+[```of```](http://star-wars-ontology.up.railway.app/objectproperties/944795056/),
+[```victoryOf```](http://star-wars-ontology.up.railway.app/objectproperties/1820579682/) and
+[```witnessedBy```](http://star-wars-ontology.up.railway.app/objectproperties/471407080/) are
+all subproperties of [```participant```](http://star-wars-ontology.up.railway.app/objectproperties/1712213772/)
+(and [```participatedIn```](http://star-wars-ontology.up.railway.app/objectproperties/1115585508/) is the inverse of participant)
 
 #### Transitivity
 
@@ -99,24 +99,24 @@ eg. Who was killed in the Mid Rim?
 
     inverse(of) some (Killing and during some (locatedIn value Mid_Rim))
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=inverse%28of%29+some+%28Killing+and+during+some+%28locatedIn+value+Mid_Rim%29%29&minus=&syntax=man&query=instances)
+[results](http://star-wars-ontology.up.railway.app/dlquery/?expression=inverse%28of%29+some+%28Killing+and+during+some+%28locatedIn+value+Mid_Rim%29%29&minus=&syntax=man&query=instances)
 includes Qui-Gon Jinn who was killed in Theed, on Naboo, in the Mid Rim
 
 eg. Who is related to Kylo Ren?
 
     relatedTo value Kylo_Ren
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=relatedTo+value+Kylo_Ren&syntax=man&query=instances)
+[results](http://star-wars-ontology.up.railway.app/dlquery/?expression=relatedTo+value+Kylo_Ren&syntax=man&query=instances)
 includes Shmi
 
 ### Consistency checking
 
 Assertions must be consistent with the rest of the model.
 
-eg There can be no individual Female [Crolute](http://star-wars-ontology.herokuapp.com/classes/-647403693/) 
+eg There can be no individual Female [Crolute](http://star-wars-ontology.up.railway.app/classes/-647403693/) 
 as all of the species are Male.
 
-The reasoner lets us [prove this](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Crolute+and+%28gender+some+Female%29&syntax=man&query=equivalents).
+The reasoner lets us [prove this](http://star-wars-ontology.up.railway.app/dlquery/?expression=Crolute+and+%28gender+some+Female%29&syntax=man&query=equivalents).
 
     Crolute and (gender some Female)
 
@@ -158,11 +158,11 @@ But, there are also useful queries we might want to make that require disjoints 
 
     (hadRole some Jedi) and not(Human)
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=%28hadRole+some+Jedi%29+and+not%28Human%29&syntax=man&query=instances)
-include [Aayla_Secura](http://star-wars-ontology.herokuapp.com/individuals/734701917/)
+[results](http://star-wars-ontology.up.railway.app/dlquery/?expression=%28hadRole+some+Jedi%29+and+not%28Human%29&syntax=man&query=instances)
+include [Aayla_Secura](http://star-wars-ontology.up.railway.app/individuals/734701917/)
 
-This only works because there are disjoints between [Living_Things](http://star-wars-ontology.herokuapp.com/classes/-1864795183/) 
-(at each level below that including [Humanoids](http://star-wars-ontology.herokuapp.com/classes/1550378358/))
+This only works because there are disjoints between [Living_Things](http://star-wars-ontology.up.railway.app/classes/-1864795183/) 
+(at each level below that including [Humanoids](http://star-wars-ontology.up.railway.app/classes/1550378358/))
 
 ### Negative assertions
 
@@ -196,7 +196,7 @@ We can use set arithmetic to ask this question as 2 queries:
 
 Then, we simply remove all results of query 2 from the results of query 1.
 
-[results](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Living_thing&minus=connectedTo+some+The_Force&syntax=man&query=instances)
+[results](http://star-wars-ontology.up.railway.app/dlquery/?expression=Living_thing&minus=connectedTo+some+The_Force&syntax=man&query=instances)
 
 Or [Events C-3PO was without R2-D2](http://localhost:8080/dlquery/?expression=participant+value+C-3PO&minus=participant+value+R2-D2&syntax=man&query=instances)
 
@@ -219,22 +219,22 @@ keep our level of commitment low.
 
 Classification allows control over how specific we wish to be:
 
-eg Killing and (of some (hadRole some [Fighter](http://star-wars-ontology.herokuapp.com/classes/1749936246/) /
-[Trooper](http://star-wars-ontology.herokuapp.com/classes/1555341112/) /
-[Stormtrooper](http://star-wars-ontology.herokuapp.com/classes/-2145398193/) /
-[Scout Trooper](http://star-wars-ontology.herokuapp.com/classes/938884855/)))
+eg Killing and (of some (hadRole some [Fighter](http://star-wars-ontology.up.railway.app/classes/1749936246/) /
+[Trooper](http://star-wars-ontology.up.railway.app/classes/1555341112/) /
+[Stormtrooper](http://star-wars-ontology.up.railway.app/classes/-2145398193/) /
+[Scout Trooper](http://star-wars-ontology.up.railway.app/classes/938884855/)))
 
 ### Naming
 
 There is no need to name everything:
 
-eg - we can talk about [Rey's](http://star-wars-ontology.herokuapp.com/individuals/944873567/) parents without having to name them.
+eg - we can talk about [Rey's](http://star-wars-ontology.up.railway.app/individuals/944873567/) parents without having to name them.
     
     Rey -> hadFather some ( Human and wasCloneOf value Darth_Sidious)
 
 ### Ranges
 
-eg People can be born in a range of years - eg [Din Djarin](http://star-wars-ontology.herokuapp.com/individuals/-1440592085/) was born before 19BBY
+eg People can be born in a range of years - eg [Din Djarin](http://star-wars-ontology.up.railway.app/individuals/-1440592085/) was born before 19BBY
 
     Din -> born some int [<="-19"(int)]
 
@@ -242,12 +242,12 @@ eg People can be born in a range of years - eg [Din Djarin](http://star-wars-ont
 
 An ontology built in modules allows:
 * focused engineering - keep parts of each story together in one place -
-eg [rogue one](http://star-wars-ontology.herokuapp.com/ontologies/-769536717/)
+eg [rogue one](http://star-wars-ontology.up.railway.app/ontologies/-769536717/)
 * optimisation - expensive modelling/reasoning can be separated off -
-eg [hasPart](http://star-wars-ontology.herokuapp.com/objectproperties/1641606534/),
-[hasTrait](http://star-wars-ontology.herokuapp.com/objectproperties/1075404653/)
+eg [hasPart](http://star-wars-ontology.up.railway.app/objectproperties/1641606534/),
+[hasTrait](http://star-wars-ontology.up.railway.app/objectproperties/1075404653/)
 * layering of knowledge - detail can be moved into other modules - 
-eg [manufacturers](http://star-wars-ontology.herokuapp.com/objectproperties/1543163192/)
+eg [manufacturers](http://star-wars-ontology.up.railway.app/objectproperties/1543163192/)
 * visibility - out of Universe or non-public knowledge can be in their own models - 
 eg [behind-the-scenes.owl.ttl](../ontologies/behind-the-scenes.owl.ttl)
 * extensibility - responsibility for content can be distributed to other fans

@@ -10,27 +10,27 @@ home |
 
 # Project Convor - Star Wars Ontology
 
-[Convor](http://star-wars-ontology.herokuapp.com/classes/-1326117872/), as in "OWL in Star Wars".
+[Convor](http://star-wars-ontology.up.railway.app/classes/-1326117872/), as in "OWL in Star Wars".
 
 A hand-built [OWL ontology](docs/benefits.md) focused on events and covering characters, places and things in the films and TV series.
 
-[Browse the ontology](https://star-wars-ontology.herokuapp.com/) on heroku
+[Browse the ontology](https://star-wars-ontology.up.railway.app/) on railway.app
 (first page may take a second to load as its using free tier hosting).
 This currently only displays asserted content.
 
-[![Investigating_the_World_Between_Worlds](docs/ontology-browser.png)](http://star-wars-ontology.herokuapp.com/individuals/1184063215/)
+[![Investigating_the_World_Between_Worlds](docs/ontology-browser.png)](http://star-wars-ontology.up.railway.app/individuals/1184063215/)
 
 ## Metrics
 
 | Content                                                                                                                  | Count |
 |--------------------------------------------------------------------------------------------------------------------------|-------|
-| [Events](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Event&syntax=man)                                   | 520   |
-| [Characters](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Being+or+Droid&syntax=man)                      | 431   |
-| [Species](https://star-wars-ontology.herokuapp.com/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 168   |
-| [Planets and Moons](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Planet+or+Moon&syntax=man)               | 121   |
-| [Built locations](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 101   |
-| [Organisations or units](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Organisation&syntax=man)            | 147   |
-| [Named vehicles](http://star-wars-ontology.herokuapp.com/dlquery/?expression=Vehicle&syntax=man)                         | 89    |
+| [Events](http://star-wars-ontology.up.railway.app/dlquery/?expression=Event&syntax=man)                                   | 520   |
+| [Characters](http://star-wars-ontology.up.railway.app/dlquery/?expression=Being+or+Droid&syntax=man)                      | 431   |
+| [Species](https://star-wars-ontology.up.railway.app/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 168   |
+| [Planets and Moons](http://star-wars-ontology.up.railway.app/dlquery/?expression=Planet+or+Moon&syntax=man)               | 121   |
+| [Built locations](http://star-wars-ontology.up.railway.app/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 101   |
+| [Organisations or units](http://star-wars-ontology.up.railway.app/dlquery/?expression=Organisation&syntax=man)            | 147   |
+| [Named vehicles](http://star-wars-ontology.up.railway.app/dlquery/?expression=Vehicle&syntax=man)                         | 89    |
 
 | Structure             | Count  |
 |-----------------------|--------|
@@ -42,7 +42,7 @@ This currently only displays asserted content.
 | Object properties     | 112    |
 | Data properties       | 6      |
 
-Above is a snapshot - see [ontology metrics](http://star-wars-ontology.herokuapp.com/ontologies/) for current values.
+Above is a snapshot - see [ontology metrics](http://star-wars-ontology.up.railway.app/ontologies/) for current values.
 
 ## Status
 
@@ -73,9 +73,9 @@ Above is a snapshot - see [ontology metrics](http://star-wars-ontology.herokuapp
 
 ### Browse
 
-[https://star-wars-ontology.herokuapp.com/](https://star-wars-ontology.herokuapp.com/)
+[https://star-wars-ontology.up.railway.app/](https://star-wars-ontology.up.railway.app/)
 
-Please be patient - this is on a free-tier heroku stack for demo purposes only.
+Please be patient - this is on a free-tier railway.app stack for demo purposes only.
 
 Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
 (not [behind-the-scenes.owl.ttl](ontologies/behind-the-scenes.owl.ttl))
@@ -83,7 +83,7 @@ Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
 For efficiency, the query page only includes [event.owl.ttl](ontologies/events.owl.ttl) and
 its imports - see [docs/performance.md](docs/performance.md)
 
-[![Cloud view of individuals by usage](docs/cloud.png)](http://star-wars-ontology.herokuapp.com/clouds/individuals)
+[![Cloud view of individuals by usage](docs/cloud.png)](http://star-wars-ontology.up.railway.app/clouds/individuals)
 
 
 ### Edit/reason

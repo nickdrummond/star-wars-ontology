@@ -994,6 +994,16 @@ or minus is BBY"""^^xsd:string .
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Bacta"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bacta_tank
+:Bacta_tank rdf:type owl:Class ;
+            rdfs:subClassOf :Equipment ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hadPurpose ;
+                              owl:someValuesFrom :Medical_purpose
+                            ] ;
+            rdfs:seeAlso "https://starwars.fandom.com/wiki/Bacta_tank"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Baleen-class_heavy_freighter
 :Baleen-class_heavy_freighter rdf:type owl:Class ;
                               rdfs:subClassOf :Freighter ;
@@ -1643,6 +1653,12 @@ or minus is BBY"""^^xsd:string .
           rdfs:seeAlso "https://starwars.fandom.com/wiki/Cubikahd"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Cybernetics
+:Cybernetics rdf:type owl:Class ;
+             rdfs:subClassOf :BodyPart ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Cybernetics"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#D1-series_aerial_battle_droid
 :D1-series_aerial_battle_droid rdf:type owl:Class ;
                                rdfs:subClassOf :Battle_Droid ;
@@ -2081,7 +2097,7 @@ and (?a inConflictWith ?b)"""^^xsd:string .
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape
 :Escape rdf:type owl:Class ;
-        rdfs:subClassOf :Event .
+        rdfs:subClassOf :Release .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_Pod
@@ -2527,6 +2543,12 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 :Gotal rdf:type owl:Class ;
        rdfs:subClassOf :Humanoid ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Gotal"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Gotra
+:Gotra rdf:type owl:Class ;
+       rdfs:subClassOf :Family ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Gotra"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Governor
@@ -4346,6 +4368,19 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
            rdfs:subClassOf :Abstract_subject .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Recruitment
+:Recruitment rdf:type owl:Class ;
+             rdfs:subClassOf :Transfer ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :of ;
+                               owl:someValuesFrom :Being
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :to ;
+                               owl:someValuesFrom :Organisation
+                             ] .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Recusant-class_light_destroyer
 :Recusant-class_light_destroyer rdf:type owl:Class ;
                                 rdfs:subClassOf :Destroyer ;
@@ -4379,6 +4414,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Region
 :Region rdf:type owl:Class ;
         rdfs:subClassOf :Celestial_Location .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Release
+:Release rdf:type owl:Class ;
+         rdfs:subClassOf :Event .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Relic
@@ -4439,7 +4479,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue
 :Rescue rdf:type owl:Class ;
-        rdfs:subClassOf :Event .
+        rdfs:subClassOf :Release .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Research_purpose
@@ -4650,6 +4690,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
                           owl:onProperty :target ;
                           owl:someValuesFrom owl:Thing
                         ] .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Seas
+:Seas rdf:type owl:Class ;
+      rdfs:subClassOf :Habitat .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Sector
@@ -5740,7 +5785,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Water
 :Water rdf:type owl:Class ;
-       rdfs:subClassOf :Habitat .
+       rdfs:subClassOf :Object .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Wayfinder
@@ -6405,11 +6450,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"^^xsd:string""
                 :Mountains
                 :Plains
                 :Rocky
+                :Seas
                 :Swamp
                 :Tropical
                 :Tundra
                 :Volcanoes
-                :Water
               )
 ] .
 

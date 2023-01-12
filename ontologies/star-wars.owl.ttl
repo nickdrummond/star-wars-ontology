@@ -3389,7 +3389,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                        owl:onProperty :hadRole ;
                        owl:someValuesFrom [ owl:intersectionOf ( :Leader
                                                                  [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty :locatedIn ;
+                                                                   owl:onProperty :responsibleFor ;
                                                                    owl:hasValue :Mos_Pelgo
                                                                  ]
                                                                ) ;
@@ -3410,6 +3410,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                             rdf:type owl:Class
                                           ]
                      ] ;
+            :livedIn :Mos_Pelgo ;
             :originallyFrom :Tatooine ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Cobb_Vanth"^^xsd:anyURI .
 
@@ -4220,6 +4221,15 @@ There is no assertion of correctness or completeness by myself - content has bee
             :memberOf :Mudhorn_Clan ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin"^^xsd:anyURI ;
             :quote "Dank Farrik"^^xsd:string .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Djarins_N-1
+:Djarins_N-1 rdf:type owl:NamedIndividual ,
+                      :N-1_starfighter ;
+             :createdBy :Din_Djarin ,
+                        :Peli_Motto ;
+             :ownedBy :Din_Djarin ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Din_Djarin%27s_N-1_starfighter"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Doctor_Mandible
@@ -5269,6 +5279,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                                :Military_Unit ;
                       :inConflictWith :Galactic_Empire ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Free_Ryloth_Movement"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Freetown
+:Freetown rdf:type owl:NamedIndividual ,
+                   :Town ;
+          owl:sameAs :Mos_Pelgo ;
+          :locatedIn :Tatooine ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Freetown"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Freighter_2716
@@ -8846,6 +8864,8 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Lukes_Temple
 :Lukes_Temple rdf:type owl:NamedIndividual ,
                        :Temple ;
+              :createdBy :Luke_Skywalker ;
+              :locatedIn :Ossus ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Jedi_Temple_of_Luke_Skywalker"^^xsd:anyURI .
 
 
@@ -9877,7 +9897,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :Mos_Pelgo rdf:type owl:NamedIndividual ,
                     :Town ;
            :locatedIn :Tatooine ;
-           :aka "Freetown"^^xsd:string ;
            rdfs:seeAlso "https://starwars.fandom.com/wiki/Mos_Pelgo"^^xsd:anyURI .
 
 
@@ -10511,7 +10530,9 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                 :loved :Satine_Kryze ;
                 :memberOf :Jedi_High_Council ;
                 :trainedBy :Qui-Gon_Jinn ;
-                rdfs:seeAlso "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi"^^xsd:anyURI .
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi"^^xsd:anyURI ;
+                :quote "Hello there!"^^xsd:string ,
+                       "These are not the droids you’re looking for"^^xsd:string .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ochi
@@ -10893,6 +10914,21 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
                         ] ;
                :locatedIn :Sujimis_sector ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Orto_Plutonia"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ossus
+:Ossus rdf:type owl:NamedIndividual ,
+                :Planet ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hasTerrain ;
+                  owl:someValuesFrom :Forest
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hasTerrain ;
+                  owl:someValuesFrom :Mountains
+                ] ;
+       :locatedIn :Outer_Rim ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Ossus"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Otoh_Gunga
@@ -12925,6 +12961,29 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Scarif"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Scott
+:Scott rdf:type owl:NamedIndividual ,
+                :Human ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :gender ;
+                  owl:someValuesFrom :Male
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Security
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :responsibleFor ;
+                                                              owl:hasValue :Freetown
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
+       :employedBy :Cobb_Vanth ;
+       :livedIn :Freetown ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Scott"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Scrapper_Guild
 :Scrapper_Guild rdf:type owl:NamedIndividual ,
                          :Guild ;
@@ -14017,6 +14076,35 @@ Nal Hutta is in Hutt Space, but in the Outer Rim"""^^xsd:string ;
 :TX-21 rdf:type owl:NamedIndividual ,
                 :Tactical_Droid ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/TX-21"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Taanti
+:Taanti rdf:type owl:NamedIndividual ,
+                 :Weequay ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :gender ;
+                   owl:someValuesFrom :Male
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty :hadRole ;
+                   owl:someValuesFrom [ owl:intersectionOf ( :Bartender
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :responsibleFor ;
+                                                               owl:someValuesFrom [ owl:intersectionOf ( :Cantina
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty :locatedIn ;
+                                                                                                           owl:hasValue :Freetown
+                                                                                                         ]
+                                                                                                       ) ;
+                                                                                    rdf:type owl:Class
+                                                                                  ]
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ]
+                 ] ;
+        :livedIn :Freetown ;
+        rdfs:seeAlso "https://starwars.fandom.com/wiki/Taanti"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Tae_Boon

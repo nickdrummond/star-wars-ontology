@@ -766,11 +766,52 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Luke_meets_Yoda rdf:type owl:NamedIndividual ,
                           :Training ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :participant ;
-                            owl:someValuesFrom [ owl:intersectionOf ( :X-Wing
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Crash
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :locatedIn ;
                                                                         owl:someValuesFrom :Swamp
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Red_Five
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Release
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :locatedIn ;
+                                                                        owl:someValuesFrom :Swamp
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:someValuesFrom [ owl:intersectionOf ( :The_Force
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty :connectedTo ;
+                                                                                                                    owl:hasValue :Yoda
+                                                                                                                  ]
+                                                                                                                ) ;
+                                                                                             rdf:type owl:Class
+                                                                                           ]
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Red_Five
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Trial
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :locatedIn ;
+                                                                        owl:hasValue :Cave_of_Evil
                                                                       ]
                                                                     ) ;
                                                  rdf:type owl:Class
@@ -778,10 +819,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                           ] ;
                  :after :Battle_of_Hoth ;
                  :during :Galactic_Civil_War ;
-                 :locatedIn :Cave_of_Evil ,
-                            :Yodas_Hut ;
+                 :locatedIn :Yodas_Hut ;
                  :participant :Luke_Skywalker ,
                               :Yoda ;
+                 :used :Red_Five ;
                  :witnessedBy :R2-D2 ;
                  :year 3 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Luke_Skywalker#Searching_for_Yoda"^^xsd:anyURI .
@@ -1242,6 +1283,7 @@ There is no assertion of correctness or completeness by myself - content has bee
               :during :Battle_of_Yavin ;
               :locatedIn :Meridian_Trench ;
               :participant :Millenium_Falcon ,
+                           :Red_Five ,
                            :Red_Squadron ;
               :survivedBy :Darth_Vader ;
               :target :Death_Star_thermal_exhaust_port ;

@@ -102,6 +102,19 @@ There is no assertion of correctness or completeness by myself - content has bee
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_1:_Stranger_in_a_Strange_Land#The_ambush"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Arrival_of_Grogu
+:Arrival_of_Grogu rdf:type owl:NamedIndividual ,
+                           :Arrival ;
+                  :after :Pyke_meeting ;
+                  :assistedBy :R2-D2 ;
+                  :locatedIn :Hangar_3-5 ;
+                  :of :Grogu ;
+                  :participant :Peli_Motto ;
+                  :used :Red_Five ;
+                  :year 9 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#Grogu's_return"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Arrival_of_the_Pykes
 :Arrival_of_the_Pykes rdf:type owl:NamedIndividual ,
                                :Arrival ,
@@ -225,6 +238,49 @@ There is no assertion of correctness or completeness by myself - content has bee
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_1:_Stranger_in_a_Strange_Land#Trials_of_the_past"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_of_the_Scorpenek_droids
+:Attack_of_the_Scorpenek_droids rdf:type owl:NamedIndividual ,
+                                         :Chase ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :participant ;
+                                           owl:someValuesFrom :Scorpenek_droid
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :participant ;
+                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :hadRole ;
+                                                                owl:someValuesFrom [ owl:intersectionOf ( :Civilian
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty :originallyFrom ;
+                                                                                                            owl:hasValue :Freetown
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ]
+                                                              ]
+                                         ] ;
+                                :after :Mandalorians_vs_Pykes ;
+                                :during :Battle_for_Mos_Espa ;
+                                :locatedIn :Mos_Espa ;
+                                :participant :Din_Djarin ,
+                                             :Fett_gotra ,
+                                             :Grogu ,
+                                             :Peli_Motto ;
+                                :year 9 ;
+                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#The_Scorpeneks"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_for_Mos_Espa
+:Battle_for_Mos_Espa rdf:type owl:NamedIndividual ,
+                              :Battle ;
+                     :after :Negotiation_with_the_Pykes ;
+                     :locatedIn :Mos_Espa ;
+                     :participant :Fett_gotra ,
+                                  :Pyke_Syndicate ;
+                     :year 9 ;
+                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bobas_initiation_into_the_tribe
 :Bobas_initiation_into_the_tribe rdf:type owl:NamedIndividual ,
                                           :Trial ,
@@ -276,6 +332,27 @@ There is no assertion of correctness or completeness by myself - content has bee
                                      owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                                [ rdf:type owl:Restriction ;
                                                                                  owl:onProperty :of ;
+                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :hadRole ;
+                                                                                                      owl:someValuesFrom :Civilian
+                                                                                                    ]
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :memberOf ;
+                                                                                                      owl:someValuesFrom :Band
+                                                                                                    ]
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :employedBy ;
+                                                                                                      owl:hasValue :Garsa_Fwip
+                                                                                                    ]
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
                                                                                  owl:hasValue :Garsa_Fwip
                                                                                ]
                                                                              ) ;
@@ -297,8 +374,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                           :after :Cobb_Vanth_vs_Cad_Bane ;
                           :destructionOf :The_Sanctuary ;
                           :locatedIn :The_Sanctuary ;
+                          :orderedBy :Unidentified_Pyke_boss ;
                           :year 9 ;
-                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_6:_From_the_Desert_Comes_a_Stranger#Pyke_threats_and_violence"^^xsd:anyURI .
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Bombing_of_the_Sanctuary"^^xsd:anyURI ,
+                                       "https://starwars.fandom.com/wiki/Chapter_6:_From_the_Desert_Comes_a_Stranger#Pyke_threats_and_violence"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bounty_on_Kaba_Baiz
@@ -437,6 +516,47 @@ There is no assertion of correctness or completeness by myself - content has bee
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_6:_From_the_Desert_Comes_a_Stranger"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Calming_the_Rancor
+:Calming_the_Rancor rdf:type owl:NamedIndividual ,
+                             :Confrontation ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Transfer
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :from ;
+                                                                           owl:someValuesFrom :Aggressive
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :to ;
+                                                                           owl:someValuesFrom :Sleep
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Boba_Fetts_rancor
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Grogu
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :destructionOf ;
+                                                    owl:someValuesFrom :Building
+                                                  ]
+                             ] ;
+                    :after :Fett_vs_Bane ;
+                    :during :Battle_for_Mos_Espa ;
+                    :injuryOf :Din_Djarin ;
+                    :participant :Boba_Fetts_rancor ;
+                    :year 9 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#Calming_the_rancor"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Capture_of_Boba_by_Tuskens
 :Capture_of_Boba_by_Tuskens rdf:type owl:NamedIndividual ,
                                      :Capture ,
@@ -507,7 +627,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                         :after :Recruiting_Mos_Pelgo ;
                         :injuryOf :Cobb_Vanth ;
                         :locatedIn :Freetown ;
-                        :orderedBy :Pyke_Syndicate ;
+                        :orderedBy :Unidentified_Pyke_boss ;
                         :participant :Cad_Bane ;
                         :year 9 ;
                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_6:_From_the_Desert_Comes_a_Stranger#Pyke_threats_and_violence"^^xsd:anyURI .
@@ -662,6 +782,137 @@ There is no assertion of correctness or completeness by myself - content has bee
                          :of :Boba_Fett ;
                          :year 4 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_1:_Stranger_in_a_Strange_Land#Survivor"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Execution_of_the_Syndicate_heads
+:Execution_of_the_Syndicate_heads rdf:type owl:NamedIndividual ,
+                                           :Execution ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :of ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( :Klatooinian
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :responsibleFor ;
+                                                                                         owl:hasValue :Klatooinian_crime_family
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ;
+                                  :after :Calming_the_Rancor ;
+                                  :locatedIn :Desert_Survey_Office ;
+                                  :of :Dokk_Strassi ,
+                                      :Garfalaquox ,
+                                      :Mok_Shaiz ,
+                                      :Unidentified_Pyke_boss ;
+                                  :participant :Fennec_Shand ;
+                                  :year 9 ;
+                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#Tying_Up_Loose_Ends"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Families_turn_on_Fett
+:Families_turn_on_Fett rdf:type owl:NamedIndividual ,
+                                :Doublecross ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :included ;
+                                                                              owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                          owl:onProperty :of ;
+                                                                                                                          owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                               owl:onProperty :memberOf ;
+                                                                                                                                               owl:hasValue :Mods
+                                                                                                                                             ]
+                                                                                                                        ]
+                                                                                                                      ) ;
+                                                                                                   rdf:type owl:Class
+                                                                                                 ]
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :included ;
+                                                                              owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                                          owl:onProperty :participant ;
+                                                                                                                          owl:hasValue :Fennec_Shand
+                                                                                                                        ]
+                                                                                                                      ) ;
+                                                                                                   rdf:type owl:Class
+                                                                                                 ]
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Aqualish_crime_family
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :injuryOf ;
+                                                                              owl:hasValue :Krrsantan
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Trandoshan_crime_family
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:someValuesFrom :Gamorrean
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :participant ;
+                                                                              owl:hasValue :Klatooinian_crime_family
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       :during :Battle_for_Mos_Espa ;
+                       :locatedIn :Mos_Espa ;
+                       :orderedBy :Unidentified_Pyke_boss ;
+                       :year 9 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#Fronts_break"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Fett_vs_Bane
+:Fett_vs_Bane rdf:type owl:NamedIndividual ,
+                       :Fight ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :used ;
+                                                                     owl:someValuesFrom :Gaderffii_stick
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :of ;
+                                                                     owl:hasValue :Cad_Bane
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :participant ;
+                                                                     owl:hasValue :Boba_Fett
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ;
+              :after :Rancor_vs_Scorpeneks ;
+              :during :Battle_for_Mos_Espa ;
+              :locatedIn :Mos_Espa ;
+              :victoryOf :Boba_Fett ;
+              :year 9 ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#Settling_old_scores"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#First_visit_to_the_Sanctuary
@@ -903,6 +1154,77 @@ There is no assertion of correctness or completeness by myself - content has bee
                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_4:_The_Gathering_Storm#Settling_scores"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mandalorians_vs_Pykes
+:Mandalorians_vs_Pykes rdf:type owl:NamedIndividual ,
+                                :Fight ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :hadRole ;
+                                                                                                   owl:someValuesFrom [ owl:intersectionOf ( :Civilian
+                                                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                                                               owl:onProperty :originallyFrom ;
+                                                                                                                                               owl:hasValue :Freetown
+                                                                                                                                             ]
+                                                                                                                                           ) ;
+                                                                                                                        rdf:type owl:Class
+                                                                                                                      ]
+                                                                                                 ]
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Taanti
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Krrsantan
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Mods
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:someValuesFrom :Pyke
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
+                       :after :Families_turn_on_Fett ;
+                       :assistedBy :Mayor_Shaiz_majordomo ;
+                       :during :Battle_for_Mos_Espa ;
+                       :locatedIn :The_Sanctuary ;
+                       :participant :Boba_Fett ,
+                                    :Din_Djarin ;
+                       :year 9 ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#Fighting_back"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Massacre_of_the_Tuskens
 :Massacre_of_the_Tuskens rdf:type owl:NamedIndividual ,
                                   :Killing ,
@@ -924,6 +1246,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                          :of :Unnamed_Tusken_Chief ,
                              :Unnamed_Tusken_Warrior ,
                              :Unnamed_Tusken_Youngling ;
+                         :orderedBy :Unidentified_Pyke_boss ;
                          :year 5 ;
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_3:_The_Streets_of_Mos_Espa#Flashback"^^xsd:anyURI .
 
@@ -957,6 +1280,108 @@ There is no assertion of correctness or completeness by myself - content has bee
                                  :witnessedBy :Boba_Fetts_rancor ;
                                  :year 9 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_4:_The_Gathering_Storm#Fett's_proposal"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Negotiation_with_the_Pykes
+:Negotiation_with_the_Pykes rdf:type owl:NamedIndividual ,
+                                     :Confrontation ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :about ;
+                                       owl:someValuesFrom :Spice
+                                     ] ;
+                            :after :Arrival_of_Grogu ;
+                            :locatedIn :The_Sanctuary ;
+                            :orderedBy :Unidentified_Pyke_boss ;
+                            :participant :Boba_Fett ,
+                                         :Cad_Bane ;
+                            :witnessedBy :Din_Djarin ,
+                                         :Fennec_Shand ;
+                            :year 9 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#The_approaching_storm"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Pyke_meeting
+:Pyke_meeting rdf:type owl:NamedIndividual ,
+                       :Meeting ;
+              :about :Bombing_of_the_Sanctuary ,
+                     :Fett_gotra ,
+                     :Freetown ,
+                     :Massacre_of_the_Tuskens ;
+              :after :Bombing_of_the_Sanctuary ;
+              :locatedIn :Desert_Survey_Office ;
+              :participant :Cad_Bane ,
+                           :Mok_Shaiz ,
+                           :Unidentified_Pyke_boss ;
+              :year 9 ;
+              rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#Den_of_the_Pykes"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rancor_vs_Scorpeneks
+:Rancor_vs_Scorpeneks rdf:type owl:NamedIndividual ,
+                               :Fight ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :used ;
+                                                                             owl:someValuesFrom :Flamethrower
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Boba_Fetts_rancor
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Cad_Bane
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:someValuesFrom :Pyke
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:someValuesFrom :Scorpenek_droid
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :eatingOf ;
+                                                                             owl:someValuesFrom :Pyke
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Boba_Fetts_rancor
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      :after :Attack_of_the_Scorpenek_droids ;
+                      :during :Battle_for_Mos_Espa ;
+                      :locatedIn :Mos_Espa ;
+                      :participant :Boba_Fett ,
+                                   :Boba_Fetts_rancor ,
+                                   :Din_Djarin ,
+                                   :Grogu ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_7:_In_the_Name_of_Honor#The_tides_turn"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rebuilding_an_N1

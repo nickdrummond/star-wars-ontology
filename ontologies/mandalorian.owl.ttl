@@ -1028,8 +1028,23 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Rescue_the_Child rdf:type owl:NamedIndividual ,
                            :Rescue ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :destructionOf ;
-                             owl:someValuesFrom :Dark_Trooper_3rd_gen
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Luke_Skywalker
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :R2-D2
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :used ;
+                                                                         owl:hasValue :Red_Five
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
@@ -1037,6 +1052,36 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
                                                                          owl:hasValue :Pershing
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Departure
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Grogu
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Luke_Skywalker
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :destructionOf ;
+                                                                         owl:someValuesFrom :Dark_Trooper_3rd_gen
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Luke_Skywalker
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -1065,9 +1110,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                :Din_Djarin ,
                                :Fennec_Shand ,
                                :Gideon ,
-                               :Koska_Reeves ,
-                               :Luke_Skywalker ,
-                               :R2-D2 ;
+                               :Koska_Reeves ;
                   :year 9 ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Chapter_16:_The_Rescue"^^xsd:anyURI .
 

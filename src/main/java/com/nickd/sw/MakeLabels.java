@@ -12,12 +12,10 @@ import java.util.*;
 
 public class MakeLabels {
 
-    private OWLAnnotationProperty targetProperty;
+    private final OWLAnnotationProperty targetProperty;
     private final String lang;
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
-
-        System.err.println("Warning - serialisation corrupted - TODO work out why");
 
         Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
         MakeLabels makeLabels = new MakeLabels(helper.df.getOWLAnnotationProperty(IRI.create(RDFS.label.getURI())), "en");
@@ -41,7 +39,6 @@ public class MakeLabels {
     public List<OWLOntologyChange> run(final Set<OWLOntology> onts, OWLDataFactory df) {
 
         List<OWLOntologyChange> changes = new ArrayList<>();
-
 
         OWLEntityVisitor v = new OWLEntityVisitor() {
 

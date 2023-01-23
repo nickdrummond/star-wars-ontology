@@ -3,6 +3,8 @@ package com.nickd.sw;
 import openllet.owlapi.OWLHelper;
 import openllet.owlapi.OpenlletReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.formats.RioTurtleDocumentFormat;
+import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
@@ -68,6 +70,12 @@ public class Helper {
 
     public void saveChanged() throws OWLOntologyStorageException {
         for (OWLOntology o : changedOntologies) {
+            OWLDocumentFormat format = o.getOWLOntologyManager().getOntologyFormat(o);
+            if (format instanceof RioTurtleDocumentFormat) {
+                TurtleDocumentFormat ttl = new TurtleDocumentFormat();
+                ttl.copyPrefixesFrom((RioTurtleDocumentFormat)format);
+                o.getOWLOntologyManager().setOntologyFormat(o, ttl);
+            }
             mngr.saveOntology(o);
         }
     }

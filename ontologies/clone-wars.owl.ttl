@@ -9,17 +9,17 @@
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/clone-wars.owl.ttl> rdf:type owl:Ontology ;
                                                                                    owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
-                                                                                  dcterms:creator "Nick Drummond"^^xsd:string ;
-                                                                                  dcterms:license """Free to use for non-commercial purposes.
+                                                                                   dcterms:creator "Nick Drummond"^^xsd:string ;
+                                                                                   dcterms:license """Free to use for non-commercial purposes.
 Please contact the author to discuss use."""^^xsd:string ;
-                                                                                  rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ;
                                                                                    rdfs:comment "Events from \"The Clone Wars\" film and series"^^xsd:string ,
                                                                                                 """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
 
 All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
 
 There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia)."""^^xsd:string ;
-                                                                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars"^^xsd:anyURI ,
+                                                                                   rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
+                                                                                                "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars"^^xsd:anyURI ,
                                                                                                 "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars_(film)"^^xsd:anyURI .
 
 #################################################################
@@ -3068,6 +3068,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                      :Attack ;
                                             :after :Mission_to_Black_Stall_Station ,
                                                    :Mission_to_Mustafar_to_retrieve_the_children ;
+                                            :destructionOf :Felucia_Medical_Station_HCTFF2 ;
                                             :during :Clone_Wars ;
                                             :locatedIn :Felucia ;
                                             :year -21 ;
@@ -5524,6 +5525,34 @@ There is no assertion of correctness or completeness by myself - content has bee
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Mystery_of_a_Thousand_Moons"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mission_to_investigate_Felucia_medical_station_disappearance
+:Mission_to_investigate_Felucia_medical_station_disappearance rdf:type owl:NamedIndividual ,
+                                                                       :Mission ,
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :included ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Crash
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :of ;
+                                                                                                                     owl:someValuesFrom :T-6_shuttle
+                                                                                                                   ]
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :participant ;
+                                                                                                                     owl:someValuesFrom :Vulture_Droid
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ] ;
+                                                              :after :Destruction_of_the_Felucia_Medical_Station ;
+                                                              :during :Clone_Wars ;
+                                                              :locatedIn :Felucia ;
+                                                              :participant :Ahsoka_Tano ,
+                                                                           :Anakin_Skywalker ,
+                                                                           :Obi-Wan_Kenobi ;
+                                                              :year -21 ;
+                                                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_Hunters_(episode)"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mission_to_retrieve_Nute_Gunray
 :Mission_to_retrieve_Nute_Gunray rdf:type owl:NamedIndividual ,
                                           :Mission ,
@@ -6388,6 +6417,102 @@ There is no assertion of correctness or completeness by myself - content has bee
                                          :Padme_Amidala ;
                             :year -21 ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Blue_Shadow_Virus_(episode)"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Protecting_Felucian_Farmers
+:Protecting_Felucian_Farmers rdf:type owl:NamedIndividual ,
+                                      :Confrontation ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty :included ;
+                                                                                                           owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                                                       owl:onProperty :used ;
+                                                                                                                                                       owl:someValuesFrom :Tank
+                                                                                                                                                     ]
+                                                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                                                       owl:onProperty :of ;
+                                                                                                                                                       owl:hasValue :Rumi_Paramita
+                                                                                                                                                     ]
+                                                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                                                       owl:onProperty :participant ;
+                                                                                                                                                       owl:hasValue :Hondo_Ohnaka
+                                                                                                                                                     ]
+                                                                                                                                                   ) ;
+                                                                                                                                rdf:type owl:Class
+                                                                                                                              ]
+                                                                                                         ]
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty :defeatOf ;
+                                                                                                           owl:hasValue :Hondo_Ohnaka
+                                                                                                         ]
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty :injuryOf ;
+                                                                                                           owl:hasValue :Embo
+                                                                                                         ]
+                                                                                                       ) ;
+                                                                                    rdf:type owl:Class
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :of ;
+                                                                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty :hadRole ;
+                                                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Pirate
+                                                                                                                                                   :Spy
+                                                                                                                                                 ) ;
+                                                                                                                              rdf:type owl:Class
+                                                                                                                            ]
+                                                                                                       ]
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :Embo
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Training
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :of ;
+                                                                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty :hadRole ;
+                                                                                                         owl:someValuesFrom :Farmer
+                                                                                                       ]
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :Ahsoka_Tano
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :participant ;
+                                                                                    owl:hasValue :Anakin_Skywalker
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ;
+                             :after :Mission_to_investigate_Felucia_medical_station_disappearance ;
+                             :during :Clone_Wars ;
+                             :locatedIn :Felucia ;
+                             :participant :Ahsoka_Tano ,
+                                          :Anakin_Skywalker ,
+                                          :Hondo_Ohnaka ,
+                                          :Obi-Wan_Kenobi ,
+                                          :Sugis_Crew ;
+                             :year -21 ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_Hunters_(episode)"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Pursuing_the_Malevolence

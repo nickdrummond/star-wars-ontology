@@ -9496,10 +9496,119 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Zillo_Beast_incident
 :Zillo_Beast_incident rdf:type owl:NamedIndividual ,
-                               :Event ;
+                               :Escape ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :included ;
+                                                                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                         owl:onProperty :of ;
+                                                                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                              owl:onProperty :hadRole ;
+                                                                                                                                              owl:someValuesFrom :Guard
+                                                                                                                                            ]
+                                                                                                                       ]
+                                                                                                                     ) ;
+                                                                                                  rdf:type owl:Class
+                                                                                                ]
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Anakin_Skywalker
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :C-3PO
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Padme_Amidala
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :R2-D2
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Sheev_Palpatine
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :destructionOf ;
+                                                                             owl:someValuesFrom :Building
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty :hadRole ;
+                                                                                                  owl:someValuesFrom :Civilian
+                                                                                                ]
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :The_Zillo_Beast
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :used ;
+                                                                             owl:someValuesFrom :Gas
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :The_Zillo_Beast
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :orderedBy ;
+                                                                             owl:hasValue :Sheev_Palpatine
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Mission
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hadPurpose ;
+                                                                             owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty :creationOf ;
+                                                                                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                       owl:onProperty :wasCloneOf ;
+                                                                                                                       owl:hasValue :The_Zillo_Beast
+                                                                                                                     ]
+                                                                                                ]
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :orderedBy ;
+                                                                             owl:hasValue :Sheev_Palpatine
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Sionver_Boll
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
                       :after :Awakening_the_Zillo_Beast ;
                       :during :Clone_Wars ;
                       :locatedIn :Coruscant ;
+                      :of :The_Zillo_Beast ;
+                      :target :Sheev_Palpatine ;
                       :year -21 ;
                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Zillo_Beast_incident"^^xsd:anyURI .
 

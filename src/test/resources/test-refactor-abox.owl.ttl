@@ -1,0 +1,137 @@
+@prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+
+<https://null.com/test-reification.owl.ttl> rdf:type owl:Ontology .
+
+:included rdf:type owl:ObjectProperty .
+:of rdf:type owl:ObjectProperty .
+:disguisedAs rdf:type owl:ObjectProperty .
+:destructionOf rdf:type owl:ObjectProperty .
+:used rdf:type owl:ObjectProperty .
+:during rdf:type owl:ObjectProperty .
+:eatingOf rdf:type owl:ObjectProperty .
+:locatedIn rdf:type owl:ObjectProperty .
+:participant rdf:type owl:ObjectProperty .
+:survivedBy rdf:type owl:ObjectProperty .
+
+:year rdf:type owl:DatatypeProperty .
+
+:Attack rdf:type owl:Class .
+:Arrival rdf:type owl:Class .
+:Ship rdf:type owl:Class .
+:Killing rdf:type owl:Class .
+:Death rdf:type owl:Class .
+:Trooper rdf:type owl:Class .
+:BX-series_droid_commando rdf:type owl:Class .
+:Rishi_Eel rdf:type owl:Class .
+:Explosive rdf:type owl:Class .
+
+:Rishi_Station rdf:type owl:NamedIndividual .
+:Rex rdf:type owl:NamedIndividual .
+:Cody rdf:type owl:NamedIndividual .
+:Droidbait rdf:type owl:NamedIndividual .
+:O-Niner rdf:type owl:NamedIndividual .
+:Hevy rdf:type owl:NamedIndividual .
+:Cutup rdf:type owl:NamedIndividual .
+:Clone_Wars rdf:type owl:NamedIndividual .
+:Echo rdf:type owl:NamedIndividual .
+:Fives rdf:type owl:NamedIndividual .
+
+
+:Attack_on_Rishi_Station_Simple rdf:type owl:NamedIndividual ,
+                                  :Attack ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Droidbait
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                             ]
+                                  ] ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Rookies"^^xsd:anyURI .
+
+:Attack_on_Rishi_Station_Some rdf:type owl:NamedIndividual ,
+                                         :Attack ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :included ;
+                                           owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty :of ;
+                                                                                       owl:someValuesFrom :BX-series_droid_commando
+                                                                                     ]
+                                                                                   ) ;
+                                                                rdf:type owl:Class
+                                                    ]
+                                         ] ;
+                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Rookies"^^xsd:anyURI .
+
+
+:Attack_on_Rishi_Station_Both rdf:type owl:NamedIndividual ,
+                                         :Attack ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :included ;
+                                           owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty :of ;
+                                                                                       owl:hasValue :Droidbait
+                                                                                     ]
+                                                                                   ) ;
+                                                                rdf:type owl:Class
+                                                    ]
+                                         ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:someValuesFrom :BX-series_droid_commando
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                  ]
+                                       ];
+                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Rookies"^^xsd:anyURI .
+
+:Attack_on_Rishi_Station_Nested rdf:type owl:NamedIndividual ,
+                                  :Attack ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :destructionOf ;
+                                                                                owl:someValuesFrom :Ship
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :included ;
+                                                                                owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                                            owl:onProperty :of ;
+                                                                                                                            owl:someValuesFrom [ owl:intersectionOf ( :BX-series_droid_commando
+                                                                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                                                                        owl:onProperty :disguisedAs ;
+                                                                                                                                                                        owl:someValuesFrom :Trooper
+                                                                                                                                                                      ]
+                                                                                                                                                                    ) ;
+                                                                                                                                                 rdf:type owl:Class
+                                                                                                                                     ]
+                                                                                                                          ]
+                                                                                                                        ) ;
+                                                                                                     rdf:type owl:Class
+                                                                                         ]
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Cody
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                             ]
+                                  ] .

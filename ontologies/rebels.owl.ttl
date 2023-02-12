@@ -9,17 +9,17 @@
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/rebels.owl.ttl> rdf:type owl:Ontology ;
                                                                                owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
-                                                                              dcterms:creator "Nick Drummond"^^xsd:string ;
-                                                                              dcterms:license """Free to use for non-commercial purposes.
+                                                                               dcterms:creator "Nick Drummond"^^xsd:string ;
+                                                                               dcterms:license """Free to use for non-commercial purposes.
 Please contact the author to discuss use."""^^xsd:string ;
-                                                                              rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ;
                                                                                rdfs:comment "Events from \"Star Wars: Rebels\""^^xsd:string ,
                                                                                             """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
 
 All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
 
 There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia)."""^^xsd:string ;
-                                                                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels"^^xsd:anyURI .
+                                                                               rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
+                                                                                            "https://starwars.fandom.com/wiki/Star_Wars_Rebels"^^xsd:anyURI .
 
 #################################################################
 #    Individuals
@@ -415,6 +415,28 @@ There is no assertion of correctness or completeness by myself - content has bee
                                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Secret_Cargo#First_attack_wave"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_on_the_Protectors
+:Attack_on_the_Protectors rdf:type owl:NamedIndividual ,
+                                   :Attack ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty :memberOf ;
+                                                                                                      owl:hasValue :Mandalorian_Protectors
+                                                                                                    ]
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ;
+                          :destructionOf :Protectors_Camp ;
+                          :locatedIn :Concord_Dawn ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Imperial_Supercommandos"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_on_the_Rebel_Cruiser
 :Attack_on_the_Rebel_Cruiser rdf:type owl:NamedIndividual ,
                                       :Attack ,
@@ -740,16 +762,13 @@ There is no assertion of correctness or completeness by myself - content has bee
                             owl:someValuesFrom [ owl:intersectionOf ( :Conversation
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :about ;
-                                                                        owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                             owl:onProperty :included ;
-                                                                                             owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                                                                                       [ rdf:type owl:Restriction ;
-                                                                                                                                         owl:onProperty :of ;
-                                                                                                                                         owl:hasValue :Thrawn
-                                                                                                                                       ]
-                                                                                                                                     ) ;
-                                                                                                                  rdf:type owl:Class
-                                                                                                                ]
+                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty :of ;
+                                                                                                                    owl:hasValue :Thrawn
+                                                                                                                  ]
+                                                                                                                ) ;
+                                                                                             rdf:type owl:Class
                                                                                            ]
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
@@ -7122,28 +7141,6 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Recon_of_Concord_Dawn rdf:type owl:NamedIndividual ,
                                 :Mission ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :after ;
-                                  owl:someValuesFrom [ owl:intersectionOf ( :Attack
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :included ;
-                                                                              owl:someValuesFrom [ owl:intersectionOf ( :Killing
-                                                                                                                        [ rdf:type owl:Restriction ;
-                                                                                                                          owl:onProperty :of ;
-                                                                                                                          owl:hasValue :Mandalorian_Protectors
-                                                                                                                        ]
-                                                                                                                      ) ;
-                                                                                                   rdf:type owl:Class
-                                                                                                 ]
-                                                                            ]
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :destructionOf ;
-                                                                              owl:hasValue :Protectors_Camp
-                                                                            ]
-                                                                          ) ;
-                                                       rdf:type owl:Class
-                                                     ]
-                                ] ,
-                                [ rdf:type owl:Restriction ;
                                   owl:onProperty :destructionOf ;
                                   owl:someValuesFrom :Probe_Droid
                                 ] ,
@@ -7256,7 +7253,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                        rdf:type owl:Class
                                                      ]
                                 ] ;
-                       :after :Wargames_with_the_Droid_Army ;
+                       :after :Attack_on_the_Protectors ,
+                              :Wargames_with_the_Droid_Army ;
                        :during :Galactic_Civil_War ;
                        :locatedIn :Third_moon_of_Concord_Dawn ;
                        :participant :Gar_Saxon ,

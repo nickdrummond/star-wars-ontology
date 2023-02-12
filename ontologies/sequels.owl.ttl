@@ -1,25 +1,25 @@
 @prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/sequels.owl.ttl> rdf:type owl:Ontology ;
                                                                                 owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
-                                                                               dc:creator "Nick Drummond"^^xsd:string ;
-                                                                               dc:license """Free to use for non-commercial purposes.
+                                                                                dc:creator "Nick Drummond"^^xsd:string ;
+                                                                                dc:license """Free to use for non-commercial purposes.
 Please contact the author to discuss use."""^^xsd:string ;
-                                                                               rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ;
                                                                                 rdfs:comment "Events from the sequel films"^^xsd:string ,
                                                                                              """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
 
 All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
 
 There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia)."""^^xsd:string ;
-                                                                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker"^^xsd:anyURI ,
+                                                                                rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
+                                                                                             "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker"^^xsd:anyURI ,
                                                                                              "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VIII_The_Last_Jedi"^^xsd:anyURI ,
                                                                                              "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VII_The_Force_Awakens"^^xsd:anyURI .
 
@@ -1608,6 +1608,21 @@ There is no assertion of correctness or completeness by myself - content has bee
                                   owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :Death
                                                                             [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :locatedIn ;
+                                                                              owl:hasValue :MC85_Raddus
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Leia_Organa
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                                                            [ rdf:type owl:Restriction ;
                                                                               owl:onProperty :of ;
                                                                               owl:hasValue :Kylo_Ren
                                                                             ]
@@ -1647,27 +1662,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                             [ rdf:type owl:Restriction ;
                                                                               owl:onProperty :participant ;
                                                                               owl:hasValue :Rey
-                                                                            ]
-                                                                          ) ;
-                                                       rdf:type owl:Class
-                                                     ]
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :included ;
-                                  owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :included ;
-                                                                              owl:someValuesFrom [ owl:intersectionOf ( :Death
-                                                                                                                        [ rdf:type owl:Restriction ;
-                                                                                                                          owl:onProperty :of ;
-                                                                                                                          owl:hasValue :Leia_Organa
-                                                                                                                        ]
-                                                                                                                      ) ;
-                                                                                                   rdf:type owl:Class
-                                                                                                 ]
-                                                                            ]
-                                                                            [ rdf:type owl:Restriction ;
-                                                                              owl:onProperty :locatedIn ;
-                                                                              owl:hasValue :MC85_Raddus
                                                                             ]
                                                                           ) ;
                                                        rdf:type owl:Class

@@ -1,26 +1,25 @@
 @prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/book-of-boba-fett.owl.ttl> rdf:type owl:Ontology ;
                                                                                           owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
-                                                                                         dc:creator "Nick Drummond"^^xsd:string ;
-                                                                                         dc:license """Free to use for non-commercial purposes.
+                                                                                          dc:creator "Nick Drummond"^^xsd:string ;
+                                                                                          dc:license """Free to use for non-commercial purposes.
 Please contact the author to discuss use."""^^xsd:string ;
-                                                                                         rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ;
-
                                                                                           rdfs:comment "Events from the Book of Boba Fett TV series"^^xsd:string ,
                                                                                                        """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
 
 All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
 
 There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia)."""^^xsd:string ;
-                                                                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Book_of_Boba_Fett"^^xsd:anyURI .
+                                                                                          rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
+                                                                                                       "https://starwars.fandom.com/wiki/The_Book_of_Boba_Fett"^^xsd:anyURI .
 
 #################################################################
 #    Classes
@@ -389,8 +388,25 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bounty_on_Kaba_Baiz
 :Bounty_on_Kaba_Baiz rdf:type owl:NamedIndividual ,
-                              :Fight ,
                               :Job ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Fight
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :participant ;
+                                                                            owl:someValuesFrom [ owl:intersectionOf ( :Klatooinian
+                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :hadRole ;
+                                                                                                                        owl:someValuesFrom :Butcher
+                                                                                                                      ]
+                                                                                                                    ) ;
+                                                                                                 rdf:type owl:Class
+                                                                                               ]
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :included ;
                                 owl:someValuesFrom [ owl:intersectionOf ( :Killing
@@ -413,17 +429,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :orderedBy ;
                                 owl:someValuesFrom :Ishi_Tib
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :participant ;
-                                owl:someValuesFrom [ owl:intersectionOf ( :Klatooinian
-                                                                          [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :hadRole ;
-                                                                            owl:someValuesFrom :Butcher
-                                                                          ]
-                                                                        ) ;
-                                                     rdf:type owl:Class
-                                                   ]
                               ] ;
                      :injuryOf :Din_Djarin ;
                      :locatedIn :Glavis_Ringworld ;
@@ -1518,20 +1523,23 @@ There is no assertion of correctness or completeness by myself - content has bee
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :included ;
                                owl:someValuesFrom [ owl:intersectionOf ( :Fight
-                                                                         [ owl:intersectionOf ( :Killing
-                                                                                                [ rdf:type owl:Restriction ;
-                                                                                                  owl:onProperty :of ;
-                                                                                                  owl:someValuesFrom :PLNK-series_power_droid
-                                                                                                ]
-                                                                                                [ rdf:type owl:Restriction ;
-                                                                                                  owl:onProperty :of ;
-                                                                                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                                                       owl:onProperty :hadRole ;
-                                                                                                                       owl:someValuesFrom :Guard
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :included ;
+                                                                           owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                       owl:onProperty :of ;
+                                                                                                                       owl:someValuesFrom :PLNK-series_power_droid
                                                                                                                      ]
-                                                                                                ]
-                                                                                              ) ;
-                                                                           rdf:type owl:Class
+                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                       owl:onProperty :of ;
+                                                                                                                       owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                            owl:onProperty :hadRole ;
+                                                                                                                                            owl:someValuesFrom :Guard
+                                                                                                                                          ]
+                                                                                                                     ]
+                                                                                                                   ) ;
+                                                                                                rdf:type owl:Class
+                                                                                              ]
                                                                          ]
                                                                        ) ;
                                                     rdf:type owl:Class
@@ -1725,14 +1733,20 @@ There is no assertion of correctness or completeness by myself - content has bee
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :included ;
                                      owl:someValuesFrom [ owl:intersectionOf ( :Fight
-                                                                               :Killing
                                                                                [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :of ;
-                                                                                 owl:someValuesFrom :Pyke
-                                                                               ]
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty :of ;
-                                                                                 owl:someValuesFrom :Tusken
+                                                                                 owl:onProperty :included ;
+                                                                                 owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty :of ;
+                                                                                                                             owl:someValuesFrom :Pyke
+                                                                                                                           ]
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty :of ;
+                                                                                                                             owl:someValuesFrom :Tusken
+                                                                                                                           ]
+                                                                                                                         ) ;
+                                                                                                      rdf:type owl:Class
+                                                                                                    ]
                                                                                ]
                                                                              ) ;
                                                           rdf:type owl:Class

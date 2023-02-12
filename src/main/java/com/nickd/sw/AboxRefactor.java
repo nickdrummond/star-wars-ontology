@@ -2,7 +2,6 @@ package com.nickd.sw;
 
 import com.github.jsonldjava.shaded.com.google.common.collect.Sets;
 import com.google.common.collect.Maps;
-import openllet.core.utils.QNameProvider;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxObjectRenderer;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
@@ -14,8 +13,8 @@ import java.util.*;
 
 public class AboxRefactor {
 
-    private OWLObjectProperty includedProperty;
-    private OWLObjectProperty duringProperty;
+    private final OWLObjectProperty includedProperty;
+    private final OWLObjectProperty duringProperty;
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
         Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
@@ -93,7 +92,7 @@ public class AboxRefactor {
         public IRI getName(OWLIndividual parentEvent) {
             int count = eventChildCount.getOrDefault(parentEvent, 0);
             eventChildCount.put(parentEvent, count+1);
-            return IRI.create(BASE + "_" + render(parentEvent).toLowerCase() + count);
+            return IRI.create(BASE + "_during_" + render(parentEvent).toLowerCase() + "_" + count);
         }
     }
 

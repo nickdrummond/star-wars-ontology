@@ -19,7 +19,7 @@ public class ConsistencyTest extends TestCase {
     public static Test suite() throws OWLOntologyCreationException {
         helper = new TestHelper(
                 new TestSuite(ConsistencyTest.class),
-                Helper.BASE + "/all.owl.ttl",
+                Helper.BASE + "/events.owl.ttl",
                 new StarWarsOntologiesIRIMapper());
         helper.classify();
         return helper;
@@ -35,7 +35,7 @@ public class ConsistencyTest extends TestCase {
 
     public void testMurderedSpeed() {
         OWLClass murder = helper.cls("Murder");
-        OWLObjectProperty killedIn = helper.prop("killedIn");
+        OWLObjectProperty killedIn = helper.prop("subjectOf");
 
         OWLClassExpression murdered = helper.df().getOWLObjectSomeValuesFrom(killedIn, murder);
         long start = System.currentTimeMillis();
@@ -43,7 +43,7 @@ public class ConsistencyTest extends TestCase {
         long d = System.currentTimeMillis() - start;
 
         System.out.println("Murder inference = " + d + "ms");
-        assertTrue(results.getFlattened().size() > 0);
+        assertFalse(results.getFlattened().isEmpty());
         assertTrue("Murder inference too slow", d < 15000); // 15s
     }
 
@@ -51,10 +51,10 @@ public class ConsistencyTest extends TestCase {
         OWLClass livingThing = helper.cls("Living_thing");
         Set<OWLNamedIndividual> allLivingThingInstances = new HashSet<>(helper.r().getInstances(livingThing).getFlattened());
 
-        assertTrue(allLivingThingInstances.size() > 0);
+        assertFalse(allLivingThingInstances.isEmpty());
 
         // Living_thing and not{Luke_Skywalker}
-        OWLIndividual lukeSkywalker = helper.ind("#Luke_Skywalker");
+        OWLIndividual lukeSkywalker = helper.ind("Luke_Skywalker");
         Set<OWLNamedIndividual> notLuke = helper.r().getInstances(
                 helper.df().getOWLObjectIntersectionOf(
                         livingThing,
@@ -62,8 +62,6 @@ public class ConsistencyTest extends TestCase {
                                 helper.df().getOWLObjectOneOf(lukeSkywalker)))
             ).getFlattened();
 
-
-        // TODO generate an allDisjoint!
-        assertEquals(new HashSet<>(), SetUtils.difference(allLivingThingInstances, notLuke));
+        assertEquals(Set.of(lukeSkywalker), SetUtils.difference(allLivingThingInstances, notLuke));
     }
 }

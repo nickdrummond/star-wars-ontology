@@ -52,7 +52,7 @@ public class TestAboxRefactor extends TestCase {
     public void testRefactorCreatesNewSubEvent() {
         AddAxiom expected = new AddAxiom(helper.ont(), df.getOWLClassAssertionAxiom(
                 helper.cls("Killing"),
-                helper.ind("_attack_on_rishi_station_simple_0")
+                helper.ind("_during_attack_on_rishi_station_simple_0")
         ));
 
         assertThat(changes, hasItem(expected));
@@ -61,7 +61,7 @@ public class TestAboxRefactor extends TestCase {
     public void testRefactorLinksSubEventBackToEvent() {
         AddAxiom expected = new AddAxiom(helper.ont(), df.getOWLObjectPropertyAssertionAxiom(
                 duringProperty,
-                helper.ind("_attack_on_rishi_station_simple_0"),
+                helper.ind("_during_attack_on_rishi_station_simple_0"),
                 helper.ind("Attack_on_Rishi_Station_Simple")
         ));
 
@@ -71,7 +71,7 @@ public class TestAboxRefactor extends TestCase {
     public void testRefactorGeneratesPropertyAssertionsFromHasValue() {
         AddAxiom expected = new AddAxiom(helper.ont(), df.getOWLObjectPropertyAssertionAxiom(
                 helper.prop("of"),
-                helper.ind("_attack_on_rishi_station_simple_0"),
+                helper.ind("_during_attack_on_rishi_station_simple_0"),
                 helper.ind("Droidbait")
         ));
 
@@ -81,7 +81,7 @@ public class TestAboxRefactor extends TestCase {
     public void testRefactorGeneratesClassAssertionFromSome() {
         AddAxiom expected = new AddAxiom(helper.ont(), df.getOWLClassAssertionAxiom(
                 helper.mos("of some BX-series_droid_commando"),
-                helper.ind("_attack_on_rishi_station_some_0")
+                helper.ind("_during_attack_on_rishi_station_some_0")
         ));
 
         assertThat(changes, hasItem(expected));
@@ -90,12 +90,12 @@ public class TestAboxRefactor extends TestCase {
     public void testRefactorMultipleSubEvents() {
         AddAxiom expected1 = new AddAxiom(helper.ont(), df.getOWLObjectPropertyAssertionAxiom(
                 duringProperty,
-                helper.ind("_attack_on_rishi_station_both_0"),
+                helper.ind("_during_attack_on_rishi_station_both_0"),
                 helper.ind("Attack_on_Rishi_Station_Both")
         ));
         AddAxiom expected2 = new AddAxiom(helper.ont(), df.getOWLObjectPropertyAssertionAxiom(
                 duringProperty,
-                helper.ind("_attack_on_rishi_station_both_1"),
+                helper.ind("_during_attack_on_rishi_station_both_1"),
                 helper.ind("Attack_on_Rishi_Station_Both")
         ));
 
@@ -105,8 +105,8 @@ public class TestAboxRefactor extends TestCase {
     }
 
     public void testRefactorGeneratesNestedEvents() {
-        String subEventName = "_attack_on_rishi_station_nested_0";
-        String subSubEventName = "__attack_on_rishi_station_nested_0_0";
+        String subEventName = "_during_attack_on_rishi_station_nested_0";
+        String subSubEventName = "_during__during_attack_on_rishi_station_nested_0_0";
 
         AddAxiom during = new AddAxiom(helper.ont(), df.getOWLObjectPropertyAssertionAxiom(
                 duringProperty,
@@ -123,5 +123,3 @@ public class TestAboxRefactor extends TestCase {
         assertThat(changes, hasItem(expected));
     }
 }
-
-

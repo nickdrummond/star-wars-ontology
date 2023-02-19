@@ -321,24 +321,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                          owl:onProperty :of ;
                                                                          owl:someValuesFrom :B1_Battle_Droid
                                                                        ]
-                                                                     ) ;
-                                                  rdf:type owl:Class
-                                                ]
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :included ;
-                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
                                                                          owl:someValuesFrom :B2_Super_Battle_Droid
                                                                        ]
-                                                                     ) ;
-                                                  rdf:type owl:Class
-                                                ]
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :included ;
-                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
                                                                          owl:someValuesFrom :Droideka
@@ -4135,9 +4121,36 @@ There is no assertion of correctness or completeness by myself - content has bee
                 :year -21 ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Holocron_Heist"^^xsd:anyURI .
 
-
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hostage_demands
-:Hostage_demands rdf:type owl:NamedIndividual .
+:Hostage_demands rdf:type owl:NamedIndividual ,
+                          :Communication ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Execution
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Ponds
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Aurra_Sing
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                     ]
+                          ] ;
+                 :after :Search_for_Kilian ;
+                 :during :Clone_Wars ;
+                 :locatedIn :Slave_I ;
+                 :participant :Aurra_Sing ,
+                 :Boba_Fett ;
+                 :remoteParticipant :Ahsoka_Tano ,
+                 :Anakin_Skywalker ,
+                 :Mace_Windu ,
+                 :Plo_Koon ;
+                 :year -21 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Lethal_Trackdown"^^xsd:anyURI .
+
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hunt_for_Grievous

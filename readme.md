@@ -15,8 +15,7 @@ home |
 A hand-built [OWL ontology](docs/benefits.md) focused on events and covering characters, places and things in the films and TV series.
 
 [Browse the ontology](https://star-wars-ontology.up.railway.app/) on railway.app
-(first page may take a second to load as its using free tier hosting).
-This currently only displays asserted content.
+This currently only displays asserted content and DL queries.
 
 [![Investigating_the_World_Between_Worlds](docs/ontology-browser.png)](http://star-wars-ontology.up.railway.app/individuals/1184063215/)
 
@@ -24,23 +23,23 @@ This currently only displays asserted content.
 
 | Content                                                                                                                  | Count |
 |--------------------------------------------------------------------------------------------------------------------------|-------|
-| [Events](http://star-wars-ontology.up.railway.app/dlquery/?expression=Event&syntax=man)                                   | 520   |
-| [Characters](http://star-wars-ontology.up.railway.app/dlquery/?expression=Being+or+Droid&syntax=man)                      | 431   |
-| [Species](https://star-wars-ontology.up.railway.app/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 168   |
-| [Planets and Moons](http://star-wars-ontology.up.railway.app/dlquery/?expression=Planet+or+Moon&syntax=man)               | 121   |
-| [Built locations](http://star-wars-ontology.up.railway.app/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 101   |
-| [Organisations or units](http://star-wars-ontology.up.railway.app/dlquery/?expression=Organisation&syntax=man)            | 147   |
-| [Named vehicles](http://star-wars-ontology.up.railway.app/dlquery/?expression=Vehicle&syntax=man)                         | 89    |
+| [Events](http://star-wars-ontology.up.railway.app/dlquery/?expression=Event&syntax=man)                                   | 766   |
+| [Characters](http://star-wars-ontology.up.railway.app/dlquery/?expression=Being+or+Droid&syntax=man)                      | 539   |
+| [Species](https://star-wars-ontology.up.railway.app/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 189   |
+| [Planets and Moons](http://star-wars-ontology.up.railway.app/dlquery/?expression=Planet+or+Moon&syntax=man)               | 130   |
+| [Built locations](http://star-wars-ontology.up.railway.app/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 125   |
+| [Organisations or units](http://star-wars-ontology.up.railway.app/dlquery/?expression=Organisation&syntax=man)            | 125   |
+| [Named vehicles](http://star-wars-ontology.up.railway.app/dlquery/?expression=Vehicle&syntax=man)                         | 106   |
 
 | Structure             | Count  |
 |-----------------------|--------|
-| Axiom                 | 15,101 |
-| Logical axioms        | 10,686 |
-| Declaration axioms    | 2,420  |
-| Individuals           | 1,496  |
-| Classes               | 806    |
-| Object properties     | 112    |
-| Data properties       | 6      |
+| Axiom                 | 18,489 |
+| Logical axioms        | 13,121 |
+| Declaration axioms    | 2,947  |
+| Individuals           | 1,911  |
+| Classes               | 923    |
+| Object properties     | 104    |
+| Data properties       | 5      |
 
 Above is a snapshot - see [ontology metrics](http://star-wars-ontology.up.railway.app/ontologies/) for current values.
 
@@ -53,20 +52,26 @@ Above is a snapshot - see [ontology metrics](http://star-wars-ontology.up.railwa
 
 ## Scope
 
-* Episodes 1-9 - first pass
-* Solo and Rogue One - first pass
-* The Mandalorian - first pass
-* Resistance - first pass
-* Rebels - first pass
-* Clone Wars - in progress
-* The Bad Batch - first pass
-* The Book of Boba Fett - to do
+| Content                     | Status                    |
+|-----------------------------|---------------------------|
+| Skywalker Saga episodes 1-9 | first pass                |
+| Solo                        | first pass                |
+| Rogue One                   | first pass                |
+| The Mandalorian             | first pass                |
+| Resistance                  | first pass                |
+| Rebels                      | first pass                |  
+| Clone Wars                  | 3 of 7 series first pass  |
+| The Bad Batch               | 1 of 2 series first pass  |
+| The Book of Boba Fett       | first pass                |
+| Kenobi                      | to do                     |
+| Andor                       | to do                     |
 
 ## Contents
 
 * [docs](docs/) - notes on specific modelling issues, discussion of the benefits of using OWL, and working docs
 * [ontologies](ontologies/) - Ontologies in ttl (Turtle) OWL format. Start with [all.owl.ttl](ontologies/all.owl.ttl)
 * [src/test](https://github.com/nickdrummond/star-wars-ontology/tree/master/src/test) - A set of Java tests against the ontology for quality checking etc
+* [src/main](https://github.com/nickdrummond/star-wars-ontology/tree/master/src/main) - Transforms and other code
 * [sparql](sparql/) - A set of Sparql queries to summarise or infer things about our ontology
 
 ## Usage
@@ -75,7 +80,7 @@ Above is a snapshot - see [ontology metrics](http://star-wars-ontology.up.railwa
 
 [https://star-wars-ontology.up.railway.app/](https://star-wars-ontology.up.railway.app/)
 
-Please be patient - this is on a free-tier railway.app stack for demo purposes only.
+Please be patient - this is on a basic railway.app stack for demo purposes only.
 
 Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
 (not [behind-the-scenes.owl.ttl](ontologies/behind-the-scenes.owl.ttl))

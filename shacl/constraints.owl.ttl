@@ -10,20 +10,27 @@
 
 :EventShape
     a sh:NodeShape ;
-    sh:targetClass :Event ;
-    sh:property [
+    sh:targetClass :Event ;             # Events
+    sh:property [                       # must be during a parent Event
+          sh:path :during ;
+          sh:class :Event ;
+          sh:nodeKind sh:IRI ; # named event
+          sh:minCount 1 ;
+      ] ;
+    sh:property [                       # should have a date
           sh:path :year ;
           sh:maxCount 1 ;
           sh:minCount 1 ;
           sh:pattern "^-?\\d+$" ;
           sh:severity sh:Warning ;
       ] ;
-    sh:property [
-          sh:path :during ;
-          sh:class :Event ;
-          sh:nodeKind sh:IRI ; # named event
+    sh:property [                       # should be located somewhere
+          sh:path :locatedIn ;
+          sh:class :Place ;
+          sh:nodeKind sh:IRI ; # named place
           sh:maxCount 1 ;
           sh:minCount 1 ;
+          sh:severity sh:Warning ;
       ] ;
-    sh:closed false ;
+    sh:closed false ;                   # amongst any other property
     sh:ignoredProperties ( rdf:type ) .

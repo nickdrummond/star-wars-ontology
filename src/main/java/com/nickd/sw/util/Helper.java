@@ -1,4 +1,4 @@
-package com.nickd.sw;
+package com.nickd.sw.util;
 
 import openllet.owlapi.OWLHelper;
 import openllet.owlapi.OpenlletReasonerFactory;

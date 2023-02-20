@@ -1,4 +1,4 @@
-package com.nickd.sw;
+package com.nickd.sw.util;
 
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;

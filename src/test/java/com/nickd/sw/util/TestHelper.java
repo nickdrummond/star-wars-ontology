@@ -1,6 +1,5 @@
 package com.nickd.sw.util;
 
-import com.nickd.sw.Helper;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import org.semanticweb.owlapi.expression.ShortFormEntityChecker;

@@ -1,11 +1,12 @@
 package com.nickd.sw;
 
+import com.nickd.sw.util.Helper;
+import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import junit.framework.TestCase;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 
 import java.util.List;
-import java.util.Set;
 
 public class TestReifyIntegration extends TestCase {
 

@@ -1,5 +1,7 @@
 package com.nickd.sw;
 
+import com.nickd.sw.util.Helper;
+import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import com.nickd.sw.util.TestHelper;
 import junit.framework.Test;
 import junit.framework.TestCase;

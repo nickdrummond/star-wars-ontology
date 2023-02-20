@@ -1,5 +1,6 @@
 package com.nickd.sw;
 
+import com.nickd.sw.util.Helper;
 import com.nickd.sw.util.TestHelper;
 import com.nickd.sw.util.TestOntologiesIRIMapper;
 import junit.framework.Test;

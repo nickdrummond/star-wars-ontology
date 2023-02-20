@@ -1,0 +1,29 @@
+@prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+
+:EventShape
+    a sh:NodeShape ;
+    sh:targetClass :Event ;
+    sh:property [
+          sh:path :year ;
+          sh:maxCount 1 ;
+          sh:minCount 1 ;
+          sh:pattern "^-?\\d+$" ;
+          sh:severity sh:Warning ;
+      ] ;
+    sh:property [
+          sh:path :during ;
+          sh:class :Event ;
+          sh:nodeKind sh:IRI ; # named event
+          sh:maxCount 1 ;
+          sh:minCount 1 ;
+      ] ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) .

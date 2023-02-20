@@ -5,11 +5,11 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX sw: <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
-SELECT ?year ?event ?after ?during
+SELECT ?year ?event ?during ?after
 WHERE {
 	  ?event a sw:Event .
 	  OPTIONAL { ?event sw:year ?year } .
-	  OPTIONAL { ?event sw:after ?after }
-	  OPTIONAL { ?event sw:during ?during }
+	  OPTIONAL { ?event sw:during ?during } .
+	  OPTIONAL { ?event sw:after ?after } .
 	  }
 ORDER BY ASC ( ?year )

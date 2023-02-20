@@ -1,5 +1,7 @@
 package com.nickd.sw;
 
+import com.nickd.sw.util.Helper;
+import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxObjectRenderer;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;

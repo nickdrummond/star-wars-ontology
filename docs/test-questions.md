@@ -18,11 +18,13 @@ We have the following mechanisms available to us:
 * Usage (includes backward references)
 * DL query
 * SparQL
+* Shacl
+* Code (OWLAPI)
 * Sqwrl?
 * Protege tooling
     * Individuals matrix
     * Ontograf
-
+* Other OWL tools?
 
 ## Places
 

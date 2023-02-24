@@ -20,19 +20,15 @@ eg **Plo Koon died during Order 66 on 19BBY**
 
 We cannot simply do this in OWL as there are no property chains for datatype properties.
 
-Sparql works fine using an RDFS Inference model.
-
-See [people.sparql](people.sparql) and [SparqlTest](../src/test/java/com/nickd/sw/SparqlTest.java)
+See [deaths.sparql](deaths.sparql) and [DeathsSparqlReport](../src/test/java/com/nickd/sw/report/DeathsSparqlReport.java)
 
 Neither of these queries is complete using just the basic graph.
-This does not deal with inclusion of a Death in an event.
 
-We need to find an engine that allows transitive + or does some inference (not supported in Protege SPARQL Tab)
+We use the jena SPARQL engine as it:
+* allows transitive +/* properties (not supported in Protege SPARQL Tab)
 [Transitive SPARQL 1.1](https://stackoverflow.com/questions/8569810/sparql-querying-transitive)
-
-This is possible in Jena but is not the job of the SPARQL engine, its attaching a reasoner to the model.
+* can use the RDFS infmodel, using inference to make results (more) complete.
 See [Jena inference](https://jena.apache.org/documentation/inference/)
-
 
 ### SWRL alternative
 

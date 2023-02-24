@@ -1,0 +1,38 @@
+# Deaths by year, event
+# Only gives "complete" results on A-Box transformed ontology
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sw: <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
+SELECT DISTINCT ?died
+       (STRAFTER(STR(?event), "#") AS ?during)
+       (STRAFTER(STR(?loc), "#") AS ?location)
+       (STRAFTER(STR(?person), "#") AS ?name)
+       ?age
+WHERE {
+	  ?person a sw:Living_thing .
+   	  ?event rdf:type sw:Death ;
+             sw:of ?person ;
+             sw:during*/sw:year ?died .
+      OPTIONAL { ?event rdf:type sw:Death ;
+                        sw:of ?person ;
+   	                    sw:locatedIn ?directlocation ;
+                         } .
+      OPTIONAL { ?event rdf:type sw:Death ;
+                        sw:of ?person ;
+   	                    sw:during/sw:locatedIn ?location1Step .
+                         } .
+      OPTIONAL { ?event rdf:type sw:Death ;
+                        sw:of ?person ;
+   	                    sw:during/sw:during/sw:locatedIn ?location2Step . # never more than 2 steps from a "full Event"
+                         } .
+	  OPTIONAL { ?e1 rdf:type sw:Birth ;
+	                    sw:of ?person ;
+	                    sw:year ?born .
+	                    } .
+      BIND (?died - ?born AS ?age) .
+      BIND ((IF (bound(?directlocation), ?directlocation, IF (bound(?location1Step), ?location1Step, ?location2Step))) AS ?loc) .
+}
+ORDER BY ?died ?diedDuring ?loc ?name

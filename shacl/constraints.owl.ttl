@@ -11,24 +11,30 @@
 :EventShape
     a sh:NodeShape ;
     sh:targetClass :Event ;             # Events
-    sh:property [                       # must be during a parent Event
-          sh:path :during ;
-          sh:class :Event ;
-          sh:nodeKind sh:IRI ; # named event
-          sh:minCount 1 ;
-      ] ;
-    sh:property [                       # should have a date
-          sh:path :year ;
-          sh:maxCount 1 ;
-          sh:minCount 1 ;
-          sh:pattern "^-?\\d+$" ;
-          sh:severity sh:Warning ;
-      ] ;
-    sh:property [                       # should be located somewhere
-          sh:path :locatedIn ;
-          sh:class :Place ;
-          sh:nodeKind sh:IRI ; # named place
-          sh:maxCount 1 ;
+#    sh:property [                       # must be during a parent Event
+#          sh:path :during ;
+#          sh:class :Event ;
+#          sh:nodeKind sh:IRI ; # named event
+#          sh:minCount 1 ;
+#      ] ;
+#    sh:property [                       # should have a date
+#          sh:path :year ;
+#          sh:maxCount 1 ;
+#          sh:minCount 1 ;
+#          sh:pattern "^-?\\d+$" ;
+#          sh:severity sh:Warning ;
+#      ] ;
+#    sh:property [                       # should be located somewhere
+#          sh:path :locatedIn ;
+#          sh:class :Place ;
+#          sh:nodeKind sh:IRI ; # named place
+#          sh:maxCount 1 ;
+#          sh:minCount 1 ;
+#          sh:severity sh:Warning ;
+#      ] ;
+    sh:property [
+          sh:path :participant ;
+          sh:class :Actor ;
           sh:minCount 1 ;
           sh:severity sh:Warning ;
       ] ;

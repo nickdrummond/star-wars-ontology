@@ -1,15 +1,18 @@
-# SPARQL not inferring all instances of Event, only instances of is direct subs
-
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX sw: <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
-SELECT ?year ?event ?during ?after
+SELECT ?year
+       (STRAFTER(STR(?type), "#") AS ?t)
+       (STRAFTER(STR(?eventV), "#") AS ?event)
+       (STRAFTER(STR(?duringV), "#") AS ?during)
+       (STRAFTER(STR(?afterV), "#") AS ?after)
 WHERE {
-	  ?event a sw:Event .
-	  OPTIONAL { ?event sw:year ?year } .
-	  OPTIONAL { ?event sw:during ?during } .
-	  OPTIONAL { ?event sw:after ?after } .
+	  ?eventV a ?type .
+	  ?type rdfs:subClassOf sw:Event .
+	  OPTIONAL { ?eventV sw:year ?year } .
+	  OPTIONAL { ?eventV sw:during ?duringV } .
+	  OPTIONAL { ?eventV sw:after ?afterV } .
 	  }
 ORDER BY ASC ( ?year )

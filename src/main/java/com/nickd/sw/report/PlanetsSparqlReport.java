@@ -15,7 +15,7 @@ public class PlanetsSparqlReport {
         final Query query = report.loadQuery("sparql/planets.sparql");
 
         try (QueryExecution qexec = report.run(query)) {
-            ResultSetFormatter.outputAsCSV(qexec.execSelect());
+            ResultSetFormatter.out(qexec.execSelect());
         }
     }
 }

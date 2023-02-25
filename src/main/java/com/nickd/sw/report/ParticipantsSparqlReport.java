@@ -15,7 +15,7 @@ public class ParticipantsSparqlReport {
         final Query query = report.loadQuery("sparql/participants.sparql");
 
         try (QueryExecution qexec = report.run(query)) {
-            ResultSetFormatter.outputAsCSV(qexec.execSelect());
+            ResultSetFormatter.out(qexec.execSelect());
         }
     }
 }

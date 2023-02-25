@@ -13,7 +13,7 @@ public class EventsSparqlReport {
         final Query query = report.loadQuery("sparql/events.sparql");
 
         try (QueryExecution qexec = report.run(query)) {
-            ResultSetFormatter.outputAsCSV(qexec.execSelect());
+            ResultSetFormatter.out(qexec.execSelect());
         }
     }
 }

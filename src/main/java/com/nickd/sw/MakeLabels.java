@@ -14,10 +14,16 @@ import java.util.*;
 
 public class MakeLabels {
 
+    private static ShortFormProvider sfp;
     private final OWLAnnotationProperty targetProperty;
     private final String lang;
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
+
+        sfp = owlEntity -> {
+            final String s = owlEntity.getIRI().getIRIString();
+            return s.substring(s.lastIndexOf("#") + 1);
+        };
 
         Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
         MakeLabels makeLabels = new MakeLabels(helper.df.getOWLAnnotationProperty(IRI.create(RDFS.label.getURI())), "en");
@@ -45,7 +51,7 @@ public class MakeLabels {
         OWLEntityVisitor v = new OWLEntityVisitor() {
 
             private void translate(OWLEntity e) {
-                String label = render(e).replaceAll("_", " ");
+                String label = sfp.getShortForm(e).replaceAll("_", " ");
                 OWLAxiom ax = df.getOWLAnnotationAssertionAxiom(targetProperty, e.getIRI(), df.getOWLLiteral(label, lang));
                 getDeclarationOntology(e, onts, df).ifPresent(ont -> changes.add(new AddAxiom(ont, ax)));
 
@@ -76,14 +82,6 @@ public class MakeLabels {
 
         return changes;
     }
-
-    public String render(OWLObject o ) {
-        final ShortFormProvider sfp = new SimpleShortFormProvider();
-        StringWriter w = new StringWriter();
-        o.accept(new ManchesterOWLSyntaxObjectRenderer(w, sfp));
-        return w.toString();
-    }
-
 
     private Optional<OWLOntology> getDeclarationOntology(OWLEntity e, Set<OWLOntology> onts, OWLDataFactory df) {
         OWLDeclarationAxiom decl = df.getOWLDeclarationAxiom(e);

@@ -1,0 +1,179 @@
+@prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+
+<https://nickdrummond.github.io/star-wars-ontology/ontologies/kenobi.owl.ttl> rdf:type owl:Ontology ;
+                                                                               owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
+                                                                               dc:creator "Nick Drummond" ;
+                                                                               dc:license """Free to use for non-commercial purposes.
+Please contact the author to discuss use.""" ;
+                                                                               rdfs:comment "Events from the Kenobi TV series" ,
+                                                                                            """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
+
+All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
+
+There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia).""" ;
+                                                                               rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
+                                                                                            "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi_(television_series)"^^xsd:anyURI .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Gifting_a_T-16_toy
+:Gifting_a_T-16_toy rdf:type owl:NamedIndividual ,
+                             :Transfer ;
+                    :after :Kenobi_and_Teeka ;
+                    :during :Imperial_era ;
+                    :from :Obi-Wan_Kenobi ;
+                    :locatedIn :Lars_Homestead ;
+                    :of :Lukes_T-16 ;
+                    :to :Luke_Skywalker ;
+                    :year -9.0 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#Jedi_in_hiding"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hunting_for_scraps
+:Hunting_for_scraps rdf:type owl:NamedIndividual ,
+                             :Search ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Nari
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Saving
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :hadRole ;
+                                                                                                owl:someValuesFrom :Bartender
+                                                                                              ]
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:someValuesFrom [ owl:intersectionOf ( :The_Force
+                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                       owl:onProperty :connectedTo ;
+                                                                                                                       owl:hasValue :Nari
+                                                                                                                     ]
+                                                                                                                   ) ;
+                                                                                                rdf:type owl:Class
+                                                                                              ]
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :locatedIn ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Cantina
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :locatedIn ;
+                                                                           owl:hasValue :Mos_Eisley
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    :during :Imperial_era ;
+                    :participant :Fifth_Brother ,
+                                 :Reva_Sevander ,
+                                 :The_Grand_Inquisitor ;
+                    :target :Nari ;
+                    :year -9.0 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kenobi_and_Teeka
+:Kenobi_and_Teeka rdf:type owl:NamedIndividual ,
+                           :Trading ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :about ;
+                                                                         owl:someValuesFrom :Jedi
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :about ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :of ;
+                                                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                          owl:onProperty :partOf ;
+                                                                                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Moisture_vaporator
+                                                                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                                                                      owl:onProperty :ownedBy ;
+                                                                                                                                                                                      owl:hasValue :Obi-Wan_Kenobi
+                                                                                                                                                                                    ]
+                                                                                                                                                                                  ) ;
+                                                                                                                                                               rdf:type owl:Class
+                                                                                                                                                             ]
+                                                                                                                                        ]
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  :after :Hunting_for_scraps ;
+                  :during :Imperial_era ;
+                  :from :Teeka ;
+                  :locatedIn :Ben_Kenobis_cave ;
+                  :of :Lukes_T-16 ;
+                  :to :Obi-Wan_Kenobi ;
+                  :year -9.0 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Nari_asks_for_help
+:Nari_asks_for_help rdf:type owl:NamedIndividual ,
+                             :Conversation ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :about ;
+                               owl:someValuesFrom :Jedi
+                             ] ;
+                    :after :Gifting_a_T-16_toy ;
+                    :during :Imperial_era ;
+                    :locatedIn :Jundland_wastes ;
+                    :participant :Nari ,
+                                 :Obi-Wan_Kenobi ;
+                    :year -9.0 ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#Jedi_in_hiding"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Siege_of_the_Jedi_Temple
+:Siege_of_the_Jedi_Temple rdf:type [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :of ;
+                                                                                 owl:hasValue :Minas_Velti
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :witnessedBy ;
+                                                                                 owl:hasValue :Reva_Sevander
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

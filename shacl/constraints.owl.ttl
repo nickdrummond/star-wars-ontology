@@ -10,6 +10,17 @@
 
 # TODO all entity IRIs should be the same base
 
+# all seeAlso refs should be of type "anyURI"
+:SeeAlsoShape
+    a sh:NodeShape;
+    sh:targetSubjectsOf rdfs:seeAlso;
+    sh:property [
+                    sh:path rdfs:seeAlso;
+                    sh:datatype xsd:anyURI;
+                    sh:severity sh:Warning;
+                ];
+    sh:closed false .
+
 :EventShape
     a sh:NodeShape ;
     sh:targetClass :Event ;             # Events
@@ -34,11 +45,11 @@
 #          sh:minCount 1 ;
 #          sh:severity sh:Warning ;
 #      ] ;
-    sh:property [
-          sh:path :participant ;
-          sh:class :Actor ;
-          sh:minCount 1 ;
-          sh:severity sh:Warning ;
-      ] ;
+#    sh:property [
+#          sh:path :participant ;
+#          sh:class :Actor ;
+#          sh:minCount 1 ;
+#          sh:severity sh:Warning ;
+#      ] ;
     sh:closed false ;                   # amongst any other property
     sh:ignoredProperties ( rdf:type ) .

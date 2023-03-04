@@ -27,7 +27,26 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Gifting_a_T-16_toy
 :Gifting_a_T-16_toy rdf:type owl:NamedIndividual ,
-                             :Transfer ;
+                             :Transfer ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Observation
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :used ;
+                                                                           owl:someValuesFrom :Macrobinoculars
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Luke_Skywalker
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :participant ;
+                                                                           owl:hasValue :Obi-Wan_Kenobi
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
                     :after :Kenobi_and_Teeka ;
                     :during :Imperial_era ;
                     :from :Obi-Wan_Kenobi ;
@@ -142,6 +161,71 @@ There is no assertion of correctness or completeness by myself - content has bee
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Leia_avoids_her_responsibilities
+:Leia_avoids_her_responsibilities rdf:type owl:NamedIndividual ,
+                                           :Hiding ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :assistedBy ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :disguisedAs ;
+                                                                                         owl:hasValue :Leia_Organa
+                                                                                       ]
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :friendsWith ;
+                                                                                         owl:hasValue :Leia_Organa
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :included ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( :Observation
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :of ;
+                                                                                         owl:hasValue :Leia_Organa
+                                                                                       ]
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :participant ;
+                                                                                         owl:hasValue :Vect_Nokru
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :included ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( :Search
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :participant ;
+                                                                                         owl:hasValue :Breha_Organa
+                                                                                       ]
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :target ;
+                                                                                         owl:hasValue :Leia_Organa
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :locatedIn ;
+                                             owl:someValuesFrom [ owl:intersectionOf ( :Forest
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty :locatedIn ;
+                                                                                         owl:hasValue :Alderaan
+                                                                                       ]
+                                                                                     ) ;
+                                                                  rdf:type owl:Class
+                                                                ]
+                                           ] ;
+                                  :during :Imperial_era ;
+                                  :of :Leia_Organa ;
+                                  :participant :L0-LA59 ;
+                                  :year -9 ;
+                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#The_little_princess"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Nari_asks_for_help
 :Nari_asks_for_help rdf:type owl:NamedIndividual ,
                              :Conversation ,
@@ -156,6 +240,26 @@ There is no assertion of correctness or completeness by myself - content has bee
                                  :Obi-Wan_Kenobi ;
                     :year -9.0 ;
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#Jedi_in_hiding"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Owen_vs_Ben
+:Owen_vs_Ben rdf:type owl:NamedIndividual ,
+                      :Argument ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :included ;
+                        owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                             owl:onProperty :destructionOf ;
+                                             owl:hasValue :Lukes_T-16
+                                           ]
+                      ] ;
+             :about :Luke_Skywalker ;
+             :after :Gifting_a_T-16_toy ;
+             :during :Imperial_era ;
+             :locatedIn :Anchorhead ;
+             :participant :Obi-Wan_Kenobi ,
+                          :Owen_Lars ;
+             :year -9 ;
+             rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#Owen's_warning"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Siege_of_the_Jedi_Temple
@@ -174,6 +278,59 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                           rdf:type owl:Class
                                                         ]
                                    ] .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Threats_of_the_Inquisitors
+:Threats_of_the_Inquisitors rdf:type owl:NamedIndividual ,
+                                     :Confrontation ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Removing
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :of ;
+                                                                                   owl:someValuesFrom [ owl:intersectionOf ( :Hand
+                                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                                               owl:onProperty :partOf ;
+                                                                                                                               owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                                    owl:onProperty :hadRole ;
+                                                                                                                                                    owl:someValuesFrom :Civilian
+                                                                                                                                                  ]
+                                                                                                                             ]
+                                                                                                                           ) ;
+                                                                                                        rdf:type owl:Class
+                                                                                                      ]
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :used ;
+                                                                                   owl:someValuesFrom :Lightsaber
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:hasValue :Reva_Sevander
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Speech
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :about ;
+                                                                                   owl:someValuesFrom :Jedi
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                            :after :Owen_vs_Ben ;
+                            :during :Imperial_era ;
+                            :locatedIn :Anchorhead ;
+                            :participant :Fifth_Brother ,
+                                         :Owen_Lars ,
+                                         :Reva_Sevander ;
+                            :year -9 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#The_Inquisitors'_visit"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

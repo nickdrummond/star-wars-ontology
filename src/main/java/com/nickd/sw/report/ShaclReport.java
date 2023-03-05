@@ -19,21 +19,20 @@ public class ShaclReport {
     private static Logger logger = Logger.getLogger(ShaclReport.class.getName());
 
     public static void main(String[] args) throws IOException {
-        Model dataModel = new JenaHelper().getModelFor("ontologies/all.owl.ttl");
         Model shapeModel = new JenaHelper().getModelFor("shacl/constraints.owl.ttl");
+        Model dataModel = new JenaHelper().getModelFor("ontologies/all.owl.ttl");
 
+        logger.info("Validating...");
         Resource reportResource = ValidationUtil.validateModel(dataModel, shapeModel, true);
         boolean conforms  = reportResource.getProperty(SH.conforms).getBoolean();
         logger.info("Conforms = " + conforms);
 
-        if (!conforms) {
-            File reportFile = new File("shacl-report.ttl");
-            reportFile.createNewFile();
-            logger.info("reportFile = " + reportFile.getAbsolutePath());
-            OutputStream reportOutputStream = new FileOutputStream(reportFile);
+        File reportFile = new File("shacl-report.ttl");
+        reportFile.createNewFile();
+        logger.info("reportFile = " + reportFile.getAbsolutePath());
+        OutputStream reportOutputStream = new FileOutputStream(reportFile);
 
-            RDFDataMgr.write(reportOutputStream, reportResource.getModel(), RDFFormat.TURTLE);
-        }
+        RDFDataMgr.write(reportOutputStream, reportResource.getModel(), RDFFormat.TURTLE);
     }
 
 }

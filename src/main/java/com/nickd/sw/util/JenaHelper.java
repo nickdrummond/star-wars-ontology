@@ -20,14 +20,35 @@ public class JenaHelper {
         long t1 = System.currentTimeMillis();
 
         OntDocumentManager dm = new OntDocumentManager("ont-policy.rdf");
+        dm.setReadFailureHandler((url, m, e) -> System.err.println("Failed to load " + url + e.getMessage()));
+        LocationMapper locManager = dm.getFileManager().getLocationMapper();
+        locManager.addAltPrefix("https://nickdrummond.github.io/star-wars-ontology/ontologies/", "file:ontologies/");
+
         OntModelSpec spec = OntModelSpec.OWL_MEM;
         spec.setDocumentManager(dm);
-        Model model = ModelFactory.createOntologyModel(spec);
+        OntModel model = ModelFactory.createOntologyModel(spec);
         model.read(location);
 
         long t2 = System.currentTimeMillis();
+
+        listImports(model);
         System.out.println("loaded in " + (t2 - t1) + "ms");
 
         return model;
+    }
+
+    private void listImports(OntModel model) {
+        model.getImportModelMaker().listModels().forEachRemaining(mURI -> {
+            OntDocumentManager dm = model.getDocumentManager();
+            String alt = dm.getFileManager().getLocationMapper().altMapping(mURI);
+
+            OntModel m = dm.getOntology(mURI, OntModelSpec.OWL_MEM);
+            if (m != null) {
+                System.out.println("import = " + mURI + " from " + alt);
+            }
+            else {
+                System.err.println("Cannot find model for " + mURI);
+            }
+        });
     }
 }

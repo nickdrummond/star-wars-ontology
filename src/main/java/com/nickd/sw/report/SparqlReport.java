@@ -17,7 +17,7 @@ public class SparqlReport {
     private static InfModel rdfsInfModel;
 
     public SparqlReport(final String ontology) {
-        Model model = new JenaHelper().getModelFor(ontology);
+        Model model = new JenaHelper().getModelWithImportsFor(ontology);
 
         // Try full blown OWL reasoning first - too slow
         // Transitive r does not work for instances of subclasses

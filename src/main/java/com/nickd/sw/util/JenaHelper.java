@@ -1,6 +1,5 @@
 package com.nickd.sw.util;
 
-import openllet.owlapi.PelletReasonerFactory;
 import org.apache.jena.ontology.OntDocumentManager;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
@@ -10,16 +9,16 @@ import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.util.LocationMapper;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.Objects;
-
 public class JenaHelper {
 
-    public Model getModelFor(final String location) {
+    public Model getTurtleModelFor(final String location) {
+        return RDFDataMgr.loadModel(location, Lang.TURTLE);
+    }
+
+    public Model getModelWithImportsFor(final String location) {
         long t1 = System.currentTimeMillis();
 
-        OntDocumentManager dm = new OntDocumentManager("ont-policy.rdf");
+        OntDocumentManager dm = new OntDocumentManager();
         dm.setReadFailureHandler((url, m, e) -> System.err.println("Failed to load " + url + e.getMessage()));
         LocationMapper locManager = dm.getFileManager().getLocationMapper();
         locManager.addAltPrefix("https://nickdrummond.github.io/star-wars-ontology/ontologies/", "file:ontologies/");

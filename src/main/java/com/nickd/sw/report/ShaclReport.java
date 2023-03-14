@@ -19,8 +19,8 @@ public class ShaclReport {
     private static Logger logger = Logger.getLogger(ShaclReport.class.getName());
 
     public static void main(String[] args) throws IOException {
-        Model shapeModel = new JenaHelper().getModelFor("shacl/constraints.owl.ttl");
-        Model dataModel = new JenaHelper().getModelFor("ontologies/all.owl.ttl");
+        Model shapeModel = new JenaHelper().getTurtleModelFor("shacl/constraints.owl.ttl");
+        Model dataModel = new JenaHelper().getModelWithImportsFor("ontologies/all.owl.ttl");
 
         logger.info("Validating...");
         Resource reportResource = ValidationUtil.validateModel(dataModel, shapeModel, true);

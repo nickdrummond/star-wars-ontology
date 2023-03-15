@@ -25,6 +25,38 @@ There is no assertion of correctness or completeness by myself - content has bee
 #    Individuals
 #################################################################
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Arrival_of_Vader_on_Mapuzo
+:Arrival_of_Vader_on_Mapuzo rdf:type :Arrival ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :included ;
+                                       owl:someValuesFrom [ owl:intersectionOf ( :Torture
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :of ;
+                                                                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty :hadRole ;
+                                                                                                        owl:someValuesFrom :Civilian
+                                                                                                      ]
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :participant ;
+                                                                                   owl:hasValue :Darth_Vader
+                                                                                 ]
+                                                                               ) ;
+                                                            rdf:type owl:Class
+                                                          ]
+                                     ] ;
+                            :after :Getting_a_lift_from_Freck ;
+                            :during :Imperial_era ;
+                            :locatedIn :Mapuzo_mining_village ;
+                            :of :Darth_Vader ;
+                            :witnessedBy :Fifth_Brother ,
+                                         :Fourth_Sister ,
+                                         :Obi-Wan_Kenobi ,
+                                         :Reva_Sevander ;
+                            :year -9 ;
+                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_III#Escape_from_Mapuzo"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bail_asks_for_help_finding_Leia
 :Bail_asks_for_help_finding_Leia rdf:type owl:NamedIndividual ,
                                           :Conversation ,
@@ -55,6 +87,94 @@ There is no assertion of correctness or completeness by myself - content has bee
                                               :Obi-Wan_Kenobi ;
                                  :year -9 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#Kenobi's_choices"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Capture_of_Leia_from_the_Path
+:Capture_of_Leia_from_the_Path rdf:type owl:NamedIndividual ,
+                                        :Capture ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :of ;
+                                                                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty :hadRole ;
+                                                                                                           owl:someValuesFrom [ owl:intersectionOf ( :Pilot
+                                                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                                                       owl:onProperty :inOrganisation ;
+                                                                                                                                                       owl:hasValue :Hidden_Path
+                                                                                                                                                     ]
+                                                                                                                                                   ) ;
+                                                                                                                                rdf:type owl:Class
+                                                                                                                              ]
+                                                                                                         ]
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :participant ;
+                                                                                      owl:hasValue :Reva_Sevander
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ;
+                               :after :Arrival_of_Vader_on_Mapuzo ;
+                               :during :Imperial_era ;
+                               :locatedIn :Mapuzo_safehouse ;
+                               :of :Leia_Organa ;
+                               :participant :Reva_Sevander ;
+                               :year -9 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_III#Reunion"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Daiyu_to_Mapuzo
+:Daiyu_to_Mapuzo rdf:type owl:NamedIndividual ,
+                          :Journey ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :participant ;
+                                                                        owl:hasValue :Obi-Wan_Kenobi
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :target ;
+                                                                        owl:hasValue :Qui-Gon_Jinn
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :about ;
+                                                                        owl:someValuesFrom :The_Force
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Repair
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :L0-LA59
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
+                 :after :Escape_from_Daiyu ;
+                 :during :Imperial_era ;
+                 :from :Daiyu ;
+                 :locatedIn :Transport_eight ;
+                 :participant :Leia_Organa ,
+                              :Obi-Wan_Kenobi ;
+                 :to :Mapuzo ;
+                 :year -9 ;
+                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_III#Arriving_on_Mapuzo"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Digging_up_the_lightsaber
@@ -193,8 +313,104 @@ There is no assertion of correctness or completeness by myself - content has bee
                    :locatedIn :Daiyu ;
                    :of :Leia_Organa ,
                        :Obi-Wan_Kenobi ;
+                   :used :Transport_eight ;
                    :year -9 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_II#Reva's_gambit"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Finding_the_Path
+:Finding_the_Path rdf:type owl:NamedIndividual ,
+                           :Hiding ;
+                  :after :Getting_a_lift_from_Freck ;
+                  :assistedBy :NED-B ;
+                  :during :Imperial_era ;
+                  :locatedIn :Mapuzo_safehouse ;
+                  :participant :Leia_Organa ,
+                               :Obi-Wan_Kenobi ;
+                  :year -9 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_III#Escape_from_Mapuzo"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Freck
+:Freck rdf:type owl:NamedIndividual .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Getting_a_lift_from_Freck
+:Getting_a_lift_from_Freck rdf:type owl:NamedIndividual ,
+                                    :Journey ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty :hadRole ;
+                                                                                                       owl:someValuesFrom :StormTrooper
+                                                                                                     ]
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :destructionOf ;
+                                                                                  owl:someValuesFrom :Probe_Droid
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty :hadRole ;
+                                                                                                       owl:someValuesFrom :StormTrooper
+                                                                                                     ]
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Obi-Wan_Kenobi
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :stunningOf ;
+                                                                                  owl:hasValue :Freck
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :included ;
+                                                                                  owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty :of ;
+                                                                                                                              owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                                   owl:onProperty :hadRole ;
+                                                                                                                                                   owl:someValuesFrom :StormTrooper
+                                                                                                                                                 ]
+                                                                                                                            ]
+                                                                                                                          ) ;
+                                                                                                       rdf:type owl:Class
+                                                                                                     ]
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Tala_Durith
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           :after :Daiyu_to_Mapuzo ;
+                           :assistedBy :Freck ;
+                           :during :Imperial_era ;
+                           :locatedIn :Mapuzo ;
+                           :participant :Leia_Organa ,
+                                        :Obi-Wan_Kenobi ;
+                           :year -9 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_III#Avoiding_the_Empire"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Gifting_a_T-16_toy
@@ -348,6 +564,34 @@ There is no assertion of correctness or completeness by myself - content has bee
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Inquisitors_argue
+:Inquisitors_argue rdf:type owl:NamedIndividual ,
+                            :Argument ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :about ;
+                              owl:someValuesFrom :Power
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Ejection
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:someValuesFrom :Probe_Droid
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
+                   :after :Third_Sister_briefs_Vader ;
+                   :during :Imperial_era ;
+                   :locatedIn :Fortress_Inquisitorius ;
+                   :participant :Fifth_Brother ,
+                                :Reva_Sevander ;
+                   :witnessedBy :Fourth_Sister ;
+                   :year -9 ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_III#Avoiding_the_Empire"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kenobi_and_Teeka
 :Kenobi_and_Teeka rdf:type owl:NamedIndividual ,
                            :Trading ,
@@ -429,6 +673,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                 ]
                                            ] ;
                                   :after :Organa_party ;
+                                  :damageOf :L0-LA59 ;
                                   :during :Imperial_era ;
                                   :of :Leia_Organa ;
                                   :orderedBy :Reva_Sevander ;
@@ -693,6 +938,23 @@ There is no assertion of correctness or completeness by myself - content has bee
                                    ] .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Third_Sister_briefs_Vader
+:Third_Sister_briefs_Vader rdf:type owl:NamedIndividual ,
+                                    :Briefing ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :used ;
+                                      owl:someValuesFrom :Hologram
+                                    ] ;
+                           :about :Obi-Wan_Kenobi ;
+                           :after :Escape_from_Daiyu ;
+                           :during :Imperial_era ;
+                           :locatedIn :Fortress_Vader ;
+                           :participant :Darth_Vader ;
+                           :remoteParticipant :Reva_Sevander ;
+                           :year -9 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_III#Arriving_on_Mapuzo"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Threats_of_the_Inquisitors
 :Threats_of_the_Inquisitors rdf:type owl:NamedIndividual ,
                                      :Confrontation ,
@@ -744,6 +1006,52 @@ There is no assertion of correctness or completeness by myself - content has bee
                                          :Reva_Sevander ;
                             :year -9 ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#The_Inquisitors'_visit"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Vader_vs_Obi-Wan_Mapuzo
+:Vader_vs_Obi-Wan_Mapuzo rdf:type owl:NamedIndividual ,
+                                  :Confrontation ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Obi-Wan_Kenobi
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:hasValue :NED-B
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :participant ;
+                                                                                owl:hasValue :Tala_Durith
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Torture
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :used ;
+                                                                                owl:someValuesFrom :Fire
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Obi-Wan_Kenobi
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ;
+                         :after :Arrival_of_Vader_on_Mapuzo ;
+                         :during :Imperial_era ;
+                         :locatedIn :Mapuzo_mining_village ;
+                         :participant :Darth_Vader ,
+                                      :Obi-Wan_Kenobi ;
+                         :year -9 ;
+                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_III#Escape_from_Mapuzo"^^xsd:anyURI .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

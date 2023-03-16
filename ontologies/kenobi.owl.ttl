@@ -26,7 +26,8 @@ There is no assertion of correctness or completeness by myself - content has bee
 #################################################################
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Arrival_of_Vader_on_Mapuzo
-:Arrival_of_Vader_on_Mapuzo rdf:type :Arrival ,
+:Arrival_of_Vader_on_Mapuzo rdf:type owl:NamedIndividual ,
+                                     :Arrival ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :included ;
                                        owl:someValuesFrom [ owl:intersectionOf ( :Torture
@@ -87,6 +88,34 @@ There is no assertion of correctness or completeness by myself - content has bee
                                               :Obi-Wan_Kenobi ;
                                  :year -9 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#Kenobi's_choices"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Briefing_on_Fortress_Inquisitorious
+:Briefing_on_Fortress_Inquisitorious rdf:type owl:NamedIndividual ,
+                                              :Briefing ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :included ;
+                                                owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty :about ;
+                                                                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty :married ;
+                                                                                                                 owl:hasValue :Kawlan_Roken
+                                                                                                               ]
+                                                                                          ]
+                                                                                        ) ;
+                                                                     rdf:type owl:Class
+                                                                   ]
+                                              ] ;
+                                     :about :Fortress_Inquisitorius ;
+                                     :after :Healing_Obi-Wans_burns ;
+                                     :during :Imperial_era ;
+                                     :locatedIn :Jabiim_safehouse ;
+                                     :participant :Kawlan_Roken ,
+                                                  :Obi-Wan_Kenobi ,
+                                                  :Tala_Durith ;
+                                     :year -9 ;
+                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_IV#The_rescue_plan"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Capture_of_Leia_from_the_Path
@@ -445,6 +474,21 @@ There is no assertion of correctness or completeness by myself - content has bee
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#Jedi_in_hiding"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Healing_Obi-Wans_burns
+:Healing_Obi-Wans_burns rdf:type owl:NamedIndividual ,
+                                 :Healing ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :used ;
+                                   owl:someValuesFrom :Bacta_tank
+                                 ] ;
+                        :after :Vader_vs_Obi-Wan_Mapuzo ;
+                        :during :Imperial_era ;
+                        :locatedIn :Jabiim_safehouse ;
+                        :of :Obi-Wan_Kenobi ;
+                        :year -9 ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_IV#Escape_and_captivity"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hunt_for_Leia_on_Daiyu
 :Hunt_for_Leia_on_Daiyu rdf:type owl:NamedIndividual ,
                                  :Search ,
@@ -592,6 +636,37 @@ There is no assertion of correctness or completeness by myself - content has bee
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_III#Avoiding_the_Empire"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Interrogation_of_Leia_by_Reva
+:Interrogation_of_Leia_by_Reva rdf:type owl:NamedIndividual ,
+                                        :Interrogation ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :included ;
+                                          owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :fitted ;
+                                                                                      owl:someValuesFrom :Tracker
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :target ;
+                                                                                      owl:hasValue :L0-LA59
+                                                                                    ]
+                                                                                  ) ;
+                                                               rdf:type owl:Class
+                                                             ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :used ;
+                                          owl:someValuesFrom :Mind_trick
+                                        ] ;
+                               :about :Hidden_Path ;
+                               :after :Capture_of_Leia_from_the_Path ;
+                               :during :Imperial_era ;
+                               :locatedIn :Fortress_Inquisitorius ;
+                               :of :Leia_Organa ;
+                               :participant :Reva_Sevander ;
+                               :year -9 ;
+                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_IV#The_interrogation"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kenobi_and_Teeka
 :Kenobi_and_Teeka rdf:type owl:NamedIndividual ,
                            :Trading ,
@@ -698,6 +773,23 @@ There is no assertion of correctness or completeness by myself - content has bee
                  :of :Nari ;
                  :year -9 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#Kenobi's_choices"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Killing_of_Tera_Sinube
+:Killing_of_Tera_Sinube rdf:type owl:NamedIndividual ,
+                                 :Killing ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :year ;
+                                   owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                        owl:onDatatype xsd:decimal ;
+                                                        owl:withRestrictions ( [ xsd:minExclusive -19
+                                                                               ]
+                                                                               [ xsd:maxExclusive -9
+                                                                               ]
+                                                                             )
+                                                      ]
+                                 ] ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Tera_Sinube#Later_war_and_death"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Leia_avoids_her_responsibilities
@@ -865,6 +957,168 @@ There is no assertion of correctness or completeness by myself - content has bee
              :witnessedBy :Ben_Kenobis_Eopie ;
              :year -9 ;
              rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_I#Owen's_warning"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue_of_Leia_from_Fortress_Inquisitorius
+:Rescue_of_Leia_from_Fortress_Inquisitorius rdf:type owl:NamedIndividual ,
+                                                     :Rescue ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :found ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( :Body
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :ownedBy ;
+                                                                                                   owl:someValuesFrom :Force-Sensitive
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :found ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( :Body
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :ownedBy ;
+                                                                                                   owl:hasValue :Tera_Sinube
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :included ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :movesWith ;
+                                                                                                   owl:someValuesFrom :Swimming
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :of ;
+                                                                                                   owl:hasValue :Obi-Wan_Kenobi
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :included ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :used ;
+                                                                                                   owl:someValuesFrom :Code_cylinder
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :used ;
+                                                                                                   owl:someValuesFrom :Shuttle
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :of ;
+                                                                                                   owl:hasValue :Tala_Durith
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :included ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :used ;
+                                                                                                   owl:someValuesFrom :T-47_airspeeder
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :participant ;
+                                                                                                   owl:hasValue :Sully_Stark
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :participant ;
+                                                                                                   owl:hasValue :Wade_Resselian
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :included ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                                                 :Distraction
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :about ;
+                                                                                                   owl:hasValue :Hidden_Path
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :of ;
+                                                                                                   owl:hasValue :Reva_Sevander
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :participant ;
+                                                                                                   owl:hasValue :Tala_Durith
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :included ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :destructionOf ;
+                                                                                                   owl:someValuesFrom :T-47_airspeeder
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :of ;
+                                                                                                   owl:hasValue :Wade_Resselian
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :participant ;
+                                                                                                   owl:hasValue :Reva_Sevander
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :included ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :of ;
+                                                                                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :hadRole ;
+                                                                                                                        owl:someValuesFrom :StormTrooper
+                                                                                                                      ]
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :included ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :stunningOf ;
+                                                                                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :hadRole ;
+                                                                                                                        owl:someValuesFrom :Officer
+                                                                                                                      ]
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :participant ;
+                                                                                                   owl:hasValue :Tala_Durith
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ]
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :participant ;
+                                                       owl:someValuesFrom :ID9_seeker_droid
+                                                     ] ;
+                                            :after :Briefing_on_Fortress_Inquisitorious ;
+                                            :during :Imperial_era ;
+                                            :locatedIn :Fortress_Inquisitorius ;
+                                            :of :Leia_Organa ;
+                                            :participant :Obi-Wan_Kenobi ,
+                                                         :Tala_Durith ;
+                                            :year -9 ;
+                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Part_IV#Infiltrating_Fortress_Inquisitorius"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue_of_Leia_from_Vect

@@ -1,11 +1,11 @@
 package com.nickd.sw.report;
 
-import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.ResultSetFormatter;
 
 import java.io.IOException;
 
+/** Only works effectively on the Abox transformed ontologies */
 public class PeopleSparqlReport {
 
     public static void main(String args[]) throws IOException {

@@ -3,16 +3,17 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX sw: <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
-SELECT ?year
-       (STRAFTER(STR(?type), "#") AS ?t)
+SELECT DISTINCT ?year
+#       (STRAFTER(STR(?type), "#") AS ?t) # wish we could have most specific type
+       (STRAFTER(STR(?locV), "#") AS ?location)
        (STRAFTER(STR(?eventV), "#") AS ?event)
        (STRAFTER(STR(?duringV), "#") AS ?during)
        (STRAFTER(STR(?afterV), "#") AS ?after)
 WHERE {
-	  ?eventV a ?type .
-	  ?type rdfs:subClassOf sw:Event .
+	  ?eventV a sw:Event .
+	  OPTIONAL { ?eventV sw:locatedIn ?locV } .
 	  OPTIONAL { ?eventV sw:year ?year } .
 	  OPTIONAL { ?eventV sw:during ?duringV } .
 	  OPTIONAL { ?eventV sw:after ?afterV } .
 	  }
-ORDER BY ASC ( ?year )
+ORDER BY ASC ( ?year ) ( ?location ) (?during)

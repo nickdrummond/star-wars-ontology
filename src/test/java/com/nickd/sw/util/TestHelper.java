@@ -51,6 +51,8 @@ public class TestHelper extends TestSetup {
 
     public OWLClass cls(String s) { return helper.cls(s);}
 
+    public void clearReasoner() { helper.clearReasoner(); }
+
     public void classify() { helper.classify(); }
 
     public OWLDataFactory df() { return helper.df ;}

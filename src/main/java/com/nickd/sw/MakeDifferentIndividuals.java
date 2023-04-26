@@ -24,7 +24,7 @@ public class MakeDifferentIndividuals {
 
         helper.classify();
 
-        OWLClass query = helper.cls("Living_thing");
+        OWLClass query = helper.cls("Event");
         OWLOntology starwarsOnt = helper.mngr.getOntology(IRI.create("https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl"));
 
         MakeDifferentIndividuals action = new MakeDifferentIndividuals(helper.r, helper.df);

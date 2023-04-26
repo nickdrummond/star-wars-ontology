@@ -6,6 +6,7 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.formats.RioTurtleDocumentFormat;
 import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.reasoner.InferenceType;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 import java.util.Collections;
@@ -54,18 +55,28 @@ public class Helper {
         return df.getOWLClass(IRI.create(BASE + "#" + s));
     }
 
-
+    public void clearReasoner() {
+        r.dispose();
+        r = null;
+    }
 
     public void classify() {
 
         final OWLHelper h = OWLHelper.createLightHelper(OpenlletReasonerFactory.getInstance().createReasoner(ont));
 
-        long start = System.currentTimeMillis();
+//        long start = System.nanoTime();
 
         r = h.getReasoner();
+        // analogue to Protege "Classify"
+        r.precomputeInferences(InferenceType.CLASS_HIERARCHY);
+        r.precomputeInferences(InferenceType.OBJECT_PROPERTY_HIERARCHY);
+        r.precomputeInferences(InferenceType.DATA_PROPERTY_HIERARCHY);
+        r.precomputeInferences(InferenceType.CLASS_ASSERTIONS);
+        r.precomputeInferences(InferenceType.OBJECT_PROPERTY_ASSERTIONS);
+        r.precomputeInferences(InferenceType.SAME_INDIVIDUAL);
 
-        timeToClassify = System.currentTimeMillis() - start;
-        System.out.println("Classified in " + timeToClassify + "ms");
+//        timeToClassify = System.nanoTime() - start;
+//        System.out.println("Classified in " + TimeUnit.NANOSECONDS.toMillis(timeToClassify) + "ms");
     }
 
     public void saveChanged() throws OWLOntologyStorageException {

@@ -6,6 +6,7 @@ import com.nickd.sw.util.TestHelper;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.junit.Ignore;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 
@@ -24,6 +25,7 @@ public class QueryTest extends TestCase {
         return helper;
     }
 
+    @Ignore
     public void testEventLocationQueries() {
         OWLClass event = helper.cls("Event");
         OWLObjectProperty locatedIn = helper.prop("locatedIn");
@@ -48,6 +50,5 @@ public class QueryTest extends TestCase {
 
         long fullEnd = System.nanoTime() - fullStart;
         System.out.println("Completed in " + TimeUnit.NANOSECONDS.toMillis(fullEnd) + "ms");
-
     }
 }

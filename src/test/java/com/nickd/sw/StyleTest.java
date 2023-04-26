@@ -6,10 +6,12 @@ import com.nickd.sw.util.TestHelper;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import openllet.owlapi.PelletVisitor;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.semanticweb.owlapi.model.*;
 
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class StyleTest extends TestCase {
@@ -37,5 +39,26 @@ public class StyleTest extends TestCase {
         ).collect(Collectors.toSet());
 
         assertTrue("Missing references: " + inds, inds.isEmpty());
+    }
+
+    public void testNoHasValueRestrictionsOnIndividuals() {
+
+        OWLClassExpressionVisitorEx<Boolean> filter = new OWLClassExpressionVisitorEx<>() {
+            @Override
+            public Boolean visit(OWLObjectHasValue ce) {
+                return true;
+            }
+
+            @Override
+            public <T> Boolean doDefault(T object) {
+                return false;
+            }
+        };
+
+        assertEquals (0, helper
+                .getAxioms(AxiomType.CLASS_ASSERTION)
+                .filter(ax -> ax.getClassExpression().accept(filter))
+                .peek(ax -> System.out.println("hasValue should be property assertion: " + helper.render(ax)))
+                .count());
     }
 }

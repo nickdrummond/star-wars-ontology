@@ -4,12 +4,16 @@ import junit.extensions.TestSetup;
 import junit.framework.Test;
 import org.semanticweb.owlapi.expression.ShortFormEntityChecker;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
+import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxObjectRenderer;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.util.*;
+import org.semanticweb.owlapitools.decomposition.AxiomSelector;
 
+import java.io.StringWriter;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class TestHelper extends TestSetup {
 
@@ -73,6 +77,16 @@ public class TestHelper extends TestSetup {
 
     public Set<OWLOntology> onts() {
         return helper.mngr.getOntologies();
+    }
+
+    public <T extends OWLAxiom> Stream<T> getAxioms(AxiomType<T> axiomType) {
+        return helper.ont.getAxioms(axiomType, true).stream();
+    }
+
+    public String render(OWLObject o ) {
+        StringWriter w = new StringWriter();
+        o.accept(new ManchesterOWLSyntaxObjectRenderer(w, sfp));
+        return w.toString();
     }
 }
 

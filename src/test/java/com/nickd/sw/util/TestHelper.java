@@ -9,8 +9,6 @@ import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.util.*;
-import org.semanticweb.owlapitools.decomposition.AxiomSelector;
-
 import java.io.StringWriter;
 import java.util.Set;
 import java.util.stream.Stream;

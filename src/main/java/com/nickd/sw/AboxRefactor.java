@@ -1,27 +1,32 @@
 package com.nickd.sw;
 
 import com.github.jsonldjava.shaded.com.google.common.collect.Sets;
-import com.google.common.collect.Maps;
 import com.nickd.sw.util.Helper;
+import com.nickd.sw.util.NameProvider;
 import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
-import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxObjectRenderer;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
-import org.semanticweb.owlapi.util.ShortFormProvider;
-import org.semanticweb.owlapi.util.SimpleShortFormProvider;
 
-import java.io.StringWriter;
 import java.util.*;
 
 public class AboxRefactor {
 
+    private final String BASE = "https://nickdrummond.github.io/star-wars-ontology/ontologies#";
+
     private final OWLObjectProperty includedProperty;
     private final OWLObjectProperty duringProperty;
+    private final OWLClass eventClass;
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
         Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
-        AboxRefactor reifyProperty = new AboxRefactor(helper.prop("included"), helper.prop("during"));
-        List<OWLOntologyChange> changes = reifyProperty.run(helper.mngr.getOntologies(), helper.df);
+        AboxRefactor reifyProperty = new AboxRefactor(
+                helper.prop("included"),
+                helper.prop("during"),
+                helper.cls("Event"));
+
+        NameProvider nameProvider = new NameProvider();
+
+        List<OWLOntologyChange> changes = reifyProperty.run(helper.mngr.getOntologies(), helper.df, nameProvider);
 
         helper.mngr.applyChanges(changes);
 
@@ -29,17 +34,21 @@ public class AboxRefactor {
     }
 
     public AboxRefactor(final OWLObjectProperty includedProperty,
-                        final OWLObjectProperty duringProperty) {
+                        final OWLObjectProperty duringProperty,
+                        final OWLClass eventClass) {
         this.includedProperty = includedProperty;
         this.duringProperty = duringProperty;
+        this.eventClass = eventClass;
     }
 
-    public List<OWLOntologyChange> run(final Set<OWLOntology> onts, OWLDataFactory df) {
+    public List<OWLOntologyChange> run(final Set<OWLOntology> onts,
+                                       final OWLDataFactory df,
+                                       final NameProvider nameProvider) {
 
         List<OWLOntologyChange> changes = new ArrayList<>();
 
-        OWLAxiomTransformer owlAxiomTransformer = new OWLAxiomTransformer(df, new NameProvider());
-
+        OWLAxiomTransformer owlAxiomTransformer = new OWLAxiomTransformer(df, nameProvider);
+        
         onts.forEach( ont -> ont .getReferencingAxioms(includedProperty, Imports.EXCLUDED).forEach(ax -> {
             Set<OWLAxiom> axTran = ax.accept(owlAxiomTransformer);
             if (!axTran.isEmpty()) {
@@ -47,18 +56,11 @@ public class AboxRefactor {
                 axTran.forEach(a -> changes.add(new AddAxiom(ont, a)));
             }
             else {
-                System.err.println("No transform performed on: " + render(ax));
+                System.err.println("No transform performed on: " + nameProvider.render(ax));
             }
 
         }));
         return changes;
-    }
-
-    public String render(OWLObject o) {
-        final ShortFormProvider sfp = new SimpleShortFormProvider();
-        StringWriter w = new StringWriter();
-        o.accept(new ManchesterOWLSyntaxObjectRenderer(w, sfp));
-        return w.toString();
     }
 
     private class OWLAxiomTransformer implements OWLAxiomVisitorEx<Set<OWLAxiom>> {
@@ -85,18 +87,6 @@ public class AboxRefactor {
         }
     }
 
-    private class NameProvider {
-
-        private final String BASE = "https://nickdrummond.github.io/star-wars-ontology/ontologies#";
-
-        private final Map<OWLIndividual, Integer> eventChildCount = Maps.newHashMap();
-
-        public IRI getName(OWLIndividual parentEvent) {
-            int count = eventChildCount.getOrDefault(parentEvent, 0);
-            eventChildCount.put(parentEvent, count+1);
-            return IRI.create(BASE + "_during_" + render(parentEvent).toLowerCase() + "_" + count);
-        }
-    }
 
     private class OWLClassToIndividual implements OWLClassExpressionVisitor {
 
@@ -107,6 +97,7 @@ public class AboxRefactor {
         private final Set<OWLAxiom> axioms = Sets.newHashSet();
 
         private OWLIndividual subEvent = null;
+        private boolean hasNamedType = false;
 
         private OWLClassToIndividual(final OWLDataFactory df,
                                      final OWLIndividual parentEvent,
@@ -120,9 +111,13 @@ public class AboxRefactor {
         public void visit(OWLObjectSomeValuesFrom ce) {
             if (ce.getProperty().equals(includedProperty)) {
                 if (subEvent == null) {
-                    subEvent = df.getOWLNamedIndividual(nameProvider.getName(parentEvent));
+                    String name = nameProvider.getName(ce.getFiller(), parentEvent);
+                    subEvent = df.getOWLNamedIndividual(IRI.create(BASE + "_" + name));
                     axioms.add(df.getOWLObjectPropertyAssertionAxiom(duringProperty, subEvent, parentEvent));
                     ce.getFiller().accept(this);
+                    if (!hasNamedType) {
+                        addDefaultType();
+                    }
                 }
                 else {
                     // nesting - see Attack_on_Rishi_Station
@@ -136,7 +131,7 @@ public class AboxRefactor {
                     axioms.add(df.getOWLClassAssertionAxiom(ce, subEvent));
                 }
                 else {
-                    System.err.println(render(parentEvent) + " Unexpected some: " + render(ce));
+                    System.err.println(nameProvider.render(parentEvent) + " Unexpected some: " + nameProvider.render(ce));
                 }
             }
         }
@@ -148,6 +143,7 @@ public class AboxRefactor {
 
         @Override
         public void visit(OWLClass ce) {
+            hasNamedType = true;
             axioms.add(df.getOWLClassAssertionAxiom(ce, subEvent));
         }
 
@@ -158,7 +154,7 @@ public class AboxRefactor {
 
         @Override
         public void visit(OWLObjectUnionOf ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled Union: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled Union: " + nameProvider.render(ce));
         }
 
         @Override
@@ -167,18 +163,18 @@ public class AboxRefactor {
                 axioms.add(df.getOWLClassAssertionAxiom(ce, subEvent));
             }
             else {
-                System.err.println(render(parentEvent) + " Unexpected complement: " + render(ce));
+                System.err.println(nameProvider.render(parentEvent) + " Unexpected complement: " + nameProvider.render(ce));
             }
         }
 
         @Override
         public void visit(OWLObjectAllValuesFrom ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled Only: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled Only: " + nameProvider.render(ce));
         }
 
         @Override
         public void visit(OWLObjectMinCardinality ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         @Override
@@ -188,51 +184,55 @@ public class AboxRefactor {
 
         @Override
         public void visit(OWLObjectMaxCardinality ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         @Override
         public void visit(OWLObjectHasSelf ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         @Override
         public void visit(OWLObjectOneOf ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         @Override
         public void visit(OWLDataSomeValuesFrom ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         @Override
         public void visit(OWLDataAllValuesFrom ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         @Override
         public void visit(OWLDataHasValue ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         @Override
         public void visit(OWLDataMinCardinality ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         @Override
         public void visit(OWLDataExactCardinality ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         @Override
         public void visit(OWLDataMaxCardinality ce) {
-            throw new RuntimeException(render(parentEvent) + " - Unhandled restriction: " + render(ce));
+            throw new RuntimeException(nameProvider.render(parentEvent) + " - Unhandled restriction: " + nameProvider.render(ce));
         }
 
         public Set<OWLAxiom> getAxioms() {
             return axioms;
+        }
+
+        private void addDefaultType() {
+            axioms.add(df.getOWLClassAssertionAxiom(eventClass, subEvent));
         }
     };
 }

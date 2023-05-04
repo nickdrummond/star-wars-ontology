@@ -40,7 +40,7 @@ public class QueryTest extends TestCase {
             OWLClassExpression svp = helper.df().getOWLObjectHasValue(locatedIn, place);
             OWLClass representativeEvent = e.getRepresentativeElement();
             OWLObjectIntersectionOf query = helper.df().getOWLObjectIntersectionOf(representativeEvent, svp);
-            System.out.print(helper.render(event) + " = ");
+            System.out.print(helper.render(representativeEvent) + " = ");
             long start = System.nanoTime();
             NodeSet<OWLNamedIndividual> results = helper.r().getInstances(query);
             long d = System.nanoTime() - start;

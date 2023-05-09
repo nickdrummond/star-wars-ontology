@@ -642,17 +642,6 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Death_of_Ochi rdf:type owl:NamedIndividual ,
                         :Death ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :locatedIn ;
-                          owl:someValuesFrom [ owl:intersectionOf ( :Tunnel
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :locatedIn ;
-                                                                      owl:hasValue :Pasaana
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
-                                             ]
-                        ] ,
-                        [ rdf:type owl:Restriction ;
                           owl:onProperty :year ;
                           owl:someValuesFrom [ rdf:type rdfs:Datatype ;
                                                owl:onDatatype xsd:int ;
@@ -663,6 +652,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                     )
                                              ]
                         ] ;
+               :locatedIn :Vexis_tunnels ;
                :of :Ochi .
 
 
@@ -1227,6 +1217,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                            owl:someValuesFrom :Vexis
                                                                          ]
                                                                          [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :locatedIn ;
+                                                                           owl:hasValue :Vexis_tunnels
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :participant ;
                                                                            owl:hasValue :Rey
                                                                          ]
@@ -1471,14 +1465,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                       ]
                                                                                       [ rdf:type owl:Restriction ;
                                                                                         owl:onProperty :locatedIn ;
-                                                                                        owl:someValuesFrom [ owl:intersectionOf ( :Throne_Room
-                                                                                                                                  [ rdf:type owl:Restriction ;
-                                                                                                                                    owl:onProperty :locatedIn ;
-                                                                                                                                    owl:hasValue :Death_Star_Ruins
-                                                                                                                                  ]
-                                                                                                                                ) ;
-                                                                                                             rdf:type owl:Class
-                                                                                                           ]
+                                                                                        owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Emperors_throne_room>
                                                                                       ]
                                                                                       [ rdf:type owl:Restriction ;
                                                                                         owl:onProperty :participant ;
@@ -1941,6 +1928,16 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                             :Resistance ;
                                                                                :year 34 ;
                                                                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_D%27Qar"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies/sequels.owl.ttl#Vexis_tunnels
+:Vexis_tunnels rdf:type owl:NamedIndividual ,
+                        :Tunnel ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :createdBy ;
+                          owl:someValuesFrom :Vexis
+                        ] ;
+               :locatedIn :Pasaana .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

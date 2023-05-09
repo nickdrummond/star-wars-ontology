@@ -8,8 +8,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.apache.commons.lang3.StringUtils;
-import org.eclipse.rdf4j.common.text.StringUtil;
-import org.mockito.Mock;
 import org.semanticweb.owlapi.model.*;
 
 import java.util.List;
@@ -17,7 +15,6 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
 
 public class TestAboxRefactor extends TestCase {
 

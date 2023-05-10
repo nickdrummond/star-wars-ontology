@@ -104,13 +104,42 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Endor
 :Battle_of_Endor rdf:type owl:NamedIndividual ,
-                          :Battle ;
+                          :Battle ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Executor
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :MC80A_Nautilian
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :MC80_Liberty
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ;
                  :after :Yoda_becomes_One_with_the_Force ;
                  :creationOf :Death_Star_Ruins ;
-                 :destructionOf :Death_Star_2 ,
-                                :Executor ,
-                                :MC80A_Nautilian ,
-                                :MC80_Liberty ;
                  :during :Galactic_Civil_War ;
                  :locatedIn :Endor ;
                  :participant :Galactic_Empire ,
@@ -123,6 +152,17 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_Hoth
 :Battle_of_Hoth rdf:type owl:NamedIndividual ,
                          :Battle ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Echo_Base
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :included ;
                            owl:someValuesFrom [ owl:intersectionOf ( :Escape
@@ -168,7 +208,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                            owl:someValuesFrom :Snowspeeder
                          ] ;
                 :after :Search_for_Luke ;
-                :destructionOf :Echo_Base ;
                 :during :Galactic_Civil_War ;
                 :locatedIn :Echo_Base ;
                 :participant :Galactic_Empire ;
@@ -200,6 +239,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Death_Star_1
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :of ;
@@ -215,7 +265,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                           ] ;
                  :after :Escape_from_Death_Star ,
                         :Meeting_on_the_Death_Star ;
-                 :destructionOf :Death_Star_1 ;
                  :during :Galactic_Civil_War ;
                  :locatedIn :Yavin_4 ;
                  :participant :Galactic_Empire ,
@@ -380,7 +429,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                          ]
                                                     ] ;
                                            :during :Battle_of_Endor ;
-                                           :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Emperors_throne_room> ;
+                                           :locatedIn :Emperors_throne_room ;
                                            :participant :Luke_Skywalker ;
                                            :year 4 ;
                                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#Meeting_Luke_Skywalker"^^xsd:anyURI .
@@ -390,11 +439,18 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Deactivating_the_Shield_Generator_on_Endor rdf:type owl:NamedIndividual ,
                                                      :Battle ,
                                                      [ rdf:type owl:Restriction ;
-                                                       owl:onProperty :destructionOf ;
-                                                       owl:someValuesFrom [ owl:intersectionOf ( :Shield_Generator
+                                                       owl:onProperty :included ;
+                                                       owl:someValuesFrom [ owl:intersectionOf ( :Destruction
                                                                                                  [ rdf:type owl:Restriction ;
-                                                                                                   owl:onProperty :partOf ;
-                                                                                                   owl:hasValue :Death_Star_2
+                                                                                                   owl:onProperty :of ;
+                                                                                                   owl:someValuesFrom [ owl:intersectionOf ( :Shield_Generator
+                                                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                                                               owl:onProperty :partOf ;
+                                                                                                                                               owl:hasValue :Death_Star_2
+                                                                                                                                             ]
+                                                                                                                                           ) ;
+                                                                                                                        rdf:type owl:Class
+                                                                                                                      ]
                                                                                                  ]
                                                                                                ) ;
                                                                             rdf:type owl:Class
@@ -476,6 +532,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi#Saving_Han_Solo"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Detention_Block_AA-23
+:Detention_Block_AA-23 rdf:type owl:NamedIndividual .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dissolution_of_the_Imperial_Senate
 :Dissolution_of_the_Imperial_Senate rdf:type owl:NamedIndividual ,
                                              :Event ;
@@ -487,6 +547,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Dissolution_of_the_Imperial_Senate"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Emperors_throne_room
+:Emperors_throne_room rdf:type owl:NamedIndividual .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape_from_Carkoon
 :Escape_from_Carkoon rdf:type owl:NamedIndividual ,
                               :Escape ,
@@ -496,6 +560,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :of ;
                                                                             owl:hasValue :Salacious_B._Crumb
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Khetanna
                                                                           ]
                                                                         ) ;
                                                      rdf:type owl:Class
@@ -520,7 +595,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                 owl:someValuesFrom :Sarlacc
                               ] ;
                      :after :Luke_vs_Rancor ;
-                     :destructionOf :Khetanna ;
                      :during :Rescue_of_Han_Solo ;
                      :eatingOf :Boba_Fett ;
                      :locatedIn :Great_Pit_of_Carkoon ;
@@ -539,8 +613,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Escape_from_Death_Star rdf:type owl:NamedIndividual ,
                                  :Escape ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :destructionOf ;
-                                   owl:someValuesFrom :TIE_Fighter
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:someValuesFrom :TIE_Fighter
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :included ;
@@ -642,7 +723,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                            ] ;
                   :after :Battle_of_Hoth ;
                   :during :Galactic_Civil_War ;
-                  :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Hoth_asteroid_field> ;
+                  :locatedIn :Hoth_asteroid_field ;
                   :of :Millenium_Falcon ;
                   :participant :Slave_I ;
                   :year 3 ;
@@ -657,7 +738,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                               owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                                         [ rdf:type owl:Restriction ;
                                                                                           owl:onProperty :participant ;
-                                                                                          owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies#Omi>
+                                                                                          owl:hasValue :Omi
                                                                                         ]
                                                                                         [ rdf:type owl:Restriction ;
                                                                                           owl:onProperty :survivedBy ;
@@ -669,7 +750,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                             ] ;
                                    :assistedBy :R2-D2 ;
                                    :during :Rescue_of_Leia ;
-                                   :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Garbage_Compactor_3263827> ;
+                                   :locatedIn :Garbage_Compactor_3263827 ;
                                    :of :Chewbacca ,
                                        :Han_Solo ,
                                        :Leia_Organa ,
@@ -702,6 +783,10 @@ There is no assertion of correctness or completeness by myself - content has bee
             :participant :C-3PO ;
             :year 4 ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Endor#The_ground_assault"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Garbage_Compactor_3263827
+:Garbage_Compactor_3263827 rdf:type owl:NamedIndividual .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Han_vs_Greedo
@@ -737,6 +822,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Greedo#Death"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hoth_asteroid_field
+:Hoth_asteroid_field rdf:type owl:NamedIndividual .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Leia_vs_Jabba
 :Leia_vs_Jabba rdf:type owl:NamedIndividual ,
                         :Murder ;
@@ -756,7 +845,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                             owl:someValuesFrom [ owl:intersectionOf ( :Crash
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :locatedIn ;
-                                                                        owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies#Swamp_near_Yodas_home>
+                                                                        owl:hasValue :Swamp_near_Yodas_home
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :of ;
@@ -782,7 +871,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :locatedIn ;
-                                                                        owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies#Swamp_near_Yodas_home>
+                                                                        owl:hasValue :Swamp_near_Yodas_home
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :of ;
@@ -918,6 +1007,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Rescue_of_Princess_Leia#Duel_with_the_Dark_Lord"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Omi
+:Omi rdf:type owl:NamedIndividual .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue_of_Han_Solo
 :Rescue_of_Han_Solo rdf:type owl:NamedIndividual ,
                              :Rescue ;
@@ -934,7 +1027,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                          :Rescue ;
                 :during :Escape_from_Death_Star ;
                 :locatedIn :Death_Star_1 ,
-                           <https://nickdrummond.github.io/star-wars-ontology/ontologies#Detention_Block_AA-23> ;
+                           :Detention_Block_AA-23 ;
                 :of :Leia_Organa ;
                 :participant :Chewbacca ,
                              :Han_Solo ,
@@ -946,6 +1039,17 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Run_on_Death_Star_2
 :Run_on_Death_Star_2 rdf:type owl:NamedIndividual ,
                               :Attack ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Death_Star_2
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :participant ;
                                 owl:someValuesFrom :X-Wing
@@ -1009,10 +1113,6 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Speeder_Fight rdf:type owl:NamedIndividual ,
                         :Fight ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :destructionOf ;
-                          owl:someValuesFrom :Speeder_Bike
-                        ] ,
-                        [ rdf:type owl:Restriction ;
                           owl:onProperty :included ;
                           owl:someValuesFrom [ owl:intersectionOf ( :Death
                                                                     [ rdf:type owl:Restriction ;
@@ -1021,6 +1121,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                            owl:onProperty :hadRole ;
                                                                                            owl:someValuesFrom :StormTrooper
                                                                                          ]
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :included ;
+                          owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :of ;
+                                                                      owl:someValuesFrom :Speeder_Bike
                                                                     ]
                                                                   ) ;
                                                rdf:type owl:Class
@@ -1037,7 +1148,7 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#The_Disaster
 :The_Disaster rdf:type owl:NamedIndividual ,
-                       :Attack ,
+                       :Destruction ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :included ;
                          owl:someValuesFrom [ owl:intersectionOf ( :Death
@@ -1068,11 +1179,11 @@ There is no assertion of correctness or completeness by myself - content has bee
                                             ]
                        ] ;
               :after :Han_vs_Greedo ;
-              :destructionOf :Alderaan ;
               :during :Galactic_Civil_War ;
               :locatedIn :Alderaan ;
+              :of :Alderaan ;
               :orderedBy :Wilhuff_Tarkin ;
-              :participant :Death_Star_1 ;
+              :used :Death_Star_1 ;
               :witnessedBy :Leia_Organa ;
               :year 0 ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Disaster"^^xsd:anyURI .
@@ -1134,6 +1245,18 @@ There is no assertion of correctness or completeness by myself - content has bee
                        :Attack ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :of ;
+                                                                     owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                                                     owl:onClass :Y-Wing
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
                          owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                    [ rdf:type owl:Restriction ;
                                                                      owl:onProperty :of ;
@@ -1146,11 +1269,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :participant ;
                          owl:someValuesFrom :TIE_Fighter
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :destructionOf ;
-                         owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Y-Wing
                        ] ;
               :during :Battle_of_Yavin ;
               :locatedIn :Meridian_Trench ;
@@ -1181,13 +1299,20 @@ There is no assertion of correctness or completeness by myself - content has bee
                                             ]
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :participant ;
-                         owl:someValuesFrom :TIE_Fighter
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :of ;
+                                                                     owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                                                     owl:onClass :X-Wing
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
                        ] ,
                        [ rdf:type owl:Restriction ;
-                         owl:onProperty :destructionOf ;
-                         owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                         owl:onClass :X-Wing
+                         owl:onProperty :participant ;
+                         owl:someValuesFrom :TIE_Fighter
                        ] ;
               :after :Trench_Run_1 ;
               :during :Battle_of_Yavin ;
@@ -1207,6 +1332,18 @@ There is no assertion of correctness or completeness by myself - content has bee
                          owl:onProperty :included ;
                          owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                    [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :included ;
+                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty :of ;
+                                                                                                                 owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                                                                                 owl:onClass :TIE_Fighter
+                                                                                                               ]
+                                                                                                             ) ;
+                                                                                          rdf:type owl:Class
+                                                                                        ]
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
                                                                      owl:onProperty :damageOf ;
                                                                      owl:hasValue :Vaders_TIE_Advanced_x1
                                                                    ]
@@ -1214,10 +1351,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                      owl:onProperty :victoryOf ;
                                                                      owl:hasValue :Millenium_Falcon
                                                                    ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Destruction
                                                                    [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :destructionOf ;
-                                                                     owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                                                     owl:onClass :TIE_Fighter
+                                                                     owl:onProperty :of ;
+                                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                     owl:onClass :X-Wing
                                                                    ]
                                                                  ) ;
                                               rdf:type owl:Class
@@ -1267,11 +1411,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :used ;
                          owl:someValuesFrom :Proton_Torpedo
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :destructionOf ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :X-Wing
                        ] ;
               :after :Trench_Run_2 ;
               :damageOf :R2-D2 ;
@@ -1319,26 +1458,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                  :witnessedBy :Luke_Skywalker ;
                                  :year 4 ;
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda#Death"^^xsd:anyURI .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Detention_Block_AA-23
-<https://nickdrummond.github.io/star-wars-ontology/ontologies#Detention_Block_AA-23> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Emperors_throne_room
-<https://nickdrummond.github.io/star-wars-ontology/ontologies#Emperors_throne_room> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Garbage_Compactor_3263827
-<https://nickdrummond.github.io/star-wars-ontology/ontologies#Garbage_Compactor_3263827> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hoth_asteroid_field
-<https://nickdrummond.github.io/star-wars-ontology/ontologies#Hoth_asteroid_field> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Omi
-<https://nickdrummond.github.io/star-wars-ontology/ontologies#Omi> rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

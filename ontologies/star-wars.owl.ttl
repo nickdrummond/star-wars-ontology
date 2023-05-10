@@ -42,6 +42,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                            ] .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Destruction
+:Destruction rdf:type owl:Class .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Fulcrum
 :Fulcrum rdfs:subClassOf [ rdf:type owl:Restriction ;
                            owl:onProperty :inOrganisation ;
@@ -4247,11 +4251,11 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Destruction_of_Anaxes
 :Destruction_of_Anaxes rdf:type owl:NamedIndividual ,
-                                :Event ;
+                                :Destruction ;
                        :after :Clone_Wars ;
                        :creationOf :PM-1203 ;
-                       :destructionOf :Anaxes ;
                        :during :Imperial_era ;
+                       :of :Anaxes ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Destruction_of_Anaxes"^^xsd:anyURI .
 
 
@@ -6880,10 +6884,10 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hosnian_Cataclysm
 :Hosnian_Cataclysm rdf:type owl:NamedIndividual ,
-                            :Attack ;
+                            :Destruction ;
                    :after :Cold_War ;
-                   :destructionOf :Hosnian_Prime ;
-                   :participant :Starkiller_Base ;
+                   :of :Hosnian_Prime ;
+                   :used :Starkiller_Base ;
                    :year 34 ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Hosnian_Cataclysm"^^xsd:anyURI .
 
@@ -10845,6 +10849,17 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
                                     :Attack ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:hasValue :Sundari
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
                                       owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty :of ;
@@ -10857,7 +10872,6 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
                                                            rdf:type owl:Class
                                                          ]
                                     ] ;
-                           :destructionOf :Sundari ;
                            :during :Great_Purge ;
                            :participant :Galactic_Empire ;
                            :sometimeAfter :Handing_the_Darksaber_to_Bo-Katan ;
@@ -11759,22 +11773,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Phantom
 :Phantom rdf:type owl:NamedIndividual ,
-                  :StarFighter ,
-                  [ rdf:type owl:Restriction ;
-                    owl:onProperty :destroyedDuring ;
-                    owl:someValuesFrom [ owl:intersectionOf ( :Mission
-                                                              [ rdf:type owl:Restriction ;
-                                                                owl:onProperty :participant ;
-                                                                owl:hasValue :Spectres
-                                                              ]
-                                                              [ rdf:type owl:Restriction ;
-                                                                owl:onProperty :year ;
-                                                                owl:hasValue -2
-                                                              ]
-                                                            ) ;
-                                         rdf:type owl:Class
-                                       ]
-                  ] ;
+                  :StarFighter ;
          :locatedIn :Ghost ;
          :ownedBy :Hera_Syndulla ;
          rdfs:seeAlso "https://starwars.fandom.com/wiki/Phantom"^^xsd:anyURI .

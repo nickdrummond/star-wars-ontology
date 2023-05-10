@@ -339,7 +339,7 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bombing_of_the_Sanctuary
 :Bombing_of_the_Sanctuary rdf:type owl:NamedIndividual ,
-                                   :Attack ,
+                                   :Destruction ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :included ;
                                      owl:someValuesFrom [ owl:intersectionOf ( :Killing
@@ -385,9 +385,9 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                         ]
                                    ] ;
                           :after :Cobb_Vanth_vs_Cad_Bane ;
-                          :destructionOf :The_Sanctuary ;
                           :during :New_Republic_era ;
                           :locatedIn :The_Sanctuary ;
+                          :of :The_Sanctuary ;
                           :orderedBy :Unidentified_Pyke_boss ;
                           :year 9 ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Bombing_of_the_Sanctuary"^^xsd:anyURI ,
@@ -570,8 +570,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :included ;
                                owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :destructionOf ;
-                                                    owl:someValuesFrom :Building
+                                                    owl:onProperty :included ;
+                                                    owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :of ;
+                                                                                                owl:someValuesFrom :Building
+                                                                                              ]
+                                                                                            ) ;
+                                                                         rdf:type owl:Class
+                                                                       ]
                                                   ]
                              ] ;
                     :after :Fett_vs_Bane ;
@@ -1827,8 +1834,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                                               owl:onProperty :included ;
                                               owl:someValuesFrom [ owl:intersectionOf ( :Crash
                                                                                         [ rdf:type owl:Restriction ;
-                                                                                          owl:onProperty :destructionOf ;
-                                                                                          owl:someValuesFrom :Meiloorun_fruit
+                                                                                          owl:onProperty :included ;
+                                                                                          owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                                      owl:onProperty :of ;
+                                                                                                                                      owl:someValuesFrom :Meiloorun_fruit
+                                                                                                                                    ]
+                                                                                                                                  ) ;
+                                                                                                               rdf:type owl:Class
+                                                                                                             ]
                                                                                         ]
                                                                                         [ rdf:type owl:Restriction ;
                                                                                           owl:onProperty :participant ;
@@ -2027,8 +2041,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :included ;
                            owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                owl:onProperty :destructionOf ;
-                                                owl:someValuesFrom :Spice
+                                                owl:onProperty :included ;
+                                                owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty :of ;
+                                                                                            owl:someValuesFrom :Spice
+                                                                                          ]
+                                                                                        ) ;
+                                                                     rdf:type owl:Class
+                                                                   ]
                                               ]
                          ] ;
                 :during :New_Republic_era ;

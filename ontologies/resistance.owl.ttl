@@ -104,8 +104,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                                    owl:onProperty :included ;
                                    owl:someValuesFrom [ owl:intersectionOf ( :Fight
                                                                              [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty :destructionOf ;
-                                                                               owl:someValuesFrom :Battle_Droid
+                                                                               owl:onProperty :included ;
+                                                                               owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty :of ;
+                                                                                                                           owl:someValuesFrom :Battle_Droid
+                                                                                                                         ]
+                                                                                                                       ) ;
+                                                                                                    rdf:type owl:Class
+                                                                                                  ]
                                                                              ]
                                                                              [ rdf:type owl:Restriction ;
                                                                                owl:onProperty :participant ;
@@ -126,8 +133,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Attack_on_Castilon rdf:type owl:NamedIndividual ,
                              :Battle ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :destructionOf ;
-                               owl:someValuesFrom :TIE_Fighter
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:someValuesFrom :TIE_Fighter
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :included ;
@@ -244,6 +258,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                              :Battle ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Thunderer
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
                                owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                          [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :locatedIn ;
@@ -300,7 +325,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                   ]
                              ] ;
                     :after :Kaz_and_Tam_warn_the_Colossus ;
-                    :destructionOf :Thunderer ;
                     :during :Hunt_for_the_Colossus ;
                     :injuryOf :CB-23 ;
                     :locatedIn :Barabesh_system ;
@@ -583,8 +607,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Escape_from_Varkana rdf:type owl:NamedIndividual ,
                               :Fight ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :destructionOf ;
-                                owl:someValuesFrom :TIE_Fighter
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:someValuesFrom :TIE_Fighter
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :included ;
@@ -613,8 +644,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Escape_of_Venisa_Doza rdf:type owl:NamedIndividual ,
                                 :Escape ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :destructionOf ;
-                                  owl:someValuesFrom :TIE_Fighter
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:someValuesFrom :TIE_Fighter
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :included ;
@@ -700,8 +738,27 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Evacuating_Recruits_from_Dantooine rdf:type owl:NamedIndividual ,
                                              :Mission ,
                                              [ rdf:type owl:Restriction ;
-                                               owl:onProperty :destructionOf ;
-                                               owl:someValuesFrom :TIE_Fighter
+                                               owl:onProperty :included ;
+                                               owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty :of ;
+                                                                                           owl:someValuesFrom :TIE_Fighter
+                                                                                         ]
+                                                                                       ) ;
+                                                                    rdf:type owl:Class
+                                                                  ]
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :included ;
+                                               owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty :of ;
+                                                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                           owl:onClass :Shuttle
+                                                                                         ]
+                                                                                       ) ;
+                                                                    rdf:type owl:Class
+                                                                  ]
                                              ] ,
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty :included ;
@@ -725,11 +782,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                        ) ;
                                                                     rdf:type owl:Class
                                                                   ]
-                                             ] ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty :destructionOf ;
-                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                               owl:onClass :Shuttle
                                              ] ,
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty :participant ;
@@ -778,8 +830,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Failed_escape_from_Castilon rdf:type owl:NamedIndividual ,
                                       :Fight ,
                                       [ rdf:type owl:Restriction ;
-                                        owl:onProperty :destructionOf ;
-                                        owl:someValuesFrom :AAL
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :of ;
+                                                                                    owl:someValuesFrom :AAL
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
                                       ] ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :included ;
@@ -899,6 +958,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                           ] ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :of ;
+                                                                                        owl:hasValue :Station_Theta_Black
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :included ;
                                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                                       [ rdf:type owl:Restriction ;
                                                                                         owl:onProperty :of ;
@@ -916,7 +986,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                             owl:someValuesFrom :TIE_Fighter
                                           ] ;
                                  :after :Collecting_info_on_Doza ;
-                                 :destructionOf :Station_Theta_Black ;
                                  :during :Mission_on_the_Colossus ;
                                  :locatedIn :Station_Theta_Black ;
                                  :participant :BB-8 ,
@@ -1384,10 +1453,6 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Kaz_Leaves_the_Colossus rdf:type owl:NamedIndividual ,
                                   :Departure ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :destructionOf ;
-                                    owl:someValuesFrom :Probe_Droid
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty :included ;
                                     owl:someValuesFrom [ owl:intersectionOf ( :Communication
                                                                               [ rdf:type owl:Restriction ;
@@ -1401,6 +1466,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :participant ;
                                                                                 owl:hasValue :First_Order
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:someValuesFrom :Probe_Droid
                                                                               ]
                                                                             ) ;
                                                          rdf:type owl:Class
@@ -1571,8 +1647,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Massacre_on_Aeos rdf:type owl:NamedIndividual ,
                            :Attack ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :destructionOf ;
-                             owl:someValuesFrom :Village
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:someValuesFrom :Village
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
@@ -2344,10 +2427,6 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Researching_the_Unknown_Regions rdf:type owl:NamedIndividual ,
                                           :Mission ,
                                           [ rdf:type owl:Restriction ;
-                                            owl:onProperty :destructionOf ;
-                                            owl:someValuesFrom :TIE_Fighter
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
                                             owl:onProperty :included ;
                                             owl:someValuesFrom [ owl:intersectionOf ( :Confrontation
                                                                                       [ rdf:type owl:Restriction ;
@@ -2365,6 +2444,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                       [ rdf:type owl:Restriction ;
                                                                                         owl:onProperty :participant ;
                                                                                         owl:hasValue :Poe_Dameron
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :included ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty :of ;
+                                                                                        owl:someValuesFrom :TIE_Fighter
                                                                                       ]
                                                                                     ) ;
                                                                  rdf:type owl:Class
@@ -2496,8 +2586,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Reuniting_with_Tam rdf:type owl:NamedIndividual ,
                              :Meeting ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :destructionOf ;
-                               owl:someValuesFrom :TIE_Fighter
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:someValuesFrom :TIE_Fighter
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :participant ;
@@ -2829,6 +2926,28 @@ There is no assertion of correctness or completeness by myself - content has bee
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Ashas_Ree_Jedi_Temple
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:hasValue :Ashas_Ree_Sith_Temple
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :included ;
                                     owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                               [ rdf:type owl:Restriction ;
                                                                                 owl:onProperty :of ;
@@ -2868,8 +2987,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                        ]
                                   ] ;
                          :after :Mission_for_fuel_on_Drahgor_III ;
-                         :destructionOf :Ashas_Ree_Jedi_Temple ,
-                                        :Ashas_Ree_Sith_Temple ;
                          :during :Hunt_for_the_Colossus ;
                          :found :Ashas_Ree_Sith_Temple ;
                          :locatedIn :Ashas_Ree ;
@@ -3153,4 +3270,4 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Quick_Salvage_Run#Skirmish_above_D.27Qar"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 5.1.19.2021-07-31T19:16:32Z) https://github.com/owlcs/owlapi/

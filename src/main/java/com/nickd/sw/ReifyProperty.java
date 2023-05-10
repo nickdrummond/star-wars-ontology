@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Takes assertions "event -> traded some Thing" and turns them into subEvents:
+ * event -> included some (Trading and (of some Thing))
+ */
 public class ReifyProperty {
 
     private OWLClass replacementClass;
@@ -23,8 +27,8 @@ public class ReifyProperty {
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
         Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
         ReifyProperty reifyProperty = new ReifyProperty(
-                helper.prop("traded"),
-                helper.cls("Trading"),
+                helper.prop("destructionOf"),
+                helper.cls("Destruction"),
                 helper.prop("of"),
                 helper.prop("included"));
         List<OWLOntologyChange> changes = reifyProperty.run(helper.mngr.getOntologies(), helper.df);

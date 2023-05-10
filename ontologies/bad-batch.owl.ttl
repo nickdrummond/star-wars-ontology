@@ -431,15 +431,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Destruction_of_Tipoca_City
 :Destruction_of_Tipoca_City rdf:type owl:NamedIndividual ,
-                                     :Attack ,
+                                     :Destruction ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :participant ;
                                        owl:someValuesFrom :Venator-class_Star_Destroyer
                                      ] ;
                             :after :Rescue_of_Hunter ;
-                            :destructionOf :Tipoca_City ;
                             :during :Imperial_era ;
                             :locatedIn :Kamino ;
+                            :of :Tipoca_City ;
                             :orderedBy :Wilhuff_Tarkin ;
                             :participant :Rampart ;
                             :year -19 ;
@@ -796,13 +796,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                                  owl:someValuesFrom :Civilian
                                                                                                ]
                                                                           ]
-                                                                        ) ;
-                                                     rdf:type owl:Class
-                                                   ]
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :included ;
-                                owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :of ;
                                                                             owl:someValuesFrom [ rdf:type owl:Restriction ;
@@ -871,8 +864,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                 ]
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :destructionOf ;
-                               owl:someValuesFrom :Probe_Droid
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:someValuesFrom :Probe_Droid
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
                              ] ;
                     :after :Testing_of_Clone_Force_99 ;
                     :during :Imperial_era ;
@@ -886,9 +886,9 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Order_66
-:Order_66 rdf:type _:genid285 .
+:Order_66 rdf:type _:genid286 .
 
-_:genid285 rdf:type owl:Restriction ;
+_:genid286 rdf:type owl:Restriction ;
             owl:onProperty :included ;
             owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                       [ rdf:type owl:Restriction ;
@@ -909,7 +909,7 @@ _:genid285 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Order_66 ;
    owl:annotatedProperty rdf:type ;
-   owl:annotatedTarget _:genid285 ;
+   owl:annotatedTarget _:genid286 ;
    rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Jedi_Master_(Kamino)"^^xsd:anyURI
  ] .
 
@@ -1009,10 +1009,6 @@ _:genid285 rdf:type owl:Restriction ;
                                                     ]
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :destructionOf ;
-                                 owl:someValuesFrom :Speeder_Bike
-                               ] ,
-                               [ rdf:type owl:Restriction ;
                                  owl:onProperty :included ;
                                  owl:someValuesFrom [ owl:intersectionOf ( :Capture
                                                                            [ rdf:type owl:Restriction ;
@@ -1030,6 +1026,17 @@ _:genid285 rdf:type owl:Restriction ;
                                                                            [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :of ;
                                                                              owl:hasValue :Serin
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:someValuesFrom :Speeder_Bike
                                                                            ]
                                                                          ) ;
                                                       rdf:type owl:Class
@@ -1228,8 +1235,15 @@ _:genid285 rdf:type owl:Restriction ;
 :Rescue_of_Avi_Singh rdf:type owl:NamedIndividual ,
                               :Rescue ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :destructionOf ;
-                                owl:someValuesFrom :AT-TE
+                                owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:someValuesFrom :AT-TE
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :included ;
@@ -1777,8 +1791,15 @@ _:genid285 rdf:type owl:Restriction ;
                                 owl:onProperty :included ;
                                 owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                           [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :destructionOf ;
-                                                                            owl:someValuesFrom :Engine
+                                                                            owl:onProperty :included ;
+                                                                            owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty :of ;
+                                                                                                                        owl:someValuesFrom :Engine
+                                                                                                                      ]
+                                                                                                                    ) ;
+                                                                                                 rdf:type owl:Class
+                                                                                               ]
                                                                           ]
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :injuryOf ;
@@ -2333,7 +2354,7 @@ _:genid285 rdf:type owl:Restriction ;
                                      ] ;
                             :after :Spying_on_the_refinery ;
                             :during :Imperial_era ;
-                            :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Moon_of_Ryloth> ;
+                            :locatedIn :Moon_of_Ryloth ;
                             :participant :Bad_Batch ,
                                          :Gobi_Glie ,
                                          :Serin ;

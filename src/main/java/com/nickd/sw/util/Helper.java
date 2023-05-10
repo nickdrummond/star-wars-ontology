@@ -2,13 +2,19 @@ package com.nickd.sw.util;
 
 import openllet.owlapi.OWLHelper;
 import openllet.owlapi.OpenlletReasonerFactory;
+import org.apache.commons.io.FileUtils;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.formats.RioTurtleDocumentFormat;
 import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
+import org.semanticweb.owlapi.io.FileDocumentTarget;
+import org.semanticweb.owlapi.io.OWLOntologyDocumentTarget;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.InferenceType;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -88,6 +94,35 @@ public class Helper {
                 o.getOWLOntologyManager().setOntologyFormat(o, ttl);
             }
             mngr.saveOntology(o);
+        }
+    }
+
+    public void save(String location) throws OWLOntologyStorageException {
+
+        File base = new File(location);
+        System.out.println("Saving ontologies to " + base.getAbsolutePath());
+        if (!base.exists()) {
+            if (!base.mkdir()) {
+                throw new OWLOntologyStorageException("Could not create compilation directory: " + base);
+            }
+        }
+
+        for (OWLOntology o : mngr.getOntologies()) {
+            OWLDocumentFormat format = o.getOWLOntologyManager().getOntologyFormat(o);
+            if (format instanceof RioTurtleDocumentFormat) {
+                TurtleDocumentFormat ttl = new TurtleDocumentFormat();
+                ttl.copyPrefixesFrom((RioTurtleDocumentFormat)format);
+                o.getOWLOntologyManager().setOntologyFormat(o, ttl);
+            }
+            try {
+                IRI iri = o.getOntologyID().getOntologyIRI().orElseThrow();
+                File f = new File(base, iri.getShortForm());
+                System.out.println("saving..." + f.getAbsolutePath());
+                FileOutputStream fileOutputStream = new FileOutputStream(f);
+                mngr.saveOntology(o, fileOutputStream);
+            } catch (FileNotFoundException e) {
+                throw new OWLOntologyStorageException(e);
+            }
         }
     }
 }

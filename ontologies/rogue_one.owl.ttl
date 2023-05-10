@@ -9,15 +9,15 @@
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/rogue_one.owl.ttl> rdf:type owl:Ontology ;
                                                                                   owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
-                                                                                  dc:creator "Nick Drummond"^^xsd:string ;
+                                                                                  dc:creator "Nick Drummond" ;
                                                                                   dc:license """Free to use for non-commercial purposes.
-Please contact the author to discuss use."""^^xsd:string ;
-                                                                                  rdfs:comment "Events from thie film \"Rogue One\""^^xsd:string ,
+Please contact the author to discuss use.""" ;
+                                                                                  rdfs:comment "Events from thie film \"Rogue One\"" ,
                                                                                                """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
 
 All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
 
-There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia)."""^^xsd:string ;
+There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia).""" ;
                                                                                   rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
                                                                                                "https://starwars.fandom.com/wiki/Rogue_One:_A_Star_Wars_Story"^^xsd:anyURI .
 
@@ -29,37 +29,11 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Battle_of_Scarif rdf:type owl:NamedIndividual ,
                            :Battle ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :destructionOf ;
-                             owl:someValuesFrom [ owl:intersectionOf ( :Star_Destroyer
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Death
                                                                        [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :ownedBy ;
-                                                                         owl:hasValue :Galactic_Empire
-                                                                       ]
-                                                                     ) ;
-                                                  rdf:type owl:Class
-                                                ]
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :destructionOf ;
-                             owl:someValuesFrom [ owl:intersectionOf ( :TIE_Fighter
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :ownedBy ;
-                                                                         owl:hasValue :Galactic_Empire
-                                                                       ]
-                                                                     ) ;
-                                                  rdf:type owl:Class
-                                                ]
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :destructionOf ;
-                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                         owl:unionOf ( :U-Wing
-                                                                                       :X-Wing
-                                                                                     )
-                                                                       ]
-                                                                       [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :ownedBy ;
-                                                                         owl:hasValue :Rebel_Alliance
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Raddus
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -67,10 +41,80 @@ There is no assertion of correctness or completeness by myself - content has bee
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
-                             owl:someValuesFrom [ owl:intersectionOf ( :Death
+                             owl:someValuesFrom [ owl:intersectionOf ( :Destruction
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
-                                                                         owl:hasValue :Raddus
+                                                                         owl:someValuesFrom :Star_Destroyer
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Shield_Gate
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :TIE_Fighter
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :ownedBy ;
+                                                                                                                     owl:hasValue :Galactic_Empire
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                                     owl:unionOf ( :U-Wing
+                                                                                                                                   :X-Wing
+                                                                                                                                 )
+                                                                                                                   ]
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :ownedBy ;
+                                                                                                                     owl:hasValue :Rebel_Alliance
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :Citadel_Tower
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Death_Star_1
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:hasValue :MC75_Profundity
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -99,9 +143,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                 ]
                            ] ;
                   :after :Krennic_meets_Vader ;
-                  :destructionOf :Citadel_Tower ,
-                                 :MC75_Profundity ,
-                                 :Shield_Gate ;
                   :during :Galactic_Civil_War ;
                   :locatedIn :Scarif ;
                   :participant :Death_Star_1 ,
@@ -262,7 +303,7 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Holy_City_Destruction
 :Holy_City_Destruction rdf:type owl:NamedIndividual ,
-                                :Attack ,
+                                :Destruction ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :Escape
@@ -328,9 +369,9 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                      ]
                                 ] ;
                        :after :Fight_on_Jedha ;
-                       :destructionOf :Jedha_City ;
                        :during :Galactic_Civil_War ;
                        :locatedIn :Jedha ;
+                       :of :Jedha_City ;
                        :participant :Death_Star_1 ;
                        :year 0 ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Destruction_of_Jedha_City"^^xsd:anyURI .
@@ -527,4 +568,4 @@ There is no assertion of correctness or completeness by myself - content has bee
                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Jyn_Erso#Infiltrating_the_Citadel"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

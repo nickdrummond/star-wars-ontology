@@ -279,15 +279,14 @@ There is no assertion of correctness or completeness by myself - content has bee
                              owl:someValuesFrom [ owl:intersectionOf ( :Capture
                                                                        [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :of ;
-                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                         owl:onClass [ owl:intersectionOf ( :Clone
-                                                                                                            [ rdf:type owl:Restriction ;
-                                                                                                              owl:onProperty :callsign ;
-                                                                                                              owl:hasValue "CC-5576"
-                                                                                                            ]
-                                                                                                          ) ;
-                                                                                       rdf:type owl:Class
-                                                                                     ]
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Clone
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :callsign ;
+                                                                                                                     owl:hasValue "CC-5576"
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
+                                                                                            ]
                                                                        ]
                                                                      ) ;
                                                   rdf:type owl:Class
@@ -1703,24 +1702,36 @@ _:genid286 rdf:type owl:Restriction ;
                                                          ]
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :target ;
-                                      owl:someValuesFrom :Tactical_Droid
+                                      owl:onProperty :participant ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                  owl:oneOf ( :Rafa_Martez
+                                                                                            )
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :disguisedAs ;
+                                                                                  owl:someValuesFrom :Worker
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
                                     ] ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :participant ;
-                                      owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                      owl:onClass [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                           owl:oneOf ( :Rafa_Martez
-                                                                                       :Trace_Martez
-                                                                                     )
-                                                                         ]
-                                                                         [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty :disguisedAs ;
-                                                                           owl:someValuesFrom :Worker
-                                                                         ]
-                                                                       ) ;
-                                                    rdf:type owl:Class
-                                                  ]
+                                      owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                  owl:oneOf ( :Trace_Martez
+                                                                                            )
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :disguisedAs ;
+                                                                                  owl:someValuesFrom :Worker
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :target ;
+                                      owl:someValuesFrom :Tactical_Droid
                                     ] ;
                            :after :Rescue_Muchi ;
                            :during :Imperial_era ;

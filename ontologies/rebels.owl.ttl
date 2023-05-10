@@ -1210,7 +1210,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                      ]
                                 ] ;
                        :during :Preparing_to_rescue_Kanan ;
-                       :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#_unknown_communications_ship> ;
+                       :locatedIn :_unknown_communications_ship ;
                        :participant :C1-10P ;
                        :year -4 ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Rebel_Resolve"^^xsd:anyURI .
@@ -2532,15 +2532,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                                owl:onProperty :included ;
                                owl:someValuesFrom [ owl:intersectionOf ( :Meeting
                                                                          [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty :locatedIn ;
-                                                                           owl:someValuesFrom :Space
-                                                                         ]
-                                                                         [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :participant ;
                                                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                                                                 owl:onProperty :hadRole ;
                                                                                                 owl:someValuesFrom :Fulcrum
                                                                                               ]
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :locatedIn ;
+                                                                           owl:hasValue :_somewhere_in_space_4
                                                                          ]
                                                                          [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :participant ;
@@ -3615,6 +3615,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                          rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Future_of_the_Force"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Geonosian_catacombs
+:Geonosian_catacombs rdf:type owl:NamedIndividual .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Grand_Inquisitor_vs_Kanan_and_Ezra
 :Grand_Inquisitor_vs_Kanan_and_Ezra rdf:type owl:NamedIndividual ,
                                              :Duel ,
@@ -4114,7 +4118,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                  :during :Return_to_Geonosis ;
                                  :found :Klik-Klak ,
                                         :Saw_Gerrera ;
-                                 :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Geonosian_catacombs> ;
+                                 :locatedIn :Geonosian_catacombs ;
                                  :participant :C1-10P ,
                                               :Ezra_Bridger ,
                                               :Kanan_Jarrus ,
@@ -4558,23 +4562,12 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                    owl:onProperty :included ;
                                                    owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                                              [ rdf:type owl:Restriction ;
-                                                                                               owl:onProperty :locatedIn ;
-                                                                                               owl:someValuesFrom [ owl:intersectionOf ( :Portal
-                                                                                                                                         [ rdf:type owl:Restriction ;
-                                                                                                                                           owl:onProperty :locatedIn ;
-                                                                                                                                           owl:hasValue :Malachor_Sith_Temple
-                                                                                                                                         ]
-                                                                                                                                         [ rdf:type owl:Restriction ;
-                                                                                                                                           owl:onProperty :locatedIn ;
-                                                                                                                                           owl:hasValue :World_Between_Worlds
-                                                                                                                                         ]
-                                                                                                                                       ) ;
-                                                                                                                    rdf:type owl:Class
-                                                                                                                  ]
-                                                                                             ]
-                                                                                             [ rdf:type owl:Restriction ;
                                                                                                owl:onProperty :of ;
                                                                                                owl:hasValue :Ahsoka_Tano
+                                                                                             ]
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :used ;
+                                                                                               owl:hasValue :Portal_to_Malachor
                                                                                              ]
                                                                                            ) ;
                                                                         rdf:type owl:Class
@@ -5202,6 +5195,18 @@ There is no assertion of correctness or completeness by myself - content has bee
                               owl:onProperty :included ;
                               owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                         [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :destructionOf ;
+                                                                          owl:someValuesFrom :Probe_Droid
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :found ;
+                                                                          owl:hasValue :Ryder_Azadi
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :locatedIn ;
+                                                                          owl:hasValue :Jhothal_sewers
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
                                                                           owl:onProperty :of ;
                                                                           owl:hasValue :Spectres
                                                                         ]
@@ -5219,24 +5224,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                         [ rdf:type owl:Restriction ;
                                                                           owl:onProperty :of ;
                                                                           owl:someValuesFrom :Speeder
-                                                                        ]
-                                                                      ) ;
-                                                   rdf:type owl:Class
-                                                 ]
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :included ;
-                              owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :destructionOf ;
-                                                                          owl:someValuesFrom :Probe_Droid
-                                                                        ]
-                                                                        [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :locatedIn ;
-                                                                          owl:someValuesFrom :Sewer
-                                                                        ]
-                                                                        [ rdf:type owl:Restriction ;
-                                                                          owl:onProperty :found ;
-                                                                          owl:hasValue :Ryder_Azadi
                                                                         ]
                                                                       ) ;
                                                    rdf:type owl:Class
@@ -5327,6 +5314,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                              :participant :Dume ;
                              :year 0 ;
                              rdfs:seeAlso "https://starwars.fandom.com/wiki/DUME#Mourning_Kanan.27s_passing"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mandalore_prison_outpost
+:Mandalore_prison_outpost rdf:type owl:NamedIndividual .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Massassi_Group_arrive_at_Atollon
@@ -5533,7 +5524,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                              ] ;
                     :after :Mission_to_Seelos ;
                     :during :Galactic_Civil_War ;
-                    :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Unidentified_Republic_medical_station> ;
+                    :locatedIn :Unidentified_Republic_medical_station ;
                     :participant :C1-10P ,
                                  :Fifth_Brother ,
                                  :Garazeb_Orrelios ,
@@ -6316,10 +6307,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                                          ] ;
                                 :after :Escape_from_Mandalore ;
                                 :destructionOf :Arc_Pulse_Generator ,
-                                               <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Tiber_Saxons_Star_Destroyer> ;
+                                               :Tiber_Saxons_Star_Destroyer ;
                                 :during :Galactic_Civil_War ;
                                 :locatedIn :Sundari ,
-                                           <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Tiber_Saxons_Star_Destroyer> ;
+                                           :Tiber_Saxons_Star_Destroyer ;
                                 :participant :Hark ,
                                              :Tiber_Saxon ;
                                 :year -1 ;
@@ -6361,7 +6352,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                    ] ;
                           :after :Rescue_of_Lasats ;
                           :during :Galactic_Civil_War ;
-                          :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#_unidentified_star_cluster> ;
+                          :locatedIn :_unidentified_star_cluster ;
                           :participant :Chava ,
                                        :Ghost ,
                                        :Gron ;
@@ -6612,7 +6603,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                          owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                                    [ rdf:type owl:Restriction ;
                                                                                      owl:onProperty :locatedIn ;
-                                                                                     owl:someValuesFrom :Sewer
+                                                                                     owl:hasValue :Capital_City_sewers
                                                                                    ]
                                                                                    [ rdf:type owl:Restriction ;
                                                                                      owl:onProperty :of ;
@@ -6808,6 +6799,13 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                  :Saw_Gerrera ;
                                     :year -1 ;
                                     rdfs:seeAlso "https://starwars.fandom.com/wiki/In_the_Name_of_the_Rebellion#Complications"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Portal_to_Malachor
+:Portal_to_Malachor rdf:type owl:NamedIndividual ,
+                             :Portal ;
+                    :locatedIn :Malachor_Sith_Temple ,
+                               :World_Between_Worlds .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Preparing_to_rescue_Kanan
@@ -9271,7 +9269,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                             owl:someValuesFrom [ owl:intersectionOf ( :Meeting
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :locatedIn ;
-                                                                        owl:someValuesFrom :Star_Commuter_2000
+                                                                        owl:hasValue :_unidentified_Star_Commuter
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :participant ;
@@ -9858,7 +9856,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                            ]
                                       ] ;
                              :during :Galactic_Civil_War ;
-                             :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Mandalore_prison_outpost> ;
+                             :locatedIn :Mandalore_prison_outpost ;
                              :participant :Bo-Katan_Kryze ,
                                           :C1-10P ,
                                           :Ezra_Bridger ,
@@ -10110,6 +10108,10 @@ There is no assertion of correctness or completeness by myself - content has bee
                               :remoteParticipant :Bail_Organa ;
                               :year -1 ;
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/Crawler_Commandeers#Attack_plans"^^xsd:anyURI .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Tiber_Saxons_Star_Destroyer
+:Tiber_Saxons_Star_Destroyer rdf:type owl:NamedIndividual .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Torture_of_Hera
@@ -10503,6 +10505,10 @@ Ahsoka and Vader injured""" ;
                            rdfs:seeAlso "https://starwars.fandom.com/wiki/Breaking_Ranks"^^xsd:anyURI .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Unidentified_Republic_medical_station
+:Unidentified_Republic_medical_station rdf:type owl:NamedIndividual .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Using_Magick
 :Using_Magick rdf:type owl:NamedIndividual ,
                        :Confrontation ,
@@ -10783,7 +10789,7 @@ Ahsoka and Vader injured""" ;
                         ] ;
                :after :Wookie_Rescue_Trap ;
                :during :Imperial_era ;
-               :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies/solo.owl.ttl#_unidentified_Kessel_spice_mine> ;
+               :locatedIn :_unidentified_Kessel_spice_mine ;
                :of :Kitwarr ,
                    :Wullffwarro ;
                :participant :Ezra_Bridger ,
@@ -10924,6 +10930,11 @@ Ahsoka and Vader injured""" ;
                                     :locatedIn :_unidentified_site_of_space_battle .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_somewhere_in_Hyperspace_2
+:_somewhere_in_Hyperspace_2 rdf:type owl:NamedIndividual ,
+                                     :Hyperspace .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_somewhere_in_space
 :_somewhere_in_space rdf:type owl:NamedIndividual ,
                               :Space .
@@ -10936,6 +10947,11 @@ Ahsoka and Vader injured""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_somewhere_in_space_3
 :_somewhere_in_space_3 rdf:type owl:NamedIndividual ,
+                                :Space .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_somewhere_in_space_4
+:_somewhere_in_space_4 rdf:type owl:NamedIndividual ,
                                 :Space .
 
 
@@ -10961,6 +10977,15 @@ Ahsoka and Vader injured""" ;
 :_unidentified_Imperial_prison rdf:type owl:NamedIndividual ,
                                         :Prison ;
                                :ownedBy :Galactic_Empire .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_unidentified_Kessel_spice_mine
+:_unidentified_Kessel_spice_mine rdf:type owl:NamedIndividual .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_unidentified_Star_Commuter
+:_unidentified_Star_Commuter rdf:type owl:NamedIndividual ,
+                                      :Star_Commuter_2000 .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_unidentified_Star_Destroyer
@@ -11004,42 +11029,17 @@ Ahsoka and Vader injured""" ;
                                              :Space .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_unidentified_star_cluster
+:_unidentified_star_cluster rdf:type owl:NamedIndividual .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_unknown_communications_ship
+:_unknown_communications_ship rdf:type owl:NamedIndividual .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#_unnamed_Shuttle
 :_unnamed_Shuttle rdf:type owl:NamedIndividual ,
                            :Shuttle .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/rebels.owl.ttl#_somewhere_in_Hyperspace_2
-:_somewhere_in_Hyperspace_2 rdf:type owl:NamedIndividual ,
-                                     :Hyperspace .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/solo.owl.ttl#_unidentified_Kessel_spice_mine
-<https://nickdrummond.github.io/star-wars-ontology/ontologies/solo.owl.ttl#_unidentified_Kessel_spice_mine> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Geonosian_catacombs
-<https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Geonosian_catacombs> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Mandalore_prison_outpost
-<https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Mandalore_prison_outpost> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Tiber_Saxons_Star_Destroyer
-<https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Tiber_Saxons_Star_Destroyer> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Unidentified_Republic_medical_station
-<https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#Unidentified_Republic_medical_station> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#_unidentified_star_cluster
-<https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#_unidentified_star_cluster> rdf:type owl:NamedIndividual .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#_unknown_communications_ship
-<https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl#_unknown_communications_ship> rdf:type owl:NamedIndividual .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

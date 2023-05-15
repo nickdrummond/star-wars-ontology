@@ -76,8 +76,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Attack_of_Bibos_Mother rdf:type owl:NamedIndividual ,
                                  :Attack ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :eatingOf ;
-                                   owl:someValuesFrom :Gorg
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Eating
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:someValuesFrom :Gorg
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :of ;
@@ -742,7 +749,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                owl:someValuesFrom [ owl:intersectionOf ( :Destruction
                                                                                          [ rdf:type owl:Restriction ;
                                                                                            owl:onProperty :of ;
-                                                                                           owl:someValuesFrom :TIE_Fighter
+                                                                                           owl:someValuesFrom :Shuttle
                                                                                          ]
                                                                                        ) ;
                                                                     rdf:type owl:Class
@@ -753,7 +760,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                owl:someValuesFrom [ owl:intersectionOf ( :Destruction
                                                                                          [ rdf:type owl:Restriction ;
                                                                                            owl:onProperty :of ;
-                                                                                           owl:someValuesFrom :Shuttle
+                                                                                           owl:someValuesFrom :TIE_Fighter
                                                                                          ]
                                                                                        ) ;
                                                                     rdf:type owl:Class
@@ -784,13 +791,13 @@ There is no assertion of correctness or completeness by myself - content has bee
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty :participant ;
                                                owl:someValuesFrom [ owl:intersectionOf ( :Shuttle
-                                                                                  [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty :ownedBy ;
-                                                                                    owl:hasValue :Resistance
-                                                                                  ]
-                                                                                ) ;
-                                                             rdf:type owl:Class
-                                                           ]
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty :ownedBy ;
+                                                                                           owl:hasValue :Resistance
+                                                                                         ]
+                                                                                       ) ;
+                                                                    rdf:type owl:Class
+                                                                  ]
                                              ] ;
                                     :after :Battle_of_Aeos_Prime ;
                                     :during :Hunt_for_the_Colossus ;
@@ -2162,10 +2169,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                              owl:onProperty :included ;
                              owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                        [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :eatingOf ;
-                                                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                              owl:onProperty :hadRole ;
-                                                                                              owl:someValuesFrom :Pirate
+                                                                         owl:onProperty :included ;
+                                                                         owl:someValuesFrom [ owl:intersectionOf ( :Eating
+                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                     owl:onProperty :of ;
+                                                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                                                          owl:onProperty :hadRole ;
+                                                                                                                                          owl:someValuesFrom :Pirate
+                                                                                                                                        ]
+                                                                                                                   ]
+                                                                                                                 ) ;
+                                                                                              rdf:type owl:Class
                                                                                             ]
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;

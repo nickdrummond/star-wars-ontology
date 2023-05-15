@@ -578,6 +578,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :included ;
+                                owl:someValuesFrom [ owl:intersectionOf ( :Eating
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :of ;
+                                                                            owl:hasValue :Boba_Fett
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :included ;
                                 owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                           [ rdf:type owl:Restriction ;
                                                                             owl:onProperty :of ;
@@ -596,7 +607,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                               ] ;
                      :after :Luke_vs_Rancor ;
                      :during :Rescue_of_Han_Solo ;
-                     :eatingOf :Boba_Fett ;
                      :locatedIn :Great_Pit_of_Carkoon ;
                      :of :C-3PO ,
                          :Chewbacca ,
@@ -709,12 +719,13 @@ There is no assertion of correctness or completeness by myself - content has bee
                            :Escape ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :included ;
-                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Eating
+                                                                       [ rdf:type owl:Restriction ;
                                                                          owl:onProperty :participant ;
                                                                          owl:someValuesFrom :Mynock
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;
-                                                                         owl:onProperty :eatingOf ;
+                                                                         owl:onProperty :of ;
                                                                          owl:hasValue :Millenium_Falcon
                                                                        ]
                                                                        [ rdf:type owl:Restriction ;
@@ -919,11 +930,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Luke_vs_Rancor rdf:type owl:NamedIndividual ,
                          :Fight ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :eatingOf ;
-                           owl:someValuesFrom [ owl:intersectionOf ( :Gamorrean
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Eating
                                                                      [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :hadRole ;
-                                                                       owl:someValuesFrom :Guard
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Unidentified_Gamorrean
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :Pateesa
                                                                      ]
                                                                    ) ;
                                                 rdf:type owl:Class
@@ -933,8 +948,16 @@ There is no assertion of correctness or completeness by myself - content has bee
                            owl:onProperty :included ;
                            owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                      [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :used ;
+                                                                       owl:someValuesFrom :Door
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :of ;
                                                                        owl:hasValue :Pateesa
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :Luke_Skywalker
                                                                      ]
                                                                    ) ;
                                                 rdf:type owl:Class
@@ -983,10 +1006,10 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Murder_of_Oola
 :Murder_of_Oola rdf:type owl:NamedIndividual ,
+                         :Eating ,
                          :Murder ;
                 :after :Bartering_for_Solo ;
                 :during :Rescue_of_Han_Solo ;
-                :eatingOf :Oola ;
                 :locatedIn <https://nickdrummond.github.io/star-wars-ontology/ontologies#Jabba's_Palace> ;
                 :of :Oola ;
                 :orderedBy :Jabba ;

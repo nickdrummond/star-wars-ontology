@@ -1087,12 +1087,26 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Traverse_the_Naboo_Core rdf:type owl:NamedIndividual ,
                                   :Mission ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :eatingOf ;
-                                    owl:someValuesFrom :Colo_claw_fish
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Eating
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:someValuesFrom :Colo_claw_fish
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :eatingOf ;
-                                    owl:someValuesFrom :Opee_sea_killer
+                                    owl:onProperty :included ;
+                                    owl:someValuesFrom [ owl:intersectionOf ( :Eating
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty :of ;
+                                                                                owl:someValuesFrom :Opee_sea_killer
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ]
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :participant ;

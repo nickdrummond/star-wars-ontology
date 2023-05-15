@@ -318,6 +318,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :CB-23
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
                                owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                          [ rdf:type owl:Restriction ;
                                                                            owl:onProperty :of ;
@@ -333,7 +344,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                              ] ;
                     :after :Kaz_and_Tam_warn_the_Colossus ;
                     :during :Hunt_for_the_Colossus ;
-                    :injuryOf :CB-23 ;
                     :locatedIn :Barabesh_system ;
                     :participant :Ace_Squadron ,
                                  :Colossus ,
@@ -368,12 +378,26 @@ There is no assertion of correctness or completeness by myself - content has bee
                                  owl:onProperty :included ;
                                  owl:someValuesFrom [ owl:intersectionOf ( :Crash
                                                                            [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :injuryOf ;
-                                                                             owl:hasValue :CB-23
+                                                                             owl:onProperty :included ;
+                                                                             owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                         owl:onProperty :of ;
+                                                                                                                         owl:hasValue :CB-23
+                                                                                                                       ]
+                                                                                                                     ) ;
+                                                                                                  rdf:type owl:Class
+                                                                                                ]
                                                                            ]
                                                                            [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty :injuryOf ;
-                                                                             owl:hasValue :Norath_Kev
+                                                                             owl:onProperty :included ;
+                                                                             owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                         owl:onProperty :of ;
+                                                                                                                         owl:hasValue :Norath_Kev
+                                                                                                                       ]
+                                                                                                                     ) ;
+                                                                                                  rdf:type owl:Class
+                                                                                                ]
                                                                            ]
                                                                            [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :of ;
@@ -918,11 +942,21 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                        ) ;
                                                     rdf:type owl:Class
                                                   ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Synara_San
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
                              ] ;
                     :after :Infiltration_of_the_Titan ;
                     :during :Hunt_for_the_Colossus ;
                     :found :Norath_Kev ;
-                    :injuryOf :Synara_San ;
                     :locatedIn :Vargo_Spaceport ;
                     :participant :CB-23 ,
                                  :Jarek_Yeager ,
@@ -1187,6 +1221,20 @@ There is no assertion of correctness or completeness by myself - content has bee
                                        ] ,
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :of ;
+                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty :hadRole ;
+                                                                                                          owl:someValuesFrom :StormTrooper
+                                                                                                        ]
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
                                          owl:someValuesFrom [ owl:intersectionOf ( :Meeting
                                                                                    [ rdf:type owl:Restriction ;
                                                                                      owl:onProperty :participant ;
@@ -1220,13 +1268,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                    ]
                                                                                  ) ;
                                                               rdf:type owl:Class
-                                                            ]
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :injuryOf ;
-                                         owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                              owl:onProperty :hadRole ;
-                                                              owl:someValuesFrom :StormTrooper
                                                             ]
                                        ] ;
                               :after :Search_for_Synara ;
@@ -1976,12 +2017,22 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                       ]
                                  ] ,
                                  [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :of ;
+                                                                               owl:hasValue <https://nickdrummond.github.io/star-wars-ontology/ontologies#4D-M1N>
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
                                    owl:onProperty :participant ;
                                    owl:someValuesFrom :B2_Super_Battle_Droid
                                  ] ;
                         :after :Repairing_Battle_Droids ;
                         :during :Hunt_for_the_Colossus ;
-                        :injuryOf <https://nickdrummond.github.io/star-wars-ontology/ontologies#4D-M1N> ;
                         :locatedIn :Colossus ;
                         :participant :Kragan_Gorr ,
                                      :Warbird_gang ;
@@ -2264,16 +2315,30 @@ There is no assertion of correctness or completeness by myself - content has bee
                                         owl:onProperty :included ;
                                         owl:someValuesFrom [ owl:intersectionOf ( :Escape
                                                                                   [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :included ;
+                                                                                    owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty :of ;
+                                                                                                                                owl:hasValue :Ax_Tagrin
+                                                                                                                              ]
+                                                                                                                            ) ;
+                                                                                                         rdf:type owl:Class
+                                                                                                       ]
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :included ;
+                                                                                    owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty :of ;
+                                                                                                                                owl:hasValue :Tierny
+                                                                                                                              ]
+                                                                                                                            ) ;
+                                                                                                         rdf:type owl:Class
+                                                                                                       ]
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
                                                                                     owl:onProperty :participant ;
                                                                                     owl:someValuesFrom :Star_Commuter_2000
-                                                                                  ]
-                                                                                  [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty :injuryOf ;
-                                                                                    owl:hasValue :Ax_Tagrin
-                                                                                  ]
-                                                                                  [ rdf:type owl:Restriction ;
-                                                                                    owl:onProperty :injuryOf ;
-                                                                                    owl:hasValue :Tierny
                                                                                   ]
                                                                                   [ rdf:type owl:Restriction ;
                                                                                     owl:onProperty :victoryOf ;
@@ -2608,12 +2673,22 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                   ]
                              ] ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :Jace_Rucklin
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :participant ;
                                owl:someValuesFrom :AAL
                              ] ;
                     :after :Tam_calls_Home ;
                     :during :Hunt_for_the_Colossus ;
-                    :injuryOf :Jace_Rucklin ;
                     :locatedIn :Castilon ;
                     :participant :Jarek_Yeager ,
                                  :Kazuda_Xiono ,
@@ -2627,7 +2702,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                          :Crash ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :included ;
-                           owl:someValuesFrom [ owl:intersectionOf ( :Saving
+                           owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :of ;
                                                                        owl:hasValue :Jace_Rucklin
@@ -2685,7 +2760,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                         :Crash ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :included ;
-                          owl:someValuesFrom [ owl:intersectionOf ( :Saving
+                          owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                     [ rdf:type owl:Restriction ;
                                                                       owl:onProperty :of ;
                                                                       owl:hasValue :Kazuda_Xiono
@@ -3014,7 +3089,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                :Training ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :included ;
-                                 owl:someValuesFrom [ owl:intersectionOf ( :Saving
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Rescue
                                                                            [ rdf:type owl:Restriction ;
                                                                              owl:onProperty :of ;
                                                                              owl:hasValue :Jace_Rucklin
@@ -3281,4 +3356,4 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/A_Quick_Salvage_Run#Skirmish_above_D.27Qar"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 5.1.19.2021-07-31T19:16:32Z) https://github.com/owlcs/owlapi/
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

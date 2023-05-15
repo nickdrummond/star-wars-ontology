@@ -231,13 +231,41 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                     ]
                                ] ,
                                [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :used ;
+                                                                             owl:someValuesFrom :The_Force
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Padme_Amidala
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :participant ;
+                                                                             owl:hasValue :Anakin_Skywalker
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:hasValue :Anakin_Skywalker
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
                                  owl:onProperty :used ;
                                  owl:someValuesFrom :J-type_star_skiff
                                ] ;
                       :after :Vader_wipes_out_Separatist_Leaders ;
                       :during :Imperial_era ;
-                      :injuryOf :Anakin_Skywalker ,
-                                :Padme_Amidala ;
                       :locatedIn :Klegger_Corp_Mining_Facility ;
                       :victoryOf :Obi-Wan_Kenobi ;
                       :year -19 ;
@@ -389,9 +417,9 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Creation_of_a_clone_army
 :Creation_of_a_clone_army rdf:type owl:NamedIndividual ,
-                                   :Mission ,
+                                   :Creation ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty :creationOf ;
+                                     owl:onProperty :of ;
                                      owl:someValuesFrom :Clone
                                    ] ;
                           :during :Republic_era ;
@@ -423,10 +451,30 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                     ) ;
                                                  rdf:type owl:Class
                                                ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Anakin_Skywalker
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Obi-Wan_Kenobi
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
                           ] ;
                  :during :First_Battle_of_Geonosis ;
-                 :injuryOf :Anakin_Skywalker ,
-                           :Obi-Wan_Kenobi ;
                  :locatedIn :Geonosis ;
                  :survivedBy :Yoda ;
                  :year -22 ;
@@ -436,6 +484,17 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Duel_of_the_Fates
 :Duel_of_the_Fates rdf:type owl:NamedIndividual ,
                             :Duel ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :Maul
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :included ;
                               owl:someValuesFrom [ owl:intersectionOf ( :Killing
@@ -448,7 +507,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                  ]
                             ] ;
                    :during :Battle_of_Naboo ;
-                   :injuryOf :Maul ;
                    :locatedIn :Theed ;
                    :participant :Obi-Wan_Kenobi ;
                    :year -32 ;
@@ -511,6 +569,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                 :Fight ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Cliegg_Lars
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
                                   owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                             [ rdf:type owl:Restriction ;
                                                                               owl:onProperty :of ;
@@ -529,7 +598,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                 ] ;
                        :after :Kidnap_of_Shmi ;
                        :during :Separatist_Crisis ;
-                       :injuryOf :Cliegg_Lars ;
                        :locatedIn :Jundland_wastes ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Shmi_Skywalker_Lars#Emancipation,_captivity,_and_death"^^xsd:anyURI .
 
@@ -680,6 +748,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                           :Duel ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Darth_Sidious
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Killing
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :of ;
@@ -724,7 +803,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                           ] ;
                  :after :Obi-Wan_vs_Grievous ;
                  :during :Clone_Wars ;
-                 :injuryOf :Darth_Sidious ;
                  :locatedIn :Coruscant ;
                  :year -19 ;
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Darth_Sidious#Duel_in_the_Chancellor.27s_Office"^^xsd:anyURI .
@@ -1184,4 +1262,4 @@ There is no assertion of correctness or completeness by myself - content has bee
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Duel_in_the_Galactic_Senate"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 5.1.19.2021-07-31T19:16:32Z) https://github.com/owlcs/owlapi/
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

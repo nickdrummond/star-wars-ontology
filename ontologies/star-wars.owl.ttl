@@ -4251,9 +4251,19 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Destruction_of_Anaxes
 :Destruction_of_Anaxes rdf:type owl:NamedIndividual ,
-                                :Destruction ;
+                                :Destruction ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Creation
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :PM-1203
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
                        :after :Clone_Wars ;
-                       :creationOf :PM-1203 ;
                        :during :Imperial_era ;
                        :of :Anaxes ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Destruction_of_Anaxes"^^xsd:anyURI .
@@ -4859,9 +4869,9 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Empire_Day
 :Empire_Day rdf:type owl:NamedIndividual ,
-                     :Event ;
-            :creationOf :Galactic_Empire ;
+                     :Creation ;
             :during :Imperial_era ;
+            :of :Galactic_Empire ;
             :starting -19 ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Empire_Day"^^xsd:anyURI .
 

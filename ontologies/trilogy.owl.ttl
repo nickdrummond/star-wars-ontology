@@ -107,6 +107,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                           :Battle ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Creation
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:hasValue :Death_Star_Ruins
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :included ;
                             owl:someValuesFrom [ owl:intersectionOf ( :Destruction
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :of ;
@@ -139,7 +150,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                ]
                           ] ;
                  :after :Yoda_becomes_One_with_the_Force ;
-                 :creationOf :Death_Star_Ruins ;
                  :during :Galactic_Civil_War ;
                  :locatedIn :Endor ;
                  :participant :Galactic_Empire ,
@@ -404,7 +414,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                     ] ,
                                                     [ rdf:type owl:Restriction ;
                                                       owl:onProperty :included ;
-                                                      owl:someValuesFrom [ owl:intersectionOf ( :Saving
+                                                      owl:someValuesFrom [ owl:intersectionOf ( :Defence
                                                                                                 [ rdf:type owl:Restriction ;
                                                                                                   owl:onProperty :included ;
                                                                                                   owl:someValuesFrom [ owl:intersectionOf ( :Killing
@@ -979,12 +989,19 @@ There is no assertion of correctness or completeness by myself - content has bee
                                       owl:onProperty :included ;
                                       owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :used ;
-                                                                                  owl:someValuesFrom :Dark_Side
+                                                                                  owl:onProperty :included ;
+                                                                                  owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty :of ;
+                                                                                                                              owl:hasValue :Cassio_Tagge
+                                                                                                                            ]
+                                                                                                                          ) ;
+                                                                                                       rdf:type owl:Class
+                                                                                                     ]
                                                                                 ]
                                                                                 [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty :injuryOf ;
-                                                                                  owl:hasValue :Cassio_Tagge
+                                                                                  owl:onProperty :used ;
+                                                                                  owl:someValuesFrom :Dark_Side
                                                                                 ]
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty :participant ;
@@ -1118,8 +1135,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                ]
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :injuryOf ;
-                            owl:someValuesFrom :Wampa
+                            owl:onProperty :included ;
+                            owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :of ;
+                                                                        owl:someValuesFrom :Wampa
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :participant ;
@@ -1258,6 +1282,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                   ]
                              ] ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:hasValue :C-3PO
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :participant ;
                                owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                     owl:onProperty :hadRole ;
@@ -1267,7 +1302,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                     :after :Escape_from_Hoth ,
                            :Luke_meets_Yoda ;
                     :during :Galactic_Civil_War ;
-                    :injuryOf :C-3PO ;
                     :locatedIn :Cloud_City ;
                     :participant :Boba_Fett ,
                                  :Darth_Vader ;
@@ -1366,6 +1400,17 @@ There is no assertion of correctness or completeness by myself - content has bee
                          owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                    [ rdf:type owl:Restriction ;
                                                                      owl:onProperty :included ;
+                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Damage
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty :of ;
+                                                                                                                 owl:hasValue :Vaders_TIE_Advanced_x1
+                                                                                                               ]
+                                                                                                             ) ;
+                                                                                          rdf:type owl:Class
+                                                                                        ]
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :included ;
                                                                      owl:someValuesFrom [ owl:intersectionOf ( :Destruction
                                                                                                                [ rdf:type owl:Restriction ;
                                                                                                                  owl:onProperty :of ;
@@ -1376,12 +1421,19 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                                                         ]
                                                                    ]
                                                                    [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty :damageOf ;
-                                                                     owl:hasValue :Vaders_TIE_Advanced_x1
-                                                                   ]
-                                                                   [ rdf:type owl:Restriction ;
                                                                      owl:onProperty :victoryOf ;
                                                                      owl:hasValue :Millenium_Falcon
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :included ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Damage
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :of ;
+                                                                     owl:hasValue :R2-D2
                                                                    ]
                                                                  ) ;
                                               rdf:type owl:Class
@@ -1444,7 +1496,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                          owl:someValuesFrom :Proton_Torpedo
                        ] ;
               :after :Trench_Run_2 ;
-              :damageOf :R2-D2 ;
               :during :Battle_of_Yavin ;
               :locatedIn :Meridian_Trench ;
               :participant :Millenium_Falcon ,
@@ -1459,9 +1510,19 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Vader_is_Lukes_Father
 :Vader_is_Lukes_Father rdf:type owl:NamedIndividual ,
-                                :Duel ;
+                                :Duel ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :included ;
+                                  owl:someValuesFrom [ owl:intersectionOf ( :Injury
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty :of ;
+                                                                              owl:hasValue :Luke_Skywalker
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ]
+                                ] ;
                        :during :Trap_on_Cloud_City ;
-                       :injuryOf :Luke_Skywalker ;
                        :locatedIn :Cloud_City ;
                        :participant :Darth_Vader ;
                        :year 3 ;
@@ -1491,4 +1552,4 @@ There is no assertion of correctness or completeness by myself - content has bee
                                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Yoda#Death"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 5.1.19.2021-07-31T19:16:32Z) https://github.com/owlcs/owlapi/

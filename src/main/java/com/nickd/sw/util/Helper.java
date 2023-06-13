@@ -2,12 +2,9 @@ package com.nickd.sw.util;
 
 import openllet.owlapi.OWLHelper;
 import openllet.owlapi.OpenlletReasonerFactory;
-import org.apache.commons.io.FileUtils;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.formats.RioTurtleDocumentFormat;
 import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
-import org.semanticweb.owlapi.io.FileDocumentTarget;
-import org.semanticweb.owlapi.io.OWLOntologyDocumentTarget;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.InferenceType;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;

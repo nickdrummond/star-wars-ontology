@@ -14,17 +14,17 @@ tools
 
 A demo of the Star Wars Ontology is available to [browse](https://star-wars-ontology.up.railway.app/).
 
-[Classes](http://star-wars-ontology.up.railway.app/classes/),
-[properties](http://star-wars-ontology.up.railway.app/objectproperties/),
-[individuals](http://star-wars-ontology.up.railway.app/individuals/) etc can all be browsed to understand the structure of the ontologies.
+[Classes](https://star-wars-ontology.up.railway.app/classes/),
+[properties](https://star-wars-ontology.up.railway.app/objectproperties/),
+[individuals](https://star-wars-ontology.up.railway.app/individuals/) etc can all be browsed to understand the structure of the ontologies.
 Cloud views can give a quick feel for where the detail is eg [instance usage](https://star-wars-ontology.up.railway.app/clouds/individuals)
 
 This demo is a running on a [custom branch](https://github.com/nickdrummond/ontology-browser/tree/Star_Wars_Ontology_static),
-paired version of the ontology browser, specifically loaded with [all.owl.ttl](http://star-wars-ontology.up.railway.app/ontologies/-1715300141).
+paired version of the ontology browser, specifically loaded with [all.owl.ttl](https://star-wars-ontology.up.railway.app/ontologies/-1715300141).
 
 It is hosted on railway.app using free-tier hardware so can take a moment to first start up. 
 
-Querying with Pellet (Openllet) reasoner is possible on the [DL Query page](http://star-wars-ontology.up.railway.app/dlquery/).
+Querying with Pellet (Openllet) reasoner is possible on the [DL Query page](https://star-wars-ontology.up.railway.app/dlquery/).
 
 This also supports set subtraction between queries which is useful where closure is not available.
 Essentially mapping to "A is true but B is not known" (weaker than "A and not B").

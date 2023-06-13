@@ -37,7 +37,7 @@ Pellet note - min/max Exclusive causing error in unknown circumstances:
 
 ## Expressivity
 
-Currently [reported](http://star-wars-ontology.up.railway.app/ontologies/-1715300141) as:
+Currently [reported](https://star-wars-ontology.up.railway.app/ontologies/-1715300141) as:
 * RRESTR role domain/range
 * C concept complex negation (disjoints, differentFrom)
 * U concept union

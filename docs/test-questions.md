@@ -62,7 +62,7 @@ Or more complete if we also capture sub-events:
 
 [result](https://star-wars-ontology.up.railway.app/dlquery/?expression=included+some+%28participant+value+Lando_Calrissian%29&syntax=man&query=instances)
 
-This is nice and compact because [```included```](http://star-wars-ontology.up.railway.app/objectproperties/1035051157/) is reflexive. Otherwise
+This is nice and compact because [```included```](https://star-wars-ontology.up.railway.app/objectproperties/1035051157/) is reflexive. Otherwise
 it would look like this:
 
     (participant value Lando_Calrissian) or
@@ -75,13 +75,13 @@ We can ask the locations of events at which Ezra (or the Spectres) were present:
 
     locationOf some (included some (participant some {Ezra_Bridger, Spectres}))
 
-[result](http://star-wars-ontology.up.railway.app/dlquery?expression=locationOf+some+%28included+some+%28participant+some+%7BEzra_Bridger%2C+Spectres%7D%29%29&syntax=man&query=instances)
+[result](https://star-wars-ontology.up.railway.app/dlquery?expression=locationOf+some+%28included+some+%28participant+some+%7BEzra_Bridger%2C+Spectres%7D%29%29&syntax=man&query=instances)
 
 Or planets that Ahsoka has been to:
 
     Planet and locationOf some (included some (participant value Ahsoka_Tano))
 
-[result](http://star-wars-ontology.up.railway.app/dlquery?expression=Planet+and+locationOf+some+%28included+some+%28participant+value+Ahsoka_Tano%29%29&syntax=man&query=instances)
+[result](https://star-wars-ontology.up.railway.app/dlquery?expression=Planet+and+locationOf+some+%28included+some+%28participant+value+Ahsoka_Tano%29%29&syntax=man&query=instances)
 
 nb. also see [performance](performance.md) issues around making ```visited``` property chain
 

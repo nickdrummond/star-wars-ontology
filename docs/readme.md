@@ -21,13 +21,13 @@ The Star Wars Ontology describes things and events in the Universe and
 the properties that join them together.
 
 ### Characters, Places, Species, Objects
-[Sentient](https://star-wars-ontology.up.railway.app/classes/374374782/) 
-and [non-sentient](https://star-wars-ontology.up.railway.app/classes/22421630/)
-[beings](https://star-wars-ontology.up.railway.app/classes/-889051517/),
-[planets](https://star-wars-ontology.up.railway.app/classes/1439953820/),
-[cities](https://star-wars-ontology.up.railway.app/classes/-951016593/),
-[ships](https://star-wars-ontology.up.railway.app/classes/-950541248/),
-[weapons](https://star-wars-ontology.up.railway.app/classes/1633895456/), etc
+[Sentient](https://star-wars-ontology.up.railway.app/classes/-2022683789/) 
+and [non-sentient](https://star-wars-ontology.up.railway.app/classes/1920330355/)
+[beings](https://star-wars-ontology.up.railway.app/classes/1008857208/),
+[planets](https://star-wars-ontology.up.railway.app/classes/-957104751/),
+[cities](https://star-wars-ontology.up.railway.app/classes/946892132/),
+[ships](https://star-wars-ontology.up.railway.app/classes/947367477/),
+[weapons](https://star-wars-ontology.up.railway.app/classes/-763163115/), etc
 
 Although the ontology structure is still changing, we would like to have some consistency of style - see [modelling principles](modelling%20principles.md) for more information
 

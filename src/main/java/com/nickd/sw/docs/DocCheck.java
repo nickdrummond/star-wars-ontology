@@ -1,20 +1,15 @@
-package com.nickd.sw.report;
-
-import com.google.common.io.LineReader;
+package com.nickd.sw.docs;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
-import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public class DocCheck {
 
     public static void main(String[] args) throws IOException {
-        Pattern links = Pattern.compile("\\((https://star-wars-ontology.up.railway.app/(.+?))\\)");
+        Pattern links = Pattern.compile("\\[(.+?)\\]\\((http(s?)://star-wars-ontology.up.railway.app/(.+?))\\)");
 
         File sources = new File("docs/");
 
@@ -22,10 +17,10 @@ public class DocCheck {
             System.out.println("Checking " + source.getAbsolutePath());
             Scanner scanner = new Scanner(source);
             scanner.findAll(links).forEach(r -> {
-                String url = r.group(1);
-                System.out.print(url);
+                String link = r.group(1);
+                String url = r.group(2);
                 try {
-                    System.out.println(": " + getStatus(url));
+                    System.out.println(getStatus(url) + " [" + link + "] " + url);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -42,30 +42,30 @@ An extract of [Escape_from_Death_Star](https://star-wars-ontology.up.railway.app
 
 ## Event types
 
-Type is a primary classification, represented by subclasses of [Event](https://star-wars-ontology.up.railway.app/classes/-885778338/).
-Examples include everything from epic [Battles](https://star-wars-ontology.up.railway.app/classes/1029558972/)
-to a game of [Dejarik](https://star-wars-ontology.up.railway.app/classes/-2034936224/).
+Type is a primary classification, represented by subclasses of [Event](https://star-wars-ontology.up.railway.app/classes/1012130387/).
+Examples include everything from epic [Battles](https://star-wars-ontology.up.railway.app/classes/-1367499599/)
+to a game of [Dejarik](https://star-wars-ontology.up.railway.app/classes/-137027499/).
 
 ## Time
 
 ### Absolute
 
-We are only able to specify the [year](https://star-wars-ontology.up.railway.app/dataproperties/-949412319/))
+We are only able to specify the [year](https://star-wars-ontology.up.railway.app/dataproperties/948496406/))
 in which events take place using BBY/ABY where negative integers are BBY.
 
 ### Relative
 
 #### Before/after
 
-We link events together creating a timeline using before/[after](https://star-wars-ontology.up.railway.app/objectproperties/-860382272/).
-There is a transitive sometimeBefore/[sometimeAfter](https://star-wars-ontology.up.railway.app/objectproperties/149909119/) that allows for non-contiguous modelling and reasoning about the order in which things happen.
+We link events together creating a timeline using before/[after](https://star-wars-ontology.up.railway.app/objectproperties/1037526453/).
+There is a transitive sometimeBefore/[sometimeAfter](https://star-wars-ontology.up.railway.app/objectproperties/2047817844/) that allows for non-contiguous modelling and reasoning about the order in which things happen.
 
 See sub-events below for events that happen during other events
 
 #### During
 
 We create named events if they are significant enough or we want to refer to them again and
-then simply link them to the main event with [```during```](https://star-wars-ontology.up.railway.app/objectproperties/2021350437/).
+then simply link them to the main event with [```during```](https://star-wars-ontology.up.railway.app/objectproperties/-375708134/).
 
 eg [Ahsoka_vs_Vader](https://star-wars-ontology.up.railway.app/individuals/1661983043/) happened during
 [Twilight_of_the_Apprentice](https://star-wars-ontology.up.railway.app/individuals/-1120064623/)
@@ -82,7 +82,7 @@ This almost gives us the starting point for building a DSL style of modelling:
 
 ## Location
 
-Locations can be very specific, at the level of a room, or as wide as a [Planet](https://star-wars-ontology.up.railway.app/classes/1439953820/).
+Locations can be very specific, at the level of a room, or as wide as a [Planet](https://star-wars-ontology.up.railway.app/classes/-957104751/).
 
 Some are named. eg [Aunt_Z's_Tavern ](https://star-wars-ontology.up.railway.app/individuals/-2012059427/), 
 [Saleucami ](https://star-wars-ontology.up.railway.app/individuals/-1427370943/)
@@ -103,10 +103,9 @@ In fact, the range of the [participant](https://star-wars-ontology.up.railway.ap
     Place or Object or Actor
 
 There are also [objects that are participants](https://star-wars-ontology.up.railway.app/dlquery/?expression=Object+and+participatedIn+some+Event&syntax=man&query=instances).
-This is because [destructionOf](https://star-wars-ontology.up.railway.app/objectproperties/-1041073662/) and other properties
-that are used with objects are subproperties of participant. We also see
-frequent [Sabotage](https://star-wars-ontology.up.railway.app/classes/-1625575009/) of objects and the
-[of](https://star-wars-ontology.up.railway.app/objectproperties/944795056/) property also implies participation.
+This is because events such as [Sabotage](https://star-wars-ontology.up.railway.app/classes/-1625575009/)
+and [Destruction](https://star-wars-ontology.up.railway.app/classes/782662763/) use
+[of](https://star-wars-ontology.up.railway.app/objectproperties/944795056/) which is a subproperty of ```participant```.
 See this [ticket about use of "of"](https://github.com/nickdrummond/star-wars-ontology/issues/15).
 
 Participants may be property assertions referencing named individuals

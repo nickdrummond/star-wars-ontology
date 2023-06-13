@@ -48,7 +48,7 @@ public class MakeLabels {
                 String prefix = s.substring(0, hashPos);
                 String original = s.substring(hashPos + 1);
                 int id = original.hashCode();
-                String s2 = prefix + "#" + id;
+                String s2 = prefix + "#id" + id;
                 mngr.applyChanges(renamer.changeIRI(iri, IRI.create(s2)));
             }
         }

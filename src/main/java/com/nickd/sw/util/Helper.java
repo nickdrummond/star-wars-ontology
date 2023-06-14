@@ -19,6 +19,7 @@ import java.util.Set;
 public class Helper {
 
     public static String BASE = "https://nickdrummond.github.io/star-wars-ontology/ontologies";
+    public static String UTIL_BASE = "https://nickdrummond.github.io/star-wars-ontology/util";
 
     public OWLOntologyManager mngr;
     public OWLOntology ont;
@@ -57,6 +58,10 @@ public class Helper {
     public OWLClass cls(String s) {
         return df.getOWLClass(IRI.create(BASE + "#" + s));
     }
+
+    public OWLAnnotationProperty annotProp(String s, String base) {return df.getOWLAnnotationProperty(IRI.create(base + "#" + s)); }
+
+    public OWLAnnotationProperty annotProp(String s) {return annotProp(s, BASE); }
 
     public void clearReasoner() {
         r.dispose();

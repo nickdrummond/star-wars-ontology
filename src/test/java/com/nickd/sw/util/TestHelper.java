@@ -18,30 +18,21 @@ public class TestHelper extends TestSetup {
 
     private final Helper helper;
 
-    private final ManchesterOWLSyntaxClassExpressionParser mos;
-    private final SimpleShortFormProvider sfp;
-    private final ShortFormEntityChecker checker;
-
     public TestHelper(Test test, String iri, OWLOntologyIRIMapper ontologyIRIMapper) throws OWLOntologyCreationException {
         super(test);
         helper = new Helper(iri, ontologyIRIMapper);
-        sfp = new SimpleShortFormProvider();
-        BidirectionalShortFormProviderAdapter cache = new BidirectionalShortFormProviderAdapter(sfp);
-        helper.ont.getSignature(Imports.INCLUDED).forEach(cache::add);
-        checker = new ShortFormEntityChecker(cache);
-        mos = new ManchesterOWLSyntaxClassExpressionParser(df(), checker);
     }
 
     public String render (OWLEntity entity) {
-        return sfp.getShortForm(entity);
+        return helper.render(entity);
     }
 
     public OWLEntity check(String name) {
-        return checker.getOWLObjectProperty(name);
+        return helper.check(name);
     }
 
     public OWLClassExpression mos(String s) {
-        return mos.parse(s);
+        return helper.mos(s);
     }
 
     public OWLNamedIndividual ind(String s) {
@@ -82,10 +73,8 @@ public class TestHelper extends TestSetup {
         return helper.ont.getAxioms(axiomType, true).stream();
     }
 
-    public String render(OWLObject o ) {
-        StringWriter w = new StringWriter();
-        o.accept(new ManchesterOWLSyntaxObjectRenderer(w, sfp));
-        return w.toString();
+    public String render(OWLObject o) {
+        return helper.render(o);
     }
 }
 

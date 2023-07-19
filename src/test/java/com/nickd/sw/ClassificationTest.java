@@ -17,7 +17,7 @@ public class ClassificationTest extends TestCase {
     public static Test suite() throws OWLOntologyCreationException {
         helper = new TestHelper(
                 new TestSuite(ClassificationTest.class),
-                Helper.BASE + "/star-wars.owl.ttl",
+                Helper.BASE + "/events.owl.ttl",
                 new StarWarsOntologiesIRIMapper());
         helper.classify();
         return helper;

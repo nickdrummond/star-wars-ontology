@@ -1,13 +1,12 @@
 package com.nickd.sw;
 
 import com.nickd.sw.util.Helper;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import org.apache.jena.vocabulary.RDFS;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
-import org.semanticweb.owlapi.util.OWLEntityURIConverter;
-import org.semanticweb.owlapi.util.OWLEntityURIConverterStrategy;
 import org.semanticweb.owlapi.util.ShortFormProvider;
+
+import java.io.File;
 import java.util.*;
 
 public class MakeLabels {
@@ -18,7 +17,7 @@ public class MakeLabels {
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
 
-        Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
+        Helper helper = new Helper(new File("ontologies/all.owl.ttl"));
         OWLOntologyManager mngr = helper.mngr;
 
         OWLAnnotationProperty rdfsLabel = helper.df.getOWLAnnotationProperty(IRI.create(RDFS.label.getURI()));

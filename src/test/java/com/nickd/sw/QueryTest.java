@@ -1,7 +1,5 @@
 package com.nickd.sw;
 
-import com.nickd.sw.util.Helper;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import com.nickd.sw.util.TestHelper;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -10,6 +8,7 @@ import org.junit.Ignore;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class QueryTest extends TestCase {
@@ -18,10 +17,8 @@ public class QueryTest extends TestCase {
 
     // One time load
     public static Test suite() throws OWLOntologyCreationException {
-        helper = new TestHelper(
-                new TestSuite(QueryTest.class),
-                Helper.BASE + "/events.owl.ttl",
-                new StarWarsOntologiesIRIMapper());
+        helper = new TestHelper(new TestSuite(QueryTest.class),
+                new File("ontologies/events.owl.ttl"));
         return helper;
     }
 

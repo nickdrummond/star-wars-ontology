@@ -2,11 +2,11 @@ package com.nickd.sw;
 
 import com.nickd.sw.command.*;
 import com.nickd.sw.util.Helper;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.semanticweb.owlapi.model.OWLObject;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
+import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,13 +19,22 @@ public class Builder {
     // previous context contains a ?placeholder?
     public static final String placeHolderPattern = "\\?(.)*\\?";
 
-    public static final String OWL_TO_LOAD = "all.owl.ttl";
+    public static final String DEFAULT_OWL_TO_LOAD = "ontologies/all.owl.ttl";
 
     public static void main(String[] args) {
+        File file = new File(DEFAULT_OWL_TO_LOAD);
+        if (args.length == 1) {
+            file = new File(args[0]);
+        }
         try {
-            new Builder(OWL_TO_LOAD).run();
+            if (file.exists()) {
+                new Builder(file).run();
+            }
+            else {
+                System.err.println("Cannot find " + file);
+            }
         } catch (OWLOntologyCreationException e) {
-            System.err.println("Could not load ontologies at " + OWL_TO_LOAD);
+            System.err.println("Could not load ontologies at " + file);
         }
     }
 
@@ -33,8 +42,8 @@ public class Builder {
 
     private Helper helper;
 
-    public Builder(String owl) throws OWLOntologyCreationException {
-        helper = new Helper(owl, new StarWarsOntologiesIRIMapper());
+    public Builder(File file) throws OWLOntologyCreationException {
+        helper = new Helper(file);
 
         // STATE needed instead of context
         // valid commands will be dependent on the current state

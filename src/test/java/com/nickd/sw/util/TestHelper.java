@@ -2,6 +2,7 @@ package com.nickd.sw.util;
 
 import junit.extensions.TestSetup;
 import junit.framework.Test;
+import junit.framework.TestSuite;
 import org.semanticweb.owlapi.expression.ShortFormEntityChecker;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxInlineAxiomParser;
@@ -10,6 +11,8 @@ import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.util.*;
+
+import java.io.File;
 import java.io.StringWriter;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -21,6 +24,11 @@ public class TestHelper extends TestSetup {
     public TestHelper(Test test, String iri, OWLOntologyIRIMapper ontologyIRIMapper) throws OWLOntologyCreationException {
         super(test);
         helper = new Helper(iri, ontologyIRIMapper);
+    }
+
+    public TestHelper(TestSuite test, File file) throws OWLOntologyCreationException {
+        super(test);
+        helper = new Helper(file);
     }
 
     public String render (OWLEntity entity) {

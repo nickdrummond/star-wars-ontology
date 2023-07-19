@@ -1,7 +1,7 @@
 package com.nickd.sw;
 
 import com.nickd.sw.util.Helper;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
+import com.nickd.sw.util.SameDirectoryIRIMapper;
 import com.nickd.sw.util.TestHelper;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -10,6 +10,7 @@ import openllet.core.utils.SetUtils;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class ConsistencyTest extends TestCase {
         helper = new TestHelper(
                 new TestSuite(ConsistencyTest.class),
                 Helper.BASE + "/events.owl.ttl",
-                new StarWarsOntologiesIRIMapper());
+                new SameDirectoryIRIMapper(new File("ontologies/")));
         helper.classify();
         return helper;
     }

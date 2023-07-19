@@ -2,11 +2,10 @@ package com.nickd.sw.report;
 
 import com.nickd.sw.util.Helper;
 import com.nickd.sw.util.MosParser;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
-import org.apache.jena.base.Sys;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +17,7 @@ public class DLQuerySetSubtraction {
         String q1 = "Event and (locatedIn some Thing)";
         String q2 = "Event and (locatedIn value Galaxy)";
 
-        Helper helper = new Helper("events.owl.ttl", new StarWarsOntologiesIRIMapper());
+        Helper helper = new Helper(new File("ontologies/events.owl.ttl"));
         helper.classify();
         MosParser mos = new MosParser(helper);
 

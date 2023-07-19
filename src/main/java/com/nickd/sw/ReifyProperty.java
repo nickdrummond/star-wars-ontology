@@ -1,13 +1,13 @@
 package com.nickd.sw;
 
 import com.nickd.sw.util.Helper;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxObjectRenderer;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.util.ShortFormProvider;
 import org.semanticweb.owlapi.util.SimpleShortFormProvider;
 
+import java.io.File;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class ReifyProperty {
     private OWLObjectProperty includedProperty;
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
-        Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
+        Helper helper = new Helper(new File("ontologies/all.owl.ttl"));
         ReifyProperty reifyProperty = new ReifyProperty(
                 helper.prop("creationOf"),
                 helper.cls("Creation"),

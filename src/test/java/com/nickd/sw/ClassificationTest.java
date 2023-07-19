@@ -1,13 +1,15 @@
 package com.nickd.sw;
 
 import com.nickd.sw.util.Helper;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
+import com.nickd.sw.util.SameDirectoryIRIMapper;
 import com.nickd.sw.util.TestHelper;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.NodeSet;
+
+import java.io.File;
 
 public class ClassificationTest extends TestCase {
 
@@ -18,7 +20,7 @@ public class ClassificationTest extends TestCase {
         helper = new TestHelper(
                 new TestSuite(ClassificationTest.class),
                 Helper.BASE + "/events.owl.ttl",
-                new StarWarsOntologiesIRIMapper());
+                new SameDirectoryIRIMapper(new File("ontologies/")));
         helper.classify();
         return helper;
     }

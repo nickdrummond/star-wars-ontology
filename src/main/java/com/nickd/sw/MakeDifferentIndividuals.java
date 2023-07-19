@@ -2,11 +2,11 @@ package com.nickd.sw;
 
 import com.github.jsonldjava.shaded.com.google.common.collect.Sets;
 import com.nickd.sw.util.Helper;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.Node;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +20,7 @@ public class MakeDifferentIndividuals {
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
 
-        Helper helper = new Helper("events.owl.ttl", new StarWarsOntologiesIRIMapper());
+        Helper helper = new Helper(new File("ontologies/all.owl.ttl"));
 
         helper.classify();
 

@@ -3,10 +3,10 @@ package com.nickd.sw;
 import com.github.jsonldjava.shaded.com.google.common.collect.Sets;
 import com.nickd.sw.util.Helper;
 import com.nickd.sw.util.NameProvider;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 
+import java.io.File;
 import java.util.*;
 
 public class AboxRefactor {
@@ -18,7 +18,7 @@ public class AboxRefactor {
     private final OWLClass eventClass;
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
-        Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
+        Helper helper = new Helper(new File("ontologies/all.owl.ttl"));
         AboxRefactor reifyProperty = new AboxRefactor(
                 helper.prop("included"),
                 helper.prop("during"),

@@ -7,7 +7,6 @@ import org.semanticweb.owlapi.expression.ShortFormEntityChecker;
 import org.semanticweb.owlapi.formats.RioTurtleDocumentFormat;
 import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
-import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxInlineAxiomParser;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxObjectRenderer;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ParserException;
 import org.semanticweb.owlapi.model.*;
@@ -15,7 +14,6 @@ import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.InferenceType;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
-import org.semanticweb.owlapi.reasoner.structural.StructuralReasoner;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
 import org.semanticweb.owlapi.util.SimpleShortFormProvider;
@@ -29,6 +27,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Helper {
+
+    @FunctionalInterface
+    public interface LoadsOntology {
+        OWLOntology apply(OWLOntologyManager mngr) throws OWLOntologyCreationException;
+    }
 
     public static String BASE = "https://nickdrummond.github.io/star-wars-ontology/ontologies";
     public static String UTIL_BASE = "https://nickdrummond.github.io/star-wars-ontology/util";
@@ -47,15 +50,27 @@ public class Helper {
     public long timeToLoad;
     public long timeToClassify;
 
-    private Set<OWLOntology> changedOntologies = new HashSet<>();
+    private final Set<OWLOntology> changedOntologies = new HashSet<>();
 
-    public Helper(String iri, OWLOntologyIRIMapper ontologyIRIMapper) throws OWLOntologyCreationException {
+    public Helper(final File ontFile) throws OWLOntologyCreationException {
+        this(ontFile, new SameDirectoryIRIMapper(ontFile));
+    }
+
+    public Helper(final File ontFile, final OWLOntologyIRIMapper ontologyIRIMapper) throws OWLOntologyCreationException {
+        this(mngr -> mngr.loadOntologyFromOntologyDocument(ontFile), ontologyIRIMapper);
+    }
+
+    public Helper(final String iri, final OWLOntologyIRIMapper ontologyIRIMapper) throws OWLOntologyCreationException {
+        this(mngr -> mngr.loadOntology(IRI.create(iri)), ontologyIRIMapper);
+    }
+
+    public Helper(LoadsOntology loadsOntology, OWLOntologyIRIMapper ontologyIRIMapper) throws OWLOntologyCreationException {
         mngr = new OWLManager().get();
         mngr.setIRIMappers(Collections.singleton(ontologyIRIMapper));
         mngr.addOntologyChangeListener(list -> list.forEach(c -> changedOntologies.add(c.getOntology())));
 
         long start = System.currentTimeMillis();
-        ont = mngr.loadOntology(IRI.create(iri));
+        ont = loadsOntology.apply(mngr);
         timeToLoad = System.currentTimeMillis() - start;
 
         df = mngr.getOWLDataFactory();

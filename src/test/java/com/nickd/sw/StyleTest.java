@@ -1,17 +1,14 @@
 package com.nickd.sw;
 
-import com.nickd.sw.util.Helper;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import com.nickd.sw.util.TestHelper;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import openllet.owlapi.PelletVisitor;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.semanticweb.owlapi.model.*;
 
+import java.io.File;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class StyleTest extends TestCase {
@@ -22,8 +19,7 @@ public class StyleTest extends TestCase {
     public static Test suite() throws OWLOntologyCreationException {
         helper = new TestHelper(
                 new TestSuite(StyleTest.class),
-                Helper.BASE + "/all.owl.ttl",
-                new StarWarsOntologiesIRIMapper());
+                new File("ontologies/all.owl.ttl"));
         return helper;
     }
 

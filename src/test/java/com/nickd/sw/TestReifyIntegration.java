@@ -1,17 +1,17 @@
 package com.nickd.sw;
 
 import com.nickd.sw.util.Helper;
-import com.nickd.sw.util.StarWarsOntologiesIRIMapper;
 import junit.framework.TestCase;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 
+import java.io.File;
 import java.util.List;
 
 public class TestReifyIntegration extends TestCase {
 
     public void testTransformLeavesNoUsesOfReifiedProperty() throws OWLOntologyCreationException {
-        Helper helper = new Helper("all.owl.ttl", new StarWarsOntologiesIRIMapper());
+        Helper helper = new Helper(new File("ontologies/all.owl.ttl"));
 
         OWLObjectProperty killingOf = helper.prop("killingOf");
         OWLObjectProperty ofProperty = helper.prop("of");

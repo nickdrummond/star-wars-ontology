@@ -36,6 +36,7 @@ public class AddAxiomCommand implements Command {
             helper.mngr.applyChanges(changes);
         }
         catch (ParserException e) {
+            System.out.println(e.getMessage());
             return createPlaceholderContext(commandStr, e, context);
         }
         return context;

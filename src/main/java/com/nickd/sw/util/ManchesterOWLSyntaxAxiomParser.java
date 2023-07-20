@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntax.CHAIN_CONNECT;
+import static org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntax.*;
 
 
 /**
@@ -25,6 +25,9 @@ import static org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntax
  * TODO disjoints/different
  * TODO property chains
  * TODO GCIs
+ *
+ * TODO Make all ParserExceptions
+ * TODO lookahead for hints of the type for Exceptions
  */
 public class ManchesterOWLSyntaxAxiomParser {
 
@@ -61,7 +64,7 @@ public class ManchesterOWLSyntaxAxiomParser {
         if (first != null && rest != null) {
 
             boolean negated = false;
-            if (ManchesterOWLSyntax.NOT.matches(first)) {
+            if (NOT.matches(first)) {
                 negated = true;
                 s = unbracket(rest);
 
@@ -279,7 +282,7 @@ public class ManchesterOWLSyntaxAxiomParser {
     private OWLObjectProperty objProp (String s){
         OWLObjectProperty prop = checker.getOWLObjectProperty(s);
         if (prop == null) {
-            throw new ParserException("Expected object property", List.of(s), 0, 0, 0, false, true, false, false, false, false, false, false, Collections.emptySet());
+            throw new ParserException("Expected object property", List.of(s), 0, 0, 0, false, false, true, false, false, false, false, false, Collections.emptySet());
         }
         return prop;
     }
@@ -287,7 +290,7 @@ public class ManchesterOWLSyntaxAxiomParser {
     private OWLDataProperty dataProp (String s){
         OWLDataProperty prop = checker.getOWLDataProperty(s);
         if (prop == null) {
-            throw new ParserException("Expected data property", List.of(s), 0, 0, 0, false, false, true, false, false, false, false, false, Collections.emptySet());
+            throw new ParserException("Expected data property", List.of(s), 0, 0, 0, false, false, false, true, false, false, false, false, Collections.emptySet());
         }
         return prop;
     }
@@ -335,8 +338,8 @@ public class ManchesterOWLSyntaxAxiomParser {
 
     private String unbracket(String s) {
         s = s.trim();
-        String open = ManchesterOWLSyntax.OPEN.keyword();
-        String close = ManchesterOWLSyntax.CLOSE.keyword();
+        String open = OPEN.keyword();
+        String close = CLOSE.keyword();
         if (s.startsWith(open) && s.endsWith(close)) {
             return s.substring(open.length(), s.length()-close.length()).trim();
         }

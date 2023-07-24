@@ -66,6 +66,18 @@ public class MOSAxiomTreeParserTest {
     }
 
     @Test
+    public void testNegativeObjectPropertyAssertion() {
+        OWLAxiom expected = df.getOWLNegativeObjectPropertyAssertionAxiom(objP("p"), ind("a"), ind("b"));
+        assertEquals(expected, parser.parse("not (a p b)"));
+    }
+
+    @Test
+    public void testNegativeDataPropertyAssertion() {
+        OWLAxiom expected = df.getOWLNegativeDataPropertyAssertionAxiom(dataP("p"), ind("a"), lit("value"));
+        assertEquals(expected, parser.parse("not (a p value)"));
+    }
+
+    @Test
     public void missingPropertyOrKeywordInIndividualAxiom() {
         try {
             ind("anindividual");

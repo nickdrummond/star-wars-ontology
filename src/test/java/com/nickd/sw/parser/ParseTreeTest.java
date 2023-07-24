@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.semanticweb.owlapi.expression.OWLEntityChecker;
 import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import uk.ac.manchester.cs.owl.owlapi.OWLDataFactoryImpl;
@@ -56,11 +55,11 @@ public class ParseTreeTest {
         ParseTree builder = new ParseTree(s, checker, df)
                 .expectIndividual("a")
                 .expectEither(
-                        ParseTree.child()
+                        ParseTree.branch()
                                 .expectKeyword(TYPE)
                                 .expectClass("A")
                                 .create(e -> df.getOWLClassAssertionAxiom(e.cls("A"), e.ind("a"))),
-                        ParseTree.child() // expected path
+                        ParseTree.branch() // expected path
                                 .expectObjectProperty("p")
                                 .expectIndividual("b")
                                 .create(e -> df.getOWLObjectPropertyAssertionAxiom(e.objProp("p"), e.ind("a"), e.ind("b")))
@@ -80,23 +79,23 @@ public class ParseTreeTest {
 
         ParseTree builder = new ParseTree(s, checker, df)
                 .expectEither(
-                        ParseTree.child() // Property Characteristics
+                        ParseTree.branch() // Property Characteristics
                                 .expectEither(
-                                        ParseTree.child().expectKeyword(FUNCTIONAL).expectEither(
-                                                ParseTree.child().expectObjectProperty("p").create(e -> df.getOWLFunctionalObjectPropertyAxiom(e.objProp("p"))),
-                                                ParseTree.child().expectDataProperty("p").create(e -> df.getOWLFunctionalDataPropertyAxiom(e.dataProp("p")))
+                                        ParseTree.branch().expectKeyword(FUNCTIONAL).expectEither(
+                                                ParseTree.branch().expectObjectProperty("p").create(e -> df.getOWLFunctionalObjectPropertyAxiom(e.objProp("p"))),
+                                                ParseTree.branch().expectDataProperty("p").create(e -> df.getOWLFunctionalDataPropertyAxiom(e.dataProp("p")))
                                         ),
-                                        ParseTree.child().expectKeyword(TRANSITIVE)
+                                        ParseTree.branch().expectKeyword(TRANSITIVE)
                                                 .expectObjectProperty("p").create(e -> df.getOWLTransitiveObjectPropertyAxiom(e.objProp("p")))
                                 ),
-                        ParseTree.child() // Individual axioms
+                        ParseTree.branch() // Individual axioms
                                 .expectIndividual("a")
                                 .expectEither(
-                                        ParseTree.child()
+                                        ParseTree.branch()
                                                 .expectKeyword(TYPE)
                                                 .expectClass("A")
                                                 .create(e -> df.getOWLClassAssertionAxiom(e.cls("A"), e.ind("a"))),
-                                        ParseTree.child() // expected path
+                                        ParseTree.branch() // expected path
                                                 .expectObjectProperty("p")
                                                 .expectIndividual("b")
                                                 .create(e -> df.getOWLObjectPropertyAssertionAxiom(e.objProp("p"), e.ind("a"), e.ind("b")))

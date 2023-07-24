@@ -30,7 +30,7 @@ public class ParseTree implements OWLObjectProvider {
         this.df = df;
     }
 
-    public static ParseTree child() {
+    public static ParseTree branch() {
         return new ParseTree();
     }
 

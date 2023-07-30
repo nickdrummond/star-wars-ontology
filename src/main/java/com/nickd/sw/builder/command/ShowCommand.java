@@ -1,4 +1,4 @@
-package com.nickd.sw.command;
+package com.nickd.sw.builder.command;
 
 import com.nickd.sw.util.DescriptionVisitorEx;
 import com.nickd.sw.util.Helper;
@@ -7,15 +7,15 @@ import org.semanticweb.owlapi.model.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DescribeContextCommand implements Command {
+public class ShowCommand implements Command {
     private Helper helper;
 
-    public DescribeContextCommand(Helper helper) {
+    public ShowCommand(Helper helper) {
         this.helper = helper;
     }
 
     @Override
-    public Context handle(String commandStr, Context context) {
+    public Context handle(UserInput input, Context context) {
         if (context.isSingleSelection()) {
             OWLObject sel = context.getSelected();
             if (sel instanceof OWLEntity) {
@@ -29,4 +29,9 @@ public class DescribeContextCommand implements Command {
         return context;
     }
 
+
+    @Override
+    public List<String> autocomplete(UserInput commandStr, Context context) {
+        return List.of("Describes the context");
+    }
 }

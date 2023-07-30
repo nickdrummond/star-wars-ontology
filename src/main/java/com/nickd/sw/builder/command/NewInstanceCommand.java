@@ -1,17 +1,20 @@
-package com.nickd.sw.command;
+package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.Constants;
 import com.nickd.sw.util.Helper;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.vocab.XSDVocabulary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class NewInstanceCommand implements Command {
-    public static final String LANG = "en";
-    public static final String UTIL_BASE = "https://nickdrummond.github.io/star-wars-ontology/util";
+
+    private final Logger logger = LoggerFactory.getLogger(NewInstanceCommand.class);
+
     private final OWLAnnotationProperty editorLabel;
     private final OWLAnnotationProperty legacyId;
     private final OWLAnnotationProperty rdfsLabel;
@@ -19,35 +22,42 @@ public class NewInstanceCommand implements Command {
     private final OWLDatatype anyURI;
     private final Helper helper;
 
-    public NewInstanceCommand(Helper helper) {
+    public NewInstanceCommand(Helper helper, OWLAnnotationProperty editorLabel) {
         this.helper = helper;
 
-        editorLabel = helper.annotProp("editorLabel", UTIL_BASE);
-        legacyId = helper.annotProp("legacyId", UTIL_BASE);
+        this.editorLabel = editorLabel;
+        legacyId = helper.annotProp(Constants.LEGACY_ID, Constants.UTIL_BASE);
         rdfsLabel = helper.df.getRDFSLabel();
         seeAlso = helper.df.getRDFSSeeAlso();
         anyURI = helper.df.getOWLDatatype(XSDVocabulary.ANY_URI);
     }
 
-    @Override
-    public Context handle(String commandStr, Context context) {
-        String[] input = commandStr.split(" ");
 
-        if (input.length >= 3) {
-            String type = input[1];
+    @Override
+    public List<String> autocomplete(UserInput commandStr, Context context) {
+        return List.of("Create a new individual with some paramsAsString");
+    }
+
+    @Override
+    public Context handle(UserInput input, Context context) {
+
+        List<String> params = input.params();
+
+        if (params.size() >= 3) {
+            String type = params.get(0);
             OWLClass cls = helper.cls(type);
 
             if (!helper.ont.containsClassInSignature(cls.getIRI(), Imports.INCLUDED)) {
-                System.err.println("No class found in ontologies: " + cls);
+                logger.warn("No class found in ontologies: " + cls);
                 return context;
             }
 
-            String label = input[2];
+            String label = params.get(1);
             String id = toId(label);
             OWLNamedIndividual ind = helper.ind(id);
 
             if (helper.ont.containsEntityInSignature(ind.getIRI(), Imports.INCLUDED)) {
-                System.err.println("IRI already used in ontologies: " + ind);
+                logger.warn("IRI already used in ontologies: " + ind);
                 return context;
             }
 
@@ -60,9 +70,10 @@ public class NewInstanceCommand implements Command {
             changes.add(addEditorLabel(id, ind, targetOntology));
             changes.add(addLegacyId(ind, targetOntology));
 
-            if (input.length == 4) {
-                changes.add(addSeeAlso(input[3], ind, targetOntology));
+            if (params.size() == 3) {
+                changes.add(addSeeAlso(params.get(2), ind, targetOntology));
             }
+            // TODO else check if there is a ref at WOOKIEEPEDIA_BASE/label
 
             helper.mngr.applyChanges(changes);
 
@@ -88,7 +99,7 @@ public class NewInstanceCommand implements Command {
     }
 
     private AddAxiom addLabel(String label, OWLNamedIndividual ind, OWLOntology targetOntology) {
-        return new AddAxiom(targetOntology, getAnnotationAxiom(rdfsLabel, ind, helper.lit(label, LANG)));
+        return new AddAxiom(targetOntology, getAnnotationAxiom(rdfsLabel, ind, helper.lit(label, Constants.DEFAULT_LANG)));
     }
 
     private AddAxiom addSeeAlso(String url, OWLNamedIndividual ind, OWLOntology targetOntology) {

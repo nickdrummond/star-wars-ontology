@@ -1,13 +1,10 @@
-package com.nickd.sw.command;
+package com.nickd.sw.builder.command;
 
 import com.nickd.sw.util.Helper;
 import org.semanticweb.owlapi.model.*;
-import org.semanticweb.owlapi.model.parameters.Imports;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class IndividualsCommand implements Command {
@@ -18,7 +15,7 @@ public class IndividualsCommand implements Command {
     }
 
     @Override
-    public Context handle(String commandStr, Context context) {
+    public Context handle(UserInput commandStr, Context context) {
         OWLOntology ont = context.getOntology(helper);
         Optional<OWLClass> cls = context.getOWLClass();
         List<OWLNamedIndividual> results = cls.isPresent() ? getInstances(cls.get()) : getAllIndividualsInSig(ont);
@@ -31,5 +28,10 @@ public class IndividualsCommand implements Command {
 
     private List<OWLNamedIndividual> getAllIndividualsInSig(OWLOntology ont) {
         return ont.individualsInSignature().sorted().collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> autocomplete(UserInput commandStr, Context context) {
+        return List.of("Get instances of a class in the context or all individuals");
     }
 }

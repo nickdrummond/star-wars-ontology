@@ -1,11 +1,17 @@
-package com.nickd.sw.command;
+package com.nickd.sw.builder.command;
 
 import com.nickd.sw.util.Helper;
-import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLEntity;
+import org.semanticweb.owlapi.model.OWLObject;
+import org.semanticweb.owlapi.model.OWLOntology;
 
 import javax.annotation.Nonnull;
 import java.io.PrintStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 public class Context {
 
@@ -35,6 +41,16 @@ public class Context {
     public Context getParent() {
         return parent;
     }
+
+    public List<Context> stack(int promptDepth) {
+        if (promptDepth == 0 || parent == null) {
+            return new ArrayList<>();
+        }
+        List<Context> stack = parent.stack(promptDepth-1);
+        stack.add(this);
+        return stack;
+    }
+
 
     public List<Context> stack() {
         if (parent == null) {
@@ -70,12 +86,14 @@ public class Context {
     }
 
     public void describe(PrintStream out, Helper helper) {
-            for (int i=0; i<selectedObjects.size(); i++) {
+        if (!isSingleSelection()) {
+            for (int i = 0; i < selectedObjects.size(); i++) {
                 OWLObject o = selectedObjects.get(i);
                 out.println("\t" + i + ") " + ((o instanceof OWLOntology)
-                        ? helper.renderOntology((OWLOntology)o)
-                        : helper.render(o).replaceAll("\n", "")));
+                        ? helper.renderOntology((OWLOntology) o)
+                        : helper.render(o)));
             }
+        }
     }
 
     public boolean isSingleSelection() {

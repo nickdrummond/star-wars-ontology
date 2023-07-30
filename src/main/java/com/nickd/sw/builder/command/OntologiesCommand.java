@@ -1,26 +1,27 @@
-package com.nickd.sw.command;
+package com.nickd.sw.builder.command;
 
 import com.nickd.sw.util.Helper;
-import org.apache.jena.base.Sys;
 import org.semanticweb.owlapi.model.*;
 
-import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OntologiesCommand implements Command {
-    private Helper helper;
+    private final Helper helper;
 
     public OntologiesCommand(Helper helper) {
         this.helper = helper;
     }
 
     @Override
-    public Context handle(String commandStr, Context parentContext) {
-        String[] input = commandStr.split(" ");
+    public List<String> autocomplete(UserInput commandStr, Context context) {
+        return List.of("List ontologies");
+    }
 
-        if (input.length == 2) {
-            OWLOntology ont = helper.ont(input[1]);
+    @Override
+    public Context handle(UserInput input, Context parentContext) {
+        List<String> params = input.params();
+        if (params.size() == 1) {
+            OWLOntology ont = helper.ont(params.get(0));
             if (ont != null) {
                 return new Context("", parentContext, ont);
             }

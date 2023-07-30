@@ -1,5 +1,6 @@
 package com.nickd.sw.util;
 
+import com.nickd.sw.parser.MOSAxiomTreeParser;
 import openllet.owlapi.OWLHelper;
 import openllet.owlapi.OpenlletReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -26,6 +27,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.nickd.sw.util.MyStringUtils.singleLine;
+
 public class Helper {
 
     @FunctionalInterface
@@ -45,7 +48,7 @@ public class Helper {
     private final SimpleShortFormProvider sfp;
     private final ShortFormEntityChecker checker;
     private final ManchesterOWLSyntaxClassExpressionParser mos;
-    private final ManchesterOWLSyntaxAxiomParser mosAxiom;
+    private final MOSAxiomTreeParser mosAxiom;
 
     public long timeToLoad;
     public long timeToClassify;
@@ -79,7 +82,7 @@ public class Helper {
         ont.getSignature(Imports.INCLUDED).forEach(cache::add);
         checker = new ShortFormEntityChecker(cache);
         mos = new ManchesterOWLSyntaxClassExpressionParser(df, checker);
-        mosAxiom = new ManchesterOWLSyntaxAxiomParser(df, checker);
+        mosAxiom = new MOSAxiomTreeParser(df, checker);
         told = new StructuralReasonerFactory().createNonBufferingReasoner(ont, new SimpleConfiguration());
 
         System.out.println("Loaded in " + timeToLoad + "ms");
@@ -134,9 +137,13 @@ public class Helper {
     }
 
     public String render(OWLObject o) {
+        return render(o, true);
+    }
+
+    public String render(OWLObject o, boolean singleLine) {
         StringWriter w = new StringWriter();
-        o.accept(new ManchesterOWLSyntaxObjectRenderer(w, sfp));
-        return w.toString();
+        o.accept(new MyMOSObjectRenderer(w, sfp));
+        return singleLine ? singleLine(w.toString()) : w.toString();
     }
 
     public void clearReasoner() {

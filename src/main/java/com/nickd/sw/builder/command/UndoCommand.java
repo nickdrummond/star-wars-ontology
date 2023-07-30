@@ -1,4 +1,4 @@
-package com.nickd.sw.command;
+package com.nickd.sw.builder.command;
 
 import com.nickd.sw.util.Helper;
 import org.semanticweb.owlapi.model.*;
@@ -21,7 +21,12 @@ public class UndoCommand implements Command {
     }
 
     @Override
-    public Context handle(String commandStr, Context context) {
+    public List<String> autocomplete(UserInput commandStr, Context context) {
+        return List.of("Undo the last changes applied to the ontology");
+    }
+
+    @Override
+    public Context handle(UserInput commandStr, Context context) {
         List<? extends OWLOntologyChange> lastChanges = history.pop();
         helper.mngr.applyChanges(reverseChanges(lastChanges));
         return context;

@@ -1,5 +1,7 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
 import com.nickd.sw.util.FinderUtils;
 import com.nickd.sw.util.Helper;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ParserException;
@@ -9,7 +11,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class AddAxiomCommand implements Command {
@@ -23,24 +24,19 @@ public class AddAxiomCommand implements Command {
     }
 
     @Override
-    public List<String> autocomplete(UserInput input, Context context) {
+    public List<String> autocomplete(UserInput input, ContextBase context) {
         return FinderUtils.annotationContains(input.autocompleteWord(), helper.df.getRDFSLabel(), helper).stream()
                 .map(helper::render).collect(Collectors.toList());
     }
 
     @Override
-    public Context handle(UserInput commandStr, Context context) {
+    public ContextBase handle(UserInput commandStr, ContextBase context) {
         String param = commandStr.paramsAsString();
 
         OWLOntology targetOntology = context.getOntology(helper);
-        Optional<OWLEntity> targetEntity = context.getOWLEntity();
-
-        // TODO NO - lets make this a general rule - replace &n with the previous context item n
-        // make subject of entity
-        String axiomExpression = targetEntity.map(e -> param.replaceAll("&1", helper.render(e))).orElse(param);
 
         try {
-            OWLAxiom ax = helper.mosAxiom(axiomExpression);
+            OWLAxiom ax = helper.mosAxiom(param);
 
             List<OWLOntologyChange> changes = new ArrayList<>();
             changes.add(new AddAxiom(targetOntology, ax));
@@ -55,12 +51,12 @@ public class AddAxiomCommand implements Command {
         return context;
     }
 
-    private Context createPlaceholderContext(String commandStr, ParserException e, Context context) {
+    private ContextBase createPlaceholderContext(String commandStr, ParserException e, ContextBase context) {
         EntityType type = getExpectedType(e);
         String token = e.getCurrentToken();
         List<OWLEntity> entities = FinderUtils.annotationContains(token, helper.df.getRDFSLabel(), type, helper);
         String s = commandStr.replace(token, "?" + token + "?");
-        return new Context(s, context, entities);
+        return new ContextBase(s, context, entities);
     }
 
     private EntityType getExpectedType(ParserException e) {
@@ -82,6 +78,6 @@ public class AddAxiomCommand implements Command {
         else if (e.isDatatypeNameExpected()) {
             return EntityType.DATATYPE;
         }
-        throw new RuntimeException("Unknown expected type");
+        throw new RuntimeException(e.getMessage());
     }
 }

@@ -8,7 +8,6 @@ import org.semanticweb.owlapi.expression.ShortFormEntityChecker;
 import org.semanticweb.owlapi.formats.RioTurtleDocumentFormat;
 import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
-import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxObjectRenderer;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ParserException;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
@@ -25,6 +24,7 @@ import java.io.FileOutputStream;
 import java.io.StringWriter;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static com.nickd.sw.util.MyStringUtils.singleLine;
@@ -88,20 +88,24 @@ public class Helper {
         System.out.println("Loaded in " + timeToLoad + "ms");
     }
 
+    private static IRI makeIRI(String s) {
+        return IRI.create(BASE + "#" + s);
+    }
+
     public OWLNamedIndividual ind(String s) {
-        return df.getOWLNamedIndividual(IRI.create(BASE + "#" + s));
+        return df.getOWLNamedIndividual(makeIRI(s));
     }
 
     public OWLObjectProperty prop(String s) {
-        return df.getOWLObjectProperty(IRI.create(BASE + "#" + s));
+        return df.getOWLObjectProperty(makeIRI(s));
     }
 
     public OWLDataProperty dataProp(String s) {
-        return df.getOWLDataProperty(IRI.create(BASE + "#" + s));
+        return df.getOWLDataProperty(makeIRI(s));
     }
 
     public OWLClass cls(String s) {
-        return df.getOWLClass(IRI.create(BASE + "#" + s));
+        return df.getOWLClass(makeIRI(s));
     }
 
     public OWLAnnotationProperty annotProp(String s, String base) {return df.getOWLAnnotationProperty(IRI.create(base + "#" + s)); }
@@ -118,6 +122,10 @@ public class Helper {
 
     public String render (OWLEntity entity) {
         return sfp.getShortForm(entity);
+    }
+
+    public Optional<OWLEntity> entity(String s) {
+        return ont.entitiesInSignature(makeIRI(s)).findFirst();
     }
 
     public OWLEntity check(String name) {

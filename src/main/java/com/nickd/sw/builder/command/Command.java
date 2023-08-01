@@ -1,10 +1,13 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
+
 import java.util.List;
 
 public interface Command {
 
-    Context handle(UserInput commandStr, Context context);
+    ContextBase handle(UserInput commandStr, ContextBase context);
 
     /**
      * Gets called if the current command ends with a string "?"
@@ -13,5 +16,5 @@ public interface Command {
      * @param context
      * @return
      */
-    List<String> autocomplete(UserInput commandStr, Context context);
+    List<String> autocomplete(UserInput commandStr, ContextBase context);
 }

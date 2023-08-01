@@ -1,5 +1,8 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
+
 import java.util.List;
 import java.util.Stack;
 import java.util.stream.Collectors;
@@ -13,12 +16,12 @@ public class HistoryCommand implements Command {
     }
 
     @Override
-    public Context handle(UserInput commandStr, Context context) {
+    public ContextBase handle(UserInput commandStr, ContextBase context) {
         return context;
     }
 
     @Override
-    public List<String> autocomplete(UserInput commandStr, Context context) {
+    public List<String> autocomplete(UserInput commandStr, ContextBase context) {
         return history.stream().map(UserInput::fullText).collect(Collectors.toList());
     }
 }

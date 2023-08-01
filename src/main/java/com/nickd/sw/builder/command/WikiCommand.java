@@ -1,5 +1,7 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
 import com.nickd.sw.util.FinderUtils;
 import com.nickd.sw.util.Helper;
 import com.nickd.sw.util.Wookieepedia;
@@ -33,29 +35,32 @@ public class WikiCommand implements Command {
 
 
     @Override
-    public List<String> autocomplete(UserInput commandStr, Context context) {
+    public List<String> autocomplete(UserInput commandStr, ContextBase context) {
         return List.of("Do some voodoo with the given wookieepedia entry");
     }
 
     @Override
-    public Context handle(UserInput input, Context parentContext) {
+    public ContextBase handle(UserInput input, ContextBase parentContext) {
         // TODO validate(input);
         List<String> params = input.params();
 
-        if (params.size() == 2) {
-            String query = params.get(0);
-            String refUrl = params.get(1);
+        if (params.size() >= 1) {
+            String refUrl = params.get(0);
 
             try {
                 Wookieepedia wookieepedia = getWookieepedia(refUrl);
 
+                System.out.println(wookieepedia.getUri());
+
                 //TODO unknown need to stay with their seeAlso for creation?
 
-                return switch (query) {
-                    case "known" -> new Context(refUrl, parentContext, wookieepedia.getKnown());
-                    case "unknown" -> new Context(refUrl, parentContext, wookieepedia.getUnknown());
-                    default -> parentContext;
-                };
+                if (params.size() == 2) {
+                    String query = params.get(1);
+                    if (query.equals("suggest")) {
+                        return new ContextBase(refUrl, parentContext, wookieepedia.getUnknown());
+                    }
+                }
+                return new ContextBase(refUrl, parentContext, wookieepedia.getKnown());
             } catch (IOException e) {
                 logger.warn("Cannot find Wookieepedia for ${}", refUrl);
             }

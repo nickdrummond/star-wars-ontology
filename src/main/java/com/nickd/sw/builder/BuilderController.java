@@ -69,7 +69,7 @@ public class BuilderController {
 
         Scanner in = new Scanner(inputStream);
 
-        Context currentContext = new Context("all", null, helper.ont);
+        ContextBase currentContext = new ContextBase("all", null, helper.ont);
 
         boolean exit = false;
         while (!exit) {
@@ -97,7 +97,7 @@ public class BuilderController {
         in.close();
     }
 
-    private UserInput replaceVars(UserInput input, Context currentContext) {
+    private UserInput replaceVars(UserInput input, ContextBase currentContext) {
         List<String> names = currentContext.getSelectedObjects().stream().map(helper::render).collect(Collectors.toList());
         return new UserInput(MyStringUtils.replaceVars(input.fullText(), names));
     }
@@ -108,41 +108,47 @@ public class BuilderController {
         }
     }
 
-    private Context handleInput(UserInput input, final Context currentContext) {
+    private ContextBase handleInput(UserInput input, final ContextBase currentContext) {
 
-        // this flow is fxxxxx
-        if (input.isIndex()) { // modify
-            if (input.index() < autocomplete.size()) { // autocomplete selection
-                input = history.pop().autocomplete(autocomplete.get(input.index())); // rewrite history
-                autocomplete.clear();
-                outputStream.print(buildPrompt(currentContext) + input.fullText());
-                // and should now allow other commands
-            } else if (input.index() < currentContext.getSelectedObjects().size()) { // selecting an object
-                // this whole idea needs review
-                List<? extends OWLObject> selectedObjects = currentContext.getSelectedObjects();
-                OWLObject owlObject = selectedObjects.get(input.index());
-                Context c = replacePlaceholderInAncestorContext(owlObject, currentContext);
-                return (c != null) ? c : new Context("", currentContext, owlObject);
+        try {
+            // this flow is fxxxxx
+            if (input.isIndex()) { // modify
+                if (input.index() < autocomplete.size()) { // autocomplete selection
+                    input = history.pop().autocomplete(autocomplete.get(input.index())); // rewrite history
+                    autocomplete.clear();
+                    // Should somehow write into the input stream
+                    outputStream.print(buildPrompt(currentContext) + input.fullText());
+                    // and should now allow other commands
+                } else if (input.index() < currentContext.getSelectedObjects().size()) { // selecting an object
+                    // this whole idea needs review
+                    List<? extends OWLObject> selectedObjects = currentContext.getSelectedObjects();
+                    OWLObject owlObject = selectedObjects.get(input.index());
+                    Context c = replacePlaceholderInAncestorContext(owlObject, currentContext);
+                    return (c != null) ? c : new ContextBase("", currentContext, owlObject);
+                }
             }
+
+            history.push(input);
+
+            if (input.isAutocompleteRequest()) { // autocomplete lookup
+                Command command = getCommand(input);
+                autocomplete = command.autocomplete(input, currentContext);
+                outputOptions(autocomplete);
+            } else {
+                return performCommand(input, currentContext);
+            }
+
         }
-
-        history.push(input);
-
-        if (input.isAutocompleteRequest()) { // autocomplete lookup
-            Command command = getCommand(input);
-            autocomplete = command.autocomplete(input, currentContext);
-            outputOptions(autocomplete);
-        } else {
-            return performCommand(input, currentContext);
+        catch(Exception e) { // don't drop out
+            logger.error(e.getMessage());
         }
-
         return currentContext;
     }
 
     @Nonnull
-    private Context performCommand(@Nonnull UserInput input, @Nonnull Context currentContext) {
+    private ContextBase performCommand(@Nonnull UserInput input, @Nonnull ContextBase currentContext) {
         Command command = getCommand(input);
-        Context c = command.handle(input, currentContext);
+        ContextBase c = command.handle(input, currentContext);
         if (c != currentContext) {
             c.describe(outputStream, helper);
         }
@@ -167,12 +173,12 @@ public class BuilderController {
         return replacePlaceholderInAncestorContext(owlObject, currentContext.getParent());
     }
 
-    private String buildPrompt(Context currentContext) {
+    private String buildPrompt(ContextBase currentContext) {
         int depth = currentContext.stack().size();
         List<String> stackRen = currentContext
                 .stack(Constants.PROMPT_DEPTH).stream()
                 .map(c -> truncate(c.toString(helper), Constants.MAX_BEFORE_TRUNCATE, Constants.TRUNCATE_LENGTH))
-                .toList();
+                .collect(Collectors.toList());
         String breadcrumb = StringUtils.join(stackRen, Constants.BREADCRUMB) + Constants.PROMPT;
         if (stackRen.size() < depth) {
             breadcrumb = (depth-Constants.PROMPT_DEPTH) + "…" + Constants.BREADCRUMB + breadcrumb;

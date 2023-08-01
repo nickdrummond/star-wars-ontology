@@ -1,5 +1,7 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,13 +20,13 @@ public class NotFoundCommand implements Command {
     }
 
     @Override
-    public Context handle(UserInput input, Context context) {
+    public ContextBase handle(UserInput input, ContextBase context) {
         logger.warn("Command not found: " + input);
         return context;
     }
 
     @Override
-    public List<String> autocomplete(UserInput commandStr, Context context) {
+    public List<String> autocomplete(UserInput commandStr, ContextBase context) {
         return new ArrayList<>(commands.keySet());
     }
 }

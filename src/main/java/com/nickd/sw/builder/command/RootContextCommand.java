@@ -1,5 +1,8 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
+
 import java.util.List;
 
 public class RootContextCommand implements Command {
@@ -8,12 +11,12 @@ public class RootContextCommand implements Command {
     }
 
     @Override
-    public List<String> autocomplete(UserInput input, Context context) {
+    public List<String> autocomplete(UserInput input, ContextBase context) {
         return List.of("Step back to the root");
     }
 
     @Override
-    public Context handle(UserInput input, Context context) {
+    public ContextBase handle(UserInput input, ContextBase context) {
         while (!context.isRoot()) {
             context = context.getParent();
         }

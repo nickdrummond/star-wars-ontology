@@ -1,4 +1,4 @@
-package com.nickd.sw.builder.command;
+package com.nickd.sw.builder;
 
 import com.nickd.sw.util.Helper;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -13,24 +13,24 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class Context {
+public class ContextBase implements Context {
 
     @Nonnull
     private final String name;
-    private final Context parent;
+    private final ContextBase parent;
     private final List<? extends OWLObject> selectedObjects;
 
-    public Context(@Nonnull String name, @Nonnull Context parent, List<? extends OWLObject> selectedObjects) {
+    public ContextBase(@Nonnull String name, @Nonnull ContextBase parent, List<? extends OWLObject> selectedObjects) {
         this.name = name;
         this.parent = parent;
         this.selectedObjects = selectedObjects;
     }
 
-    public Context(@Nonnull String name, @Nonnull Context parent, OWLObject owlObject) {
+    public ContextBase(@Nonnull String name, @Nonnull ContextBase parent, OWLObject owlObject) {
         this(name, parent, Collections.singletonList(owlObject));
     }
 
-    public Context() {
+    public ContextBase() {
         this("", null, Collections.emptyList());
     }
 
@@ -38,7 +38,8 @@ public class Context {
         return selectedObjects;
     }
 
-    public Context getParent() {
+    @Override
+    public ContextBase getParent() {
         return parent;
     }
 
@@ -61,6 +62,7 @@ public class Context {
         return stack;
     }
 
+    @Override
     @Nonnull
     public String getName() {
         return name;
@@ -140,6 +142,7 @@ public class Context {
         return parent.getOWLClass();
     }
 
+    @Override
     public boolean isRoot() {
         return parent == null;
     }

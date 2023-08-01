@@ -1,5 +1,7 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
 import com.nickd.sw.util.FinderUtils;
 import com.nickd.sw.util.Helper;
 import org.semanticweb.owlapi.model.*;
@@ -22,7 +24,7 @@ public class FindCommand implements Command {
     }
 
     @Override
-    public List<String> autocomplete(UserInput input, Context context) {
+    public List<String> autocomplete(UserInput input, ContextBase context) {
         String autocompleteWord = input.autocompleteWord();
         List<String> results = FinderUtils.annotationContains(autocompleteWord, defaultLabel, helper)
                 .stream().map(helper::render).collect(Collectors.toList());
@@ -30,7 +32,7 @@ public class FindCommand implements Command {
     }
 
     @Override
-    public Context handle(UserInput input, Context context) {
+    public ContextBase handle(UserInput input, ContextBase context) {
 
         List<String> params = input.params();
 
@@ -43,7 +45,7 @@ public class FindCommand implements Command {
                 logger.warn("Empty results for " + input);
             }
             if (!results.isEmpty()) {
-                return new Context(input.fullText(), context, results);
+                return new ContextBase(input.fullText(), context, results);
             }
         }
         return context;

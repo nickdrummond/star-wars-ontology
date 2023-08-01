@@ -1,5 +1,7 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
 import com.nickd.sw.util.Helper;
 import org.semanticweb.owlapi.model.*;
 
@@ -13,19 +15,19 @@ public class OntologiesCommand implements Command {
     }
 
     @Override
-    public List<String> autocomplete(UserInput commandStr, Context context) {
+    public List<String> autocomplete(UserInput commandStr, ContextBase context) {
         return List.of("List ontologies");
     }
 
     @Override
-    public Context handle(UserInput input, Context parentContext) {
+    public ContextBase handle(UserInput input, ContextBase parentContext) {
         List<String> params = input.params();
         if (params.size() == 1) {
             OWLOntology ont = helper.ont(params.get(0));
             if (ont != null) {
-                return new Context("", parentContext, ont);
+                return new ContextBase("", parentContext, ont);
             }
         }
-        return new Context("ontologies", parentContext, List.copyOf(helper.mngr.getOntologies()));
+        return new ContextBase("ontologies", parentContext, List.copyOf(helper.mngr.getOntologies()));
     }
 }

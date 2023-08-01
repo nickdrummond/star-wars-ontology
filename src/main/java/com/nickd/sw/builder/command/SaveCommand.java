@@ -1,5 +1,7 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
 import com.nickd.sw.util.Helper;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.slf4j.Logger;
@@ -19,12 +21,12 @@ public class SaveCommand implements Command {
 
 
     @Override
-    public List<String> autocomplete(UserInput commandStr, Context context) {
+    public List<String> autocomplete(UserInput commandStr, ContextBase context) {
         return List.of("Save all changed ontologies");
     }
 
     @Override
-    public Context handle(UserInput commandStr, Context context) {
+    public ContextBase handle(UserInput commandStr, ContextBase context) {
         try {
             helper.saveChanged();
         } catch (OWLOntologyStorageException e) {

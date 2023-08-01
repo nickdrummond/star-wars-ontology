@@ -28,7 +28,8 @@ public class Wookieepedia {
     private Document doc;
 
     private LinkedHashMap<OWLEntity, String> knownEntities;
-    private LinkedHashMap<OWLEntity, String> unknownEntities;
+    private LinkedHashMap<OWLEntity, String> suggestions;
+    private URI uri;
 
 
     public static Wookieepedia forURI(Helper helper, URI uri) throws IOException {
@@ -46,7 +47,6 @@ public class Wookieepedia {
     private Wookieepedia(Helper helper, URI uri) throws IOException {
         this.helper = helper;
         this.seeAlso = helper.df.getRDFSSeeAlso();
-//        System.setProperty("javax.net.ssl.trustStore", "certs/_.fandom.com.jks");
         load(uri);
     }
 
@@ -76,6 +76,7 @@ public class Wookieepedia {
     }
 
     private void load(URI uri) throws IOException {
+        this.uri = uri;
         doc = getFromWebOrCache(uri);
         buildLinksIndex(uri);
     }
@@ -94,7 +95,7 @@ public class Wookieepedia {
 
         // Retain order of the links for more pertinent suggestions
         knownEntities = new LinkedHashMap<>();
-         unknownEntities = new LinkedHashMap<>();
+        suggestions = new LinkedHashMap<>();
 
         links.stream()
                 .map(l -> l.attr("href"))
@@ -104,7 +105,7 @@ public class Wookieepedia {
                 .forEach(href -> {
                     List<OWLEntity> matches = FinderUtils.annotationExact(href, seeAlso, helper);
                     if (matches.isEmpty()) {
-                        unknownEntities.put(helper.ind(wikiPageName(URI.create(href))), href);
+                        suggestions.put(helper.ind(wikiPageName(URI.create(href))), href);
                     } else {
                         matches.forEach(e -> knownEntities.put(e, href));
                     }
@@ -156,6 +157,14 @@ public class Wookieepedia {
     }
 
     public List<OWLEntity> getUnknown() {
-        return new ArrayList<>(unknownEntities.keySet());
+        return new ArrayList<>(suggestions.keySet());
+    }
+
+    public String getUrl() {
+        return null;
+    }
+
+    public URI getUri() {
+        return uri;
     }
 }

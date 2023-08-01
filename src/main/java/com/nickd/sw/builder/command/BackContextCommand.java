@@ -1,5 +1,8 @@
 package com.nickd.sw.builder.command;
 
+import com.nickd.sw.builder.Context;
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
 import com.nickd.sw.util.Helper;
 
 import java.util.List;
@@ -14,7 +17,7 @@ public class BackContextCommand implements Command {
     }
 
     @Override
-    public Context handle(UserInput input, Context context) {
+    public ContextBase handle(UserInput input, ContextBase context) {
         if (input.params().isEmpty()) {
             Context parent = context.getParent();
             return parent != null ? parent : context;
@@ -28,7 +31,7 @@ public class BackContextCommand implements Command {
     }
 
     @Override
-    public List<String> autocomplete(UserInput commandStr, Context context) {
+    public List<String> autocomplete(UserInput commandStr, ContextBase context) {
         return context.stack().stream().map(c->c.toString(helper)).collect(Collectors.toList());
     }
 }

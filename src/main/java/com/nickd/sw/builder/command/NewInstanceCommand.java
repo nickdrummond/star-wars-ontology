@@ -1,6 +1,8 @@
 package com.nickd.sw.builder.command;
 
 import com.nickd.sw.builder.Constants;
+import com.nickd.sw.builder.ContextBase;
+import com.nickd.sw.builder.UserInput;
 import com.nickd.sw.util.Helper;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
@@ -34,12 +36,12 @@ public class NewInstanceCommand implements Command {
 
 
     @Override
-    public List<String> autocomplete(UserInput commandStr, Context context) {
+    public List<String> autocomplete(UserInput commandStr, ContextBase context) {
         return List.of("Create a new individual with some paramsAsString");
     }
 
     @Override
-    public Context handle(UserInput input, Context context) {
+    public ContextBase handle(UserInput input, ContextBase context) {
 
         List<String> params = input.params();
 
@@ -77,7 +79,7 @@ public class NewInstanceCommand implements Command {
 
             helper.mngr.applyChanges(changes);
 
-            return new Context("", context, ind);
+            return new ContextBase("", context, ind);
         }
         return context;
     }

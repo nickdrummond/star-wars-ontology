@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class ContextBase implements Context {
+public class ContextBase {
 
     @Nonnull
     private final String name;
@@ -38,31 +38,29 @@ public class ContextBase implements Context {
         return selectedObjects;
     }
 
-    @Override
     public ContextBase getParent() {
         return parent;
     }
 
-    public List<Context> stack(int promptDepth) {
+    public List<ContextBase> stack(int promptDepth) {
         if (promptDepth == 0 || parent == null) {
             return new ArrayList<>();
         }
-        List<Context> stack = parent.stack(promptDepth-1);
+        List<ContextBase> stack = parent.stack(promptDepth-1);
         stack.add(this);
         return stack;
     }
 
 
-    public List<Context> stack() {
+    public List<ContextBase> stack() {
         if (parent == null) {
             return new ArrayList<>();
         }
-        List<Context> stack = parent.stack();
+        List<ContextBase> stack = parent.stack();
         stack.add(this);
         return stack;
     }
 
-    @Override
     @Nonnull
     public String getName() {
         return name;
@@ -142,7 +140,6 @@ public class ContextBase implements Context {
         return parent.getOWLClass();
     }
 
-    @Override
     public boolean isRoot() {
         return parent == null;
     }

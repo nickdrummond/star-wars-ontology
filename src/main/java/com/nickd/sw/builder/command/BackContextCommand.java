@@ -1,6 +1,5 @@
 package com.nickd.sw.builder.command;
 
-import com.nickd.sw.builder.Context;
 import com.nickd.sw.builder.ContextBase;
 import com.nickd.sw.builder.UserInput;
 import com.nickd.sw.util.Helper;
@@ -19,7 +18,7 @@ public class BackContextCommand implements Command {
     @Override
     public ContextBase handle(UserInput input, ContextBase context) {
         if (input.params().isEmpty()) {
-            Context parent = context.getParent();
+            ContextBase parent = context.getParent();
             return parent != null ? parent : context;
         }
         else {

@@ -123,7 +123,7 @@ public class BuilderController {
                     // this whole idea needs review
                     List<? extends OWLObject> selectedObjects = currentContext.getSelectedObjects();
                     OWLObject owlObject = selectedObjects.get(input.index());
-                    Context c = replacePlaceholderInAncestorContext(owlObject, currentContext);
+                    ContextBase c = replacePlaceholderInAncestorContext(owlObject, currentContext);
                     return (c != null) ? c : new ContextBase("", currentContext, owlObject);
                 }
             }
@@ -159,7 +159,7 @@ public class BuilderController {
         return commands.getOrDefault(input.command(), defaultCommand);
     }
 
-    private Context replacePlaceholderInAncestorContext(OWLObject owlObject, Context currentContext) {
+    private ContextBase replacePlaceholderInAncestorContext(OWLObject owlObject, ContextBase currentContext) {
         if (currentContext.isRoot()) {
             return null;
         }

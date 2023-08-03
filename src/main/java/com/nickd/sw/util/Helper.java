@@ -1,6 +1,5 @@
 package com.nickd.sw.util;
 
-import com.nickd.sw.parser.MOSAxiomTreeParser;
 import openllet.owlapi.OWLHelper;
 import openllet.owlapi.OpenlletReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -8,7 +7,6 @@ import org.semanticweb.owlapi.expression.ShortFormEntityChecker;
 import org.semanticweb.owlapi.formats.RioTurtleDocumentFormat;
 import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
-import org.semanticweb.owlapi.manchestersyntax.renderer.ParserException;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.InferenceType;
@@ -24,7 +22,6 @@ import java.io.FileOutputStream;
 import java.io.StringWriter;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import static com.nickd.sw.util.MyStringUtils.singleLine;
@@ -48,7 +45,6 @@ public class Helper {
     private final SimpleShortFormProvider sfp;
     private final ShortFormEntityChecker checker;
     private final ManchesterOWLSyntaxClassExpressionParser mos;
-    private final MOSAxiomTreeParser mosAxiom;
 
     public long timeToLoad;
     public long timeToClassify;
@@ -82,7 +78,6 @@ public class Helper {
         ont.getSignature(Imports.INCLUDED).forEach(cache::add);
         checker = new ShortFormEntityChecker(cache);
         mos = new ManchesterOWLSyntaxClassExpressionParser(df, checker);
-        mosAxiom = new MOSAxiomTreeParser(df, checker);
         told = new StructuralReasonerFactory().createNonBufferingReasoner(ont, new SimpleConfiguration());
 
         System.out.println("Loaded in " + timeToLoad + "ms");
@@ -110,22 +105,10 @@ public class Helper {
 
     public OWLAnnotationProperty annotProp(String s, String base) {return df.getOWLAnnotationProperty(IRI.create(base + "#" + s)); }
 
-    public OWLAnnotationProperty annotProp(String s) {return annotProp(s, BASE); }
-
-    public OWLLiteral lit(String value) { return df.getOWLLiteral(value); }
-
-    public OWLLiteral lit(String value, String lang) { return df.getOWLLiteral(value, lang); }
-
-    public OWLLiteral lit(String value, OWLDatatype datatype) { return df.getOWLLiteral(value, datatype); }
-
     public OWLOntology ont(String s) { return mngr.getOntology(IRI.create(BASE + "/" + s)); }
 
     public String render (OWLEntity entity) {
         return sfp.getShortForm(entity);
-    }
-
-    public Optional<OWLEntity> entity(String s) {
-        return ont.entitiesInSignature(makeIRI(s)).findFirst();
     }
 
     public OWLEntity check(String name) {
@@ -134,14 +117,6 @@ public class Helper {
 
     public OWLClassExpression mos(String s) {
         return mos.parse(s);
-    }
-
-    public OWLAxiom mosAxiom(String s) throws ParserException {
-        return mosAxiom.parse(s);
-    }
-
-    public String renderOntology(OWLOntology ont) {
-        return ont.getOntologyID().getDefaultDocumentIRI().map(IRI::getShortForm).orElse("anon");
     }
 
     public String render(OWLObject o) {

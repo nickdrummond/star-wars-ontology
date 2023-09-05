@@ -26,6 +26,21 @@ There is no assertion of correctness or completeness by myself - content has bee
 #    Individuals
 #################################################################
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Covering_up_the_crime
+:Covering_up_the_crime rdf:type owl:NamedIndividual ,
+                                :Meeting ;
+                       :about :Murder_on_Morlana_One ;
+                       :after :Murder_on_Morlana_One ;
+                       :locatedIn :Corporate_Security_Headquarters ;
+                       :participant :Hyne ,
+                                    :Syril_Karn ;
+                       :year -5 ;
+                       rdfs:label "Covering up the crime"@en ;
+                       rdfs:seeAlso "https://starwars.fandom.com/wiki/Kassa_(episode)#Hushing_up_a_crime"^^xsd:anyURI ;
+                       util:editorLabel "Covering_up_the_crime" ;
+                       util:legacyId "-171007328" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Crash_on_Kenari
 :Crash_on_Kenari rdf:type owl:NamedIndividual ,
                           :Crash ;
@@ -69,6 +84,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                             :locatedIn :Ferrix ;
                             :participant :Brasso ,
                                          :Cassian_Andor ;
+                            :year -5.0 ;
                             rdfs:label "Getting the story straight"@en ;
                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Kassa_(episode)#Life_on_Ferrix"^^xsd:anyURI ;
                             util:editorLabel "Getting_the_story_straight" ;
@@ -97,11 +113,55 @@ There is no assertion of correctness or completeness by myself - content has bee
                        :of :Kravas_Drezzer ,
                            :Verlo_Skiff ;
                        :participant :Cassian_Andor ;
-                       :year "-5" ;
+                       :year -5.0 ;
                        rdfs:label "Murder on Morlana One"@en ;
                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Kassa_(episode)#Trip_to_Morlana_One"^^xsd:anyURI ;
                        util:editorLabel "Murder_on_Morlana_One" ;
                        util:legacyId "2105385955" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trying_to_find_a_buyer
+:Trying_to_find_a_buyer rdf:type owl:NamedIndividual ,
+                                 :Meeting ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :about ;
+                                   owl:someValuesFrom :Money
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :about ;
+                                   owl:someValuesFrom :Parts
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :included ;
+                                   owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :about ;
+                                                                               owl:someValuesFrom [ owl:intersectionOf ( :Job
+                                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                                           owl:onProperty :to ;
+                                                                                                                           owl:hasValue :Wobani
+                                                                                                                         ]
+                                                                                                                       ) ;
+                                                                                                    rdf:type owl:Class
+                                                                                                  ]
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :participant ;
+                                                                               owl:hasValue :Timm_Karlo
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ]
+                                 ] ;
+                        :after :Getting_the_story_straight ;
+                        :locatedIn :Caleen_Salyard ;
+                        :participant :Bix_Caleen ,
+                                     :Cassian_Andor ;
+                        :year -5.0 ;
+                        rdfs:label "Trying to find a buyer"@en ;
+                        rdfs:seeAlso "https://starwars.fandom.com/wiki/Kassa_(episode)#Trying_to_make_ends_meet"^^xsd:anyURI ;
+                        util:editorLabel "Trying_to_find_a_buyer" ;
+                        util:legacyId "-596508665" .
 
 
 ###  Generated by the OWL API (version 5.5.0.2023-01-14T12:41:38Z) https://github.com/owlcs/owlapi/

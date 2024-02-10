@@ -272,6 +272,13 @@ util:legacyId rdf:type owl:AnnotationProperty ;
         util:legacyId "-329462213" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#for
+:for rdf:type owl:ObjectProperty ;
+     rdfs:subPropertyOf :target ;
+     rdfs:label "for"@en ;
+     util:editorLabel "for" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#found
 :found rdf:type owl:ObjectProperty ;
        rdfs:label "found"@en ;
@@ -809,7 +816,7 @@ eg Obi-Wan_vs_Maul -> participant -> Obi-Wan""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#target
 :target rdf:type owl:ObjectProperty ;
-        rdfs:label "target"@en ;
+        rdfs:label "target" ;
         util:editorLabel "target" ;
         util:legacyId "63885674" .
 
@@ -1345,7 +1352,7 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Arrival
 :Arrival rdf:type owl:Class ;
-         rdfs:subClassOf :Event ;
+         rdfs:subClassOf :Journey ;
          rdfs:label "Arrival"@en ;
          util:editorLabel "Arrival" ;
          util:legacyId "1875237810" .
@@ -1407,7 +1414,7 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack
 :Attack rdf:type owl:Class ;
-        rdfs:subClassOf :Event ;
+        rdfs:subClassOf :Fight ;
         rdfs:label "Attack"@en ;
         util:editorLabel "Attack" ;
         util:legacyId "-1378600383" .
@@ -1623,7 +1630,11 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Birth
 :Birth rdf:type owl:Class ;
-       rdfs:subClassOf :Event ;
+       rdfs:subClassOf :Creation ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :of ;
+                         owl:someValuesFrom :Living_thing
+                       ] ;
        rdfs:label "Birth"@en ;
        util:editorLabel "Birth" ;
        util:legacyId "1008985208" .
@@ -1836,7 +1847,11 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Burial
 :Burial rdf:type owl:Class ;
-        rdfs:subClassOf :Event ;
+        rdfs:subClassOf :Event ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :of ;
+                          owl:someValuesFrom owl:Thing
+                        ] ;
         rdfs:label "Burial"@en ;
         util:editorLabel "Burial" ;
         util:legacyId "-1349099666" .
@@ -1986,7 +2001,11 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Capture
 :Capture rdf:type owl:Class ;
-         rdfs:subClassOf :Event ;
+         rdfs:subClassOf :Event ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom owl:Thing
+                         ] ;
          rdfs:label "Capture"@en ;
          util:editorLabel "Capture" ;
          util:legacyId "-1132937473" .
@@ -2080,7 +2099,7 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Chase
 :Chase rdf:type owl:Class ;
-       rdfs:subClassOf :Event ;
+       rdfs:subClassOf :Journey ;
        rdfs:label "Chase"@en ;
        util:editorLabel "Chase" ;
        util:legacyId "1009862567" .
@@ -2318,7 +2337,11 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Communication
 :Communication rdf:type owl:Class ;
-               rdfs:subClassOf :Event ;
+               rdfs:subClassOf :Event ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :about ;
+                                 owl:someValuesFrom owl:Thing
+                               ] ;
                rdfs:label "Communication"@en ;
                util:editorLabel "Communication" ;
                util:legacyId "708468623" .
@@ -2494,7 +2517,7 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Crash
 :Crash rdf:type owl:Class ;
-       rdfs:subClassOf :Event ;
+       rdfs:subClassOf :Damage ;
        rdfs:label "Crash"@en ;
        util:editorLabel "Crash" ;
        util:legacyId "1010160480" .
@@ -2510,7 +2533,11 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Creation
 :Creation rdf:type owl:Class ;
-          rdfs:subClassOf :Event ;
+          rdfs:subClassOf :Event ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :of ;
+                            owl:someValuesFrom owl:Thing
+                          ] ;
           rdfs:label "Creation"@en ;
           util:editorLabel "Creation" ;
           util:legacyId "-1465109800" .
@@ -2637,7 +2664,11 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Damage
 :Damage rdf:type owl:Class ;
-        rdfs:subClassOf :Event ;
+        rdfs:subClassOf :Event ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :of ;
+                          owl:someValuesFrom owl:Thing
+                        ] ;
         rdfs:label "Damage"@en ;
         util:editorLabel "Damage" ;
         util:legacyId "-1310468248" .
@@ -2691,7 +2722,11 @@ or minus is BBY""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Death
 :Death rdf:type owl:Class ;
-       rdfs:subClassOf :Event ;
+       rdfs:subClassOf :Event ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :of ;
+                         owl:someValuesFrom :Living_thing
+                       ] ;
        rdfs:label "Death"@en ;
        util:editorLabel "Death" ;
        util:legacyId "1010696749" .
@@ -2747,7 +2782,7 @@ and (?a inConflictWith ?b)""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Defence
 :Defence rdf:type owl:Class ;
-         rdfs:subClassOf :Event ;
+         rdfs:subClassOf :Fight ;
          rdfs:label "Defence"@en ;
          util:editorLabel "Defence" ;
          util:legacyId "-140606455" .
@@ -2791,7 +2826,11 @@ and (?a inConflictWith ?b)""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Departure
 :Departure rdf:type owl:Class ;
-           rdfs:subClassOf :Event ;
+           rdfs:subClassOf :Event ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :of ;
+                             owl:someValuesFrom owl:Thing
+                           ] ;
            rdfs:label "Departure"@en ;
            util:editorLabel "Departure" ;
            util:legacyId "1729202349" .
@@ -2816,7 +2855,11 @@ and (?a inConflictWith ?b)""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Destruction
 :Destruction rdf:type owl:Class ;
-             rdfs:subClassOf :Event .
+             rdfs:subClassOf :Event ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :of ;
+                               owl:someValuesFrom owl:Thing
+                             ] .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Detention_Block
@@ -3170,7 +3213,11 @@ and (?a inConflictWith ?b)""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Eating
 :Eating rdf:type owl:Class ;
-        rdfs:subClassOf :Event ;
+        rdfs:subClassOf :Event ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :of ;
+                          owl:someValuesFrom owl:Thing
+                        ] ;
         rdfs:label "Eating"@en ;
         util:editorLabel "Eating" ;
         util:legacyId "-1281622653" .
@@ -3195,7 +3242,7 @@ and (?a inConflictWith ?b)""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ejection
 :Ejection rdf:type owl:Class ;
-          rdfs:subClassOf :Event ;
+          rdfs:subClassOf :Departure ;
           rdfs:label "Ejection"@en ;
           util:editorLabel "Ejection" ;
           util:legacyId "-782704240" .
@@ -3312,7 +3359,7 @@ and (?a inConflictWith ?b)""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Escape
 :Escape rdf:type owl:Class ;
-        rdfs:subClassOf :Release ;
+        rdfs:subClassOf :Departure ;
         rdfs:label "Escape"@en ;
         util:editorLabel "Escape" ;
         util:legacyId "-1265513350" .
@@ -3347,7 +3394,7 @@ and (?a inConflictWith ?b)""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Evacuation
 :Evacuation rdf:type owl:Class ;
-            rdfs:subClassOf :Event ;
+            rdfs:subClassOf :Departure ;
             rdfs:label "Evacuation"@en ;
             util:editorLabel "Evacuation" ;
             util:legacyId "104213996" .
@@ -3571,7 +3618,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Fight
 :Fight rdf:type owl:Class ;
-       rdfs:subClassOf :Event ;
+       rdfs:subClassOf :Confrontation ;
        rdfs:label "Fight"@en ;
        util:editorLabel "Fight" ;
        util:legacyId "1012668361" .
@@ -3885,7 +3932,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Game
 :Game rdf:type owl:Class ;
-      rdfs:subClassOf :Event ;
+      rdfs:subClassOf :Competition ;
       rdfs:label "Game"@en ;
       util:editorLabel "Game" ;
       util:legacyId "947003371" .
@@ -4325,7 +4372,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Healing
 :Healing rdf:type owl:Class ;
-         rdfs:subClassOf :Event ;
+         rdfs:subClassOf :Event ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom :Living_thing
+                         ] ;
          rdfs:label "Healing"@en ;
          util:editorLabel "Healing" ;
          util:legacyId "-889972557" .
@@ -4349,7 +4400,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Hiding
 :Hiding rdf:type owl:Class ;
-        rdfs:subClassOf :Event ;
+        rdfs:subClassOf :Event ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :of ;
+                          owl:someValuesFrom owl:Thing
+                        ] ;
         rdfs:label "Hiding"@en ;
         util:editorLabel "Hiding" ;
         util:legacyId "-1188823688" .
@@ -4670,7 +4725,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Injury
 :Injury rdf:type owl:Class ;
-        rdfs:subClassOf :Event ;
+        rdfs:subClassOf :Event ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :of ;
+                          owl:someValuesFrom :Living_thing
+                        ] ;
         rdfs:label "Injury"@en ;
         util:editorLabel "Injury" ;
         util:legacyId "-1155386512" .
@@ -5764,7 +5823,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mind_trick
 :Mind_trick rdf:type owl:Class ;
-            rdfs:subClassOf :The_Force ;
+            rdfs:subClassOf :Event ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :participant ;
+                              owl:someValuesFrom :The_Force
+                            ] ;
             rdfs:label "Mind trick"@en ;
             rdfs:seeAlso "https://starwars.fandom.com/wiki/Mind_trick"^^xsd:anyURI ;
             util:editorLabel "Mind_trick" ;
@@ -5798,7 +5861,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mission
 :Mission rdf:type owl:Class ;
-         rdfs:subClassOf :Event ;
+         rdfs:subClassOf :Job ;
          rdfs:label "Mission"@en ;
          util:editorLabel "Mission" ;
          util:legacyId "-616072891" .
@@ -6220,7 +6283,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Observation
 :Observation rdf:type owl:Class ;
-             rdfs:subClassOf :Event ;
+             rdfs:subClassOf :Investigation ;
              rdfs:label "Observation"@en ;
              util:editorLabel "Observation" ;
              util:legacyId "-1559961627" .
@@ -6886,7 +6949,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Race
 :Race rdf:type owl:Class ;
-      rdfs:subClassOf :Event ;
+      rdfs:subClassOf :Competition ;
       rdfs:label "Race"@en ;
       util:editorLabel "Race" ;
       util:legacyId "947330762" .
@@ -7016,7 +7079,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Release
 :Release rdf:type owl:Class ;
-         rdfs:subClassOf :Event ;
+         rdfs:subClassOf :Departure ;
          rdfs:label "Release"@en ;
          util:editorLabel "Release" ;
          util:legacyId "-594927680" .
@@ -7049,7 +7112,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Removing
 :Removing rdf:type owl:Class ;
-          rdfs:subClassOf :Event ;
+          rdfs:subClassOf :Event ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :of ;
+                            owl:someValuesFrom owl:Thing
+                          ] ;
           rdfs:label "Removing"@en ;
           util:editorLabel "Removing" ;
           util:legacyId "496617530" .
@@ -7058,6 +7125,10 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Repair
 :Repair rdf:type owl:Class ;
         rdfs:subClassOf :Event ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :of ;
+                          owl:someValuesFrom owl:Thing
+                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :of ;
                           owl:allValuesFrom [ rdf:type owl:Class ;
@@ -7112,7 +7183,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Rescue
 :Rescue rdf:type owl:Class ;
-        rdfs:subClassOf :Release ;
+        rdfs:subClassOf :Departure ;
         rdfs:label "Rescue"@en ;
         util:editorLabel "Rescue" ;
         util:legacyId "-905784948" .
@@ -7285,7 +7356,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Sabotage
 :Sabotage rdf:type owl:Class ;
-          rdfs:subClassOf :Event ,
+          rdfs:subClassOf :Damage ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :of ;
                             owl:allValuesFrom [ rdf:type owl:Class ;
@@ -7437,7 +7508,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 :Search rdf:type owl:Class ;
         rdfs:subClassOf :Event ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :target ;
+                          owl:onProperty :for ;
                           owl:someValuesFrom owl:Thing
                         ] ;
         rdfs:label "Search"@en ;
@@ -8037,7 +8108,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Stunning
 :Stunning rdf:type owl:Class ;
-          rdfs:subClassOf :Event ;
+          rdfs:subClassOf :Injury ;
           rdfs:label "Stunning"@en ;
           util:editorLabel "Stunning" ;
           util:legacyId "-1400014745" .
@@ -8120,7 +8191,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Surrender
 :Surrender rdf:type owl:Class ;
-           rdfs:subClassOf :Event ;
+           rdfs:subClassOf :Event ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :of ;
+                             owl:someValuesFrom owl:Thing
+                           ] ;
            rdfs:label "Surrender"@en ;
            util:editorLabel "Surrender" ;
            util:legacyId "456885151" .
@@ -8498,7 +8573,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Torture
 :Torture rdf:type owl:Class ;
-         rdfs:subClassOf :Event ;
+         rdfs:subClassOf :Injury ;
          rdfs:label "Torture"@en ;
          util:editorLabel "Torture" ;
          util:legacyId "1472378372" .
@@ -8601,7 +8676,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Training
 :Training rdf:type owl:Class ;
-          rdfs:subClassOf :Event ;
+          rdfs:subClassOf :Learning ;
           rdfs:label "Training"@en ;
           util:editorLabel "Training" ;
           util:legacyId "-2009412397" .
@@ -8733,7 +8808,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Trial
 :Trial rdf:type owl:Class ;
-       rdfs:subClassOf :Event ;
+       rdfs:subClassOf :Investigation ;
        rdfs:label "Trial"@en ;
        util:editorLabel "Trial" ;
        util:legacyId "1025867471" .
@@ -9169,7 +9244,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#War
 :War rdf:type owl:Class ;
-     rdfs:subClassOf :Event ;
+     rdfs:subClassOf :Fight ;
      rdfs:label "War"@en ;
      util:editorLabel "War" ;
      util:legacyId "944878241" .
@@ -9235,7 +9310,11 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Wedding
 :Wedding rdf:type owl:Class ;
-         rdfs:subClassOf :Event ;
+         rdfs:subClassOf :Event ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom :Living_thing
+                         ] ;
          rdfs:label "Wedding"@en ;
          util:editorLabel "Wedding" ;
          util:legacyId "-459786995" .
@@ -9424,6 +9503,23 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/8D-series_smelter_droid"^^xsd:anyURI ;
                           util:editorLabel "8D-series_smelter_droid" ;
                           util:legacyId "1543901981" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies/base.owl.ttl#Competition
+:Competition rdf:type owl:Class ;
+             rdfs:subClassOf :Event .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies/base.owl.ttl#EventWithSubject
+:EventWithSubject rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( :Event
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :of ;
+                                                               owl:someValuesFrom owl:Thing
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] .
 
 
 #################################################################

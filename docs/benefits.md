@@ -198,7 +198,7 @@ Then, we simply remove all results of query 2 from the results of query 1.
 
 [results](https://star-wars-ontology.up.railway.app/dlquery/?expression=Living_thing&minus=connectedTo+some+The_Force&syntax=man&query=instances)
 
-Or [Events C-3PO was without R2-D2](http://localhost:8080/dlquery/?expression=participant+value+C-3PO&minus=participant+value+R2-D2&syntax=man&query=instances)
+Or [Events C-3PO was without R2-D2](https://star-wars-ontology.up.railway.app/dlquery/?expression=participant+value+C-3PO&minus=participant+value+R2-D2&syntax=man&query=instances)
 
 ## Properties create a network or graph
 

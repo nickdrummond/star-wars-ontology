@@ -130,13 +130,13 @@ A surprisingly large number of ```Bounty Hunters``` are
 Can we do this relative to an event? 
 ie more granular so we catch Scarif (the same year)
 
-    inverse(of) some (Death and during some ( year some xsd:int[< 0] ))
+    subjectOf some (Death and during some ( year some xsd:int[< 0] ))
 
 [```sometimeBefore```](https://star-wars-ontology.up.railway.app/objectproperties/806167673/)
 is transitive but we don't want to hold a complete timeline for all the story fragments,
 so we do have to use year aswell
 
-    inverse(of) some (Death and during some (( year some xsd:int[< 0] ) or (sometimeBefore value Battle_of_Yavin)))
+    subjectOf some (Death and during some (( year some xsd:int[< 0] ) or (sometimeBefore value Battle_of_Yavin)))
 
 ## Who is related to Anakin Skywalker?
 
@@ -149,13 +149,13 @@ is related to [```Jango Fett```](https://star-wars-ontology.up.railway.app/indiv
 
 ## Who died in a certain place or by a given hand?
 
-    inverse(of) some (Killing and during some (locatedIn value Death_Star_1))
+    subjectOf some (Killing and during some (locatedIn value Death_Star_1))
 
 Included
 [```Obi-Wan_Kenobi```](https://star-wars-ontology.up.railway.app/individuals/-1966242483/) and
 [```Biggs_Darklighter```](https://star-wars-ontology.up.railway.app/individuals/680567251/)
 
-    inverse(of) some (Killing and during some (Fight and participant value Darth_Vader))
+    subjectOf some (Killing and during some (Fight and participant value Darth_Vader))
 
 Included 
 [```Raymus_Antilles```](https://star-wars-ontology.up.railway.app/individuals/1310875527/)

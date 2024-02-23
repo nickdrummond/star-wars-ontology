@@ -128,8 +128,11 @@ We might be interested in the form of the information
 eg [Infiltrating_the_Imperial_Armoury ](https://star-wars-ontology.up.railway.app/individuals/-811098626/):
 
     included some (
-    stole some (Plans and about some TIE-Interceptor) and
-    participant value C1-10P)
+    Stealing
+    and (of some (
+        Plans
+        and (about some TIE-Interceptor)))
+    and (participant value C1-10P))
 
 [`Communication`](https://star-wars-ontology.up.railway.app/classes/708468623/) events are not an object but may also have a subject
 

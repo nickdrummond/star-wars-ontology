@@ -2380,6 +2380,11 @@ or minus is BBY""" ;
                      util:legacyId "-253720295" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Competition
+:Competition rdf:type owl:Class ;
+             rdfs:subClassOf :Event .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Condluran
 :Condluran rdf:type owl:Class ;
            rdfs:subClassOf :Humanoid ;
@@ -3425,6 +3430,18 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
        rdfs:label "Event"@en ;
        util:editorLabel "Event" ;
        util:legacyId "1012130387" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#EventWithSubject
+:EventWithSubject rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( :Event
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :of ;
+                                                               owl:someValuesFrom owl:Thing
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ewok
@@ -9503,23 +9520,6 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
                           rdfs:seeAlso "https://starwars.fandom.com/wiki/8D-series_smelter_droid"^^xsd:anyURI ;
                           util:editorLabel "8D-series_smelter_droid" ;
                           util:legacyId "1543901981" .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/base.owl.ttl#Competition
-:Competition rdf:type owl:Class ;
-             rdfs:subClassOf :Event .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies/base.owl.ttl#EventWithSubject
-:EventWithSubject rdf:type owl:Class ;
-                  owl:equivalentClass [ owl:intersectionOf ( :Event
-                                                             [ rdf:type owl:Restriction ;
-                                                               owl:onProperty :of ;
-                                                               owl:someValuesFrom owl:Thing
-                                                             ]
-                                                           ) ;
-                                        rdf:type owl:Class
-                                      ] .
 
 
 #################################################################

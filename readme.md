@@ -1,5 +1,7 @@
 home |
-[docs](docs/) |
+[browse](https://star-wars-ontology.up.railway.app/) |
+[docs](docs/)
+
 [benefits](docs/benefits.md) |
 [modules](docs/modularisation.md) |
 [events](docs/events.md) |

@@ -1,5 +1,7 @@
 [home](../) |
-[docs](readme.md) |
+[browse](https://star-wars-ontology.up.railway.app/) |
+[docs](readme.md)
+
 [benefits](benefits.md) |
 [modules](modularisation.md) |
 [events](events.md) |
@@ -35,9 +37,9 @@ Who worked for the Jedi Order that was not a Jedi?
 
 ![Ontology browser ](at-at.png)
 
-You can even switch to Aurebesh if you prefer.
+You can even switch to the Dark Side if you prefer.
 
-![Ontology browser in Aurebesh](aurebesh.png)
+![Ontology browser in dark side mode](dark-side.png)
 
 ## Protege
 

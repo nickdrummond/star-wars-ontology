@@ -1,5 +1,7 @@
 [home](../) |
-docs |
+[browse](https://star-wars-ontology.up.railway.app/) |
+docs
+
 [benefits](benefits.md) |
 [modules](modularisation.md) |
 [events](events.md) |

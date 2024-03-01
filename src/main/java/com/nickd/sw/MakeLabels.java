@@ -29,7 +29,7 @@ public class MakeLabels {
             final String s = owlEntity.getIRI().getIRIString();
             return s.substring(s.lastIndexOf("#") + 1);
         };
-        ShortFormProvider sfpWithSpaces = owlEntity -> sfp.getShortForm(owlEntity).replaceAll("_", " ");
+        ShortFormProvider sfpWithSpaces = owlEntity -> sfp.getShortForm(owlEntity).replace("_", " ");
         ShortFormProvider legacyIdGen = owlEntity -> String.valueOf(owlEntity.getIRI().hashCode());
 
         Set<OWLOntology> onts = mngr.getOntologies();
@@ -67,9 +67,16 @@ public class MakeLabels {
         OWLEntityVisitor v = new OWLEntityVisitor() {
 
             private void translate(OWLEntity e) {
-                String label = sfp.getShortForm(e);
-                OWLAxiom ax = df.getOWLAnnotationAssertionAxiom(targetProperty, e.getIRI(), df.getOWLLiteral(label, lang));
-                getDeclarationOntology(e, onts, df).ifPresent(ont -> changes.add(new AddAxiom(ont, ax)));
+                getDeclarationOntology(e, onts, df).ifPresent(ont -> {
+                    // IF there are not already annotations on this property
+                    if (ont.annotationAssertionAxioms(e.getIRI()).noneMatch(annot -> annot.getProperty().equals(targetProperty))) {
+
+                        // Create one
+                        String label = sfp.getShortForm(e);
+                        OWLAxiom ax = df.getOWLAnnotationAssertionAxiom(targetProperty, e.getIRI(), df.getOWLLiteral(label, lang));
+                        changes.add(new AddAxiom(ont, ax));
+                    }
+                });
             }
 
             @Override

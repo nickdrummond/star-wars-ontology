@@ -394,6 +394,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                   rdf:type owl:Class
                                                 ]
                            ] ;
+                  :after :Negotiation_with_Katuunko ;
                   :during :Clone_Wars ;
                   :locatedIn :Rugosa ;
                   :orderedBy :Count_Dooku ;
@@ -403,7 +404,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                   :victoryOf :Yoda ;
                   :year -22 ;
                   rdfs:label "Ambush on Rugosa"@en ;
-                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Ambush_on_Rugosa"^^xsd:anyURI ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Ambush"^^xsd:anyURI ,
+                               "https://starwars.fandom.com/wiki/Ambush_on_Rugosa"^^xsd:anyURI ;
                   util:editorLabel "Ambush_on_Rugosa" ;
                   util:legacyId "-219019769" .
 
@@ -1333,6 +1335,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                     rdf:type owl:Class
                                                   ]
                              ] ;
+                    :after :Ambush_on_Rugosa ;
                     :during :Clone_Wars ;
                     :locatedIn :Abregado_system ;
                     :participant :Count_Dooku ,
@@ -1342,7 +1345,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                                 :Wolffe ;
                     :year -22 ;
                     rdfs:label "Battle of Abregado"@en ;
-                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Abregado"^^xsd:anyURI ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Abregado"^^xsd:anyURI ,
+                                 "https://starwars.fandom.com/wiki/Rising_Malevolence"^^xsd:anyURI ;
                     util:editorLabel "Battle_of_Abregado" ;
                     util:legacyId "-194619533" .
 
@@ -2794,6 +2798,47 @@ There is no assertion of correctness or completeness by myself - content has bee
                           util:legacyId "2079454535" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Blockade_of_Ryloth
+:Blockade_of_Ryloth rdf:type owl:NamedIndividual ,
+                             :Confrontation ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :included ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :of ;
+                                                                           owl:someValuesFrom [ owl:intersectionOf ( :Ship
+                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                       owl:onProperty :memberOf ;
+                                                                                                                       owl:hasValue :Republic_Navy
+                                                                                                                     ]
+                                                                                                                   ) ;
+                                                                                                rdf:type owl:Class
+                                                                                              ]
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :participant ;
+                               owl:someValuesFrom [ owl:intersectionOf ( :Blockade
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :memberOf ;
+                                                                           owl:hasValue :Separatist_Alliance
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ]
+                             ] ;
+                    :during :Battle_of_Ryloth ;
+                    :locatedIn :Ryloth ;
+                    :year -22 ;
+                    rdfs:label "Blockade of Ryloth"@en ;
+                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Supply_Lines"^^xsd:anyURI ;
+                    util:editorLabel "Blockade_of_Ryloth" ;
+                    util:legacyId "-1954170187" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Bo-Katan_asks_Ahsoka_for_help
 :Bo-Katan_asks_Ahsoka_for_help rdf:type owl:NamedIndividual ,
                                         :Conversation ,
@@ -3665,6 +3710,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                             :Anakin_Skywalker ,
                                             :Resolute ,
                                             :Rex ;
+                               :sometimeAfter :Defence_of_Ryloth ;
                                :year -21 ;
                                rdfs:label "Defeating the Ryloth blockade"@en ;
                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Ryloth#Defeating_the_blockade"^^xsd:anyURI ;
@@ -3824,6 +3870,74 @@ There is no assertion of correctness or completeness by myself - content has bee
                     rdfs:seeAlso "https://starwars.fandom.com/wiki/Defense_of_Maridun"^^xsd:anyURI ;
                     util:editorLabel "Defence_of_Maridun" ;
                     util:legacyId "1251647506" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Defence_of_Ryloth
+:Defence_of_Ryloth rdf:type owl:NamedIndividual ,
+                            :Defence ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:someValuesFrom :Supplies
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :participant ;
+                                                                          owl:hasValue :Galactic_Republic
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Escape
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:someValuesFrom :Twi-Lek
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :used ;
+                                                                          owl:someValuesFrom :Explosive
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :Cham_Syndulla
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :included ;
+                              owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:someValuesFrom :Clone
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :Ima-Gun_Di
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :of ;
+                                                                          owl:hasValue :Keeli
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                            ] ;
+                   :after :Blockade_of_Ryloth ;
+                   :defeatOf :Galactic_Republic ;
+                   :during :Battle_of_Ryloth ;
+                   :locatedIn :Ryloth ;
+                   :participant :Cham_Syndulla ;
+                   :year -22 ;
+                   rdfs:label "Defence of Ryloth"@en ;
+                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Supply_Lines"^^xsd:anyURI ;
+                   util:editorLabel "Defence_of_Ryloth" ;
+                   util:legacyId "1258375184" .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Defending_the_barracks
@@ -7606,6 +7720,49 @@ There is no assertion of correctness or completeness by myself - content has bee
                 rdfs:label "Murder of Ziro"@en ;
                 util:editorLabel "Murder_of_Ziro" ;
                 util:legacyId "1470326517" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Negotiation_with_Katuunko
+:Negotiation_with_Katuunko rdf:type owl:NamedIndividual ,
+                                    :Meeting ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :about ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Transfer
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :of ;
+                                                                                  owl:someValuesFrom :Supplies
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :to ;
+                                                                                  owl:hasValue :Ryloth
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Distraction
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Jar_Jar_Binks
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           :after :Blockade_of_Ryloth ;
+                           :during :Battle_of_Ryloth ;
+                           :locatedIn :Toydaria ;
+                           :participant :Jar_Jar_Binks ,
+                                        :Katuunko ,
+                                        :Lott_Dod ;
+                           :victoryOf :Bail_Organa ;
+                           :year -22 ;
+                           rdfs:label "Negotiation with Katuunko"@en ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Supply_Lines"^^xsd:anyURI ;
+                           util:editorLabel "Negotiation_with_Katuunko" ;
+                           util:legacyId "702515176" .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Oba_Diah_prison
@@ -11570,7 +11727,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                               :during :Attack_on_Kamino ;
                               :locatedIn :Tipoca_City ;
                               :orderedBy :Asajj_Ventress ;
-                              :participant :Grievous ;
+                              :participant :Grievous ,
+                                           :Shaak_Ti ;
                               :year -21 ;
                               rdfs:label "Water assault on Tipoca City"@en ;
                               rdfs:seeAlso "https://starwars.fandom.com/wiki/ARC_Troopers"^^xsd:anyURI ;

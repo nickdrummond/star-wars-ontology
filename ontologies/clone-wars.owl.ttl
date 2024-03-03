@@ -833,6 +833,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                   :orderedBy :Grievous ;
                   :participant :Separatist_Alliance ,
                                :_501st ;
+                  :sometimeAfter :Speech_on_Alderaan ;
                   :year -21 ;
                   rdfs:label "Attack on Kamino"@en ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/ARC_Troopers"^^xsd:anyURI ;
@@ -3149,6 +3150,30 @@ There is no assertion of correctness or completeness by myself - content has bee
                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Gone_with_a_Trace#A_rough_living"^^xsd:anyURI ;
                  util:editorLabel "Building_droids" ;
                  util:legacyId "-554471141" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Buy_some_Jogan_fruit
+:Buy_some_Jogan_fruit rdf:type owl:NamedIndividual ,
+                               :Job ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :included ;
+                                 owl:someValuesFrom [ owl:intersectionOf ( :Trading
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :of ;
+                                                                             owl:someValuesFrom :Jogan_fruit
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ]
+                               ] ;
+                      :during :State_Banquet_for_Senator_Aang ;
+                      :participant :C-3PO ,
+                                   :R2-D2 ;
+                      :year -21 ;
+                      rdfs:label "Buy some Jogan fruit"@en ;
+                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Evil_Plans"^^xsd:anyURI ;
+                      util:editorLabel "Buy_some_Jogan_fruit" ;
+                      util:legacyId "-1907930901" .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Capture_of_Dooku_by_Pirates
@@ -11263,6 +11288,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                        rdf:type owl:Class
                                                      ]
                                 ] ;
+                       :after :State_Banquet_for_Senator_Aang ;
                        :during :Clone_Wars ;
                        :locatedIn :Galactic_Senate_Building ;
                        :participant :Anakin_Skywalker ;
@@ -11692,6 +11718,71 @@ There is no assertion of correctness or completeness by myself - content has bee
                                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Unfinished_Business_(episode)"^^xsd:anyURI ;
                                 util:editorLabel "Standoff_in_the_assembly_plant" ;
                                 util:legacyId "1470517197" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#State_Banquet_for_Senator_Aang
+:State_Banquet_for_Senator_Aang rdf:type owl:NamedIndividual ,
+                                         :Celebration ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :assistedBy ;
+                                           owl:someValuesFrom :LEP-series_service_droid
+                                         ] ;
+                                :after :Speech_on_Alderaan ;
+                                :assistedBy :C-3PO ,
+                                            :R2-D2 ;
+                                :during :Clone_Wars ;
+                                :locatedIn :Padmes_apartment ;
+                                :participant :Aang ,
+                                             :Anakin_Skywalker ,
+                                             :Padme_Amidala ;
+                                :year -21 ;
+                                rdfs:label "State Banquet for Senator Aang"@en ;
+                                rdfs:seeAlso "https://starwars.fandom.com/wiki/Evil_Plans"^^xsd:anyURI ;
+                                util:editorLabel "State_Banquet_for_Senator_Aang" ;
+                                util:legacyId "-1219764608" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Steal_Senate_building_plans
+:Steal_Senate_building_plans rdf:type owl:NamedIndividual ,
+                                      :Job ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :included ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                                  :Torture
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :of ;
+                                                                                    owl:hasValue :C-3PO
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :of ;
+                                                                                    owl:hasValue :R2-D2
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :target ;
+                                        owl:someValuesFrom [ owl:intersectionOf ( :Plans
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :about ;
+                                                                                    owl:hasValue :Galactic_Senate_Building
+                                                                                  ]
+                                                                                ) ;
+                                                             rdf:type owl:Class
+                                                           ]
+                                      ] ;
+                             :during :Buy_some_Jogan_fruit ;
+                             :locatedIn :Coruscant ;
+                             :orderedBy :Jabba ;
+                             :participant :Cad_Bane ,
+                                          :HELIOS-3D ,
+                                          :Todo_360 ;
+                             :year -21 ;
+                             rdfs:label "Steal Senate building plans"@en ;
+                             rdfs:seeAlso "https://starwars.fandom.com/wiki/Evil_Plans"^^xsd:anyURI ;
+                             util:editorLabel "Steal_Senate_building_plans" ;
+                             util:legacyId "-119289743" .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Stealing_DNA

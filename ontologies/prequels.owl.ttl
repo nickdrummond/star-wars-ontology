@@ -627,10 +627,29 @@ There is no assertion of correctness or completeness by myself - content has bee
                                        :Attack ,
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :included ;
-                                         owl:someValuesFrom [ owl:intersectionOf ( :Death
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                                    [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty :of ;
-                                                                                     owl:hasValue :Zam_Wesell
+                                                                                     owl:onProperty :included ;
+                                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Defence
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :participant ;
+                                                                                                                                 owl:hasValue :Anakin_Skywalker
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ]
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :used ;
+                                                                                     owl:someValuesFrom :Kouhun
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :locatedIn ;
+                                                                                     owl:hasValue :Padmes_apartment
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :target ;
+                                                                                     owl:hasValue :Padme_Amidala
                                                                                    ]
                                                                                  ) ;
                                                               rdf:type owl:Class
@@ -638,13 +657,76 @@ There is no assertion of correctness or completeness by myself - content has bee
                                        ] ,
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :included ;
-                                         owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Attack
                                                                                    [ rdf:type owl:Restriction ;
-                                                                                     owl:onProperty :of ;
-                                                                                     owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                                          owl:onProperty :employedBy ;
-                                                                                                          owl:hasValue :Padme_Amidala
+                                                                                     owl:onProperty :included ;
+                                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :of ;
+                                                                                                                                 owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                                                                                             owl:oneOf ( :Corde
+                                                                                                                                                                                       )
+                                                                                                                                                                           ]
+                                                                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                                                                             owl:onProperty :disguisedAs ;
+                                                                                                                                                                             owl:hasValue :Padme_Amidala
+                                                                                                                                                                           ]
+                                                                                                                                                                         ) ;
+                                                                                                                                                      rdf:type owl:Class
+                                                                                                                                                    ]
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
                                                                                                         ]
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :locatedIn ;
+                                                                                     owl:someValuesFrom :Landing_Platform
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :used ;
+                                                                                     owl:someValuesFrom :Explosive
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :included ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( :Chase
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :included ;
+                                                                                     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :used ;
+                                                                                                                                 owl:someValuesFrom [ owl:intersectionOf ( :Dart
+                                                                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                                                                             owl:onProperty :createdBy ;
+                                                                                                                                                                             owl:someValuesFrom :Kaminoan
+                                                                                                                                                                           ]
+                                                                                                                                                                         ) ;
+                                                                                                                                                      rdf:type owl:Class
+                                                                                                                                                    ]
+                                                                                                                               ]
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :of ;
+                                                                                                                                 owl:hasValue :Zam_Wesell
+                                                                                                                               ]
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty :participant ;
+                                                                                                                                 owl:hasValue :Jango_Fett
+                                                                                                                               ]
+                                                                                                                             ) ;
+                                                                                                          rdf:type owl:Class
+                                                                                                        ]
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Anakin_Skywalker
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :participant ;
+                                                                                     owl:hasValue :Obi-Wan_Kenobi
                                                                                    ]
                                                                                  ) ;
                                                               rdf:type owl:Class
@@ -653,8 +735,7 @@ There is no assertion of correctness or completeness by myself - content has bee
                               :during :Separatist_Crisis ;
                               :locatedIn :Coruscant ;
                               :orderedBy :Nute_Gunray ;
-                              :participant :Anakin_Skywalker ,
-                                           :Jango_Fett ,
+                              :participant :Jango_Fett ,
                                            :Obi-Wan_Kenobi ;
                               :survivedBy :Padme_Amidala ;
                               :year -22 ;

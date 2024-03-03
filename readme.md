@@ -25,22 +25,22 @@ This currently only displays asserted content and DL queries.
 
 | Content                                                                                                                  | Count |
 |--------------------------------------------------------------------------------------------------------------------------|-------|
-| [Events](http://star-wars-ontology.up.railway.app/dlquery/?expression=Event&syntax=man)                                   | 766   |
-| [Characters](http://star-wars-ontology.up.railway.app/dlquery/?expression=Being+or+Droid&syntax=man)                      | 539   |
-| [Species](https://star-wars-ontology.up.railway.app/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 189   |
-| [Planets and Moons](http://star-wars-ontology.up.railway.app/dlquery/?expression=Planet+or+Moon&syntax=man)               | 130   |
-| [Built locations](http://star-wars-ontology.up.railway.app/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 125   |
-| [Organisations or units](http://star-wars-ontology.up.railway.app/dlquery/?expression=Organisation&syntax=man)            | 125   |
-| [Named vehicles](http://star-wars-ontology.up.railway.app/dlquery/?expression=Vehicle&syntax=man)                         | 106   |
+| [Events](http://star-wars-ontology.up.railway.app/dlquery/?expression=Event&syntax=man)                                   | 845   |
+| [Characters](http://star-wars-ontology.up.railway.app/dlquery/?expression=Being+or+Droid&syntax=man)                      | 587   |
+| [Species](https://star-wars-ontology.up.railway.app/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 194   |
+| [Planets and Moons](http://star-wars-ontology.up.railway.app/dlquery/?expression=Planet+or+Moon&syntax=man)               | 142   |
+| [Built locations](http://star-wars-ontology.up.railway.app/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 155   |
+| [Organisations or units](http://star-wars-ontology.up.railway.app/dlquery/?expression=Organisation&syntax=man)            | 129   |
+| [Named vehicles](http://star-wars-ontology.up.railway.app/dlquery/?expression=Vehicle&syntax=man)                         | 124   |
 
 | Structure             | Count  |
 |-----------------------|--------|
-| Axiom                 | 18,489 |
-| Logical axioms        | 13,121 |
-| Declaration axioms    | 2,947  |
-| Individuals           | 1,911  |
-| Classes               | 923    |
-| Object properties     | 104    |
+| Axiom                 | 29,980 |
+| Logical axioms        | 14,483 |
+| Declaration axioms    | 3,213  |
+| Individuals           | 2,135  |
+| Classes               | 973    |
+| Object properties     | 94     |
 | Data properties       | 5      |
 
 Above is a snapshot - see [ontology metrics](http://star-wars-ontology.up.railway.app/ontologies/) for current values.
@@ -54,19 +54,21 @@ Above is a snapshot - see [ontology metrics](http://star-wars-ontology.up.railwa
 
 ## Scope
 
-| Content                     | Status                    |
-|-----------------------------|---------------------------|
-| Skywalker Saga episodes 1-9 | first pass                |
-| Solo                        | first pass                |
-| Rogue One                   | first pass                |
-| The Mandalorian             | first pass                |
-| Resistance                  | first pass                |
-| Rebels                      | first pass                |  
-| Clone Wars                  | 3 of 7 series first pass  |
-| The Bad Batch               | 1 of 2 series first pass  |
-| The Book of Boba Fett       | first pass                |
-| Kenobi                      | to do                     |
-| Andor                       | to do                     |
+| Content                     | Status                   |
+|-----------------------------|--------------------------|
+| Skywalker Saga episodes 1-9 | first pass               |
+| Solo                        | first pass               |
+| Rogue One                   | first pass               |
+| The Mandalorian             | 2 of 3 series first pass |
+| Resistance                  | first pass               |
+| Rebels                      | first pass               |  
+| Clone Wars                  | 3 of 7 series first pass |
+| The Bad Batch               | 1 of 3 series first pass |
+| The Book of Boba Fett       | first pass               |
+| Kenobi                      | first pass               |
+| Andor                       | to do                    |
+| Tales of the Jedi           | to do                    |
+| Ahsoka                      | to do                    |
 
 ## Contents
 

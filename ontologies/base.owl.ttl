@@ -144,6 +144,13 @@ util:legacyId rdf:type owl:AnnotationProperty ;
         util:legacyId "-448094376" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#benefited
+:benefited rdf:type owl:ObjectProperty ;
+           rdfs:label "benefited"@en ;
+           util:editorLabel "benefited" ;
+           util:legacyId "1668241231" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#colour
 :colour rdf:type owl:ObjectProperty ;
         rdfs:label "colour"@en ;
@@ -2958,6 +2965,14 @@ and (?a inConflictWith ?b)""" ;
                              ] .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Destruction_purpose
+:Destruction_purpose rdf:type owl:Class ;
+                     rdfs:subClassOf :Purpose ;
+                     rdfs:label "Destruction purpose"@en ;
+                     util:editorLabel "Destruction_purpose" ;
+                     util:legacyId "54357578" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Detention_Block
 :Detention_Block rdf:type owl:Class ;
                  rdfs:subClassOf :Facility ,
@@ -3120,7 +3135,11 @@ and (?a inConflictWith ?b)""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Droid
 :Droid rdf:type owl:Class ;
-       rdfs:subClassOf :Being ;
+       rdfs:subClassOf :Being ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadPurpose ;
+                         owl:someValuesFrom :Destruction_purpose
+                       ] ;
        owl:disjointWith :Living_thing ;
        rdfs:label "Droid"@en ;
        rdfs:seeAlso "https://starwars.fandom.com/wiki/Droid"^^xsd:anyURI ;
@@ -4809,6 +4828,15 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
                    util:legacyId "-25266770" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Infiltrator_demolition_droid
+:Infiltrator_demolition_droid rdf:type owl:Class ;
+                              rdfs:subClassOf :Droid ;
+                              rdfs:label "Infiltrator demolition droid"@en ;
+                              rdfs:seeAlso "https://starwars.fandom.com/wiki/Infiltrator_demolition_droid"^^xsd:anyURI ;
+                              util:editorLabel "Infiltrator_demolition_droid" ;
+                              util:legacyId "373681905" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Informant
 :Informant rdf:type owl:Class ;
            rdfs:subClassOf :Criminal ;
@@ -5952,7 +5980,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Mind_trick
 :Mind_trick rdf:type owl:Class ;
-            rdfs:subClassOf :Event ,
+            rdfs:subClassOf :Communication ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :participant ;
                               owl:someValuesFrom :The_Force
@@ -6630,6 +6658,14 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
         rdfs:seeAlso "https://starwars.fandom.com/wiki/Pau%27an"^^xsd:anyURI ;
         util:editorLabel "Pau-an" ;
         util:legacyId "-685723735" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Peace
+:Peace rdf:type owl:Class ;
+       rdfs:subClassOf :Abstract_subject ;
+       rdfs:label "Peace"@en ;
+       util:editorLabel "Peace" ;
+       util:legacyId "1021778471" .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Pelta-class_frigate
@@ -9321,6 +9357,14 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29\"""" ;
        rdfs:label "Virus"@en ;
        util:editorLabel "Virus" ;
        util:legacyId "1027455670" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Visit
+:Visit rdf:type owl:Class ;
+       rdfs:subClassOf :Event ;
+       rdfs:label "Visit"@en ;
+       util:editorLabel "Visit" ;
+       util:legacyId "1027456260" .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Vocation

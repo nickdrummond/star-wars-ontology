@@ -1010,12 +1010,23 @@ There is no assertion of correctness or completeness by myself - content has bee
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :hadRole ;
-                           owl:someValuesFrom :Jedi_Knight
+                           owl:someValuesFrom :Padawan
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hadRole ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Assassin
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :inOrganisation ;
+                                                                       owl:hasValue :Sith_Order
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
                          ] ;
-                :memberOf :Night_Sisters ,
-                          :Sith_Order ;
+                :memberOf :Night_Sisters ;
                 :originallyFrom :Dathomir ;
-                :trainedBy :Count_Dooku ;
+                :trainedBy :Dooku ,
+                           :Ky_Narec ;
                 rdfs:label "Asajj Ventress"@en ;
                 rdfs:seeAlso "https://starwars.fandom.com/wiki/Asajj_Ventress"^^xsd:anyURI ;
                 util:editorLabel "Asajj_Ventress" ;
@@ -1898,7 +1909,8 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Birth_of_Count_Dooku
 :Birth_of_Count_Dooku rdf:type owl:NamedIndividual ,
                                :Birth ;
-                      :of :Count_Dooku ;
+                      :locatedIn :Serenno ;
+                      :of :Dooku ;
                       :year -102 ;
                       rdfs:label "Birth of Count Dooku"@en ;
                       util:editorLabel "Birth_of_Count_Dooku" ;
@@ -3821,6 +3833,16 @@ There is no assertion of correctness or completeness by myself - content has bee
           util:legacyId "1045227002" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Castle_Serenno
+:Castle_Serenno rdf:type owl:NamedIndividual ,
+                         :Building ;
+                :ownedBy :Dooku ;
+                rdfs:label "Castle Serenno"@en ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Castle_Serenno"^^xsd:anyURI ;
+                util:editorLabel "Castle_Serenno" ;
+                util:legacyId "-1787836388" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Cato_Neimoidia
 :Cato_Neimoidia rdf:type owl:NamedIndividual ,
                          :Planet ,
@@ -4805,48 +4827,6 @@ There is no assertion of correctness or completeness by myself - content has bee
                             util:legacyId "1353598299" .
 
 
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Count_Dooku
-:Count_Dooku rdf:type owl:NamedIndividual ,
-                      :Human ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :connectedTo ;
-                        owl:someValuesFrom :The_Force
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :gender ;
-                        owl:someValuesFrom :Male
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hadRole ;
-                        owl:someValuesFrom [ owl:intersectionOf ( :Leader
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty :inOrganisation ;
-                                                                    owl:hasValue :Separatist_Alliance
-                                                                  ]
-                                                                ) ;
-                                             rdf:type owl:Class
-                                           ]
-                      ] ;
-             owl:sameAs :Darth_Tyranus ;
-             :responsibleFor :Count_Dookus_frigate ;
-             :trainedBy :Yoda ;
-             rdfs:label "Count Dooku"@en ;
-             rdfs:seeAlso "https://starwars.fandom.com/wiki/Dooku"^^xsd:anyURI ;
-             util:editorLabel "Count_Dooku" ;
-             util:legacyId "544003607" .
-
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Darth_Tyranus
-
-###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Count_Dookus_frigate
-:Count_Dookus_frigate rdf:type owl:NamedIndividual ,
-                               :Munificent-class_star_frigate ;
-                      rdfs:label "Count Dookus frigate"@en ;
-                      rdfs:seeAlso "https://starwars.fandom.com/wiki/Count_Dooku%27s_frigate"^^xsd:anyURI ;
-                      util:editorLabel "Count_Dookus_frigate" ;
-                      util:legacyId "-1221880073" .
-
-
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Crait
 :Crait rdf:type owl:NamedIndividual ,
                 :Planet ,
@@ -5292,12 +5272,15 @@ There is no assertion of correctness or completeness by myself - content has bee
                           owl:onProperty :hadRole ;
                           owl:someValuesFrom :Dark_Lord
                         ] ;
+               owl:sameAs :Dooku ;
                :trainedBy :Darth_Sidious ;
                rdfs:label "Darth Tyranus"@en ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Dooku"^^xsd:anyURI ;
                util:editorLabel "Darth_Tyranus" ;
                util:legacyId "1969450427" .
 
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dooku
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Darth_Vader
 :Darth_Vader rdf:type owl:NamedIndividual ,
@@ -5761,6 +5744,50 @@ There is no assertion of correctness or completeness by myself - content has bee
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Domino_Squad"^^xsd:anyURI ;
               util:editorLabel "Domino_Squad" ;
               util:legacyId "-545743748" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dooku
+:Dooku rdf:type owl:NamedIndividual ,
+                :Human ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :connectedTo ;
+                  owl:someValuesFrom :The_Force
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :gender ;
+                  owl:someValuesFrom :Male
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom :Jedi_Master
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Leader
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :inOrganisation ;
+                                                              owl:hasValue :Separatist_Alliance
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
+       :originallyFrom :Serenno ;
+       :responsibleFor :Dookus_frigate ;
+       :trainedBy :Yoda ;
+       rdfs:label "Dooku"@en ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Dooku"^^xsd:anyURI ;
+       util:editorLabel "Dooku" ;
+       util:legacyId "544003607" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Dookus_frigate
+:Dookus_frigate rdf:type owl:NamedIndividual ,
+                         :Munificent-class_star_frigate ;
+                rdfs:label "Count Dookus frigate"@en ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Count_Dooku%27s_frigate"^^xsd:anyURI ;
+                util:editorLabel "Count_Dookus_frigate" ;
+                util:legacyId "-1221880073" .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Drahgor_III
@@ -10417,6 +10444,31 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
                   util:legacyId "175834137" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Karis
+:Karis rdf:type owl:NamedIndividual ,
+                :Zabrak ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :gender ;
+                  owl:someValuesFrom :Female
+                ] ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty :hadRole ;
+                  owl:someValuesFrom [ owl:intersectionOf ( :Fighter
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty :inOrganisation ;
+                                                              owl:hasValue :Night_Sisters
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ]
+                ] ;
+       :originallyFrom :Dathomir ;
+       rdfs:label "Karis"@en ;
+       rdfs:seeAlso "https://starwars.fandom.com/wiki/Karis"^^xsd:anyURI ;
+       util:editorLabel "Karis" ;
+       util:legacyId "1017058239" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kashyyyk
 :Kashyyyk rdf:type owl:NamedIndividual ,
                    :Planet ,
@@ -11166,6 +11218,23 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
        :quote "I have spoken" ;
        util:editorLabel "Kuiil" ;
        util:legacyId "1017645403" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ky_Narec
+:Ky_Narec rdf:type owl:NamedIndividual ,
+                   :Human ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :gender ;
+                     owl:someValuesFrom :Male
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :hadRole ;
+                     owl:someValuesFrom :Jedi_Knight
+                   ] ;
+          rdfs:label "Ky Narec"@en ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Ky_Narec"^^xsd:anyURI ;
+          util:editorLabel "Ky_Narec" ;
+          util:legacyId "1320149957" .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kyber_memory_crystal
@@ -13518,6 +13587,31 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
        util:legacyId "1018948539" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Naa_leth
+:Naa_leth rdf:type owl:NamedIndividual ,
+                   :Zabrak ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :gender ;
+                     owl:someValuesFrom :Female
+                   ] ,
+                   [ rdf:type owl:Restriction ;
+                     owl:onProperty :hadRole ;
+                     owl:someValuesFrom [ owl:intersectionOf ( :Fighter
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :inOrganisation ;
+                                                                 owl:hasValue :Night_Sisters
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                   ] ;
+          :originallyFrom :Dathomir ;
+          rdfs:label "Naa'leth" ;
+          rdfs:seeAlso "https://starwars.fandom.com/wiki/Naa%27leth"^^xsd:anyURI ;
+          util:editorLabel "Naa_leth" ;
+          util:legacyId "-1793331657" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Nabat
 :Nabat rdf:type owl:NamedIndividual ,
                 :City ;
@@ -15846,7 +15940,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
                          owl:someValuesFrom :Jedi_Master
                        ] ;
               :originallyFrom :Coruscant ;
-              :trainedBy :Count_Dooku ;
+              :trainedBy :Dooku ;
               rdfs:label "Qui-Gon Jinn"@en ;
               rdfs:seeAlso "https://starwars.fandom.com/wiki/Qui-Gon_Jinn"^^xsd:anyURI ;
               util:editorLabel "Qui-Gon_Jinn" ;
@@ -17284,7 +17378,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
                :alliedWith :Asajj_Ventress ;
                :hadBrother :Maul ;
                :originallyFrom :Dathomir ;
-               :trainedBy :Count_Dooku ;
+               :trainedBy :Dooku ;
                rdfs:label "Savage Opress"@en ;
                rdfs:seeAlso "https://starwars.fandom.com/wiki/Savage_Opress"^^xsd:anyURI ;
                util:editorLabel "Savage_Opress" ;
@@ -17550,7 +17644,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Separatist_Senate
 :Separatist_Senate rdf:type owl:NamedIndividual ,
                             :Political_Organisation ;
-                   :createdBy :Count_Dooku ;
+                   :createdBy :Dooku ;
                    :memberOf :Separatist_Alliance ;
                    rdfs:label "Separatist Senate"@en ;
                    rdfs:seeAlso "https://starwars.fandom.com/wiki/Separatist_Senate"^^xsd:anyURI ;
@@ -17598,6 +17692,24 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/Sereeda_Waypoint"^^xsd:anyURI ;
                   util:editorLabel "Sereeda_Waypoint" ;
                   util:legacyId "1910644892" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Serenno
+:Serenno rdf:type owl:NamedIndividual ,
+                  :Planet ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasTerrain ;
+                    owl:someValuesFrom :Forest
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :hasTerrain ;
+                    owl:someValuesFrom :Mountains
+                  ] ;
+         :locatedIn :Outer_Rim ;
+         rdfs:label "Serenno"@en ;
+         rdfs:seeAlso "https://starwars.fandom.com/wiki/Serenno"^^xsd:anyURI ;
+         util:editorLabel "Serenno" ;
+         util:legacyId "298129475" .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Serin

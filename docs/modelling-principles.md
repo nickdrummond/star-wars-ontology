@@ -1,5 +1,5 @@
 [home](../) |
-[browse](https://star-wars-ontology.up.railway.app/) |
+[browse](https://www.star-wars-ontology.co.uk/) |
 [docs](readme.md)
 
 [benefits](benefits.md) |
@@ -14,7 +14,7 @@ modelling principles |
 
 ## References
 
-- should use [`seeAlso`](https://star-wars-ontology.up.railway.app/annotationproperties/-1773693006/) to reference all Individuals in Wookipedia
+- should use [`seeAlso`](https://www.star-wars-ontology.co.uk/annotationproperties/-1773693006/) to reference all Individuals in Wookipedia
 - should reference all non-obvious Classes in Wookipedia
 
 ## Properties
@@ -23,8 +23,8 @@ modelling principles |
 - should be used more than once otherwise they need reviewing
 - should be asserted in one direction, inverses being inferred
 
-eg [`after`](https://star-wars-ontology.up.railway.app/objectproperties/1037526453/) shows usage but 
-[`before`](https://star-wars-ontology.up.railway.app/objectproperties/-448094376/) has no assertions
+eg [`after`](https://www.star-wars-ontology.co.uk/objectproperties/1037526453/) shows usage but 
+[`before`](https://www.star-wars-ontology.co.uk/objectproperties/-448094376/) has no assertions
 
 ## Normalisation
 
@@ -40,7 +40,7 @@ eg [`after`](https://star-wars-ontology.up.railway.app/objectproperties/10375264
 
 - should use negation sparingly as it is a strong assertion at risk of being wrong - eg "no survivors"
 
-eg [Torture_of_Shmi](https://star-wars-ontology.up.railway.app/individuals/-631305730/)
+eg [Torture_of_Shmi](https://www.star-wars-ontology.co.uk/individuals/-631305730/)
 
     not (survivedBy some (Tusken and originallyFrom value Tusken_Raider_camp))
 
@@ -48,7 +48,7 @@ eg [Torture_of_Shmi](https://star-wars-ontology.up.railway.app/individuals/-6313
 
 * should include a location
 * should include at least one participant
-* should provide a [`year`](https://star-wars-ontology.up.railway.app/dataproperties/948496406/) for all named events, if known
+* should provide a [`year`](https://www.star-wars-ontology.co.uk/dataproperties/948496406/) for all named events, if known
   * negative numbers are BBY, positive are ABY
 * may include sub-events with ```included```
 
@@ -56,11 +56,11 @@ eg [Torture_of_Shmi](https://star-wars-ontology.up.railway.app/individuals/-6313
 ###  Timeline
 
 - should place events in the timeline using `eventB after eventA`, if known
-- should use [`someTimeAfter`](https://star-wars-ontology.up.railway.app/objectproperties/2047817844/) when larger time gaps between events (eg between series)
-- should use [`during`](https://star-wars-ontology.up.railway.app/objectproperties/-375708134/) between named events - not its inverse
-- should use [`included`](https://star-wars-ontology.up.railway.app/objectproperties/1035051157/) in subclassOf restrictions on event if its not worth naming
+- should use [`someTimeAfter`](https://www.star-wars-ontology.co.uk/objectproperties/2047817844/) when larger time gaps between events (eg between series)
+- should use [`during`](https://www.star-wars-ontology.co.uk/objectproperties/-375708134/) between named events - not its inverse
+- should use [`included`](https://www.star-wars-ontology.co.uk/objectproperties/1035051157/) in subclassOf restrictions on event if its not worth naming
 
-eg [Escape_from_the_Garbage_Compactor](https://star-wars-ontology.up.railway.app/individuals/-1663775856/):
+eg [Escape_from_the_Garbage_Compactor](https://www.star-wars-ontology.co.uk/individuals/-1663775856/):
 
     included some(Attack 
     and (participant some Dianoga)
@@ -70,44 +70,44 @@ eg [Escape_from_the_Garbage_Compactor](https://star-wars-ontology.up.railway.app
 
 - primary classification is species
 - should assert relations between beings on the one it affects most - eg `Luke trainedBy Obi-wan` 
-unless an [`Event`](https://star-wars-ontology.up.railway.app/classes/1012130387/) is called for
-- should all have at least one [`hadRole`](https://star-wars-ontology.up.railway.app/objectproperties/1627826554/) (whether or not in an organisation)
+unless an [`Event`](https://www.star-wars-ontology.co.uk/classes/1012130387/) is called for
+- should all have at least one [`hadRole`](https://www.star-wars-ontology.co.uk/objectproperties/1627826554/) (whether or not in an organisation)
 
 
 ## from (where born/grew up)
 
-- should use [`originallyFrom`](https://star-wars-ontology.up.railway.app/objectproperties/-1044081727/) at instance level where people originate
-- should use [`homeworldOf`](https://star-wars-ontology.up.railway.app/objectproperties/418614051/) on Planets/Moons for a weaker reference to species (also works with modularisation as species are Classes).
-- should use [`livedIn`](https://star-wars-ontology.up.railway.app/objectproperties/1129084950/) for any other location someone spent their time 
+- should use [`originallyFrom`](https://www.star-wars-ontology.co.uk/objectproperties/-1044081727/) at instance level where people originate
+- should use [`homeworldOf`](https://www.star-wars-ontology.co.uk/objectproperties/418614051/) on Planets/Moons for a weaker reference to species (also works with modularisation as species are Classes).
+- should use [`livedIn`](https://www.star-wars-ontology.co.uk/objectproperties/1129084950/) for any other location someone spent their time 
 
 ## The Force
 
-[`Force_spirits`](https://star-wars-ontology.up.railway.app/classes/1763189694/),
-[`Force_bonds`](https://star-wars-ontology.up.railway.app/classes/-1223412816/)
-and [`connections`](https://star-wars-ontology.up.railway.app/objectproperties/-1625702595/)
-are manifestations of [`The Force`](https://star-wars-ontology.up.railway.app/classes/-1757453002/),
+[`Force_spirits`](https://www.star-wars-ontology.co.uk/classes/1763189694/),
+[`Force_bonds`](https://www.star-wars-ontology.co.uk/classes/-1223412816/)
+and [`connections`](https://www.star-wars-ontology.co.uk/objectproperties/-1625702595/)
+are manifestations of [`The Force`](https://www.star-wars-ontology.co.uk/classes/-1757453002/),
 not the individual.
 
-[Search_for_Luke](https://star-wars-ontology.up.railway.app/individuals/919917289/):
+[Search_for_Luke](https://www.star-wars-ontology.co.uk/individuals/919917289/):
 
     participant some (Force_spirit
         and (connectedTo value Obi-Wan_Kenobi))
 
-[Attack_on_Phoenix_Squadron](https://star-wars-ontology.up.railway.app/individuals/2038845993/):
+[Attack_on_Phoenix_Squadron](https://www.star-wars-ontology.co.uk/individuals/2038845993/):
 
     participant some (Force_Bond
         and (connectedTo value Ahsoka_Tano)
         and (connectedTo value Darth_Vader))
     
-[Rey_vs_Kylo_DeathStar](https://star-wars-ontology.up.railway.app/individuals/963336634/):
+[Rey_vs_Kylo_DeathStar](https://www.star-wars-ontology.co.uk/individuals/963336634/):
 
     participant some (The_Force
         and (connectedTo value Leia_Organa))
 
-[`Force visions`](https://star-wars-ontology.up.railway.app/classes/926769109/) are also manifestations of the force, connected to the individual experiencing
-them. The content of the vision is described using [`about`](https://star-wars-ontology.up.railway.app/objectproperties/1037402982/)
+[`Force visions`](https://www.star-wars-ontology.co.uk/classes/926769109/) are also manifestations of the force, connected to the individual experiencing
+them. The content of the vision is described using [`about`](https://www.star-wars-ontology.co.uk/objectproperties/1037402982/)
 
-eg [Evacuation_of_Garel](https://star-wars-ontology.up.railway.app/individuals/1081848188/)
+eg [Evacuation_of_Garel](https://www.star-wars-ontology.co.uk/individuals/1081848188/)
 
     participant some (Force_Vision
         and (connectedTo value Ezra_Bridger)
@@ -116,18 +116,18 @@ eg [Evacuation_of_Garel](https://star-wars-ontology.up.railway.app/individuals/1
 
 ## Information
 
-[`Information`](https://star-wars-ontology.up.railway.app/classes/286293221/) is
+[`Information`](https://www.star-wars-ontology.co.uk/classes/286293221/) is
 treated as an object in the Universe, can have a subject and can be used in
-[trade](https://star-wars-ontology.up.railway.app/classes/1542077658/) or
-[`found`](https://star-wars-ontology.up.railway.app/objectproperties/1042413403/).
+[trade](https://www.star-wars-ontology.co.uk/classes/1542077658/) or
+[`found`](https://www.star-wars-ontology.co.uk/objectproperties/1042413403/).
 
-eg [Meeting_Cid ](https://star-wars-ontology.up.railway.app/individuals/1729557587/):
+eg [Meeting_Cid ](https://www.star-wars-ontology.co.uk/individuals/1729557587/):
 
     Trading and (of some (Information and about value Fennec_Shand))
 
 We might be interested in the form of the information
 
-eg [Infiltrating_the_Imperial_Armoury ](https://star-wars-ontology.up.railway.app/individuals/-811098626/):
+eg [Infiltrating_the_Imperial_Armoury ](https://www.star-wars-ontology.co.uk/individuals/-811098626/):
 
     included some (
     Stealing
@@ -136,9 +136,9 @@ eg [Infiltrating_the_Imperial_Armoury ](https://star-wars-ontology.up.railway.ap
         and (about some TIE-Interceptor)))
     and (participant value C1-10P))
 
-[`Communication`](https://star-wars-ontology.up.railway.app/classes/708468623/) events are not an object but may also have a subject
+[`Communication`](https://www.star-wars-ontology.co.uk/classes/708468623/) events are not an object but may also have a subject
 
-eg [Escape_of_the_Engineer](https://star-wars-ontology.up.railway.app/individuals/1936970816/):
+eg [Escape_of_the_Engineer](https://www.star-wars-ontology.co.uk/individuals/1936970816/):
 
     included some ( Communication and
     about value Colossus and

@@ -1,5 +1,5 @@
 [home](../) |
-[browse](https://star-wars-ontology.up.railway.app/) |
+[browse](https://www.star-wars-ontology.co.uk/) |
 [docs](readme.md)
 
 [benefits](benefits.md) |
@@ -39,7 +39,7 @@ Pellet note - min/max Exclusive causing error in unknown circumstances:
 
 ## Expressivity
 
-Currently [reported](https://star-wars-ontology.up.railway.app/ontologies/-1715300141) as:
+Currently [reported](https://www.star-wars-ontology.co.uk/ontologies/-1715300141) as:
 * RRESTR role domain/range
 * C concept complex negation (disjoints, differentFrom)
 * U concept union

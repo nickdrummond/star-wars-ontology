@@ -1,5 +1,5 @@
 home |
-[browse](https://star-wars-ontology.up.railway.app/) |
+[browse](https://www.star-wars-ontology.co.uk/) |
 [docs](docs/)
 
 [benefits](docs/benefits.md) |
@@ -12,26 +12,26 @@ home |
 
 # Project Convor - Star Wars Ontology
 
-[Convor](http://star-wars-ontology.up.railway.app/classes/-1326117872/), as in "OWL in Star Wars".
+[Convor](https://www.star-wars-ontology.co.uk/classes/-1326117872/), as in "OWL in Star Wars".
 
 A hand-built [OWL ontology](docs/benefits.md) focused on events and covering characters, places and things in the films and TV series.
 
-[Browse the ontology](https://star-wars-ontology.up.railway.app/) on railway.app
+[Browse the ontology](https://www.star-wars-ontology.co.uk/)
 This currently only displays asserted content and DL queries.
 
-[![Investigating_the_World_Between_Worlds](docs/ontology-browser.png)](http://star-wars-ontology.up.railway.app/individuals/1184063215/)
+[![Investigating_the_World_Between_Worlds](docs/ontology-browser.png)](https://www.star-wars-ontology.co.uk/individuals/1184063215/)
 
 ## Metrics
 
 | Content                                                                                                                  | Count |
 |--------------------------------------------------------------------------------------------------------------------------|-------|
-| [Events](http://star-wars-ontology.up.railway.app/dlquery/?expression=Event&syntax=man)                                   | 845   |
-| [Characters](http://star-wars-ontology.up.railway.app/dlquery/?expression=Being+or+Droid&syntax=man)                      | 587   |
-| [Species](https://star-wars-ontology.up.railway.app/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 194   |
-| [Planets and Moons](http://star-wars-ontology.up.railway.app/dlquery/?expression=Planet+or+Moon&syntax=man)               | 142   |
-| [Built locations](http://star-wars-ontology.up.railway.app/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 155   |
-| [Organisations or units](http://star-wars-ontology.up.railway.app/dlquery/?expression=Organisation&syntax=man)            | 129   |
-| [Named vehicles](http://star-wars-ontology.up.railway.app/dlquery/?expression=Vehicle&syntax=man)                         | 124   |
+| [Events](https://www.star-wars-ontology.co.uk/dlquery/?expression=Event&syntax=man)                                   | 845   |
+| [Characters](https://www.star-wars-ontology.co.uk/dlquery/?expression=Being+or+Droid&syntax=man)                      | 587   |
+| [Species](https://www.star-wars-ontology.co.uk/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 194   |
+| [Planets and Moons](https://www.star-wars-ontology.co.uk/dlquery/?expression=Planet+or+Moon&syntax=man)               | 142   |
+| [Built locations](https://www.star-wars-ontology.co.uk/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 155   |
+| [Organisations or units](https://www.star-wars-ontology.co.uk/dlquery/?expression=Organisation&syntax=man)            | 129   |
+| [Named vehicles](https://www.star-wars-ontology.co.uk/dlquery/?expression=Vehicle&syntax=man)                         | 124   |
 
 | Structure             | Count  |
 |-----------------------|--------|
@@ -43,7 +43,7 @@ This currently only displays asserted content and DL queries.
 | Object properties     | 94     |
 | Data properties       | 5      |
 
-Above is a snapshot - see [ontology metrics](http://star-wars-ontology.up.railway.app/ontologies/) for current values.
+Above is a snapshot - see [ontology metrics](https://www.star-wars-ontology.co.uk/ontologies/) for current values.
 
 ## Status
 
@@ -82,9 +82,10 @@ Above is a snapshot - see [ontology metrics](http://star-wars-ontology.up.railwa
 
 ### Browse
 
-[https://star-wars-ontology.up.railway.app/](https://star-wars-ontology.up.railway.app/)
+[https://www.star-wars-ontology.co.uk/](https://www.star-wars-ontology.co.uk/)
 
-Please be patient - this is on a basic railway.app stack for demo purposes only.
+Please be patient with queries - this is hosted on cheap(ish) hobby-level hosting which I pay for
+myself and receive no funding.
 
 Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
 (not [behind-the-scenes.owl.ttl](ontologies/behind-the-scenes.owl.ttl))
@@ -92,7 +93,7 @@ Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
 For efficiency, the query page only includes [event.owl.ttl](ontologies/events.owl.ttl) and
 its imports - see [docs/performance.md](docs/performance.md)
 
-[![Cloud view of individuals by usage](docs/cloud.png)](http://star-wars-ontology.up.railway.app/clouds/individuals)
+[![Cloud view of individuals by usage](docs/cloud.png)](https://www.star-wars-ontology.co.uk/clouds/individuals)
 
 
 ### Edit/reason

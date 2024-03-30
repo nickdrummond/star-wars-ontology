@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class DocCheck {
 
     public static void main(String[] args) throws IOException {
-        Pattern links = Pattern.compile("\\[(.+?)\\]\\((http(s?)://star-wars-ontology.up.railway.app/(.+?))\\)");
+        Pattern links = Pattern.compile("\\[(.+?)\\]\\((http(s?)://www.star-wars-ontology.co.uk/(.+?))\\)");
 
         File sources = new File("docs/");
 

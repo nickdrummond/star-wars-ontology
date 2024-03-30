@@ -1,5 +1,5 @@
 [home](../) |
-[browse](https://star-wars-ontology.up.railway.app/) |
+[browse](https://www.star-wars-ontology.co.uk/) |
 [docs](readme.md)
 
 [benefits](benefits.md) |
@@ -21,7 +21,7 @@ additional subclass assertions for sub-events and unnamed participants.
 We still don't model groups that were operating together in a given event.
 
 We also have open questions about the "no survivors" problem.
-See [Torture_of_Shmi](https://star-wars-ontology.up.railway.app/individuals/-631305730/).
+See [Torture_of_Shmi](https://www.star-wars-ontology.co.uk/individuals/-631305730/).
 
 ### Options:
 1. Simple property assertions on individuals

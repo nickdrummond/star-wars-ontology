@@ -16,7 +16,7 @@ All ontology modules available in Turtle format in the [ontologies](../ontologie
 
 ## Structure
 
-![Import Structure](imports.png)
+![Import Structure](images/imports.png)
     
 ## Modules
 

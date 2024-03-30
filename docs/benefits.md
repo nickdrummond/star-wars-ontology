@@ -209,7 +209,7 @@ transitive.
 
 eg Event sequence (after/before) and containment (during)
 
-![TROS timeline](events-TROS.png)
+![TROS timeline](images/events-TROS.png)
 
 
 ## Specificity

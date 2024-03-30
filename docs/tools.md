@@ -35,17 +35,17 @@ Who worked for the Jedi Order that was not a Jedi?
 [Cid, who was an informant](https://www.star-wars-ontology.co.uk/dlquery/?expression=Living_thing+and+%28memberOf+value+Jedi_Order%29&minus=hadRole+some+Jedi&syntax=man&query=instances)
 
 
-![Ontology browser ](at-at.png)
+![Ontology browser ](images/at-at.png)
 
 You can even switch to the Dark Side if you prefer.
 
-![Ontology browser in dark side mode](dark-side.png)
+![Ontology browser in dark side mode](images/dark-side.png)
 
 ## Protege
 
 We used [Protege](https://protege.stanford.edu) to build this ontology
 
-![Star Wars ontology loaded in Protege](killing_a_Krayt_Dragon.png)
+![Star Wars ontology loaded in Protege](images/killing_a_Krayt_Dragon.png)
 
 ### Reasoning
 

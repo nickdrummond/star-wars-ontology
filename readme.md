@@ -17,9 +17,9 @@ home |
 A hand-built [OWL ontology](docs/benefits.md) focused on events and covering characters, places and things in the films and TV series.
 
 [Browse the ontology](https://www.star-wars-ontology.co.uk/)
-This currently only displays asserted content and DL queries.
+This allows you to navigate asserted content, search and query the ontologies.
 
-[![Investigating_the_World_Between_Worlds](docs/ontology-browser.png)](https://www.star-wars-ontology.co.uk/individuals/1184063215/)
+[![Investigating_the_World_Between_Worlds](docs/images/ontology-browser.png)](https://www.star-wars-ontology.co.uk/individuals/1184063215/)
 
 ## Metrics
 
@@ -93,7 +93,7 @@ Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
 For efficiency, the query page only includes [event.owl.ttl](ontologies/events.owl.ttl) and
 its imports - see [docs/performance.md](docs/performance.md)
 
-[![Cloud view of individuals by usage](docs/cloud.png)](https://www.star-wars-ontology.co.uk/clouds/individuals)
+[![Cloud view of individuals by usage](docs/images/cloud.png)](https://www.star-wars-ontology.co.uk/clouds/individuals)
 
 
 ### Edit/reason

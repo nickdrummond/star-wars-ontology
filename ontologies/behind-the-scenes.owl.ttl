@@ -1,25 +1,24 @@
 @prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/behind-the-scenes.owl.ttl> rdf:type owl:Ontology ;
-                                                                                         owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/events.owl.ttl> ;
-
-                                                                                         dc:creator "Nick Drummond"^^xsd:string ;
-                                                                                         dc:license """Free to use for non-commercial purposes.
-Please contact the author to discuss use."""^^xsd:string ;
-                                                                                         rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ;
-rdfs:comment "Out of Universe descriptions, including properties and Classes needed to describe them."^^xsd:string ,
+                                                                                          owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/events.owl.ttl> ;
+                                                                                          dc:creator "Nick Drummond" ;
+                                                                                          dc:license """Free to use for non-commercial purposes.
+Please contact the author to discuss use.""" ;
+                                                                                          rdfs:comment "Out of Universe descriptions, including properties and Classes needed to describe them." ,
                                                                                                        """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
 
 All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
 
-There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia)."""^^xsd:string .
+There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia).""" ;
+                                                                                          rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI .
 
 #################################################################
 #    Object Properties
@@ -611,6 +610,21 @@ There is no assertion of correctness or completeness by myself - content has bee
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#George_Lucas
 :George_Lucas rdf:type owl:NamedIndividual ,
                        :Human ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hadRole ;
+                         owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :depicted ;
+                                                                     owl:hasValue :Notluwiski_Papanoida
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :inOrganisation ;
+                                                                     owl:hasValue :Revenge_of_the_Sith_Film_Crew
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                       ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :hadRole ;
                          owl:someValuesFrom [ owl:intersectionOf ( :Director
@@ -1773,4 +1787,8 @@ There is no assertion of correctness or completeness by myself - content has bee
                   rdfs:seeAlso "https://starwars.fandom.com/wiki/William_Hootkins"^^xsd:anyURI .
 
 
-###  Generated by the OWL API (version 4.5.19.2020-11-07T15:38:34Z) https://github.com/owlcs/owlapi
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_D'Qar
+<https://nickdrummond.github.io/star-wars-ontology/ontologies#Battle_of_D'Qar> rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

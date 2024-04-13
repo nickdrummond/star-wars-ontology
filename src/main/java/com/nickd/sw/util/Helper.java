@@ -166,32 +166,7 @@ public class Helper {
     }
 
     public void save(String location) throws OWLOntologyStorageException {
-
-        File base = new File(location);
-        System.out.println("Saving ontologies to " + base.getAbsolutePath());
-        if (!base.exists()) {
-            if (!base.mkdir()) {
-                throw new OWLOntologyStorageException("Could not create compilation directory: " + base);
-            }
-        }
-
-        for (OWLOntology o : mngr.getOntologies()) {
-            OWLDocumentFormat format = o.getOWLOntologyManager().getOntologyFormat(o);
-            if (format instanceof RioTurtleDocumentFormat) {
-                TurtleDocumentFormat ttl = new TurtleDocumentFormat();
-                ttl.copyPrefixesFrom((RioTurtleDocumentFormat)format);
-                o.getOWLOntologyManager().setOntologyFormat(o, ttl);
-            }
-            try {
-                IRI iri = o.getOntologyID().getOntologyIRI().orElseThrow();
-                File f = new File(base, iri.getShortForm());
-                System.out.println("saving..." + f.getAbsolutePath());
-                FileOutputStream fileOutputStream = new FileOutputStream(f);
-                mngr.saveOntology(o, fileOutputStream);
-            } catch (FileNotFoundException e) {
-                throw new OWLOntologyStorageException(e);
-            }
-        }
+        FileUtils.save(mngr, location);
     }
 
     public OWLEntity entityForIRI(IRI iri) {

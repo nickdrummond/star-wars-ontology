@@ -30,7 +30,7 @@ public class AboxRefactor {
 
         helper.mngr.applyChanges(changes);
 
-        helper.save("compiled");
+        helper.save("compiled/abox");
     }
 
     public AboxRefactor(final OWLObjectProperty includedProperty,

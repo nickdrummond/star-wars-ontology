@@ -27,6 +27,64 @@ There is no assertion of correctness or completeness by myself - content has bee
 #    Individuals
 #################################################################
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#A_night_in_the_monastery
+:A_night_in_the_monastery rdf:type owl:NamedIndividual ,
+                                   :Event ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :about ;
+                                                                                 owl:someValuesFrom :Guilt
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :participant ;
+                                                                                 owl:someValuesFrom [ owl:intersectionOf ( :Force_Vision
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty :connectedTo ;
+                                                                                                                             owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
+                                                                                                                                                                         owl:oneOf ( :The_Son
+                                                                                                                                                                                   )
+                                                                                                                                                                       ]
+                                                                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                                                                         owl:onProperty :disguisedAs ;
+                                                                                                                                                                         owl:hasValue :Shmi_Skywalker
+                                                                                                                                                                       ]
+                                                                                                                                                                     ) ;
+                                                                                                                                                  rdf:type owl:Class
+                                                                                                                                                ]
+                                                                                                                           ]
+                                                                                                                         ) ;
+                                                                                                      rdf:type owl:Class
+                                                                                                    ]
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :included ;
+                                     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :about ;
+                                                                                 owl:hasValue :The_Chosen_One
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty :participant ;
+                                                                                 owl:hasValue :The_Father
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                   ] ;
+                          :after :Exploring_Mortis ;
+                          :during :Clone_Wars ;
+                          :locatedIn :Mortis_monastery ;
+                          :participant :Anakin_Skywalker ;
+                          :year -20 ;
+                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Overlords"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Ahsoka_fights_corruption_on_Mandalore
 :Ahsoka_fights_corruption_on_Mandalore rdf:type owl:NamedIndividual ,
                                                 :Mission ,
@@ -5065,6 +5123,77 @@ There is no assertion of correctness or completeness by myself - content has bee
                        util:legacyId "-1265786832" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Exploring_Mortis
+:Exploring_Mortis rdf:type owl:NamedIndividual ,
+                           :Journey ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :of ;
+                                                                         owl:someValuesFrom :Storm
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Attack
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :used ;
+                                                                         owl:someValuesFrom :Rock
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :The_Son
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :about ;
+                                                                         owl:hasValue :The_Chosen_One
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :Anakin_Skywalker
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :participant ;
+                                                                         owl:hasValue :The_Daughter
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :included ;
+                             owl:someValuesFrom [ owl:intersectionOf ( :Transfer
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :from ;
+                                                                         owl:someValuesFrom :Asleep
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ]
+                           ] ;
+                  :after :Investigating_the_mysterious_transmission ;
+                  :during :Clone_Wars ;
+                  :locatedIn :Mortis ;
+                  :participant :Ahsoka_Tano ,
+                               :Anakin_Skywalker ,
+                               :Obi-Wan_Kenobi ,
+                               :The_Daughter ;
+                  :to :The_Father ;
+                  :year -20 ;
+                  rdfs:seeAlso "https://starwars.fandom.com/wiki/Overlords" .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Failed_Ambush_on_Christophsis
 :Failed_Ambush_on_Christophsis rdf:type owl:NamedIndividual ,
                                         :Fight ,
@@ -6326,6 +6455,47 @@ There is no assertion of correctness or completeness by myself - content has bee
                                                          rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_Hunters_(episode)"^^xsd:anyURI ;
                                                          util:editorLabel "Investigating_the_Felucia_medical_station_disappearance" ;
                                                          util:legacyId "-182285547" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Investigating_the_mysterious_transmission
+:Investigating_the_mysterious_transmission rdf:type owl:NamedIndividual ,
+                                                    :Arrival ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :included ;
+                                                      owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                  owl:onProperty :from ;
+                                                                                                  owl:hasValue :Mortis_monolith
+                                                                                                ]
+                                                                                              ) ;
+                                                                           rdf:type owl:Class
+                                                                         ]
+                                                    ] ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :included ;
+                                                      owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :deactivated ;
+                                                                           owl:someValuesFrom :Power
+                                                                         ]
+                                                    ] ,
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :used ;
+                                                      owl:someValuesFrom :Eta-class_shuttle
+                                                    ] ;
+                                           :during :Clone_Wars ;
+                                           :found :Mortis_monolith ;
+                                           :locatedIn :Chrelythiumn_system ;
+                                           :participant :Ahsoka_Tano ,
+                                                        :Anakin_Skywalker ,
+                                                        :Obi-Wan_Kenobi ;
+                                           :year -20 ;
+                                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Overlords"^^xsd:anyURI .
+
+[ rdf:type owl:NegativePropertyAssertion ;
+   owl:sourceIndividual :Investigating_the_mysterious_transmission ;
+   owl:assertionProperty :found ;
+   owl:targetIndividual :Rex
+ ] .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Kamino_space_battle_diversion
@@ -12430,6 +12600,95 @@ There is no assertion of correctness or completeness by myself - content has bee
                           util:legacyId "-2087569584" .
 
 
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Sheltering_from_the_storm
+:Sheltering_from_the_storm rdf:type owl:NamedIndividual ,
+                                    :Event ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:someValuesFrom [ owl:intersectionOf ( :Force_Vision
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty :connectedTo ;
+                                                                                                                              owl:hasValue :Ahsoka_Tano
+                                                                                                                            ]
+                                                                                                                          ) ;
+                                                                                                       rdf:type owl:Class
+                                                                                                     ]
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :about ;
+                                                                                  owl:hasValue :Anakin_Skywalker
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Ahsoka_Tano
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Communication
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:someValuesFrom [ owl:intersectionOf ( :Force_spirit
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty :connectedTo ;
+                                                                                                                              owl:hasValue :Qui-Gon_Jinn
+                                                                                                                            ]
+                                                                                                                          ) ;
+                                                                                                       rdf:type owl:Class
+                                                                                                     ]
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :about ;
+                                                                                  owl:hasValue :Anakin_Skywalker
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :Obi-Wan_Kenobi
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :included ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :about ;
+                                                                                  owl:hasValue :The_Chosen_One
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :participant ;
+                                                                                  owl:hasValue :The_Son
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :locatedIn ;
+                                      owl:someValuesFrom [ owl:intersectionOf ( :Cave
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty :locatedIn ;
+                                                                                  owl:hasValue :Mortis
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                    ] ;
+                           :after :Exploring_Mortis ;
+                           :during :Clone_Wars ;
+                           :participant :Ahsoka_Tano ,
+                                        :Obi-Wan_Kenobi ;
+                           :year -20 ;
+                           rdfs:seeAlso "https://starwars.fandom.com/wiki/Overlords"^^xsd:anyURI .
+
+
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Showdown_at_Toydaria
 :Showdown_at_Toydaria rdf:type owl:NamedIndividual ,
                                :Fight ;
@@ -13559,6 +13818,72 @@ There is no assertion of correctness or completeness by myself - content has bee
                                         rdfs:seeAlso "https://starwars.fandom.com/wiki/Victory_and_Death#Sabotage"^^xsd:anyURI ;
                                         util:editorLabel "Tearing_the_Tribunal_out_of_Hyperspace" ;
                                         util:legacyId "-1485945133" .
+
+
+###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Testing_Anakin
+:Testing_Anakin rdf:type owl:NamedIndividual ,
+                         :Trial ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Ahsoka_Tano
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :The_Son
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Capture
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Obi-Wan_Kenobi
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :The_Daughter
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :included ;
+                           owl:someValuesFrom [ owl:intersectionOf ( :Release
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :used ;
+                                                                       owl:someValuesFrom :The_Force
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Ahsoka_Tano
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :of ;
+                                                                       owl:hasValue :Obi-Wan_Kenobi
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :participant ;
+                                                                       owl:hasValue :Anakin_Skywalker
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                         ] ;
+                :after :A_night_in_the_monastery ,
+                       :Sheltering_from_the_storm ;
+                :during :Clone_Wars ;
+                :locatedIn :Mortis_monastery ;
+                :participant :The_Father ;
+                :victoryOf :Anakin_Skywalker ;
+                :year -20 ;
+                rdfs:seeAlso "https://starwars.fandom.com/wiki/Overlords"^^xsd:anyURI .
 
 
 ###  https://nickdrummond.github.io/star-wars-ontology/ontologies#Three_force_users_bound

@@ -3,10 +3,9 @@ package com.nickd.sw.util;
 import org.semanticweb.owlapi.formats.RioTurtleDocumentFormat;
 import org.semanticweb.owlapi.formats.TurtleDocumentFormat;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.rdf.turtle.renderer.TurtleRenderer;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 
 public class FileUtils {
 
@@ -32,17 +31,19 @@ public class FileUtils {
 
     public static void save(OWLOntologyManager mngr, OWLOntology o, File base) throws OWLOntologyStorageException {
         OWLDocumentFormat format = o.getOWLOntologyManager().getOntologyFormat(o);
-        if (format instanceof RioTurtleDocumentFormat) {
+        if (format instanceof RioTurtleDocumentFormat ttlFormat) {
             TurtleDocumentFormat ttl = new TurtleDocumentFormat();
-            ttl.copyPrefixesFrom((RioTurtleDocumentFormat)format);
+            ttl.copyPrefixesFrom(ttlFormat);
             o.getOWLOntologyManager().setOntologyFormat(o, ttl);
+            format = ttl;
         }
         try {
             IRI iri = o.getOntologyID().getOntologyIRI().orElseThrow();
             File f = new File(base, iri.getShortForm());
             System.out.println("saving..." + f.getAbsolutePath());
             FileOutputStream fileOutputStream = new FileOutputStream(f);
-            mngr.saveOntology(o, fileOutputStream);
+            OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream);
+            new CustomTurtleRenderer(o, writer, format).render();
         } catch (FileNotFoundException e) {
             throw new OWLOntologyStorageException(e);
         }

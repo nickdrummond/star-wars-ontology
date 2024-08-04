@@ -69,6 +69,8 @@ Above is a snapshot - see [ontology metrics](https://www.star-wars-ontology.co.u
 | Andor                       | to do                    |
 | Tales of the Jedi           | to do                    |
 | Ahsoka                      | to do                    |
+| Tales of the Empire         | to do                    |
+| The Acolyte                 | to do                    |
 
 ## Contents
 

@@ -73,7 +73,7 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :after :Exploring_Mortis ;
- :during :Clone_Wars ;
+ :during :Mission_to_Mortis ;
  :locatedIn :Mortis_monastery ;
  :participant :Anakin_Skywalker ;
  :year -20 ;
@@ -1214,6 +1214,20 @@ There is no assertion of correctness or completeness by myself - content has bee
   "https://starwars.fandom.com/wiki/Unfinished_Business_(episode)"^^xsd:anyURI ;
  util:editorLabel "Attack_on_the_Assembly_plant" ;
  util:legacyId "385709090" .
+
+
+:Attack_on_the_Father rdf:type owl:NamedIndividual ,
+  :Injury ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :used ;
+     owl:someValuesFrom :Force_lightning
+    ] ;
+ :after :Infecting_Ahsoka_with_the_Dark_Side ;
+ :locatedIn :Mortis_monastery ;
+ :of :The_Father ;
+ :participant :The_Son ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Altar_of_Mortis_(episode)"^^xsd:anyURI .
 
 
 :Attempted_assasination_of_Dooku rdf:type owl:NamedIndividual ,
@@ -3592,6 +3606,29 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "1579822237" .
 
 
+:Chasing_the_Son rdf:type owl:NamedIndividual ,
+  :Chase ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Crash
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Jedi_shuttle_634
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :The_Son_Kidnaps_Ahsoka ;
+ :during :Mission_to_Mortis ;
+ :locatedIn :Mortis ;
+ :of :The_Son ;
+ :participant :Anakin_Skywalker ;
+ :used :Jedi_shuttle_634 ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Altar_of_Mortis_(episode)#app_vehicles"^^xsd:anyURI .
+
+
 :Clone_Wars rdfs:seeAlso "https://www.starwars.com/news/star-wars-the-clone-wars-chronological-episodeorder"^^xsd:anyURI .
 
 
@@ -3938,6 +3975,53 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Satine_Kryze"^^xsd:anyURI ;
  util:editorLabel "Death_of_Satine" ;
  util:legacyId "359307632" .
+
+
+:Death_of_The_Daughter rdf:type owl:NamedIndividual ,
+  :Death ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Attack
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :The_Son
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :target ;
+                owl:hasValue :The_Father
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Healing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :assistedBy ;
+                owl:hasValue :Anakin_Skywalker
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :The_Daughter
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :The_first_death_of_Ahsoka ;
+ :during :Mission_to_Mortis ;
+ :of :The_Daughter ;
+ :participant :The_Son ;
+ :used :Dagger_of_Mortis ;
+ :witnessedBy :Anakin_Skywalker ,
+  :Obi-Wan_Kenobi ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Altar_of_Mortis_(episode)"^^xsd:anyURI .
 
 
 :Death_of_Ventress rdf:type owl:NamedIndividual ,
@@ -5100,7 +5184,7 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :after :Investigating_the_mysterious_transmission ;
- :during :Clone_Wars ;
+ :during :Mission_to_Mortis ;
  :locatedIn :Mortis ;
  :participant :Ahsoka_Tano ,
   :Anakin_Skywalker ,
@@ -5194,6 +5278,70 @@ There is no assertion of correctness or completeness by myself - content has bee
   "https://starwars.fandom.com/wiki/The_Hidden_Enemy"^^xsd:anyURI ;
  util:editorLabel "Failed_Ambush_on_Christophsis" ;
  util:legacyId "711757379" .
+
+
+:Fight_on_Mortis rdf:type owl:NamedIndividual ,
+  :Duel ,
+  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+            owl:onProperty :included ;
+            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                owl:onProperty :found ;
+                owl:hasValue :Dagger_of_Mortis
+               ]
+           ]
+         [ rdf:type owl:Restriction ;
+            owl:onProperty :assistedBy ;
+            owl:hasValue :The_Daughter
+           ]
+         [ rdf:type owl:Restriction ;
+            owl:onProperty :locatedIn ;
+            owl:hasValue :Altar_of_Mortis
+           ]
+         [ rdf:type owl:Restriction ;
+            owl:onProperty :participant ;
+            owl:hasValue :Obi-Wan_Kenobi
+           ]
+        ) ;
+     rdf:type owl:Class
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Fight
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :The_Daughter
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :The_Son
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Fight
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :The_Father
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :The_Son
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Attack_on_the_Father ;
+ :during :Mission_to_Mortis ;
+ :locatedIn :The_Sons_Cathedral ;
+ :participant :Ahsoka_Tano ,
+  :Anakin_Skywalker ,
+  :Obi-Wan_Kenobi ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Altar_of_Mortis_(episode)"^^xsd:anyURI .
 
 
 :Final_escape_from_Pykes rdf:type owl:NamedIndividual ,
@@ -5902,6 +6050,32 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "914024362" .
 
 
+:Infecting_Ahsoka_with_the_Dark_Side rdf:type owl:NamedIndividual ,
+  :Injury ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:hasValue :Anakin_Skywalker
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :used ;
+     owl:someValuesFrom :Dark_Side
+    ] ;
+ :after :Chasing_the_Son ;
+ :during :Mission_to_Mortis ;
+ :locatedIn :The_Sons_Cathedral ;
+ :of :Ahsoka_Tano ;
+ :participant :The_Son ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Altar_of_Mortis_(episode)"^^xsd:anyURI .
+
+
 :Infiltrating_the_droid_factory rdf:type owl:NamedIndividual ,
   :Mission ,
   [ rdf:type owl:Restriction ;
@@ -6373,10 +6547,6 @@ There is no assertion of correctness or completeness by myself - content has bee
          owl:onProperty :deactivated ;
          owl:someValuesFrom :Power
         ]
-    ] ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :used ;
-     owl:someValuesFrom :Eta-class_shuttle
     ] ;
  :during :Clone_Wars ;
  :found :Mortis_monolith ;
@@ -6384,6 +6554,7 @@ There is no assertion of correctness or completeness by myself - content has bee
  :participant :Ahsoka_Tano ,
   :Anakin_Skywalker ,
   :Obi-Wan_Kenobi ;
+ :used :Jedi_shuttle_634 ;
  :year -20 ;
  rdfs:label "Investigating the mysterious transmission"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Overlords"^^xsd:anyURI ;
@@ -7524,6 +7695,16 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mandalore_Plot"^^xsd:anyURI ;
  util:editorLabel "Mission_to_Concordia" ;
  util:legacyId "-918679520" .
+
+
+:Mission_to_Mortis rdf:type owl:NamedIndividual ,
+  :Mission ;
+ :after :Investigating_the_mysterious_transmission ;
+ :during :Clone_Wars ;
+ :participant :Ahsoka_Tano ,
+  :Anakin_Skywalker ,
+  :Obi-Wan_Kenobi ;
+ :year -20 .
 
 
 :Mission_to_Mustafar_to_retrieve_the_children rdf:type owl:NamedIndividual ,
@@ -12463,7 +12644,7 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :after :Exploring_Mortis ;
- :during :Clone_Wars ;
+ :during :Mission_to_Mortis ;
  :participant :Ahsoka_Tano ,
   :Obi-Wan_Kenobi ;
  :year -20 ;
@@ -13625,7 +13806,7 @@ There is no assertion of correctness or completeness by myself - content has bee
     ] ;
  :after :A_night_in_the_monastery ,
   :Sheltering_from_the_storm ;
- :during :Clone_Wars ;
+ :during :Mission_to_Mortis ;
  :locatedIn :Mortis_monastery ;
  :participant :The_Father ;
  :victoryOf :Anakin_Skywalker ;
@@ -13634,6 +13815,49 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Overlords"^^xsd:anyURI ;
  util:editorLabel "Testing_Anakin" ;
  util:legacyId "619533732" .
+
+
+:The_Son_Kidnaps_Ahsoka rdf:type owl:NamedIndividual ,
+  :Capture ;
+ :after :Testing_Anakin ;
+ :during :Mission_to_Mortis ;
+ :locatedIn :Jedi_shuttle_634 ;
+ :of :Ahsoka_Tano ;
+ :participant :The_Son ;
+ :witnessedBy :Anakin_Skywalker ,
+  :Obi-Wan_Kenobi ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Altar_of_Mortis_(episode)"^^xsd:anyURI .
+
+
+:The_first_death_of_Ahsoka rdf:type owl:NamedIndividual ,
+  :Death ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Transfer
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :from ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Dagger_of_Mortis
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :to ;
+                owl:hasValue :The_Son
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Fight_on_Mortis ;
+ :during :Mission_to_Mortis ;
+ :locatedIn :The_Sons_Cathedral ;
+ :of :Ahsoka_Tano ;
+ :participant :The_Son ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Altar_of_Mortis_(episode)"^^xsd:anyURI .
 
 
 :Three_force_users_bound rdf:type owl:NamedIndividual ,

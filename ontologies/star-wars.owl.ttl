@@ -15306,7 +15306,14 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
 
 
 :R2-D2 rdf:type owl:NamedIndividual ,
-  :Astromech ;
+  :Astromech ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadRole ;
+     owl:someValuesFrom [ rdf:type owl:Restriction ;
+         owl:onProperty :responsibleFor ;
+         owl:hasValue :R2D2s_squad
+        ]
+    ] ;
  :employedBy :Anakin_Skywalker ,
   :Luke_Skywalker ,
   :Padme_Amidala ;
@@ -15315,6 +15322,19 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/R2-D2"^^xsd:anyURI ;
  util:editorLabel "R2-D2" ;
  util:legacyId "1022055188" .
+
+
+:R2D2s_squad rdf:type owl:NamedIndividual ,
+  :Squad ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadMember ;
+     owl:someValuesFrom :B1_Battle_Droid
+    ] ;
+ :memberOf :Grand_Army_of_the_Republic ;
+ rdfs:label "R2D2s squad"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/R2-D2%27s_battle_droid_squadron"^^xsd:anyURI ;
+ util:editorLabel "R2D2s_squad" ;
+ util:legacyId "-1205556487" .
 
 
 :R3-A3 rdf:type owl:NamedIndividual ,

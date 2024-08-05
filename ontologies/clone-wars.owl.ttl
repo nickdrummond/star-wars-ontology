@@ -2058,6 +2058,67 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-2089001772" .
 
 
+:Battle_of_Lola_Sayo rdf:type owl:NamedIndividual ,
+  :Battle ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :locatedIn ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Space
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :near ;
+                owl:hasValue :Lola_Sayu
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :ARC-170_starfighter
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Delta-7B_Aethersprite-class_light_interceptor
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :LAAT_Gunship
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Venator-class_Star_Destroyer
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Blockade
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :hadMember ;
+                owl:someValuesFrom :Droid_starfighter
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :hadMember ;
+                owl:someValuesFrom :Munificent-class_star_frigate
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :hadMember ;
+                owl:someValuesFrom :Providence-class_Dreadnought
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Echo_lost ;
+ :during :Mission_to_rescue_Even_Piell ;
+ :participant :Adi_Gallia ,
+  :Kit_Fisto ,
+  :Plo_Koon ,
+  :Saesee_Tiin ;
+ :year -20 ;
+ rdfs:label "Battle of Lola Sayo"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Citadel_Rescue"^^xsd:anyURI ;
+ util:editorLabel "Battle_of_Lola_Sayo" ;
+ util:legacyId "1604943619" .
+
+
 :Battle_of_Malastare rdf:type owl:NamedIndividual ,
   :Battle ,
   [ rdf:type owl:Restriction ;
@@ -5020,6 +5081,7 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Even_Piell ,
   :Fives ,
   :Obi-Wan_Kenobi ,
+  :R2D2s_squad ,
   :Rex ;
  :year -20 ;
  rdfs:label "Echo lost"@en ;
@@ -5307,10 +5369,6 @@ There is no assertion of correctness or completeness by myself - content has bee
      owl:someValuesFrom [ owl:intersectionOf ( :Deception
              [ rdf:type owl:Restriction ;
                 owl:onProperty :participant ;
-                owl:someValuesFrom :B1_Battle_Droid
-               ]
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :participant ;
                 owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Class ;
                            owl:oneOf ( :R2-D2
                               )
@@ -5335,6 +5393,7 @@ There is no assertion of correctness or completeness by myself - content has bee
  :during :Mission_to_rescue_Even_Piell ;
  :locatedIn :Citadel_landing_platform ;
  :of :R2-D2 ;
+ :participant :R2D2s_squad ;
  :year -20 ;
  rdfs:label "Evacuation failed"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Counterattack"^^xsd:anyURI ;
@@ -5416,23 +5475,13 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ,
   [ rdf:type owl:Restriction ;
-     owl:onProperty :participant ;
-     owl:someValuesFrom [ owl:intersectionOf ( :B1_Battle_Droid
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :memberOf ;
-                owl:hasValue :Galactic_Republic
-               ]
-            ) ;
-         rdf:type owl:Class
-        ]
-    ] ,
-  [ rdf:type owl:Restriction ;
      owl:onProperty :used ;
      owl:someValuesFrom :Sheathipede-class_transport_shuttle
     ] ;
  :during :Mission_to_rescue_Even_Piell ;
  :locatedIn :Lola_Sayu ;
- :participant :R2-D2 ;
+ :participant :R2-D2 ,
+  :R2D2s_squad ;
  :witnessedBy :Osi_Sobeck ;
  :year -20 ;
  rdfs:label "Evading security at Lola Sayu"@en ;
@@ -5512,6 +5561,46 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Overlords" ;
  util:editorLabel "Exploring_Mortis" ;
  util:legacyId "368004150" .
+
+
+:Extraction_from_Lola_Sayu rdf:type owl:NamedIndividual ,
+  :Rescue ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Osi_Sobeck
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :used ;
+     owl:someValuesFrom :LAAT_Gunship
+    ] ;
+ :after :Battle_of_Lola_Sayo ,
+  :Pursued_to_the_extraction_point ;
+ :during :Mission_to_rescue_Even_Piell ;
+ :locatedIn :Lola_Sayu ;
+ :of :Ahsoka_Tano ,
+  :Anakin_Skywalker ,
+  :Cody ,
+  :Fives ,
+  :Obi-Wan_Kenobi ,
+  :Rex ,
+  :Wilhuff_Tarkin ;
+ :participant :Plo_Koon ;
+ :year -20 ;
+ rdfs:label "Extraction from Lola Sayu"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Citadel_Rescue"^^xsd:anyURI ;
+ util:editorLabel "Extraction_from_Lola_Sayu" ;
+ util:legacyId "-1949821875" .
 
 
 :Failed_Ambush_on_Christophsis rdf:type owl:NamedIndividual ,
@@ -8667,6 +8756,7 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Echo ,
   :Fives ,
   :Obi-Wan_Kenobi ,
+  :R2D2s_squad ,
   :Rex ;
  :target :Even_Piell ;
  :year -20 ;
@@ -9953,18 +10043,15 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 
 :Prisoner_swap rdf:type owl:NamedIndividual ,
-  :Rescue ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :participant ;
-     owl:someValuesFrom :B1_Battle_Droid
-    ] ;
+  :Rescue ;
  :after :Recapture_of_Piell_and_the_rescue_team ;
  :during :Mission_to_rescue_Even_Piell ;
  :locatedIn :The_Citadel ;
  :of :Cody ,
   :Even_Piell ,
   :Obi-Wan_Kenobi ;
- :participant :R2-D2 ;
+ :participant :R2-D2 ,
+  :R2D2s_squad ;
  :year -20 ;
  rdfs:label "Prisoner swap"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Counterattack"^^xsd:anyURI ;
@@ -10077,6 +10164,118 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_Hunters_(episode)"^^xsd:anyURI ;
  util:editorLabel "Protecting_Felucian_Farmers" ;
  util:legacyId "1243798161" .
+
+
+:Pursued_to_the_extraction_point rdf:type owl:NamedIndividual ,
+  :Chase ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Fight
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :included ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                               owl:onProperty :memberOf ;
+                               owl:hasValue :R2D2s_squad
+                              ]
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Fight
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom :LM-432_crab_droid
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Even_Piell
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :included ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Transfer
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :about ;
+                           owl:someValuesFrom :Hyperspace_route
+                          ]
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom :Information
+                          ]
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :to ;
+                           owl:hasValue :Ahsoka_Tano
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom :Anooba
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Even_Piell
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Anooba
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :LM-432_crab_droid
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom [ owl:intersectionOf ( :BX-series_droid_commando
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Single_Trooper_Aerial_Platform
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Echo_lost ;
+ :during :Mission_to_rescue_Even_Piell ;
+ :locatedIn :Lola_Sayu ;
+ :survivedBy :Ahsoka_Tano ,
+  :Anakin_Skywalker ,
+  :Cody ,
+  :Fives ,
+  :Obi-Wan_Kenobi ,
+  :Rex ,
+  :Wilhuff_Tarkin ;
+ :year -20 ;
+ rdfs:label "Pursued to the extraction point"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Citadel_Rescue"^^xsd:anyURI ;
+ util:editorLabel "Pursued_to_the_extraction_point" ;
+ util:legacyId "1886370322" .
 
 
 :Pursuing_the_Malevolence rdf:type owl:NamedIndividual ,

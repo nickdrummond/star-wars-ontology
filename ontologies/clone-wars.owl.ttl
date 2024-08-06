@@ -802,6 +802,52 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-1506338431" .
 
 
+:Arrival_at_Island_Four rdf:type owl:NamedIndividual ,
+  :Arrival ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :hadRole ;
+                    owl:someValuesFrom :Captive
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Release
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :used ;
+     owl:someValuesFrom [ owl:intersectionOf ( :HCT-2001_Dragonboat-class_Reugeot_905
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :ownedBy ;
+                owl:hasValue :Garnacs_hunting_guild
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Taking_out_droid_reinforcements ;
+ :during :Hunting_Younglings ;
+ :locatedIn :Island_Four ;
+ :participant :Garnacs_hunting_guild ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Padawan_Lost"^^xsd:anyURI .
+
+
 :Asajj_and_Savage_try_to_kill_Dooku rdf:type owl:NamedIndividual ,
   :Duel ,
   [ rdf:type owl:Restriction ;
@@ -1912,6 +1958,17 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "600981899" .
 
 
+:Battle_of_Felucia_20BBY rdf:type owl:NamedIndividual ,
+  :Battle ;
+ :during :Clone_Wars ;
+ :locatedIn :Felucia ;
+ :participant :Droid_Army ,
+  :Grand_Army_of_the_Republic ;
+ :year -20 ;
+ rdfs:comment "The Battle of Felucia appears to have continued for several years, continuing into BBY19. This is a placeholder and may be merged." ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Padawan_Lost"^^xsd:anyURI .
+
+
 :Battle_of_Lessu rdf:type owl:NamedIndividual ,
   :Battle ,
   [ rdf:type owl:Restriction ;
@@ -2096,11 +2153,11 @@ There is no assertion of correctness or completeness by myself - content has bee
                ]
              [ rdf:type owl:Restriction ;
                 owl:onProperty :hadMember ;
-                owl:someValuesFrom :Munificent-class_star_frigate
+                owl:someValuesFrom :Lucrehulk_Freighter
                ]
              [ rdf:type owl:Restriction ;
                 owl:onProperty :hadMember ;
-                owl:someValuesFrom :Providence-class_Dreadnought
+                owl:someValuesFrom :Munificent-class_star_frigate
                ]
             ) ;
          rdf:type owl:Class
@@ -4850,8 +4907,8 @@ There is no assertion of correctness or completeness by myself - content has bee
      owl:someValuesFrom :EMP_grenade
     ] ;
  :after :Ki_Adi_Mundis_route_to_Point_Rain ,
-  <https://nickdrummond.github.io/star-wars-ontology/ontologies#212th_route_to_Point_Rain> ,
-  <https://nickdrummond.github.io/star-wars-ontology/ontologies#501st_route_to_Point_Rain> ;
+  :_212th_route_to_Point_Rain ,
+  :_501st_route_to_Point_Rain ;
  :during :Second_Battle_of_Geonosis ;
  :locatedIn :Geonosis_primary_droid_foundry ;
  :year -21 ;
@@ -5081,6 +5138,7 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Even_Piell ,
   :Fives ,
   :Obi-Wan_Kenobi ,
+  :R2-D2 ,
   :R2D2s_squad ,
   :Rex ;
  :year -20 ;
@@ -5593,6 +5651,7 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Cody ,
   :Fives ,
   :Obi-Wan_Kenobi ,
+  :R2-D2 ,
   :Rex ,
   :Wilhuff_Tarkin ;
  :participant :Plo_Koon ;
@@ -6556,6 +6615,15 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-1648013721" .
 
 
+:Hunting_Younglings rdf:type owl:NamedIndividual ,
+  :Event ;
+ :after :Taking_out_droid_reinforcements ;
+ :during :Battle_of_Felucia_20BBY ;
+ :locatedIn :Island_Four ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Padawan_Lost"^^xsd:anyURI .
+
+
 :Hutt_Treaty rdf:type owl:NamedIndividual ,
   :Confrontation ,
   [ rdf:type owl:Restriction ;
@@ -7145,6 +7213,23 @@ There is no assertion of correctness or completeness by myself - content has bee
   owl:assertionProperty :found ;
   owl:targetIndividual :Rex
  ] .
+
+
+:Joining_the_survivors rdf:type owl:NamedIndividual ,
+  :Recruitment ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom :Hiding
+    ] ;
+ :after :Arrival_at_Island_Four ;
+ :during :Hunting_Younglings ;
+ :locatedIn :Island_Four ;
+ :of :Ahsoka_Tano ;
+ :participant :Jinx ,
+  :Kalifa ,
+  :O-Mer ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Padawan_Lost"^^xsd:anyURI .
 
 
 :Kamino_space_battle_diversion rdf:type owl:NamedIndividual ,
@@ -10269,6 +10354,7 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Cody ,
   :Fives ,
   :Obi-Wan_Kenobi ,
+  :R2-D2 ,
   :Rex ,
   :Wilhuff_Tarkin ;
  :year -20 ;
@@ -14441,6 +14527,60 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "1673545637" .
 
 
+:Taking_out_droid_reinforcements rdf:type owl:NamedIndividual ,
+  :Fight ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Battle_Droid
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Dropship
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Capture
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Lo-Taren
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Battle_Droid
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :during :Battle_of_Felucia_20BBY ;
+ :participant :Ahsoka_Tano ,
+  :Anakin_Skywalker ,
+  :Plo_Koon ,
+  :Wolffe ,
+  :_501st ;
+ :victoryOf :Grand_Army_of_the_Republic ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Padawan_Lost"^^xsd:anyURI .
+
+
 :Taking_the_Droid_Factory rdf:type owl:NamedIndividual ,
   :Fight ,
   [ rdf:type owl:Restriction ;
@@ -14712,6 +14852,98 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Overlords"^^xsd:anyURI ;
  util:editorLabel "Testing_Anakin" ;
  util:legacyId "619533732" .
+
+
+:The_Hunt rdf:type owl:NamedIndividual ,
+  :Search ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Death
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Dar
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :witnessedBy ;
+                owl:hasValue :Garnac
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Fight
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom :Trandoshan
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Kalifa
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :hadRole ;
+                    owl:someValuesFrom :Captive
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :witnessedBy ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :witnessedBy ;
+                owl:hasValue :Jinx
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :witnessedBy ;
+                owl:hasValue :Kalifa
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :witnessedBy ;
+                owl:hasValue :O-Mer
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Kalifa
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Garnac
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Joining_the_survivors ;
+ :during :Hunting_Younglings ;
+ :locatedIn :Island_Four ;
+ :year -20 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Padawan_Lost"^^xsd:anyURI .
 
 
 :The_Son_Kidnaps_Ahsoka rdf:type owl:NamedIndividual ,
@@ -15179,53 +15411,7 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-71319926" .
 
 
-:_somewhere_in_Hyperspace rdf:type owl:NamedIndividual ,
-  :Hyperspace ;
- rdfs:label " somewhere in Hyperspace"@en ;
- util:editorLabel "_somewhere_in_Hyperspace" ;
- util:legacyId "1808626530" .
-
-
-:_somewhere_in_Hyperspace_3 rdf:type owl:NamedIndividual ,
-  :Hyperspace ;
- rdfs:label " somewhere in Hyperspace 3"@en ;
- util:editorLabel "_somewhere_in_Hyperspace_3" ;
- util:legacyId "-2133409578" .
-
-
-:_unidentifed_Concordia_mine rdf:type owl:NamedIndividual ,
-  :Mine ;
- :locatedIn :Concordia ;
- rdfs:label " unidentifed Concordia mine"@en ;
- util:editorLabel "_unidentifed_Concordia_mine" ;
- util:legacyId "805784158" .
-
-
-:_unidentified_Christophsis_tower rdf:type owl:NamedIndividual ,
-  :Tower ;
- :locatedIn :Christophsis ;
- rdfs:label " unidentified Christophsis tower"@en ;
- util:editorLabel "_unidentified_Christophsis_tower" ;
- util:legacyId "885820802" .
-
-
-:_unidentified_Naboo_swamp rdf:type owl:NamedIndividual ,
-  :Swamp ;
- :locatedIn :Naboo ;
- rdfs:label " unidentified Naboo swamp"@en ;
- util:editorLabel "_unidentified_Naboo_swamp" ;
- util:legacyId "-2025943267" .
-
-
-:_unnamed_Geonosis_tunnel rdf:type owl:NamedIndividual ,
-  :Tunnel ;
- :locatedIn :Geonosis ;
- rdfs:label " unnamed Geonosis tunnel"@en ;
- util:editorLabel "_unnamed_Geonosis_tunnel" ;
- util:legacyId "-309481769" .
-
-
-<https://nickdrummond.github.io/star-wars-ontology/ontologies#212th_route_to_Point_Rain> rdf:type owl:NamedIndividual ,
+:_212th_route_to_Point_Rain rdf:type owl:NamedIndividual ,
   :Battle ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
@@ -15283,7 +15469,7 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-280508672" .
 
 
-<https://nickdrummond.github.io/star-wars-ontology/ontologies#501st_route_to_Point_Rain> rdf:type owl:NamedIndividual ,
+:_501st_route_to_Point_Rain rdf:type owl:NamedIndividual ,
   :Battle ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
@@ -15360,6 +15546,52 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:label "501st route to Point Rain"@en ;
  util:editorLabel "501st_route_to_Point_Rain" ;
  util:legacyId "-1205872" .
+
+
+:_somewhere_in_Hyperspace rdf:type owl:NamedIndividual ,
+  :Hyperspace ;
+ rdfs:label " somewhere in Hyperspace"@en ;
+ util:editorLabel "_somewhere_in_Hyperspace" ;
+ util:legacyId "1808626530" .
+
+
+:_somewhere_in_Hyperspace_3 rdf:type owl:NamedIndividual ,
+  :Hyperspace ;
+ rdfs:label " somewhere in Hyperspace 3"@en ;
+ util:editorLabel "_somewhere_in_Hyperspace_3" ;
+ util:legacyId "-2133409578" .
+
+
+:_unidentifed_Concordia_mine rdf:type owl:NamedIndividual ,
+  :Mine ;
+ :locatedIn :Concordia ;
+ rdfs:label " unidentifed Concordia mine"@en ;
+ util:editorLabel "_unidentifed_Concordia_mine" ;
+ util:legacyId "805784158" .
+
+
+:_unidentified_Christophsis_tower rdf:type owl:NamedIndividual ,
+  :Tower ;
+ :locatedIn :Christophsis ;
+ rdfs:label " unidentified Christophsis tower"@en ;
+ util:editorLabel "_unidentified_Christophsis_tower" ;
+ util:legacyId "885820802" .
+
+
+:_unidentified_Naboo_swamp rdf:type owl:NamedIndividual ,
+  :Swamp ;
+ :locatedIn :Naboo ;
+ rdfs:label " unidentified Naboo swamp"@en ;
+ util:editorLabel "_unidentified_Naboo_swamp" ;
+ util:legacyId "-2025943267" .
+
+
+:_unnamed_Geonosis_tunnel rdf:type owl:NamedIndividual ,
+  :Tunnel ;
+ :locatedIn :Geonosis ;
+ rdfs:label " unnamed Geonosis tunnel"@en ;
+ util:editorLabel "_unnamed_Geonosis_tunnel" ;
+ util:legacyId "-309481769" .
 
 
 ###  Generated by the OWL API (version 5.5.0.2023-01-14T12:41:38Z) https://github.com/owlcs/owlapi/

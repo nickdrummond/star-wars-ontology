@@ -11,8 +11,7 @@
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/andor.owl.ttl> rdf:type owl:Ontology ;
  owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
  dc:creator "Nick Drummond" ;
- dc:license """Free to use for non-commercial purposes.
-Please contact the author to discuss use.""" ;
+ dcterms:license <https://creativecommons.org/licenses/by-nc/4.0/> ;
  rdfs:comment "Events from the Andor TV series" ,
   """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
 
@@ -49,8 +48,22 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 
 :Crash_on_Kenari rdf:type owl:NamedIndividual ,
-  :Crash ;
+  :Crash ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Death
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Crew
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :during :Republic_era ;
  :locatedIn :Kenari ;
+ :of :Unknown_separatist_ship ;
+ :survivedBy :Unidentified_ship_crew_member ;
  :witnessedBy :Cassian_Andor ,
   :Kerri ;
  :year -24 ;
@@ -106,6 +119,51 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Kassa_(episode)#Trip_to_Morlana_One"^^xsd:anyURI ;
  util:editorLabel "Hunt_for_Kerri" ;
  util:legacyId "-2136719687" .
+
+
+:Investigating_the_fallen_ship rdf:type owl:NamedIndividual ,
+  :Mission ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :memberOf ;
+                    owl:hasValue :Kenari_Tribe
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Unidentified_ship_crew_member
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Unnamed_Kenari_Alpha
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Unidentified_ship_crew_member
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Crash_on_Kenari ;
+ :during :Republic_era ;
+ :found :Unknown_separatist_ship ;
+ :locatedIn :Kenari ;
+ :participant :Cassian_Andor ,
+  :Kenari_Tribe ;
+ :year -24 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/That_Would_Be_Me"^^xsd:anyURI .
 
 
 :Looking_into_the_Morlana_One_Murder rdf:type owl:NamedIndividual ,

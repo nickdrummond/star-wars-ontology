@@ -12,8 +12,7 @@
  owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/base.owl.ttl> ;
  dc:creator "Nick Drummond" ;
  dc:description "Characters, places and objects - instance level" ;
- dc:license """Free to use for non-commercial purposes.
-Please contact the author to discuss use.""" ;
+ dcterms:license <https://creativecommons.org/licenses/by-nc/4.0/> ;
  rdfs:comment """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
 
 All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
@@ -3507,7 +3506,8 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :memberOf :Rogue_One ,
+ :memberOf :Kenari_Tribe ,
+  :Rogue_One ,
   :Separatist_Alliance ;
  :raisedBy :Maarva_Carassi_Andor ;
  :aka "Cassa" ;
@@ -10255,6 +10255,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Kenari"^^xsd:anyURI ;
  util:editorLabel "Kenari" ;
  util:legacyId "-1106328464" .
+
+
+:Kenari_Tribe rdf:type owl:NamedIndividual ,
+  :Tribe ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Kenari"^^xsd:anyURI .
 
 
 :Kerri rdf:type owl:NamedIndividual ,
@@ -20015,6 +20020,25 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  util:legacyId "1381260325" .
 
 
+:Unidentified_ship_crew_member rdf:type owl:NamedIndividual ,
+  :Human ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :gender ;
+     owl:someValuesFrom :Male
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :memberOf ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Crew
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :ofShip ;
+                owl:hasValue :Unknown_separatist_ship
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] .
+
+
 :Unkar_Plutt rdf:type owl:NamedIndividual ,
   :Crolute ,
   [ rdf:type owl:Restriction ;
@@ -20039,6 +20063,31 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Unknown_Regions"^^xsd:anyURI ;
  util:editorLabel "Unknown_Regions" ;
  util:legacyId "499765411" .
+
+
+:Unknown_separatist_ship rdf:type owl:NamedIndividual ,
+  :Transpo_corsair ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Kassa_(episode)"^^xsd:anyURI .
+
+
+:Unnamed_Kenari_Alpha rdf:type owl:NamedIndividual ,
+  :Human ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :gender ;
+     owl:someValuesFrom :Female
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadRole ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Leader
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :inOrganisation ;
+                owl:hasValue :Kenari_Tribe
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_Alpha_leader"^^xsd:anyURI .
 
 
 :Unnamed_Pilot rdf:type owl:NamedIndividual ,

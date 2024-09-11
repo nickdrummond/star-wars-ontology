@@ -21,7 +21,7 @@ A demo of the Star Wars Ontology is available to [browse](https://www.star-wars-
 [individuals](https://www.star-wars-ontology.co.uk/individuals/) etc can all be browsed to understand the structure of the ontologies.
 Cloud views can give a quick feel for where the detail is eg [instance usage](https://www.star-wars-ontology.co.uk/clouds/individuals)
 
-This demo is a running on a [custom branch](https://github.com/nickdrummond/ontology-browser/tree/Star_Wars_Ontology_static),
+This demo is a running on the [Ontology Browser](https://github.com/nickdrummond/ontology-browser),
 paired version of the ontology browser, specifically loaded with [all.owl.ttl](https://www.star-wars-ontology.co.uk/ontologies/-1715300141).
 
 It is hosted on a cheap tier web server, so please don't expect extremely fast responses for some queries.

@@ -19,8 +19,8 @@ For a brief idea of what an OWL ontology is and discussion of the benefits of us
 
 ## Content
 
-The Star Wars Ontology describes things and events in the Universe and
-the properties that join them together.
+The Star Wars Ontology describes events along with the people, places and things
+in the Universe and the properties that join them together.
 
 ### Characters, Places, Species, Objects
 [Sentient](https://www.star-wars-ontology.co.uk/classes/-2022683789/) 
@@ -31,7 +31,8 @@ and [non-sentient](https://www.star-wars-ontology.co.uk/classes/1920330355/)
 [ships](https://www.star-wars-ontology.co.uk/classes/947367477/),
 [weapons](https://www.star-wars-ontology.co.uk/classes/-763163115/), etc
 
-Although the ontology structure is still changing, we would like to have some consistency of style - see [modelling principles](modelling%20principles.md) for more information
+Although the ontology structure is still changing, we would like to have some consistency of style
+- see [modelling principles](modelling%20principles.md) for more information
 
 ### Events
 This is the bulk of the storytelling aspect of the ontology which pulls everything else together

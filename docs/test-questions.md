@@ -40,15 +40,15 @@ We have the following mechanisms available to us:
 
 ### What events happened in a given location?
 
-    Event and locatedIn value Naboo
+    Event and at value Naboo
 
-[result](https://www.star-wars-ontology.co.uk/dlquery/?expression=Event+and+%28locatedIn+value+Naboo%29&syntax=man&query=instances)
+[result](https://www.star-wars-ontology.co.uk/dlquery/?expression=Event+and+%28at+value+Naboo%29&syntax=man&query=instances)
 
 ### Events that happened in a mountainous place
 
-    Event and (locatedIn some (hasTerrain some Mountains))
+    Event and (at some (hasTerrain some Mountains))
 
-[result](https://www.star-wars-ontology.co.uk/dlquery/?expression=Event+and+%28locatedIn+some+%28hasTerrain+some+Mountains%29%29&syntax=man&query=instances)
+[result](https://www.star-wars-ontology.co.uk/dlquery/?expression=Event+and+%28at+some+%28hasTerrain+some+Mountains%29%29&syntax=man&query=instances)
  = [```B-Wing_test_flight```](https://www.star-wars-ontology.co.uk/individuals/1363976365/),
 [```First_Battle_of_Geonosis```](https://www.star-wars-ontology.co.uk/individuals/744227156/) etc
 
@@ -151,7 +151,7 @@ is related to [```Jango Fett```](https://www.star-wars-ontology.co.uk/individual
 
 ## Who died in a certain place or by a given hand?
 
-    subjectOf some (Killing and during some (locatedIn value Death_Star_1))
+    subjectOf some (Killing and during some (at value Death_Star_1))
 
 Included
 [```Obi-Wan_Kenobi```](https://www.star-wars-ontology.co.uk/individuals/-1966242483/) and

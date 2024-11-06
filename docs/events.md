@@ -29,7 +29,7 @@ An extract of [Escape_from_Death_Star](https://www.star-wars-ontology.co.uk/indi
         year 0
         after The_Disaster
         during Galactic_Civil_War
-        locatedIn Death_Star_1
+        at Death_Star_1
         participant C-3PO
         participant R2-D2
 
@@ -79,7 +79,7 @@ using restrictions on the ```included``` property.
 
 This almost gives us the starting point for building a DSL style of modelling:
 
-    Order_66 -> included some (Murder and (of value Aayla_Secura) and (locatedIn value Felucia))
+    Order_66 -> included some (Murder and (of value Aayla_Secura) and (at value Felucia))
 
 
 ## Location

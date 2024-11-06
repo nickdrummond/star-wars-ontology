@@ -99,9 +99,9 @@ properties.
 
 eg. Who was killed in the Mid Rim?
 
-    inverse(of) some (Killing and during some (locatedIn value Mid_Rim))
+    inverse(of) some (Killing and during some (at value Mid_Rim))
 
-[results](https://www.star-wars-ontology.co.uk/dlquery/?expression=inverse%28of%29+some+%28Killing+and+during+some+%28locatedIn+value+Mid_Rim%29%29&minus=&syntax=man&query=instances)
+[results](https://www.star-wars-ontology.co.uk/dlquery/?expression=inverse%28of%29+some+%28Killing+and+during+some+%28at+value+Mid_Rim%29%29&minus=&syntax=man&query=instances)
 includes Qui-Gon Jinn who was killed in Theed, on Naboo, in the Mid Rim
 
 eg. Who is related to Kylo Ren?

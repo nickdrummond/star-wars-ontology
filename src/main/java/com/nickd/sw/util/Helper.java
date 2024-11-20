@@ -134,13 +134,17 @@ public class Helper {
         r = null;
     }
 
-    public void classify() {
-
+    public OWLReasoner loadReasoner() {
         final OWLHelper h = OWLHelper.createLightHelper(OpenlletReasonerFactory.getInstance().createReasoner(ont));
+        r = h.getReasoner();
+        return r;
+    }
+
+    public void classify() {
+        loadReasoner();
 
 //        long start = System.nanoTime();
 
-        r = h.getReasoner();
         // analogue to Protege "Classify"
         r.precomputeInferences(InferenceType.CLASS_HIERARCHY);
         r.precomputeInferences(InferenceType.OBJECT_PROPERTY_HIERARCHY);

@@ -25,23 +25,23 @@ This allows you to navigate asserted content, search and query the ontologies.
 
 | Content                                                                                                                  | Count |
 |--------------------------------------------------------------------------------------------------------------------------|-------|
-| [Events](https://www.star-wars-ontology.co.uk/dlquery/?expression=Event&syntax=man)                                   | 845   |
-| [Characters](https://www.star-wars-ontology.co.uk/dlquery/?expression=Being+or+Droid&syntax=man)                      | 587   |
-| [Species](https://www.star-wars-ontology.co.uk/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 194   |
-| [Planets and Moons](https://www.star-wars-ontology.co.uk/dlquery/?expression=Planet+or+Moon&syntax=man)               | 142   |
-| [Built locations](https://www.star-wars-ontology.co.uk/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 155   |
-| [Organisations or units](https://www.star-wars-ontology.co.uk/dlquery/?expression=Organisation&syntax=man)            | 129   |
-| [Named vehicles](https://www.star-wars-ontology.co.uk/dlquery/?expression=Vehicle&syntax=man)                         | 124   |
+| [Events](https://www.star-wars-ontology.co.uk/dlquery/?expression=Event&syntax=man)                                   | 915   |
+| [Characters](https://www.star-wars-ontology.co.uk/dlquery/?expression=Being+or+Droid&syntax=man)                      | 614   |
+| [Species](https://www.star-wars-ontology.co.uk/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 200   |
+| [Planets and Moons](https://www.star-wars-ontology.co.uk/dlquery/?expression=Planet+or+Moon&syntax=man)               | 147   |
+| [Built locations](https://www.star-wars-ontology.co.uk/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 165   |
+| [Organisations or units](https://www.star-wars-ontology.co.uk/dlquery/?expression=Organisation&syntax=man)            | 134   |
+| [Named vehicles](https://www.star-wars-ontology.co.uk/dlquery/?expression=Vehicle&syntax=man)                         | 127   |
 
 | Structure             | Count  |
 |-----------------------|--------|
-| Axiom                 | 29,980 |
-| Logical axioms        | 14,483 |
-| Declaration axioms    | 3,213  |
-| Individuals           | 2,135  |
-| Classes               | 973    |
-| Object properties     | 94     |
-| Data properties       | 5      |
+| Axiom                 | 31,636 |
+| Logical axioms        | 15,387 |
+| Declaration axioms    | 3,365  |
+| Individuals           | 2,261  |
+| Classes               | 999    |
+| Object properties     | 95     |
+| Data properties       | 4      |
 
 Above is a snapshot - see [ontology metrics](https://www.star-wars-ontology.co.uk/ontologies/) for current values.
 
@@ -54,23 +54,23 @@ Above is a snapshot - see [ontology metrics](https://www.star-wars-ontology.co.u
 
 ## Scope
 
-| Content                     | Status                   |
-|-----------------------------|--------------------------|
-| Skywalker Saga episodes 1-9 | first pass               |
-| Solo                        | first pass               |
-| Rogue One                   | first pass               |
-| The Mandalorian             | 2 of 3 series first pass |
-| Resistance                  | first pass               |
-| Rebels                      | first pass               |  
-| Clone Wars                  | 3 of 7 series first pass |
-| The Bad Batch               | 1 of 3 series first pass |
-| The Book of Boba Fett       | first pass               |
-| Kenobi                      | first pass               |
-| Andor                       | to do                    |
-| Tales of the Jedi           | to do                    |
-| Ahsoka                      | to do                    |
-| Tales of the Empire         | to do                    |
-| The Acolyte                 | to do                    |
+| Content                     | Status                                                                                   |
+|-----------------------------|------------------------------------------------------------------------------------------|
+| Skywalker Saga episodes 1-9 | first pass                                                                               |
+| Solo                        | first pass                                                                               |
+| Rogue One                   | first pass                                                                               |
+| The Mandalorian             | [2 of 3 series first pass](https://github.com/nickdrummond/star-wars-ontology/issues/45) |
+| Resistance                  | first pass                                                                               |
+| Rebels                      | first pass                                                                               |  
+| Clone Wars                  | [4 of 7 series first pass](https://github.com/nickdrummond/star-wars-ontology/issues/11) |
+| The Bad Batch               | [1 of 3 series first pass](https://github.com/nickdrummond/star-wars-ontology/issues/44) |
+| The Book of Boba Fett       | first pass                                                                               |
+| Kenobi                      | first pass                                                                               |
+| Andor                       | [started](https://github.com/nickdrummond/star-wars-ontology/issues/39)                  |
+| Tales of the Jedi           | to do                                                                                    |
+| Ahsoka                      | to do                                                                                    |
+| Tales of the Empire         | to do                                                                                    |
+| The Acolyte                 | to do                                                                                    |
 
 ## Contents
 

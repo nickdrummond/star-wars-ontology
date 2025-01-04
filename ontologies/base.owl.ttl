@@ -1605,6 +1605,14 @@ or minus is BBY""" ;
  util:legacyId "946867938" .
 
 
+:Booma rdf:type owl:Class ;
+ rdfs:subClassOf :Explosive ;
+ rdfs:label "Booma"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Booma"^^xsd:anyURI ;
+ util:editorLabel "Booma" ;
+ util:legacyId "1009160847" .
+
+
 :Bounty_Hunter rdf:type owl:Class ;
  rdfs:subClassOf :Vocation ;
  rdfs:label "Bounty Hunter"@en ;
@@ -2710,7 +2718,11 @@ and (?a inConflictWith ?b)""" ;
 
 
 :Dismantler_Droid rdf:type owl:Class ;
- rdfs:subClassOf :Droid ;
+ rdfs:subClassOf :Droid ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadPurpose ;
+     owl:someValuesFrom :Destruction_purpose
+    ] ;
  rdfs:label "Dismantler Droid"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/DTS-series_Dismantler_Droid"^^xsd:anyURI ;
  util:editorLabel "Dismantler_Droid" ;
@@ -2795,11 +2807,7 @@ and (?a inConflictWith ?b)""" ;
 
 
 :Droid rdf:type owl:Class ;
- rdfs:subClassOf :Being ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :hadPurpose ;
-     owl:someValuesFrom :Destruction_purpose
-    ] ;
+ rdfs:subClassOf :Being ;
  owl:disjointWith :Living_thing ;
  rdfs:label "Droid"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Droid"^^xsd:anyURI ;
@@ -4182,6 +4190,18 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29""" ;
  util:legacyId "947052614" .
 
 
+:Hydroid_Medusa rdf:type owl:Class ;
+ rdfs:subClassOf :Droid ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hasTrait ;
+     owl:someValuesFrom :Aquatic
+    ] ;
+ rdfs:label "Hydroid Medusa"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Hydroid_Medusa"^^xsd:anyURI ;
+ util:editorLabel "Hydroid_Medusa" ;
+ util:legacyId "1145969412" .
+
+
 :Hyena-class_Droid_Fighter-Bomber rdf:type owl:Class ;
  rdfs:subClassOf :Droid_starfighter ;
  rdfs:label "Hyena-class Droid Fighter-Bomber"@en ;
@@ -4669,6 +4689,18 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29""" ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Kaminoan"^^xsd:anyURI ;
  util:editorLabel "Kaminoan" ;
  util:legacyId "1921025561" .
+
+
+:Karkarodon rdf:type owl:Class ;
+ rdfs:subClassOf :Humanoid ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hasTrait ;
+     owl:someValuesFrom :Amphibian
+    ] ;
+ rdfs:label "Karkarodon"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Karkarodon"^^xsd:anyURI ;
+ util:editorLabel "Karkarodon" ;
+ util:legacyId "38000877" .
 
 
 :Karnex_dragon rdf:type owl:Class ;
@@ -6752,6 +6784,14 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29""" ;
  rdfs:label "Route"@en ;
  util:editorLabel "Route" ;
  util:legacyId "1023943170" .
+
+
+:SCUBA_trooper rdf:type owl:Class ;
+ rdfs:subClassOf :Trooper ;
+ rdfs:label "SCUBA trooper"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Clone_SCUBA_trooper"^^xsd:anyURI ;
+ util:editorLabel "SCUBA_trooper" ;
+ util:legacyId "-297548515" .
 
 
 :SD-K4_assassin_droid rdf:type owl:Class ;
@@ -9016,6 +9056,7 @@ dct:license rdfs:label "license"@en ;
       :Jawa
       :Kaleesh
       :Kaminoan
+      :Karkarodon
       :Kel_Dor
       :Kerkoiden
       :Klatooinian

@@ -8,7 +8,7 @@ import org.semanticweb.owlapi.util.OWLEntityURIConverterStrategy;
 import java.io.File;
 import java.util.*;
 
-public class MakeIDs {
+public class MakeIDsExperimental {
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
 

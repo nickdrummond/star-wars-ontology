@@ -24,9 +24,13 @@ All ontology modules available in Turtle format in the [ontologies](../ontologie
 
 Top level ontology importing all content.
 
+### [properties](https://www.star-wars-ontology.co.uk/ontologies/-64965907/)
+
+Describes all properties.
+
 ### [base](https://www.star-wars-ontology.co.uk/ontologies/-1190915901/)
 
-Describes all Classes and Properties.
+Describes all Classes.
 There are quite a small number of restrictions on classes at this level
 as "only a Sith deals in absolutes".
 

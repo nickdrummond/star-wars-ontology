@@ -47,7 +47,7 @@ Above is a snapshot - see [ontology metrics](https://www.star-wars-ontology.co.u
 
 ## Status
 
-* In progress - see scope below
+* Active development
 * Open modelling questions - see [issues on github](https://github.com/nickdrummond/star-wars-ontology/issues)
 * Tests and queries framework
 * Modularisation of events by film/series

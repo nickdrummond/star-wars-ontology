@@ -16,6 +16,7 @@ public class ModuleBuilder<T extends OWLEntity> {
     private OWLDocumentFormat format;
     private Set<IRI> visited = new HashSet<>();
     private Function<T, AxiomExtractor<T>> extractor;
+    private IRI propertiesOnt;
 
     public ModuleBuilder(Set<T> entities, OWLOntologyManager output) {
         this.entities = entities;
@@ -29,6 +30,11 @@ public class ModuleBuilder<T extends OWLEntity> {
 
     public ModuleBuilder<T> withExtractor(Function<T, AxiomExtractor<T>> extractor) {
         this.extractor = extractor;
+        return this;
+    }
+
+    public ModuleBuilder<T> withPropertiesImport(IRI propertiesOnt) {
+        this.propertiesOnt = propertiesOnt;
         return this;
     }
 
@@ -52,16 +58,28 @@ public class ModuleBuilder<T extends OWLEntity> {
 
         OWLOntology clsOnt = output.createOntology(makeOntIRI(entity));
 
+        if (propertiesOnt != null) {
+            output.applyChange(new AddImport(clsOnt, output.getOWLDataFactory().getOWLImportsDeclaration(propertiesOnt)));
+        }
+
         if (format != null) {
             output.setOntologyFormat(clsOnt, format);
         }
 
+
         extractor.apply(entity).findAxioms()
                 .forEach(ax -> {
                     clsOnt.add(ax);
-                    ax.getSignature().forEach(ref -> {
+                    // Only import classes and individuals
+                    ax.getIndividualsInSignature().forEach(ref -> {
                         // TODO still getting loops - eg Job
-                        if (!ref.equals(entity) && !ref.isOWLDatatype()) {
+                        if (!ref.equals(entity)) {
+                            addImport(clsOnt, ref);
+                        }
+                    });
+                    ax.getClassesInSignature().forEach(ref -> {
+                        // TODO still getting loops - eg Job
+                        if (!ref.equals(entity)) {
                             addImport(clsOnt, ref);
                         }
                     });

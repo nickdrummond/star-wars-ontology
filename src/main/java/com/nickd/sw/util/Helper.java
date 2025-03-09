@@ -160,9 +160,9 @@ public class Helper {
     public void saveChanged() throws OWLOntologyStorageException {
         for (OWLOntology o : changedOntologies) {
             OWLDocumentFormat format = o.getOWLOntologyManager().getOntologyFormat(o);
-            if (format instanceof RioTurtleDocumentFormat) {
+            if (format instanceof RioTurtleDocumentFormat originalFormat) {
                 TurtleDocumentFormat ttl = new TurtleDocumentFormat();
-                ttl.copyPrefixesFrom((RioTurtleDocumentFormat)format);
+                ttl.copyPrefixesFrom(originalFormat);
                 o.getOWLOntologyManager().setOntologyFormat(o, ttl);
             }
             mngr.saveOntology(o);

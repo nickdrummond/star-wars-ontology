@@ -342,7 +342,84 @@ There is no assertion of correctness or completeness by myself - content has bee
 :Battle_of_Christophsis rdf:type owl:NamedIndividual .
 
 
-:Battle_of_Malastare rdf:type owl:NamedIndividual .
+:Battle_of_Malastare rdf:type owl:NamedIndividual ,
+  :Battle ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Attack
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :included ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Creation
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom :Hole
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom :Y-Wing
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Electro-proton_bomb
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Electro-proton_bomb
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Mace_Windu
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Nakha_Urus
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Sionver_Boll
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :remoteParticipant ;
+                owl:hasValue :Sheev_Palpatine
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :witnessedBy ;
+                owl:hasValue :Anakin_Skywalker
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :witnessedBy ;
+                owl:hasValue :R2-D2
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Dug
+    ] ;
+ :after :Skirmish_on_Felucia ;
+ :at :Malastare ;
+ :defeatOf :Droid_Army ;
+ :during :Clone_Wars ;
+ :participant :Grand_Army_of_the_Republic ,
+  :Rex ;
+ :year -21 ;
+ rdfs:label "Battle of Malastare"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Malastare"^^xsd:anyURI ;
+ util:editorLabel "Battle_of_Malastare" ;
+ util:legacyId "1187401538" .
 
 
 :Battle_of_Ryloth rdf:type owl:NamedIndividual .
@@ -792,7 +869,16 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "315849922" .
 
 
-:Defense_of_Dantooine rdf:type owl:NamedIndividual .
+:Defense_of_Dantooine rdf:type owl:NamedIndividual ,
+  :Battle ;
+ :at :Dantooine ;
+ :during :Clone_Wars ;
+ :participant :Mace_Windu ;
+ :year -21 ;
+ rdfs:label "Defense of Dantooine"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Defense_of_Dantooine"^^xsd:anyURI ;
+ util:editorLabel "Defense_of_Dantooine" ;
+ util:legacyId "-2011244563" .
 
 
 :Destroying_the_factory_shield_generator rdf:type owl:NamedIndividual ,
@@ -817,7 +903,18 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-1088047344" .
 
 
-:Destruction_of_the_Felucia_Medical_Station rdf:type owl:NamedIndividual .
+:Destruction_of_the_Felucia_Medical_Station rdf:type owl:NamedIndividual ,
+  :Destruction ;
+ :after :Mission_to_Black_Stall_Station ,
+  :Mission_to_Mustafar_to_retrieve_the_children ;
+ :at :Felucia ;
+ :during :Clone_Wars ;
+ :of :Felucia_Medical_Station_HCTFF2 ;
+ :year -21 ;
+ rdfs:label "Destruction of the Felucia Medical Station"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Destruction_of_the_Felucia_Medical_Station_HCTFF2"^^xsd:anyURI ;
+ util:editorLabel "Destruction_of_the_Felucia_Medical_Station" ;
+ util:legacyId "-847873270" .
 
 
 :Evacuation_of_Felucia rdf:type owl:NamedIndividual ,
@@ -3503,6 +3600,21 @@ There is no assertion of correctness or completeness by myself - content has bee
   "https://starwars.fandom.com/wiki/Second_Battle_of_Geonosis"^^xsd:anyURI ;
  util:editorLabel "Second_Battle_of_Geonosis" ;
  util:legacyId "-2107618096" .
+
+
+:Skirmish_on_Felucia rdf:type owl:NamedIndividual ,
+  :Fight ;
+ :after :Destruction_of_the_Felucia_Medical_Station ;
+ :at :Felucia ;
+ :during :Clone_Wars ;
+ :participant :Ahsoka_Tano ,
+  :Anakin_Skywalker ,
+  :Obi-Wan_Kenobi ;
+ :year -21 ;
+ rdfs:label "Skirmish on Felucia"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Skirmish_on_Felucia"^^xsd:anyURI ;
+ util:editorLabel "Skirmish_on_Felucia" ;
+ util:legacyId "1538751193" .
 
 
 :Spying_on_Clovis rdf:type owl:NamedIndividual ,

@@ -426,7 +426,18 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "1753682204" .
 
 
-:Battle_of_Anaxes rdf:type owl:NamedIndividual .
+:Battle_of_Anaxes rdf:type owl:NamedIndividual ,
+  :Battle ;
+ :at :Anaxes ;
+ :during :Outer_Rim_Sieges ;
+ :participant :Anakin_Skywalker ,
+  :Galactic_Republic ,
+  :Separatist_Alliance ;
+ :year -19 ;
+ rdfs:label "Battle of Anaxes"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Anaxes"^^xsd:anyURI ;
+ util:editorLabel "Battle_of_Anaxes" ;
+ util:legacyId "1079339404" .
 
 
 :Battle_of_Poletec_Village rdf:type owl:NamedIndividual ,
@@ -491,7 +502,151 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "1551675071" .
 
 
-:Battle_of_Yerbana rdf:type owl:NamedIndividual .
+:Battle_of_Yerbana rdf:type owl:NamedIndividual ,
+  :Battle ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Attack
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :included ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                               owl:onProperty :memberOf ;
+                               owl:hasValue :Droid_Army
+                              ]
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Jetpack
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :_501st
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Communication
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Fulcrum
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Wullf_Yularen
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :B1_Battle_Droid
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Clone
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Trap
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :included ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom :Tactical_Droid
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :assistedBy ;
+                owl:hasValue :R2-D2
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Anakin_Skywalker
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :AAT_Mk_I
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :AT-TE
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Droid_Tri-Fighter
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Dwarf_Spider_Droid
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :LAAT_Gunship
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :NR-N99_Persuader-class_droid_enforcer
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Octuptarra_tri-droid
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Z-95_Headhunter
+    ] ;
+ :at :Yerbana ;
+ :during :Outer_Rim_Sieges ;
+ :participant :Anakin_Skywalker ,
+  :Cody ,
+  :Droid_Army ,
+  :Obi-Wan_Kenobi ,
+  :Rex ,
+  :_212th_Attack_Battalion ,
+  :_501st ;
+ :year -19 ;
+ rdfs:label "Battle of Yerbana"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Yerbana"^^xsd:anyURI ,
+  "https://starwars.fandom.com/wiki/Old_Friends_Not_Forgotten"^^xsd:anyURI ;
+ util:editorLabel "Battle_of_Yerbana" ;
+ util:legacyId "403438896" .
 
 
 :Betrayal_on_the_Tribunal rdf:type owl:NamedIndividual ,
@@ -2445,6 +2600,16 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Phantom_Apprentice#Preparing_for_war"^^xsd:anyURI ;
  util:editorLabel "Shadow_Collective_orders" ;
  util:legacyId "-2087569584" .
+
+
+:Siege_of_Mandalore rdf:type owl:NamedIndividual ,
+  :Event ;
+ :after :Mandalore_asks_for_help ;
+ :at :Mandalore ;
+ :during :Outer_Rim_Sieges ;
+ :participant :Maul ;
+ :year -19 ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Siege_of_Mandalore"^^xsd:anyURI .
 
 
 :Standoff_in_the_assembly_plant rdf:type owl:NamedIndividual ,

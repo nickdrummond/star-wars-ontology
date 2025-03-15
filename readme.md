@@ -98,6 +98,16 @@ its imports - see [docs/performance.md](docs/performance.md)
 [![Cloud view of individuals by usage](docs/images/cloud.png)](https://www.star-wars-ontology.co.uk/clouds/individuals)
 
 
+#### Local browsing with Docker and ontology browser
+
+Clone this repository.
+From the root of this project, build a docker image and run it with:
+```
+docker build -t nickdrummond/star-wars-ontology .
+docker run -d -p 8080:8080 nickdrummond/star-wars-ontology
+```
+Then browse to [http://localhost:8080/](http://localhost:8080/) to see the ontology browser.
+
 ### Edit/reason
 * Open [all.owl.ttl](ontologies/all.owl.ttl) with open-source OWL editor, [Protege](https://protege.stanford.edu/) or
   another semantic web editor/browser

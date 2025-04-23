@@ -42,7 +42,7 @@ public class ModuleBuilder<T extends OWLEntity> {
         for (T entity : entities) {
             OWLOntology ont = extractToOntology(entity);
             if (ont != null) {
-                FileUtils.save(output, ont, base);
+                FileUtils.save(ont, base);
                 output.removeOntology(ont);
             }
         }

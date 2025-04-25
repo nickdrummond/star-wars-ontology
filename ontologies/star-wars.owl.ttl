@@ -13054,6 +13054,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
 
 
 :Mountain_Clan_Matron rdf:type owl:NamedIndividual ,
+  :Force-Sensitive ,
   :Human ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :gender ;
@@ -13061,10 +13062,16 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
     ] ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
-     owl:someValuesFrom :Mother
+     owl:someValuesFrom [ owl:intersectionOf ( :Mother
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :inOrganisation ;
+                owl:hasValue :Mountain_Clan
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
     ] ;
  :hadChild :Nali ;
- :memberOf :Mountain_Clan ;
  rdfs:label "Mountain Clan Matron"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Mountain_Clan_Matron"^^xsd:anyURI ;
  util:editorLabel "Mountain_Clan_Matron" ;

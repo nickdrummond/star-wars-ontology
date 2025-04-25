@@ -23,6 +23,80 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
   "https://starwars.fandom.com/wiki/Star_Wars:_Tales_of_the_Empire"^^xsd:anyURI .
 
+:Attack_of_The_Droids_outside_Night_Sisters_Temple rdf:type owl:NamedIndividual ,
+  :Attack ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Death
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Nali
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Injury
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :memberOf ;
+                    owl:hasValue :Mountain_Clan
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :memberOf ;
+                    owl:hasValue :Mountain_Clan
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom [ owl:intersectionOf ( :The_Force
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :connectedTo ;
+                           owl:hasValue :Mountain_Clan_Matron
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Morgan_Elsbeth
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :B1_Battle_Droid
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :B2_Super_Battle_Droid
+    ] ;
+ :after :Retrieval_of_Night_Sisters_Weapons ;
+ :at :Dathomir ;
+ :victoryOf :Mountain_Clan_Matron ;
+ :year -20 ;
+ rdfs:label "Attack of The Droids outside Night Sisters Temple"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
+ util:editorLabel "Attack_of_The_Droids_outside_Night_Sisters_Temple" ;
+ util:legacyId "-1529422890" .
+
+
 :Battle_of_Dathomir rdf:type owl:NamedIndividual ,
   :Battle ,
   [ rdf:type owl:Restriction ;
@@ -71,16 +145,16 @@ There is no assertion of correctness or completeness by myself - content has bee
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
      owl:someValuesFrom [ owl:intersectionOf ( :Hiding
-             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                       owl:onProperty :from ;
-                       owl:someValuesFrom :Gunship
-                      ]
-                    [ rdf:type owl:Restriction ;
-                       owl:onProperty :ownedBy ;
-                       owl:hasValue :Separatist_Alliance
-                      ]
-                   ) ;
-                rdf:type owl:Class
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :from ;
+                owl:someValuesFrom [ owl:intersectionOf ( :HMP_droid_gunship
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :ownedBy ;
+                           owl:hasValue :Separatist_Alliance
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
                ]
             ) ;
          rdf:type owl:Class
@@ -163,33 +237,21 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ,
   [ rdf:type owl:Restriction ;
-     owl:onProperty :deactivated ;
-     owl:someValuesFrom :Magick
-    ] ,
-  [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
      owl:someValuesFrom [ owl:intersectionOf ( :Learning
-             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                       owl:onProperty :about ;
-                       owl:someValuesFrom :Execution
-                      ]
-                    [ rdf:type owl:Restriction ;
-                       owl:onProperty :of ;
-                       owl:hasValue :Night_Sisters
-                      ]
-                   ) ;
-                rdf:type owl:Class
-               ]
-            ) ;
-         rdf:type owl:Class
-        ]
-    ] ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :included ;
-     owl:someValuesFrom [ owl:intersectionOf ( :Rescue
              [ rdf:type owl:Restriction ;
-                owl:onProperty :of ;
-                owl:hasValue :Morgan_Elsbeth
+                owl:onProperty :about ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Execution
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                               owl:onProperty :memberOf ;
+                               owl:hasValue :Night_Sisters
+                              ]
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
                ]
             ) ;
          rdf:type owl:Class
@@ -202,7 +264,9 @@ There is no assertion of correctness or completeness by myself - content has bee
          owl:hasValue :Mountain_Clan
         ]
     ] ;
- :after :Battle_of_Dathomir ;
+ :after :Morgan_flees_Battle_of_Dathomir ;
+ :during :Battle_of_Dathomir ;
+ :of :Morgan_Elsbeth ;
  :year -20 ;
  rdfs:label "Rescue of Morgan"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
@@ -212,6 +276,13 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 :Retrieval_of_Night_Sisters_Weapons rdf:type owl:NamedIndividual ,
   :Search ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :assistedBy ;
+     owl:someValuesFrom [ rdf:type owl:Restriction ;
+         owl:onProperty :memberOf ;
+         owl:hasValue :Mountain_Clan
+        ]
+    ] ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :at ;
      owl:someValuesFrom [ owl:intersectionOf ( :Temple
@@ -225,9 +296,9 @@ There is no assertion of correctness or completeness by myself - content has bee
     ] ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
-     owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+     owl:someValuesFrom [ owl:intersectionOf ( :Search
              [ rdf:type owl:Restriction ;
-                owl:onProperty :of ;
+                owl:onProperty :for ;
                 owl:someValuesFrom :Weapon
                ]
             ) ;
@@ -235,19 +306,12 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ,
   [ rdf:type owl:Restriction ;
-     owl:onProperty :participant ;
-     owl:someValuesFrom [ rdf:type owl:Restriction ;
-         owl:onProperty :memberOf ;
-         owl:hasValue :Mountain_Clan
-        ]
-    ] ,
-  [ rdf:type owl:Restriction ;
      owl:onProperty :witnessedBy ;
      owl:someValuesFrom :Probe_Droid
     ] ;
+ :after :Morgan_and_Nali_hunting ;
+ :assistedBy :Nali ;
  :createdBy :Morgan_Elsbeth ;
- :participant :Nali ;
- :sometimeAfter :Morgan_and_Nali_hunting ;
  :year -20 ;
  rdfs:label "Retrieval of Night Sisters Weapons"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
@@ -287,83 +351,6 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
  util:editorLabel "Selena_vs_Grievous" ;
  util:legacyId "643101112" .
-
-
-<https://nickdrummond.github.io/star-wars-ontology/ontologies#Attack_of_The_Droids_outside_Night_Sisters'Temple> rdf:type owl:NamedIndividual ,
-  :Attack ,
-  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-            owl:onProperty :participant ;
-            owl:someValuesFrom :B1_Battle_Droid
-           ]
-         [ rdf:type owl:Restriction ;
-            owl:onProperty :participant ;
-            owl:someValuesFrom :B2_Super_Battle_Droid
-           ]
-        ) ;
-     rdf:type owl:Class
-    ] ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :included ;
-     owl:someValuesFrom [ owl:intersectionOf ( :Collapse
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :of ;
-                owl:someValuesFrom [ rdf:type owl:Restriction ;
-                    owl:onProperty :memberOf ;
-                    owl:hasValue :Mountain_Clan
-                   ]
-               ]
-            ) ;
-         rdf:type owl:Class
-        ]
-    ] ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :included ;
-     owl:someValuesFrom [ owl:intersectionOf ( :Death
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :of ;
-                owl:hasValue :Nali
-               ]
-            ) ;
-         rdf:type owl:Class
-        ]
-    ] ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :included ;
-     owl:someValuesFrom [ owl:intersectionOf ( :Rescue
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :of ;
-                owl:someValuesFrom [ rdf:type owl:Restriction ;
-                    owl:onProperty :memberOf ;
-                    owl:hasValue :Mountain_Clan
-                   ]
-               ]
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :participant ;
-                owl:someValuesFrom [ owl:intersectionOf ( :The_Force
-                        [ rdf:type owl:Restriction ;
-                           owl:onProperty :connectedTo ;
-                           owl:hasValue :Mountain_Clan_Matron
-                          ]
-                       ) ;
-                    rdf:type owl:Class
-                   ]
-               ]
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :of ;
-                owl:hasValue :Morgan_Elsbeth
-               ]
-            ) ;
-         rdf:type owl:Class
-        ]
-    ] ;
- :after :Retrieval_of_Night_Sisters_Weapons ;
- :at :Dathomir ;
- :victoryOf :Mountain_Clan_Matron ;
- :year -20 ;
- rdfs:label "Attack of The Droids outside Night Sisters'Temple"@en ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
- util:editorLabel "Attack_of_The_Droids_outside_Night_Sisters'Temple" ;
- util:legacyId "-1529422890" .
 
 
 ###  Generated by the OWL API (version 5.5.1.2024-09-07T21:41:32Z) https://github.com/owlcs/owlapi/

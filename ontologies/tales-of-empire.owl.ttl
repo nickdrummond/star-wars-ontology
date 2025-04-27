@@ -1,0 +1,383 @@
+@prefix : <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix util: <https://nickdrummond.github.io/star-wars-ontology/util#> .
+@base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
+
+<https://nickdrummond.github.io/star-wars-ontology/ontologies/tales-of-empire.owl.ttl> rdf:type owl:Ontology ;
+ owl:imports <https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl> ;
+ dc:creator "Andrea Bianchi" ;
+ dct:license <https://creativecommons.org/licenses/by-nc/4.0/> ;
+ rdfs:comment "Events from the Tales of The Empire series" ,
+  """This work is not sanctioned or otherwise connected to Lucasfilm, Disney or it’s affiliates. It is an unpaid experiment in representing an interesting, complex domain of storytelling.
+
+All names and references are Trademark and/or copyright of Disney and affiliates or their respective owners or creators.
+
+There is no assertion of correctness or completeness by myself - content has been created referencing publicly available, free content created by fans (ie Wookipedia).""" ;
+ rdfs:label "Tales of The Empire" ;
+ rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
+  "https://starwars.fandom.com/wiki/Star_Wars:_Tales_of_the_Empire"^^xsd:anyURI .
+
+:Attack_of_The_Droids_outside_Night_Sisters_Temple rdf:type owl:NamedIndividual ,
+  :Attack ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Death
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Nali
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Injury
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :memberOf ;
+                    owl:hasValue :Mountain_Clan
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :memberOf ;
+                    owl:hasValue :Mountain_Clan
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom [ owl:intersectionOf ( :The_Force
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :connectedTo ;
+                           owl:hasValue :Mountain_Clan_Matron
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Morgan_Elsbeth
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :B1_Battle_Droid
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :B2_Super_Battle_Droid
+    ] ;
+ :after :Retrieval_of_Night_Sisters_Weapons ;
+ :at :Dathomir ;
+ :victoryOf :Mountain_Clan_Matron ;
+ :year -20 ;
+ rdfs:label "Attack of The Droids outside Night Sisters Temple"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
+ util:editorLabel "Attack_of_The_Droids_outside_Night_Sisters_Temple" ;
+ util:legacyId "-1529422890" .
+
+
+:Battle_of_Dathomir rdf:type owl:NamedIndividual ,
+  :Battle ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :memberOf ;
+                    owl:hasValue :Night_Sisters
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Battle_Droid
+    ] ;
+ :at :Dathomir ;
+ :during :Clone_Wars ;
+ :participant :Grievous ;
+ :victoryOf :Separatist_Alliance ;
+ :year -20 ;
+ rdfs:label "Battle of Dathomir"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Dathomir"^^xsd:anyURI ,
+  "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
+ util:editorLabel "Battle_of_Dathomir" ;
+ util:legacyId "-88380622" .
+
+
+:Morgan_and_Nali_hunting rdf:type owl:NamedIndividual ,
+  :Argument ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :at ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Mountains
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :locatedIn ;
+                owl:hasValue :Dathomir
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Hiding
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :from ;
+                owl:someValuesFrom [ owl:intersectionOf ( :HMP_droid_gunship
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :ownedBy ;
+                           owl:hasValue :Separatist_Alliance
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :about :Mountain_Clan ;
+ :after :Rescue_of_Morgan ;
+ :participant :Morgan_Elsbeth ,
+  :Nali ;
+ :year -20 ;
+ rdfs:label "Morgan and Nali hunting"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
+ util:editorLabel "Morgan_and_Nali_hunting" ;
+ util:legacyId "1247868668" .
+
+
+:Morgan_flees_Battle_of_Dathomir rdf:type owl:NamedIndividual ,
+  :Escape ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Collapse
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Morgan_Elsbeth
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Fight
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :included ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom :BX-series_droid_commando
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Hiding
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Morgan_Elsbeth
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Selena_vs_Grievous ;
+ :at :Dathomir ;
+ :during :Battle_of_Dathomir ;
+ :year -20 ;
+ rdfs:comment "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
+ rdfs:label "Morgan flees Battle of Dathomir"@en ;
+ util:editorLabel "Morgan_flees_Battle_of_Dathomir" ;
+ util:legacyId "-1964633761" .
+
+
+:Nali_And_Matron_Discuss_the_Droid_Threat rdf:type owl:NamedIndividual ,
+  :Conversation ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :about ;
+     owl:someValuesFrom :Pacifism
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :at ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Mountains
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :locatedIn ;
+                owl:hasValue :Dathomir
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Morgan_and_Nali_hunting ;
+ :participant :Mountain_Clan_Matron ,
+  :Nali ;
+ :year -20 ;
+ rdfs:label "Nali And Matron Discuss the Droid Threat"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
+ util:editorLabel "Nali_And_Matron_Discuss_the_Droid_Threat" ;
+ util:legacyId "-721117126" .
+
+
+:Rescue_of_Morgan rdf:type owl:NamedIndividual ,
+  :Rescue ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :at ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Cave
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :locatedIn ;
+                owl:hasValue :Dathomir
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Learning
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Execution
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                               owl:onProperty :memberOf ;
+                               owl:hasValue :Night_Sisters
+                              ]
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom [ rdf:type owl:Restriction ;
+         owl:onProperty :memberOf ;
+         owl:hasValue :Mountain_Clan
+        ]
+    ] ;
+ :after :Morgan_flees_Battle_of_Dathomir ;
+ :during :Battle_of_Dathomir ;
+ :of :Morgan_Elsbeth ;
+ :year -20 ;
+ rdfs:label "Rescue of Morgan"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
+ util:editorLabel "Rescue_of_Morgan" ;
+ util:legacyId "1646150041" .
+
+
+:Retrieval_of_Night_Sisters_Weapons rdf:type owl:NamedIndividual ,
+  :Search ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :assistedBy ;
+     owl:someValuesFrom [ rdf:type owl:Restriction ;
+         owl:onProperty :memberOf ;
+         owl:hasValue :Mountain_Clan
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :at ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Temple
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :locatedIn ;
+                owl:hasValue :Dathomir
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Search
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :for ;
+                owl:someValuesFrom :Weapon
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :witnessedBy ;
+     owl:someValuesFrom :Probe_Droid
+    ] ;
+ :after :Nali_And_Matron_Discuss_the_Droid_Threat ;
+ :assistedBy :Nali ;
+ :participant :Morgan_Elsbeth ;
+ :year -20 ;
+ rdfs:label "Retrieval of Night Sisters Weapons"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
+ util:editorLabel "Retrieval_of_Night_Sisters_Weapons" ;
+ util:legacyId "-806286308" .
+
+
+:Selena_vs_Grievous rdf:type owl:NamedIndividual ,
+  :Duel ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :at ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Forest
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :locatedIn ;
+                owl:hasValue :Dathomir
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Selena
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :during :Battle_of_Dathomir ;
+ :victoryOf :Grievous ;
+ :witnessedBy :Morgan_Elsbeth ;
+ :year -20 ;
+ rdfs:label "Selena vs Grievous"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Fear"^^xsd:anyURI ;
+ util:editorLabel "Selena_vs_Grievous" ;
+ util:legacyId "643101112" .
+
+
+###  Generated by the OWL API (version 5.5.1.2024-09-07T21:41:32Z) https://github.com/owlcs/owlapi/

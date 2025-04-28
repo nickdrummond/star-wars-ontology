@@ -20,11 +20,11 @@ public class MakeDifferentIndividuals {
 
     public static void main(String[] args) throws OWLOntologyCreationException, OWLOntologyStorageException {
 
-        Helper helper = new Helper(new File("ontologies/all.owl.ttl"));
+        Helper helper = new Helper(new File("ontologies/events.owl.ttl"));
 
         helper.classify();
 
-        OWLClass query = helper.cls("Event");
+        OWLClass query = helper.cls("Living_thing");
         OWLOntology starwarsOnt = helper.mngr.getOntology(IRI.create("https://nickdrummond.github.io/star-wars-ontology/ontologies/star-wars.owl.ttl"));
 
         MakeDifferentIndividuals action = new MakeDifferentIndividuals(helper.r, helper.df);

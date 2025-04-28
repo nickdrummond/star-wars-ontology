@@ -168,7 +168,14 @@ There is no assertion of correctness or completeness by myself - content has bee
      owl:onProperty :participant ;
      owl:someValuesFrom [ rdf:type owl:Restriction ;
          owl:onProperty :hadRole ;
-         owl:someValuesFrom :Officer
+         owl:someValuesFrom [ owl:intersectionOf ( :Officer
+                 [ rdf:type owl:Restriction ;
+                    owl:onProperty :inOrganisation ;
+                    owl:hasValue :Galactic_Empire
+                   ]
+                ) ;
+             rdf:type owl:Class
+            ]
         ]
     ] ,
   [ rdf:type owl:Restriction ;
@@ -183,6 +190,7 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :createdBy :Morgan_Elsbeth ;
+ :during :Imperial_era ;
  :participant :Isdain ;
  rdfs:comment "https://starwars.fandom.com/wiki/The_Path_of_Anger"^^xsd:anyURI ;
  rdfs:label "Magistrate Morgan promotes her new Starfighters"@en ;
@@ -197,20 +205,18 @@ There is no assertion of correctness or completeness by myself - content has bee
      owl:someValuesFrom [ owl:intersectionOf ( :TIE-Defender
              [ rdf:type owl:Restriction ;
                 owl:onProperty :about ;
-                owl:someValuesFrom [ owl:intersectionOf ( :Choice
-                        [ rdf:type owl:Restriction ;
-                           owl:onProperty :of ;
-                           owl:hasValue :Morgan_Elsbeth
-                          ]
-                       ) ;
-                    rdf:type owl:Class
-                   ]
+                owl:someValuesFrom :Choice
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:hasValue :Galactic_Empire
                ]
             ) ;
          rdf:type owl:Class
         ]
     ] ;
  :after :Magistrate_Morgan_promotes_her_new_Starfighters ;
+ :during :Imperial_era ;
  :participant :Gilad_Pellaeon ,
   :Morgan_Elsbeth ;
  rdfs:label "Morgan Meets Captain Pellaeon"@en ;
@@ -324,7 +330,10 @@ There is no assertion of correctness or completeness by myself - content has bee
      owl:someValuesFrom [ owl:intersectionOf ( :Argument
              [ rdf:type owl:Restriction ;
                 owl:onProperty :participant ;
-                owl:someValuesFrom :Humanoid
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :livedIn ;
+                    owl:hasValue :Calodan
+                   ]
                ]
              [ rdf:type owl:Restriction ;
                 owl:onProperty :about ;
@@ -333,9 +342,21 @@ There is no assertion of correctness or completeness by myself - content has bee
             ) ;
          rdf:type owl:Class
         ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :year ;
+     owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+         owl:onDatatype xsd:integer ;
+         owl:withRestrictions ( [ xsd:minInclusive -9
+               ]
+             [ xsd:maxInclusive -2
+               ]
+            )
+        ]
     ] ;
  :after :Morgan_Meets_Captain_Pellaeon ;
  :at :Calodan ;
+ :of :Morgan_Elsbeth ;
  :participant :Wing ;
  rdfs:label "Morgan returns to Calodan"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Anger"^^xsd:anyURI ;
@@ -480,6 +501,7 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :after :Morgan_returns_to_Calodan ;
+ :at :Calodan ;
  :defeatOf :Rukh ;
  :victoryOf :Morgan_Elsbeth ;
  :witnessedBy :Gilad_Pellaeon ,

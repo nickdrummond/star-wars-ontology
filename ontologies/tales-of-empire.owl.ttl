@@ -170,6 +170,17 @@ There is no assertion of correctness or completeness by myself - content has bee
          owl:onProperty :hadRole ;
          owl:someValuesFrom :Officer
         ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :year ;
+     owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+         owl:onDatatype xsd:integer ;
+         owl:withRestrictions ( [ xsd:minInclusive -9
+               ]
+             [ xsd:maxInclusive -2
+               ]
+            )
+        ]
     ] ;
  :createdBy :Morgan_Elsbeth ;
  :participant :Isdain ;
@@ -514,9 +525,38 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 
 :Thrawn_recruits_Morgan rdf:type owl:NamedIndividual ,
-  :Recruitment ;
+  :Recruitment ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Corruption
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Power
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :TransferOfOwnership
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Star_Destroyer
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
  :after :Rukh_vs_Morgan ;
- :witnessedBy :Gilad_Pellaeon ;
+ :of :Morgan_Elsbeth ;
+ :participant :Thrawn ;
+ :witnessedBy :Gilad_Pellaeon ,
+  :Rukh ;
  rdfs:label "Thrawn recruits Morgan"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Anger"^^xsd:anyURI ;
  util:editorLabel "Thrawn_recruits_Morgan" ;

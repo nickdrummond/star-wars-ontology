@@ -97,6 +97,16 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-1529422890" .
 
 
+:Barris_and_Fourth_Sister_hunt_a_Jedi_Knight rdf:type owl:NamedIndividual ,
+  :Search ;
+ :during :Imperial_era ;
+ :year -19 ;
+ rdfs:label "Barris and Fourth Sister hunt a Jedi Knight"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Realization"^^xsd:anyURI ;
+ util:editorLabel "Barris_and_Fourth_Sister_hunt_a_Jedi_Knight" ;
+ util:legacyId "1576682927" .
+
+
 :Barriss_Ahmar_and_Dante_discuss_The_Grand_Inquisitor_Offer rdf:type owl:NamedIndividual ,
   :Argument ,
   [ rdf:type owl:Restriction ;
@@ -120,6 +130,7 @@ There is no assertion of correctness or completeness by myself - content has bee
     ] ;
  :after :Barriss_arrives_at_Fortress_Inquisitorius ;
  :at :Fortress_Inquisitorius ;
+ :during :Inquisitorius_Trial_of_Barriss_Offee ;
  :participant :Ahmar ,
   :Barriss_Offee ,
   :Dante ;
@@ -155,11 +166,11 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :at :_Unnamed_Rocky_Planet ;
- :during :Imperial_era ;
+ :during :Barris_and_Fourth_Sister_hunt_a_Jedi_Knight ;
  :of :Barriss_Offee ,
   :Fourth_Sister ;
  :used :Scythe_Shuttle ;
- :year 19 ;
+ :year -19 ;
  rdfs:label "Barriss and Fourth Sister Arrive at a Rocky Planet"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Realization"^^xsd:anyURI ;
  util:editorLabel "Barriss_and_Fourth_Sister_Arrive_at_a_Rocky_Planet" ;
@@ -185,19 +196,25 @@ There is no assertion of correctness or completeness by myself - content has bee
     ] ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :witnessedBy ;
-     owl:someValuesFrom :Human
-    ] ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :witnessedBy ;
-     owl:someValuesFrom :Humanoid
+     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                owl:onProperty :hadRole ;
+                owl:someValuesFrom :Civilian
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :livedIn ;
+                owl:hasValue :_Unnamed_Rocky_Planet
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
     ] ;
  :after :Barriss_and_Fourth_Sister_Arrive_at_a_Rocky_Planet ;
- :during :Imperial_era ;
+ :during :Barris_and_Fourth_Sister_hunt_a_Jedi_Knight ;
  :participant :Barriss_Offee ,
   :Fourth_Sister ,
   :_Unnamed_Human_Girl ,
   :_Unnamed_Human_Governor ;
- :year 19 ;
+ :year -19 ;
  rdfs:label "Barriss and Fourth Sister Ask About the Jedi"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Realization"^^xsd:anyURI ;
  util:editorLabel "Barriss_and_Fourth_Sister_Ask_About_the_Jedi" ;
@@ -246,6 +263,7 @@ There is no assertion of correctness or completeness by myself - content has bee
     ] ;
  :after :Lyn_Rakish_visits_Barriss_in_her_cell ;
  :at :Fortress_Inquisitorius ;
+ :during :Inquisitorius_Trial_of_Barriss_Offee ;
  :of :Barriss_Offee ;
  :year -19 ;
  rdfs:label "Barriss arrives at Fortress Inquisitorius"@en ;
@@ -267,6 +285,7 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :after :Barriss_vs_Dante ;
+ :during :Inquisitorius_Trial_of_Barriss_Offee ;
  :of :Barriss_Offee ;
  :participant :Eleventh_Brother ,
   :First_Brother ,
@@ -298,6 +317,7 @@ There is no assertion of correctness or completeness by myself - content has bee
      owl:someValuesFrom :Lightsaber
     ] ;
  :after :The_Grand_Inquisitor_trains_Barriss ;
+ :during :Inquisitorius_Trial_of_Barriss_Offee ;
  :victoryOf :Barriss_Offee ;
  :witnessedBy :Fourth_Sister ,
   :The_Grand_Inquisitor ;
@@ -468,6 +488,17 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-715432275" .
 
 
+:Inquisitorius_Trial_of_Barriss_Offee rdf:type owl:NamedIndividual ,
+  :Trial ;
+ :after :Siege_of_the_Jedi_Temple ;
+ :during :Imperial_era ;
+ :year -19 ;
+ rdfs:comment "https://starwars.fandom.com/wiki/Devoted"^^xsd:anyURI ;
+ rdfs:label "Inquisitorius Trial of Barriss Offee"@en ;
+ util:editorLabel "Inquisitorius_Trial_of_Barriss_Offee" ;
+ util:legacyId "-2098053203" .
+
+
 :Lyn_Rakish_visits_Barriss_in_her_cell rdf:type owl:NamedIndividual ,
   :Visit ,
   [ rdf:type owl:Restriction ;
@@ -493,7 +524,7 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ,
   [ rdf:type owl:Restriction ;
-     owl:onProperty :participant ;
+     owl:onProperty :witnessedBy ;
      owl:someValuesFrom [ rdf:type owl:Restriction ;
          owl:onProperty :hadRole ;
          owl:someValuesFrom [ owl:intersectionOf ( :Imperial_shock_trooper
@@ -596,32 +627,13 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Attack ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
-     owl:someValuesFrom [ owl:intersectionOf ( :Destruction
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :of ;
-                owl:someValuesFrom [ owl:intersectionOf ( :Town
-                        [ rdf:type owl:Restriction ;
-                           owl:onProperty :locatedIn ;
-                           owl:hasValue :_Unnamed_Rocky_Planet
-                          ]
-                       ) ;
-                    rdf:type owl:Class
-                   ]
-               ]
-            ) ;
-         rdf:type owl:Class
-        ]
-    ] ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :included ;
      owl:someValuesFrom [ owl:intersectionOf ( :Killing
              [ rdf:type owl:Restriction ;
                 owl:onProperty :of ;
-                owl:someValuesFrom :Human
-               ]
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :of ;
-                owl:someValuesFrom :Humanoid
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :hadRole ;
+                    owl:someValuesFrom :Civilian
+                   ]
                ]
              [ rdf:type owl:Restriction ;
                 owl:onProperty :of ;
@@ -632,11 +644,11 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :after :Barriss_and_Fourth_Sister_Ask_About_the_Jedi ;
- :during :Imperial_era ;
+ :during :Barris_and_Fourth_Sister_hunt_a_Jedi_Knight ;
  :ledBy :Fourth_Sister ;
  :witnessedBy :Barriss_Offee ,
   :_Unnamed_Human_Girl ;
- :year 19 ;
+ :year -19 ;
  rdfs:label "Massacre in the rocky planet"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Realization"^^xsd:anyURI ;
  util:editorLabel "Massacre_in_the_rocky_planet" ;
@@ -1093,6 +1105,7 @@ There is no assertion of correctness or completeness by myself - content has bee
     ] ;
  :after :Barriss_Ahmar_and_Dante_discuss_The_Grand_Inquisitor_Offer ;
  :at :Fortress_Inquisitorius ;
+ :during :Inquisitorius_Trial_of_Barriss_Offee ;
  :of :Barriss_Offee ;
  :participant :The_Grand_Inquisitor ;
  :year -19 ;
@@ -1159,6 +1172,7 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :after :Rukh_vs_Morgan ;
+ :at :Calodan ;
  :of :Morgan_Elsbeth ;
  :participant :Thrawn ;
  :to :Thrawn_Forces ;
@@ -1221,6 +1235,10 @@ There is no assertion of correctness or completeness by myself - content has bee
   [ rdf:type owl:Restriction ;
      owl:onProperty :gender ;
      owl:someValuesFrom :Female
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadRole ;
+     owl:someValuesFrom :Child
     ] ;
  :livedIn :_Unnamed_Rocky_Planet ;
  rdfs:label " Unnamed Human Girl"@en ;
@@ -1247,7 +1265,11 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 
 :_Unnamed_Rocky_Planet rdf:type owl:NamedIndividual ,
-  :Planet ;
+  :Planet ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hasTerrain ;
+     owl:someValuesFrom :Rocky
+    ] ;
  rdfs:label " Unnamed Rocky Planet"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_rocky_planet_(Inquisitors)"^^xsd:anyURI ;
  util:editorLabel "_Unnamed_Rocky_Planet" ;

@@ -99,16 +99,13 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 :Barriss_Ahmar_and_Dante_discuss_The_Grand_Inquisitor_Offer rdf:type owl:NamedIndividual ,
   :Argument ,
-  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-            owl:onProperty :about ;
-            owl:someValuesFrom :Choice
-           ]
-         [ rdf:type owl:Restriction ;
-            owl:onProperty :about ;
-            owl:someValuesFrom :Trial
-           ]
-        ) ;
-     rdf:type owl:Class
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :about ;
+     owl:someValuesFrom :Choice
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :about ;
+     owl:someValuesFrom :Trial
     ] ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
@@ -131,6 +128,80 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Devoted" ;
  util:editorLabel "Barriss_Ahmar_and_Dante_discuss_The_Grand_Inquisitor_Offer" ;
  util:legacyId "-1166677927" .
+
+
+:Barriss_and_Fourth_Sister_Arrive_at_a_Rocky_Planet rdf:type owl:NamedIndividual ,
+  :Arrival ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Argument
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:hasValue :Galactic_Empire
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Jedi_Knight
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :at :_Unnamed_Rocky_Planet ;
+ :during :Imperial_era ;
+ :of :Barriss_Offee ,
+  :Fourth_Sister ;
+ :used :Scythe_Shuttle ;
+ :year 19 ;
+ rdfs:label "Barriss and Fourth Sister Arrive at a Rocky Planet"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Realization"^^xsd:anyURI ;
+ util:editorLabel "Barriss_and_Fourth_Sister_Arrive_at_a_Rocky_Planet" ;
+ util:legacyId "-85272303" .
+
+
+:Barriss_and_Fourth_Sister_Ask_About_the_Jedi rdf:type owl:NamedIndividual ,
+  :Interrogation ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :about ;
+     owl:someValuesFrom :Jedi_Knight
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :at ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Town
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :locatedIn ;
+                owl:hasValue :_Unnamed_Rocky_Planet
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :witnessedBy ;
+     owl:someValuesFrom :Human
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :witnessedBy ;
+     owl:someValuesFrom :Humanoid
+    ] ;
+ :after :Barriss_and_Fourth_Sister_Arrive_at_a_Rocky_Planet ;
+ :during :Imperial_era ;
+ :participant :Barriss_Offee ,
+  :Fourth_Sister ,
+  :_Unnamed_Human_Girl ,
+  :_Unnamed_Human_Governor ;
+ :year 19 ;
+ rdfs:label "Barriss and Fourth Sister Ask About the Jedi"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Realization"^^xsd:anyURI ;
+ util:editorLabel "Barriss_and_Fourth_Sister_Ask_About_the_Jedi" ;
+ util:legacyId "-275854190" .
 
 
 :Barriss_arrives_at_Fortress_Inquisitorius rdf:type owl:NamedIndividual ,
@@ -228,7 +299,8 @@ There is no assertion of correctness or completeness by myself - content has bee
     ] ;
  :after :The_Grand_Inquisitor_trains_Barriss ;
  :victoryOf :Barriss_Offee ;
- :witnessedBy :The_Grand_Inquisitor ;
+ :witnessedBy :Fourth_Sister ,
+  :The_Grand_Inquisitor ;
  :year -19 ;
  rdfs:label "Barriss vs Dante"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Devoted"^^xsd:anyURI ;
@@ -518,6 +590,57 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:label "Magistrate Morgan promotes her new Starfighters"@en ;
  util:editorLabel "Magistrate_Morgan_promotes_her_new_Starfighters" ;
  util:legacyId "-1079888349" .
+
+
+:Massacre_in_the_rocky_planet rdf:type owl:NamedIndividual ,
+  :Attack ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Town
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :locatedIn ;
+                           owl:hasValue :_Unnamed_Rocky_Planet
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Human
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Humanoid
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :_Unnamed_Human_Governor
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Barriss_and_Fourth_Sister_Ask_About_the_Jedi ;
+ :during :Imperial_era ;
+ :ledBy :Fourth_Sister ;
+ :witnessedBy :Barriss_Offee ,
+  :_Unnamed_Human_Girl ;
+ :year 19 ;
+ rdfs:label "Massacre in the rocky planet"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Realization"^^xsd:anyURI ;
+ util:editorLabel "Massacre_in_the_rocky_planet" ;
+ util:legacyId "-1672674066" .
 
 
 :Morgan_Meets_Captain_Pellaeon rdf:type owl:NamedIndividual ,
@@ -943,8 +1066,19 @@ There is no assertion of correctness or completeness by myself - content has bee
 :The_Grand_Inquisitor_trains_Barriss rdf:type owl:NamedIndividual ,
   :Training ,
   [ rdf:type owl:Restriction ;
+     owl:onProperty :after ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Ahmar
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
      owl:onProperty :participant ;
-     owl:someValuesFrom [ owl:intersectionOf ( :The_Force
+     owl:someValuesFrom [ owl:intersectionOf ( :Dark_Side
              [ rdf:type owl:Restriction ;
                 owl:onProperty :connectedTo ;
                 owl:hasValue :Barriss_Offee
@@ -1080,6 +1214,44 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Path_of_Hate"^^xsd:anyURI ;
  util:editorLabel "Wing_Greets_Nadura" ;
  util:legacyId "-1196204851" .
+
+
+:_Unnamed_Human_Girl rdf:type owl:NamedIndividual ,
+  :Human ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :gender ;
+     owl:someValuesFrom :Female
+    ] ;
+ :livedIn :_Unnamed_Rocky_Planet ;
+ rdfs:label " Unnamed Human Girl"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_human_girl_(rocky_planet)"^^xsd:anyURI ;
+ util:editorLabel "_Unnamed_Human_Girl" ;
+ util:legacyId "2001262245" .
+
+
+:_Unnamed_Human_Governor rdf:type owl:NamedIndividual ,
+  :Human ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :gender ;
+     owl:someValuesFrom :Male
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadRole ;
+     owl:someValuesFrom :Governor
+    ] ;
+ :livedIn :_Unnamed_Rocky_Planet ;
+ rdfs:label " Unnamed Human Governor"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_human_governor"^^xsd:anyURI ;
+ util:editorLabel "_Unnamed_Human_Governor" ;
+ util:legacyId "157560639" .
+
+
+:_Unnamed_Rocky_Planet rdf:type owl:NamedIndividual ,
+  :Planet ;
+ rdfs:label " Unnamed Rocky Planet"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Unidentified_rocky_planet_(Inquisitors)"^^xsd:anyURI ;
+ util:editorLabel "_Unnamed_Rocky_Planet" ;
+ util:legacyId "814985018" .
 
 
 :_unnamed_New_Republic_Ship rdf:type owl:NamedIndividual ,

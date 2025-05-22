@@ -4,7 +4,14 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX : <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
 
-SELECT ?event
+SELECT ?classType ?event ?relation
 WHERE {
-      ?event :participant :Barriss_Offee .
+	?event a ?classType # i find what kind of class each event is
+	FILTER (
+   		 !REGEX(STR(?classType), STR(owl:))
+  	) .
+  	# i then find all events that have an object property assertion where the individual Barriss Offee is part of it
+	?event ?relation :Barriss_Offee
+	FILTER(?relation != owl:hasValue && ?relation != rdf:first)
 }
+ORDER BY ASC(?classType) # i finally order it by ascending order based on class

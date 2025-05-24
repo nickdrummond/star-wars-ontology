@@ -4,7 +4,29 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX : <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
 
-SELECT ?event
+SELECT
+  (COUNT(DISTINCT ?corvusEvent) AS ?corvusCount)
+  (COUNT(DISTINCT ?calodanEvent) AS ?calodanCount)
+  (COUNT(DISTINCT ?combinedEvent) AS ?totalCount)
 WHERE {
-      ?event :locatedIn :Corvus || :Calodan .
+  {
+    #first i find the total amount of events related to Corvus
+    ?corvusEvent ?p1 ?o1 .
+    FILTER (REGEX(STR(?o1), STR(:Corvus)))
+  }
+
+  {
+    #i then get the total amount of events related to Calodan
+    ?calodanEvent ?p2 ?o2 .
+    FILTER (REGEX(STR(?o2), STR(:Calodan)))
+  }
+
+  # i combine both for total count
+  {
+    ?combinedEvent ?p3 ?o3 .
+    FILTER (
+      REGEX(STR(?o3), STR(:Corvus)) ||
+      REGEX(STR(?o3), STR(:Calodan))
+    )
+  }
 }

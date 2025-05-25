@@ -5,25 +5,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX : <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
 
 SELECT
-  (COUNT(DISTINCT ?corvusEvent) AS ?corvusCount)
-  (COUNT(DISTINCT ?calodanEvent) AS ?calodanCount)
+  (COUNT(DISTINCT ?corvusPropertiesAndUsage) AS ?corvusCount)
+  (COUNT(DISTINCT ?calodanPropertiesAndUsage) AS ?calodanCount)
   (COUNT(DISTINCT ?combinedEvent) AS ?totalCount)
 WHERE {
   {
-    #first i find the total amount of events related to Corvus
-    ?corvusEvent ?p1 ?o1 .
+    #first i find the total amount of properties related to Corvus
+    ?corvusPropertiesAndUsage ?p1 ?o1 .
     FILTER (REGEX(STR(?o1), STR(:Corvus)))
   }
 
   {
-    #i then get the total amount of events related to Calodan
-    ?calodanEvent ?p2 ?o2 .
+    #i then get the total amount of properties related to Calodan
+    ?calodanPropertiesAndUsage ?p2 ?o2 .
     FILTER (REGEX(STR(?o2), STR(:Calodan)))
   }
 
   # i combine both for total count
   {
-    ?combinedEvent ?p3 ?o3 .
+    ?combinedPropertiesAndUsage ?p3 ?o3 .
     FILTER (
       REGEX(STR(?o3), STR(:Corvus)) ||
       REGEX(STR(?o3), STR(:Calodan))

@@ -425,16 +425,16 @@ There is no assertion of correctness or completeness by myself - content has bee
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
      owl:someValuesFrom [ owl:intersectionOf ( :Conversation
-             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                       owl:onProperty :about ;
-                       owl:someValuesFrom :Corruption
-                      ]
-                    [ rdf:type owl:Restriction ;
-                       owl:onProperty :of ;
-                       owl:hasValue :Fourth_Sister
-                      ]
-                   ) ;
-                rdf:type owl:Class
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Corruption
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:hasValue :Fourth_Sister
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
                ]
             ) ;
          rdf:type owl:Class
@@ -1080,11 +1080,12 @@ There is no assertion of correctness or completeness by myself - content has bee
             )
         ]
     ] ;
+ :at :_Unidentified_planet ;
  :during :Imperial_era ;
- :of :Barriss_Offee ;
  :participant :Father_of_Micah ,
   :Micah ,
   :Mother_of_Micah ;
+ :target :Barriss_Offee ;
  rdfs:label "Micah and his family search the healer"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Way_Out"^^xsd:anyURI ;
  util:editorLabel "Micah_and_his_family_search_the_healer" ;
@@ -1683,6 +1684,17 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:label "Unidentified Fugitive Jedi"@en ;
  util:editorLabel "_Unidentified_Fugitive_Jedi" ;
  util:legacyId "297674295" .
+
+
+:_Unidentified_planet rdf:type owl:NamedIndividual ,
+  :Planet ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hasTerrain ;
+     owl:someValuesFrom :Mountains
+    ] ;
+ rdfs:label " Unidentified planet"@en ;
+ util:editorLabel "_Unidentified_planet" ;
+ util:legacyId "-616367811" .
 
 
 :_Unnamed_Barriss_friend rdf:type owl:NamedIndividual ,

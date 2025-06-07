@@ -54,23 +54,24 @@ Above is a snapshot - see [ontology metrics](https://www.star-wars-ontology.co.u
 
 ## Scope
 
-| Content                     | Status                                                                                   |
-|-----------------------------|------------------------------------------------------------------------------------------|
-| Skywalker Saga episodes 1-9 | first pass                                                                               |
-| Solo                        | first pass                                                                               |
-| Rogue One                   | first pass                                                                               |
+| Content                     | Status                                                                                 |
+|-----------------------------|----------------------------------------------------------------------------------------|
+| Skywalker Saga episodes 1-9 | first pass                                                                             |
+| Solo                        | first pass                                                                             |
+| Rogue One                   | first pass                                                                             |
 | The Mandalorian             | [2 of 3 series first pass](https://github.com/nickdrummond/star-wars-ontology/issues/45) |
-| Resistance                  | first pass                                                                               |
-| Rebels                      | first pass                                                                               |  
+| Resistance                  | first pass                                                                             |
+| Rebels                      | first pass                                                                             |  
 | Clone Wars                  | [4 of 7 series first pass](https://github.com/nickdrummond/star-wars-ontology/issues/11) |
 | The Bad Batch               | [1 of 3 series first pass](https://github.com/nickdrummond/star-wars-ontology/issues/44) |
-| The Book of Boba Fett       | first pass                                                                               |
-| Kenobi                      | first pass                                                                               |
-| Andor                       | [started](https://github.com/nickdrummond/star-wars-ontology/issues/39)                  |
-| Tales of the Jedi           | to do                                                                                    |
-| Ahsoka                      | to do                                                                                    |
-| Tales of the Empire         | to do                                                                                    |
-| The Acolyte                 | to do                                                                                    |
+| The Book of Boba Fett       | first pass                                                                             |
+| Kenobi                      | first pass                                                                             |
+| Andor                       | [started](https://github.com/nickdrummond/star-wars-ontology/issues/39)                |
+| Tales of the Jedi           | to do                                                                                  |
+| Ahsoka                      | to do                                                                                  |
+| Tales of the Empire         | [done in collaboration](https://github.com/nickdrummond/star-wars-ontology/issues/48)  |
+| The Acolyte                 | to do                                                                                  |
+| Tales of the Underworld     | to do                                                                                  |
 
 ## Contents
 

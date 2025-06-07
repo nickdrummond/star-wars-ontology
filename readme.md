@@ -95,6 +95,8 @@ Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
 For efficiency, the query page only includes [event.owl.ttl](ontologies/events.owl.ttl) and
 its imports - see [docs/performance.md](docs/performance.md)
 
+[![Graph of all Droids](docs/images/droids.png)](https://www.star-wars-ontology.co.uk/graph?depth=0&query=Droid&indivs=&parents=type&space=24&type=cola)
+
 [![Cloud view of individuals by usage](docs/images/cloud.png)](https://www.star-wars-ontology.co.uk/clouds/individuals)
 
 

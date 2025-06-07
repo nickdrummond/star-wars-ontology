@@ -126,11 +126,13 @@ Events from 1 season
 
 ### Eras
 
-Grouping events by the timespan they occur during:
+Grouping events (roughly) by the timespan they occur:
 
 * [republic-era](https://www.star-wars-ontology.co.uk/ontologies/-1501389091/)
 * [imperial-era](https://www.star-wars-ontology.co.uk/ontologies/1616560536/)
 * [new-republic-era](https://www.star-wars-ontology.co.uk/ontologies/-768890178/)
+
+Note that some ontologies span multiple eras, such as tales of the Empire.
 
 ### Peripheral/deeper ontologies
 

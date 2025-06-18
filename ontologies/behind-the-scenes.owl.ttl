@@ -6,6 +6,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix util: <https://nickdrummond.github.io/star-wars-ontology/util#> .
 @base <https://nickdrummond.github.io/star-wars-ontology/ontologies#> .
 
 <https://nickdrummond.github.io/star-wars-ontology/ontologies/behind-the-scenes.owl.ttl> rdf:type owl:Ontology ;
@@ -24,54 +25,101 @@ There is no assertion of correctness or completeness by myself - content has bee
 :depicted owl:inverseOf :depictedBy .
 
 
-:depictedBy rdf:type owl:ObjectProperty .
+:depictedBy rdf:type owl:ObjectProperty ;
+ rdfs:label "depictedBy"@en ;
+ util:editorLabel "depictedBy" ;
+ util:legacyId "-126607398" .
 
 
 :Actor-Vocation rdf:type owl:Class ;
- rdfs:subClassOf :Entertainer .
+ rdfs:subClassOf :Entertainer ;
+ rdfs:label "Actor-Vocation"@en ;
+ util:editorLabel "Actor-Vocation" ;
+ util:legacyId "916860252" .
 
 
 :Composer rdf:type owl:Class ;
- rdfs:subClassOf :Vocation .
+ rdfs:subClassOf :Vocation ;
+ rdfs:label "Composer"@en ;
+ util:editorLabel "Composer" ;
+ util:legacyId "410092825" .
 
 
 :Director rdf:type owl:Class ;
- rdfs:subClassOf :Vocation .
+ rdfs:subClassOf :Vocation ;
+ rdfs:label "Director"@en ;
+ util:editorLabel "Director" ;
+ util:legacyId "1255479173" .
 
 
-:Entertainer rdf:type owl:Class .
+:Earthling rdf:type owl:Class ;
+ rdfs:subClassOf :Human ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :originallyFrom ;
+     owl:hasValue :Earth
+    ] ;
+ rdfs:label "Earthling"@en ;
+ util:editorLabel "Earthling" ;
+ util:legacyId "-445050119" .
+
+
+:Entertainer rdf:type owl:Class ;
+ rdfs:label "Entertainer"@en ;
+ util:editorLabel "Entertainer" ;
+ util:legacyId "-698547952" .
 
 
 :Film rdf:type owl:Class ;
- rdfs:subClassOf :Information .
+ rdfs:subClassOf :Information ;
+ rdfs:label "Film"@en ;
+ util:editorLabel "Film" ;
+ util:legacyId "946981245" .
 
 
 :Film_Crew rdf:type owl:Class ;
- rdfs:subClassOf :Organisation .
+ rdfs:subClassOf :Organisation ;
+ rdfs:label "Film Crew"@en ;
+ util:editorLabel "Film_Crew" ;
+ util:legacyId "1860059925" .
 
 
 :Producer rdf:type owl:Class ;
- rdfs:subClassOf :Vocation .
+ rdfs:subClassOf :Vocation ;
+ rdfs:label "Producer"@en ;
+ util:editorLabel "Producer" ;
+ util:legacyId "5673867" .
 
 
 :Puppeteer-Vocation rdf:type owl:Class ;
- rdfs:subClassOf :Actor-Vocation .
+ rdfs:subClassOf :Actor-Vocation ;
+ rdfs:label "Puppeteer-Vocation"@en ;
+ util:editorLabel "Puppeteer-Vocation" ;
+ util:legacyId "-684001197" .
 
 
 :Series rdf:type owl:Class ;
- rdfs:subClassOf :Information .
+ rdfs:subClassOf :Information ;
+ rdfs:label "Series"@en ;
+ util:editorLabel "Series" ;
+ util:legacyId "-877180304" .
 
 
 :Voice-Actor-Vocation rdf:type owl:Class ;
- rdfs:subClassOf :Actor-Vocation .
+ rdfs:subClassOf :Actor-Vocation ;
+ rdfs:label "Voice-Actor-Vocation"@en ;
+ util:editorLabel "Voice-Actor-Vocation" ;
+ util:legacyId "-813079689" .
 
 
 :Writer rdf:type owl:Class ;
- rdfs:subClassOf :Vocation .
+ rdfs:subClassOf :Vocation ;
+ rdfs:label "Writer"@en ;
+ util:editorLabel "Writer" ;
+ util:legacyId "-750915476" .
 
 
 :Alec_Guinness rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -87,12 +135,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Alec_Guinness"^^xsd:anyURI .
+ rdfs:label "Alec Guinness"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Alec_Guinness"^^xsd:anyURI ;
+ util:editorLabel "Alec_Guinness" ;
+ util:legacyId "-123190087" .
 
 
 :Alex_McCrindle rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -104,24 +154,32 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Alex_McCrindle"^^xsd:anyURI .
+ rdfs:label "Alex McCrindle"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Alex_McCrindle"^^xsd:anyURI ;
+ util:editorLabel "Alex_McCrindle" ;
+ util:legacyId "299971339" .
 
 
 :Andor_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Andor Film Crew"@en ;
+ util:editorLabel "Andor_Film_Crew" ;
+ util:legacyId "-1020349712" .
 
 
 :Andor_TV_Series rdf:type owl:NamedIndividual ,
   :Series ;
  :createdBy :Andor_Film_Crew ;
  :starting 2022 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Andor_(television_series)"^^xsd:anyURI .
+ rdfs:label "Andor TV Series"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Andor_(television_series)"^^xsd:anyURI ;
+ util:editorLabel "Andor_TV_Series" ;
+ util:legacyId "1301362344" .
 
 
 :Anthony_Daniels rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -133,22 +191,30 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Anthony_Daniels"^^xsd:anyURI .
+ rdfs:label "Anthony Daniels"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Anthony_Daniels"^^xsd:anyURI ;
+ util:editorLabel "Anthony_Daniels" ;
+ util:legacyId "711624583" .
 
 
 :Attack_of_the_Clones_FIlm_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Attack of the Clones FIlm Crew"@en ;
+ util:editorLabel "Attack_of_the_Clones_FIlm_Crew" ;
+ util:legacyId "167496619" .
 
 
 :Bad_Batch_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Bad Batch Film Crew"@en ;
+ util:editorLabel "Bad_Batch_Film_Crew" ;
+ util:legacyId "409238486" .
 
 
 :Billie_Lourd rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -161,12 +227,14 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :hadMother :Carrie_Fisher ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Billie_Lourd"^^xsd:anyURI .
+ rdfs:label "Billie Lourd"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Billie_Lourd"^^xsd:anyURI ;
+ util:editorLabel "Billie_Lourd" ;
+ util:legacyId "41238785" .
 
 
 :Billy_Dee_Williams rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -178,12 +246,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Billy_Dee_Williams"^^xsd:anyURI .
+ rdfs:label "Billy Dee Williams"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Billy_Dee_Williams"^^xsd:anyURI ;
+ util:editorLabel "Billy_Dee_Williams" ;
+ util:legacyId "1079194481" .
 
 
 :Bonnie_Maree_Piesse rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -203,17 +273,22 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Bonnie_Maree_Piesse"^^xsd:anyURI .
+ rdfs:label "Bonnie Maree Piesse"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Bonnie_Maree_Piesse"^^xsd:anyURI ;
+ util:editorLabel "Bonnie_Maree_Piesse" ;
+ util:legacyId "-1210829399" .
 
 
 :Book_of_Boba_Fett_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Book of Boba Fett Film Crew"@en ;
+ util:editorLabel "Book_of_Boba_Fett_Film_Crew" ;
+ util:legacyId "-375768778" .
 
 
 :Caroline_Blakiston rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -225,19 +300,23 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Caroline_Blakiston"^^xsd:anyURI .
+ rdfs:label "Caroline Blakiston"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Caroline_Blakiston"^^xsd:anyURI ;
+ util:editorLabel "Caroline_Blakiston" ;
+ util:legacyId "1233587102" .
 
 
 :Carrie_Beck rdf:type owl:NamedIndividual ,
   :Human ;
  :memberOf :Lucasfilm_Story_Group ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Carrie_Beck"^^xsd:anyURI .
+ rdfs:label "Carrie Beck"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Carrie_Beck"^^xsd:anyURI ;
+ util:editorLabel "Carrie_Beck" ;
+ util:legacyId "1826649129" .
 
 
 :Carrie_Fisher rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -249,12 +328,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Carrie_Fisher"^^xsd:anyURI .
+ rdfs:label "Carrie Fisher"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Carrie_Fisher"^^xsd:anyURI ;
+ util:editorLabel "Carrie_Fisher" ;
+ util:legacyId "-1874876413" .
 
 
 :Daisy_Ridley rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -266,12 +347,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Daisy_Ridley"^^xsd:anyURI .
+ rdfs:label "Daisy Ridley"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Daisy_Ridley"^^xsd:anyURI ;
+ util:editorLabel "Daisy_Ridley" ;
+ util:legacyId "-943219719" .
 
 
 :Dave_Filoni rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Director
@@ -322,12 +405,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Dave_Filoni"^^xsd:anyURI .
+ rdfs:label "Dave Filoni"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Dave_Filoni"^^xsd:anyURI ;
+ util:editorLabel "Dave_Filoni" ;
+ util:legacyId "-953992883" .
 
 
 :David_Prowse rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -351,12 +436,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/David_Prowse"^^xsd:anyURI .
+ rdfs:label "David Prowse"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/David_Prowse"^^xsd:anyURI ;
+ util:editorLabel "David_Prowse" ;
+ util:legacyId "-596139136" .
 
 
 :Denis_Lawson rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -368,12 +455,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Denis_Lawson"^^xsd:anyURI .
+ rdfs:label "Denis Lawson"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Denis_Lawson"^^xsd:anyURI ;
+ util:editorLabel "Denis_Lawson" ;
+ util:legacyId "-1674500079" .
 
 
 :Diego_Luna rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -393,12 +482,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Diego_Luna"^^xsd:anyURI .
+ rdfs:label "Diego Luna"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Diego_Luna"^^xsd:anyURI ;
+ util:editorLabel "Diego_Luna" ;
+ util:legacyId "-215648884" .
 
 
 :Don_Henderson rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -410,12 +501,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Don_Henderson"^^xsd:anyURI .
+ rdfs:label "Don Henderson"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Don_Henderson"^^xsd:anyURI ;
+ util:editorLabel "Don_Henderson" ;
+ util:legacyId "-1525191217" .
 
 
 :Drewe_Henley rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -427,21 +520,29 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso ""^^xsd:anyURI .
+ rdfs:label "Drewe Henley"@en ;
+ rdfs:seeAlso ""^^xsd:anyURI ;
+ util:editorLabel "Drewe_Henley" ;
+ util:legacyId "-66607006" .
 
 
 :Earth rdf:type owl:NamedIndividual ,
-  :Planet .
+  :Planet ;
+ rdfs:label "Earth"@en ;
+ util:editorLabel "Earth" ;
+ util:legacyId "1011517443" .
 
 
 :Empire_Strikes_Back_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Empire Strikes Back Film Crew"@en ;
+ util:editorLabel "Empire_Strikes_Back_Film_Crew" ;
+ util:legacyId "-1233745690" .
 
 
 :Ewan_McGregor rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadMother ;
      owl:someValuesFrom [ rdf:type owl:Restriction ;
@@ -460,12 +561,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Ewan_McGregor"^^xsd:anyURI .
+ rdfs:label "Ewan McGregor"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Ewan_McGregor"^^xsd:anyURI ;
+ util:editorLabel "Ewan_McGregor" ;
+ util:legacyId "-1338902945" .
 
 
 :Felicity_Jones rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -481,17 +584,22 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Felicity_Jones"^^xsd:anyURI .
+ rdfs:label "Felicity Jones"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Felicity_Jones"^^xsd:anyURI ;
+ util:editorLabel "Felicity_Jones" ;
+ util:legacyId "1729892792" .
 
 
 :Force_Awakens_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Force Awakens Film Crew"@en ;
+ util:editorLabel "Force_Awakens_Film_Crew" ;
+ util:legacyId "239254156" .
 
 
 :Forest_Whitaker rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -507,12 +615,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Forest_Whitaker"^^xsd:anyURI .
+ rdfs:label "Forest Whitaker"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Forest_Whitaker"^^xsd:anyURI ;
+ util:editorLabel "Forest_Whitaker" ;
+ util:legacyId "387794382" .
 
 
 :Frank_Oz rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Puppeteer-Vocation
@@ -525,12 +635,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Frank_Oz"^^xsd:anyURI .
+ rdfs:label "Frank Oz"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Frank_Oz"^^xsd:anyURI ;
+ util:editorLabel "Frank_Oz" ;
+ util:legacyId "-634435631" .
 
 
 :Gareth_Edwards rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Director
@@ -542,12 +654,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Gareth_Edwards"^^xsd:anyURI .
+ rdfs:label "Gareth Edwards"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Gareth_Edwards"^^xsd:anyURI ;
+ util:editorLabel "Gareth_Edwards" ;
+ util:legacyId "-723500653" .
 
 
 :Garrick_Hagon rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -559,12 +673,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Garrick_Hagon"^^xsd:anyURI .
+ rdfs:label "Garrick Hagon"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Garrick_Hagon"^^xsd:anyURI ;
+ util:editorLabel "Garrick_Hagon" ;
+ util:legacyId "505683454" .
 
 
 :Genevieve_OReilly rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -576,12 +692,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Genevieve_O%27Reilly"^^xsd:anyURI .
+ rdfs:label "Genevieve OReilly"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Genevieve_O%27Reilly"^^xsd:anyURI ;
+ util:editorLabel "Genevieve_OReilly" ;
+ util:legacyId "-1352536424" .
 
 
 :George_Lucas rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -655,12 +773,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/George_Lucas"^^xsd:anyURI .
+ rdfs:label "George Lucas"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/George_Lucas"^^xsd:anyURI ;
+ util:editorLabel "George_Lucas" ;
+ util:legacyId "1544665381" .
 
 
 :Harrison_Ford rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -672,12 +792,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Harrison_Ford"^^xsd:anyURI .
+ rdfs:label "Harrison Ford"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Harrison_Ford"^^xsd:anyURI ;
+ util:editorLabel "Harrison_Ford" ;
+ util:legacyId "2032371121" .
 
 
 :Hayden_Christensen rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -700,17 +822,22 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Hayden_Christensen"^^xsd:anyURI .
+ rdfs:label "Hayden Christensen"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Hayden_Christensen"^^xsd:anyURI ;
+ util:editorLabel "Hayden_Christensen" ;
+ util:legacyId "-1547859843" .
 
 
 :Holocron_Continuity_Database rdf:type owl:NamedIndividual ,
   :Holocron ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Holocron_continuity_database"^^xsd:anyURI .
+ rdfs:label "Holocron Continuity Database"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Holocron_continuity_database"^^xsd:anyURI ;
+ util:editorLabel "Holocron_Continuity_Database" ;
+ util:legacyId "2039369724" .
 
 
 :Ian_McDiarmid rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -722,12 +849,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Ian_McDiarmid"^^xsd:anyURI .
+ rdfs:label "Ian McDiarmid"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Ian_McDiarmid"^^xsd:anyURI ;
+ util:editorLabel "Ian_McDiarmid" ;
+ util:legacyId "1376608652" .
 
 
 :Ian_McElhinney rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -739,12 +868,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Ian_McElhinney"^^xsd:anyURI .
+ rdfs:label "Ian McElhinney"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Ian_McElhinney"^^xsd:anyURI ;
+ util:editorLabel "Ian_McElhinney" ;
+ util:legacyId "1748702132" .
 
 
 :Irvin_Kershner rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Director
@@ -756,12 +887,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Irvin_Kershner"^^xsd:anyURI .
+ rdfs:label "Irvin Kershner"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Irvin_Kershner"^^xsd:anyURI ;
+ util:editorLabel "Irvin_Kershner" ;
+ util:legacyId "-2006542540" .
 
 
 :J.J._Abrams rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Director
@@ -786,12 +919,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/J.J._Abrams"^^xsd:anyURI .
+ rdfs:label "J.J. Abrams"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/J.J._Abrams"^^xsd:anyURI ;
+ util:editorLabel "J.J._Abrams" ;
+ util:legacyId "-1009660282" .
 
 
 :Jake_Lloyd rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -803,12 +938,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Jake_Lloyd"^^xsd:anyURI .
+ rdfs:label "Jake Lloyd"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Jake_Lloyd"^^xsd:anyURI ;
+ util:editorLabel "Jake_Lloyd" ;
+ util:legacyId "-202741467" .
 
 
 :James_Earl_Jones rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
@@ -820,12 +957,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/James_Earl_Jones"^^xsd:anyURI .
+ rdfs:label "James Earl Jones"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/James_Earl_Jones"^^xsd:anyURI ;
+ util:editorLabel "James_Earl_Jones" ;
+ util:legacyId "-1293049246" .
 
 
 :Jason_Wingreen rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Voice-Actor-Vocation
@@ -837,12 +976,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Jason_Wingreen"^^xsd:anyURI .
+ rdfs:label "Jason Wingreen"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Jason_Wingreen"^^xsd:anyURI ;
+ util:editorLabel "Jason_Wingreen" ;
+ util:legacyId "-1534646396" .
 
 
 :Jeremy_Bulloch rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -854,12 +995,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Jeremy_Bulloch"^^xsd:anyURI .
+ rdfs:label "Jeremy Bulloch"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Jeremy_Bulloch"^^xsd:anyURI ;
+ util:editorLabel "Jeremy_Bulloch" ;
+ util:legacyId "-590830955" .
 
 
 :Joel_Edgerton rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -879,12 +1022,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Joel_Edgerton"^^xsd:anyURI .
+ rdfs:label "Joel Edgerton"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Joel_Edgerton"^^xsd:anyURI ;
+ util:editorLabel "Joel_Edgerton" ;
+ util:legacyId "-1308973846" .
 
 
 :John_Morton rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -907,12 +1052,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/John_Morton"^^xsd:anyURI .
+ rdfs:label "John Morton"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/John_Morton"^^xsd:anyURI ;
+ util:editorLabel "John_Morton" ;
+ util:legacyId "939090384" .
 
 
 :John_Williams rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Composer
@@ -924,12 +1071,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/John_Williams"^^xsd:anyURI .
+ rdfs:label "John Williams"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/John_Williams"^^xsd:anyURI ;
+ util:editorLabel "John_Williams" ;
+ util:legacyId "-1200197603" .
 
 
 :Jon_Favreau rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Director
@@ -988,12 +1137,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Jon_Favreau"^^xsd:anyURI .
+ rdfs:label "Jon Favreau"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Jon_Favreau"^^xsd:anyURI ;
+ util:editorLabel "Jon_Favreau" ;
+ util:legacyId "-1821775771" .
 
 
 :Kathleen_Kennedy rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Producer
@@ -1060,12 +1211,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Kathleen_Kennedy"^^xsd:anyURI .
+ rdfs:label "Kathleen Kennedy"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Kathleen_Kennedy"^^xsd:anyURI ;
+ util:editorLabel "Kathleen_Kennedy" ;
+ util:legacyId "1779784870" .
 
 
 :Kenny_Baker rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1077,22 +1230,30 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Kenny_Baker"^^xsd:anyURI .
+ rdfs:label "Kenny Baker"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Kenny_Baker"^^xsd:anyURI ;
+ util:editorLabel "Kenny_Baker" ;
+ util:legacyId "925991986" .
 
 
 :Kenobi_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Kenobi Film Crew"@en ;
+ util:editorLabel "Kenobi_Film_Crew" ;
+ util:legacyId "458702168" .
 
 
 :Last_Jedi_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Last Jedi Film Crew"@en ;
+ util:editorLabel "Last_Jedi_Film_Crew" ;
+ util:legacyId "-506567329" .
 
 
 :Lawrence_Kasdan rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Writer
@@ -1126,12 +1287,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Lawrence_Kasdan"^^xsd:anyURI .
+ rdfs:label "Lawrence Kasdan"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Lawrence_Kasdan"^^xsd:anyURI ;
+ util:editorLabel "Lawrence_Kasdan" ;
+ util:legacyId "-175119535" .
 
 
 :Leland_Chee rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ rdf:type owl:Restriction ;
@@ -1140,23 +1303,31 @@ There is no assertion of correctness or completeness by myself - content has bee
         ]
     ] ;
  :memberOf :Lucasfilm_Story_Group ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Leland_Chee"^^xsd:anyURI .
+ rdfs:label "Leland Chee"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Leland_Chee"^^xsd:anyURI ;
+ util:editorLabel "Leland_Chee" ;
+ util:legacyId "558677017" .
 
 
 :Lucasfilm rdf:type owl:NamedIndividual ,
   :Corporation ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Lucasfilm_Ltd."^^xsd:anyURI .
+ rdfs:label "Lucasfilm"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Lucasfilm_Ltd."^^xsd:anyURI ;
+ util:editorLabel "Lucasfilm" ;
+ util:legacyId "-677488407" .
 
 
 :Lucasfilm_Story_Group rdf:type owl:NamedIndividual ,
   :Organisation ;
  :memberOf :Lucasfilm ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Lucasfilm_Story_Group"^^xsd:anyURI .
+ rdfs:label "Lucasfilm Story Group"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Lucasfilm_Story_Group"^^xsd:anyURI ;
+ util:editorLabel "Lucasfilm_Story_Group" ;
+ util:legacyId "-1426498145" .
 
 
 :Marjorie_Eaton rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1172,12 +1343,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Marjorie_Eaton"^^xsd:anyURI .
+ rdfs:label "Marjorie Eaton"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Marjorie_Eaton"^^xsd:anyURI ;
+ util:editorLabel "Marjorie_Eaton" ;
+ util:legacyId "-1374553892" .
 
 
 :Mark_Hamill rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1189,28 +1362,35 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Mark_Hamill"^^xsd:anyURI .
+ rdfs:label "Mark Hamill"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Mark_Hamill"^^xsd:anyURI ;
+ util:editorLabel "Mark_Hamill" ;
+ util:legacyId "610018848" .
 
 
 :Original_Trilogy rdf:type owl:NamedIndividual ,
   :Series ;
- :partOf :Skywalker_Saga .
+ :partOf :Skywalker_Saga ;
+ rdfs:label "Original Trilogy"@en ;
+ util:editorLabel "Original_Trilogy" ;
+ util:legacyId "1646970187" .
 
 
 :Pablo_Hidalgo rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom :Writer
     ] ;
  :memberOf :Lucasfilm_Story_Group ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Pablo_Hidalgo"^^xsd:anyURI .
+ rdfs:label "Pablo Hidalgo"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Pablo_Hidalgo"^^xsd:anyURI ;
+ util:editorLabel "Pablo_Hidalgo" ;
+ util:legacyId "703753348" .
 
 
 :Peter_Cushing rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1222,12 +1402,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Peter_Cushing"^^xsd:anyURI .
+ rdfs:label "Peter Cushing"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Peter_Cushing"^^xsd:anyURI ;
+ util:editorLabel "Peter_Cushing" ;
+ util:legacyId "-597013343" .
 
 
 :Peter_Mayhew rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1239,17 +1421,22 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Peter_Mayhew"^^xsd:anyURI .
+ rdfs:label "Peter Mayhew"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Peter_Mayhew"^^xsd:anyURI ;
+ util:editorLabel "Peter_Mayhew" ;
+ util:legacyId "-83870399" .
 
 
 :Phantom_Menace_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Phantom Menace Film Crew"@en ;
+ util:editorLabel "Phantom_Menace_Film_Crew" ;
+ util:legacyId "-1848392843" .
 
 
 :Phil_Brown rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1265,38 +1452,55 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Phil_Brown"^^xsd:anyURI .
+ rdfs:label "Phil Brown"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Phil_Brown"^^xsd:anyURI ;
+ util:editorLabel "Phil_Brown" ;
+ util:legacyId "1568746731" .
 
 
 :Prequel_Trilogy rdf:type owl:NamedIndividual ,
   :Series ;
  :partOf :Skywalker_Saga ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Prequel_trilogy"^^xsd:anyURI .
+ rdfs:label "Prequel Trilogy"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Prequel_trilogy"^^xsd:anyURI ;
+ util:editorLabel "Prequel_Trilogy" ;
+ util:legacyId "196939048" .
 
 
 :Rebels_FIlm_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Rebels FIlm Crew"@en ;
+ util:editorLabel "Rebels_FIlm_Crew" ;
+ util:legacyId "-2138411181" .
 
 
 :Resistance_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Resistance Film Crew"@en ;
+ util:editorLabel "Resistance_Film_Crew" ;
+ util:legacyId "-1533438289" .
 
 
 :Return_of_the_Jedi_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Return of the Jedi Film Crew"@en ;
+ util:editorLabel "Return_of_the_Jedi_Film_Crew" ;
+ util:legacyId "-732213251" .
 
 
 :Revenge_of_the_Sith_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Revenge of the Sith Film Crew"@en ;
+ util:editorLabel "Revenge_of_the_Sith_Film_Crew" ;
+ util:legacyId "638090561" .
 
 
 :Rian_Johnson rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Director
@@ -1309,12 +1513,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Rian_Johnson"^^xsd:anyURI .
+ rdfs:label "Rian Johnson"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Rian_Johnson"^^xsd:anyURI ;
+ util:editorLabel "Rian_Johnson" ;
+ util:legacyId "-1598801947" .
 
 
 :Richard_LeParmentier rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1326,12 +1532,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Richard_LeParmentier"^^xsd:anyURI .
+ rdfs:label "Richard LeParmentier"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Richard_LeParmentier"^^xsd:anyURI ;
+ util:editorLabel "Richard_LeParmentier" ;
+ util:legacyId "-831098191" .
 
 
 :Richard_Marquand rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1375,13 +1583,18 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Richard_Marquand"^^xsd:anyURI .
+ rdfs:label "Richard Marquand"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Richard_Marquand"^^xsd:anyURI ;
+ util:editorLabel "Richard_Marquand" ;
+ util:legacyId "1328724470" .
 
 
 :Rise_of_Skywalker_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Rise of Skywalker Film Crew"@en ;
+ util:editorLabel "Rise_of_Skywalker_Film_Crew" ;
+ util:legacyId "144898299" .
 
 
 :Rogue_One-A_Star_Wars_Story rdf:type owl:NamedIndividual ,
@@ -1392,16 +1605,22 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Freeing_of_Jyn ,
   :Holy_City_Destruction ;
  :year 2016 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Rogue_One:_A_Star_Wars_Story"^^xsd:anyURI .
+ rdfs:label "Rogue One-A Star Wars Story"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Rogue_One:_A_Star_Wars_Story"^^xsd:anyURI ;
+ util:editorLabel "Rogue_One-A_Star_Wars_Story" ;
+ util:legacyId "-1552649859" .
 
 
 :Rogue_One_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Rogue One Film Crew"@en ;
+ util:editorLabel "Rogue_One_Film_Crew" ;
+ util:legacyId "-1445747049" .
 
 
 :Ron_Howard rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Director
@@ -1413,12 +1632,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Ron_Howard"^^xsd:anyURI .
+ rdfs:label "Ron Howard"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Ron_Howard"^^xsd:anyURI ;
+ util:editorLabel "Ron_Howard" ;
+ util:legacyId "-2031832502" .
 
 
 :Sebastian_Shaw rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1430,17 +1651,22 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Sebastian_Shaw"^^xsd:anyURI .
+ rdfs:label "Sebastian Shaw"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Sebastian_Shaw"^^xsd:anyURI ;
+ util:editorLabel "Sebastian_Shaw" ;
+ util:legacyId "1027763167" .
 
 
 :Sequel_Trilogy rdf:type owl:NamedIndividual ,
   :Series ;
- :partOf :Skywalker_Saga .
+ :partOf :Skywalker_Saga ;
+ rdfs:label "Sequel Trilogy"@en ;
+ util:editorLabel "Sequel_Trilogy" ;
+ util:legacyId "-1655673193" .
 
 
 :Shelagh_Fraser rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1456,51 +1682,74 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Shelagh_Fraser"^^xsd:anyURI .
+ rdfs:label "Shelagh Fraser"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Shelagh_Fraser"^^xsd:anyURI ;
+ util:editorLabel "Shelagh_Fraser" ;
+ util:legacyId "-1137487907" .
 
 
 :Skywalker_Saga rdf:type owl:NamedIndividual ,
   :Series ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_saga"^^xsd:anyURI .
+ rdfs:label "Skywalker Saga"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_saga"^^xsd:anyURI ;
+ util:editorLabel "Skywalker_Saga" ;
+ util:legacyId "735243881" .
 
 
 :Solo-A_Star_Wars_Story rdf:type owl:NamedIndividual ,
   :Film ;
  :year 2018 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story"^^xsd:anyURI .
+ rdfs:label "Solo-A Star Wars Story"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Solo:_A_Star_Wars_Story"^^xsd:anyURI ;
+ util:editorLabel "Solo-A_Star_Wars_Story" ;
+ util:legacyId "1456038075" .
 
 
 :Solo_Film_Crew rdf:type owl:NamedIndividual ,
-  :Film_Crew .
+  :Film_Crew ;
+ rdfs:label "Solo Film Crew"@en ;
+ util:editorLabel "Solo_Film_Crew" ;
+ util:legacyId "-1980582955" .
 
 
 :Star_Wars-Obi-Wan_Kenobi rdf:type owl:NamedIndividual ,
   :Series ;
  :createdBy :Kenobi_Film_Crew ;
  :starting 2022 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi_(television_series)"^^xsd:anyURI .
+ rdfs:label "Star Wars-Obi-Wan Kenobi"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Obi-Wan_Kenobi_(television_series)"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars-Obi-Wan_Kenobi" ;
+ util:legacyId "-745866398" .
 
 
 :Star_Wars-Rebels rdf:type owl:NamedIndividual ,
   :Series ;
  :createdBy :Rebels_FIlm_Crew ;
  :starting 2014 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels"^^xsd:anyURI .
+ rdfs:label "Star Wars-Rebels"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Rebels"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars-Rebels" ;
+ util:legacyId "1889958091" .
 
 
 :Star_Wars-Resistance rdf:type owl:NamedIndividual ,
   :Series ;
  :createdBy :Resistance_Film_Crew ;
  :starting 2018 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Resistance"^^xsd:anyURI .
+ rdfs:label "Star Wars-Resistance"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars_Resistance"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars-Resistance" ;
+ util:legacyId "2061982919" .
 
 
 :Star_Wars-The_Bad_Batch rdf:type owl:NamedIndividual ,
   :Series ;
  :createdBy :Bad_Batch_Film_Crew ;
  :starting 2021 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_The_Bad_Batch"^^xsd:anyURI .
+ rdfs:label "Star Wars-The Bad Batch"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_The_Bad_Batch"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars-The_Bad_Batch" ;
+ util:legacyId "170406646" .
 
 
 :Star_Wars-The_Clone_Wars rdf:type owl:NamedIndividual ,
@@ -1508,7 +1757,10 @@ There is no assertion of correctness or completeness by myself - content has bee
  :createdBy :The_Clone_Wars_Film_Crew ;
  :depicted :Clone_Wars ;
  :starting 2008 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars"^^xsd:anyURI .
+ rdfs:label "Star Wars-The Clone Wars"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars-The_Clone_Wars" ;
+ util:legacyId "-1066940663" .
 
 
 :Star_Wars_Episode_I-The_Phantom_Menace rdf:type owl:NamedIndividual ,
@@ -1518,7 +1770,10 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Invasion_of_Naboo ;
  :partOf :Prequel_Trilogy ;
  :year 1999 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_The_Phantom_Menace"^^xsd:anyURI .
+ rdfs:label "Star Wars Episode I-The Phantom Menace"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_The_Phantom_Menace"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars_Episode_I-The_Phantom_Menace" ;
+ util:legacyId "882140309" .
 
 
 :Star_Wars_Episode_II-Attack_of_the_Clones rdf:type owl:NamedIndividual ,
@@ -1529,7 +1784,10 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Obi-Wan_meets_the_Kaminoans ;
  :partOf :Prequel_Trilogy ;
  :year 2002 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_Attack_of_the_Clones"^^xsd:anyURI .
+ rdfs:label "Star Wars Episode II-Attack of the Clones"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_Attack_of_the_Clones"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars_Episode_II-Attack_of_the_Clones" ;
+ util:legacyId "-552065968" .
 
 
 :Star_Wars_Episode_III-Revenge_of_the_Sith rdf:type owl:NamedIndividual ,
@@ -1541,7 +1799,10 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Siege_of_the_Jedi_Temple ;
  :partOf :Prequel_Trilogy ;
  :year 2005 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_Revenge_of_the_Sith"^^xsd:anyURI .
+ rdfs:label "Star Wars Episode III-Revenge of the Sith"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_Revenge_of_the_Sith"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars_Episode_III-Revenge_of_the_Sith" ;
+ util:legacyId "805588565" .
 
 
 :Star_Wars_Episode_IV-A_New_Hope rdf:type owl:NamedIndividual ,
@@ -1551,7 +1812,10 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Rescue_of_Leia ;
  :partOf :Original_Trilogy ;
  :year 1977 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope"^^xsd:anyURI .
+ rdfs:label "Star Wars Episode IV-A New Hope"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IV_A_New_Hope"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars_Episode_IV-A_New_Hope" ;
+ util:legacyId "-1907083417" .
 
 
 :Star_Wars_Episode_IX-The_Rise_of_Skywalker rdf:type owl:NamedIndividual ,
@@ -1563,7 +1827,10 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Retrieving_Vaders_Wayfinder ;
  :partOf :Sequel_Trilogy ;
  :year 2019 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker"^^xsd:anyURI .
+ rdfs:label "Star Wars Episode IX-The Rise of Skywalker"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_IX_The_Rise_of_Skywalker"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars_Episode_IX-The_Rise_of_Skywalker" ;
+ util:legacyId "1004088285" .
 
 
 :Star_Wars_Episode_V-The_Empire_Strikes_Back rdf:type owl:NamedIndividual ,
@@ -1574,7 +1841,10 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Vader_is_Lukes_Father ;
  :partOf :Original_Trilogy ;
  :year 1980 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back"^^xsd:anyURI .
+ rdfs:label "Star Wars Episode V-The Empire Strikes Back"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_V_The_Empire_Strikes_Back"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars_Episode_V-The_Empire_Strikes_Back" ;
+ util:legacyId "1023868473" .
 
 
 :Star_Wars_Episode_VI-Return_of_the_Jedi rdf:type owl:NamedIndividual ,
@@ -1584,7 +1854,10 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Rescue_of_Han_Solo ;
  :partOf :Original_Trilogy ;
  :year 1983 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi"^^xsd:anyURI .
+ rdfs:label "Star Wars Episode VI-Return of the Jedi"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VI_Return_of_the_Jedi"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars_Episode_VI-Return_of_the_Jedi" ;
+ util:legacyId "-63622321" .
 
 
 :Star_Wars_Episode_VII-The_Force_Awakens rdf:type owl:NamedIndividual ,
@@ -1595,7 +1868,10 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Escape_from_Jakku ;
  :partOf :Sequel_Trilogy ;
  :year 2015 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VII_The_Force_Awakens"^^xsd:anyURI .
+ rdfs:label "Star Wars Episode VII-The Force Awakens"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VII_The_Force_Awakens"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars_Episode_VII-The_Force_Awakens" ;
+ util:legacyId "-556016193" .
 
 
 :Star_Wars_Episode_VIII-The_Last_Jedi rdf:type owl:NamedIndividual ,
@@ -1606,16 +1882,22 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Battle_of_Oetchi ;
  :partOf :Sequel_Trilogy ;
  :year 2017 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VIII_The_Last_Jedi"^^xsd:anyURI .
+ rdfs:label "Star Wars Episode VIII-The Last Jedi"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Star_Wars:_Episode_VIII_The_Last_Jedi"^^xsd:anyURI ;
+ util:editorLabel "Star_Wars_Episode_VIII-The_Last_Jedi" ;
+ util:legacyId "-684814235" .
 
 
 :Star_Wars_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "Star Wars Film Crew"@en ;
+ util:editorLabel "Star_Wars_Film_Crew" ;
+ util:legacyId "-1542280210" .
 
 
 :Temuera_Morrison rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1660,36 +1942,50 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Temuera_Morrison"^^xsd:anyURI .
+ rdfs:label "Temuera Morrison"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Temuera_Morrison"^^xsd:anyURI ;
+ util:editorLabel "Temuera_Morrison" ;
+ util:legacyId "-1060870168" .
 
 
 :The_Book_of_Boba_Fett rdf:type owl:NamedIndividual ,
   :Series ;
  :createdBy :Book_of_Boba_Fett_Film_Crew ;
  :starting 2021 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Book_of_Boba_Fett"^^xsd:anyURI .
+ rdfs:label "The Book of Boba Fett"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Book_of_Boba_Fett"^^xsd:anyURI ;
+ util:editorLabel "The_Book_of_Boba_Fett" ;
+ util:legacyId "-2066840821" .
 
 
 :The_Clone_Wars_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "The Clone Wars Film Crew"@en ;
+ util:editorLabel "The_Clone_Wars_Film_Crew" ;
+ util:legacyId "-1163998991" .
 
 
 :The_Mandalorian rdf:type owl:NamedIndividual ,
   :Series ;
  :createdBy :The_Mandalorian_Film_Crew ;
  :starting 2019 ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mandalorian"^^xsd:anyURI .
+ rdfs:label "The Mandalorian"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Mandalorian"^^xsd:anyURI ;
+ util:editorLabel "The_Mandalorian" ;
+ util:legacyId "-690266231" .
 
 
 :The_Mandalorian_Film_Crew rdf:type owl:NamedIndividual ,
   :Film_Crew ;
- :memberOf :Lucasfilm .
+ :memberOf :Lucasfilm ;
+ rdfs:label "The Mandalorian Film Crew"@en ;
+ util:editorLabel "The_Mandalorian_Film_Crew" ;
+ util:legacyId "-1150131898" .
 
 
 :Warwick_Davis rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1701,12 +1997,14 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Warwick_Davis"^^xsd:anyURI .
+ rdfs:label "Warwick Davis"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Warwick_Davis"^^xsd:anyURI ;
+ util:editorLabel "Warwick_Davis" ;
+ util:legacyId "-880044737" .
 
 
 :William_Hootkins rdf:type owl:NamedIndividual ,
-  :Human ,
+  :Earthling ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :hadRole ;
      owl:someValuesFrom [ owl:intersectionOf ( :Actor-Vocation
@@ -1718,8 +2016,10 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
- :originallyFrom :Earth ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/William_Hootkins"^^xsd:anyURI .
+ rdfs:label "William Hootkins"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/William_Hootkins"^^xsd:anyURI ;
+ util:editorLabel "William_Hootkins" ;
+ util:legacyId "722416228" .
 
 
 ###  Generated by the OWL API (version 5.5.1.2024-09-07T21:41:32Z) https://github.com/owlcs/owlapi/

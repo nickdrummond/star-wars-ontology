@@ -14,7 +14,7 @@ home |
 
 [Convor](https://www.star-wars-ontology.co.uk/classes/-1326117872/), as in "OWL in Star Wars".
 
-A hand-built [OWL ontology](docs/benefits.md) focused on events and covering characters, places and things in the films and TV series.
+A hand-built [OWL ontology](docs/benefits.md) focused on *events* and covering characters, places and things in the films and TV series.
 
 [Browse the ontology](https://www.star-wars-ontology.co.uk/)
 This allows you to navigate asserted content, search and query the ontologies.
@@ -33,15 +33,15 @@ This allows you to navigate asserted content, search and query the ontologies.
 | [Organisations or units](https://www.star-wars-ontology.co.uk/dlquery/?expression=Organisation&syntax=man)            | 134   |
 | [Named vehicles](https://www.star-wars-ontology.co.uk/dlquery/?expression=Vehicle&syntax=man)                         | 127   |
 
-| Structure             | Count  |
-|-----------------------|--------|
-| Axiom                 | 31,636 |
-| Logical axioms        | 15,387 |
-| Declaration axioms    | 3,365  |
-| Individuals           | 2,261  |
-| Classes               | 999    |
-| Object properties     | 95     |
-| Data properties       | 4      |
+| Structure                                                                                                                     | Count  |
+|-------------------------------------------------------------------------------------------------------------------------------|--------|
+| [Axiom](https://www.star-wars-ontology.co.uk/axioms)                                                                          | 31,636 |
+| [Logical axioms](https://www.star-wars-ontology.co.uk/axioms?ontId=-1715300141&imports=INCLUDED&type=logicalAxioms)           | 15,387 |
+| [Declaration axioms](https://www.star-wars-ontology.co.uk/axioms?ontId=-1715300141&imports=INCLUDED&type=Declaration&start=1) | 3,365  |
+| [Individuals](https://www.star-wars-ontology.co.uk/individuals/by/type/-200689702)                                            | 2,261  |
+| [Classes](https://www.star-wars-ontology.co.uk/classes/-200689702)                                                            | 999    |
+| [Object properties](https://www.star-wars-ontology.co.uk/objectproperties/-102535691)                                         | 95     |
+| [Data properties](https://www.star-wars-ontology.co.uk/dataproperties/215468192)                                              | 4      |
 
 Above is a snapshot - see [ontology metrics](https://www.star-wars-ontology.co.uk/ontologies/) for current values.
 
@@ -87,11 +87,10 @@ Above is a snapshot - see [ontology metrics](https://www.star-wars-ontology.co.u
 
 [https://www.star-wars-ontology.co.uk/](https://www.star-wars-ontology.co.uk/)
 
-Please be patient with queries - this is hosted on cheap(ish) hobby-level hosting which I pay for
+Please be patient with queries - this is hosted on hobby-level hosting which I pay for
 myself and receive no funding.
 
-Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure
-(not [behind-the-scenes.owl.ttl](ontologies/behind-the-scenes.owl.ttl))
+Browser contains [all.owl.ttl](ontologies/all.owl.ttl) and it's imports closure which now includes behind the scenes content
 
 For efficiency, the query page only includes [event.owl.ttl](ontologies/events.owl.ttl) and
 its imports - see [docs/performance.md](docs/performance.md)

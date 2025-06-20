@@ -5,32 +5,32 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX sw: <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
+PREFIX : <https://nickdrummond.github.io/star-wars-ontology/ontologies#>
 SELECT DISTINCT ?died
-       (STRAFTER(STR(?event), "#") AS ?during)
-       (STRAFTER(STR(?loc), "#") AS ?location)
-       (STRAFTER(STR(?person), "#") AS ?name)
+       ?event
+       ?loc
+       ?person
        ?age
 WHERE {
-	  ?person a sw:Living_thing .
-   	  ?event rdf:type sw:Death ;
-             sw:of ?person ;
-             sw:during*/sw:year ?died .
-      OPTIONAL { ?event rdf:type sw:Death ;
-                        sw:of ?person ;
-   	                    sw:locatedIn ?directlocation ;
+	  ?person a :Living_thing .
+   	  ?event rdf:type :Death ;
+             :of ?person ;
+             :during*/:year ?died .
+      OPTIONAL { ?event rdf:type :Death ;
+                        :of ?person ;
+   	                    :at ?directlocation ;
                          } .
-      OPTIONAL { ?event rdf:type sw:Death ;
-                        sw:of ?person ;
-   	                    sw:during/sw:locatedIn ?location1Step .
+      OPTIONAL { ?event rdf:type :Death ;
+                        :of ?person ;
+   	                    :during/:locatedIn ?location1Step .
                          } .
-      OPTIONAL { ?event rdf:type sw:Death ;
-                        sw:of ?person ;
-   	                    sw:during/sw:during/sw:locatedIn ?location2Step . # never more than 2 steps from a "full Event"
+      OPTIONAL { ?event rdf:type :Death ;
+                        :of ?person ;
+   	                    :during/:during/:locatedIn ?location2Step . # never more than 2 steps from a "full Event"
                          } .
-	  OPTIONAL { ?e1 rdf:type sw:Birth ;
-	                    sw:of ?person ;
-	                    sw:year ?born .
+	  OPTIONAL { ?e1 rdf:type :Birth ;
+	                    :of ?person ;
+	                    :year ?born .
 	                    } .
       BIND (?died - ?born AS ?age) .
       BIND ((IF (bound(?directlocation), ?directlocation, IF (bound(?location1Step), ?location1Step, ?location2Step))) AS ?loc) .

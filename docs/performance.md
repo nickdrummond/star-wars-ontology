@@ -134,3 +134,16 @@ However, the time to classify the ontology has increased by an order of magnitud
 See https://github.com/nickdrummond/star-wars-ontology/issues/60
 
 
+
+# SWRL
+
+It is possible to infer the year of subevents using SWRL rules.
+
+`during(?ev, ?subev) ^ hasYear(?ev, ?y) -> hasYear(?subev, ?y)`
+
+This gets us around the problem that property chains do not work with datatype properties.
+
+However, the time to classify the ontology has increased by an order of magnitude ~7s -> ~70s
+See https://github.com/nickdrummond/star-wars-ontology/issues/60
+
+

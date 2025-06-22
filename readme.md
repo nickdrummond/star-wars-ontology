@@ -23,29 +23,29 @@ This allows you to navigate asserted content, search and query the ontologies.
 
 ## Metrics
 
-| Content                                                                                                                  | Count |
-|--------------------------------------------------------------------------------------------------------------------------|-------|
-| [Events](https://www.star-wars-ontology.co.uk/dlquery/?expression=Event&syntax=man)                                   | 915   |
-| [Characters](https://www.star-wars-ontology.co.uk/dlquery/?expression=Being+or+Droid&syntax=man)                      | 614   |
-| [Species](https://www.star-wars-ontology.co.uk/dlquery/?expression=Living_thing&syntax=man&query=descendants)        | 200   |
-| [Planets and Moons](https://www.star-wars-ontology.co.uk/dlquery/?expression=Planet+or+Moon&syntax=man)               | 147   |
-| [Built locations](https://www.star-wars-ontology.co.uk/dlquery/?expression=Built_Location+and+not+Vehicle&syntax=man) | 165   |
-| [Organisations or units](https://www.star-wars-ontology.co.uk/dlquery/?expression=Organisation&syntax=man)            | 134   |
-| [Named vehicles](https://www.star-wars-ontology.co.uk/dlquery/?expression=Vehicle&syntax=man)                         | 127   |
+| Content                                                                                                            | Count |
+|--------------------------------------------------------------------------------------------------------------------|-------|
+| [Events](https://www.star-wars-ontology.co.uk/dlquery?expression=Event&query=instances)                             | 960   |
+| [Characters](https://www.star-wars-ontology.co.uk/dlquery?expression=Being+or+Droid&syntax=man)                  | 637   |
+| [Species](https://www.star-wars-ontology.co.uk/dlquery?expression=Living_thing&syntax=man&query=descendants)     | 203   |
+| [Planets and Moons](https://www.star-wars-ontology.co.uk/dlquery?expression=Planet+or+Moon&syntax=man)           | 149   |
+| [Built locations](https://www.star-wars-ontology.co.uk/dlquery?expression=Built_Location+and+not+Vehicle&syntax=man) | 167   |
+| [Organisations or units](https://www.star-wars-ontology.co.uk/dlquery?expression=Organisation&syntax=man)        | 138   |
+| [Named vehicles](https://www.star-wars-ontology.co.uk/dlquery?expression=Vehicle&syntax=man)                     | 129   |
 
 | Structure                                                                                                                     | Count  |
 |-------------------------------------------------------------------------------------------------------------------------------|--------|
-| [Axiom](https://www.star-wars-ontology.co.uk/axioms)                                                                          | 31,636 |
-| [Logical axioms](https://www.star-wars-ontology.co.uk/axioms?ontId=-1715300141&imports=INCLUDED&type=logicalAxioms)           | 15,387 |
-| [Declaration axioms](https://www.star-wars-ontology.co.uk/axioms?ontId=-1715300141&imports=INCLUDED&type=Declaration&start=1) | 3,365  |
-| [Individuals](https://www.star-wars-ontology.co.uk/individuals/by/type/-200689702)                                            | 2,261  |
-| [Classes](https://www.star-wars-ontology.co.uk/classes/-200689702)                                                            | 999    |
-| [Object properties](https://www.star-wars-ontology.co.uk/objectproperties/-102535691)                                         | 95     |
+| [Axiom](https://www.star-wars-ontology.co.uk/axioms)                                                                          | 33,635 |
+| [Logical axioms](https://www.star-wars-ontology.co.uk/axioms?ontId=-1715300141&imports=INCLUDED&type=logicalAxioms)           | 16,228 |
+| [Declaration axioms](https://www.star-wars-ontology.co.uk/axioms?ontId=-1715300141&imports=INCLUDED&type=Declaration&start=1) | 3,582  |
+| [Individuals](https://www.star-wars-ontology.co.uk/individuals/by/type/-200689702)                                            | 2,443  |
+| [Classes](https://www.star-wars-ontology.co.uk/classes/-200689702)                                                            | 1031   |
+| [Object properties](https://www.star-wars-ontology.co.uk/objectproperties/-102535691)                                         | 98     |
 | [Data properties](https://www.star-wars-ontology.co.uk/dataproperties/215468192)                                              | 4      |
 
-Above is a snapshot - see [ontology metrics](https://www.star-wars-ontology.co.uk/ontologies/) for current values.
+Above is a snapshot (22/06/2025) - see [ontology metrics](https://www.star-wars-ontology.co.uk/ontologies/) for current values.
 
-## Status
+## Status mid 2025
 
 * Active development
 * Open modelling questions - see [issues on github](https://github.com/nickdrummond/star-wars-ontology/issues)

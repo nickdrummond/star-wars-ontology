@@ -40,9 +40,9 @@ public class TestAboxRefactor extends TestCase {
         duringProperty = helper.prop("during");
         eventClass = helper.cls("Event");
 
-        refactor = new AboxRefactor(includedProperty, duringProperty, eventClass);
+        refactor = new AboxRefactor(includedProperty, duringProperty, eventClass, new NameProvider());
 
-        changes = refactor.run(helper.onts(), helper.df(), new NameProvider());
+        changes = refactor.run(helper.onts(), helper.df());
 
         return helper;
     }
@@ -137,6 +137,8 @@ public class TestAboxRefactor extends TestCase {
         assertThat(renderAxioms(changes, "nested"), changes, hasItem(during));
         assertThat(renderAxioms(changes, "nested"), changes, hasItem(expected));
     }
+
+    // TODO anon instance tests
 
     private String renderAxioms(List<OWLOntologyChange> changes, String search) {
         return StringUtils.join(changes.stream()

@@ -22,6 +22,12 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:label "Star Wars instances" ;
  rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI .
 
+:depictedBy rdf:type owl:ObjectProperty ;
+ rdfs:label "depictedBy"@en ;
+ util:editorLabel "depictedBy" ;
+ util:legacyId "-126607398" .
+
+
 :Clone rdfs:subClassOf [ rdf:type owl:Restriction ;
      owl:onProperty :ownedBy ;
      owl:hasValue :Galactic_Republic
@@ -84,6 +90,13 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:label "Mandator IV-class Siege Dreadnought"@en ;
  util:editorLabel "Mandator_IV-class_Siege_Dreadnought" ;
  util:legacyId "-1546851752" .
+
+
+:Patitite rdf:type owl:Class ;
+ rdfs:subClassOf :Humanoid ;
+ rdfs:label "Patitite"@en ;
+ util:editorLabel "Patitite" ;
+ util:legacyId "-2049247035" .
 
 
 :Resurgent-class_Star_Destroyer rdfs:subClassOf [ rdf:type owl:Restriction ;
@@ -267,10 +280,18 @@ There is no assertion of correctness or completeness by myself - content has bee
          rdf:type owl:Class
         ]
     ] ;
+ :responsibleFor :Adi_Gallias_Venator ;
  rdfs:label "Adi Gallia"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Adi_Gallia"^^xsd:anyURI ;
  util:editorLabel "Adi_Gallia" ;
  util:legacyId "-449933244" .
+
+
+:Adi_Gallias_Venator rdf:type owl:NamedIndividual ,
+  :Venator-class_Star_Destroyer ;
+ rdfs:label "Adi Gallias Venator"@en ;
+ util:editorLabel "Adi_Gallias_Venator" ;
+ util:legacyId "-1537913513" .
 
 
 :Admiral_Trench rdf:type owl:NamedIndividual ,
@@ -480,6 +501,32 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Alazmec_of_Winsit"^^xsd:anyURI ;
  util:editorLabel "Alazmec_of_Winsit" ;
  util:legacyId "1218956843" .
+
+
+:Albee_Dewaw rdf:type owl:NamedIndividual ,
+  :Actor ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :depicted ;
+     owl:someValuesFrom :Unidentified_tentacle-faced_species
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :depictedBy ;
+     owl:someValuesFrom :Hologram
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadRole ;
+     owl:someValuesFrom :Leader
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Pit_Droid
+    ] ;
+ :locatedIn :Balnab ;
+ rdfs:comment "Albee Dewaw was a fake leader of the Balnab people, created by a group of Pit droids to control the local population" ;
+ rdfs:label "Albee Dewaw"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Albee_Dewaw"^^xsd:anyURI ;
+ util:editorLabel "Albee_Dewaw" ;
+ util:legacyId "1481008285" .
 
 
 :Alderaan rdf:type owl:NamedIndividual ,
@@ -1350,6 +1397,23 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Balmorra_Run"^^xsd:anyURI ;
  util:editorLabel "Balmorra_Run" ;
  util:legacyId "806904311" .
+
+
+:Balnab rdf:type owl:NamedIndividual ,
+  :Planet ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hasTerrain ;
+     owl:someValuesFrom :Canyon
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hasTerrain ;
+     owl:someValuesFrom :Swamp
+    ] ;
+ :locatedIn :Bright_Jewel_sector ;
+ rdfs:label "Balnab"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Balnab"^^xsd:anyURI ;
+ util:editorLabel "Balnab" ;
+ util:legacyId "-1367744037" .
 
 
 :Banking_Clan rdf:type owl:NamedIndividual ,
@@ -8461,6 +8525,23 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-984204995" .
 
 
+:Hay-Zu rdf:type owl:NamedIndividual ,
+  :Patitite ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :gender ;
+     owl:someValuesFrom :Male
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadRole ;
+     owl:someValuesFrom :Leader
+    ] ;
+ :livedIn :Patitite_Pattuna ;
+ rdfs:label "Hay-Zu"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Hay-Zu"^^xsd:anyURI ;
+ util:editorLabel "Hay-Zu" ;
+ util:legacyId "-1195644511" .
+
+
 :Hellhound_Two rdf:type owl:NamedIndividual ,
   :AT-AT ,
   [ rdf:type owl:Restriction ;
@@ -10082,6 +10163,26 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/K-2SO"^^xsd:anyURI ;
  util:editorLabel "K-2SO" ;
  util:legacyId "1015446885" .
+
+
+:K0-5D rdf:type owl:NamedIndividual ,
+  :ASP-series_labor_droid ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :employedBy ;
+     owl:someValuesFrom [ rdf:type owl:Restriction ;
+         owl:onProperty :hadRole ;
+         owl:someValuesFrom :Pirate
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadRole ;
+     owl:someValuesFrom :Fighter
+    ] ;
+ :aka "Maximo" ;
+ rdfs:label "K0-5D"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/K0-5D"^^xsd:anyURI ;
+ util:editorLabel "K0-5D" ;
+ util:legacyId "1015530512" .
 
 
 :Kaba_Baiz rdf:type owl:NamedIndividual ,
@@ -12396,6 +12497,25 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Marauder_(Omicron-class)"^^xsd:anyURI ;
  util:editorLabel "Marauder" ;
  util:legacyId "1247634616" .
+
+
+:Marauder_pirate_ship rdf:type owl:NamedIndividual ,
+  :Transport ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :ownedBy ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Weequay
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :hadRole ;
+                owl:someValuesFrom :Pirate
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ rdfs:label "Marauder pirate ship"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Marauder_(Weequay_pirate_ship)"^^xsd:anyURI ;
+ util:editorLabel "Marauder_pirate_ship" ;
+ util:legacyId "-1390651173" .
 
 
 :Marcus_Speedstar rdf:type owl:NamedIndividual ,
@@ -15079,6 +15199,23 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Pateesa"^^xsd:anyURI ;
  util:editorLabel "Pateesa" ;
  util:legacyId "1817907658" .
+
+
+:Patitite_Pattuna rdf:type owl:NamedIndividual ,
+  :Planet ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hasTerrain ;
+     owl:someValuesFrom :Swamp
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :homeworldOf ;
+     owl:someValuesFrom :Patitite
+    ] ;
+ :locatedIn :Bright_Jewel_sector ;
+ rdfs:label "Patitite Pattuna"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Patitite_Pattuna"^^xsd:anyURI ;
+ util:editorLabel "Patitite_Pattuna" ;
+ util:legacyId "1836757629" .
 
 
 :Paz_Vizsla rdf:type owl:NamedIndividual ,

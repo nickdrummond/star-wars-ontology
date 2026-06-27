@@ -23,6 +23,87 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
   "https://starwars.fandom.com/wiki/The_Clone_Wars:_Season_Four"^^xsd:anyURI .
 
+:Advancing_under_Krell rdf:type owl:NamedIndividual ,
+  :Direct_assault ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Ambush
+             :Trap
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom :Umbaran
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Argument
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Direct_assault
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Fives
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Pong_Krell
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Rex
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Argument
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :responsibleFor ;
+                    owl:someValuesFrom :Clone
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Pong_Krell
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Rex
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Death
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Clone
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Landing_at_Umbara ;
+ :at :Umbaran_capital_city ;
+ :during :Battle_of_Umbara ;
+ :ledBy :Pong_Krell ;
+ :year -20 ;
+ rdfs:label "Advancing under Krell"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Darkness_on_Umbara"^^xsd:anyURI ;
+ util:editorLabel "Advancing_under_Krell" ;
+ util:legacyId "-333253168" .
+
+
 :Anakin_follows_Rish_Loo rdf:type owl:NamedIndividual ,
   :Chase ,
   [ rdf:type owl:Restriction ;
@@ -357,13 +438,19 @@ There is no assertion of correctness or completeness by myself - content has bee
             ) ;
          rdf:type owl:Class
         ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Umbaran
     ] ;
  :at :Umbara ;
  :during :Clone_Wars ;
  :participant :_501st ;
+ :sometimeAfter :Rescue_of_Adi_Gallia_from_Grievous ;
  :year -20 ;
  rdfs:label "Battle of Umbara"@en ;
- rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Umbara"^^xsd:anyURI ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Battle_of_Umbara"^^xsd:anyURI ,
+  "https://starwars.fandom.com/wiki/Darkness_on_Umbara"^^xsd:anyURI ;
  util:editorLabel "Battle_of_Umbara" ;
  util:legacyId "1651006976" .
 
@@ -1268,6 +1355,101 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Shadow_Warrior"^^xsd:anyURI ;
  util:editorLabel "Investigating_unrest_on_Naboo" ;
  util:legacyId "-629624041" .
+
+
+:Landing_at_Umbara rdf:type owl:NamedIndividual ,
+  :Attack ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Airstrike
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :ledBy ;
+                owl:hasValue :Pong_Krell
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Ambush
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom :Umbaran
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Clone
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :LAAT_Gunship
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Attack
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom :Vixus
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :survivedBy ;
+                owl:hasValue :Fives
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :survivedBy ;
+                owl:hasValue :Hardcase
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Departure
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Anakin_Skywalker
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Impeding_Assault_Tank
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :AT-RT
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :assistedBy :Rex ;
+ :at :Umbara ;
+ :during :Battle_of_Umbara ;
+ :ledBy :Anakin_Skywalker ;
+ :year -20 ;
+ rdfs:label "Landing at Umbara"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Darkness_on_Umbara"^^xsd:anyURI ;
+ util:editorLabel "Landing_at_Umbara" ;
+ util:legacyId "-1545225597" .
 
 
 :Mediation_on_Mon_Cala rdf:type owl:NamedIndividual ,

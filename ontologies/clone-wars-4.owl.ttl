@@ -58,32 +58,6 @@ There is no assertion of correctness or completeness by myself - content has bee
     ] ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
-     owl:someValuesFrom [ owl:intersectionOf ( :Argument
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :about ;
-                owl:someValuesFrom [ rdf:type owl:Restriction ;
-                    owl:onProperty :responsibleFor ;
-                    owl:someValuesFrom :Clone
-                   ]
-               ]
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :participant ;
-                owl:hasValue :Fives
-               ]
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :participant ;
-                owl:hasValue :Pong_Krell
-               ]
-             [ rdf:type owl:Restriction ;
-                owl:onProperty :participant ;
-                owl:hasValue :Rex
-               ]
-            ) ;
-         rdf:type owl:Class
-        ]
-    ] ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :included ;
      owl:someValuesFrom [ owl:intersectionOf ( :Death
              [ rdf:type owl:Restriction ;
                 owl:onProperty :of ;
@@ -96,7 +70,8 @@ There is no assertion of correctness or completeness by myself - content has bee
  :after :Landing_at_Umbara ;
  :at :Umbaran_capital_city ;
  :during :Battle_of_Umbara ;
- :ledBy :Pong_Krell ;
+ :orderedBy :Pong_Krell ;
+ :participant :_501st ;
  :year -20 ;
  rdfs:label "Advancing under Krell"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Darkness_on_Umbara"^^xsd:anyURI ;
@@ -677,6 +652,54 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-774171372" .
 
 
+:Capture_of_the_Umbara_airbase rdf:type owl:NamedIndividual ,
+  :Capture ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Death
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom :Clone
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:hasValue :Pong_Krell
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Fives
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Rex
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :of ;
+     owl:someValuesFrom :Umbaran
+    ] ;
+ :after :Using_Umbaran_tech_against_them ;
+ :at :Umbaran_airbase ;
+ :during :Mission_to_neutralise_the_Umbara_airbase ;
+ :of :Umbaran_airbase ;
+ :participant :_501st ;
+ :year -20 ;
+ rdfs:label "Capture of the Umbara airbase"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_General_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Capture_of_the_Umbara_airbase" ;
+ util:legacyId "2006507960" .
+
+
 :Closing_the_seal rdf:type owl:NamedIndividual ,
   :Event ;
  :after :Escaping_the_Underworld_with_a_riddle ;
@@ -998,6 +1021,69 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Mercy_Mission_(episode)"^^xsd:anyURI ;
  util:editorLabel "Escaping_the_Underworld_with_a_riddle" ;
  util:legacyId "-227286678" .
+
+
+:First_wave_advance_on_the_Umbaran_Airbase rdf:type owl:NamedIndividual ,
+  :Direct_assault ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Argument
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :memberOf ;
+                    owl:hasValue :_501st
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:hasValue :Pong_Krell
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Attack
+             [ owl:intersectionOf ( :Destruction
+                    [ rdf:type owl:Restriction ;
+                       owl:onProperty :of ;
+                       owl:someValuesFrom :Impeding_Assault_Tank
+                      ]
+                    [ rdf:type owl:Restriction ;
+                       owl:onProperty :used ;
+                       owl:someValuesFrom :Thermal_Detonator
+                      ]
+                   ) ;
+                rdf:type owl:Class
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Clone
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :at :Gorge_near_Umbaran_airbase ;
+ :during :Mission_to_neutralise_the_Umbara_airbase ;
+ :ledBy :Rex ;
+ :orderedBy :Pong_Krell ;
+ :participant :Fives ,
+  :Hardcase ;
+ :year -20 ;
+ rdfs:label "First wave advance on the Umbaran Airbase"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_General_(episode)"^^xsd:anyURI ;
+ util:editorLabel "First_wave_advance_on_the_Umbaran_Airbase" ;
+ util:legacyId "-390395037" .
 
 
 :Fooling_Grievous rdf:type owl:NamedIndividual ,
@@ -1445,6 +1531,7 @@ There is no assertion of correctness or completeness by myself - content has bee
  :at :Umbara ;
  :during :Battle_of_Umbara ;
  :ledBy :Anakin_Skywalker ;
+ :participant :_501st ;
  :year -20 ;
  rdfs:label "Landing at Umbara"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Darkness_on_Umbara"^^xsd:anyURI ;
@@ -1521,6 +1608,98 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Nomad_Droids"^^xsd:anyURI ;
  util:editorLabel "Melting_down_droids_on_Grievous_ship" ;
  util:legacyId "-1510340098" .
+
+
+:Mission_to_neutralise_the_Umbara_airbase rdf:type owl:NamedIndividual ,
+  :Mission ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Argument
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Direct_assault
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Pong_Krell
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Rex
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Communication
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:hasValue :Umbaran_airbase
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Pong_Krell
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :remoteParticipant ;
+                owl:hasValue :Obi-Wan_Kenobi
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Retreat_of_501st ;
+ :at :Umbara ;
+ :during :Battle_of_Umbara ;
+ :orderedBy :Pong_Krell ;
+ :participant :_501st ;
+ :year -20 ;
+ rdfs:label "Mission to neutralise the Umbara airbase"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_General_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Mission_to_neutralise_the_Umbara_airbase" ;
+ util:legacyId "166578467" .
+
+
+:Mission_to_steal_Umbaran_starfighters rdf:type owl:NamedIndividual ,
+  :Stealing ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Vehicle
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :ownedBy ;
+                           owl:someValuesFrom :Umbaran
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Zenuas_33_Umbaran_starfighter
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :of ;
+     owl:someValuesFrom :Zenuas_33_Umbaran_starfighter
+    ] ;
+ :at :Umbaran_airbase ;
+ :during :Second_wave_pinned_by_cannons ;
+ :orderedBy :Rex ;
+ :participant :Fives ,
+  :Hardcase ;
+ :year -20 ;
+ rdfs:label "Mission to steal Umbaran starfighters"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_General_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Mission_to_steal_Umbaran_starfighters" ;
+ util:legacyId "536390713" .
 
 
 :Mustering_the_Gungan_Army rdf:type owl:NamedIndividual ,
@@ -1849,6 +2028,74 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-866741292" .
 
 
+:Retreat_of_501st rdf:type owl:NamedIndividual ,
+  :Retreat ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Argument
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :responsibleFor ;
+                    owl:someValuesFrom :Clone
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Fives
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Pong_Krell
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Rex
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Advancing_under_Krell ;
+ :at :Umbaran_capital_city ;
+ :during :Battle_of_Umbara ;
+ :of :_501st ;
+ :year -20 ;
+ rdfs:label "Retreat of 501st"@en ;
+ util:editorLabel "Retreat_of_501st" ;
+ util:legacyId "1767437536" .
+
+
+:Second_wave_pinned_by_cannons rdf:type owl:NamedIndividual ,
+  :Fight ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Clone
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :participant ;
+     owl:someValuesFrom :Umbaran_mobile_heavy_cannon
+    ] ;
+ :after :First_wave_advance_on_the_Umbaran_Airbase ;
+ :at :Gorge_near_Umbaran_airbase ;
+ :during :Mission_to_neutralise_the_Umbara_airbase ;
+ :ledBy :Rex ;
+ :orderedBy :Pong_Krell ;
+ :participant :_501st ;
+ :year -20 ;
+ rdfs:label "Second wave pinned by cannons"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_General_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Second_wave_pinned_by_cannons" ;
+ util:legacyId "-1600137709" .
+
+
 :The_final_fight_for_Mon_Cala rdf:type owl:NamedIndividual ,
   :Fight ,
   [ rdf:type owl:Restriction ;
@@ -1886,6 +2133,42 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:label "The final fight for Mon Cala"@en ;
  util:editorLabel "The_final_fight_for_Mon_Cala" ;
  util:legacyId "-1496716325" .
+
+
+:Using_Umbaran_tech_against_them rdf:type owl:NamedIndividual ,
+  :Fight ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Umbaran_mobile_heavy_cannon
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Zenuas_33_Umbaran_starfighter
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Fives
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Hardcase
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Mission_to_steal_Umbaran_starfighters ,
+  :Second_wave_pinned_by_cannons ;
+ :at :Gorge_near_Umbaran_airbase ;
+ :during :Mission_to_neutralise_the_Umbara_airbase ;
+ :year -20 ;
+ rdfs:label "Using Umbaran tech against them"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_General_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Using_Umbaran_tech_against_them" ;
+ util:legacyId "-670283798" .
 
 
 :Weequay_droid_fight rdf:type owl:NamedIndividual ,

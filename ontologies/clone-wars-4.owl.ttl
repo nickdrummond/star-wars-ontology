@@ -223,6 +223,86 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-218711709" .
 
 
+:Attacking_the_Umbaran_supplies_ship rdf:type owl:NamedIndividual ,
+  :Mission ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :at ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Hangar
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :locatedIn ;
+                           owl:hasValue :Unidentified_Separatist_supply_ship
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :included ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Death
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:hasValue :Hardcase
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Reactor_Core
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Hardcase
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Unidentified_Separatist_supply_ship
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Stealing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Zenuas_33_Umbaran_starfighter
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :at :Umbara ;
+ :during :Preparing_to_advance_on_the_Umbaran_capital ;
+ :participant :Fives ,
+  :Hardcase ,
+  :Jesse ;
+ :year -20 ;
+ rdfs:label "Attacking the Umbaran supplies ship"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Plan_of_Dissent"^^xsd:anyURI ;
+ util:editorLabel "Attacking_the_Umbaran_supplies_ship" ;
+ util:legacyId "-46949315" .
+
+
 :Attempting_to_escape_with_Lee-Char rdf:type owl:NamedIndividual ,
   :Escape ,
   [ rdf:type owl:Restriction ;
@@ -1086,6 +1166,54 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-390395037" .
 
 
+:Fives_and_Jesse_return_to_Umbara rdf:type owl:NamedIndividual ,
+  :Arrival ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Arrest
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Fives
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Jesse
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Appo
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Execution
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Pong_Krell
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Attacking_the_Umbaran_supplies_ship ;
+ :at :Umbaran_airbase ;
+ :during :Preparing_to_advance_on_the_Umbaran_capital ;
+ :of :Fives ,
+  :Jesse ;
+ :year -20 ;
+ rdfs:label "Fives and Jesse return to Umbara"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Plan_of_Dissent"^^xsd:anyURI ;
+ util:editorLabel "Fives_and_Jesse_return_to_Umbara" ;
+ util:legacyId "467522191" .
+
+
 :Fooling_Grievous rdf:type owl:NamedIndividual ,
   :Deception ,
   [ rdf:type owl:Restriction ;
@@ -1441,6 +1569,44 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Shadow_Warrior"^^xsd:anyURI ;
  util:editorLabel "Investigating_unrest_on_Naboo" ;
  util:legacyId "-629624041" .
+
+
+:Kenobi_reports_on_the_Umbaran_capital_seige rdf:type owl:NamedIndividual ,
+  :Briefing ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :about ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Missile
+             :Supplies
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :locatedIn ;
+                owl:hasValue :Unidentified_Separatist_supply_ship
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :about ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Retreat
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Grand_Army_of_the_Republic
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Capture_of_the_Umbara_airbase ;
+ :at :Umbaran_airbase ;
+ :during :Battle_of_Umbara ;
+ :participant :Pong_Krell ,
+  :Rex ;
+ :remoteParticipant :Obi-Wan_Kenobi ;
+ :year -20 ;
+ rdfs:label "Kenobi reports on the Umbaran capital seige"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Plan_of_Dissent"^^xsd:anyURI ;
+ util:editorLabel "Kenobi_reports_on_the_Umbaran_capital_seige" ;
+ util:legacyId "466415663" .
 
 
 :Landing_at_Umbara rdf:type owl:NamedIndividual ,
@@ -1845,6 +2011,110 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Nomad_Droids"^^xsd:anyURI ;
  util:editorLabel "Power_down_and_captured_by_pirates" ;
  util:legacyId "-2134691775" .
+
+
+:Preparing_to_advance_on_the_Umbaran_capital rdf:type owl:NamedIndividual ,
+  :Event ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Argument
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:hasValue :Pong_Krell
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Dogma
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Fives
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Jesse
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Rex
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Zenuas_33_Umbaran_starfighter
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Dogma
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Pong_Krell
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Tup
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Mission
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :used ;
+                           owl:someValuesFrom :Zenuas_33_Umbaran_starfighter
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Fives
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Rex
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Crash
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Zenuas_33_Umbaran_starfighter
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Hardcase
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Kenobi_reports_on_the_Umbaran_capital_seige ;
+ :at :Umbaran_airbase ;
+ :during :Battle_of_Umbara ;
+ :orderedBy :Pong_Krell ;
+ :year -20 ;
+ rdfs:label "Preparing to advance on the Umbaran capital"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Plan_of_Dissent"^^xsd:anyURI ;
+ util:editorLabel "Preparing_to_advance_on_the_Umbaran_capital" ;
+ util:legacyId "-439539038" .
 
 
 :Quarren_Attack rdf:type owl:NamedIndividual ,

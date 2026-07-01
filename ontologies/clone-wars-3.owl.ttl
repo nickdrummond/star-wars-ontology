@@ -1684,7 +1684,13 @@ There is no assertion of correctness or completeness by myself - content has bee
 
 
 :Failed_escape_from_Mortis rdf:type owl:NamedIndividual ,
-  :Event ,
+  [ owl:intersectionOf ( :Event
+         [ rdf:type owl:Class ;
+            owl:complementOf :Escape
+           ]
+        ) ;
+     rdf:type owl:Class
+    ] ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
      owl:someValuesFrom [ owl:intersectionOf ( :Escape

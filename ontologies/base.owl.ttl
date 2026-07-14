@@ -1140,7 +1140,7 @@ rdfs:seeAlso rdfs:range xsd:anyURI .
 
 
 :Carbon_freezing rdf:type owl:Class ;
- rdfs:subClassOf :Event ;
+ rdfs:subClassOf :Capture ;
  rdfs:label "Carbon freezing"@en ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Carbon-freezing"^^xsd:anyURI ;
  util:editorLabel "Carbon_freezing" ;
@@ -1976,11 +1976,7 @@ and (?a inConflictWith ?b)""" ;
 
 
 :Destruction rdf:type owl:Class ;
- rdfs:subClassOf :Event ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :of ;
-     owl:someValuesFrom owl:Thing
-    ] .
+ rdfs:subClassOf :Damage .
 
 
 :Destruction_purpose rdf:type owl:Class ;
@@ -2328,7 +2324,7 @@ and (?a inConflictWith ?b)""" ;
 
 
 :Earthquake rdf:type owl:Class ;
- rdfs:subClassOf :Damage ;
+ rdfs:subClassOf :Event ;
  rdfs:label "Earthquake"@en ;
  util:editorLabel "Earthquake" ;
  util:legacyId "814336710" .
@@ -2754,6 +2750,17 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29""" ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Firespray-31-class_patrol_and_attack_craft"^^xsd:anyURI ;
  util:editorLabel "Firespray-31" ;
  util:legacyId "1130182573" .
+
+
+:Fixing rdf:type owl:Class ;
+ rdfs:subClassOf :Event ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :of ;
+     owl:someValuesFrom owl:Thing
+    ] ;
+ rdfs:label "Fixing"@en ;
+ util:editorLabel "Fixing" ;
+ util:legacyId "-1245486170" .
 
 
 :Flamethrower rdf:type owl:Class ;
@@ -3355,6 +3362,14 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29""" ;
  util:legacyId "1000088296" .
 
 
+:HH-87_Starhopper rdf:type owl:Class ;
+ rdfs:subClassOf :StarFighter ;
+ rdfs:label "HH-87 Starhopper"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/HH-87_Starhopper"^^xsd:anyURI ;
+ util:editorLabel "HH-87_Starhopper" ;
+ util:legacyId "-1121022926" .
+
+
 :HK-87_assassin_droid rdf:type owl:Class ;
  rdfs:subClassOf :Droid ,
   [ rdf:type owl:Restriction ;
@@ -3449,7 +3464,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29""" ;
 
 
 :Healing rdf:type owl:Class ;
- rdfs:subClassOf :Event ,
+ rdfs:subClassOf :Fixing ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :of ;
      owl:someValuesFrom :Living_thing
@@ -3804,7 +3819,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29""" ;
 
 
 :Injury rdf:type owl:Class ;
- rdfs:subClassOf :Event ,
+ rdfs:subClassOf :Damage ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :of ;
      owl:someValuesFrom :Living_thing
@@ -6143,11 +6158,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29""" ;
 
 
 :Repair rdf:type owl:Class ;
- rdfs:subClassOf :Event ,
-  [ rdf:type owl:Restriction ;
-     owl:onProperty :of ;
-     owl:someValuesFrom owl:Thing
-    ] ,
+ rdfs:subClassOf :Fixing ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :of ;
      owl:allValuesFrom [ rdf:type owl:Class ;
@@ -8446,6 +8457,7 @@ See https://github.com/nickdrummond/star-wars-ontology/issues/29""" ;
       :Fang-class_Starfighter
       :Firespray-31
       :Gauntlet_Starfighter
+      :HH-87_Starhopper
       :N-1_starfighter
       :Nantex-class_territorial_defense_starfighter
       :Rogue-class_Porax-38_starfighter

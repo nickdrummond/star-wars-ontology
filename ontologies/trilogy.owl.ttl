@@ -1879,6 +1879,35 @@ There is no assertion of correctness or completeness by myself - content has bee
   :Duel ,
   [ rdf:type owl:Restriction ;
      owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom [ rdf:type owl:Restriction ;
+                    owl:onProperty :hadFather ;
+                    owl:hasValue :Darth_Vader
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:hasValue :Luke_Skywalker
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Fall
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Luke_Skywalker
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
      owl:someValuesFrom [ owl:intersectionOf ( :Injury
              [ rdf:type owl:Restriction ;
                 owl:onProperty :of ;

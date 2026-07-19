@@ -3696,6 +3696,23 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-1678554157" .
 
 
+:Carlac rdf:type owl:NamedIndividual ,
+  :Planet ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hasTerrain ;
+     owl:someValuesFrom :Forest
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hasTerrain ;
+     owl:someValuesFrom :Tundra
+    ] ;
+ :locatedIn :Outer_Rim ;
+ rdfs:label "Carlac"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Carlac"^^xsd:anyURI ;
+ util:editorLabel "Carlac" ;
+ util:legacyId "-1338938061" .
+
+
 :Casiss_Midagatis rdf:type owl:NamedIndividual ,
   :Felucian ,
   [ rdf:type owl:Restriction ;
@@ -13345,6 +13362,15 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  util:legacyId "-1352159120" .
 
 
+:Ming_Po rdf:type owl:NamedIndividual ,
+  :Tribe ;
+ :originallyFrom :Carlac ;
+ rdfs:label "Ming Po"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Ming_Po"^^xsd:anyURI ;
+ util:editorLabel "Ming_Po" ;
+ util:legacyId "-621058558" .
+
+
 :Mining_guild rdf:type owl:NamedIndividual ,
   :Guild ;
  rdfs:label "Mining guild"@en ;
@@ -15688,6 +15714,30 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Phoenix_Nest"^^xsd:anyURI ;
  util:editorLabel "Phoenix_Nest" ;
  util:legacyId "-1360438495" .
+
+
+:Pieter rdf:type owl:NamedIndividual ,
+  :Human ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :gender ;
+     owl:someValuesFrom :Male
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadRole ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Chief
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :inOrganisation ;
+                owl:hasValue :Ming_Po
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :originallyFrom :Carlac ;
+ rdfs:label "Pieter"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Pieter"^^xsd:anyURI ;
+ util:editorLabel "Pieter" ;
+ util:legacyId "-959750386" .
 
 
 :Pintu_Son-El rdf:type owl:NamedIndividual ,
@@ -20813,6 +20863,41 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  util:legacyId "-1213375773" .
 
 
+:Tryla rdf:type owl:NamedIndividual ,
+  :Human ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :gender ;
+     owl:someValuesFrom :Female
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadParent ;
+     owl:someValuesFrom [ rdf:type owl:Restriction ;
+         owl:onProperty :hadFather ;
+         owl:hasValue :Pieter
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :hadRole ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Slave
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :ownedBy ;
+                owl:hasValue :Death_Watch
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :memberOf ;
+     owl:hasValue :Ming_Po
+    ] ;
+ :originallyFrom :Carlac ;
+ rdfs:label "Tryla"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Tryla"^^xsd:anyURI ;
+ util:editorLabel "Tryla" ;
+ util:legacyId "1025883177" .
+
+
 :Tseebo rdf:type owl:NamedIndividual ,
   :Rodian ,
   [ rdf:type owl:Restriction ;
@@ -22902,6 +22987,12 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
  util:legacyId "157560639" .
 
 
+:_Unnamed_Twi-Lek_Slave rdf:type owl:NamedIndividual ;
+ rdfs:label " Unnamed Twi-Lek Slave"@en ;
+ util:editorLabel "_Unnamed_Twi-Lek_Slave" ;
+ util:legacyId "-1825601218" .
+
+
 :_unidentified_command_cruiser rdf:type owl:NamedIndividual ,
   :Arquitens-class_command_cruiser ;
  rdfs:label " unidentified command cruiser"@en ;
@@ -22945,6 +23036,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Adi_Gallia
       :Admiral_Trench
       :Agen_Kolar
+      :Agruss
       :Ahmar
       :Ahsoka_Tano
       :Almec
@@ -22955,9 +23047,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Amilyn_Holdo
       :Amis
       :Anakin_Skywalker
+      :Appo
       :Arihnda_Pryce
       :Armitage_Hux
       :Asajj_Ventress
+      :Atai_Molec
       :Aunt-Z
       :Aurra_Sing
       :Avi_Singh
@@ -22969,6 +23063,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Bail_Organa
       :Bannamu
       :Barriss_Offee
+      :Barton_Coburn
       :Baze_Malbus
       :Bel
       :Ben_Kenobis_Eopie
@@ -23003,6 +23098,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Bric
       :Broadside
       :Brom_Titus
+      :Bruno_Denturri
       :Buggles
       :Burg
       :Buzz
@@ -23041,6 +23137,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Comet
       :Conan_Antonio_Motti
       :Corde
+      :Cornelius_Evazan
       :Crosshair
       :Crys
       :Cumberlayne_Aresko
@@ -23050,6 +23147,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Dak_Ralter
       :Dante
       :Dar
+      :Darts_DNar
       :Davu_Golec
       :Death_Watch_bomber
       :Denal
@@ -23059,6 +23157,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Dilanni
       :Din_Djarin
       :Doctor_Mandible
+      :Dogma
       :Dokk_Strassi
       :Dooku
       :Drash
@@ -23119,6 +23218,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Gooti_Terez
       :Gor
       :Gor_Koresh
+      :Gorga_Desilijic_Aarrpo
       :Gree
       :Greedo
       :Greef_Karga
@@ -23131,6 +23231,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Grogu
       :Gron
       :Gume_Saam
+      :Gupat_Roshti
       :Gus
       :Haja_Estree
       :Halle_Burtoni
@@ -23142,6 +23243,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Havoc
       :Hawk
       :Hawkeye
+      :Hay-Zu
       :Hera_Syndulla
       :Hermione_Bagwa
       :Hevy
@@ -23233,11 +23335,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Luke_Skywalker
       :Luminara_Unduli
       :Lux_Bonteri
+      :Lyonie
       :Lyra_Erso
       :Maarva_Carassi_Andor
       :Mace_Windu
       :Maketh_Tua
       :Mama
+      :Manchucho
       :Mar_Tuuk
       :Marcus_Speedstar
       :Marg_Krim
@@ -23259,6 +23363,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Mina_Bonteri
       :Minas_Velti
       :Mira_Bridger
+      :Miraj_Scintel
       :Mixer
       :Mok_Shaiz
       :Mon_Mothma
@@ -23302,6 +23407,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Ord_Enisence
       :Orka
       :Orn_Free_Taa
+      :Orphne
       :Orson_Krennic
       :Osi_Sobeck
       :Owen_Lars
@@ -23314,10 +23420,12 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Pershing
       :Phasma
       :Philo
+      :Pieter
       :Pintu_Son-El
       :Plo_Koon
       :Poe_Dameron
       :Poggle_the_Lesser
+      :Ponda_Baba
       :Ponds
       :Pong_Krell
       :Porkins
@@ -23350,11 +23458,13 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Rey
       :Riff_Tamson
       :Rio_Durant
+      :Rish_Loo
       :Riyo_Chuchi
       :Robonino
       :Roland_Durand
       :Roo-Roo_Page
       :Rook_Kast
+      :Roos_Tarpals
       :Rose_Tico
       :Rotta
       :Ruby
@@ -23448,9 +23558,11 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :Trap-trooper
       :Trapper
       :Tristan_Wren
+      :Tryla
       :Tseebo
       :Tub
       :Tucker
+      :Tup
       :Turk_Falso
       :Unidentified_Gamorrean
       :Unidentified_Hutt_Brother
@@ -23513,6 +23625,7 @@ Nal Hutta is in Hutt Space, but in the Outer Rim""" ;
       :_Unnamed_Barriss_friend
       :_Unnamed_Human_Girl
       :_Unnamed_Human_Governor
+      :_Unnamed_Twi-Lek_Slave
       :_unidentified_imperial_captain
      )
  ] .

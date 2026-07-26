@@ -1295,6 +1295,56 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "1651006976" .
 
 
+:Briefing_on_the_Quarzite_Job rdf:type owl:NamedIndividual ,
+  :Briefing ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :about ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Transfer
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Cargo
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Train
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Journey
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :to ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Cave
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :locatedIn ;
+                           owl:hasValue :Quarzite
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Turbolift
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :at :Quarzite_space_station ;
+ :during :The_Quarzite_Job ;
+ :ledBy :Rigosso ;
+ :participant :Krayts_Claw ;
+ :year -20 ;
+ rdfs:label "Briefing on the Quarzite Job"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Briefing_on_the_Quarzite_Job" ;
+ util:legacyId "1659755267" .
+
+
 :Briefing_on_the_kidnap rdf:type owl:NamedIndividual ,
   :Briefing ,
   [ rdf:type owl:Restriction ;
@@ -2029,6 +2079,65 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Prisoners"^^xsd:anyURI ;
  util:editorLabel "Crowning_King_Lee-Char" ;
  util:legacyId "981704900" .
+
+
+:Delivery_of_the_precious_cargo rdf:type owl:NamedIndividual ,
+  :Trading ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :inExchangeFor ;
+     owl:someValuesFrom :Money
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Release
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :inExchangeFor ;
+                owl:someValuesFrom :Money
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Krismo_Sodi
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Pluma_Sodi
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                owl:onProperty :opened ;
+                owl:someValuesFrom :Cargo
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :found ;
+                owl:hasValue :Boba_Fett
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Otua_Blank
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :of ;
+     owl:someValuesFrom :Cargo
+    ] ;
+ :after :Protecting_cargo_from_raiders ;
+ :at :Quarzite ;
+ :during :The_Quarzite_Job ;
+ :participant :Asajj_Ventress ;
+ :to :Otua_Blank ;
+ :year -20 ;
+ rdfs:label "Delivery of the precious cargo"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Delivery_of_the_precious_cargo" ;
+ util:legacyId "1258637061" .
 
 
 :Destroying_communications rdf:type owl:NamedIndividual ,
@@ -3322,6 +3431,35 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Gungan_Attack"^^xsd:anyURI ;
  util:editorLabel "Gungan_reinforcements_attack" ;
  util:legacyId "-730556077" .
+
+
+:Handing_over_the_bounty rdf:type owl:NamedIndividual ,
+  :Giving ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Departure
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Asajj_Ventress
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :of ;
+     owl:someValuesFrom :Money
+    ] ;
+ :after :Delivery_of_the_precious_cargo ;
+ :at :Quarzite_space_station ;
+ :during :The_Quarzite_Job ;
+ :participant :Asajj_Ventress ;
+ :to :Krayts_Claw ;
+ :year -20 ;
+ rdfs:label "Handing over the bounty"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Handing_over_the_bounty" ;
+ util:legacyId "14542097" .
 
 
 :Hardeen_gives_the_Hutts_the_slip rdf:type owl:NamedIndividual ,
@@ -4775,6 +4913,133 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-439539038" .
 
 
+:Protecting_cargo_from_raiders rdf:type owl:NamedIndividual ,
+  :Journey ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :at ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Train
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :locatedIn ;
+                owl:hasValue :Quarzite
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Attack
+             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                       owl:onProperty :included ;
+                       owl:someValuesFrom [ owl:intersectionOf ( :Killing
+                               [ rdf:type owl:Restriction ;
+                                  owl:onProperty :of ;
+                                  owl:someValuesFrom :Belugan
+                                 ]
+                               [ rdf:type owl:Restriction ;
+                                  owl:onProperty :of ;
+                                  owl:someValuesFrom :Kage
+                                 ]
+                               [ rdf:type owl:Restriction ;
+                                  owl:onProperty :of ;
+                                  owl:hasValue :Rigosso
+                                 ]
+                              ) ;
+                           rdf:type owl:Class
+                          ]
+                      ]
+                    [ rdf:type owl:Restriction ;
+                       owl:onProperty :ledBy ;
+                       owl:hasValue :Krismo_Sodi
+                      ]
+                   ) ;
+                rdf:type owl:Class
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Wedding
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:hasValue :Otua_Blank
+                          ]
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:hasValue :Pluma_Sodi
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Fall
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Bossk
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :C-21_Highsinger
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Dengar
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Latts_Razzi
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Stunning
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Force_choke
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Boba_Fett
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Asajj_Ventress
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ rdf:type owl:Restriction ;
+         owl:onProperty :found ;
+         owl:hasValue :Pluma_Sodi
+        ]
+    ] ;
+ :after :Briefing_on_the_Quarzite_Job ;
+ :during :The_Quarzite_Job ;
+ :participant :Asajj_Ventress ;
+ :year -20 ;
+ rdfs:label "Protecting cargo from raiders"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Protecting_cargo_from_raiders" ;
+ util:legacyId "923083375" .
+
+
 :Quarren_Attack rdf:type owl:NamedIndividual ,
   :Attack ,
   [ rdf:type owl:Restriction ;
@@ -5263,6 +5528,21 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-605811887" .
 
 
+:The_Quarzite_Job rdf:type owl:NamedIndividual ,
+  :Job ;
+ :after :Ventress_joins_the_Krayts_Claw ;
+ :at :Quarzite ;
+ :during :Clone_Wars ;
+ :orderedBy :Otua_Blank ;
+ :participant :Asajj_Ventress ,
+  :Krayts_Claw ;
+ :year -20 ;
+ rdfs:label "The Quarzite Job"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_(episode)"^^xsd:anyURI ;
+ util:editorLabel "The_Quarzite_Job" ;
+ util:legacyId "1843662394" .
+
+
 :The_final_fight_for_Mon_Cala rdf:type owl:NamedIndividual ,
   :Fight ,
   [ rdf:type owl:Restriction ;
@@ -5478,6 +5758,37 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/The_General_(episode)"^^xsd:anyURI ;
  util:editorLabel "Using_Umbaran_tech_against_them" ;
  util:legacyId "-670283798" .
+
+
+:Ventress_joins_the_Krayts_Claw rdf:type owl:NamedIndividual ,
+  :Recruitment ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Killing
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Lightsaber
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Oked
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :at :Chalmuns_Cantina ;
+ :during :Clone_Wars ;
+ :of :Asajj_Ventress ;
+ :participant :Bossk ,
+  :Latts_Razzi ;
+ :sometimeAfter :Battle_of_Dathomir ;
+ :to :Krayts_Claw ;
+ :year -20 ;
+ rdfs:label "Ventress joins the Krayts Claw"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/Bounty_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Ventress_joins_the_Krayts_Claw" ;
+ util:legacyId "-394821154" .
 
 
 :Ventress_rejoins_the_Nightsisters rdf:type owl:NamedIndividual ,

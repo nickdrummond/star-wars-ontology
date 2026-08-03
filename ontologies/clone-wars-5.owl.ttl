@@ -23,6 +23,12 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://nickdrummond.github.io/star-wars-ontology/"^^xsd:anyURI ,
   "https://starwars.fandom.com/wiki/The_Clone_Wars:_Season_Five"^^xsd:anyURI .
 
+:Carnivore rdf:type owl:Class ;
+ rdfs:label "Carnivore"@en ;
+ util:editorLabel "Carnivore" ;
+ util:legacyId "-1295656076" .
+
+
 :Arrival_on_Onderon rdf:type owl:NamedIndividual ,
   :Arrival ,
   [ rdf:type owl:Restriction ;
@@ -898,6 +904,54 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "-1166802160" .
 
 
+:Entering_the_Gathering rdf:type owl:NamedIndividual ,
+  :Arrival ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Conversation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Ice
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :about ;
+                owl:someValuesFrom :Kyber_Crystal
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Yoda
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                owl:onProperty :opened ;
+                owl:someValuesFrom :Door
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :The_Force
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :assistedBy ;
+                owl:hasValue :Ahsoka_Tano
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :at :Ilum_Jedi_Temple ;
+ :during :The_Gathering_20BBY ;
+ :year -20 ;
+ rdfs:label "Entering the Gathering"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Gathering_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Entering_the_Gathering" ;
+ util:legacyId "1164606493" .
+
+
 :Fighting_back_against_the_droid_gunships rdf:type owl:NamedIndividual ,
   :Defence ,
   [ rdf:type owl:Restriction ;
@@ -1209,6 +1263,56 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/A_War_on_Two_Fronts"^^xsd:anyURI ;
  util:editorLabel "Onderon_rebels_ask_for_support" ;
  util:legacyId "-766410792" .
+
+
+:Petro_returns_to_the_cave rdf:type owl:NamedIndividual ,
+  :Search ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :found ;
+     owl:someValuesFrom :Kyber_Crystal
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Escape
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :included ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :of ;
+                           owl:someValuesFrom :Ice
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Rescue
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :The_Force
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Katooni
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Searching_for_Kyber_Crystals ;
+ :at :Crystal_Cave ;
+ :during :The_Gathering_20BBY ;
+ :participant :Petro ;
+ :year -20 ;
+ rdfs:label "Petro returns to the cave"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Gathering_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Petro_returns_to_the_cave" ;
+ util:legacyId "1752802681" .
 
 
 :Planning_to_take_out_the_power_in_Iziz rdf:type owl:NamedIndividual ,
@@ -1624,6 +1728,134 @@ There is no assertion of correctness or completeness by myself - content has bee
  util:legacyId "1757129555" .
 
 
+:Searching_for_Kyber_Crystals rdf:type owl:NamedIndividual ,
+  :Search ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :for ;
+     owl:someValuesFrom :Kyber_Crystal
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Climb
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :found ;
+                owl:someValuesFrom :Kyber_Crystal
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Katooni
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Destruction
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :found ;
+                owl:someValuesFrom :Kyber_Crystal
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:someValuesFrom :Equipment
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Zatt
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Fall
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :found ;
+                owl:someValuesFrom :Kyber_Crystal
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :included ;
+                owl:someValuesFrom :Distraction
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Ganodi
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Journey
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :found ;
+                owl:someValuesFrom :Kyber_Crystal
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:someValuesFrom :Ice
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :of ;
+                owl:hasValue :Gungi
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Observation
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :found ;
+                owl:someValuesFrom :Kyber_Crystal
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :target ;
+                owl:someValuesFrom [ owl:intersectionOf ( :Rock
+                        [ rdf:type owl:Restriction ;
+                           owl:onProperty :depicted ;
+                           owl:someValuesFrom :Carnivore
+                          ]
+                       ) ;
+                    rdf:type owl:Class
+                   ]
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Byph
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                owl:onProperty :found ;
+                owl:someValuesFrom :Ice
+               ]
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :participant ;
+                owl:hasValue :Petro
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Entering_the_Gathering ;
+ :at :Crystal_Cave ;
+ :during :The_Gathering_20BBY ;
+ :year -20 ;
+ rdfs:label "Searching for Kyber Crystals"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Gathering_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Searching_for_Kyber_Crystals" ;
+ util:legacyId "1048028079" .
+
+
 :Sourcing_rockets_from_Hondo rdf:type owl:NamedIndividual ,
   :Trading ,
   [ rdf:type owl:Restriction ;
@@ -1640,6 +1872,36 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/Tipping_Points"^^xsd:anyURI ;
  util:editorLabel "Sourcing_rockets_from_Hondo" ;
  util:legacyId "-827976835" .
+
+
+:The_Gathering_20BBY rdf:type owl:NamedIndividual ,
+  :Trial ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :included ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Arrival
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :used ;
+                owl:hasValue :Crucible
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :assistedBy :Ahsoka_Tano ;
+ :at :Ilum ;
+ :during :Clone_Wars ;
+ :participant :Byph ,
+  :Ganodi ,
+  :Gungi ,
+  :Katooni ,
+  :Petro ,
+  :Zatt ;
+ :sometimeAfter :Onderon_Civil_War ;
+ :year -20 ;
+ rdfs:label "The Gathering 20BBY"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Gathering_(episode)"^^xsd:anyURI ;
+ util:editorLabel "The_Gathering_20BBY" ;
+ util:legacyId "-1285057874" .
 
 
 :The_brothers_flee_Florrum rdf:type owl:NamedIndividual ,
@@ -1763,6 +2025,30 @@ There is no assertion of correctness or completeness by myself - content has bee
  rdfs:seeAlso "https://starwars.fandom.com/wiki/A_War_on_Two_Fronts"^^xsd:anyURI ;
  util:editorLabel "Training_the_Onderon_rebels" ;
  util:legacyId "-2061079689" .
+
+
+:Yoda_tells_the_younglings_about_their_search rdf:type owl:NamedIndividual ,
+  :Speech ,
+  [ rdf:type owl:Restriction ;
+     owl:onProperty :about ;
+     owl:someValuesFrom [ owl:intersectionOf ( :Trap
+             [ rdf:type owl:Restriction ;
+                owl:onProperty :inResponseTo ;
+                owl:someValuesFrom :Fear
+               ]
+            ) ;
+         rdf:type owl:Class
+        ]
+    ] ;
+ :after :Petro_returns_to_the_cave ;
+ :at :Ilum_Jedi_Temple ;
+ :during :The_Gathering_20BBY ;
+ :of :Yoda ;
+ :year -20 ;
+ rdfs:label "Yoda tells the younglings about their search"@en ;
+ rdfs:seeAlso "https://starwars.fandom.com/wiki/The_Gathering_(episode)"^^xsd:anyURI ;
+ util:editorLabel "Yoda_tells_the_younglings_about_their_search" ;
+ util:legacyId "2053869147" .
 
 
 ###  Generated by the OWL API (version 5.5.1.2024-09-07T21:41:32Z) https://github.com/owlcs/owlapi/
